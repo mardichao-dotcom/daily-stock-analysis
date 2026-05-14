@@ -1,0 +1,169 @@
+/* style.css — 台股動能儀表板深色主題 */
+:root {
+  --bg: #0d1117; --surface: #161b22; --border: #30363d;
+  --text: #e6edf3; --muted: #8b949e;
+  --red: #ff4d4d; --red-dim: #3b1a1a;
+  --yellow: #ffc107; --yellow-dim: #3b2f00;
+  --green: #3fb950; --green-dim: #122318;
+  --blue: #58a6ff; --blue-dim: #0d2340;
+  --teal: #39d0d8;
+  --purple: #bc8cff;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Segoe UI', -apple-system, sans-serif;
+  font-size: 14px; line-height: 1.65;
+  padding: 24px 16px; max-width: 1000px; margin: 0 auto;
+}
+h1 { font-size: 20px; color: var(--blue); font-weight: 700; }
+.meta { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; }
+.index-bar { margin-top: 12px; display: flex; gap: 24px; flex-wrap: wrap; }
+.index-item .label { font-size: 11px; color: var(--muted); display: block; }
+.index-item .val { font-size: 15px; font-weight: 600; color: var(--red); }
+
+/* ── 區塊 ── */
+.section { margin-bottom: 28px; }
+.section-header {
+  padding: 10px 14px; border-radius: 8px 8px 0 0;
+  font-size: 14px; font-weight: 700;
+}
+.global-header  { background: rgba(188,140,255,0.12); border-left: 4px solid var(--purple); }
+.market-header  { background: rgba(88,166,255,0.12);  border-left: 4px solid var(--blue); }
+.s-header       { background: rgba(255,77,77,0.15);   border-left: 4px solid var(--red); }
+.a-header       { background: rgba(255,193,7,0.12);   border-left: 4px solid var(--yellow); }
+.div-header     { background: rgba(255,165,0,0.12);   border-left: 4px solid #ff9800; }
+.warn-header    { background: rgba(139,148,158,0.12); border-left: 4px solid var(--muted); }
+.black-header   { background: rgba(0,0,0,0.4);        border-left: 4px solid #555; }
+.lone-header    { background: rgba(57,208,216,0.12);  border-left: 4px solid var(--teal); }
+.cal-header     { background: rgba(57,208,216,0.12);  border-left: 4px solid var(--teal); }
+.sig-header     { background: rgba(63,185,80,0.12);   border-left: 4px solid var(--green); }
+
+.section-body {
+  border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+.group {
+  background: var(--surface);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.group:last-child { border-bottom: none; }
+.group-name {
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px;
+}
+
+/* ── 個股卡片 ── */
+.stock-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 12px 14px; margin-bottom: 8px;
+}
+.stock-card:last-child { margin-bottom: 0; }
+.stock-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.stock-name { font-size: 15px; font-weight: 700; }
+.stock-code { color: var(--muted); font-size: 12px; }
+.badge { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 4px; }
+.badge-red    { background: var(--red-dim);    color: var(--red); }
+.badge-yellow { background: var(--yellow-dim); color: var(--yellow); }
+.badge-green  { background: var(--green-dim);  color: var(--green); }
+.badge-blue   { background: var(--blue-dim);   color: var(--blue); }
+.badge-teal   { background: #0e2c2e;           color: var(--teal); }
+.badge-orange { background: #2a1e0a;           color: #ff9800; }
+.badge-gray   { background: #1e2530;           color: var(--muted); }
+
+/* ── 價量列 ── */
+.price-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+.pitem { display: flex; flex-direction: column; }
+.plabel { font-size: 10px; color: var(--muted); }
+.pval { font-weight: 600; font-size: 13px; }
+.up   { color: var(--red); }
+.dn   { color: #58d68d; }
+.neutral { color: var(--muted); }
+
+/* ── 說明文字 ── */
+.desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.desc strong { color: var(--text); }
+
+/* ── 計分展開 ── */
+.score-line {
+  font-size: 12px; color: var(--muted);
+  margin: 4px 0 6px; display: flex; align-items: center; gap: 8px;
+}
+.score-num { font-weight: 700; font-size: 14px; color: var(--text); }
+.score-toggle {
+  background: none; border: none; color: var(--blue);
+  font-size: 12px; cursor: pointer; padding: 0;
+  text-decoration: underline;
+}
+.score-breakdown {
+  display: none;
+  font-size: 11.5px; color: var(--muted);
+  margin: 4px 0 8px 8px; line-height: 1.8;
+}
+.score-breakdown.open { display: block; }
+.sb-pos { color: var(--green); }
+.sb-neg { color: var(--red); }
+
+/* ── 折疊式 K 線圖 ── */
+.chart-toggle { margin-top: 10px; }
+.chart-btn {
+  background: #1e2535; border: 1px solid var(--border);
+  color: var(--blue); font-size: 12px; padding: 5px 12px;
+  border-radius: 4px; cursor: pointer; width: 100%; text-align: left;
+}
+.chart-btn:hover { background: #253045; }
+.chart-container {
+  display: none;
+  margin-top: 8px;
+  background: #131722;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  min-height: 100px;
+}
+.chart-loading {
+  color: var(--muted); font-size: 12px;
+  padding: 20px; text-align: center;
+}
+
+/* ── 警示框 ── */
+.alert-box {
+  background: rgba(255,77,77,0.07); border: 1px solid rgba(255,77,77,0.3);
+  border-radius: 5px; padding: 8px 12px; font-size: 12px;
+  color: #ff9999; margin-top: 8px;
+}
+.tip-box {
+  background: rgba(255,193,7,0.07); border: 1px solid rgba(255,193,7,0.25);
+  border-radius: 5px; padding: 8px 12px; font-size: 12px;
+  color: #ffd966; margin-top: 8px;
+}
+
+/* ── 關鍵價預留坑 ── */
+.keyprice-block {
+  background: var(--surface); border: 1px dashed var(--border);
+  border-radius: 6px; padding: 12px 14px; margin-top: 12px;
+  font-family: 'Consolas', 'Monaco', monospace; font-size: 12px;
+  color: var(--muted); white-space: pre-wrap; line-height: 1.7;
+}
+
+/* ── 表格 ── */
+table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 6px 0; }
+th, td { padding: 6px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; font-size: 11px; }
+tr:last-child td { border-bottom: none; }
+
+/* ── 空狀態 ── */
+.empty-state {
+  padding: 16px; text-align: center; color: var(--muted);
+  font-size: 13px; font-style: italic;
+}
+
+/* ── 頁尾 ── */
+.footer {
+  margin-top: 32px; border-top: 1px solid var(--border);
+  padding-top: 12px; font-size: 11px; color: var(--muted); text-align: center;
+}
+.footer a { color: var(--blue); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
