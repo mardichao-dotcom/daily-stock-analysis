@@ -2,7 +2,7 @@
 
 **每日掃描 87 檔台股，透過五階段過濾 + ETF 籌碼追蹤，自動產出可互動的 HTML 儀表板。**
 
-🌐 [線上預覽](https://mardichao.github.io/daily-stock-analysis/)
+🌐 [線上預覽](https://mardichao-dotcom.github.io/daily-stock-analysis/)
 
 ---
 

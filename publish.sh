@@ -22,4 +22,4 @@ git push origin main
 
 echo ""
 echo "完成。GitHub Pages 約 1-2 分鐘後更新。"
-echo "網址：https://mardichao.github.io/daily-stock-analysis/"
+echo "網址：https://mardichao-dotcom.github.io/daily-stock-analysis/"
