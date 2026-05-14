@@ -1,0 +1,947 @@
+{
+  "code": "TWSE:3443",
+  "name": "創意",
+  "sector": "IP與ASIC",
+  "grade": "中性",
+  "ohlcv": [
+    {
+      "time": "2026-01-21",
+      "open": 2660.0,
+      "high": 2735.0,
+      "low": 2610.0,
+      "close": 2625.0,
+      "volume": 2650094.0
+    },
+    {
+      "time": "2026-01-22",
+      "open": 2710.0,
+      "high": 2755.0,
+      "low": 2525.0,
+      "close": 2575.0,
+      "volume": 3352013.0
+    },
+    {
+      "time": "2026-01-23",
+      "open": 2700.0,
+      "high": 2790.0,
+      "low": 2675.0,
+      "close": 2725.0,
+      "volume": 4049019.0
+    },
+    {
+      "time": "2026-01-26",
+      "open": 2700.0,
+      "high": 2720.0,
+      "low": 2600.0,
+      "close": 2620.0,
+      "volume": 3266890.0
+    },
+    {
+      "time": "2026-01-27",
+      "open": 2630.0,
+      "high": 2660.0,
+      "low": 2555.0,
+      "close": 2585.0,
+      "volume": 3887592.0
+    },
+    {
+      "time": "2026-01-28",
+      "open": 2625.0,
+      "high": 2630.0,
+      "low": 2530.0,
+      "close": 2580.0,
+      "volume": 2889427.0
+    },
+    {
+      "time": "2026-01-29",
+      "open": 2600.0,
+      "high": 2720.0,
+      "low": 2545.0,
+      "close": 2695.0,
+      "volume": 4122518.0
+    },
+    {
+      "time": "2026-01-30",
+      "open": 2635.0,
+      "high": 2670.0,
+      "low": 2540.0,
+      "close": 2620.0,
+      "volume": 4572235.0
+    },
+    {
+      "time": "2026-02-02",
+      "open": 2580.0,
+      "high": 2745.0,
+      "low": 2570.0,
+      "close": 2685.0,
+      "volume": 5214225.0
+    },
+    {
+      "time": "2026-02-03",
+      "open": 2780.0,
+      "high": 2830.0,
+      "low": 2650.0,
+      "close": 2705.0,
+      "volume": 4526322.0
+    },
+    {
+      "time": "2026-02-04",
+      "open": 2690.0,
+      "high": 2705.0,
+      "low": 2525.0,
+      "close": 2530.0,
+      "volume": 4714724.0
+    },
+    {
+      "time": "2026-02-05",
+      "open": 2495.0,
+      "high": 2520.0,
+      "low": 2340.0,
+      "close": 2340.0,
+      "volume": 3982343.0
+    },
+    {
+      "time": "2026-02-06",
+      "open": 2360.0,
+      "high": 2410.0,
+      "low": 2255.0,
+      "close": 2375.0,
+      "volume": 3732221.0
+    },
+    {
+      "time": "2026-02-09",
+      "open": 2480.0,
+      "high": 2505.0,
+      "low": 2430.0,
+      "close": 2445.0,
+      "volume": 2485866.0
+    },
+    {
+      "time": "2026-02-10",
+      "open": 2480.0,
+      "high": 2515.0,
+      "low": 2425.0,
+      "close": 2505.0,
+      "volume": 2034739.0
+    },
+    {
+      "time": "2026-02-11",
+      "open": 2510.0,
+      "high": 2510.0,
+      "low": 2450.0,
+      "close": 2475.0,
+      "volume": 1316450.0
+    },
+    {
+      "time": "2026-02-23",
+      "open": 2510.0,
+      "high": 2515.0,
+      "low": 2335.0,
+      "close": 2370.0,
+      "volume": 3454154.0
+    },
+    {
+      "time": "2026-02-24",
+      "open": 2385.0,
+      "high": 2515.0,
+      "low": 2360.0,
+      "close": 2500.0,
+      "volume": 2407115.0
+    },
+    {
+      "time": "2026-02-25",
+      "open": 2510.0,
+      "high": 2590.0,
+      "low": 2440.0,
+      "close": 2575.0,
+      "volume": 2368371.0
+    },
+    {
+      "time": "2026-02-26",
+      "open": 2610.0,
+      "high": 2800.0,
+      "low": 2595.0,
+      "close": 2770.0,
+      "volume": 5018399.0
+    },
+    {
+      "time": "2026-03-02",
+      "open": 2700.0,
+      "high": 2735.0,
+      "low": 2625.0,
+      "close": 2645.0,
+      "volume": 2793594.0
+    },
+    {
+      "time": "2026-03-03",
+      "open": 2665.0,
+      "high": 2680.0,
+      "low": 2485.0,
+      "close": 2490.0,
+      "volume": 2818378.0
+    },
+    {
+      "time": "2026-03-04",
+      "open": 2380.0,
+      "high": 2415.0,
+      "low": 2270.0,
+      "close": 2280.0,
+      "volume": 3821687.0
+    },
+    {
+      "time": "2026-03-05",
+      "open": 2405.0,
+      "high": 2425.0,
+      "low": 2315.0,
+      "close": 2355.0,
+      "volume": 1968833.0
+    },
+    {
+      "time": "2026-03-06",
+      "open": 2325.0,
+      "high": 2435.0,
+      "low": 2295.0,
+      "close": 2385.0,
+      "volume": 1985038.0
+    },
+    {
+      "time": "2026-03-09",
+      "open": 2150.0,
+      "high": 2200.0,
+      "low": 2150.0,
+      "close": 2190.0,
+      "volume": 1958110.0
+    },
+    {
+      "time": "2026-03-10",
+      "open": 2255.0,
+      "high": 2300.0,
+      "low": 2190.0,
+      "close": 2245.0,
+      "volume": 1861573.0
+    },
+    {
+      "time": "2026-03-11",
+      "open": 2285.0,
+      "high": 2385.0,
+      "low": 2285.0,
+      "close": 2375.0,
+      "volume": 1729566.0
+    },
+    {
+      "time": "2026-03-12",
+      "open": 2375.0,
+      "high": 2395.0,
+      "low": 2270.0,
+      "close": 2290.0,
+      "volume": 2162422.0
+    },
+    {
+      "time": "2026-03-13",
+      "open": 2255.0,
+      "high": 2330.0,
+      "low": 2245.0,
+      "close": 2285.0,
+      "volume": 1503131.0
+    },
+    {
+      "time": "2026-03-16",
+      "open": 2345.0,
+      "high": 2345.0,
+      "low": 2250.0,
+      "close": 2260.0,
+      "volume": 1378953.0
+    },
+    {
+      "time": "2026-03-17",
+      "open": 2310.0,
+      "high": 2345.0,
+      "low": 2290.0,
+      "close": 2290.0,
+      "volume": 1448578.0
+    },
+    {
+      "time": "2026-03-18",
+      "open": 2350.0,
+      "high": 2515.0,
+      "low": 2350.0,
+      "close": 2515.0,
+      "volume": 3033839.0
+    },
+    {
+      "time": "2026-03-19",
+      "open": 2500.0,
+      "high": 2660.0,
+      "low": 2465.0,
+      "close": 2610.0,
+      "volume": 4749379.0
+    },
+    {
+      "time": "2026-03-20",
+      "open": 2660.0,
+      "high": 2735.0,
+      "low": 2635.0,
+      "close": 2645.0,
+      "volume": 3537579.0
+    },
+    {
+      "time": "2026-03-23",
+      "open": 2515.0,
+      "high": 2645.0,
+      "low": 2505.0,
+      "close": 2590.0,
+      "volume": 1695758.0
+    },
+    {
+      "time": "2026-03-24",
+      "open": 2680.0,
+      "high": 2695.0,
+      "low": 2465.0,
+      "close": 2505.0,
+      "volume": 2113918.0
+    },
+    {
+      "time": "2026-03-25",
+      "open": 2575.0,
+      "high": 2635.0,
+      "low": 2475.0,
+      "close": 2475.0,
+      "volume": 2976338.0
+    },
+    {
+      "time": "2026-03-26",
+      "open": 2490.0,
+      "high": 2570.0,
+      "low": 2455.0,
+      "close": 2540.0,
+      "volume": 2718187.0
+    },
+    {
+      "time": "2026-03-27",
+      "open": 2470.0,
+      "high": 2510.0,
+      "low": 2415.0,
+      "close": 2460.0,
+      "volume": 1460106.0
+    },
+    {
+      "time": "2026-03-30",
+      "open": 2375.0,
+      "high": 2390.0,
+      "low": 2250.0,
+      "close": 2310.0,
+      "volume": 2500860.0
+    },
+    {
+      "time": "2026-03-31",
+      "open": 2260.0,
+      "high": 2285.0,
+      "low": 2140.0,
+      "close": 2165.0,
+      "volume": 2605583.0
+    },
+    {
+      "time": "2026-04-01",
+      "open": 2300.0,
+      "high": 2380.0,
+      "low": 2255.0,
+      "close": 2355.0,
+      "volume": 1949221.0
+    },
+    {
+      "time": "2026-04-02",
+      "open": 2375.0,
+      "high": 2410.0,
+      "low": 2315.0,
+      "close": 2320.0,
+      "volume": 1707978.0
+    },
+    {
+      "time": "2026-04-07",
+      "open": 2400.0,
+      "high": 2400.0,
+      "low": 2325.0,
+      "close": 2365.0,
+      "volume": 971552.0
+    },
+    {
+      "time": "2026-04-08",
+      "open": 2500.0,
+      "high": 2570.0,
+      "low": 2360.0,
+      "close": 2510.0,
+      "volume": 3309931.0
+    },
+    {
+      "time": "2026-04-09",
+      "open": 2530.0,
+      "high": 2685.0,
+      "low": 2460.0,
+      "close": 2655.0,
+      "volume": 3435635.0
+    },
+    {
+      "time": "2026-04-10",
+      "open": 2695.0,
+      "high": 2720.0,
+      "low": 2645.0,
+      "close": 2665.0,
+      "volume": 2503866.0
+    },
+    {
+      "time": "2026-04-13",
+      "open": 2620.0,
+      "high": 2800.0,
+      "low": 2575.0,
+      "close": 2775.0,
+      "volume": 3023352.0
+    },
+    {
+      "time": "2026-04-14",
+      "open": 2850.0,
+      "high": 3050.0,
+      "low": 2845.0,
+      "close": 3050.0,
+      "volume": 4080105.0
+    },
+    {
+      "time": "2026-04-15",
+      "open": 3150.0,
+      "high": 3225.0,
+      "low": 3070.0,
+      "close": 3070.0,
+      "volume": 3760881.0
+    },
+    {
+      "time": "2026-04-16",
+      "open": 3165.0,
+      "high": 3375.0,
+      "low": 3140.0,
+      "close": 3345.0,
+      "volume": 4238415.0
+    },
+    {
+      "time": "2026-04-17",
+      "open": 3340.0,
+      "high": 3380.0,
+      "low": 3250.0,
+      "close": 3255.0,
+      "volume": 1284330.0
+    },
+    {
+      "time": "2026-04-20",
+      "open": 3495.0,
+      "high": 3580.0,
+      "low": 3450.0,
+      "close": 3580.0,
+      "volume": 1159632.0
+    },
+    {
+      "time": "2026-04-21",
+      "open": 3605.0,
+      "high": 3830.0,
+      "low": 3605.0,
+      "close": 3735.0,
+      "volume": 1074702.0
+    },
+    {
+      "time": "2026-04-22",
+      "open": 3755.0,
+      "high": 3755.0,
+      "low": 3660.0,
+      "close": 3675.0,
+      "volume": 927944.0
+    },
+    {
+      "time": "2026-04-23",
+      "open": 4035.0,
+      "high": 4040.0,
+      "low": 3710.0,
+      "close": 3910.0,
+      "volume": 1774532.0
+    },
+    {
+      "time": "2026-04-24",
+      "open": 4200.0,
+      "high": 4300.0,
+      "low": 3975.0,
+      "close": 4035.0,
+      "volume": 1807025.0
+    },
+    {
+      "time": "2026-04-27",
+      "open": 4120.0,
+      "high": 4120.0,
+      "low": 3705.0,
+      "close": 3955.0,
+      "volume": 1745516.0
+    },
+    {
+      "time": "2026-04-28",
+      "open": 4015.0,
+      "high": 4245.0,
+      "low": 4015.0,
+      "close": 4190.0,
+      "volume": 701701.0
+    },
+    {
+      "time": "2026-04-29",
+      "open": 4140.0,
+      "high": 4140.0,
+      "low": 3960.0,
+      "close": 4120.0,
+      "volume": 626209.0
+    },
+    {
+      "time": "2026-04-30",
+      "open": 4180.0,
+      "high": 4350.0,
+      "low": 4070.0,
+      "close": 4260.0,
+      "volume": 1038809.0
+    },
+    {
+      "time": "2026-05-04",
+      "open": 4580.0,
+      "high": 4685.0,
+      "low": 4475.0,
+      "close": 4685.0,
+      "volume": 1595186.0
+    },
+    {
+      "time": "2026-05-05",
+      "open": 4700.0,
+      "high": 4930.0,
+      "low": 4570.0,
+      "close": 4835.0,
+      "volume": 4179087.0
+    },
+    {
+      "time": "2026-05-06",
+      "open": 4925.0,
+      "high": 4965.0,
+      "low": 4520.0,
+      "close": 4955.0,
+      "volume": 4890790.0
+    },
+    {
+      "time": "2026-05-07",
+      "open": 4955.0,
+      "high": 5450.0,
+      "low": 4945.0,
+      "close": 5450.0,
+      "volume": 2180365.0
+    },
+    {
+      "time": "2026-05-08",
+      "open": 5465.0,
+      "high": 5555.0,
+      "low": 5210.0,
+      "close": 5210.0,
+      "volume": 2897906.0
+    },
+    {
+      "time": "2026-05-11",
+      "open": 5300.0,
+      "high": 5730.0,
+      "low": 5245.0,
+      "close": 5730.0,
+      "volume": 2419167.0
+    },
+    {
+      "time": "2026-05-12",
+      "open": 5950.0,
+      "high": 5950.0,
+      "low": 5510.0,
+      "close": 5570.0,
+      "volume": 2615297.0
+    },
+    {
+      "time": "2026-05-13",
+      "open": 5405.0,
+      "high": 5455.0,
+      "low": 5050.0,
+      "close": 5330.0,
+      "volume": 2747701.0
+    }
+  ],
+  "etf_markers": [
+    {
+      "time": "2026-01-26",
+      "action": "建倉",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00987A 建倉",
+      "detail": [
+        {
+          "etf": "00987A",
+          "action": "建倉",
+          "shares": 12
+        }
+      ]
+    },
+    {
+      "time": "2026-01-27",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00987A 加碼",
+      "detail": [
+        {
+          "etf": "00987A",
+          "action": "加碼",
+          "shares": 8
+        }
+      ]
+    },
+    {
+      "time": "2026-01-29",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00987A 加碼",
+      "detail": [
+        {
+          "etf": "00987A",
+          "action": "加碼",
+          "shares": 3
+        }
+      ]
+    },
+    {
+      "time": "2026-02-04",
+      "action": "減碼",
+      "direction": "sell",
+      "is_consensus": false,
+      "summary": "00994A 減碼",
+      "detail": [
+        {
+          "etf": "00994A",
+          "action": "減碼",
+          "shares": 2
+        }
+      ]
+    },
+    {
+      "time": "2026-02-05",
+      "action": "減碼",
+      "direction": "sell",
+      "is_consensus": false,
+      "summary": "00994A 減碼",
+      "detail": [
+        {
+          "etf": "00994A",
+          "action": "減碼",
+          "shares": 8
+        }
+      ]
+    },
+    {
+      "time": "2026-03-05",
+      "action": "減碼",
+      "direction": "sell",
+      "is_consensus": false,
+      "summary": "00987A 減碼",
+      "detail": [
+        {
+          "etf": "00987A",
+          "action": "減碼",
+          "shares": 1
+        }
+      ]
+    },
+    {
+      "time": "2026-03-19",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": true,
+      "summary": "2 檔加碼",
+      "detail": [
+        {
+          "etf": "00987A",
+          "action": "加碼",
+          "shares": 2
+        },
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 9
+        }
+      ]
+    },
+    {
+      "time": "2026-03-20",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": true,
+      "summary": "2 檔加碼",
+      "detail": [
+        {
+          "etf": "00981A",
+          "action": "加碼",
+          "shares": 244
+        },
+        {
+          "etf": "00992A",
+          "action": "加碼",
+          "shares": 42
+        }
+      ]
+    },
+    {
+      "time": "2026-03-23",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00981A 加碼",
+      "detail": [
+        {
+          "etf": "00981A",
+          "action": "加碼",
+          "shares": 20
+        }
+      ]
+    },
+    {
+      "time": "2026-03-23",
+      "action": "建倉",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00995A 建倉",
+      "detail": [
+        {
+          "etf": "00995A",
+          "action": "建倉",
+          "shares": 7
+        }
+      ]
+    },
+    {
+      "time": "2026-03-24",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00995A 加碼",
+      "detail": [
+        {
+          "etf": "00995A",
+          "action": "加碼",
+          "shares": 3
+        }
+      ]
+    },
+    {
+      "time": "2026-03-25",
+      "action": "減碼",
+      "direction": "sell",
+      "is_consensus": false,
+      "summary": "00994A 減碼",
+      "detail": [
+        {
+          "etf": "00994A",
+          "action": "減碼",
+          "shares": 9
+        }
+      ]
+    },
+    {
+      "time": "2026-03-30",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00995A 加碼",
+      "detail": [
+        {
+          "etf": "00995A",
+          "action": "加碼",
+          "shares": 2
+        }
+      ]
+    },
+    {
+      "time": "2026-04-09",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00987A 加碼",
+      "detail": [
+        {
+          "etf": "00987A",
+          "action": "加碼",
+          "shares": 5
+        }
+      ]
+    },
+    {
+      "time": "2026-04-13",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": true,
+      "summary": "2 檔加碼",
+      "detail": [
+        {
+          "etf": "00992A",
+          "action": "加碼",
+          "shares": 2
+        },
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 7
+        }
+      ]
+    },
+    {
+      "time": "2026-04-14",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00994A 加碼",
+      "detail": [
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 3
+        }
+      ]
+    },
+    {
+      "time": "2026-04-17",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00992A 加碼",
+      "detail": [
+        {
+          "etf": "00992A",
+          "action": "加碼",
+          "shares": 100
+        }
+      ]
+    },
+    {
+      "time": "2026-04-20",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": true,
+      "summary": "2 檔加碼",
+      "detail": [
+        {
+          "etf": "00992A",
+          "action": "加碼",
+          "shares": 47
+        },
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 5
+        }
+      ]
+    },
+    {
+      "time": "2026-04-21",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": true,
+      "summary": "2 檔加碼",
+      "detail": [
+        {
+          "etf": "00992A",
+          "action": "加碼",
+          "shares": 44
+        },
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 5
+        }
+      ]
+    },
+    {
+      "time": "2026-05-05",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": true,
+      "summary": "2 檔加碼",
+      "detail": [
+        {
+          "etf": "00981A",
+          "action": "加碼",
+          "shares": 217
+        },
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 9
+        }
+      ]
+    },
+    {
+      "time": "2026-05-06",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00981A 加碼",
+      "detail": [
+        {
+          "etf": "00981A",
+          "action": "加碼",
+          "shares": 128
+        }
+      ]
+    },
+    {
+      "time": "2026-05-07",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": true,
+      "summary": "3 檔加碼",
+      "detail": [
+        {
+          "etf": "00981A",
+          "action": "加碼",
+          "shares": 148
+        },
+        {
+          "etf": "00992A",
+          "action": "加碼",
+          "shares": 100
+        },
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 4
+        }
+      ]
+    },
+    {
+      "time": "2026-05-08",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00995A 加碼",
+      "detail": [
+        {
+          "etf": "00995A",
+          "action": "加碼",
+          "shares": 6
+        }
+      ]
+    },
+    {
+      "time": "2026-05-11",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00994A 加碼",
+      "detail": [
+        {
+          "etf": "00994A",
+          "action": "加碼",
+          "shares": 4
+        }
+      ]
+    }
+  ],
+  "key_prices": []
+}
