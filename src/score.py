@@ -7,7 +7,7 @@ score(d) → (total_score: int, breakdown: list of {項目, 分數})
 """
 from .load_config import get_sector_of, get_leaders_of
 
-ENABLE_KEY_PRICE = False  # 1-D / 2-D 開關
+ENABLE_KEY_PRICE = True   # 1-D / 2-D 開關（階段 6 正式啟用）
 
 
 def score(d):
@@ -76,13 +76,12 @@ def score(d):
     if close > open_ and body_ratio > 0.6:
         add("強紅K（實體比>60%，收紅）", 1)
 
-    # ── 1-D 關鍵價加分（⏸️ 不啟用）────────────────────────────────────────────
+    # ── 1-D 關鍵價加分 ────────────────────────────────────────────────────────
     if ENABLE_KEY_PRICE:
-        key_price_state = d.get("key_price_state")
-        if key_price_state == "新突破":
-            add("突破關鍵價（新突破）", 3)
-        elif key_price_state == "站穩":
-            add("站穩關鍵價", 1)
+        for r in d.get("key_price_results", []):
+            if r["delta"] > 0:
+                cold = "（冷啟動）" if r.get("cold_start") else ""
+                add(f"關鍵價 {r['price']} {r['label']}（{r['event']}{cold}）", r["delta"])
 
     # ── 1-E 國際連動加分 ──────────────────────────────────────────────────────
     if d.get("global_sync"):
@@ -126,10 +125,11 @@ def score(d):
     if d.get("multi_leader_divergence") and is_leader:
         add("多長子背離", -1)
 
-    # ── 2-D 關鍵價風險（⏸️ 不啟用）────────────────────────────────────────────
+    # ── 2-D 關鍵價風險 ────────────────────────────────────────────────────────
     if ENABLE_KEY_PRICE:
-        if d.get("key_price_state") == "跌破":
-            add("跌破關鍵價（假突破/破線）", -3)
+        for r in d.get("key_price_results", []):
+            if r["delta"] < 0:
+                add(f"關鍵價 {r['price']} {r['label']}（{r['event']}）", r["delta"])
 
     # ── 2-E 國際風險 ──────────────────────────────────────────────────────────
     if d.get("global_crash"):

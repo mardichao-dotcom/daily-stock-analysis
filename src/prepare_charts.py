@@ -17,6 +17,7 @@ from datetime import datetime
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from src.load_config import get_name, get_sector_of, symbol_to_code
+from src.load_key_prices import get_key_prices, get_update_date
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 BUY_ACTIONS  = {"加碼", "建倉"}
@@ -94,6 +95,26 @@ def get_etf_events(etf_cur, code, valid_dates):
     return markers
 
 
+def _build_key_prices(symbol):
+    marks = get_key_prices(symbol)
+    if not marks:
+        return {"marks": []}
+    update_date = get_update_date(symbol) or ""
+    needs_check = False
+    if update_date:
+        try:
+            delta = (datetime.now().date() -
+                     datetime.strptime(update_date, "%Y-%m-%d").date()).days
+            needs_check = delta > 30
+        except ValueError:
+            pass
+    return {
+        "更新日期": update_date,
+        "需檢查": needs_check,
+        "marks": marks,
+    }
+
+
 def build_json(symbol, grade, kline_cur, etf_cur):
     ohlcv = get_ohlcv(kline_cur, symbol)
     if not ohlcv:
@@ -110,7 +131,7 @@ def build_json(symbol, grade, kline_cur, etf_cur):
         "grade":       grade,
         "ohlcv":       ohlcv,
         "etf_markers": markers,
-        "key_prices":  [],
+        "key_prices":  _build_key_prices(symbol),
     }
 
 

@@ -1190,5 +1190,7 @@
       ]
     }
   ],
-  "key_prices": []
+  "key_prices": {
+    "marks": []
+  }
 }

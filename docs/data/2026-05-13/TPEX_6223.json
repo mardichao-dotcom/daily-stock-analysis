@@ -1013,5 +1013,62 @@
       ]
     }
   ],
-  "key_prices": []
+  "key_prices": {
+    "更新日期": "2026-05-15",
+    "需檢查": false,
+    "marks": [
+      {
+        "type": "line",
+        "price": 5200.0,
+        "label": "前高壓力"
+      },
+      {
+        "type": "line",
+        "price": 5370.0,
+        "label": "突破點"
+      },
+      {
+        "type": "line",
+        "price": 2680.0,
+        "label": "月線支撐"
+      },
+      {
+        "type": "zone",
+        "low": 5025.0,
+        "high": 5370.0,
+        "label": "訂單塊"
+      },
+      {
+        "type": "zone",
+        "low": 2995.0,
+        "high": 3125.0,
+        "label": "跳空缺口"
+      },
+      {
+        "type": "zone",
+        "low": 3965.0,
+        "high": 4140.0,
+        "label": "跳空缺口"
+      },
+      {
+        "type": "zone",
+        "low": 5125.0,
+        "high": 5255.0,
+        "label": "跳空缺口"
+      },
+      {
+        "type": "line",
+        "price": 4885.0,
+        "label": "POC",
+        "is_poc": true
+      },
+      {
+        "type": "zone",
+        "low": 4060.0,
+        "high": 4160.0,
+        "label": "POC區間",
+        "is_poc": true
+      }
+    ]
+  }
 }

@@ -25,6 +25,109 @@
     tipBorder:   '#2a3a5c',
   };
 
+  // ── 關鍵價配色 ────────────────────────────────────────────────────────────────
+  const KP = {
+    lineNormal: { color: '#78909c', lineWidth: 1, lineStyle: 2 },
+    linePOC:    { color: '#ff9800', lineWidth: 1, lineStyle: 2 },
+    zone: {
+      '跳空缺口': { fill: 'rgba(255,214,0,0.09)',   text: 'rgba(255,220,80,0.80)' },
+      '訂單塊':   { fill: 'rgba(171,71,188,0.12)',  text: 'rgba(206,147,216,0.88)' },
+      'POC':      { fill: 'rgba(255,152,0,0.11)',   text: 'rgba(255,183,77,0.88)' },
+      'default':  { fill: 'rgba(120,144,156,0.09)', text: 'rgba(176,190,197,0.75)' },
+    },
+  };
+
+  function _zoneStyle(label, isPoc) {
+    if (isPoc) return KP.zone['POC'];
+    for (const key of ['跳空缺口', '訂單塊']) {
+      if (label.includes(key)) return KP.zone[key];
+    }
+    return KP.zone['default'];
+  }
+
+  // ── ZoneBandPlugin（LW Charts v5 series primitive）────────────────────────────
+  class ZoneBandPlugin {
+    constructor(low, high, label, fill, textColor) {
+      this._low       = low;
+      this._high      = high;
+      this._label     = label;
+      this._fill      = fill;
+      this._textColor = textColor;
+      this._series    = null;
+    }
+
+    attached({ series }) { this._series = series; }
+    detached()           { this._series = null;   }
+
+    paneViews() {
+      const self = this;
+      return [{
+        renderer() {
+          return {
+            draw(target) {
+              const s = self._series;
+              if (!s) return;
+              target.useBitmapCoordinateSpace(({
+                context: ctx, bitmapSize,
+                verticalPixelRatio:   vpr,
+                horizontalPixelRatio: hpr,
+              }) => {
+                const yH = s.priceToCoordinate(self._high);
+                const yL = s.priceToCoordinate(self._low);
+                if (yH === null || yL === null) return;
+
+                const y1 = Math.round(Math.min(yH, yL) * vpr);
+                const y2 = Math.round(Math.max(yH, yL) * vpr);
+                const h  = y2 - y1;
+                if (h < 1) return;
+
+                // 半透明填色
+                ctx.fillStyle = self._fill;
+                ctx.fillRect(0, y1, bitmapSize.width, h);
+
+                // 中央文字（帶高 ≥ 14px 才顯示）
+                if (h >= Math.round(14 * vpr)) {
+                  ctx.save();
+                  ctx.font =
+                    `600 ${Math.round(10 * vpr)}px -apple-system,"Segoe UI",sans-serif`;
+                  ctx.fillStyle    = self._textColor;
+                  ctx.textBaseline = 'middle';
+                  ctx.textAlign    = 'left';
+                  ctx.fillText(self._label, Math.round(8 * hpr), y1 + h / 2);
+                  ctx.restore();
+                }
+              });
+            },
+          };
+        },
+        zOrder() { return 'bottom'; },
+      }];
+    }
+  }
+
+  // ── 關鍵價繪製（水平線 + 區域帶）──────────────────────────────────────────────
+  function drawKeyPrices(candleSeries, keyPrices) {
+    if (!keyPrices || !keyPrices.marks || keyPrices.marks.length === 0) return;
+    for (const mark of keyPrices.marks) {
+      if (mark.type === 'line') {
+        const isPoc = !!mark.is_poc;
+        candleSeries.createPriceLine({
+          price:            mark.price,
+          color:            isPoc ? KP.linePOC.color : KP.lineNormal.color,
+          lineWidth:        1,
+          lineStyle:        2,
+          axisLabelVisible: true,
+          title:            mark.label,
+        });
+      } else if (mark.type === 'zone') {
+        const st = _zoneStyle(mark.label, !!mark.is_poc);
+        candleSeries.attachPrimitive(
+          new ZoneBandPlugin(mark.low, mark.high, mark.label, st.fill, st.text)
+        );
+      }
+    }
+  }
+
   // ── marker 計算（純函式）─────────────────────────────────────────────────
 
   function computeMarkers(rawMarkers, enabledEtfs) {
@@ -91,7 +194,7 @@
     wrap.innerHTML = '';
     wrap.style.position = 'relative';
 
-    const { ohlcv, etf_markers: rawMarkers, name, code, grade } = chartData;
+    const { ohlcv, etf_markers: rawMarkers, name, code, grade, key_prices } = chartData;
     const LWC = window.LightweightCharts;
 
     // ── 狀態 ──
@@ -203,6 +306,18 @@
     volSeries.setData(ohlcv.map(b =>
       ({ time: b.time, value: b.volume, color: b.close >= b.open ? C.up : C.down })
     ));
+
+    // ── 關鍵價水平線 + 區域帶 ──
+    drawKeyPrices(candleSeries, key_prices);
+
+    // ── 「需檢查」警告（距更新日 > 30 天）──
+    if (key_prices?.需檢查) {
+      const warn = document.createElement('div');
+      warn.textContent = '⚠ 關鍵價已 30 天未更新，請確認是否仍適用';
+      warn.style.cssText =
+        `font-size:11px;color:#ff9800;padding:2px 0 6px;`;
+      wrap.insertBefore(warn, chartDiv);
+    }
 
     // ── marker 狀態（統一管理）──
     // v5: markers live in a plugin wrapper, not directly on the series

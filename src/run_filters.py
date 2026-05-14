@@ -31,6 +31,7 @@ from src.filter_stage2 import run as stage2
 from src.filter_stage4 import run as stage4
 from src.score import score_all
 from src.classify import classify_all
+from src.key_price_state import apply_key_price_states
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 STATE_FILE = os.path.join(PROJECT_ROOT, "state", "signal_state.json")
@@ -160,10 +161,13 @@ def main():
     stage1(tw_data)
     stage2(tw_data)
     stage4(tw_data, global_data)
+
+    state = load_state()
+    apply_key_price_states(tw_data, state)   # 必須在 score_all 之前
+
     score_all(tw_data)
     classify_all(tw_data)
 
-    state = load_state()
     update_state(state, tw_data, data_date)
 
     os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
