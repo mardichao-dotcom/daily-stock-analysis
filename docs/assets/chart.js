@@ -1,0 +1,265 @@
+/**
+ * chart.js — TradingView Lightweight Charts v5 渲染模組
+ * 台股配色：漲紅跌綠
+ *
+ * renderChart(containerId, chartData)
+ *   containerId : HTML 元素 id
+ *   chartData   : data/{date}/{code}.json 的內容物件
+ */
+
+(function (global) {
+  'use strict';
+
+  const C = {
+    up:          '#ef5350',
+    down:        '#26a69a',
+    buyBright:   '#00e676',
+    buyDim:      '#388e3c',
+    sellBright:  '#ff1744',
+    sellDim:     '#c62828',
+    bg:          '#131722',
+    grid:        '#1e2535',
+    text:        '#d1d4dc',
+    crosshair:   '#758696',
+    tipBg:       'rgba(19,23,34,0.95)',
+    tipBorder:   '#2a3a5c',
+  };
+
+  // ── marker 計算（純函式）─────────────────────────────────────────────────
+
+  function computeMarkers(rawMarkers, enabledEtfs) {
+    const result = [];
+    for (const m of rawMarkers) {
+      // Checkbox is a display filter only — hide marker if none of its ETFs are enabled
+      const filteredDetail = m.detail.filter(d => enabledEtfs.has(d.etf));
+      if (filteredDetail.length === 0) continue;
+
+      // is_consensus is a historical fact fixed at data generation time; never recalculate
+      const isConsensus = m.is_consensus;
+      const isBuy       = m.direction === 'buy';
+
+      result.push({
+        // LW Charts marker fields
+        time:     m.time,
+        position: isBuy ? 'belowBar' : 'aboveBar',
+        color:    isBuy
+          ? (isConsensus ? C.buyBright  : C.buyDim)
+          : (isConsensus ? C.sellBright : C.sellDim),
+        shape:    isBuy ? 'arrowUp' : 'arrowDown',
+        text:     m.action,   // action word only — detail goes in tooltip
+        size:     isConsensus ? 2 : 1,
+        // extra payload for tooltip
+        _time:        m.time,
+        _dir:         m.direction,
+        _action:      m.action,
+        _summary:     m.summary,      // original full summary from data
+        _isConsensus: isConsensus,
+        _detail:      filteredDetail, // only enabled ETFs shown in tooltip
+      });
+    }
+    result.sort((a, b) => (a.time < b.time ? -1 : a.time > b.time ? 1 : 0));
+    return result;
+  }
+
+  // ── range helper ──────────────────────────────────────────────────────────
+
+  function setRange(chart, ohlcv, bars) {
+    const n    = ohlcv.length;
+    const from = ohlcv[Math.max(0, n - bars)].time;
+    const to   = ohlcv[n - 1].time;
+    chart.timeScale().setVisibleRange({ from, to });
+  }
+
+  // ── tooltip ───────────────────────────────────────────────────────────────
+
+  function makeTooltip(parent) {
+    const el = document.createElement('div');
+    el.style.cssText =
+      `position:absolute;display:none;z-index:100;` +
+      `background:${C.tipBg};border:1px solid ${C.tipBorder};` +
+      `border-radius:6px;padding:8px 12px;font-size:12px;` +
+      `color:${C.text};pointer-events:none;min-width:180px;line-height:1.7;`;
+    parent.appendChild(el);
+    return el;
+  }
+
+  // ── main ──────────────────────────────────────────────────────────────────
+
+  function renderChart(containerId, chartData) {
+    const wrap = document.getElementById(containerId);
+    if (!wrap) { console.error('renderChart: #' + containerId + ' not found'); return; }
+    wrap.innerHTML = '';
+    wrap.style.position = 'relative';
+
+    const { ohlcv, etf_markers: rawMarkers, name, code, grade } = chartData;
+    const LWC = window.LightweightCharts;
+
+    // ── 狀態 ──
+    const allEtfs     = [...new Set(rawMarkers.flatMap(m => m.detail.map(d => d.etf)))].sort();
+    const enabledEtfs = new Set(allEtfs);
+    let   activeRange = 60;   // 預設近 3 個月
+
+    // ── 標題列 ──
+    const hdr = document.createElement('div');
+    hdr.style.cssText =
+      `display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;`;
+    const titleEl = document.createElement('span');
+    titleEl.textContent = `${name}（${code}）`;
+    titleEl.style.cssText = `font-weight:600;font-size:14px;color:${C.text}`;
+
+    const gradeEl = document.createElement('span');
+    gradeEl.textContent = grade;
+    gradeEl.style.cssText =
+      `padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;` +
+      (grade === 'S級'
+        ? `background:#ef535033;color:#ef5350`
+        : `background:#ff980033;color:#ff9800`);
+
+    const spacer = document.createElement('span');
+    spacer.style.flex = '1';
+
+    const makeBtnStyle = active =>
+      `padding:3px 10px;border-radius:4px;cursor:pointer;border:none;font-size:12px;` +
+      (active ? `background:#2962ff;color:#fff` : `background:#1e2535;color:${C.text}`);
+
+    const btn1m = document.createElement('button');
+    const btn3m = document.createElement('button');
+    btn1m.textContent = '近 1 個月';
+    btn3m.textContent = '近 3 個月';
+
+    function syncBtnStyles() {
+      btn1m.style.cssText = makeBtnStyle(activeRange === 20);
+      btn3m.style.cssText = makeBtnStyle(activeRange === 60);
+    }
+    syncBtnStyles();
+
+    hdr.append(titleEl, gradeEl, spacer, btn1m, btn3m);
+    wrap.appendChild(hdr);
+
+    // ── ETF 勾選框 ──
+    if (allEtfs.length > 0) {
+      const bar = document.createElement('div');
+      bar.style.cssText =
+        `display:flex;flex-wrap:wrap;gap:4px 12px;padding:4px 0 8px;` +
+        `border-bottom:1px solid ${C.grid};margin-bottom:6px;font-size:12px;color:${C.text};`;
+      const lbl0 = document.createElement('span');
+      lbl0.textContent = 'ETF：';
+      lbl0.style.opacity = '0.55';
+      bar.appendChild(lbl0);
+
+      allEtfs.forEach(etf => {
+        const lbl = document.createElement('label');
+        lbl.style.cssText = `display:flex;align-items:center;gap:3px;cursor:pointer;`;
+        const cb = document.createElement('input');
+        cb.type = 'checkbox'; cb.checked = true; cb.value = etf;
+        cb.style.accentColor = '#2962ff';
+        cb.addEventListener('change', () => {
+          if (cb.checked) enabledEtfs.add(etf);
+          else enabledEtfs.delete(etf);
+          refreshMarkers();
+        });
+        lbl.append(cb, document.createTextNode(etf));
+        bar.appendChild(lbl);
+      });
+      wrap.appendChild(bar);
+    }
+
+    // ── 圖表容器 ──
+    const chartDiv = document.createElement('div');
+    chartDiv.style.cssText = `width:100%;height:400px;position:relative;`;
+    wrap.appendChild(chartDiv);
+
+    // ── LW Charts ──
+    const chart = LWC.createChart(chartDiv, {
+      width:  chartDiv.clientWidth || 800,
+      height: 400,
+      layout:  { background: { color: C.bg }, textColor: C.text },
+      grid:    { vertLines: { color: C.grid }, horzLines: { color: C.grid } },
+      crosshair: { vertLine: { color: C.crosshair }, horzLine: { color: C.crosshair } },
+      rightPriceScale: { borderColor: C.grid },
+      timeScale: { borderColor: C.grid, timeVisible: true, secondsVisible: false },
+    });
+
+    new ResizeObserver(() => chart.applyOptions({ width: chartDiv.clientWidth }))
+      .observe(chartDiv);
+
+    // 成交量（先加，讓 K 線在上層）
+    const volSeries = chart.addSeries(LWC.HistogramSeries, {
+      color: C.up, priceFormat: { type: 'volume' }, priceScaleId: 'vol',
+    });
+    volSeries.priceScale().applyOptions({ scaleMargins: { top: 0.8, bottom: 0 } });
+
+    // K 線
+    const candleSeries = chart.addSeries(LWC.CandlestickSeries, {
+      upColor: C.up, downColor: C.down,
+      borderUpColor: C.up, borderDownColor: C.down,
+      wickUpColor: C.up, wickDownColor: C.down,
+    });
+    candleSeries.priceScale().applyOptions({ scaleMargins: { top: 0.05, bottom: 0.25 } });
+
+    candleSeries.setData(ohlcv.map(b =>
+      ({ time: b.time, open: b.open, high: b.high, low: b.low, close: b.close })
+    ));
+    volSeries.setData(ohlcv.map(b =>
+      ({ time: b.time, value: b.volume, color: b.close >= b.open ? C.up : C.down })
+    ));
+
+    // ── marker 狀態（統一管理）──
+    // v5: markers live in a plugin wrapper, not directly on the series
+    const markerApi = LWC.createSeriesMarkers(candleSeries, []);
+    let currentMarkers = [];
+
+    function refreshMarkers() {
+      currentMarkers = computeMarkers(rawMarkers, enabledEtfs);
+      markerApi.setMarkers(currentMarkers);
+    }
+    refreshMarkers();
+
+    // ── hover tooltip ──
+    const tooltip = makeTooltip(chartDiv);
+
+    chart.subscribeCrosshairMove(param => {
+      if (!param?.time) { tooltip.style.display = 'none'; return; }
+
+      const hits = currentMarkers.filter(m => m._time === param.time);
+      if (hits.length === 0) { tooltip.style.display = 'none'; return; }
+
+      let html = `<div style="font-weight:600;margin-bottom:4px">${param.time}</div>`;
+      for (const m of hits) {
+        const arrow      = m._dir === 'buy' ? '▲' : '▼';
+        const consensus  = m._isConsensus ? '（共識）' : '';
+        html += `<div style="margin-top:4px;font-weight:500">${arrow} ${m._summary}${consensus}</div>`;
+        html += m._detail.map((d, i) => {
+          const branch = i === m._detail.length - 1 ? '└' : '├';
+          return `<div style="display:flex;justify-content:space-between;gap:14px;opacity:.8">` +
+            `<span>${branch} ${d.etf}</span><span>${d.action} ${d.shares.toLocaleString()} 張</span></div>`;
+        }).join('');
+      }
+      tooltip.innerHTML = html;
+      tooltip.style.display = 'block';
+
+      const cw = chartDiv.clientWidth;
+      const tw = tooltip.offsetWidth || 200;
+      const x  = param.point?.x ?? cw / 2;
+      const y  = param.point?.y ?? 50;
+      tooltip.style.left = (x + tw + 16 > cw ? x - tw - 8 : x + 8) + 'px';
+      tooltip.style.top  = Math.max(4, y - 8) + 'px';
+    });
+
+    // ── 範圍按鈕事件 ──
+    btn1m.addEventListener('click', () => {
+      activeRange = 20; syncBtnStyles(); setRange(chart, ohlcv, 20);
+    });
+    btn3m.addEventListener('click', () => {
+      activeRange = 60; syncBtnStyles(); setRange(chart, ohlcv, 60);
+    });
+
+    // 預設近 3 個月
+    setRange(chart, ohlcv, 60);
+  }
+
+  // 匯出
+  if (typeof module !== 'undefined' && module.exports) module.exports = { renderChart };
+  else global.renderChart = renderChart;
+
+}(typeof window !== 'undefined' ? window : this));
