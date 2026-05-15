@@ -39,7 +39,7 @@ echo "[2/6] 跑五階段過濾..."
 python3 src/run_filters.py --date "$DATA_DATE" --kline "$KLINE_DB" --etf "$ETF_DB"
 
 echo "[3/6] 準備圖表資料..."
-python3 src/prepare_charts.py --date "$DATA_DATE"
+python3 src/prepare_charts.py --date "$DATA_DATE" --kline "$KLINE_DB"
 
 echo "[4/6] 渲染儀表板..."
 python3 src/render.py
