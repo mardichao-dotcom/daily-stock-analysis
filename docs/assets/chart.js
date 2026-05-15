@@ -170,7 +170,9 @@
     const n    = ohlcv.length;
     const from = ohlcv[Math.max(0, n - bars)].time;
     const to   = ohlcv[n - 1].time;
-    chart.timeScale().setVisibleRange({ from, to });
+    // RAF ensures this runs after LWC's internal auto-fit frame (triggered by
+    // setData), so our range wins on initial load and every button click.
+    requestAnimationFrame(() => chart.timeScale().setVisibleRange({ from, to }));
   }
 
   // ── tooltip ───────────────────────────────────────────────────────────────
