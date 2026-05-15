@@ -170,9 +170,15 @@
     const n    = ohlcv.length;
     const from = ohlcv[Math.max(0, n - bars)].time;
     const to   = ohlcv[n - 1].time;
-    // RAF ensures this runs after LWC's internal auto-fit frame (triggered by
-    // setData), so our range wins on initial load and every button click.
-    requestAnimationFrame(() => chart.timeScale().setVisibleRange({ from, to }));
+    // Double-RAF: first frame sets full extent to break LWC auto-fit mode,
+    // second frame sets the real target range. Required for charts with many
+    // markers where a single RAF isn't enough to flush LWC's internal state.
+    requestAnimationFrame(() => {
+      chart.timeScale().setVisibleRange({ from: ohlcv[0].time, to: ohlcv[n - 1].time });
+      requestAnimationFrame(() => {
+        chart.timeScale().setVisibleRange({ from, to });
+      });
+    });
   }
 
   // ── tooltip ───────────────────────────────────────────────────────────────
