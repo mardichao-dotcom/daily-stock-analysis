@@ -157,7 +157,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--result',  default=os.path.join(PROJECT_ROOT, 'output', 'filtered_result.json'))
     parser.add_argument('--signal',  default=os.path.join(PROJECT_ROOT, 'state', 'signal_state.json'))
-    parser.add_argument('--out',     default=os.path.join(PROJECT_ROOT, 'docs', 'index.html'))
+    parser.add_argument('--out',     default=os.path.join(PROJECT_ROOT, 'docs', 'dashboard.html'))
     parser.add_argument('--archive', default=os.path.join(PROJECT_ROOT, 'docs', 'archives'))
     parser.add_argument('--data-dir', default=None)
     args = parser.parse_args()
@@ -230,7 +230,7 @@ def main():
         'signal_tracking': build_signal_tracking(signal_state, data_date, result),
     }
 
-    # 寫 docs/index.html（prefix='' → assets/ 就在同層）
+    # 寫 docs/dashboard.html（prefix='' → assets/ 就在同層）
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out, 'w', encoding='utf-8') as f:
         f.write(tmpl.render(prefix='', **base_ctx))

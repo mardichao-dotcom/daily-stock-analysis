@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>觀察名單板塊 — 台股動能儀表板</title>
+<link rel="icon" href="favicon.ico">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --surface2:  #1c2128;
+    --border:    #21262d;
+    --border-hi: #388bfd;
+    --text:      #e6edf3;
+    --muted:     #8b949e;
+    --accent:    #58a6ff;
+    --gold:      #d29922;
+    --gold-bg:   rgba(210,153,34,.12);
+  }
+  html, body { min-height: 100vh; background: var(--bg); color: var(--text);
+    font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 15px; line-height: 1.6; }
+  .page { max-width: 900px; margin: 0 auto; padding: 48px 24px 60px; }
+
+  /* 頂部導覽 */
+  .nav-back { font-size: 12px; color: var(--muted); text-decoration: none;
+    display: inline-block; margin-bottom: 36px; }
+  .nav-back:hover { color: var(--accent); }
+
+  /* 標題 */
+  .header { margin-bottom: 40px; }
+  .header h1 { font-size: clamp(20px, 4vw, 30px); font-weight: 700;
+    letter-spacing: -.4px; color: var(--text); margin-bottom: 8px; }
+  .header-meta { font-size: 13px; color: var(--muted); display: flex;
+    gap: 24px; flex-wrap: wrap; }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+  .header-divider { width: 40px; height: 2px; background: var(--accent);
+    border-radius: 2px; opacity: .6; margin-top: 18px; }
+
+  /* 板塊分組標題 */
+  .section-label { font-size: 11px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.2px; margin: 44px 0 16px; }
+  .section-label:first-of-type { margin-top: 0; }
+
+  /* 板塊卡片格線 */
+  .sector-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+  /* 板塊卡片 */
+  .sector-card { background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 20px 18px; }
+  .sector-name { font-size: 14px; font-weight: 700; color: var(--text);
+    margin-bottom: 12px; }
+
+  /* 長子列 */
+  .leaders-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .leader-chip { display: inline-flex; align-items: center; gap: 4px;
+    background: var(--gold-bg); border: 1px solid rgba(210,153,34,.35);
+    border-radius: 6px; padding: 3px 9px; font-size: 12px;
+    color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .leader-chip .star { font-size: 10px; }
+  .leaders-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+
+  /* 成員股列表 */
+  .members-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .member-chip { display: inline-flex; align-items: center; gap: 4px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 3px 9px; font-size: 12px;
+    color: var(--text); white-space: nowrap; }
+  .member-chip.is-leader { background: var(--gold-bg);
+    border-color: rgba(210,153,34,.35); color: var(--gold); font-weight: 600; }
+  .member-chip .code-label { color: var(--muted); font-size: 11px; }
+  .member-chip.is-leader .code-label { color: rgba(210,153,34,.7); }
+
+  /* 對應台股族群（國際） */
+  .corresponds-row { margin-top: 12px; display: flex; flex-wrap: wrap;
+    align-items: center; gap: 5px; }
+  .corresponds-label { font-size: 11px; color: var(--muted); flex-shrink: 0; }
+  .corresponds-tag { display: inline-block; font-size: 11px; padding: 2px 7px;
+    border-radius: 4px; background: rgba(88,166,255,.1);
+    color: var(--accent); border: 1px solid rgba(88,166,255,.2); }
+
+  /* 頁尾 */
+  .footer { text-align: center; font-size: 12px; color: var(--muted);
+    border-top: 1px solid var(--border); padding-top: 24px; margin-top: 52px;
+    display: flex; flex-direction: column; gap: 5px; }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* RWD */
+  @media (max-width: 600px) {
+    .sector-grid { grid-template-columns: 1fr; }
+    .page { padding: 32px 14px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="nav-back" href="index.html">← 回首頁</a>
+
+  <div class="header">
+    <h1>📋 觀察名單板塊</h1>
+    <div class="header-meta">
+      <span>🇹🇼 台股板塊 {{ tw_sector_count }} 個 ／ {{ tw_stock_count }} 檔</span>
+      <span>🌐 國際族群 {{ intl_group_count }} 個 ／ {{ intl_stock_count }} 檔</span>
+      <span>更新：{{ update_date }}</span>
+    </div>
+    <div class="header-divider"></div>
+  </div>
+
+  <!-- 台股板塊 -->
+  <div class="section-label">台股板塊</div>
+  <div class="sector-grid">
+    {% for sector in tw_sectors %}
+    <div class="sector-card">
+      <div class="sector-name">{{ sector.name }}</div>
+      {% if sector.leaders %}
+      <div class="leaders-label">長子</div>
+      <div class="leaders-row">
+        {% for m in sector.leaders %}
+        <span class="leader-chip"><span class="star">⭐</span> {{ m.name }} <span class="code-label">{{ m.code }}</span></span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="members-list">
+        {% for m in sector.members %}
+        <span class="member-chip{% if m.is_leader %} is-leader{% endif %}">
+          {{ m.name }}<span class="code-label">{{ m.code }}</span>
+        </span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- 國際族群 -->
+  <div class="section-label">國際領先指標</div>
+  <div class="sector-grid">
+    {% for group in intl_groups %}
+    <div class="sector-card">
+      <div class="sector-name">{{ group.name }}</div>
+      {% if group.leaders %}
+      <div class="leaders-label">長子</div>
+      <div class="leaders-row">
+        {% for m in group.leaders %}
+        <span class="leader-chip"><span class="star">⭐</span> {{ m.name }} <span class="code-label">{{ m.code }}</span></span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="members-list">
+        {% for m in group.members %}
+        <span class="member-chip{% if m.is_leader %} is-leader{% endif %}">
+          {{ m.name }}<span class="code-label">{{ m.code }}</span>
+        </span>
+        {% endfor %}
+      </div>
+      {% if group.corresponding_tw %}
+      <div class="corresponds-row">
+        <span class="corresponds-label">對應台股：</span>
+        {% for s in group.corresponding_tw %}
+        <span class="corresponds-tag">{{ s }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">
+    <div>資料來源：TradingView 行情 ｜ 主動型 ETF 公開持倉資訊</div>
+    <div>
+      <a href="https://github.com/mardichao-dotcom/daily-stock-analysis" target="_blank" rel="noopener">GitHub Repo</a>
+      　｜　本站為個人作品集專案，資料僅供研究參考
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
