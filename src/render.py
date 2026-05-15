@@ -168,7 +168,7 @@ def main():
         signal_state = json.load(f)
 
     data_date = result['資料日期']
-    data_dir  = args.data_dir or os.path.join(PROJECT_ROOT, 'data', data_date)
+    data_dir  = args.data_dir or os.path.join(PROJECT_ROOT, 'docs', 'data', data_date)
 
     個股 = result['個股結果']
     分級 = result['分級彙整']
