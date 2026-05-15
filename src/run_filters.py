@@ -85,7 +85,18 @@ def compute_tn(symbol, data_date, state):
 
 # ── output builder ────────────────────────────────────────────────────────────
 
-def build_output(tw_data, global_data, data_date, state):
+def _etf_latest_date(etf_db: str) -> str:
+    import sqlite3 as _sql
+    try:
+        conn = _sql.connect(etf_db)
+        row  = conn.execute("SELECT MAX(日期) FROM operations").fetchone()
+        conn.close()
+        return row[0] if row and row[0] else ""
+    except Exception:
+        return ""
+
+
+def build_output(tw_data, global_data, data_date, state, etf_db=""):
     tw_sectors = get_tw_sectors()
 
     # Activated sectors: any leader in sector triggered activation
@@ -129,13 +140,23 @@ def build_output(tw_data, global_data, data_date, state):
             "T+N": tn,
         }
 
+    etf_latest   = _etf_latest_date(etf_db)
+    etf_delayed  = bool(etf_latest) and etf_latest < data_date
+    etf_delay_days = 0
+    if etf_delayed:
+        from datetime import datetime as _dt
+        etf_delay_days = (_dt.strptime(data_date, "%Y-%m-%d") - _dt.strptime(etf_latest, "%Y-%m-%d")).days
+
     return {
-        "資料日期": data_date,
-        "產出時間": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
-        "籌碼基準": f"ETF Edge 近7日累計（至 {data_date[5:]}）",
-        "個股結果": individual,
-        "分級彙整": grade_groups,
-        "啟動族群": activated_sectors,
+        "資料日期":    data_date,
+        "產出時間":    datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+        "籌碼基準":    f"ETF Edge 近7日累計（至 {data_date[5:]}）",
+        "ETF最新日期": etf_latest,
+        "ETF延遲":     etf_delayed,
+        "ETF延遲天數": etf_delay_days,
+        "個股結果":    individual,
+        "分級彙整":    grade_groups,
+        "啟動族群":    activated_sectors,
     }
 
 
@@ -174,7 +195,7 @@ def main():
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
 
-    output = build_output(tw_data, global_data, data_date, state)
+    output = build_output(tw_data, global_data, data_date, state, etf_db=args.etf)
 
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

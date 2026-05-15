@@ -200,7 +200,7 @@
     // ── 狀態 ──
     const allEtfs     = [...new Set(rawMarkers.flatMap(m => m.detail.map(d => d.etf)))].sort();
     const enabledEtfs = new Set(allEtfs);
-    let   activeRange = 60;   // 預設近 3 個月
+    let   activeRange = 180;  // 預設 6 個月
 
     // ── 標題列 ──
     const hdr = document.createElement('div');
@@ -225,18 +225,18 @@
       `padding:3px 10px;border-radius:4px;cursor:pointer;border:none;font-size:12px;` +
       (active ? `background:#2962ff;color:#fff` : `background:#1e2535;color:${C.text}`);
 
-    const btn1m = document.createElement('button');
     const btn3m = document.createElement('button');
-    btn1m.textContent = '近 1 個月';
-    btn3m.textContent = '近 3 個月';
+    const btn6m = document.createElement('button');
+    btn3m.textContent = '3 個月';
+    btn6m.textContent = '6 個月';
 
     function syncBtnStyles() {
-      btn1m.style.cssText = makeBtnStyle(activeRange === 20);
-      btn3m.style.cssText = makeBtnStyle(activeRange === 60);
+      btn3m.style.cssText = makeBtnStyle(activeRange === 90);
+      btn6m.style.cssText = makeBtnStyle(activeRange === 180);
     }
     syncBtnStyles();
 
-    hdr.append(titleEl, gradeEl, spacer, btn1m, btn3m);
+    hdr.append(titleEl, gradeEl, spacer, btn3m, btn6m);
     wrap.appendChild(hdr);
 
     // ── ETF 勾選框 ──
@@ -362,15 +362,15 @@
     });
 
     // ── 範圍按鈕事件 ──
-    btn1m.addEventListener('click', () => {
-      activeRange = 20; syncBtnStyles(); setRange(chart, ohlcv, 20);
-    });
     btn3m.addEventListener('click', () => {
-      activeRange = 60; syncBtnStyles(); setRange(chart, ohlcv, 60);
+      activeRange = 90; syncBtnStyles(); setRange(chart, ohlcv, 90);
+    });
+    btn6m.addEventListener('click', () => {
+      activeRange = 180; syncBtnStyles(); setRange(chart, ohlcv, 180);
     });
 
-    // 預設近 3 個月
-    setRange(chart, ohlcv, 60);
+    // 預設 6 個月
+    setRange(chart, ohlcv, 180);
   }
 
   // 匯出

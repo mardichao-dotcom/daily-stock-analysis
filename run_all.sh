@@ -11,6 +11,25 @@ cd "$(dirname "$0")"
 ETF_DB="$HOME/ETF追蹤/etf_operations.db"
 KLINE_DB="kline.db"
 
+echo "[0/6] 健康檢查..."
+
+if ! curl -s -m 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
+    echo "❌ TradingView CDP 沒開（port 9222）。請先開啟 TV 並進入 CDP 模式。"
+    exit 1
+fi
+
+if [ ! -f "$KLINE_DB" ]; then
+    echo "❌ $KLINE_DB 不存在。請先跑 node scripts/tv_collect.mjs"
+    exit 1
+fi
+
+if [ ! -f "$ETF_DB" ]; then
+    echo "❌ $ETF_DB 不存在。請先跑 python3 ~/ETF追蹤/daily_update.py"
+    exit 1
+fi
+
+echo "      ✅ 健康檢查通過（CDP OK、kline.db OK、etf_operations.db OK）"
+
 echo "[1/6] 匯入 K 線資料..."
 python3 src/import_kline.py --json /tmp/tv_daily_data.json --db "$KLINE_DB"
 DATA_DATE=$(cat .data_date)

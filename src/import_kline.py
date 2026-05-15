@@ -42,9 +42,23 @@ def main():
         )
     """)
 
+    results = data.get("results", {})
+    date_file = os.path.join(PROJECT_ROOT, ".data_date")
+
+    if not results:
+        # 增量模式：所有 symbol 都跳過（已是最新），從 DB 讀最新日期
+        print("[import_kline] results 為空（所有 symbol 已是最新），跳過匯入")
+        row = cur.execute("SELECT MAX(date) FROM kline").fetchone()
+        last_date = row[0] if row and row[0] else ""
+        conn.close()
+        print(f"[import_kline] data_date={last_date} (from DB)")
+        with open(date_file, "w") as f:
+            f.write(last_date)
+        return
+
     inserted = 0
     last_date = ""
-    for symbol, payload in data["results"].items():
+    for symbol, payload in results.items():
         for bar in payload["bars"]:
             dt       = datetime.utcfromtimestamp(bar["time"])
             date_str = dt.strftime("%Y-%m-%d")
@@ -63,8 +77,6 @@ def main():
     print(f"[import_kline] {inserted} rows → {args.db}")
     print(f"[import_kline] data_date={last_date}")
 
-    # 寫 data_date 到暫存檔，供 shell 讀取
-    date_file = os.path.join(PROJECT_ROOT, ".data_date")
     with open(date_file, "w") as f:
         f.write(last_date)
 

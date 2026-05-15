@@ -1,213 +1,548 @@
 {
   "更新日期": "2026-05-14",
   "版本": "v2",
-
   "台股板塊": {
     "光通訊": {
       "成員": [
-        {"code": "TPEX:3081", "name": "聯亞"},
-        {"code": "TWSE:2345", "name": "智邦"},
-        {"code": "TPEX:4908", "name": "銓訊"},
-        {"code": "TPEX:3363", "name": "上詮"}
+        {
+          "code": "TPEX:3081",
+          "name": "聯亞"
+        },
+        {
+          "code": "TWSE:2345",
+          "name": "智邦"
+        },
+        {
+          "code": "TPEX:4908",
+          "name": "銓訊"
+        },
+        {
+          "code": "TPEX:3363",
+          "name": "上詮"
+        }
       ],
-      "長子": ["TWSE:2345", "TPEX:3081"]
+      "長子": [
+        "TWSE:2345",
+        "TPEX:3081"
+      ]
     },
     "散熱": {
       "成員": [
-        {"code": "TWSE:3653", "name": "健策"},
-        {"code": "TWSE:3017", "name": "奇鋐"},
-        {"code": "TWSE:2421", "name": "建準"},
-        {"code": "TPEX:3324", "name": "雙鴻"},
-        {"code": "TWSE:8996", "name": "高力"}
+        {
+          "code": "TWSE:3653",
+          "name": "健策"
+        },
+        {
+          "code": "TWSE:3017",
+          "name": "奇鋐"
+        },
+        {
+          "code": "TWSE:2421",
+          "name": "建準"
+        },
+        {
+          "code": "TPEX:3324",
+          "name": "雙鴻"
+        },
+        {
+          "code": "TWSE:8996",
+          "name": "高力"
+        }
       ],
-      "長子": ["TWSE:3017", "TWSE:3653"]
+      "長子": [
+        "TWSE:3017",
+        "TWSE:3653"
+      ]
     },
     "IC設計": {
       "成員": [
-        {"code": "TWSE:2454", "name": "聯發科"},
-        {"code": "TWSE:6526", "name": "達發"},
-        {"code": "TWSE:3034", "name": "聯詠"},
-        {"code": "TWSE:2379", "name": "瑞昱"},
-        {"code": "TWSE:5269", "name": "祥碩"}
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科"
+        },
+        {
+          "code": "TWSE:6526",
+          "name": "達發"
+        },
+        {
+          "code": "TWSE:3034",
+          "name": "聯詠"
+        },
+        {
+          "code": "TWSE:2379",
+          "name": "瑞昱"
+        },
+        {
+          "code": "TWSE:5269",
+          "name": "祥碩"
+        }
       ],
-      "長子": ["TWSE:2454"]
+      "長子": [
+        "TWSE:2454"
+      ]
     },
     "IP與ASIC": {
       "成員": [
-        {"code": "TPEX:3529", "name": "力旺"},
-        {"code": "TWSE:3443", "name": "創意"},
-        {"code": "TWSE:3661", "name": "世芯-KY"},
-        {"code": "TPEX:6643", "name": "M31"},
-        {"code": "TWSE:3035", "name": "智原"}
+        {
+          "code": "TPEX:3529",
+          "name": "力旺"
+        },
+        {
+          "code": "TWSE:3443",
+          "name": "創意"
+        },
+        {
+          "code": "TWSE:3661",
+          "name": "世芯-KY"
+        },
+        {
+          "code": "TPEX:6643",
+          "name": "M31"
+        },
+        {
+          "code": "TWSE:3035",
+          "name": "智原"
+        }
       ],
-      "長子": ["TWSE:3661", "TWSE:3443"]
+      "長子": [
+        "TWSE:3661",
+        "TWSE:3443"
+      ]
     },
     "晶圓代工": {
       "成員": [
-        {"code": "TWSE:2330", "name": "台積電"}
+        {
+          "code": "TWSE:2330",
+          "name": "台積電"
+        }
       ],
-      "長子": ["TWSE:2330"]
+      "長子": [
+        "TWSE:2330"
+      ]
     },
     "封裝測試": {
       "成員": [
-        {"code": "TWSE:2449", "name": "京元電子"},
-        {"code": "TWSE:6239", "name": "力成"},
-        {"code": "TWSE:3711", "name": "日月光"}
+        {
+          "code": "TWSE:2449",
+          "name": "京元電子"
+        },
+        {
+          "code": "TWSE:6239",
+          "name": "力成"
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光"
+        }
       ],
-      "長子": ["TWSE:3711"]
+      "長子": [
+        "TWSE:3711"
+      ]
     },
     "半導體設備耗材": {
       "成員": [
-        {"code": "TWSE:6515", "name": "穎崴"},
-        {"code": "TPEX:6223", "name": "旺矽"},
-        {"code": "TPEX:3131", "name": "弘塑"},
-        {"code": "TWSE:3583", "name": "辛耘"},
-        {"code": "TPEX:3680", "name": "家登"},
-        {"code": "TPEX:6187", "name": "萬潤"},
-        {"code": "TWSE:7795", "name": "長廣"}
+        {
+          "code": "TWSE:6515",
+          "name": "穎崴"
+        },
+        {
+          "code": "TPEX:6223",
+          "name": "旺矽"
+        },
+        {
+          "code": "TPEX:3131",
+          "name": "弘塑"
+        },
+        {
+          "code": "TWSE:3583",
+          "name": "辛耘"
+        },
+        {
+          "code": "TPEX:3680",
+          "name": "家登"
+        },
+        {
+          "code": "TPEX:6187",
+          "name": "萬潤"
+        },
+        {
+          "code": "TWSE:7795",
+          "name": "長廣"
+        }
       ],
-      "長子": ["TPEX:3131", "TPEX:6223"]
+      "長子": [
+        "TPEX:3131",
+        "TPEX:6223"
+      ]
     },
     "AI伺服器代工": {
       "成員": [
-        {"code": "TWSE:2382", "name": "廣達"},
-        {"code": "TWSE:3231", "name": "緯創"},
-        {"code": "TWSE:2376", "name": "技嘉"},
-        {"code": "TWSE:6669", "name": "緯穎"},
-        {"code": "TWSE:2317", "name": "鴻海"}
+        {
+          "code": "TWSE:2382",
+          "name": "廣達"
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創"
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉"
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎"
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海"
+        }
       ],
-      "長子": ["TWSE:2317", "TWSE:2382"]
+      "長子": [
+        "TWSE:2317",
+        "TWSE:2382"
+      ]
     },
     "CCL": {
       "成員": [
-        {"code": "TWSE:2383", "name": "台光電"},
-        {"code": "TPEX:6274", "name": "台燿"},
-        {"code": "TWSE:6213", "name": "聯茂"}
+        {
+          "code": "TWSE:2383",
+          "name": "台光電"
+        },
+        {
+          "code": "TPEX:6274",
+          "name": "台燿"
+        },
+        {
+          "code": "TWSE:6213",
+          "name": "聯茂"
+        }
       ],
-      "長子": ["TWSE:2383"]
+      "長子": [
+        "TWSE:2383"
+      ]
     },
     "PCB": {
       "成員": [
-        {"code": "TWSE:3715", "name": "定穎投控"},
-        {"code": "TWSE:2313", "name": "華通"},
-        {"code": "TWSE:2368", "name": "金像電"}
+        {
+          "code": "TWSE:3715",
+          "name": "定穎投控"
+        },
+        {
+          "code": "TWSE:2313",
+          "name": "華通"
+        },
+        {
+          "code": "TWSE:2368",
+          "name": "金像電"
+        }
       ],
-      "長子": ["TWSE:2368"]
+      "長子": [
+        "TWSE:2368"
+      ]
     },
     "ABF": {
       "成員": [
-        {"code": "TWSE:3037", "name": "欣興"},
-        {"code": "TWSE:3189", "name": "景碩"},
-        {"code": "TWSE:8046", "name": "南電"}
+        {
+          "code": "TWSE:3037",
+          "name": "欣興"
+        },
+        {
+          "code": "TWSE:3189",
+          "name": "景碩"
+        },
+        {
+          "code": "TWSE:8046",
+          "name": "南電"
+        }
       ],
-      "長子": ["TWSE:3037"]
+      "長子": [
+        "TWSE:3037"
+      ]
     },
     "被動元件": {
       "成員": [
-        {"code": "TWSE:2327", "name": "國巨"},
-        {"code": "TWSE:2492", "name": "華新科"},
-        {"code": "TWSE:6862", "name": "勝麗"}
+        {
+          "code": "TWSE:2327",
+          "name": "國巨"
+        },
+        {
+          "code": "TWSE:2492",
+          "name": "華新科"
+        },
+        {
+          "code": "TWSE:6862",
+          "name": "勝麗"
+        }
       ],
-      "長子": ["TWSE:2327"]
+      "長子": [
+        "TWSE:2327"
+      ]
     },
     "電源供應以及能源基礎": {
       "成員": [
-        {"code": "TWSE:2308", "name": "台達電"},
-        {"code": "TWSE:2301", "name": "光寶科"},
-        {"code": "TWSE:6412", "name": "喬鼎"}
+        {
+          "code": "TWSE:2308",
+          "name": "台達電"
+        },
+        {
+          "code": "TWSE:2301",
+          "name": "光寶科"
+        },
+        {
+          "code": "TWSE:6412",
+          "name": "喬鼎"
+        }
       ],
-      "長子": ["TWSE:2308"]
+      "長子": [
+        "TWSE:2308"
+      ]
     },
     "重電與電網": {
       "成員": [
-        {"code": "TWSE:1519", "name": "華城"},
-        {"code": "TWSE:1513", "name": "中興電"},
-        {"code": "TWSE:1503", "name": "士電"},
-        {"code": "TWSE:1514", "name": "東元"}
+        {
+          "code": "TWSE:1519",
+          "name": "華城"
+        },
+        {
+          "code": "TWSE:1513",
+          "name": "中興電"
+        },
+        {
+          "code": "TWSE:1503",
+          "name": "士電"
+        },
+        {
+          "code": "TWSE:1514",
+          "name": "東元"
+        }
       ],
-      "長子": ["TWSE:1519"]
+      "長子": [
+        "TWSE:1519"
+      ]
     },
     "航運物流": {
       "成員": [
-        {"code": "TWSE:2603", "name": "長榮"},
-        {"code": "TWSE:2609", "name": "陽明"}
+        {
+          "code": "TWSE:2603",
+          "name": "長榮"
+        },
+        {
+          "code": "TWSE:2609",
+          "name": "陽明"
+        }
       ],
-      "長子": ["TWSE:2603"]
+      "長子": [
+        "TWSE:2603"
+      ]
     },
     "伺服器關鍵零組件": {
       "成員": [
-        {"code": "TWSE:2059", "name": "川湖"},
-        {"code": "TWSE:3533", "name": "嘉澤"}
+        {
+          "code": "TWSE:2059",
+          "name": "川湖"
+        },
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤"
+        }
       ],
-      "長子": ["TWSE:2059"]
+      "長子": [
+        "TWSE:2059"
+      ]
     }
   },
-
   "國際族群": {
     "AI晶片_IP_代工龍頭": {
       "成員": [
-        {"code": "NASDAQ:NVDA", "name": "NVIDIA"},
-        {"code": "NYSE:TSM",    "name": "台積電ADR"},
-        {"code": "NASDAQ:QCOM", "name": "Qualcomm"},
-        {"code": "NASDAQ:SNPS", "name": "Synopsys"},
-        {"code": "NASDAQ:ARM",  "name": "ARM Holdings"}
+        {
+          "code": "NASDAQ:NVDA",
+          "name": "NVIDIA"
+        },
+        {
+          "code": "NYSE:TSM",
+          "name": "台積電ADR"
+        },
+        {
+          "code": "NASDAQ:QCOM",
+          "name": "Qualcomm"
+        },
+        {
+          "code": "NASDAQ:SNPS",
+          "name": "Synopsys"
+        },
+        {
+          "code": "NASDAQ:ARM",
+          "name": "ARM Holdings"
+        }
       ],
-      "長子": ["NASDAQ:NVDA", "NYSE:TSM"],
-      "對應台股族群": ["晶圓代工", "IC設計", "IP與ASIC"]
+      "長子": [
+        "NASDAQ:NVDA",
+        "NYSE:TSM"
+      ],
+      "對應台股族群": [
+        "晶圓代工",
+        "IC設計",
+        "IP與ASIC"
+      ]
     },
     "網通_光通訊_傳輸龍頭": {
       "成員": [
-        {"code": "NASDAQ:LITE", "name": "Lumentum"},
-        {"code": "NYSE:COHR",   "name": "Coherent"},
-        {"code": "NYSE:ANET",   "name": "Arista"},
-        {"code": "NASDAQ:MRVL", "name": "Marvell"}
+        {
+          "code": "NASDAQ:LITE",
+          "name": "Lumentum"
+        },
+        {
+          "code": "NYSE:COHR",
+          "name": "Coherent"
+        },
+        {
+          "code": "NYSE:ANET",
+          "name": "Arista"
+        },
+        {
+          "code": "NASDAQ:MRVL",
+          "name": "Marvell"
+        }
       ],
-      "長子": ["NASDAQ:LITE", "NYSE:COHR"],
-      "對應台股族群": ["光通訊", "CCL", "PCB"]
+      "長子": [
+        "NASDAQ:LITE",
+        "NYSE:COHR"
+      ],
+      "對應台股族群": [
+        "光通訊",
+        "CCL",
+        "PCB"
+      ]
     },
     "半導體設備_材料_封測": {
       "成員": [
-        {"code": "NASDAQ:ASML", "name": "ASML"},
-        {"code": "TSE:8035",    "name": "東京威力科創"},
-        {"code": "NASDAQ:AMAT", "name": "Applied Materials"},
-        {"code": "NASDAQ:AMKR", "name": "Amkor"},
-        {"code": "NYSE:ROG",    "name": "Rogers"},
-        {"code": "TSE:6752",    "name": "松下"},
-        {"code": "TSE:4062",    "name": "Ibiden"},
-        {"code": "TSE:6146",    "name": "DISCO"}
+        {
+          "code": "NASDAQ:ASML",
+          "name": "ASML"
+        },
+        {
+          "code": "TSE:8035",
+          "name": "東京威力科創"
+        },
+        {
+          "code": "NASDAQ:AMAT",
+          "name": "Applied Materials"
+        },
+        {
+          "code": "NASDAQ:AMKR",
+          "name": "Amkor"
+        },
+        {
+          "code": "NYSE:ROG",
+          "name": "Rogers"
+        },
+        {
+          "code": "TSE:6752",
+          "name": "松下"
+        },
+        {
+          "code": "TSE:4062",
+          "name": "Ibiden"
+        },
+        {
+          "code": "TSE:6146",
+          "name": "DISCO"
+        }
       ],
-      "長子": ["NASDAQ:ASML", "TSE:8035"],
-      "對應台股族群": ["半導體設備耗材", "封裝測試", "ABF"]
+      "長子": [
+        "NASDAQ:ASML",
+        "TSE:8035"
+      ],
+      "對應台股族群": [
+        "半導體設備耗材",
+        "封裝測試",
+        "ABF"
+      ]
     },
     "伺服器品牌代工": {
       "成員": [
-        {"code": "NYSE:DELL",    "name": "Dell"},
-        {"code": "NASDAQ:SMCI", "name": "SuperMicro"},
-        {"code": "NYSE:HPE",     "name": "HPE"}
+        {
+          "code": "NYSE:DELL",
+          "name": "Dell"
+        },
+        {
+          "code": "NASDAQ:SMCI",
+          "name": "SuperMicro"
+        },
+        {
+          "code": "NYSE:HPE",
+          "name": "HPE"
+        }
       ],
-      "長子": ["NYSE:DELL", "NASDAQ:SMCI"],
-      "對應台股族群": ["AI伺服器代工", "伺服器關鍵零組件"]
+      "長子": [
+        "NYSE:DELL",
+        "NASDAQ:SMCI"
+      ],
+      "對應台股族群": [
+        "AI伺服器代工",
+        "伺服器關鍵零組件"
+      ]
     },
     "AI_基礎設施": {
       "成員": [
-        {"code": "NYSE:VRT",  "name": "Vertiv"},
-        {"code": "NYSE:ETN",  "name": "Eaton"},
-        {"code": "NYSE:PWR",  "name": "Quanta Services"},
-        {"code": "NYSE:GEV",  "name": "GE Vernova"},
-        {"code": "TSE:6594",  "name": "日本電產"}
+        {
+          "code": "NYSE:VRT",
+          "name": "Vertiv"
+        },
+        {
+          "code": "NYSE:ETN",
+          "name": "Eaton"
+        },
+        {
+          "code": "NYSE:PWR",
+          "name": "Quanta Services"
+        },
+        {
+          "code": "NYSE:GEV",
+          "name": "GE Vernova"
+        },
+        {
+          "code": "TSE:6594",
+          "name": "日本電產"
+        }
       ],
-      "長子": ["NYSE:VRT", "NYSE:ETN"],
-      "對應台股族群": ["散熱", "電源供應以及能源基礎", "重電與電網"]
+      "長子": [
+        "NYSE:VRT",
+        "NYSE:ETN"
+      ],
+      "對應台股族群": [
+        "散熱",
+        "電源供應以及能源基礎",
+        "重電與電網"
+      ]
     },
     "被動元件_航運": {
       "成員": [
-        {"code": "TSE:6981",        "name": "村田製造所"},
-        {"code": "TSE:6762",        "name": "TDK"},
-        {"code": "NYSE:ZIM",        "name": "ZIM"},
-        {"code": "OMXCOP:MAERSK_B", "name": "Maersk B"}
+        {
+          "code": "TSE:6981",
+          "name": "村田製造所"
+        },
+        {
+          "code": "TSE:6762",
+          "name": "TDK"
+        },
+        {
+          "code": "NYSE:ZIM",
+          "name": "ZIM"
+        },
+        {
+          "code": "OMXCOP:MAERSK_B",
+          "name": "Maersk B"
+        }
       ],
-      "長子": ["TSE:6981"],
-      "對應台股族群": ["被動元件", "航運物流"]
+      "長子": [
+        "TSE:6981"
+      ],
+      "對應台股族群": [
+        "被動元件",
+        "航運物流"
+      ]
     }
   }
 }

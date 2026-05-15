@@ -96,6 +96,14 @@
     資料日期：{{ data_date_fmt }} ｜ 對應 {{ next_date_fmt }} 開盤 ｜
     籌碼基準：{{ 籌碼基準 }}
   </div>
+  {% if etf_delayed %}
+  <div style="margin:8px 0 4px;padding:9px 14px;background:rgba(210,167,0,0.1);
+              border-left:3px solid rgba(210,167,0,0.5);border-radius:0 6px 6px 0;
+              font-size:12px;color:#c9a830;line-height:1.6;">
+    ⚠️ ETF 籌碼資料延遲：本日 ETF 籌碼資料尚未由 etfedge 更新，
+    目前顯示為 {{ etf_latest }} 的版本（延遲 {{ etf_delay_days }} 天）。隔日更新後自動補齊。
+  </div>
+  {% endif %}
   <div class="index-bar">
     <div class="index-item">
       <span class="label">啟動族群</span>
