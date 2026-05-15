@@ -1188,6 +1188,20 @@
           "shares": 100
         }
       ]
+    },
+    {
+      "time": "2026-05-12",
+      "action": "加碼",
+      "direction": "buy",
+      "is_consensus": false,
+      "summary": "00981A 加碼",
+      "detail": [
+        {
+          "etf": "00981A",
+          "action": "加碼",
+          "shares": 435
+        }
+      ]
     }
   ],
   "key_prices": {

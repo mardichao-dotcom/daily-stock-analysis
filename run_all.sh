@@ -1,5 +1,6 @@
 #!/bin/bash
 # run_all.sh — 台股動能儀表板一條龍
+# 前置：node /tmp/tv_collect.mjs 已跑完，/tmp/tv_daily_data.json 存在
 # 用法：bash run_all.sh
 # 任一步失敗即中止（set -e）
 
@@ -7,21 +8,29 @@ set -e
 
 cd "$(dirname "$0")"
 
-echo "[1/5] 跑五階段過濾..."
-python3 src/run_filters.py
+ETF_DB="$HOME/ETF追蹤/etf_operations.db"
+KLINE_DB="kline.db"
 
-echo "[2/5] 準備圖表資料..."
-python3 src/prepare_charts.py
+echo "[1/6] 匯入 K 線資料..."
+python3 src/import_kline.py --json /tmp/tv_daily_data.json --db "$KLINE_DB"
+DATA_DATE=$(cat .data_date)
+echo "      data_date=${DATA_DATE}"
 
-echo "[3/5] 渲染儀表板..."
+echo "[2/6] 跑五階段過濾..."
+python3 src/run_filters.py --date "$DATA_DATE" --kline "$KLINE_DB" --etf "$ETF_DB"
+
+echo "[3/6] 準備圖表資料..."
+python3 src/prepare_charts.py --date "$DATA_DATE"
+
+echo "[4/6] 渲染儀表板..."
 python3 src/render.py
 
-echo "[4/5] 渲染板塊名單..."
+echo "[5/6] 渲染板塊名單..."
 python3 src/render_watchlist.py
 
-echo "[5/5] 更新歷史索引..."
+echo "[6/6] 更新歷史索引..."
 python3 src/generate_index.py
 
 echo ""
-echo "完成。docs/dashboard.html 已產出。"
+echo "完成。data_date=${DATA_DATE}  docs/dashboard.html 已產出。"
 echo "預覽：python3 -m http.server 8080 → http://127.0.0.1:8080/docs/index.html"
