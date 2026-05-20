@@ -25,6 +25,12 @@ __pycache__/
 .env
 *.local
 key_prices.txt
+config/secrets.json
+
+# ── 執行階段產物（不進 git）──────────────────────────────────────────────
+state/automation_status.json
+.data_date
+logs/
 
 # ── 未來可能的暫存檔 ──────────────────────────────────────────────────────
 tv_daily_data.json
