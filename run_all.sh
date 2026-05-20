@@ -10,6 +10,10 @@
 
 cd "$(dirname "$0")"
 
+# launchd 預設 C locale；強制 UTF-8，確保 grep/cut/tr 正確處理多位元組字元
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 ETF_DB="$HOME/ETF追蹤/etf_operations.db"
 KLINE_DB="kline.db"
 TOOL="stock_dashboard"

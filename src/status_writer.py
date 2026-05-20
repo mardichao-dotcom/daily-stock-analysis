@@ -90,6 +90,10 @@ def cmd_step(tool: str, step: str, status: str,
     entry = data.setdefault(tool, {"steps": []})
     steps = entry.setdefault("steps", [])
 
+    # Sanitize note: launchd runs in C locale; cut(1) may split mid-UTF-8-sequence,
+    # producing lone surrogates in sys.argv via surrogateescape. json.dump rejects these.
+    note = note.encode("utf-8", errors="replace").decode("utf-8")
+
     record: dict = {
         "name":       step,
         "status":     status,       # ok | fail | skip
