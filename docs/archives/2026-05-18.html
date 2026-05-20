@@ -1,0 +1,2045 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台股動能作戰儀表板 ｜ 2026-05-18</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+
+<div class="header">
+  <div style="margin-bottom:8px">
+    <a href="../index.html"
+       style="font-size:12px;color:#758696;text-decoration:none;opacity:.75">
+      ← 回首頁
+    </a>
+  </div>
+  <h1>🧭 台股右側動能作戰儀表板</h1>
+  <div class="meta">
+    資料日期：2026/05/18 (一) ｜ 對應 05/19 (二) 開盤 ｜
+    籌碼基準：ETF Edge 近7日累計（至 05-18）
+  </div>
+  
+  <div class="index-bar">
+    <div class="index-item">
+      <span class="label">啟動族群</span>
+      <span class="val">被動元件</span>
+    </div>
+    <div class="index-item">
+      <span class="label">S/A 級個股</span>
+      <span class="val" style="color:var(--green)">2 檔</span>
+    </div>
+    <div class="index-item">
+      <span class="label">資料完整度</span>
+      <span class="val" style="color:var(--green)">87/87</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header market-header">📊 大盤狀態速覽</div>
+  <div class="section-body">
+    <div class="group">
+      <div class="desc">
+        啟動族群：<strong>被動元件</strong>。
+        警報個股 26 檔，黑名單 17 檔。
+      </div>
+      <div class="empty-state" style="margin-top:8px;text-align:left;font-style:normal;font-size:12px">
+        📌 大盤指數快照（加權/櫃買/跌停數）— 待階段 4 接入 TV 即時資料
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header global-header">🌏 國際領先指標摘要</div>
+  <div class="section-body">
+    <div class="group">
+      <div class="empty-state" style="text-align:left;font-style:normal;font-size:12px">
+        📌 國際族群長子表現表格 — 待階段 4 接入 TV 即時資料（NVDA/TSM/ASML...）
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header s-header">🔴 S 級戰區：強勢共振發動</div>
+  <div class="section-body">
+    
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">國巨</span>
+    <span class="stock-code">2327</span>
+    <span class="badge badge-red">S級</span>
+    <span class="badge badge-red">長子</span>
+    <span class="badge badge-green">突破60日高</span>
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval up">
+        501 (+9.99%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval up">1.52x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">漲停</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        2檔共識連續加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">11</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-2327')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-2327">
+    
+    <span class="sb-pos">
+      +2　ETF共識加碼（≥2檔）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　ETF連續加碼（雙軌）
+    </span><br>
+    
+    <span class="sb-pos">
+      +3　自身是族群長子且發動
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　漲停
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　突破60日高
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　爆量（>1.5x）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　強紅K（實體比>60%，收紅）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">ETF共識加碼、ETF連續加碼、被動元件長子發動、漲停、突破60日高、爆量（>1.5x）、強紅K；但ETF經理人內部分歧（淨流入正向）。2 檔 ETF 連續共識加碼，籌碼面有支撐。</div>
+
+  
+  
+
+  
+  
+  <div class="chart-toggle">
+    <button class="chart-btn"
+            onclick="toggleChart(this, 'chart-TWSE-2327', '../data/2026-05-18/TWSE_2327.json')">
+      ▼ 展開 K 線圖
+    </button>
+    <div id="chart-TWSE-2327" class="chart-container"></div>
+  </div>
+  
+
+</div>
+</div>
+      
+    
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header a-header">🟡 A 級戰區：資金潛伏觀察</div>
+  <div class="section-body">
+    
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">技嘉</span>
+    <span class="stock-code">2376</span>
+    <span class="badge badge-yellow">A級</span>
+    
+    <span class="badge badge-green">突破60日高</span>
+    <span class="badge badge-teal">跳空開高</span>
+    <span class="badge badge-yellow">爆量2.35x</span>
+    <span class="badge badge-orange">單兵作戰</span>
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval up">
+        330 (+1.23%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval up">2.35x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">長上影線</span></div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">4</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-2376')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-2376">
+    
+    <span class="sb-pos">
+      +1　強單兵作戰
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　突破60日高
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　跳空開高
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　大爆量（>2x）
+    </span><br>
+    
+    <span class="sb-neg">
+      -2　長上影線
+    </span><br>
+    
+  </div>
+
+  <div class="desc">強單兵作戰、突破60日高、跳空開高、大爆量；但長上影線。無 ETF 籌碼背書，純技術面發動。</div>
+
+  
+  
+
+  
+  
+  <div class="chart-toggle">
+    <button class="chart-btn"
+            onclick="toggleChart(this, 'chart-TWSE-2376', '../data/2026-05-18/TWSE_2376.json')">
+      ▼ 展開 K 線圖
+    </button>
+    <div id="chart-TWSE-2376" class="chart-container"></div>
+  </div>
+  
+
+</div>
+</div>
+      
+    
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header div-header">⚠️ ETF 經理人分歧區</div>
+  <div class="section-body">
+    
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">聯亞</span>
+    <span class="stock-code">3081</span>
+    <span class="badge badge-orange">中性</span>
+    <span class="badge badge-red">長子</span>
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval up">
+        2710 (+2.07%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.63x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">強紅K</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        2檔共識連續加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">1</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TPEX-3081')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TPEX-3081">
+    
+    <span class="sb-pos">
+      +2　ETF共識加碼（≥2檔）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　ETF連續加碼（雙軌）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　強紅K（實體比>60%，收紅）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　多長子背離
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　國際對應族群大跌（>3%）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">ETF共識加碼、ETF連續加碼、強紅K；但ETF經理人內部分歧（淨流入正向）、長子間出現背離、國際對應族群大跌（>3%）。2 檔 ETF 連續共識加碼，籌碼面有支撐。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">智邦</span>
+    <span class="stock-code">2345</span>
+    <span class="badge badge-orange">警報</span>
+    <span class="badge badge-red">長子</span>
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval dn">
+        2495 (-0.40%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.48x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">強紅K</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        1檔共識加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">-3</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-2345')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-2345">
+    
+    <span class="sb-pos">
+      +1　強紅K（實體比>60%，收紅）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　量縮（<0.5x）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　多長子背離
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　國際對應族群大跌（>3%）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">強紅K；但ETF經理人內部分歧（淨流入正向）、量縮（<0.5x）、長子間出現背離、國際對應族群大跌（>3%）。ETF 籌碼關注中。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">奇鋐</span>
+    <span class="stock-code">3017</span>
+    <span class="badge badge-orange">警報</span>
+    <span class="badge badge-red">長子</span>
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval dn">
+        2410 (-1.83%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.76x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">中紅</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        2檔共識連續加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">-1</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-3017')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-3017">
+    
+    <span class="sb-pos">
+      +2　ETF共識加碼（≥2檔）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　ETF連續加碼（雙軌）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+    <span class="sb-neg">
+      -2　族群長子大跌（>3%）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　國際對應族群大跌（>3%）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">ETF共識加碼、ETF連續加碼；但ETF經理人內部分歧（淨流入正向）、族群長子大跌（警告）、國際對應族群大跌（>3%）。2 檔 ETF 連續共識加碼，籌碼面有支撐。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">世芯-KY</span>
+    <span class="stock-code">3661</span>
+    <span class="badge badge-orange">警報</span>
+    <span class="badge badge-red">長子</span>
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval dn">
+        4590 (-0.33%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.70x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">中紅</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        1檔共識加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">-2</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-3661')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-3661">
+    
+    <span class="sb-neg">
+      -2　ETF經理人分歧（淨流出）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">但ETF經理人分歧（淨流出）。ETF 籌碼關注中。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">旺矽</span>
+    <span class="stock-code">6223</span>
+    <span class="badge badge-orange">中性</span>
+    <span class="badge badge-red">長子</span>
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval up">
+        6135 (+4.07%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.88x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">中紅</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        2檔共識連續加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">2</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TPEX-6223')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TPEX-6223">
+    
+    <span class="sb-pos">
+      +2　ETF共識加碼（≥2檔）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　ETF連續加碼（雙軌）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　關鍵價 5200.0 前高壓力（站穩）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　關鍵價 5370.0 突破點（站穩）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　關鍵價 2680.0 月線支撐（站穩）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+    <span class="sb-neg">
+      -2　族群長子大跌（>3%）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　多長子背離
+    </span><br>
+    
+  </div>
+
+  <div class="desc">ETF共識加碼、ETF連續加碼、關鍵價 5200.0 前高壓力（站穩）、關鍵價 5370.0 突破點（站穩）、關鍵價 2680.0 月線支撐（站穩）；但ETF經理人內部分歧（淨流入正向）、族群長子大跌（警告）、長子間出現背離。2 檔 ETF 連續共識加碼，籌碼面有支撐。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">緯穎</span>
+    <span class="stock-code">6669</span>
+    <span class="badge badge-orange">中性</span>
+    
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval dn">
+        5090 (-0.49%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.53x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">強紅K</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        3檔共識連續加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">3</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-6669')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-6669">
+    
+    <span class="sb-pos">
+      +2　ETF共識加碼（≥2檔）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　ETF連續加碼（雙軌）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　強紅K（實體比>60%，收紅）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">ETF共識加碼、ETF連續加碼、強紅K；但ETF經理人內部分歧（淨流入正向）。3 檔 ETF 連續共識加碼，籌碼面有支撐。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">欣興</span>
+    <span class="stock-code">3037</span>
+    <span class="badge badge-orange">警報</span>
+    <span class="badge badge-red">長子</span>
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval dn">
+        816 (-0.61%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.73x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">中紅</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        1檔共識加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">-1</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-3037')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-3037">
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">但ETF經理人內部分歧（淨流入正向）。ETF 籌碼關注中。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">南電</span>
+    <span class="stock-code">8046</span>
+    <span class="badge badge-orange">警報</span>
+    
+    
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval up">
+        791 (+0.64%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval ">0.67x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">中紅</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        1檔共識加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">-1</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-8046')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-8046">
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">但ETF經理人內部分歧（淨流入正向）。ETF 籌碼關注中。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">國巨</span>
+    <span class="stock-code">2327</span>
+    <span class="badge badge-red">S級</span>
+    <span class="badge badge-red">長子</span>
+    <span class="badge badge-green">突破60日高</span>
+    
+    
+    
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval up">
+        501 (+9.99%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval up">1.52x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">漲停</span></div>
+    
+    <div class="pitem">
+      <span class="plabel">ETF籌碼</span>
+      <span class="pval" style="color:var(--teal)">
+        2檔共識連續加碼
+      </span>
+    </div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">11</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-2327')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-2327">
+    
+    <span class="sb-pos">
+      +2　ETF共識加碼（≥2檔）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　ETF連續加碼（雙軌）
+    </span><br>
+    
+    <span class="sb-pos">
+      +3　自身是族群長子且發動
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　漲停
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　突破60日高
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　爆量（>1.5x）
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　強紅K（實體比>60%，收紅）
+    </span><br>
+    
+    <span class="sb-neg">
+      -1　ETF經理人分歧（淨流入）
+    </span><br>
+    
+  </div>
+
+  <div class="desc">ETF共識加碼、ETF連續加碼、被動元件長子發動、漲停、突破60日高、爆量（>1.5x）、強紅K；但ETF經理人內部分歧（淨流入正向）。2 檔 ETF 連續共識加碼，籌碼面有支撐。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+    
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header warn-header">🟢 警報區（具備部分訊號）</div>
+  <div class="section-body">
+    
+      <div class="group">
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">智邦</span>
+            <span class="stock-code">2345</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                2495 (-0.40%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.48x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">光通訊</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">銓訊</span>
+            <span class="stock-code">4908</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                235 (-3.09%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.71x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">光通訊</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">上詮</span>
+            <span class="stock-code">3363</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                804 (-4.40%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.55x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">光通訊</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">奇鋐</span>
+            <span class="stock-code">3017</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                2410 (-1.83%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.76x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">散熱</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">建準</span>
+            <span class="stock-code">2421</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                140 (+0.36%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.52x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">散熱</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">高力</span>
+            <span class="stock-code">8996</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                1045 (+0.48%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">1.18x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">散熱</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-2</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">祥碩</span>
+            <span class="stock-code">5269</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                1390 (-4.47%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.42x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">IC設計</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">力旺</span>
+            <span class="stock-code">3529</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                3450 (-9.92%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.72x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">IP與ASIC</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">世芯-KY</span>
+            <span class="stock-code">3661</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                4590 (-0.33%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.70x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">IP與ASIC</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-2</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">M31</span>
+            <span class="stock-code">6643</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                612 (-1.13%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.47x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">IP與ASIC</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">智原</span>
+            <span class="stock-code">3035</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                193 (+1.58%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.44x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">IP與ASIC</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">力成</span>
+            <span class="stock-code">6239</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                250 (+0.81%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">1.80x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">封裝測試</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">穎崴</span>
+            <span class="stock-code">6515</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                10240 (+4.70%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.84x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">半導體設備耗材</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">辛耘</span>
+            <span class="stock-code">3583</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                900 (+1.35%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.41x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">半導體設備耗材</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">廣達</span>
+            <span class="stock-code">2382</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                300 (-1.96%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">1.23x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">AI伺服器代工</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">緯創</span>
+            <span class="stock-code">3231</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval neutral">
+                135 (+0.00%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.45x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">AI伺服器代工</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">台光電</span>
+            <span class="stock-code">2383</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                4545 (-1.52%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">1.39x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">CCL</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">聯茂</span>
+            <span class="stock-code">6213</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                245 (-3.16%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.58x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">CCL</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">欣興</span>
+            <span class="stock-code">3037</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                816 (-0.61%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.73x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">ABF</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">南電</span>
+            <span class="stock-code">8046</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                791 (+0.64%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.67x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">ABF</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">光寶科</span>
+            <span class="stock-code">2301</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                207 (+1.47%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.51x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">電源供應以及能源基礎</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">華城</span>
+            <span class="stock-code">1519</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                804 (-2.31%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.74x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">重電與電網</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">中興電</span>
+            <span class="stock-code">1513</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                148 (-1.00%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.73x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">重電與電網</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">士電</span>
+            <span class="stock-code">1503</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                186 (-2.11%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.77x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">重電與電網</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-1</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">東元</span>
+            <span class="stock-code">1514</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                115 (-0.86%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.52x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">重電與電網</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">川湖</span>
+            <span class="stock-code">2059</span>
+            <span class="badge badge-gray">警報</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                4765 (-1.95%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.40x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">伺服器關鍵零組件</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+        </div>
+        
+      </div>
+    
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header black-header">⛔ 黑名單（技術或籌碼面惡化）</div>
+  <div class="section-body">
+    
+      <div class="group">
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">健策</span>
+            <span class="stock-code">3653</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                3270 (-5.63%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.49x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">散熱</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-9</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）、長上影線、量縮（<0.5x）、族群長子大跌（>3%）、國際對應族群大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">雙鴻</span>
+            <span class="stock-code">3324</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                982 (-1.31%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.94x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">散熱</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-5</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：長上影線、族群長子大跌（>3%）、國際對應族群大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">聯發科</span>
+            <span class="stock-code">2454</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                3400 (+4.29%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.78x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">IC設計</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">創意</span>
+            <span class="stock-code">3443</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                4740 (-2.17%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.87x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">IP與ASIC</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">台積電</span>
+            <span class="stock-code">2330</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                2240 (-1.10%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.72x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">晶圓代工</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">京元電子</span>
+            <span class="stock-code">2449</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                295 (-1.50%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.65x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">封裝測試</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-4</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：長上影線、族群長子大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">日月光</span>
+            <span class="stock-code">3711</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                510 (-6.76%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">1.25x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">封裝測試</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-5</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：實體長黑、族群長子大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">弘塑</span>
+            <span class="stock-code">3131</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                2775 (-3.31%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.53x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">半導體設備耗材</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-5</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：長上影線、族群長子大跌（>3%）、多長子背離</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">家登</span>
+            <span class="stock-code">3680</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                544 (-4.23%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">1.01x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">半導體設備耗材</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-4</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：長上影線、族群長子大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">萬潤</span>
+            <span class="stock-code">6187</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                1135 (+0.89%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.35x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">半導體設備耗材</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-5</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：長上影線、量縮（<0.5x）、族群長子大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">長廣</span>
+            <span class="stock-code">7795</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                341 (-2.43%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.34x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">半導體設備耗材</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-6</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：實體長黑、量縮（<0.5x）、族群長子大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">鴻海</span>
+            <span class="stock-code">2317</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval neutral">
+                248 (+0.00%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.72x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">AI伺服器代工</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-6</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）、長上影線、多長子背離</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">定穎投控</span>
+            <span class="stock-code">3715</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                170 (-2.57%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.97x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">PCB</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-5</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：長上影線、族群長子大跌（>3%）、國際對應族群大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">金像電</span>
+            <span class="stock-code">2368</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                1250 (-3.10%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">1.18x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">PCB</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-6</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）、族群長子大跌（>3%）、國際對應族群大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">台達電</span>
+            <span class="stock-code">2308</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                2020 (-2.65%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.94x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">電源供應以及能源基礎</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-3</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）、國際對應族群大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">喬鼎</span>
+            <span class="stock-code">6412</span>
+            <span class="badge badge-gray">黑名單</span>
+            
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval up">
+                88 (+0.34%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.27x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">電源供應以及能源基礎</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-4</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：長上影線、量縮（<0.5x）、國際對應族群大跌（>3%）</div>
+          
+        </div>
+        
+        <div class="stock-card">
+          <div class="stock-header">
+            <span class="stock-name">嘉澤</span>
+            <span class="stock-code">3533</span>
+            <span class="badge badge-gray">黑名單</span>
+            <span class="badge badge-red">ETF共識減碼≥2</span>
+          </div>
+          <div class="price-row">
+            <div class="pitem">
+              <span class="plabel">收盤</span>
+              <span class="pval dn">
+                2325 (-0.21%)
+              </span>
+            </div>
+            <div class="pitem"><span class="plabel">量比</span><span class="pval">0.47x</span></div>
+            <div class="pitem"><span class="plabel">板塊</span><span class="pval" style="color:var(--muted)">伺服器關鍵零組件</span></div>
+            <div class="pitem"><span class="plabel">分數</span><span class="pval">-6</span></div>
+          </div>
+          
+          <div class="desc" style="margin-top:4px">負面訊號：ETF共識減碼（≥2檔）、長上影線、量縮（<0.5x）</div>
+          
+        </div>
+        
+      </div>
+    
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header lone-header">🚨 強勢單兵作戰（族群走弱但個股強）</div>
+  <div class="section-body">
+    
+      
+      <div class="group">
+<div class="stock-card">
+
+  <div class="stock-header">
+    <span class="stock-name">技嘉</span>
+    <span class="stock-code">2376</span>
+    <span class="badge badge-yellow">A級</span>
+    
+    <span class="badge badge-green">突破60日高</span>
+    <span class="badge badge-teal">跳空開高</span>
+    <span class="badge badge-yellow">爆量2.35x</span>
+    <span class="badge badge-orange">單兵作戰</span>
+  </div>
+
+  <div class="price-row">
+    <div class="pitem">
+      <span class="plabel">收盤</span>
+      <span class="pval up">
+        330 (+1.23%)
+      </span>
+    </div>
+    <div class="pitem">
+      <span class="plabel">量比</span>
+      <span class="pval up">2.35x</span>
+    </div>
+    <div class="pitem"><span class="plabel">K棒</span><span class="pval">長上影線</span></div>
+    
+  </div>
+
+  <div class="score-line">
+    <span>積分</span>
+    <span class="score-num">4</span>
+    <button class="score-toggle" onclick="toggleBreakdown(this, 'bd-chart-TWSE-2376')">▼ 查看計分明細</button>
+  </div>
+  <div class="score-breakdown" id="bd-chart-TWSE-2376">
+    
+    <span class="sb-pos">
+      +1　強單兵作戰
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　突破60日高
+    </span><br>
+    
+    <span class="sb-pos">
+      +1　跳空開高
+    </span><br>
+    
+    <span class="sb-pos">
+      +2　大爆量（>2x）
+    </span><br>
+    
+    <span class="sb-neg">
+      -2　長上影線
+    </span><br>
+    
+  </div>
+
+  <div class="desc">強單兵作戰、突破60日高、跳空開高、大爆量；但長上影線。無 ETF 籌碼背書，純技術面發動。</div>
+
+  
+  
+
+  
+  
+
+</div>
+</div>
+      
+    
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header global-header">🌐 全球同步 / 獨秀 / 拖累</div>
+  <div class="section-body">
+    <div class="group">
+      <div class="empty-state" style="text-align:left;font-style:normal;font-size:12px">
+        📌 台灣 vs 國際同族群對比表格 — 待階段 4 接入 TV 即時資料
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header sig-header">📋 訊號狀態總覽（T+N 追蹤）</div>
+  <div class="section-body">
+    <div class="group">
+      
+      <table>
+        <thead>
+          <tr><th>個股</th><th>代號</th><th>首次發出日</th><th>目前分級</th><th>持有天數</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>國巨</td>
+            <td>2327</td>
+            <td>2026-05-18</td>
+            <td><span class="badge badge-red">S級</span></td>
+            <td>1 天</td>
+          </tr>
+          
+          <tr>
+            <td>技嘉</td>
+            <td>2376</td>
+            <td>2026-05-18</td>
+            <td><span class="badge badge-yellow">A級</span></td>
+            <td>1 天</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="footer">
+  資料來源：本機 SQLite（kline.db / etf_operations.db）｜
+  籌碼：ETF Edge 近 7 日累計 ｜
+  本儀表板僅供輔助判讀，不構成投資建議。<br>
+  <a href="archives/index.html">📁 歷史存檔</a> ｜
+  產出時間：2026-05-20T09:01:47
+</div>
+
+
+<script src="../assets/lightweight-charts.js?v=5.2.0"></script>
+<script src="../assets/chart.js?v=4"></script>
+<script>
+async function toggleChart(btn, chartId, dataPath) {
+  const container = document.getElementById(chartId);
+  const isOpen = container.style.display !== 'none';
+  if (isOpen) {
+    container.style.display = 'none';
+    btn.textContent = '▼ 展開 K 線圖';
+  } else {
+    container.style.display = 'block';
+    btn.textContent = '▲ 收合 K 線圖';
+    if (!container.dataset.loaded) {
+      container.dataset.loaded = '1';
+      container.innerHTML = '<div class="chart-loading">載入中...</div>';
+      try {
+        const resp = await fetch(dataPath);
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const data = await resp.json();
+        container.innerHTML = '';
+        renderChart(chartId, data);
+      } catch (e) {
+        container.innerHTML =
+          '<div class="chart-loading" style="color:#ff4d4d">載入失敗：' + e.message + '</div>';
+      }
+    }
+  }
+}
+
+function toggleBreakdown(btn, bdId) {
+  const bd = document.getElementById(bdId);
+  const isOpen = bd.classList.contains('open');
+  bd.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '▼ 查看計分明細' : '▲ 收合計分明細';
+}
+</script>
+
+</body>
+</html>
