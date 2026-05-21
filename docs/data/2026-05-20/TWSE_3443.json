@@ -1459,6 +1459,14 @@
       "low": 4370.0,
       "close": 4465.0,
       "volume": 2565536.0
+    },
+    {
+      "time": "2026-05-20",
+      "open": 4505.0,
+      "high": 4830.0,
+      "low": 4420.0,
+      "close": 4605.0,
+      "volume": 3290150.0
     }
   ],
   "etf_markers": [
@@ -2070,6 +2078,20 @@
           "etf": "00995A",
           "action": "減碼",
           "shares": 3
+        }
+      ]
+    },
+    {
+      "time": "2026-05-20",
+      "action": "減碼",
+      "direction": "sell",
+      "is_consensus": false,
+      "summary": "00995A 減碼",
+      "detail": [
+        {
+          "etf": "00995A",
+          "action": "減碼",
+          "shares": 4
         }
       ]
     }
