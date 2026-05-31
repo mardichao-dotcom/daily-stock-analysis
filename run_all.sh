@@ -90,17 +90,27 @@ python3 src/status_writer.py --init --tool "$TOOL"
 echo ""
 echo "[0/7] 健康檢查..."
 
+CDP_RECOVERED=0
 if ! curl -s -m 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
-    echo "❌ TradingView CDP 沒開（port 9222）。"
-    python3 src/status_writer.py --tool "$TOOL" \
-        --step tv_collect --status fail --duration 0 \
-        --note "CDP port 9222 not responding"
-    for s in daily_update import_kline run_filters prepare_charts render publish; do
-        skip_step "$s" "CDP 不通"
-    done
-    python3 src/status_writer.py --finish --tool "$TOOL"
-    python3 src/daily_supervisor.py
-    exit 0
+    echo "      ⚠️  CDP port 9222 不通，嘗試自動拉起 TradingView..."
+    bash scripts/tv_cdp_launch.sh &
+    sleep 15
+    if curl -s -m 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
+        echo "      ⚠️  CDP 曾自動拉起（TradingView 原本沒開或剛剛被關掉）"
+        CDP_RECOVERED=1
+    else
+        echo "❌ TradingView CDP 自動拉起失敗（port 9222 仍不通）"
+        echo "   可能原因：TradingView 自動更新中、帳號 session 失效、binary 路徑變動"
+        python3 src/status_writer.py --tool "$TOOL" \
+            --step tv_collect --status fail --duration 0 \
+            --note "CDP port 9222 not responding (auto-recovery failed)"
+        for s in daily_update import_kline run_filters prepare_charts render publish; do
+            skip_step "$s" "CDP 不通"
+        done
+        python3 src/status_writer.py --finish --tool "$TOOL"
+        python3 src/daily_supervisor.py
+        exit 0
+    fi
 fi
 if [[ ! -f "$KLINE_DB" ]]; then
     echo "❌ $KLINE_DB 不存在"

@@ -1,0 +1,75 @@
+{
+  "version": "2.1",
+  "updated_at": "2026-05-26",
+  "rule_version": "v2.1",
+  "_note": "計分權重。對應 朋友規則_v2_1_final.md。改權重不改程式碼。",
+
+  "chip_etf": {
+    "consensus_2": 2,
+    "consensus_4": 3,
+    "continuous": 1,
+    "abnormal": 1
+  },
+
+  "volume": {
+    "x1_6":     {"threshold": 1.6, "score": 1, "label": "異常量(小)"},
+    "x2_0":     {"threshold": 2.0, "score": 2, "label": "異常量(大)"},
+    "stacking": false
+  },
+
+  "sector_linkage": {
+    "min_level":  "B",
+    "score":      1,
+    "level_rank": {"S": 5, "A": 4, "B": 3, "C": 2, "D": 1},
+    "trigger": {
+      "price_change_pct": 3.0,
+      "volume_ratio":     1.5,
+      "new_high_window":  60
+    }
+  },
+
+  "macd": {
+    "green_to_red": 1
+  },
+
+  "given_price": {
+    "key_price": 1,
+    "support_transfer": 1,
+    "inner_support": 1,
+    "whale_cost": 1,
+    "ma_20": 1,
+    "ma_60": 2,
+    "ma_90": 2,
+    "order_block": 2,
+    "poc": 1,
+    "fvg": 1,
+    "gap": 1
+  },
+
+  "color_multiplier": {
+    "gray": 0.7,
+    "black": 1.0,
+    "red": 1.5,
+    "_lines_with_color": [
+      "key_price",
+      "support_transfer",
+      "inner_support",
+      "whale_cost"
+    ]
+  },
+
+  "adjective": {
+    "important": {"type": "add", "value": 1},
+    "small": {"type": "multiply", "value": 0.7},
+    "short_term": {"type": "multiply", "value": 1.0},
+    "estimated": {"type": "multiply", "value": 0.9}
+  },
+
+  "grade": {
+    "S": 6,
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 0
+  }
+}

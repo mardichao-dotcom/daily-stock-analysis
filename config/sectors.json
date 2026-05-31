@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-05-26",
+  "rule_version": "v2.1",
+  "_note": "台股板塊連動評級表(A/B/C/D)。實際成員與國際長子來自 config/watchlist.json,不在此重複以避免 sync bug。本表僅儲存評級。目前暫定全 A,後續朋友詳細研究後調整(規則 §1-C A4)。",
+  "_source_of_truth": {
+    "tw_members": "config/watchlist.json -> 台股板塊.<sector>.成員",
+    "intl_leaders": "config/watchlist.json -> 國際族群.<group>.長子 (再透過 對應台股族群 連回 TW sector)"
+  },
+
+  "sectors": {
+    "光通訊": "A",
+    "散熱": "A",
+    "IC設計": "A",
+    "IP與ASIC": "A",
+    "晶圓代工": "A",
+    "封裝測試": "A",
+    "半導體設備耗材": "A",
+    "AI伺服器代工": "A",
+    "CCL": "A",
+    "PCB": "A",
+    "ABF": "A",
+    "被動元件": "A",
+    "電源供應以及能源基礎": "A",
+    "重電與電網": "A",
+    "航運物流": "A",
+    "伺服器關鍵零組件": "A"
+  }
+}
