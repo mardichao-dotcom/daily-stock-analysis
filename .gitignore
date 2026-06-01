@@ -38,6 +38,7 @@ tv_daily_data.json
 
 # ── 開發專用文件（不納入 portfolio repo）────────────────────────────────
 stage*.md
+!docs/stage*.md
 chart_test.html
 積分制定案_v1_正式版.md
 
