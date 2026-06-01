@@ -1,0 +1,424 @@
+/* style_v2.css — Stage 8 W3 樣式(2026-06-01) */
+
+:root {
+  /* 級別配色 */
+  --grade-s: #ef4444;       /* 紅 */
+  --grade-a: #f59e0b;       /* 黃/橘 */
+  --grade-b: #10b981;       /* 綠 */
+  --grade-c: #6b7280;       /* 灰 */
+  --grade-d: #9ca3af;       /* 淺灰 */
+
+  /* 中性色 */
+  --bg:          #fafafa;
+  --bg-card:    #ffffff;
+  --border:      #e5e7eb;
+  --text:        #1f2937;
+  --text-mute:  #6b7280;
+  --code-bg:    #f3f4f6;
+
+  /* ETF 雙向 */
+  --etf-buy:   #3b82f6;     /* 藍(加碼)*/
+  --etf-sell:  #ef4444;     /* 紅(減碼)*/
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── 主容器 ─── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ─── 頁首 ─── */
+header.page-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+header .meta {
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-top: 4px;
+}
+
+/* ─── 區塊 ─── */
+.section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.section h2 {
+  font-size: 18px;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+
+/* 級別專屬 border-top */
+.section.grade-s h2 { border-bottom-color: var(--grade-s); }
+.section.grade-a h2 { border-bottom-color: var(--grade-a); }
+.section.grade-b h2 { border-bottom-color: var(--grade-b); }
+.section.grade-c h2 { border-bottom-color: var(--grade-c); }
+
+/* ─── Top10 列表 ─── */
+.top10-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.top10-list li {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.top10-list li:last-child { border-bottom: none; }
+.top10-list .rank {
+  font-weight: bold;
+  color: var(--text-mute);
+  width: 30px;
+}
+.top10-list .name { flex: 1; }
+.top10-list .score { font-weight: bold; }
+
+/* ─── 個股卡(S/A/B 用)─── */
+details.stock-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: var(--bg-card);
+  transition: box-shadow 0.15s;
+}
+details.stock-card[open] {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+details.stock-card summary {
+  cursor: pointer;
+  padding: 10px 12px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+details.stock-card summary::-webkit-details-marker { display: none; }
+details.stock-card summary::before {
+  content: "▸";
+  color: var(--text-mute);
+  transition: transform 0.15s;
+}
+details.stock-card[open] summary::before { transform: rotate(90deg); }
+
+.stock-card .stock-name { font-weight: 600; }
+.stock-card .stock-code { color: var(--text-mute); font-size: 13px; font-family: monospace; }
+.stock-card .stock-tags-inline { display: flex; gap: 4px; font-size: 12px; }
+.stock-card .stock-score {
+  margin-left: auto;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* 級別徽章 */
+.grade-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 4px;
+}
+.grade-badge.S { background: var(--grade-s); }
+.grade-badge.A { background: var(--grade-a); }
+.grade-badge.B { background: var(--grade-b); }
+.grade-badge.C { background: var(--grade-c); }
+.grade-badge.D { background: var(--grade-d); }
+
+/* 卡片主體 */
+.card-body {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+.score-breakdown {
+  font-family: monospace;
+  font-size: 12px;
+  background: var(--code-bg);
+  padding: 8px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  margin-bottom: 8px;
+}
+
+/* by-module 計分明細表(取代純文字 .score-breakdown)*/
+.score-breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  background: var(--code-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.score-breakdown-table .bd-row td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.score-breakdown-table .bd-row:last-child td {
+  border-bottom: none;
+}
+.score-breakdown-table .bd-cat {
+  width: 90px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+.score-breakdown-table .bd-score {
+  width: 60px;
+  font-family: monospace;
+  text-align: right;
+  font-weight: 600;
+  color: var(--etf-buy);
+}
+.score-breakdown-table .bd-desc {
+  font-family: monospace;
+  line-height: 1.5;
+  color: var(--text);
+}
+.score-breakdown-table .bd-empty .bd-cat,
+.score-breakdown-table .bd-empty .bd-score,
+.score-breakdown-table .bd-empty .bd-desc {
+  color: var(--text-mute);
+  font-weight: normal;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--code-bg);
+  font-size: 12px;
+}
+
+/* Chart 預留區 */
+.chart-placeholder {
+  min-height: 320px;
+  background: #f9fafb;
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-mute);
+  cursor: pointer;
+  margin-top: 8px;
+}
+.chart-placeholder.loading { color: var(--etf-buy); }
+
+/* ─── C 級特殊 / 其餘 ─── */
+.c-group {
+  margin: 12px 0 16px;
+}
+.c-group-title {
+  font-size: 14px;
+  margin: 0 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.c-group-count {
+  font-size: 12px;
+  color: var(--text-mute);
+  font-weight: normal;
+  margin-left: 4px;
+}
+.c-special-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0;
+}
+.c-special-list li {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.c-special-list li code {
+  font-size: 11px;
+  color: var(--text-mute);
+}
+.c-special-list .c-score {
+  font-family: monospace;
+  color: var(--text-mute);
+  margin-left: auto;
+  font-size: 11px;
+}
+.c-special-list .c-tag-detail {
+  font-size: 12px;
+  color: var(--text);
+  flex-basis: 100%;
+  margin-top: 2px;
+}
+.other-list {
+  font-size: 12px;
+  color: var(--text-mute);
+  columns: 3;
+  column-gap: 16px;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.other-list li {
+  list-style: none;
+  padding: 2px 0;
+  break-inside: avoid;          /* 避免單檔被切斷在欄之間 */
+  -webkit-column-break-inside: avoid;
+}
+.other-list li code {
+  font-size: 11px;
+  color: var(--text-mute);
+  margin-left: 4px;
+}
+
+/* ─── 區塊 6 ETF 主動式雙向掃描 ─── */
+.etf-active-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.etf-active-grid h3 {
+  font-size: 15px;
+  margin: 0 0 8px 0;
+}
+.etf-buy-block  h3 { color: var(--etf-buy); }
+.etf-sell-block h3 { color: var(--etf-sell); }
+
+.etf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.etf-table th, .etf-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.etf-table th {
+  background: var(--code-bg);
+  font-weight: 600;
+}
+.etf-table .shares.positive { color: var(--etf-buy); }
+.etf-table .shares.negative { color: var(--etf-sell); }
+.etf-table .etfs-list {
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--text-mute);
+}
+
+/* ─── Chart tooltip(JS 動態建立)─── */
+.chart-tooltip {
+  position: absolute;
+  background: rgba(31, 41, 55, 0.95);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+/* ─── Chart legend(chart 下方圖標說明)─── */
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  padding: 8px 10px;
+  background: var(--code-bg);
+  border-radius: 4px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-mute);
+  align-items: center;
+}
+.chart-legend .legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.chart-legend .legend-arrow {
+  font-weight: 700;
+  font-size: 14px;
+}
+.chart-legend .legend-count,
+.chart-legend .legend-note {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-mute);
+  font-style: italic;
+}
+
+/* ─── ETF 勾選控制(chart 上方)─── */
+.etf-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--code-bg);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.etf-filter-bar label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* ─── 響應式 ─── */
+@media (max-width: 768px) {
+  .etf-active-grid { grid-template-columns: 1fr; }
+  .other-list      { columns: 2; }
+  header h1        { font-size: 18px; }
+  .container       { padding: 8px; }
+}
+
+@media (max-width: 480px) {
+  .other-list      { columns: 1; }
+  .stock-card .stock-tags-inline { display: none; }   /* 手機隱藏內聯 tag,展開後才看 */
+}
+
+/* ─── 空狀態 ─── */
+.empty-state {
+  text-align: center;
+  color: var(--text-mute);
+  padding: 24px;
+  font-size: 13px;
+}
