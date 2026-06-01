@@ -5,6 +5,33 @@ set -e
 
 cd "$(dirname "$0")"
 
+# ── Stage 8 W3 上線:30 天前的歷史 snapshot 自動清理 ────────────────────
+# 同時清理:
+#   1. docs/data/v2/YYYY-MM-DD/  (chart JSON 目錄,每天 87 檔 ~3.7MB)
+#   2. docs/index_v2_YYYY-MM-DD.html (對應的 snapshot HTML)
+echo "[0/3] Archive 30 天前的歷史 snapshot..."
+ARCHIVE_COUNT=0
+# 1. chart data 目錄
+for d in $(find docs/data/v2/ -maxdepth 1 -type d -mtime +30 \
+            -name '2[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' 2>/dev/null); do
+    echo "      [archive] rm -rf $d"
+    rm -rf "$d"
+    ARCHIVE_COUNT=$((ARCHIVE_COUNT + 1))
+done
+# 2. snapshot HTML
+for f in $(find docs/ -maxdepth 1 -type f -mtime +30 \
+            -name 'index_v2_2[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].html' 2>/dev/null); do
+    echo "      [archive] rm $f"
+    rm "$f"
+    ARCHIVE_COUNT=$((ARCHIVE_COUNT + 1))
+done
+if [ "$ARCHIVE_COUNT" -eq 0 ]; then
+    echo "      無 30 天前歷史,無需清理"
+else
+    echo "      共清理 $ARCHIVE_COUNT 個檔案/目錄"
+fi
+echo ""
+
 echo "[1/3] 確認 docs/ 是否有變更..."
 if ! git diff --quiet docs/ || git ls-files --others --exclude-standard docs/ | grep -q .; then
   echo "      docs/ 有更新，準備 commit。"
