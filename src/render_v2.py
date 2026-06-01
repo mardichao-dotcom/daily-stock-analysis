@@ -450,6 +450,10 @@ def render(filtered_result: dict) -> str:
 
 <header class="page-header">
   <div class="container">
+    <nav class="page-nav">
+      <span class="page-nav-current">📈 儀表板</span>
+      <a href="watchlist_v2.html">📋 Watchlist</a>
+    </nav>
     <h1>🧭 台股右側動能作戰儀表板</h1>
     <div class="meta">
       資料日期 <strong>{_h(date)}</strong> ｜ 版本 v2.1 ｜ 個股 {len(stocks)} 檔 ｜ 產出時間 {generated_at}

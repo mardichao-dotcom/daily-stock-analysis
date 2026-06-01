@@ -402,6 +402,117 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   cursor: pointer;
 }
 
+/* ─── 雙頁互連 nav ─── */
+.page-nav {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.page-nav a {
+  color: var(--text-mute);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.page-nav a:hover { background: var(--code-bg); color: var(--text); }
+.page-nav .page-nav-current {
+  background: var(--code-bg);
+  color: var(--text);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* ─── Watchlist v2 頁面 ─── */
+.wl-sector {
+  margin: 12px 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.wl-sector > summary {
+  padding: 8px 12px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  background: var(--code-bg);
+  border-radius: 6px 6px 0 0;
+}
+.wl-sector > summary::-webkit-details-marker { display: none; }
+.wl-sector > summary::before {
+  content: "▸ ";
+  color: var(--text-mute);
+  display: inline-block;
+  transition: transform 0.15s;
+}
+.wl-sector[open] > summary::before { content: "▾ "; }
+.wl-sector-title {
+  display: inline;
+  font-size: 15px;
+  margin: 0;
+  font-weight: 600;
+}
+.wl-sector-count {
+  font-size: 12px;
+  color: var(--text-mute);
+  font-weight: normal;
+  margin-left: 6px;
+}
+.sector-leaders, .wl-intl-corresp {
+  font-size: 11px;
+  color: var(--text-mute);
+  margin-left: 10px;
+  font-weight: normal;
+}
+.wl-intl-corresp {
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* 個股折疊 */
+.wl-stock {
+  border-top: 1px solid var(--border);
+}
+.wl-stock > summary {
+  padding: 6px 12px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wl-stock > summary::-webkit-details-marker { display: none; }
+.wl-stock > summary::before {
+  content: "▸";
+  color: var(--text-mute);
+  font-size: 10px;
+}
+.wl-stock[open] > summary::before { content: "▾"; }
+.wl-stock[open] > summary {
+  background: var(--code-bg);
+  border-bottom: 1px solid var(--border);
+}
+.wl-name { font-weight: 600; }
+.wl-code { font-size: 11px; color: var(--text-mute); }
+.wl-score {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-mute);
+  font-family: monospace;
+}
+.wl-tags-inline {
+  display: inline-flex;
+  gap: 4px;
+}
+.leader-mark { font-size: 11px; }
+.wl-stock-body {
+  padding: 10px 12px;
+}
+
 /* ─── 響應式 ─── */
 @media (max-width: 768px) {
   .etf-active-grid { grid-template-columns: 1fr; }
