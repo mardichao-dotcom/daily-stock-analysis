@@ -45,3 +45,5 @@ chart_test.html
 # ── Stage 8 執行階段產出(可由腳本重產生)─────────────────────────────
 filtered_result*.json
 *.bak
+# 歷史 chart JSON(每天 ~3.7MB × 87 檔,可由 prepare_charts_v2 重產)
+docs/data/v2/2[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
