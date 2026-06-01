@@ -165,24 +165,86 @@
       });
     });
 
-    // 區域(用 horizontal lines 模擬,Lightweight Charts 不直接支援陰影區域)
-    (data.key_prices?.areas || []).forEach(area => {
-      const colorObj = visual.area_colors?.[area.category];
-      if (!colorObj) return;
-      // 用 area_colors.top 作為線色,畫上下兩條
-      candleSeries.createPriceLine({
-        price: parseFloat(area.high), color: colorObj.top.replace(/[\d.]+\)$/, '0.6)'),
-        lineWidth: 1, lineStyle: styleNameToEnum('dashed'),
-        axisLabelVisible: false,
-        title: area.text || '',
-      });
-      candleSeries.createPriceLine({
-        price: parseFloat(area.low), color: colorObj.top.replace(/[\d.]+\)$/, '0.6)'),
-        lineWidth: 1, lineStyle: styleNameToEnum('dashed'),
-        axisLabelVisible: false,
-        title: '',
-      });
-    });
+    // 區域:用 SVG overlay 畫水平色帶(LWC 4.1 沒原生 area-band primitive)
+    // 監聽 visibleTimeRangeChange + ResizeObserver redraw,跟 chart scroll/zoom 同步
+    const areas = (data.key_prices?.areas || []).filter(
+      a => visual.area_colors?.[a.category]
+    );
+    let areasOverlay = null;
+    if (areas.length > 0) {
+      chartEl.style.position = 'relative';
+      areasOverlay = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      areasOverlay.setAttribute('class', 'chart-area-overlay');
+      areasOverlay.style.position = 'absolute';
+      areasOverlay.style.left = '0';
+      areasOverlay.style.top = '0';
+      areasOverlay.style.width = '100%';
+      areasOverlay.style.height = '100%';
+      areasOverlay.style.pointerEvents = 'none';
+      chartEl.appendChild(areasOverlay);
+    }
+
+    function redrawAreas() {
+      if (!areasOverlay) return;
+      // 清空
+      while (areasOverlay.firstChild) areasOverlay.removeChild(areasOverlay.firstChild);
+      const widthAttr = chartEl.clientWidth || 660;
+      areasOverlay.setAttribute('width',  widthAttr);
+      areasOverlay.setAttribute('height', chartEl.clientHeight || 420);
+      // 扣掉右側 priceScale 寬度(預設 ~54),避免色帶溢出進價格軸
+      const priceScaleWidth = chart.priceScale('right').width?.() ?? 54;
+      const drawWidth = Math.max(0, widthAttr - priceScaleWidth);
+
+      for (const a of areas) {
+        const colorObj = visual.area_colors[a.category];
+        const yHigh = candleSeries.priceToCoordinate(parseFloat(a.high));
+        const yLow  = candleSeries.priceToCoordinate(parseFloat(a.low));
+        if (yHigh == null || yLow == null) continue;
+        const top    = Math.min(yHigh, yLow);
+        const height = Math.abs(yHigh - yLow);
+
+        // 半透明色塊(把 area_colors.top 的 alpha 提到 0.22 才看得清)
+        const fill = (colorObj.top || 'rgba(156,163,175,0.22)').replace(
+          /([\d.]+)\)$/,
+          (_, _alpha) => '0.22)'
+        );
+        const stroke = (colorObj.top || 'rgba(156,163,175,0.5)').replace(
+          /([\d.]+)\)$/,
+          (_, _alpha) => '0.55)'
+        );
+
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', '0');
+        rect.setAttribute('y', String(top));
+        rect.setAttribute('width', String(drawWidth));
+        rect.setAttribute('height', String(height));
+        rect.setAttribute('fill', fill);
+        rect.setAttribute('stroke', stroke);
+        rect.setAttribute('stroke-width', '1');
+        rect.setAttribute('stroke-dasharray', '4 3');
+        areasOverlay.appendChild(rect);
+
+        // 標籤(area.text)放在區域左上角內側
+        const text = a.text || a.category;
+        if (text) {
+          const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          label.setAttribute('x', '6');
+          label.setAttribute('y', String(top + 12));
+          label.setAttribute('fill', stroke.replace('0.55)', '0.9)'));
+          label.setAttribute('font-size', '10');
+          label.setAttribute('font-family', 'system-ui, sans-serif');
+          label.textContent = text;
+          areasOverlay.appendChild(label);
+        }
+      }
+    }
+
+    // 訂閱:時間軸 / 價格軸變動 → redraw
+    if (areasOverlay) {
+      chart.timeScale().subscribeVisibleTimeRangeChange(redrawAreas);
+      // 首次 chart fitContent 之後再 redraw 一次(座標才穩定)
+      requestAnimationFrame(redrawAreas);
+    }
 
     // 事件 markers(站穩/跌破)+ ETF 箭頭整合到 markers
     let allMarkers = [];
@@ -315,14 +377,17 @@
     // 隱藏 tooltip when leaving chart
     chartEl.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
 
-    // Resize 處理
+    // Resize 處理 + 同步 area overlay 尺寸
     new ResizeObserver(entries => {
       for (const entry of entries) {
         chart.applyOptions({ width: entry.contentRect.width });
       }
+      redrawAreas();
     }).observe(chartEl);
 
     chart.timeScale().fitContent();
+    // fitContent 之後 priceScale range 才穩定,再 redraw 一次
+    requestAnimationFrame(redrawAreas);
   }
 
   // ─── 為每個 placeholder 綁定載入邏輯 ───────────────────────────────────
