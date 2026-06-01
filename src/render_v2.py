@@ -151,11 +151,15 @@ def _format_breakdown_by_module(details: list[dict]) -> str:
 # ─── 個股分類 ─────────────────────────────────────────────────────────────────
 def classify_stocks(stocks: dict) -> dict:
     """依 grade 分桶。Returns {'S': [...], 'A': [...], 'B': [...], 'C_special': [...], 'C_other': [...]}
-    每個 entry 是 (symbol, stock_dict) 的 list。"""
+    每個 entry 是 (symbol, stock_dict) 的 list。
+
+    規則 v2.2 §4:C 級特殊用「tags_today」(只今天新成立),
+    避免歷史持續站穩灌水(若 stock entry 無 tags_today,fallback tags 維持相容)。
+    """
     buckets = {"S": [], "A": [], "B": [], "C_special": [], "C_other": []}
     for symbol, stock in stocks.items():
         grade = stock.get("grade", "D")
-        tags = stock.get("tags", [])
+        tags_for_c = stock.get("tags_today", stock.get("tags", []))
         if grade == "S":
             buckets["S"].append((symbol, stock))
         elif grade == "A":
@@ -163,7 +167,7 @@ def classify_stocks(stocks: dict) -> dict:
         elif grade == "B":
             buckets["B"].append((symbol, stock))
         elif grade in ("C", "D"):
-            if _has_special_tag(tags):
+            if _has_special_tag(tags_for_c):
                 buckets["C_special"].append((symbol, stock))
             else:
                 buckets["C_other"].append((symbol, stock))
@@ -278,7 +282,9 @@ def render_c_special(stocks_list) -> str:
 
     groups: dict[str, list[tuple[str, dict, str]]] = {lbl: [] for lbl, _ in C_GROUP_DEFS}
     for symbol, stock in stocks_list:
-        for tag in stock.get("tags", []):
+        # v2.2 §4:C 級分組用 tags_today(只今天新成立);
+        #         若 stock 無 tags_today(舊資料),fallback 用 tags
+        for tag in stock.get("tags_today", stock.get("tags", [])):
             for label, kws in C_GROUP_DEFS:
                 if any(kw in tag for kw in kws):
                     groups[label].append((symbol, stock, tag))

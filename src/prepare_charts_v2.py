@@ -140,8 +140,9 @@ def replay_events_for_given_price(
                 "price":    price_str,
             })
 
-        # 2. 跌破判定(獨立函式,用 prev_state)
-        if standing.evaluate_breakdown(normalized[-1], given_price, prev_state):
+        # 2. 跌破判定(v2.2 event-based:Day1=yesterday + Day2=today)
+        yesterday_k = normalized[-2] if len(normalized) >= 2 else None
+        if standing.evaluate_breakdown(normalized[-1], yesterday_k, given_price):
             events.append({
                 "time":     today_date,
                 "type":     "breakdown",

@@ -568,16 +568,23 @@ def _score_one_line(
     for d in details:
         d["module"] = "given_price"   # 給 W2.4 篩選用
 
-    # 5. 標籤
+    # 5. 標籤(規則 v2.2 §4)
+    #   tags       — 所有 active(STANDING + MAINTAINING + 跌破 event)→ 個股卡 / 完整資訊
+    #   tags_today — 只今天新成立(Day 2 STANDING + 跌破 event)→ C 級分組用
     tags: list[str] = []
+    tags_today: list[str] = []
     if new_state["state"] in (standing.STANDING, standing.MAINTAINING):
         tags.append(f"🟢 站穩 {price_str}")
+    if new_state["state"] == standing.STANDING:
+        tags_today.append(f"🟢 站穩 {price_str}")
 
+    yesterday_k = kline_history[-2] if len(kline_history) >= 2 else None
     breakdown_triggered = standing.evaluate_breakdown(
-        kline_history[-1], given_price, prev_state,
+        kline_history[-1], yesterday_k, given_price,
     )
     if breakdown_triggered:
         tags.append(f"🔴 跌破 {price_str}")
+        tags_today.append(f"🔴 跌破 {price_str}")
 
     # 6. Events(給 W2.4 chart 標記用,僅事件發生當天記)
     events: list[dict] = []
@@ -588,7 +595,7 @@ def _score_one_line(
         events.append({"type": "breakdown", "price": price_str,
                        "category": category, "date": date})
 
-    return score, details, tags, events
+    return score, details, tags, tags_today, events
 
 
 def _score_one_area(
@@ -600,17 +607,43 @@ def _score_one_area(
     weights: dict,
     now_iso: str,
 ) -> tuple[float, list[dict], list[str], list[dict]]:
-    """區域處理:price_str = f"{low}-{high}"、given_price = 中點。"""
+    """區域處理:price_str = f"{low}-{high}"、given_price = 中點。
+
+    規則 v2.2 §1-D:K 棒「碰到」區域(K_low ≤ high AND K_high ≥ low)即觸發。
+    狀態機跟線類共用,但 touch 預檢用 K 棒交集而非中點。
+    若交集 → 把今天 K bar 「夾」進區域中點(low ≤ mid ≤ high),
+    讓 standing.evaluate_standing 的 line-style touch 條件成立。
+    """
     low_str     = area["low"]
     high_str    = area["high"]
+    area_low    = float(low_str)
+    area_high   = float(high_str)
     price_str   = f"{low_str}-{high_str}"
-    given_price = (float(low_str) + float(high_str)) / 2.0
+    given_price = (area_low + area_high) / 2.0
     category    = area["category"]
 
     prev_state = state_io.read_state(conn, symbol, category, price_str)
 
+    # v2.2 §1-D 區域觸發:K 棒範圍 ∩ 區域範圍
+    today_k = kline_history[-1]
+    intersects = today_k["low"] <= area_high and today_k["high"] >= area_low
+
+    if intersects:
+        # 把今天 K bar low/high 撐開到涵蓋 midpoint,讓 line-style touch 條件成立
+        adj_today = {
+            **today_k,
+            "low":  min(today_k["low"],  given_price),
+            "high": max(today_k["high"], given_price),
+        }
+        # close 也需 ≥ midpoint 才能進入 line-style 站穩流程 — 用 close 跟 midpoint 取大
+        if adj_today["close"] < given_price:
+            adj_today["close"] = given_price
+        history_adj = kline_history[:-1] + [adj_today]
+    else:
+        history_adj = kline_history
+
     new_state, should_score = standing.evaluate_standing(
-        kline_history, given_price, prev_state, date,
+        history_adj, given_price, prev_state, date,
     )
 
     state_io.write_state(conn, symbol, category, price_str, new_state, now_iso)
@@ -620,14 +653,19 @@ def _score_one_area(
         d["module"] = "given_price"
 
     tags: list[str] = []
+    tags_today: list[str] = []
     if new_state["state"] in (standing.STANDING, standing.MAINTAINING):
         tags.append(f"🟢 站穩 區域 {price_str}")
+    if new_state["state"] == standing.STANDING:
+        tags_today.append(f"🟢 站穩 區域 {price_str}")
 
+    yesterday_k = kline_history[-2] if len(kline_history) >= 2 else None
     breakdown_triggered = standing.evaluate_breakdown(
-        kline_history[-1], given_price, prev_state,
+        kline_history[-1], yesterday_k, given_price,
     )
     if breakdown_triggered:
         tags.append(f"🔴 跌破 區域 {price_str}")
+        tags_today.append(f"🔴 跌破 區域 {price_str}")
 
     events: list[dict] = []
     if new_state["state"] == standing.STANDING:
@@ -637,7 +675,7 @@ def _score_one_area(
         events.append({"type": "breakdown", "price": price_str,
                        "category": category, "date": date})
 
-    return score, details, tags, events
+    return score, details, tags, tags_today, events
 
 
 # ── 單檔個股計分 ──────────────────────────────────────────────────────────────
@@ -726,17 +764,21 @@ def score_one_symbol(
     lines    = stock_kp.get("lines", [])
     areas    = stock_kp.get("areas", [])
 
+    all_tags_today: list[str] = []
+
     for line in lines:
-        s, d, t, e = _score_one_line(
+        s, d, t, t2, e = _score_one_line(
             conn_kline, symbol, line, kline_history, date, weights, now_iso,
         )
-        total_score += s; all_details.extend(d); all_tags.extend(t); all_events.extend(e)
+        total_score += s; all_details.extend(d); all_tags.extend(t)
+        all_tags_today.extend(t2); all_events.extend(e)
 
     for area in areas:
-        s, d, t, e = _score_one_area(
+        s, d, t, t2, e = _score_one_area(
             conn_kline, symbol, area, kline_history, date, weights, now_iso,
         )
-        total_score += s; all_details.extend(d); all_tags.extend(t); all_events.extend(e)
+        total_score += s; all_details.extend(d); all_tags.extend(t)
+        all_tags_today.extend(t2); all_events.extend(e)
 
     grade_letter = grader.grade(total_score, weights["grade"])
     name, sector_name = _lookup_stock_meta(symbol, watchlist)
@@ -747,6 +789,7 @@ def score_one_symbol(
         "score":               round(total_score, 4),
         "grade":               grade_letter,
         "tags":                all_tags,
+        "tags_today":          all_tags_today,   # v2.2 §4 C 級分組用(只今天新成立)
         "details":             all_details,
         "key_prices_snapshot": {"lines": lines, "areas": areas},
         "events":              all_events,
