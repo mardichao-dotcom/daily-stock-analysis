@@ -149,18 +149,22 @@ class TestFromTriggered(unittest.TestCase):
         self.assertEqual(new["state"], UNTRIGGERED)
         self.assertFalse(score)
 
-    def test_d2_stand_day_still_works(self):
-        """D2 STAND_DAY 仍視窗內 → STANDING"""
+    def test_d2_window_expired_under_v22(self):
+        """v2.2:Day 2 嚴格隔天。D2 視窗過後若今天 touch → 重啟 TRIGGER
+        (注意 touch 需 K_low ≤ p ≤ K_high)
+        """
         new, score = evaluate_standing(
             [k("2026-05-13", 95, 102, 94, 100),
-             k("2026-05-14", 99, 102, 98, 101),   # mixed
-             k("2026-05-15", 102, 105, 101, 104)],  # D2 STAND_DAY
+             k("2026-05-14", 99, 102, 98, 101),    # mixed Day 2 → 觸發作廢
+             k("2026-05-15", 99, 105, 98, 104)],   # today K touches p=100 (low=98 ≤ 100 ≤ high=105)
             given_price=100,
             prev_state=state(TRIGGERED, trigger_date="2026-05-13"),
             today_date="2026-05-15",
         )
-        self.assertEqual(new["state"], STANDING)
-        self.assertTrue(score)
+        # v2.2:days_since=2 > 1 → 視窗到期;今天 touch → 重啟新 TRIGGER
+        self.assertEqual(new["state"], TRIGGERED)
+        self.assertEqual(new["trigger_date"], "2026-05-15")
+        self.assertFalse(score)
 
     def test_d3_window_expired_no_touch_goes_untriggered(self):
         """D3 視窗到期 + 今天沒 TOUCH → UNTRIGGERED"""
@@ -192,11 +196,13 @@ class TestFromTriggered(unittest.TestCase):
         self.assertFalse(score)
 
 
-class TestQ1Q2TriggeredMixedDays(unittest.TestCase):
-    """Q1 / Q2:TRIGGERED + 混合(只滿足開或收一邊)→ 留 TRIGGERED"""
+class TestQ1Q2TriggeredMixedDaysV22(unittest.TestCase):
+    """v2.2:TRIGGERED + Day 2 沒 stand_day → 觸發作廢,UNTRIGGERED 或重新 TRIGGER"""
 
-    def test_q1_open_above_close_below_stays_triggered(self):
-        """Q1:開 ≥ 收 < → 既不滿足成立、也不滿足當天取消 → 留 TRIGGERED"""
+    def test_q1_open_above_close_below_d2_fails(self):
+        """Q1 在 v2.2:Day 2 open ≥ 但 close < → stand_day=False → 觸發作廢
+        今天 K touch(low=95 ≤ 100 ≤ high=103)且 close=98 < 100 → 不重啟 TRIGGER
+        """
         new, score = evaluate_standing(
             [k("2026-05-13", 95, 102, 94, 100),
              k("2026-05-14", 102, 103, 95, 98)],   # 開 102 ≥ 100, 收 98 < 100
@@ -204,12 +210,14 @@ class TestQ1Q2TriggeredMixedDays(unittest.TestCase):
             prev_state=state(TRIGGERED, trigger_date="2026-05-13"),
             today_date="2026-05-14",
         )
-        self.assertEqual(new["state"], TRIGGERED)
-        self.assertEqual(new["trigger_date"], "2026-05-13")   # 保留 trigger_date
+        # Day 2 fail → 觸發作廢。touch 需 close ≥ p,而 close=98 < 100 → 不 touch
+        self.assertEqual(new["state"], UNTRIGGERED)
         self.assertFalse(score)
 
-    def test_q2_open_below_close_above_stays_triggered(self):
-        """Q2:開 < 收 ≥ → 留 TRIGGERED"""
+    def test_q2_open_below_close_above_d2_fails_but_retouch(self):
+        """Q2 在 v2.2:Day 2 open < p → stand_day=False → 觸發作廢
+        但今天 K touch(low=97, close=101)→ 重新起 TRIGGER
+        """
         new, score = evaluate_standing(
             [k("2026-05-13", 95, 102, 94, 100),
              k("2026-05-14", 98, 102, 97, 101)],   # 開 98 < 100, 收 101 ≥ 100
@@ -217,24 +225,32 @@ class TestQ1Q2TriggeredMixedDays(unittest.TestCase):
             prev_state=state(TRIGGERED, trigger_date="2026-05-13"),
             today_date="2026-05-14",
         )
+        # Day 2 fail → 觸發作廢。但 today touch(low ≤ p ≤ high, close ≥ p)
+        # → 開新 TRIGGER 循環,trigger_date=today
         self.assertEqual(new["state"], TRIGGERED)
+        self.assertEqual(new["trigger_date"], "2026-05-14")
         self.assertFalse(score)
 
 
 class TestFromStanding(unittest.TestCase):
     """From STANDING(一日狀態,下一個 evaluate 必定離開)"""
 
-    def test_standing_to_maintaining_normal(self):
+    def test_standing_close_at_p_stays_maintaining_v22(self):
+        """v2.2:STANDING → MAINTAINING 要求今天「沒離開」p。
+        即 NOT (open > p AND close > p) AND NOT (open < p AND close < p) AND NOT consec_down。
+        典型場景:今天 K bar 跨越 p(low < p < high),open 或 close 恰好 = p,或一邊
+        在上一邊在下 → 仍 MAINTAINING。
+        """
         new, score = evaluate_standing(
             [k("2026-05-14", 102, 105, 101, 104),
-             k("2026-05-15", 103, 105, 102, 104)],
+             k("2026-05-15", 100, 105, 95, 100)],   # open=close=100 == p → 不算 leave_up
             given_price=100,
             prev_state=state(STANDING, trigger_date="2026-05-13",
                              standing_date="2026-05-14"),
             today_date="2026-05-15",
         )
         self.assertEqual(new["state"], MAINTAINING)
-        self.assertEqual(new["standing_date"], "2026-05-14")   # 保留
+        self.assertEqual(new["standing_date"], "2026-05-14")
         self.assertFalse(score)
 
     def test_standing_to_cancelled_down_day(self):
@@ -310,115 +326,201 @@ class TestFromCancelled(unittest.TestCase):
 # 2. 旺矽 §3-B 範例 7 天端到端
 # ═════════════════════════════════════════════════════════════════════════════
 
-class TestWangXiEndToEnd(unittest.TestCase):
-    """規則 §3-B 旺矽範例完整 trace,p=5380"""
+class TestWangXiEndToEndV22(unittest.TestCase):
+    """規則 v2.2 §3-B 旺矽範例,p=5380。
 
-    def test_full_trace(self):
+    跟 v2.1 差異:
+      - 5/14 STANDING 後,5/15 open=5460/close=5450(全部 > 5380)→ leave_up → CANCELLED
+        (v2.1 是 MAINTAINING,v2.2 強勢漲離就 cancel)
+      - 後續日子若還碰不到 5380 → 都 UNTRIGGERED
+      - 直到價格回踩 5380 才能重啟新一輪
+    """
+
+    def test_v22_strong_rally_cancels_quickly(self):
         p = 5380
         history = []
         cur = state(UNTRIGGERED)
 
-        def step(date, o, h, low, c, expected_state, expected_score):
+        def step(date, o, h, low, c, expected_state, expected_score, label=""):
             history.append(k(date, o, h, low, c))
             new, score = evaluate_standing(history, p, cur, date)
             self.assertEqual(new["state"], expected_state,
-                             f"{date}: state expected {expected_state} got {new['state']}")
+                f"{date} {label}: state expected {expected_state} got {new['state']}")
             self.assertEqual(score, expected_score,
-                             f"{date}: should_score expected {expected_score} got {score}")
+                f"{date} {label}: should_score expected {expected_score} got {score}")
             return new
 
-        # 5/13 收 5400 觸發 5380 → TRIGGERED
-        cur = step("2026-05-13", 5350, 5420, 5370, 5400, TRIGGERED, False)
+        # 5/13 收 5400(touch 5380,close ≥)→ TRIGGERED
+        cur = step("2026-05-13", 5350, 5420, 5370, 5400, TRIGGERED, False, "Day 1 touch")
         self.assertEqual(cur["trigger_date"], "2026-05-13")
 
-        # 5/14 開+收都 ≥ → STANDING +N
-        cur = step("2026-05-14", 5450, 5520, 5440, 5500, STANDING, True)
+        # 5/14 open=5450/close=5500 全 ≥ 5380 → STANDING +N
+        cur = step("2026-05-14", 5450, 5520, 5440, 5500, STANDING, True, "Day 2 stand")
         self.assertEqual(cur["standing_date"], "2026-05-14")
 
-        # 5/15-5/19 收都在 5380 上 → MAINTAINING
-        cur = step("2026-05-15", 5460, 5475, 5440, 5450, MAINTAINING, False)
-        cur = step("2026-05-16", 5450, 5470, 5430, 5440, MAINTAINING, False)
-        cur = step("2026-05-19", 5440, 5460, 5430, 5450, MAINTAINING, False)
+        # 5/15 open=5460/close=5450 — v2.2 全 > 5380(open > p+ε AND close > p+ε)
+        #       → leave_up → CANCELLED
+        cur = step("2026-05-15", 5460, 5475, 5440, 5450, CANCELLED, False,
+                    "leave_up cancel")
 
-        # 5/20 開+收都 < → CANCELLED + 跌破標籤(獨立函式)
-        cur = step("2026-05-20", 5350, 5360, 5290, 5300, CANCELLED, False)
-        # 同一天驗證跌破標籤觸發
-        self.assertTrue(evaluate_breakdown(
-            k("2026-05-20", 5350, 5360, 5290, 5300), p,
-            state(MAINTAINING),   # 用 5/19 的 prev_state(MAINTAINING)
-        ))
+    def test_v22_retouch_after_cancel_can_restart(self):
+        """v2.2:CANCELLED 後 K bar 跌回 p → 重啟新 TRIGGER 循環"""
+        p = 5380
+        history = [
+            k("2026-05-14", 5450, 5520, 5440, 5500),   # STANDING
+            k("2026-05-15", 5460, 5475, 5440, 5450),   # leave_up → CANCELLED
+            k("2026-05-19", 5320, 5410, 5310, 5400),   # 回踩 5380,close ≥
+        ]
+        new, score = evaluate_standing(
+            history, p,
+            prev_state=state(CANCELLED, standing_date="2026-05-14"),
+            today_date="2026-05-19",
+        )
+        # CANCELLED 視同 UNTRIGGERED;touch → TRIGGERED
+        self.assertEqual(new["state"], TRIGGERED)
+        self.assertEqual(new["trigger_date"], "2026-05-19")
+        self.assertFalse(score)
 
-        # 5/21 又 TOUCH → 新 TRIGGERED
-        cur = step("2026-05-21", 5320, 5410, 5310, 5400, TRIGGERED, False)
-        self.assertEqual(cur["trigger_date"], "2026-05-21")
 
-        # 5/22 STAND_DAY → STANDING again(+N 再次)
-        cur = step("2026-05-22", 5440, 5520, 5420, 5500, STANDING, True)
+# ─────────────────────────────────────────────────────────────────────────────
+# v2.2 新增測試:bidirectional cancel + breach event(已在 TestBreakdownV22)
+# ─────────────────────────────────────────────────────────────────────────────
+
+class TestV22LeaveUpCancel(unittest.TestCase):
+    """v2.2 新增:雙向取消的 leave_up 分支"""
+
+    def test_standing_then_strong_rally_cancels(self):
+        """STANDING + 隔天整根 > p → CANCELLED(全在上方)"""
+        history = [
+            k("2026-05-13", 95, 102, 94, 100),
+            k("2026-05-14", 100, 105, 99, 103),   # STANDING (open=100,close=103)
+            k("2026-05-15", 110, 115, 108, 112),  # 全 > 100 → leave_up
+        ]
+        new, score = evaluate_standing(
+            history, 100,
+            prev_state=state(STANDING, trigger_date="2026-05-13",
+                              standing_date="2026-05-14"),
+            today_date="2026-05-15",
+        )
+        self.assertEqual(new["state"], CANCELLED)
+        self.assertFalse(score)
+
+    def test_maintaining_then_strong_rally_cancels(self):
+        """MAINTAINING + 一天全在上方 → CANCELLED"""
+        history = [
+            k("2026-05-19", 102, 105, 99, 103),
+            k("2026-05-20", 110, 115, 108, 112),
+        ]
+        new, score = evaluate_standing(
+            history, 100,
+            prev_state=state(MAINTAINING, standing_date="2026-05-14"),
+            today_date="2026-05-20",
+        )
+        self.assertEqual(new["state"], CANCELLED)
+        self.assertFalse(score)
+
+    def test_close_exactly_at_p_no_leave_up(self):
+        """close 恰好 = p → leave_up 不成立(避免 ε 誤判)"""
+        history = [
+            k("2026-05-13", 102, 105, 99, 103),
+            k("2026-05-14", 102, 105, 99, 100),   # close=100 == p,不算 leave_up
+        ]
+        new, score = evaluate_standing(
+            history, 100,
+            prev_state=state(MAINTAINING),
+            today_date="2026-05-14",
+        )
+        self.assertEqual(new["state"], MAINTAINING)
+        self.assertFalse(score)
+
+    def test_open_above_close_below_not_leave(self):
+        """open > p, close < p → 一邊上一邊下,K 棒穿過 p,不算 leave"""
+        history = [
+            k("2026-05-13", 102, 105, 99, 103),
+            k("2026-05-14", 101, 105, 95, 98),    # open=101 > p, close=98 < p
+        ]
+        new, score = evaluate_standing(
+            history, 100,
+            prev_state=state(MAINTAINING),
+            today_date="2026-05-14",
+        )
+        # consec_down 需 prev close 也 < p,prev close=103 ≥ p → 不 consec_down
+        # leave_down 需 open AND close 都 < p,open=101 ≥ p → 不 leave_down
+        # leave_up 需 open AND close 都 > p,close=98 < p → 不 leave_up
+        # → MAINTAINING
+        self.assertEqual(new["state"], MAINTAINING)
+        self.assertFalse(score)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
 # 3. 跌破判定(Q6 + 相關)
 # ═════════════════════════════════════════════════════════════════════════════
 
-class TestBreakdown(unittest.TestCase):
-    """evaluate_breakdown:獨立函式,只在 STANDING/MAINTAINING 才回 True"""
+class TestBreakdownV22(unittest.TestCase):
+    """規則 v2.2 §3-A:跌破 event = Day 1(碰到 + close ≤ p)+ Day 2(open ≤ p AND close ≤ p)
+    新簽名:evaluate_breakdown(today_k, yesterday_k, given_price)
+    跟 prev_state 無關(event-based)。
+    """
 
     P = 100
 
-    def test_untriggered_no_breakdown(self):
-        """沒站上過談跌破無意義 → False"""
-        self.assertFalse(evaluate_breakdown(
-            k("X", 90, 95, 89, 92), self.P, state(UNTRIGGERED)
-        ))
+    # ── 正例:Day1 + Day2 都成立 ──
+    def test_full_breakdown_event(self):
+        """Day 1 碰到 + close ≤ p,Day 2 open ≤ AND close ≤ → True"""
+        yesterday = k("D1", 102, 105, 98, 100)   # low ≤ 100 ≤ high,close=100 ≤ 100
+        today     = k("D2", 99, 100, 90, 95)     # open ≤ 100, close ≤ 100
+        self.assertTrue(evaluate_breakdown(today, yesterday, self.P))
 
-    def test_triggered_no_breakdown(self):
-        """TRIGGERED 還沒站穩 → False"""
-        self.assertFalse(evaluate_breakdown(
-            k("X", 90, 95, 89, 92), self.P, state(TRIGGERED, trigger_date="X")
-        ))
+    def test_clear_below_after_touch(self):
+        """經典跌破:Day 1 收剛好線上,Day 2 整根跌破"""
+        yesterday = k("D1", 101, 102, 99, 100)   # touch + close=100
+        today     = k("D2", 95, 99, 90, 92)
+        self.assertTrue(evaluate_breakdown(today, yesterday, self.P))
 
-    def test_cancelled_no_breakdown(self):
-        """CANCELLED(剛被取消)再跌一天 → 不再發標籤"""
-        self.assertFalse(evaluate_breakdown(
-            k("X", 90, 95, 89, 92), self.P, state(CANCELLED)
-        ))
+    # ── 反例:Day 1 沒碰到 ──
+    def test_day1_no_touch_no_breakdown(self):
+        """Day 1 K 棒沒涵蓋 given price → False"""
+        yesterday = k("D1", 110, 120, 105, 115)   # 整根 > 100
+        today     = k("D2", 95, 99, 90, 92)
+        self.assertFalse(evaluate_breakdown(today, yesterday, self.P))
 
-    def test_standing_close_below_triggers(self):
-        """STANDING + 今天收 < → True"""
-        self.assertTrue(evaluate_breakdown(
-            k("X", 102, 105, 95, 98), self.P, state(STANDING)
-        ))
+    def test_day1_close_above_no_breakdown(self):
+        """Day 1 碰到但 close > p → 站穩雛形,不是跌破"""
+        yesterday = k("D1", 99, 102, 95, 101)    # touch but close=101 > 100
+        today     = k("D2", 95, 99, 90, 92)
+        self.assertFalse(evaluate_breakdown(today, yesterday, self.P))
 
-    def test_maintaining_close_below_triggers(self):
-        """MAINTAINING + 今天收 < → True"""
-        self.assertTrue(evaluate_breakdown(
-            k("X", 102, 105, 95, 98), self.P, state(MAINTAINING)
-        ))
+    # ── 反例:Day 2 沒符合 ──
+    def test_day2_open_above_fails(self):
+        """Day 2 open > p → 防假跌破"""
+        yesterday = k("D1", 101, 102, 99, 100)
+        today     = k("D2", 101, 105, 99, 95)    # open=101 > 100
+        self.assertFalse(evaluate_breakdown(today, yesterday, self.P))
 
-    def test_standing_open_below_close_below_triggers(self):
-        """規則 §3-A 第二條件:開 < 且 收 < → True(實際被第一條件包含)"""
-        self.assertTrue(evaluate_breakdown(
-            k("X", 95, 99, 90, 95), self.P, state(STANDING)
-        ))
+    def test_day2_close_above_fails(self):
+        """Day 2 close > p → 反彈,跌破不成立"""
+        yesterday = k("D1", 101, 102, 99, 100)
+        today     = k("D2", 95, 102, 90, 101)    # close=101 > 100
+        self.assertFalse(evaluate_breakdown(today, yesterday, self.P))
 
-    def test_maintaining_close_above_no_breakdown(self):
-        """收還在線上 → False"""
-        self.assertFalse(evaluate_breakdown(
-            k("X", 98, 105, 95, 102), self.P, state(MAINTAINING)
-        ))
+    # ── prev_state 無關(v2.2 改 event)──
+    def test_no_prior_standing_still_emits(self):
+        """v2.2 改成 event:即使從沒站穩過,Day1+Day2 條件滿足就觸發"""
+        yesterday = k("D1", 101, 102, 99, 100)
+        today     = k("D2", 95, 99, 90, 92)
+        self.assertTrue(evaluate_breakdown(today, yesterday, self.P))
 
-    def test_breakdown_with_none_prev(self):
-        """prev=None → False"""
-        self.assertFalse(evaluate_breakdown(
-            k("X", 90, 95, 89, 92), self.P, None
-        ))
+    def test_yesterday_none_no_breakdown(self):
+        """沒昨天的 K → 無法判 Day1,回 False"""
+        today = k("D2", 95, 99, 90, 92)
+        self.assertFalse(evaluate_breakdown(today, None, self.P))
 
-    def test_breakdown_does_not_modify_state(self):
-        """evaluate_breakdown 不改 prev_state(獨立軌道)"""
-        prev = state(STANDING, standing_date="2026-05-14")
-        evaluate_breakdown(k("X", 90, 95, 89, 92), self.P, prev)
-        self.assertEqual(prev["state"], STANDING)
-        self.assertEqual(prev["standing_date"], "2026-05-14")
+    # ── 邊界:exact equality ──
+    def test_exact_equal_satisfies_touch_and_close(self):
+        """open = close = p 邊界:條件用 ≤(允許等號)"""
+        yesterday = k("D1", 100, 105, 95, 100)   # close=100 ≤ 100 ✓
+        today     = k("D2", 100, 102, 90, 100)   # open=100 ≤, close=100 ≤
+        self.assertTrue(evaluate_breakdown(today, yesterday, self.P))
 
 
 # ═════════════════════════════════════════════════════════════════════════════

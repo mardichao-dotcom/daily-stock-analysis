@@ -139,15 +139,19 @@ class TestWangXiEightDayCycle(unittest.TestCase):
             self.conn, "TPEX:6223", "inner_support", "4640",
         )
 
-    # ── 預期狀態表(8 天逐日)──────────────────────────────────────────────
+    # ── 預期狀態表(8 天逐日,v2.2 已更新)──────────────────────────────────
     # date          state         trigger_date  standing_date  score  has_tag_standing  has_tag_breakdown  event
+    # v2.2 變化:
+    #   5/15 STANDING → 5/16+ MAINTAINING 全變 CANCELLED/UNTRIGGERED(leave_up 觸發)
+    #   5/20 CANCELLED + breakdown event 變 UNTRIGGERED + 無 breakdown
+    #        (因 5/19 close=4660 > p=4640,Day 1 close ≤ p 條件不成立)
     EXPECTED = [
         ("2026-05-13", "TRIGGERED",   "2026-05-13", None,         0.0, False, False, None),
         ("2026-05-14", "STANDING",    "2026-05-13", "2026-05-14", 0.7, True,  False, "standing"),
-        ("2026-05-15", "MAINTAINING", "2026-05-13", "2026-05-14", 0.0, True,  False, None),
-        ("2026-05-16", "MAINTAINING", "2026-05-13", "2026-05-14", 0.0, True,  False, None),
-        ("2026-05-19", "MAINTAINING", "2026-05-13", "2026-05-14", 0.0, True,  False, None),
-        ("2026-05-20", "CANCELLED",   None,         "2026-05-14", 0.0, False, True,  "breakdown"),
+        ("2026-05-15", "CANCELLED",   None,         "2026-05-14", 0.0, False, False, None),
+        ("2026-05-16", "UNTRIGGERED", None,         None,         0.0, False, False, None),
+        ("2026-05-19", "TRIGGERED",   "2026-05-19", None,         0.0, False, False, None),
+        ("2026-05-20", "UNTRIGGERED", None,         None,         0.0, False, False, None),
         ("2026-05-21", "TRIGGERED",   "2026-05-21", None,         0.0, False, False, None),
         ("2026-05-22", "STANDING",    "2026-05-21", "2026-05-22", 0.7, True,  False, "standing"),
     ]
@@ -251,9 +255,9 @@ class TestOutputStructure(unittest.TestCase):
         self.assertEqual(event["type"], "standing")
 
     def test_stock_entry_has_required_fields(self):
-        """W3 加 name/sector 後,8 個必填欄位"""
+        """v2.2 加 tags_today 後,9 個必填欄位"""
         stock = self.result["stocks"]["TPEX:6223"]
-        required = {"name", "sector", "score", "grade", "tags",
+        required = {"name", "sector", "score", "grade", "tags", "tags_today",
                     "details", "key_prices_snapshot", "events"}
         self.assertEqual(set(stock.keys()), required)
 

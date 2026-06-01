@@ -193,9 +193,12 @@ class TestReplayEventsMultipleCycles(unittest.TestCase):
             # Cycle 1
             {"time": "2026-01-02", "open": 95, "high": 102, "low": 98, "close": 100},  # TRIGGERED (low=98<=100, close=100>=100)
             {"time": "2026-01-03", "open": 102, "high": 110, "low": 101, "close": 105}, # STANDING (open+close>=100)
-            {"time": "2026-01-04", "open": 104, "high": 108, "low": 102, "close": 106}, # MAINTAINING
-            {"time": "2026-01-05", "open": 105, "high": 109, "low": 103, "close": 107}, # MAINTAINING
-            {"time": "2026-01-06", "open": 95, "high": 99, "low": 90, "close": 93},     # CANCELLED+跌破
+            # v2.2:K 跨越 p 維持 MAINTAINING。
+            # 1/04 close=101 > p → Day 1 跌破不成立(避免 1/04+1/05 也算 breakdown)
+            # 1/05 close=100 = p → Day 1 跌破成立,1/06 = Day 2
+            {"time": "2026-01-04", "open":  99, "high": 105, "low":  99, "close": 101},  # MAINTAINING
+            {"time": "2026-01-05", "open":  99, "high": 105, "low":  99, "close": 100},  # MAINTAINING(Day 1 跌破)
+            {"time": "2026-01-06", "open":  95, "high":  99, "low":  90, "close":  93},  # leave_down→CANCELLED + 跌破 Day 2
             # Untriggered period
             {"time": "2026-01-07", "open": 88, "high": 92, "low": 85, "close": 90},
             {"time": "2026-01-08", "open": 88, "high": 92, "low": 85, "close": 90},
@@ -205,10 +208,11 @@ class TestReplayEventsMultipleCycles(unittest.TestCase):
             # Cycle 2
             {"time": "2026-01-12", "open": 95, "high": 102, "low": 98, "close": 100},   # TRIGGERED again
             {"time": "2026-01-13", "open": 102, "high": 110, "low": 101, "close": 105}, # STANDING again
-            {"time": "2026-01-14", "open": 104, "high": 108, "low": 102, "close": 106}, # MAINTAINING
-            {"time": "2026-01-15", "open": 105, "high": 109, "low": 103, "close": 107}, # MAINTAINING
-            {"time": "2026-01-16", "open": 105, "high": 109, "low": 103, "close": 107}, # MAINTAINING
-            {"time": "2026-01-17", "open": 95, "high": 99, "low": 90, "close": 93},     # CANCELLED+跌破
+            # v2.2 cycle 2:同上,只 1/16 close=p 觸發 Day 1 跌破
+            {"time": "2026-01-14", "open":  99, "high": 105, "low":  99, "close": 101},  # MAINTAINING
+            {"time": "2026-01-15", "open":  99, "high": 105, "low":  99, "close": 101},  # MAINTAINING
+            {"time": "2026-01-16", "open":  99, "high": 105, "low":  99, "close": 100},  # MAINTAINING(Day 1 跌破)
+            {"time": "2026-01-17", "open":  95, "high":  99, "low":  90, "close":  93},  # leave_down→CANCELLED + 跌破 Day 2
         ]
         events = pc.replay_events_for_given_price(
             kline, given_price=100, category="key_price", price_str="100",
