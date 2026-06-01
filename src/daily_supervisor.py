@@ -14,9 +14,11 @@ Discord webhook URL 讀取順序:
   - 讀不到狀態檔 / 狀態檔損壞 → 仍發一則「⚠️ 總管讀不到狀態」告警（不靜默）
   - 本程式自身例外不中斷通知流程：任何錯誤都 fallback 到告警訊息
 """
+from __future__ import annotations
 import argparse
 import json
 import os
+import sqlite3
 import sys
 import urllib.request
 import urllib.error
@@ -24,8 +26,13 @@ from datetime import datetime, timezone, timedelta
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 STATUS_FILE  = os.path.join(PROJECT_ROOT, "state", "automation_status.json")
+KLINE_DB     = os.path.join(PROJECT_ROOT, "kline.db")
+ETF_DB       = os.path.expanduser("~/ETF追蹤/etf_operations.db")
 DASHBOARD_URL = "https://mardichao-dotcom.github.io/daily-stock-analysis/"
 TZ_TAIPEI = timezone(timedelta(hours=8))
+
+# 資料新鮮度告警閾值(天)— 5/21~5/31 那 11 天靜默不再發生
+FRESHNESS_ALERT_DAYS = 3
 
 # ── Discord 工具 ──────────────────────────────────────────────────────────────
 
@@ -96,9 +103,60 @@ def _overall_icon(overall: str) -> str:
 
 # ── 訊息組裝 ──────────────────────────────────────────────────────────────────
 
+def _check_data_freshness() -> list[str]:
+    """檢查 kline.db / etf_operations.db 新鮮度。
+    超過 FRESHNESS_ALERT_DAYS 天沒新資料就回告警字串(可多筆)。
+
+    這個 watchdog 跟「step 跑成功/失敗」是 **不同訊號**:
+      - 步驟 ok 但資料沒前進 → 仍會告警(5/21~5/31 那種情境)
+      - 步驟 fail 也會告警(來自不同 code path)
+    """
+    today = datetime.now(TZ_TAIPEI).date()
+    warnings = []
+
+    def _max_date(db_path: str, sql: str) -> str | None:
+        if not os.path.exists(db_path):
+            return None
+        try:
+            conn = sqlite3.connect(db_path)
+            row = conn.execute(sql).fetchone()
+            conn.close()
+            return row[0] if row and row[0] else None
+        except sqlite3.Error:
+            return None
+
+    # K 線(5B tv_collect 寫入)
+    kline_max = _max_date(KLINE_DB, "SELECT MAX(date) FROM kline")
+    if kline_max:
+        gap = (today - datetime.strptime(kline_max, "%Y-%m-%d").date()).days
+        if gap >= FRESHNESS_ALERT_DAYS:
+            warnings.append(
+                f"🚨 kline.db {gap} 天沒新資料(最新 {kline_max} / 今天 {today})"
+            )
+
+    # ETF operations(5A daily_update 寫入)
+    etf_max = _max_date(ETF_DB, "SELECT MAX(日期) FROM operations")
+    if etf_max:
+        gap = (today - datetime.strptime(etf_max, "%Y-%m-%d").date()).days
+        if gap >= FRESHNESS_ALERT_DAYS:
+            warnings.append(
+                f"🚨 etf_operations.db {gap} 天沒新資料(最新 {etf_max} / 今天 {today})"
+            )
+
+    return warnings
+
+
 def _build_message(status: dict) -> str:
     today = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d")
     lines = []
+
+    # ── 資料新鮮度告警(優先顯示,避免被 step ok 蓋過)──
+    freshness_warnings = _check_data_freshness()
+    if freshness_warnings:
+        lines.append("🚨 資料新鮮度告警")
+        for w in freshness_warnings:
+            lines.append(f"  {w}")
+        lines.append("─" * 33)
 
     # ── 整體 header ──
     overall_text = "❓ 狀態未知"
