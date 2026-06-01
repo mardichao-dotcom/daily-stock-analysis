@@ -332,7 +332,9 @@
     if (!symbol || !date) return;
 
     let loaded = false;
-    const parent = placeholder.closest('details.stock-card');
+    // 找包住 placeholder 的最近 <details>(index_v2 是 .stock-card,
+    // watchlist_v2 是 .wl-stock;closest 走上來抓最近的,不會搶到板塊那層)
+    const parent = placeholder.closest('details');
     if (!parent) return;
 
     async function load() {
