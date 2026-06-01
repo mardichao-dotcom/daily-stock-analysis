@@ -23,11 +23,25 @@ const PROJECT_ROOT = join(__dirname, '..');
 const CDP_PORT = 9222;
 const CHART_API = "window.TradingViewApi._activeChartWidgetWV.value()";
 const BARS_PATH = `${CHART_API}._chartWidget.model().mainSeries().bars()`;
+// Preflight 等 chart page 把 TradingViewApi 物件 expose 出來(2026-06-01 修補)
+const PREFLIGHT_PROBE = `(()=>{try{return typeof window.TradingViewApi==='object'&&typeof window.TradingViewApi._activeChartWidgetWV==='object'&&typeof window.TradingViewApi._activeChartWidgetWV.value==='function'&&typeof window.TradingViewApi._activeChartWidgetWV.value()==='object'}catch(e){return false}})()`;
 
 // ── CLI args ────────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
 const daysIdx = args.indexOf('--days');
 const DAYS = daysIdx >= 0 ? parseInt(args[daysIdx + 1], 10) : 180;
+const symbolIdx = args.indexOf('--symbol');
+const SINGLE_SYMBOL = symbolIdx >= 0 ? args[symbolIdx + 1] : null;
+const timeoutIdx = args.indexOf('--timeout-min');
+const TIMEOUT_MIN = timeoutIdx >= 0 ? parseInt(args[timeoutIdx + 1], 10) : 30;
+
+// ── 整體 timeout(避免 5/31 那種 TV Desktop 自己卡連帶 tv_collect 跟著卡)──
+const GLOBAL_TIMEOUT_MS = TIMEOUT_MIN * 60 * 1000;
+const globalKiller = setTimeout(() => {
+  console.error(`[FATAL] tv_collect exceeded ${TIMEOUT_MIN} min global timeout — bailing`);
+  process.exit(124);   // unix conventional timeout exit code
+}, GLOBAL_TIMEOUT_MS);
+globalKiller.unref();
 
 // ── watchlist.json → symbol lists ──────────────────────────────────────────
 const watchlist = JSON.parse(
@@ -94,15 +108,49 @@ function logFail(symbol, attempt, reason) {
 // ── CDP helpers ───────────────────────────────────────────────────────────────
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+// fetch 包 timeout(防 5/31 那種「CDP server 接受連線但不回應」)
+async function fetchWithTimeout(url, ms) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), ms);
+  try {
+    return await fetch(url, { signal: ctrl.signal });
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 async function connectCDP() {
-  const resp    = await fetch(`http://localhost:${CDP_PORT}/json/list`);
+  const resp    = await fetchWithTimeout(`http://localhost:${CDP_PORT}/json/list`, 5000);
   const targets = await resp.json();
   const target  = targets.find(t => t.type === 'page' && /tradingview\.com\/chart/i.test(t.url))
                 || targets.find(t => t.type === 'page' && /tradingview/i.test(t.url));
   if (!target) throw new Error('No TradingView chart target found');
+  console.log(`[CDP] target: ${target.url.slice(0, 80)}`);
   const client = await CDP({ host: 'localhost', port: CDP_PORT, target: target.id });
   await client.Runtime.enable();
   return client;
+}
+
+// Preflight:等 chart page 完整把 TradingViewApi 物件 expose(避免 5/31 race)
+// 失敗 → exit 2 → daily_supervisor 抓到「API drift / chart not ready」
+async function waitForApiReady(client, timeoutMs = 30000) {
+  const start = Date.now();
+  let attempt = 0;
+  while (Date.now() - start < timeoutMs) {
+    attempt++;
+    try {
+      const ready = await ev(client, PREFLIGHT_PROBE);
+      if (ready === true) {
+        console.log(`[CDP] ✓ TradingViewApi ready (attempt ${attempt}, ${Date.now() - start}ms)`);
+        return;
+      }
+    } catch { /* swallow,重試 */ }
+    await sleep(2000);
+  }
+  // 30s 還沒就緒 → drift / chart 沒載入
+  const diag = await ev(client, `(()=>{try{return JSON.stringify({tvapi:typeof window.TradingViewApi,wv:typeof window.TradingViewApi?._activeChartWidgetWV,val:typeof window.TradingViewApi?._activeChartWidgetWV?.value,url:location.href,title:document.title})}catch(e){return e.message}})()`)
+    .catch(() => '(eval failed)');
+  throw new Error(`TradingViewApi not ready after ${timeoutMs}ms — possible API drift or chart page not loaded. diag=${diag}`);
 }
 
 async function ev(client, expr, awaitPromise = false) {
@@ -154,21 +202,34 @@ async function main() {
   const today     = TODAY_STR;
   const threshold = new Date(Date.now() - DAYS * 24 * 3600 * 1000).toISOString().slice(0, 10);
 
-  console.log(`[START] ${new Date().toISOString()} | ${ALL_SYMBOLS.length} symbols | DAYS=${DAYS}`);
+  // 單檔模式(debug)
+  const targetSymbols = SINGLE_SYMBOL ? [SINGLE_SYMBOL] : ALL_SYMBOLS;
+  const modeTag = SINGLE_SYMBOL ? ` SINGLE=${SINGLE_SYMBOL}` : '';
+
+  console.log(`[START] ${new Date().toISOString()} | ${targetSymbols.length} symbols${modeTag} | DAYS=${DAYS} | TIMEOUT=${TIMEOUT_MIN}min`);
   console.log(`        threshold(${DAYS}d ago)=${threshold} | today=${today}`);
 
   const klineStatus = getKlineStatus();
   console.log(`        kline.db: ${Object.keys(klineStatus).length} symbols already tracked`);
 
   const client = await connectCDP();
+  // ★ Preflight:等 TradingViewApi expose,否則 0 秒 87 檔全 fail(5/31 教訓)
+  try {
+    await waitForApiReady(client, 30000);
+  } catch (e) {
+    await client.close().catch(() => {});
+    console.error(`[FATAL] preflight failed: ${e.message}`);
+    process.exit(2);
+  }
+
   const results = {};
   const errors  = {};
   let skipped = 0, totalBars = 0;
 
-  for (let i = 0; i < ALL_SYMBOLS.length; i++) {
-    const symbol   = ALL_SYMBOLS[i];
+  for (let i = 0; i < targetSymbols.length; i++) {
+    const symbol   = targetSymbols[i];
     const strategy = getStrategy(symbol, klineStatus, today, threshold);
-    const tag      = `[${String(i+1).padStart(2,'0')}/${ALL_SYMBOLS.length}]`;
+    const tag      = `[${String(i+1).padStart(2,'0')}/${targetSymbols.length}]`;
 
     if (strategy.mode === 'skip') {
       console.log(`${tag} ${symbol} ... SKIP (${strategy.reason})`);
@@ -215,7 +276,7 @@ async function main() {
     '═══════════════════════════════════════════',
     '  tv_collect 執行摘要',
     '───────────────────────────────────────────',
-    `  總 symbols：${ALL_SYMBOLS.length}`,
+    `  總 symbols：${targetSymbols.length}${SINGLE_SYMBOL ? ' (SINGLE)' : ''}`,
     `  成功      ：${Object.keys(results).length}`,
     `  跳過      ：${skipped}`,
     `  失敗      ：${Object.keys(errors).length}${Object.keys(errors).length > 0 ? ' (' + failList + ')' : ''}`,
