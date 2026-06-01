@@ -181,6 +181,7 @@
       areasOverlay.style.width = '100%';
       areasOverlay.style.height = '100%';
       areasOverlay.style.pointerEvents = 'none';
+      areasOverlay.style.zIndex = '2';   // 蓋在 LWC canvas 上(預設 z-index 0/auto)
       chartEl.appendChild(areasOverlay);
     }
 
