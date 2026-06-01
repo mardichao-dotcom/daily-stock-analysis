@@ -280,6 +280,20 @@ def filter_sab_stocks(filtered_result: dict) -> dict:
     }
 
 
+def collect_all_watchlist_symbols(watchlist: dict) -> list[tuple[str, dict]]:
+    """從 watchlist.json 收集全部 symbols(台股板塊 + 國際族群)。
+    回傳 [(symbol, minimal_entry), ...] — minimal_entry 含 name/sector,沒 key_prices/score。
+    """
+    items: list[tuple[str, dict]] = []
+    for sector_name, sec in watchlist.get("台股板塊", {}).items():
+        for m in sec.get("成員", []):
+            items.append((m["code"], {"name": m["name"], "sector": sector_name}))
+    for group_name, grp in watchlist.get("國際族群", {}).items():
+        for m in grp.get("成員", []):
+            items.append((m["code"], {"name": m["name"], "sector": group_name}))
+    return items
+
+
 def run(
     *,
     date:        str,
@@ -287,15 +301,31 @@ def run(
     conn_kline:  sqlite3.Connection,
     conn_etf:    sqlite3.Connection | None,
     outdir:      Path,
+    all_watchlist: dict | None = None,    # 給 watchlist_v2 用:全 87 檔
 ) -> dict:
-    """產生所有 S/A/B 個股的 chart JSON。回傳統計 dict。
-    (2026-05-31 簡化:不再需要 watchlist 參數,name/sector 從 stocks entry 來)"""
-    sab = filter_sab_stocks(filtered_result)
+    """產 chart JSON。預設只產 S/A/B,給 all_watchlist=watchlist.json 內容則產全部。
+    全模式下:有 filtered_result entry 就用(含 key_prices_snapshot),沒則用 minimal。
+    """
+    if all_watchlist is None:
+        targets = list(filter_sab_stocks(filtered_result).items())
+    else:
+        sab_index = filtered_result.get("stocks", {}) if filtered_result else {}
+        # 全 watchlist + 補上 filtered_result 內的(若 watchlist 跟它有 symbol 差異)
+        watchlist_items = collect_all_watchlist_symbols(all_watchlist)
+        seen = set()
+        targets = []
+        for sym, minimal in watchlist_items:
+            if sym in seen:
+                continue
+            seen.add(sym)
+            # 優先用 filtered_result entry(含 key_prices_snapshot / score),
+            # 回退到 minimal(只 name/sector)
+            targets.append((sym, sab_index.get(sym, minimal)))
 
     written: list[str] = []
     skipped: list[str] = []
 
-    for symbol, entry in sab.items():
+    for symbol, entry in targets:
         chart = build_chart_for_stock(
             symbol, entry, conn_kline, conn_etf, date,
         )
@@ -308,10 +338,10 @@ def run(
     write_index(outdir, date, written)
 
     return {
-        "date":    date,
-        "sab_total": len(sab),
-        "written": written,
-        "skipped": skipped,
+        "date":      date,
+        "sab_total": len(filter_sab_stocks(filtered_result)) if filtered_result else 0,
+        "written":   written,
+        "skipped":   skipped,
     }
 
 
@@ -324,10 +354,18 @@ def main():
     parser.add_argument("--etf",    default=os.path.expanduser("~/ETF追蹤/etf_operations.db"))
     parser.add_argument("--result", default=str(PROJECT_ROOT / "filtered_result_v2.json"))
     parser.add_argument("--outdir", default=str(PROJECT_ROOT / "docs" / "data" / "v2"))
+    parser.add_argument("--all-watchlist", action="store_true",
+                         help="產全 watchlist 87 檔 chart JSON(給 watchlist_v2.html)")
+    parser.add_argument("--watchlist", default=str(PROJECT_ROOT / "config" / "watchlist.json"))
     args = parser.parse_args()
 
     with open(args.result, encoding="utf-8") as f:
         filtered_result = json.load(f)
+
+    all_watchlist = None
+    if args.all_watchlist:
+        with open(args.watchlist, encoding="utf-8") as f:
+            all_watchlist = json.load(f)
 
     conn_kline = sqlite3.connect(args.kline)
     conn_etf   = sqlite3.connect(args.etf) if os.path.exists(args.etf) else None
@@ -339,15 +377,18 @@ def main():
             conn_kline=conn_kline,
             conn_etf=conn_etf,
             outdir=Path(args.outdir),
+            all_watchlist=all_watchlist,
         )
     finally:
         conn_kline.close()
         if conn_etf is not None:
             conn_etf.close()
 
-    print(f"✅ {len(stats['written'])} charts written → {args.outdir}/{args.date}")
+    mode = "全 watchlist" if args.all_watchlist else "S/A/B 級"
+    print(f"✅ {len(stats['written'])} charts written ({mode}) → {args.outdir}/{args.date}")
     if stats["skipped"]:
-        print(f"⚠️ {len(stats['skipped'])} skipped(無 K 線資料): {stats['skipped']}")
+        print(f"⚠️ {len(stats['skipped'])} skipped(無 K 線資料): {stats['skipped'][:10]}"
+              + ("..." if len(stats["skipped"]) > 10 else ""))
 
 
 if __name__ == "__main__":
