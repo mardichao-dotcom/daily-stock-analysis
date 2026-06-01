@@ -1,142 +1,58 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>台股右側動能作戰儀表板</title>
-<link rel="icon" href="favicon.ico">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg:       #0d1117;
-    --surface:  #161b22;
-    --border:   #21262d;
-    --border-hi:#388bfd;
-    --text:     #e6edf3;
-    --muted:    #8b949e;
-    --accent:   #58a6ff;
-  }
-  html, body { min-height:100vh; background:var(--bg); color:var(--text);
-    font-family:-apple-system,'Segoe UI','Helvetica Neue',sans-serif;
-    font-size:15px; line-height:1.6; }
-  .page { max-width:900px; margin:0 auto; padding:80px 24px 60px;
-    display:flex; flex-direction:column; gap:60px; }
-
-  /* 大標題 */
-  .hero { text-align:center; }
-  .hero-title { font-size:clamp(26px,5vw,40px); font-weight:700;
-    letter-spacing:-.5px; color:var(--text); margin-bottom:10px; }
-  .hero-sub { font-size:clamp(12px,2vw,15px); color:var(--muted);
-    letter-spacing:.5px; }
-  .hero-divider { width:48px; height:2px; background:var(--accent);
-    margin:22px auto 0; border-radius:2px; opacity:.6; }
-
-  /* 聲明 */
-  .declaration { background:var(--surface); border:1px solid var(--border);
-    border-radius:12px; padding:32px 36px; }
-  .decl-label { font-size:11px; font-weight:700; color:var(--muted);
-    text-transform:uppercase; letter-spacing:1px; margin-bottom:18px; }
-  .declaration p { color:#c9d1d9; font-size:14px; margin-bottom:12px; }
-  .declaration p:last-child { margin-bottom:0; }
-  .notice { background:rgba(248,81,73,.06); border-left:3px solid rgba(248,81,73,.4);
-    border-radius:0 6px 6px 0; padding:12px 16px; margin:14px 0; }
-  .notice strong { color:#f0a0a0; font-size:13px; display:block; margin-bottom:4px; }
-  .notice p { font-size:13px; color:#bcc2c8; margin-bottom:0; }
-
-  /* 入口 */
-  .section-label { font-size:11px; font-weight:700; color:var(--muted);
-    text-transform:uppercase; letter-spacing:1px; text-align:center;
-    margin-bottom:18px; }
-  .entry-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .entry-card { background:var(--surface); border:1px solid var(--border);
-    border-radius:10px; padding:26px 18px 22px; text-align:center;
-    text-decoration:none; color:var(--text);
-    transition:border-color .16s,transform .16s,box-shadow .16s;
-    display:flex; flex-direction:column; align-items:center; gap:9px;
-    position:relative; }
-  .entry-card:hover { border-color:var(--border-hi); transform:translateY(-3px);
-    box-shadow:0 8px 24px rgba(0,0,0,.35); }
-  .entry-card.disabled { opacity:.45; cursor:default; pointer-events:none; }
-  .entry-icon { font-size:26px; line-height:1; }
-  .entry-label { font-size:13px; font-weight:600; }
-  .entry-desc { font-size:11px; color:var(--muted); line-height:1.5; }
-  .soon-badge { position:absolute; top:9px; right:9px; font-size:9px;
-    font-weight:700; letter-spacing:.4px; padding:2px 6px; border-radius:20px;
-    background:rgba(139,148,158,.15); color:var(--muted);
-    border:1px solid rgba(139,148,158,.3); text-transform:uppercase; }
-
-  /* 頁尾 */
-  .footer { text-align:center; font-size:12px; color:var(--muted);
-    border-top:1px solid var(--border); padding-top:26px;
-    display:flex; flex-direction:column; gap:5px; }
-  .footer a { color:var(--accent); text-decoration:none; }
-  .footer a:hover { text-decoration:underline; }
-
-  /* RWD */
-  @media (max-width:680px) {
-    .page { padding:48px 16px 48px; gap:40px; }
-    .entry-grid { grid-template-columns:repeat(2,1fr); }
-    .declaration { padding:22px 18px; }
-  }
-  @media (max-width:380px) { .entry-grid { grid-template-columns:1fr; } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台股動能作戰系統 — Stage 8 v2.1</title>
+  <link rel="stylesheet" href="assets/style_v2.css">
 </head>
-<body>
-<div class="page">
+<body class="page-landing">
 
-  <div class="hero">
-    <h1 class="hero-title">台股右側動能作戰儀表板</h1>
-    <p class="hero-sub">Daily Stock Analysis Dashboard</p>
-    <div class="hero-divider"></div>
-  </div>
-
-  <div class="declaration">
-    <div class="decl-label">關於本站</div>
-    <p>本網站為「台股右側動能交易」策略的每日盤後決策輔助工具。</p>
-    <p>系統每日盤後整合三大面向訊號：主動型 ETF 經理人的籌碼進出、台股族群輪動的長子發動訊號、以及國際領先指標的連動關係。透過五階段過濾與積分制評分，產出當日值得關注的 S 級、A 級個股清單，並為每檔個股附上互動式 K 線圖，疊加主動 ETF 的歷史進出場點位與人工標註的關鍵價。</p>
-    <div class="notice">
-      <strong>【重要聲明】</strong>
-      <p>本網站所有內容，包括個股分級、評分、圖表標記，均為「參考訊號」，不構成任何投資建議或進場指令。所有買賣與進出場決策，應由使用者依自身判斷裁決，並自負風險。</p>
+<header class="page-header landing-header">
+  <div class="container">
+    <h1>🧭 台股動能作戰系統</h1>
+    <div class="meta">
+      資料日期 <strong>2026-06-01</strong> ｜ 版本 v2.1 ｜
+      個股 87 檔(台股 58 + 國際 29) ｜
+      產出時間 2026-06-01 21:46
     </div>
-    <p>系統設計遵循以下原則：嚴禁捏造數據、嚴禁將主觀新聞當作訊號、嚴禁使用強烈的指令性語句。報告呈現的是「數據觀察」，不是「操作指示」。</p>
-    <p>資料來源為公開的市場行情與 ETF 公開資訊，僅供研究與學習用途。</p>
+    <div class="landing-subtitle">找買點的雷達 + ETF 籌碼面雙向掃描</div>
   </div>
+</header>
 
-  <div>
-    <div class="section-label">進入系統</div>
-    <div class="entry-grid">
-      <a class="entry-card" href="dashboard.html">
-        <div class="entry-icon">📊</div>
-        <div class="entry-label">今日儀表板</div>
-        <div class="entry-desc">查看今日盤後的 S/A 級個股、族群輪動、關鍵價分析</div>
-      </a>
-      <a class="entry-card" href="archives/index.html">
-        <div class="entry-icon">📅</div>
-        <div class="entry-label">歷史儀表板</div>
-        <div class="entry-desc">瀏覽過往每日儀表板存檔</div>
-      </a>
-      <a class="entry-card" href="watchlist.html">
-        <div class="entry-icon">📋</div>
-        <div class="entry-label">觀察名單板塊</div>
-        <div class="entry-desc">系統涵蓋的 16 個台股板塊與成員股</div>
-      </a>
-      <a class="entry-card disabled" href="coming-soon.html" tabindex="-1" aria-disabled="true">
-        <span class="soon-badge">即將推出</span>
-        <div class="entry-icon">🔔</div>
-        <div class="entry-label">法說會提醒</div>
-        <div class="entry-desc">法說會 AI 總結，功能開發中</div>
-      </a>
-    </div>
+<main class="container landing-main">
+  <div class="landing-grid">
+    <a class="landing-card landing-primary" href="index_v2.html">
+      <div class="landing-icon">📈</div>
+      <h2>今日儀表板</h2>
+      <p class="landing-tagline">找買點的雷達</p>
+      <p class="landing-detail">S/A/B 級個股 + ETF 主動式雙向掃描</p>
+      <p class="landing-detail">資料日 2026-06-01</p>
+    </a>
+
+    <a class="landing-card" href="watchlist_v2.html">
+      <div class="landing-icon">📋</div>
+      <h2>Watchlist</h2>
+      <p class="landing-tagline">全 87 檔可看 K 線</p>
+      <p class="landing-detail">16 板塊 + 6 國際族群</p>
+      <p class="landing-detail">含 ETF 加減碼箭頭、關鍵價、MA</p>
+    </a>
+
+    <a class="landing-card" href="history.html">
+      <div class="landing-icon">📅</div>
+      <h2>歷史儀表板</h2>
+      <p class="landing-tagline">過去 30 天回顧</p>
+      <p class="landing-detail">3 天可選</p>
+      <p class="landing-detail">每日 snapshot,30 天後 archive</p>
+    </a>
   </div>
+</main>
 
-  <div class="footer">
-    <div>資料來源：TradingView 行情 ｜ 主動型 ETF 公開持倉資訊</div>
-    <div>
-      <a href="https://github.com/mardichao-dotcom/daily-stock-analysis" target="_blank" rel="noopener">GitHub Repo</a>
-      　｜　本站為個人作品集專案，資料僅供研究參考
-    </div>
+<footer class="landing-footer">
+  <div class="container">
+    Stage 8 W3 ｜ 個股 87 檔 ｜ 產出時間 2026-06-01 21:46
   </div>
+</footer>
 
-</div>
 </body>
 </html>

@@ -513,17 +513,122 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   padding: 10px 12px;
 }
 
+/* ─── 入口頁(landing)──────────────────────────────────── */
+.page-landing { background: linear-gradient(to bottom, var(--bg) 0%, #f3f4f6 100%); min-height: 100vh; }
+.landing-header { margin-bottom: 24px; }
+.landing-subtitle {
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-top: 8px;
+  font-style: italic;
+}
+.landing-main { padding-bottom: 40px; }
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 12px;
+}
+.landing-card {
+  display: block;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s;
+  position: relative;
+}
+.landing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border-color: var(--etf-buy);
+}
+.landing-card.landing-primary {
+  border-color: var(--etf-buy);
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+}
+.landing-card .landing-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.landing-card h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+.landing-card .landing-tagline {
+  font-size: 13px;
+  color: var(--etf-buy);
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.landing-card .landing-detail {
+  font-size: 12px;
+  color: var(--text-mute);
+  margin: 2px 0;
+}
+.landing-footer {
+  margin-top: auto;
+  padding: 16px 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-mute);
+  border-top: 1px solid var(--border);
+}
+
+/* ─── 歷史儀表板列表 ────────────────────────────────────── */
+.history-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+.history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.12s, background 0.12s;
+}
+.history-item:hover {
+  border-color: var(--etf-buy);
+  background: #eff6ff;
+}
+.history-item .history-date {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: monospace;
+}
+.history-item .history-day {
+  font-size: 11px;
+  color: var(--text-mute);
+}
+.history-item .history-summary {
+  font-size: 12px;
+  color: var(--text);
+  font-family: monospace;
+  margin-top: 4px;
+}
+
 /* ─── 響應式 ─── */
 @media (max-width: 768px) {
   .etf-active-grid { grid-template-columns: 1fr; }
   .other-list      { columns: 2; }
   header h1        { font-size: 18px; }
   .container       { padding: 8px; }
+  .landing-grid    { grid-template-columns: 1fr; }
+  .history-list    { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
   .other-list      { columns: 1; }
   .stock-card .stock-tags-inline { display: none; }   /* 手機隱藏內聯 tag,展開後才看 */
+  .landing-card    { padding: 18px 16px; }
 }
 
 /* ─── 空狀態 ─── */
