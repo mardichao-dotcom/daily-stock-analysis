@@ -42,6 +42,9 @@ fi
 echo "[2/3] git add + commit..."
 TODAY=$(date +%Y-%m-%d)
 git add docs/ src/ config/ templates/ run_all.sh publish.sh README.md .gitignore
+# V2 chart JSONs (docs/data/v2/{date}/*.json) 受 .gitignore 規則保護,
+# 需用 -f 強制加進來;Pages 才有 K 線 JSON 可服務(2026-06-02 加)
+git add -f docs/data/v2/ 2>/dev/null || true
 git commit -m "儀表板更新 ${TODAY}" || echo "      無新變更，跳過 commit。"
 
 echo "[3/3] git push..."
