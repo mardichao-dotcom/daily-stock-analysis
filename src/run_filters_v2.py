@@ -808,11 +808,22 @@ def run_pipeline(
     key_prices: dict,
     watchlist:  dict,
     now_iso:    str,
+    restrict_symbols: set[str] | None = None,
 ) -> dict:
     """純流程:接 connections + config dicts,回傳輸出 dict。
 
     不寫 JSON、不 commit、不 close connections。
     main() 或測試 caller 負責 IO 收尾。
+
+    restrict_symbols(增量模式):
+        若給,只對這些 symbols 跑 score_one_symbol + 寫 standing_state /
+        score_history。既有 watchlist 其他 symbols 完全不讀不寫。
+        典型用途:add_symbols_batch 補新檔歷史 state(N 個新檔 × 121 天)
+        而不重跑整批 watchlist。
+
+        在 restrict 模式下也會跳過 rotation_tags 跟 ETF active(全市場計算,
+        在 partial set 下意義不大且浪費時間;當天計分要正確仍由 caller 之後
+        跑一次「全量 today」)。
     """
     state_io.init_schema(conn_kline)
     score_history_io.init_schema(conn_kline)
@@ -839,7 +850,12 @@ def run_pipeline(
     results:        dict       = {}
     skipped:        list[str]  = []
 
-    for symbol in iter_tw_symbols(watchlist):
+    # 增量模式:filter target list
+    target_iter = iter_tw_symbols(watchlist)
+    if restrict_symbols is not None:
+        target_iter = (s for s in target_iter if s in restrict_symbols)
+
+    for symbol in target_iter:
         entry = score_one_symbol(
             conn_kline, conn_etf, symbol, date,
             weights, sectors, key_prices, watchlist, now_iso,
@@ -851,22 +867,29 @@ def run_pipeline(
             results[symbol] = entry
 
     # ── 個股輪動標籤(W2.2.6,全部跑完才能算族群均分)─────────────────────
-    rotation_tags_by_symbol = _compute_rotation_tags(
-        results, watchlist, conn_kline, date,
-    )
-    for symbol, tags in rotation_tags_by_symbol.items():
-        if symbol in results:
-            results[symbol]["tags"].extend(tags)
+    # 增量模式跳過:partial set 算不出有意義的族群均分,且當天計分要正確
+    # 由 caller 之後跑一次「全量 today」處理。
+    if restrict_symbols is None:
+        rotation_tags_by_symbol = _compute_rotation_tags(
+            results, watchlist, conn_kline, date,
+        )
+        for symbol, tags in rotation_tags_by_symbol.items():
+            if symbol in results:
+                results[symbol]["tags"].extend(tags)
 
     # ── 寫今日 score 到 score_history(W2.2.6,給隔天 rotation 用)──────────
+    # write_batch 是 UPSERT,增量模式只更新 restrict_symbols 的 row,
+    # 既有 symbols 的 score_history 不動。
     score_history_io.write_batch(conn_kline, date, results, now_iso)
 
     # ── ETF 主動式雙向掃描(W3 區塊 6 資料源)─────────────────────────────
-    # 近 7 日累計窗口(跟 chip_etf 計分視角一致)
-    # 解決 etfedge 延遲不穩定問題(2026-05-31 朋友確認)
-    etf_active = (etf_io.fetch_etf_active_summary(conn_etf, date, watchlist)
-                  if conn_etf is not None
-                  else {"increase": [], "decrease": []})
+    # 增量模式跳過(全市場 7 日累計,partial 沒意義)
+    if restrict_symbols is None:
+        etf_active = (etf_io.fetch_etf_active_summary(conn_etf, date, watchlist)
+                      if conn_etf is not None
+                      else {"increase": [], "decrease": []})
+    else:
+        etf_active = {"increase": [], "decrease": []}
 
     return {
         "date":    date,
@@ -878,6 +901,7 @@ def run_pipeline(
             "generated_at":        now_iso,
             "version":             "2.1",
             "skipped_symbols":     skipped,
+            "incremental":         restrict_symbols is not None,
         },
         "stocks":     results,
         "etf_active": etf_active,
@@ -886,10 +910,34 @@ def run_pipeline(
 
 # ── CLI 入口 ──────────────────────────────────────────────────────────────────
 
+def _parse_incremental_args(args) -> set[str] | None:
+    """從 args.incremental / args.new_symbols 算出 restrict_symbols。
+
+    - 兩 flag 都缺 → None(全量模式)
+    - 兩 flag 都給 → set of symbols
+    - 只給一個 → raise SystemExit(2)(argparse style)
+    """
+    has_inc  = getattr(args, "incremental", False)
+    new_syms = getattr(args, "new_symbols", None)
+    if has_inc and not new_syms:
+        raise SystemExit(
+            "❌ --incremental 必須搭配 --new-symbols TWSE:XXXX,TPEX:YYYY,..."
+        )
+    if new_syms and not has_inc:
+        raise SystemExit(
+            "❌ --new-symbols 必須搭配 --incremental(增量模式)"
+        )
+    if not has_inc:
+        return None
+    return {s.strip() for s in new_syms.split(",") if s.strip()}
+
+
 def main(args) -> None:
     weights, sectors, key_prices, watchlist = load_configs(
         args.weights, args.sectors, args.key_prices, args.watchlist,
     )
+
+    restrict_symbols = _parse_incremental_args(args)
 
     conn_kline = sqlite3.connect(args.kline)
     conn_etf   = sqlite3.connect(args.etf) if os.path.exists(args.etf) else None
@@ -905,6 +953,7 @@ def main(args) -> None:
             key_prices = key_prices,
             watchlist  = watchlist,
             now_iso    = now_iso,
+            restrict_symbols = restrict_symbols,
         )
         conn_kline.commit()
     finally:
@@ -915,8 +964,9 @@ def main(args) -> None:
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
+    mode_tag = " (incremental)" if restrict_symbols else ""
     print(f"✅ {len(output['stocks'])} symbols / "
-          f"{len(output['metadata']['skipped_symbols'])} skipped → {args.output}")
+          f"{len(output['metadata']['skipped_symbols'])} skipped → {args.output}{mode_tag}")
 
 
 if __name__ == "__main__":
@@ -929,4 +979,8 @@ if __name__ == "__main__":
     parser.add_argument("--sectors",    default="config/sectors.json")
     parser.add_argument("--key-prices", dest="key_prices", default="config/key_prices.json")
     parser.add_argument("--watchlist",  default="config/watchlist.json")
+    parser.add_argument("--incremental", action="store_true",
+                         help="增量模式:只處理 --new-symbols 列出的個股,既有不動")
+    parser.add_argument("--new-symbols", dest="new_symbols", default=None,
+                         help="增量模式下的新個股 list,逗號分隔(例:TWSE:2454,TPEX:6223)")
     main(parser.parse_args())

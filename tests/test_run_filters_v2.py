@@ -1502,3 +1502,199 @@ class TestMissingData(unittest.TestCase):
         conn.close()
         self.assertNotIn("TPEX:6223", result["stocks"])
         self.assertIn("TPEX:6223", result["metadata"]["skipped_symbols"])
+
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+class TestIncrementalMode(unittest.TestCase):
+    """增量模式:只跑 restrict_symbols,既有 standing_state / score_history 不動。
+
+    給 add_symbols_batch 補新檔歷史用。Stage 8 W3 後加新檔每週 30 檔的關鍵
+    效能 path:N 個新檔 × 121 天,而不是 200 檔 × 121 天。
+    """
+
+    # 兩檔 watchlist 共用 4640 給定價
+    TWO_STOCK_WATCHLIST = {
+        "台股板塊": {
+            "半導體設備耗材": {
+                "成員": [
+                    {"code": "TPEX:6223", "name": "旺矽"},
+                    {"code": "TWSE:9999", "name": "新個股"},
+                ],
+                "長子": ["TPEX:6223"],
+            },
+        },
+        "國際族群": {},
+    }
+    TWO_STOCK_KEY_PRICES = {
+        "stocks": {
+            "TPEX:6223": {
+                "name": "旺矽", "sector": "半導體設備耗材", "market": "TW",
+                "lines": [{"price": "4640", "color": "black",
+                            "category": "inner_support", "adjective": "small",
+                            "text": "小內撐"}],
+                "areas": [],
+            },
+            "TWSE:9999": {
+                "name": "新個股", "sector": "半導體設備耗材", "market": "TW",
+                "lines": [{"price": "100", "color": "black",
+                            "category": "inner_support", "adjective": "small",
+                            "text": "test"}],
+                "areas": [],
+            },
+        },
+    }
+
+    def _setup_two_stock_db(self) -> sqlite3.Connection:
+        """旺矽 5/13 → TRIGGERED + 新個股 5/13 → TRIGGERED on 100 線"""
+        conn = sqlite3.connect(":memory:")
+        conn.execute(
+            "CREATE TABLE kline ("
+            "  symbol TEXT, date TEXT, open REAL, high REAL, low REAL, close REAL, "
+            "  volume REAL, PRIMARY KEY (symbol, date))"
+        )
+        for row in WANGXI_KLINE_8DAYS:
+            conn.execute("INSERT INTO kline VALUES (?,?,?,?,?,?,?)",
+                         ("TPEX:6223",) + row)
+        # 新個股 K 線(對 p=100)
+        for d, o, h, l, c in [
+            ("2026-05-13", 95, 105, 94, 100),
+            ("2026-05-14", 100, 110, 99, 108),
+        ]:
+            conn.execute("INSERT INTO kline VALUES (?,?,?,?,?,?,?)",
+                         ("TWSE:9999", d, o, h, l, c, 1_000_000))
+        conn.commit()
+        return conn
+
+    def test_incremental_mode_only_processes_new_symbols(self):
+        """restrict_symbols={TWSE:9999} → 結果只有 TWSE:9999,沒 TPEX:6223"""
+        conn = self._setup_two_stock_db()
+        try:
+            result = run_filters_v2.run_pipeline(
+                date       = "2026-05-13",
+                conn_kline = conn, conn_etf = None,
+                weights    = load_real_weights(),
+                sectors    = {"sectors": {"半導體設備耗材": "A"}},
+                key_prices = self.TWO_STOCK_KEY_PRICES,
+                watchlist  = self.TWO_STOCK_WATCHLIST,
+                now_iso    = "T",
+                restrict_symbols = {"TWSE:9999"},
+            )
+            self.assertIn("TWSE:9999", result["stocks"])
+            self.assertNotIn("TPEX:6223", result["stocks"])
+            # metadata 標 incremental
+            self.assertTrue(result["metadata"]["incremental"])
+        finally:
+            conn.close()
+
+    def test_incremental_mode_leaves_existing_state_untouched(self):
+        """先全量跑 5/13 (兩檔都 TRIGGERED) → 後增量跑 5/13 對 TWSE:9999 →
+        旺矽 standing_state row(無論存在與否)應該完全沒被動到。
+        """
+        # Step 1: 先全量跑 → 兩檔都寫 standing_state
+        conn = self._setup_two_stock_db()
+        try:
+            run_filters_v2.run_pipeline(
+                date="2026-05-13", conn_kline=conn, conn_etf=None,
+                weights=load_real_weights(),
+                sectors={"sectors": {"半導體設備耗材": "A"}},
+                key_prices=self.TWO_STOCK_KEY_PRICES,
+                watchlist=self.TWO_STOCK_WATCHLIST,
+                now_iso="T",
+            )
+            # 快照旺矽 4640 state
+            wangxi_before = state_io.read_state(
+                conn, "TPEX:6223", "inner_support", "4640")
+            self.assertIsNotNone(wangxi_before)
+
+            # Step 2: 增量跑 5/14 只對 TWSE:9999
+            # 提前刪掉新個股的 state row,確認增量會建立
+            conn.execute(
+                "DELETE FROM standing_state WHERE symbol = 'TWSE:9999'")
+            run_filters_v2.run_pipeline(
+                date="2026-05-14", conn_kline=conn, conn_etf=None,
+                weights=load_real_weights(),
+                sectors={"sectors": {"半導體設備耗材": "A"}},
+                key_prices=self.TWO_STOCK_KEY_PRICES,
+                watchlist=self.TWO_STOCK_WATCHLIST,
+                now_iso="T+1",
+                restrict_symbols={"TWSE:9999"},
+            )
+
+            # Step 3: 旺矽 state 應該完全等於 step 1 的快照
+            wangxi_after = state_io.read_state(
+                conn, "TPEX:6223", "inner_support", "4640")
+            self.assertEqual(wangxi_before, wangxi_after,
+                              "incremental mode 動到既有 symbol 的 standing_state")
+        finally:
+            conn.close()
+
+    def test_incremental_mode_creates_state_for_new_symbols(self):
+        """新檔在增量跑後,standing_state 應該有對應 row"""
+        conn = self._setup_two_stock_db()
+        try:
+            run_filters_v2.run_pipeline(
+                date="2026-05-13", conn_kline=conn, conn_etf=None,
+                weights=load_real_weights(),
+                sectors={"sectors": {"半導體設備耗材": "A"}},
+                key_prices=self.TWO_STOCK_KEY_PRICES,
+                watchlist=self.TWO_STOCK_WATCHLIST,
+                now_iso="T",
+                restrict_symbols={"TWSE:9999"},
+            )
+            row = state_io.read_state(
+                conn, "TWSE:9999", "inner_support", "100")
+            self.assertIsNotNone(row,
+                "增量模式沒有為新個股建 standing_state")
+            self.assertEqual(row["state"], "TRIGGERED")
+            self.assertEqual(row["trigger_date"], "2026-05-13")
+        finally:
+            conn.close()
+
+    def test_full_mode_processes_all_symbols(self):
+        """regression:無 restrict_symbols → 仍跑全 watchlist(兩檔都進結果)"""
+        conn = self._setup_two_stock_db()
+        try:
+            result = run_filters_v2.run_pipeline(
+                date="2026-05-13", conn_kline=conn, conn_etf=None,
+                weights=load_real_weights(),
+                sectors={"sectors": {"半導體設備耗材": "A"}},
+                key_prices=self.TWO_STOCK_KEY_PRICES,
+                watchlist=self.TWO_STOCK_WATCHLIST,
+                now_iso="T",
+                # 不給 restrict_symbols
+            )
+            self.assertIn("TPEX:6223", result["stocks"])
+            self.assertIn("TWSE:9999", result["stocks"])
+            self.assertFalse(result["metadata"]["incremental"])
+        finally:
+            conn.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+class TestIncrementalCLIArgs(unittest.TestCase):
+    """CLI flag validation:--incremental 跟 --new-symbols 必須一起出現"""
+
+    def test_incremental_without_new_symbols_errors(self):
+        from types import SimpleNamespace
+        args = SimpleNamespace(incremental=True, new_symbols=None)
+        with self.assertRaises(SystemExit):
+            run_filters_v2._parse_incremental_args(args)
+
+    def test_new_symbols_without_incremental_errors(self):
+        from types import SimpleNamespace
+        args = SimpleNamespace(incremental=False, new_symbols="TWSE:2454")
+        with self.assertRaises(SystemExit):
+            run_filters_v2._parse_incremental_args(args)
+
+    def test_both_present_returns_set(self):
+        from types import SimpleNamespace
+        args = SimpleNamespace(incremental=True,
+                                new_symbols="TWSE:2454,TWSE:2317, TWSE:9999")
+        result = run_filters_v2._parse_incremental_args(args)
+        self.assertEqual(result, {"TWSE:2454", "TWSE:2317", "TWSE:9999"})
+
+    def test_neither_present_returns_none(self):
+        from types import SimpleNamespace
+        args = SimpleNamespace(incremental=False, new_symbols=None)
+        self.assertIsNone(run_filters_v2._parse_incremental_args(args))

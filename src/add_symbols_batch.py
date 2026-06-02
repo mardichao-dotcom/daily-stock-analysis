@@ -362,22 +362,31 @@ def run_pipeline(
             return result
         result["ran_steps"].append("tv_collect")
 
-    # ── step 6: 重跑歷史 state(慢,預設 off)──────────────────────────
+    # ── step 6: 增量補新檔的歷史 standing_state(慢,預設 off)─────────
+    # 2026-06-02:從「全量重跑(刪所有 state + 重跑全 watchlist × 121 天)」
+    # 改用 run_filters_v2 --incremental --new-symbols X,Y,既有 symbols 完全
+    # 不動。對 N 個新檔 N << watchlist 時節省約 watchlist/N 倍時間。
+    # 之後仍要對最後一天(今天)跑一次全量,讓族群連動 / 排名正確 — 由
+    # step 7 (--do-rerender) 順帶處理(它的 render 自然會帶到正確的當日計分)。
     if do_rebuild:
         try:
-            _runner(["sqlite3", str(PROJECT_ROOT / "kline.db"),
-                     "DELETE FROM standing_state; DELETE FROM score_history;"],
-                    check=True)
-            # 從可得最早日跑到今天(時序)
-            import sqlite3
-            conn = sqlite3.connect(PROJECT_ROOT / "kline.db")
+            import sqlite3 as _sql
+            conn = _sql.connect(PROJECT_ROOT / "kline.db")
+            # 只取新檔在 kline.db 內有資料的日期(節省「沒這個 symbol 的日子」浪費)
+            placeholders = ",".join("?" * len(normalized))
+            codes = [e["code"] for e in normalized]
             dates = [r[0] for r in conn.execute(
-                "SELECT DISTINCT date FROM kline ORDER BY date"
+                f"SELECT DISTINCT date FROM kline WHERE symbol IN ({placeholders}) "
+                f"ORDER BY date",
+                codes,
             )]
             conn.close()
+            new_syms_arg = ",".join(codes)
+            _print(f"[rebuild] 對 {len(codes)} 個新檔增量跑 {len(dates)} 天")
             for d in dates:
                 _runner(["python3", "-m", "src.run_filters_v2",
-                         "--date", d, "--output", f"/tmp/filt_{d}.json"],
+                         "--date", d, "--output", f"/tmp/filt_{d}.json",
+                         "--incremental", "--new-symbols", new_syms_arg],
                         check=True, cwd=str(PROJECT_ROOT),
                         stdout=subprocess.DEVNULL)
             result["ran_steps"].append("rebuild")
