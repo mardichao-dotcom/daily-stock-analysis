@@ -1,4 +1,26 @@
-# 加分制規則 v2.1 FINAL(已封閉版)
+# ⛔ 已過時(2026-06-02)— 請看 `朋友規則_v2_2.md`
+
+> **此文件僅作為歷史紀錄,實際系統使用 v2.2 規則。**
+>
+> v2.2 主要變更(基於朋友 2026-06-02 review):
+> - **§1-D 區域觸發**:從「收盤在區內」改為「K 棒交集」(`K_low ≤ high AND K_high ≥ low`)
+> - **§3-A 站穩**:Day 1 觸發 + Day 2 嚴格隔天確認(視窗從 3 天縮為 1 天)
+> - **§3-A 站穩取消**:雙向 leave_up + leave_down(原本只有單向 down_day),
+>   一天「open AND close 都離開給定價」就 CANCEL
+> - **§3-A 跌破**:改為 event(Day1 + Day2 自成),不需 prior STANDING state
+> - **§3-B 區域加分**:不需要 2 天確認,K 棒碰到當天 +N
+> - **§4 C 級分組**:只列「當天新成立」(`standing_date == today`),
+>   持續站穩中個股不再灌進 C 級榜
+>
+> 程式碼狀態:
+> - `src/triggers/standing.py` 已實作 v2.2(commit `c7aa74e`,2026-06-02)
+> - `src/run_filters_v2.py` 寫 `tags_today` 欄位(同 commit)
+> - `src/render_v2.py` C 級分組用 `tags_today`(同 commit)
+> - 全部 397 tests 對齊 v2.2
+
+---
+
+# 加分制規則 v2.1 FINAL(歷史保留)
 
 > ## ⚠️⚠️⚠️ 給未來 Claude 對話視窗的重要警語
 >
