@@ -25,7 +25,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.render_v2 import _h, _safe_id   # 複用 escape + id 工具
+from src.render_v2 import _h, _safe_id, chart_placeholder_html, load_status_map
 
 
 # ── 結構建構 ─────────────────────────────────────────────────────────────────
@@ -54,14 +54,20 @@ def _summary_for_member(symbol: str, stocks_index: dict) -> str:
 
 
 def render_member(member: dict, leaders_set: set, date: str,
-                   stocks_index: dict) -> str:
-    """單一個股的 <details> 折疊區。"""
+                   stocks_index: dict,
+                   status_map: dict | None = None) -> str:
+    """單一個股的 <details> 折疊區。status_map 給 chart_placeholder_html 區分
+    ready / waiting_us_close / missing。
+    """
     symbol = member["code"]
     name   = member["name"]
     is_leader = symbol in leaders_set
     sid = _safe_id(symbol)
     summary_extra = _summary_for_member(symbol, stocks_index)
     leader_mark = '<span class="leader-mark" title="族群長子">⭐</span>' if is_leader else ""
+    placeholder = chart_placeholder_html(
+        symbol, date, (status_map or {}).get(sid)
+    )
 
     return f"""
 <details class="wl-stock">
@@ -72,22 +78,19 @@ def render_member(member: dict, leaders_set: set, date: str,
     {summary_extra}
   </summary>
   <div class="wl-stock-body">
-    <div id="chart-{_h(sid)}" class="chart-placeholder"
-         data-symbol="{_h(symbol)}" data-date="{_h(date)}">
-      [點此載入 K 線圖]
-    </div>
+    {placeholder}
   </div>
 </details>
 """
 
 
 def render_sector(sector_name: str, sector_raw: dict, date: str,
-                   stocks_index: dict) -> str:
+                   stocks_index: dict, status_map: dict | None = None) -> str:
     """單一板塊:含長子標記 + 全成員 <details>。"""
     members = sector_raw.get("成員", [])
     leaders = set(sector_raw.get("長子", []))
     member_html = "\n".join(
-        render_member(m, leaders, date, stocks_index) for m in members
+        render_member(m, leaders, date, stocks_index, status_map) for m in members
     )
     leader_names = []
     for lc in sector_raw.get("長子", []):
@@ -111,12 +114,13 @@ def render_sector(sector_name: str, sector_raw: dict, date: str,
 
 
 def render_intl_group(group_name: str, group_raw: dict, date: str,
-                        stocks_index: dict) -> str:
+                        stocks_index: dict,
+                        status_map: dict | None = None) -> str:
     """國際族群:跟台股板塊類似,但加「對應台股族群」說明。"""
     members = group_raw.get("成員", [])
     leaders = set(group_raw.get("長子", []))
     member_html = "\n".join(
-        render_member(m, leaders, date, stocks_index) for m in members
+        render_member(m, leaders, date, stocks_index, status_map) for m in members
     )
     corresp = group_raw.get("對應台股族群", [])
     corresp_html = (f'<div class="wl-intl-corresp">對應台股族群:'
@@ -136,19 +140,25 @@ def render_intl_group(group_name: str, group_raw: dict, date: str,
 
 # ── 主渲染 ──────────────────────────────────────────────────────────────────
 
-def render(watchlist: dict, date: str, filtered_result: dict | None = None) -> str:
-    """產整份 HTML。filtered_result 可選,用來提供個股 score/grade/tags 摘要。"""
+def render(watchlist: dict, date: str, filtered_result: dict | None = None,
+            status_map: dict | None = None) -> str:
+    """產整份 HTML。filtered_result 可選,用來提供個股 score/grade/tags 摘要。
+    status_map: from load_status_map(date),per-symbol 資料狀態。
+    若 None,自動讀 docs/data/v2/{date}/_index.json。
+    """
     stocks_index = (filtered_result or {}).get("stocks", {})
+    if status_map is None:
+        status_map = load_status_map(date)
 
     tw_raw   = watchlist.get("台股板塊", {})
     intl_raw = watchlist.get("國際族群", {})
 
     tw_sectors_html = "\n".join(
-        render_sector(name, raw, date, stocks_index)
+        render_sector(name, raw, date, stocks_index, status_map)
         for name, raw in tw_raw.items()
     )
     intl_groups_html = "\n".join(
-        render_intl_group(name, raw, date, stocks_index)
+        render_intl_group(name, raw, date, stocks_index, status_map)
         for name, raw in intl_raw.items()
     )
 

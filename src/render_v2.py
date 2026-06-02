@@ -205,15 +205,46 @@ def render_top10(stocks: dict) -> str:
 """
 
 
-def render_stock_card(symbol: str, stock: dict, date: str) -> str:
-    """個股卡(S/A/B 級用)— summary + score breakdown + tags + chart placeholder"""
+def chart_placeholder_html(symbol: str, date: str, status_entry: dict | None) -> str:
+    """根據 _index.json 的 status 決定 chart placeholder 樣式。
+
+    status_entry 結構(from prepare_charts_v2 _index.json):
+        {status: "ready" | "waiting_us_close" | "missing",
+         exchange: "TW"/"US"/"JP"/"INTL", last_available_date?: ...}
+    status_entry=None 時 fallback 預設 ready(向後相容)。
+    """
+    sid = _safe_id(symbol)
+    status = (status_entry or {}).get("status", "ready")
+    if status == "waiting_us_close":
+        exchange = (status_entry or {}).get("exchange", "INTL")
+        last_d   = (status_entry or {}).get("last_available_date", "")
+        last_txt = f"<br><small>最新資料:{_h(last_d)}</small>" if last_d else ""
+        return (f'<div id="chart-{_h(sid)}" class="chart-placeholder awaiting">'
+                f'⏳ 等待 {_h(exchange)} 收盤資料(下個交易日更新){last_txt}'
+                f'</div>')
+    if status == "missing":
+        return (f'<div id="chart-{_h(sid)}" class="chart-placeholder errored">'
+                f'⚠️ 此檔無 K 線資料,請聯絡管理員'
+                f'</div>')
+    # ready(或沒 status entry → 預設 ready)
+    return (f'<div id="chart-{_h(sid)}" class="chart-placeholder"'
+            f' data-symbol="{_h(symbol)}" data-date="{_h(date)}">'
+            f'[點此載入 K 線圖]'
+            f'</div>')
+
+
+def render_stock_card(symbol: str, stock: dict, date: str,
+                        status_entry: dict | None = None) -> str:
+    """個股卡(S/A/B 級用)— summary + score breakdown + tags + chart placeholder
+
+    status_entry:from _index.json["symbols"][safe_id],決定 chart 區塊顯示
+    """
     name   = stock.get("name", "")
     sector = stock.get("sector", "")
     score  = stock.get("score", 0)
     grade  = stock.get("grade", "?")
     tags   = stock.get("tags", [])
     details = stock.get("details", [])
-    sid    = _safe_id(symbol)
 
     # tag inline 顯示前 3 個 emoji(空間有限)
     tag_inline = "".join(f'<span class="tag">{_h(t.split()[0])}</span>' for t in tags[:3])
@@ -225,6 +256,8 @@ def render_stock_card(symbol: str, stock: dict, date: str) -> str:
     tag_html = "".join(f'<span class="tag">{_h(t)}</span>' for t in tags)
     if not tag_html:
         tag_html = '<span class="tag" style="color: var(--text-mute);">(無標籤)</span>'
+
+    placeholder_html = chart_placeholder_html(symbol, date, status_entry)
 
     return f"""
 <details class="stock-card grade-{_h(grade)}">
@@ -238,22 +271,23 @@ def render_stock_card(symbol: str, stock: dict, date: str) -> str:
     <div style="font-size: 12px; color: var(--text-mute); margin-bottom: 6px;">板塊:{_h(sector)}</div>
     {breakdown_html}
     <div class="tags">{tag_html}</div>
-    <div id="chart-{_h(sid)}" class="chart-placeholder"
-         data-symbol="{_h(symbol)}" data-date="{_h(date)}">
-      [點此載入 K 線圖]
-    </div>
+    {placeholder_html}
   </div>
 </details>
 """
 
 
-def render_grade_section(grade: str, label: str, stocks_list, date: str) -> str:
+def render_grade_section(grade: str, label: str, stocks_list, date: str,
+                           status_map: dict | None = None) -> str:
     """區塊 2-4:S/A/B 級戰區"""
     if not stocks_list:
         return _section_empty(label, f"今日無{grade}級個股")
 
-    cards = "\n".join(render_stock_card(sym, stock, date)
-                      for sym, stock in stocks_list)
+    status_map = status_map or {}
+    cards = "\n".join(
+        render_stock_card(sym, stock, date, status_map.get(_safe_id(sym)))
+        for sym, stock in stocks_list
+    )
     return f"""
 <section class="section grade-{_h(grade)}">
   <h2>{label} ({len(stocks_list)} 檔)</h2>
@@ -412,12 +446,33 @@ def _section_empty(title: str, msg: str) -> str:
 
 # ─── 主入口 ──────────────────────────────────────────────────────────────────
 
-def render(filtered_result: dict) -> str:
-    """產出完整 HTML 字串。"""
+def load_status_map(date: str, docs_root: Path | None = None) -> dict:
+    """讀 docs/data/v2/{date}/_index.json 拿到 per-symbol status。
+    沒檔案或舊格式 → 回空 dict(render 時 fallback 預設 ready)。"""
+    root = docs_root or (PROJECT_ROOT / "docs")
+    path = root / "data" / "v2" / date / "_index.json"
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return data.get("symbols", {}) or {}
+    except Exception:
+        return {}
+
+
+def render(filtered_result: dict, status_map: dict | None = None) -> str:
+    """產出完整 HTML 字串。
+
+    status_map: from load_status_map(date),per-symbol status from _index.json
+    若 None,則自動讀 docs/data/v2/{date}/_index.json。
+    """
     date = filtered_result.get("date", "?")
     stocks = filtered_result.get("stocks", {})
     etf_active = filtered_result.get("etf_active", {"increase": [], "decrease": []})
     metadata = filtered_result.get("metadata", {})
+
+    if status_map is None:
+        status_map = load_status_map(date)
 
     buckets = classify_stocks(stocks)
 
@@ -433,9 +488,9 @@ def render(filtered_result: dict) -> str:
 
     parts = [
         render_top10(stocks),
-        render_grade_section("S", "🔴 S 級戰區",     buckets["S"], date),
-        render_grade_section("A", "🟡 A 級戰區",     buckets["A"], date),
-        render_grade_section("B", "🟢 B 級戰區",     buckets["B"], date),
+        render_grade_section("S", "🔴 S 級戰區",     buckets["S"], date, status_map),
+        render_grade_section("A", "🟡 A 級戰區",     buckets["A"], date, status_map),
+        render_grade_section("B", "🟢 B 級戰區",     buckets["B"], date, status_map),
         render_c_special(buckets["C_special"]),
         render_etf_active(etf_active, stocks),
         render_other(buckets["C_other"]),

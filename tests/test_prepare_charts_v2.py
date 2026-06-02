@@ -347,7 +347,41 @@ class TestWriteFiles(unittest.TestCase):
                 idx = json.load(f)
             self.assertEqual(idx["stocks"], ["TWSE_2330", "TPEX_6223"])
             self.assertEqual(idx["date"], "2026-05-20")
-            self.assertEqual(idx["version"], "2.1")
+            self.assertEqual(idx["version"], "2.2")
+            # v2.2:新增 symbols dict(per-symbol status),預設空 dict
+            self.assertEqual(idx["symbols"], {})
+
+    def test_write_index_with_status_map(self):
+        """v2.2 _index.json 帶 per-symbol status(ready / waiting_us_close / missing)"""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            outdir = Path(tmpdir)
+            status_map = {
+                "TWSE_2330": {"status": "ready", "name": "台積電",
+                                "sector": "IC設計", "exchange": "TW"},
+                "NASDAQ_NVDA": {"status": "waiting_us_close", "name": "輝達",
+                                  "sector": "AI晶片", "exchange": "US",
+                                  "last_available_date": "2026-05-29"},
+            }
+            idx_path = pc.write_index(outdir, "2026-06-01",
+                                        ["TWSE:2330"], status_map)
+            with open(idx_path) as f:
+                idx = json.load(f)
+            # 舊格式 stocks 仍只列 ready
+            self.assertEqual(idx["stocks"], ["TWSE_2330"])
+            # 新格式 symbols 含全部
+            self.assertEqual(idx["symbols"]["TWSE_2330"]["status"], "ready")
+            self.assertEqual(idx["symbols"]["NASDAQ_NVDA"]["status"],
+                              "waiting_us_close")
+            self.assertEqual(idx["symbols"]["NASDAQ_NVDA"]["last_available_date"],
+                              "2026-05-29")
+
+    def test_classify_exchange(self):
+        self.assertEqual(pc._classify_exchange("TWSE:2330"), "TW")
+        self.assertEqual(pc._classify_exchange("TPEX:6223"), "TW")
+        self.assertEqual(pc._classify_exchange("NASDAQ:NVDA"), "US")
+        self.assertEqual(pc._classify_exchange("NYSE:TSM"), "US")
+        self.assertEqual(pc._classify_exchange("TSE:6981"), "JP")
+        self.assertEqual(pc._classify_exchange("OMXCOP:MAERSK_B"), "DK")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

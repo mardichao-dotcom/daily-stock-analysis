@@ -256,18 +256,57 @@ def write_chart(outdir: Path, date: str, symbol: str, chart_data: dict) -> Path:
     return path
 
 
-def write_index(outdir: Path, date: str, symbols: list[str]) -> Path:
+def write_index(outdir: Path, date: str,
+                  symbols: list[str],
+                  status_map: dict[str, dict] | None = None) -> Path:
+    """寫 _index.json。
+
+    新格式(v2.2):per-symbol status,給 render_v2 / render_watchlist_v2 判斷
+        - ready              chart JSON 已產出
+        - waiting_us_close   symbol 有歷史 kline 但無當日(台北跑時美股未收盤)
+        - missing            symbol 在 kline.db 完全沒資料(setup 問題)
+
+    舊格式 `stocks: [...]` 並列保留,供既有未升級 consumer 用。
+    """
     day_dir = outdir / date
     day_dir.mkdir(parents=True, exist_ok=True)
     path = day_dir / "_index.json"
     with open(path, "w", encoding="utf-8") as f:
         json.dump({
             "date":   date,
-            "stocks": [_safe_filename(s) for s in symbols],
-            "version": "2.1",
+            "stocks": [_safe_filename(s) for s in symbols],   # 舊格式(只列 ready)
+            "symbols": status_map or {},                       # 新格式(per-symbol status)
+            "version": "2.2",
             "generated_at": datetime.now(TZ_TAIPEI).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
         }, f, ensure_ascii=False, indent=2)
     return path
+
+
+def _classify_exchange(symbol: str) -> str:
+    """從 symbol prefix 推斷交易所類別。"""
+    if symbol.startswith(("TWSE:", "TPEX:")):
+        return "TW"
+    if symbol.startswith(("NASDAQ:", "NYSE:")):
+        return "US"
+    if symbol.startswith("TSE:"):
+        return "JP"
+    if symbol.startswith("OMXCOP:"):
+        return "DK"
+    return "INTL"
+
+
+def _has_kline_any(conn: sqlite3.Connection, symbol: str) -> bool:
+    """檢查 symbol 在 kline.db 是否有任何歷史資料。"""
+    cur = conn.execute("SELECT 1 FROM kline WHERE symbol = ? LIMIT 1", (symbol,))
+    return cur.fetchone() is not None
+
+
+def _last_kline_date(conn: sqlite3.Connection, symbol: str) -> str | None:
+    cur = conn.execute(
+        "SELECT MAX(date) FROM kline WHERE symbol = ?", (symbol,)
+    )
+    row = cur.fetchone()
+    return row[0] if row and row[0] else None
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────────────
@@ -325,24 +364,44 @@ def run(
 
     written: list[str] = []
     skipped: list[str] = []
+    status_map: dict[str, dict] = {}
 
     for symbol, entry in targets:
         chart = build_chart_for_stock(
             symbol, entry, conn_kline, conn_etf, date,
         )
-        if chart is None:
+        safe = _safe_filename(symbol)
+        meta = {
+            "symbol":   symbol,
+            "name":     entry.get("name", ""),
+            "sector":   entry.get("sector", ""),
+            "exchange": _classify_exchange(symbol),
+        }
+        if chart is not None:
+            write_chart(outdir, date, symbol, chart)
+            written.append(symbol)
+            status_map[safe] = {**meta, "status": "ready"}
+        else:
             skipped.append(symbol)
-            continue
-        write_chart(outdir, date, symbol, chart)
-        written.append(symbol)
+            if _has_kline_any(conn_kline, symbol):
+                # 有歷史 K 線但無當日 → 等資料(典型:台北跑時美股未收盤)
+                status_map[safe] = {
+                    **meta,
+                    "status":              "waiting_us_close",
+                    "last_available_date": _last_kline_date(conn_kline, symbol),
+                }
+            else:
+                # 完全沒資料 — setup 問題,不該發生於 watchlist 個股
+                status_map[safe] = {**meta, "status": "missing"}
 
-    write_index(outdir, date, written)
+    write_index(outdir, date, written, status_map)
 
     return {
         "date":      date,
         "sab_total": len(filter_sab_stocks(filtered_result)) if filtered_result else 0,
         "written":   written,
         "skipped":   skipped,
+        "status_map": status_map,
     }
 
 

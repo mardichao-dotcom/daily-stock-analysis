@@ -417,7 +417,13 @@
         await renderChart(placeholder, data, visual);
       } catch (e) {
         console.error(e);
-        placeholder.textContent = `⚠️ 載入失敗: ${e.message}`;
+        // 404 多半是當日資料尚未產生(典型:美股在台北時間下午跑時還沒收盤)
+        const is404 = /404/.test(e.message);
+        placeholder.classList.remove('loading');
+        placeholder.classList.add(is404 ? 'awaiting' : 'errored');
+        placeholder.textContent = is404
+          ? '⏳ 美股收盤資料尚未更新(將於下個交易日更新)'
+          : `⚠️ 載入失敗:${e.message}`;
         loaded = false;   // 允許再試
       }
     }
