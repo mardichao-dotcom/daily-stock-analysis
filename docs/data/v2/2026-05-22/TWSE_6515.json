@@ -2353,10 +2353,40 @@
   },
   "events": [
     {
+      "time": "2025-12-02",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "2815"
+    },
+    {
+      "time": "2025-12-15",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "2815"
+    },
+    {
+      "time": "2025-12-16",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "2815"
+    },
+    {
+      "time": "2025-12-17",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "2815"
+    },
+    {
       "time": "2025-12-31",
       "type": "standing",
       "category": "inner_support",
       "price": "2815"
+    },
+    {
+      "time": "2026-02-09",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "4500"
     },
     {
       "time": "2026-03-05",
@@ -2377,10 +2407,22 @@
       "price": "7720"
     },
     {
-      "time": "2026-03-30",
+      "time": "2026-03-31",
       "type": "breakdown",
       "category": "key_price",
       "price": "7720"
+    },
+    {
+      "time": "2026-04-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "7720"
+    },
+    {
+      "time": "2026-04-07",
+      "type": "standing",
+      "category": "key_price",
+      "price": "6605"
     },
     {
       "time": "2026-04-09",
@@ -2389,14 +2431,32 @@
       "price": "7720"
     },
     {
-      "time": "2026-05-21",
-      "type": "standing",
+      "time": "2026-04-15",
+      "type": "breakdown",
       "category": "key_price",
       "price": "9075"
     },
     {
-      "time": "2026-05-22",
+      "time": "2026-04-23",
       "type": "breakdown",
+      "category": "support_transfer",
+      "price": "11170"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "11170"
+    },
+    {
+      "time": "2026-04-27",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "11170"
+    },
+    {
+      "time": "2026-05-21",
+      "type": "standing",
       "category": "key_price",
       "price": "9075"
     }

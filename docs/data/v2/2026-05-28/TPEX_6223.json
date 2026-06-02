@@ -2474,10 +2474,76 @@
       "price": "3580"
     },
     {
+      "time": "2026-03-30",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "3580"
+    },
+    {
+      "time": "2026-04-13",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "4640"
+    },
+    {
       "time": "2026-04-17",
       "type": "standing",
       "category": "inner_support",
       "price": "4640"
+    },
+    {
+      "time": "2026-04-21",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "5025-5370"
+    },
+    {
+      "time": "2026-04-22",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "5025"
+    },
+    {
+      "time": "2026-04-23",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "5025"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "5025"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "4640"
+    },
+    {
+      "time": "2026-05-05",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "5025-5370"
+    },
+    {
+      "time": "2026-05-11",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "5025"
+    },
+    {
+      "time": "2026-05-11",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "5025-5370"
+    },
+    {
+      "time": "2026-05-18",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "6285"
     }
   ]
 }

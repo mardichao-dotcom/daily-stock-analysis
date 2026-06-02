@@ -2033,10 +2033,34 @@
   },
   "events": [
     {
+      "time": "2026-04-28",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "579-597"
+    },
+    {
+      "time": "2026-04-29",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "579-597"
+    },
+    {
       "time": "2026-05-05",
       "type": "standing",
       "category": "poc",
       "price": "579-597"
+    },
+    {
+      "time": "2026-05-11",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "770-788"
+    },
+    {
+      "time": "2026-05-12",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "770-788"
     },
     {
       "time": "2026-05-21",

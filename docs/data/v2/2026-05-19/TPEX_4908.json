@@ -2033,10 +2033,28 @@
   },
   "events": [
     {
+      "time": "2026-03-23",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "120"
+    },
+    {
       "time": "2026-04-13",
       "type": "standing",
       "category": "key_price",
       "price": "120"
+    },
+    {
+      "time": "2026-04-15",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "140-150"
+    },
+    {
+      "time": "2026-05-07",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "267.5"
     },
     {
       "time": "2026-05-12",

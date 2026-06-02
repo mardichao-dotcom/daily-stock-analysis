@@ -2508,22 +2508,52 @@
       "price": "427-445.5"
     },
     {
-      "time": "2026-03-04",
-      "type": "breakdown",
-      "category": "fvg",
-      "price": "427-445.5"
-    },
-    {
-      "time": "2026-03-06",
-      "type": "breakdown",
-      "category": "fvg",
-      "price": "427-445.5"
-    },
-    {
       "time": "2026-03-09",
       "type": "breakdown",
       "category": "fvg",
       "price": "427-445.5"
+    },
+    {
+      "time": "2026-03-18",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "571-599"
+    },
+    {
+      "time": "2026-03-19",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "571-599"
+    },
+    {
+      "time": "2026-03-20",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "571-599"
+    },
+    {
+      "time": "2026-05-06",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "908"
+    },
+    {
+      "time": "2026-05-07",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "908"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "908"
+    },
+    {
+      "time": "2026-05-15",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "908"
     }
   ]
 }

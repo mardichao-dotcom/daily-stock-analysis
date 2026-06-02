@@ -2414,10 +2414,28 @@
   },
   "events": [
     {
+      "time": "2025-11-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "250"
+    },
+    {
+      "time": "2025-11-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "250"
+    },
+    {
       "time": "2026-01-02",
       "type": "standing",
       "category": "key_price",
       "price": "250"
+    },
+    {
+      "time": "2026-01-19",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "307.5"
     },
     {
       "time": "2026-01-26",
@@ -2426,19 +2444,25 @@
       "price": "307.5"
     },
     {
-      "time": "2026-01-27",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "307.5"
-    },
-    {
       "time": "2026-01-30",
       "type": "breakdown",
-      "category": "key_price",
-      "price": "307.5"
+      "category": "order_block",
+      "price": "307.5-320"
     },
     {
       "time": "2026-02-10",
+      "type": "standing",
+      "category": "key_price",
+      "price": "320"
+    },
+    {
+      "time": "2026-03-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "392.5"
+    },
+    {
+      "time": "2026-03-10",
       "type": "standing",
       "category": "key_price",
       "price": "320"
@@ -2450,10 +2474,22 @@
       "price": "307.5-320"
     },
     {
+      "time": "2026-03-24",
+      "type": "standing",
+      "category": "key_price",
+      "price": "320"
+    },
+    {
       "time": "2026-04-13",
       "type": "standing",
       "category": "key_price",
       "price": "392.5"
+    },
+    {
+      "time": "2026-04-22",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "476"
     },
     {
       "time": "2026-04-27",
@@ -2462,8 +2498,8 @@
       "price": "476"
     },
     {
-      "time": "2026-05-19",
-      "type": "breakdown",
+      "time": "2026-04-30",
+      "type": "standing",
       "category": "inner_support",
       "price": "476"
     }

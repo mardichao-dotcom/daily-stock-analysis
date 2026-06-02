@@ -2623,13 +2623,55 @@
   },
   "events": [
     {
+      "time": "2025-10-31",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1520"
+    },
+    {
+      "time": "2025-11-03",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1520"
+    },
+    {
+      "time": "2025-11-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1520"
+    },
+    {
+      "time": "2025-11-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1520"
+    },
+    {
       "time": "2025-12-31",
       "type": "standing",
       "category": "key_price",
       "price": "1520"
     },
     {
+      "time": "2026-01-22",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1765"
+    },
+    {
+      "time": "2026-01-28",
+      "type": "standing",
+      "category": "key_price",
+      "price": "1765"
+    },
+    {
       "time": "2026-02-03",
+      "type": "standing",
+      "category": "key_price",
+      "price": "1765"
+    },
+    {
+      "time": "2026-02-09",
       "type": "standing",
       "category": "key_price",
       "price": "1765"
@@ -2641,16 +2683,28 @@
       "price": "1865-1935"
     },
     {
-      "time": "2026-03-04",
+      "time": "2026-02-26",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2025"
+    },
+    {
+      "time": "2026-03-06",
       "type": "breakdown",
       "category": "fvg",
       "price": "1865-1935"
     },
     {
-      "time": "2026-03-31",
+      "time": "2026-03-09",
       "type": "breakdown",
-      "category": "key_price",
-      "price": "1765"
+      "category": "fvg",
+      "price": "1865-1935"
+    },
+    {
+      "time": "2026-03-13",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "1865-1935"
     },
     {
       "time": "2026-04-15",
@@ -2659,14 +2713,14 @@
       "price": "2025"
     },
     {
-      "time": "2026-04-27",
+      "time": "2026-04-21",
       "type": "standing",
-      "category": "order_block",
-      "price": "2130-2180"
+      "category": "key_price",
+      "price": "2025"
     },
     {
-      "time": "2026-04-30",
-      "type": "breakdown",
+      "time": "2026-04-27",
+      "type": "standing",
       "category": "order_block",
       "price": "2130-2180"
     }

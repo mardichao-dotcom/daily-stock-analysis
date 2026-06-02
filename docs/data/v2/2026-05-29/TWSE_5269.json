@@ -2083,28 +2083,16 @@
       "price": "1545-1600"
     },
     {
-      "time": "2025-09-03",
+      "time": "2025-09-04",
       "type": "standing",
       "category": "key_price",
       "price": "1600"
     },
     {
-      "time": "2025-09-15",
-      "type": "breakdown",
+      "time": "2025-09-18",
+      "type": "standing",
       "category": "key_price",
       "price": "1600"
-    },
-    {
-      "time": "2025-09-19",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "1600"
-    },
-    {
-      "time": "2025-09-19",
-      "type": "breakdown",
-      "category": "order_block",
-      "price": "1545-1600"
     },
     {
       "time": "2025-11-12",
@@ -2113,20 +2101,26 @@
       "price": "1295"
     },
     {
-      "time": "2025-11-14",
+      "time": "2025-11-17",
       "type": "breakdown",
       "category": "key_price",
       "price": "1295"
     },
     {
-      "time": "2026-01-09",
+      "time": "2025-11-18",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1295"
+    },
+    {
+      "time": "2025-12-01",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1295"
+    },
+    {
+      "time": "2026-01-14",
       "type": "standing",
-      "category": "key_price",
-      "price": "1295"
-    },
-    {
-      "time": "2026-01-20",
-      "type": "breakdown",
       "category": "key_price",
       "price": "1295"
     },
@@ -2143,12 +2137,6 @@
       "price": "1295"
     },
     {
-      "time": "2026-01-30",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "1295"
-    },
-    {
       "time": "2026-02-02",
       "type": "breakdown",
       "category": "key_price",
@@ -2161,13 +2149,13 @@
       "price": "1295"
     },
     {
-      "time": "2026-02-05",
+      "time": "2026-02-06",
       "type": "breakdown",
       "category": "key_price",
       "price": "1295"
     },
     {
-      "time": "2026-02-06",
+      "time": "2026-02-23",
       "type": "breakdown",
       "category": "key_price",
       "price": "1295"
@@ -2179,31 +2167,37 @@
       "price": "1295"
     },
     {
-      "time": "2026-03-02",
+      "time": "2026-03-03",
       "type": "breakdown",
       "category": "key_price",
       "price": "1295"
     },
     {
-      "time": "2026-04-10",
-      "type": "standing",
+      "time": "2026-03-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1295"
+    },
+    {
+      "time": "2026-03-09",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1295"
+    },
+    {
+      "time": "2026-04-07",
+      "type": "breakdown",
       "category": "order_block",
       "price": "1065-1115"
     },
     {
-      "time": "2026-04-24",
-      "type": "standing",
-      "category": "key_price",
-      "price": "1295"
-    },
-    {
-      "time": "2026-04-27",
+      "time": "2026-04-20",
       "type": "breakdown",
       "category": "key_price",
       "price": "1295"
     },
     {
-      "time": "2026-04-28",
+      "time": "2026-04-21",
       "type": "breakdown",
       "category": "key_price",
       "price": "1295"
@@ -2213,6 +2207,30 @@
       "type": "standing",
       "category": "key_price",
       "price": "1295"
+    },
+    {
+      "time": "2026-05-07",
+      "type": "standing",
+      "category": "key_price",
+      "price": "1295"
+    },
+    {
+      "time": "2026-05-12",
+      "type": "standing",
+      "category": "key_price",
+      "price": "1295"
+    },
+    {
+      "time": "2026-05-27",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "1545-1600"
+    },
+    {
+      "time": "2026-05-28",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "1545-1600"
     }
   ]
 }

@@ -2496,10 +2496,28 @@
       "price": "450"
     },
     {
+      "time": "2026-03-13",
+      "type": "standing",
+      "category": "key_price",
+      "price": "450"
+    },
+    {
       "time": "2026-04-16",
       "type": "standing",
       "category": "inner_support",
       "price": "920"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "920"
+    },
+    {
+      "time": "2026-04-28",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "1080"
     },
     {
       "time": "2026-05-05",
@@ -2514,10 +2532,16 @@
       "price": "1251"
     },
     {
-      "time": "2026-05-19",
+      "time": "2026-05-11",
       "type": "breakdown",
-      "category": "key_price",
-      "price": "1251"
+      "category": "support_transfer",
+      "price": "1465"
+    },
+    {
+      "time": "2026-05-15",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "1465"
     }
   ]
 }

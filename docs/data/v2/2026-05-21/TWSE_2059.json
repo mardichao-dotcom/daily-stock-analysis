@@ -2417,19 +2417,49 @@
       "price": "3655-3900"
     },
     {
-      "time": "2025-10-27",
-      "type": "breakdown",
-      "category": "order_block",
-      "price": "3655-3900"
-    },
-    {
-      "time": "2025-11-13",
-      "type": "breakdown",
-      "category": "order_block",
-      "price": "3655-3900"
-    },
-    {
       "time": "2025-11-14",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3655-3900"
+    },
+    {
+      "time": "2025-11-18",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3655-3900"
+    },
+    {
+      "time": "2025-11-21",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3655-3900"
+    },
+    {
+      "time": "2025-12-02",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3655-3900"
+    },
+    {
+      "time": "2025-12-15",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3655-3900"
+    },
+    {
+      "time": "2025-12-26",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3655-3900"
+    },
+    {
+      "time": "2026-01-02",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3655-3900"
+    },
+    {
+      "time": "2026-03-27",
       "type": "breakdown",
       "category": "order_block",
       "price": "3655-3900"
@@ -2441,10 +2471,16 @@
       "price": "3655-3900"
     },
     {
-      "time": "2026-04-23",
+      "time": "2026-05-12",
       "type": "breakdown",
-      "category": "order_block",
-      "price": "3655-3900"
+      "category": "support_transfer",
+      "price": "5525"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "5525"
     }
   ]
 }

@@ -2033,13 +2033,31 @@
   },
   "events": [
     {
+      "time": "2025-08-21",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "531"
+    },
+    {
+      "time": "2025-08-22",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "531"
+    },
+    {
       "time": "2025-08-26",
       "type": "standing",
       "category": "support_transfer",
       "price": "531"
     },
     {
-      "time": "2025-09-10",
+      "time": "2025-09-05",
+      "type": "standing",
+      "category": "support_transfer",
+      "price": "531"
+    },
+    {
+      "time": "2025-09-12",
       "type": "breakdown",
       "category": "support_transfer",
       "price": "531"
@@ -2047,12 +2065,6 @@
     {
       "time": "2025-09-17",
       "type": "standing",
-      "category": "support_transfer",
-      "price": "531"
-    },
-    {
-      "time": "2025-10-01",
-      "type": "breakdown",
       "category": "support_transfer",
       "price": "531"
     },
@@ -2069,12 +2081,6 @@
       "price": "531"
     },
     {
-      "time": "2025-10-27",
-      "type": "breakdown",
-      "category": "support_transfer",
-      "price": "531"
-    },
-    {
       "time": "2025-10-28",
       "type": "breakdown",
       "category": "support_transfer",
@@ -2087,8 +2093,8 @@
       "price": "484.5-497.5"
     },
     {
-      "time": "2025-11-19",
-      "type": "breakdown",
+      "time": "2025-11-21",
+      "type": "standing",
       "category": "order_block",
       "price": "484.5-497.5"
     },
@@ -2099,8 +2105,8 @@
       "price": "531"
     },
     {
-      "time": "2025-12-12",
-      "type": "breakdown",
+      "time": "2025-12-08",
+      "type": "standing",
       "category": "support_transfer",
       "price": "531"
     },
@@ -2111,13 +2117,7 @@
       "price": "531"
     },
     {
-      "time": "2025-12-23",
-      "type": "breakdown",
-      "category": "order_block",
-      "price": "484.5-497.5"
-    },
-    {
-      "time": "2025-12-24",
+      "time": "2025-12-29",
       "type": "breakdown",
       "category": "order_block",
       "price": "484.5-497.5"
@@ -2129,16 +2129,22 @@
       "price": "484.5-497.5"
     },
     {
+      "time": "2026-01-09",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "531"
+    },
+    {
       "time": "2026-01-13",
       "type": "standing",
       "category": "support_transfer",
       "price": "531"
     },
     {
-      "time": "2026-01-15",
+      "time": "2026-01-14",
       "type": "breakdown",
       "category": "support_transfer",
-      "price": "531"
+      "price": "592"
     },
     {
       "time": "2026-01-16",
@@ -2147,13 +2153,31 @@
       "price": "531"
     },
     {
-      "time": "2026-01-30",
+      "time": "2026-01-28",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "531"
+    },
+    {
+      "time": "2026-01-29",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "531"
+    },
+    {
+      "time": "2026-02-02",
       "type": "breakdown",
       "category": "order_block",
       "price": "484.5-497.5"
     },
     {
-      "time": "2026-02-02",
+      "time": "2026-02-04",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "484.5-497.5"
+    },
+    {
+      "time": "2026-02-24",
       "type": "breakdown",
       "category": "order_block",
       "price": "484.5-497.5"
@@ -2163,6 +2187,18 @@
       "type": "standing",
       "category": "order_block",
       "price": "432.5-451"
+    },
+    {
+      "time": "2026-03-31",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "484.5-497.5"
+    },
+    {
+      "time": "2026-04-02",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "484.5-497.5"
     },
     {
       "time": "2026-04-08",
@@ -2177,10 +2213,22 @@
       "price": "531"
     },
     {
-      "time": "2026-05-04",
-      "type": "breakdown",
+      "time": "2026-04-27",
+      "type": "standing",
       "category": "support_transfer",
       "price": "531"
+    },
+    {
+      "time": "2026-05-06",
+      "type": "standing",
+      "category": "support_transfer",
+      "price": "531"
+    },
+    {
+      "time": "2026-05-12",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "592"
     }
   ]
 }

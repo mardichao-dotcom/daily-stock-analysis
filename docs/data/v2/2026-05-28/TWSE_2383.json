@@ -2546,5 +2546,18 @@
       }
     ]
   },
-  "events": []
+  "events": [
+    {
+      "time": "2026-05-08",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "5110"
+    },
+    {
+      "time": "2026-05-15",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "5110"
+    }
+  ]
 }

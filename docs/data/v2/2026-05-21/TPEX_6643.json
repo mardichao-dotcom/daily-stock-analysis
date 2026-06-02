@@ -2018,7 +2018,79 @@
   },
   "events": [
     {
+      "time": "2025-08-27",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2025-08-28",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2025-08-29",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2025-09-01",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2025-09-03",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2025-09-04",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2025-09-05",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2025-09-22",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2026-02-06",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2026-03-23",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
       "time": "2026-04-21",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "521"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "607"
+    },
+    {
+      "time": "2026-04-30",
       "type": "standing",
       "category": "inner_support",
       "price": "521"
@@ -2026,12 +2098,6 @@
     {
       "time": "2026-05-11",
       "type": "standing",
-      "category": "support_transfer",
-      "price": "607"
-    },
-    {
-      "time": "2026-05-19",
-      "type": "breakdown",
       "category": "support_transfer",
       "price": "607"
     },

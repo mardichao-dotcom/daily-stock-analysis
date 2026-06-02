@@ -2231,19 +2231,31 @@
       "time": "2026-02-06",
       "type": "breakdown",
       "category": "key_price",
-      "price": "254.5"
+      "price": "265.5"
     },
     {
-      "time": "2026-02-06",
+      "time": "2026-02-10",
       "type": "breakdown",
       "category": "order_block",
       "price": "254.5-265.5"
+    },
+    {
+      "time": "2026-02-11",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "265.5"
     },
     {
       "time": "2026-02-23",
       "type": "standing",
       "category": "key_price",
       "price": "265.5"
+    },
+    {
+      "time": "2026-02-23",
+      "type": "standing",
+      "category": "key_price",
+      "price": "254.5"
     },
     {
       "time": "2026-02-23",
@@ -2258,22 +2270,10 @@
       "price": "290.2"
     },
     {
-      "time": "2026-03-04",
-      "type": "breakdown",
+      "time": "2026-03-06",
+      "type": "standing",
       "category": "key_price",
       "price": "290.2"
-    },
-    {
-      "time": "2026-03-09",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "290.2"
-    },
-    {
-      "time": "2026-03-09",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "265.5"
     },
     {
       "time": "2026-03-16",
@@ -2282,14 +2282,26 @@
       "price": "290.2"
     },
     {
-      "time": "2026-04-09",
-      "type": "standing",
+      "time": "2026-03-20",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "398.0"
+    },
+    {
+      "time": "2026-03-20",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "384.0-398.0"
+    },
+    {
+      "time": "2026-03-23",
+      "type": "breakdown",
       "category": "key_price",
       "price": "384.0"
     },
     {
-      "time": "2026-04-10",
-      "type": "breakdown",
+      "time": "2026-04-09",
+      "type": "standing",
       "category": "key_price",
       "price": "384.0"
     },
@@ -2297,7 +2309,37 @@
       "time": "2026-04-13",
       "type": "breakdown",
       "category": "key_price",
+      "price": "398.0"
+    },
+    {
+      "time": "2026-04-13",
+      "type": "breakdown",
+      "category": "key_price",
       "price": "384.0"
+    },
+    {
+      "time": "2026-04-13",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "384.0-398.0"
+    },
+    {
+      "time": "2026-04-15",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "384.0"
+    },
+    {
+      "time": "2026-04-16",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "398.0"
+    },
+    {
+      "time": "2026-04-17",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "398.0"
     },
     {
       "time": "2026-04-17",
@@ -2332,8 +2374,14 @@
     {
       "time": "2026-04-28",
       "type": "breakdown",
-      "category": "key_price",
-      "price": "513"
+      "category": "support_transfer",
+      "price": "537"
+    },
+    {
+      "time": "2026-04-29",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "537"
     },
     {
       "time": "2026-04-29",
@@ -2348,13 +2396,61 @@
       "price": "513"
     },
     {
+      "time": "2026-05-05",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "537"
+    },
+    {
       "time": "2026-05-06",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "537"
+    },
+    {
+      "time": "2026-05-07",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "537"
+    },
+    {
+      "time": "2026-05-07",
       "type": "breakdown",
       "category": "key_price",
       "price": "513"
     },
     {
-      "time": "2026-05-07",
+      "time": "2026-05-11",
+      "type": "standing",
+      "category": "key_price",
+      "price": "447.5"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "513"
+    },
+    {
+      "time": "2026-05-15",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "537"
+    },
+    {
+      "time": "2026-05-18",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "537"
+    },
+    {
+      "time": "2026-05-18",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "513"
+    },
+    {
+      "time": "2026-05-20",
       "type": "breakdown",
       "category": "key_price",
       "price": "513"

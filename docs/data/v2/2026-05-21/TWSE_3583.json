@@ -2195,10 +2195,34 @@
       "price": "451"
     },
     {
+      "time": "2026-04-01",
+      "type": "standing",
+      "category": "key_price",
+      "price": "451"
+    },
+    {
+      "time": "2026-04-15",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "719"
+    },
+    {
       "time": "2026-04-20",
       "type": "standing",
       "category": "key_price",
       "price": "719"
+    },
+    {
+      "time": "2026-04-29",
+      "type": "standing",
+      "category": "key_price",
+      "price": "719"
+    },
+    {
+      "time": "2026-05-15",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "990"
     }
   ]
 }

@@ -2032,19 +2032,55 @@
   },
   "events": [
     {
+      "time": "2025-09-22",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "466"
+    },
+    {
+      "time": "2025-09-22",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "450.5"
+    },
+    {
+      "time": "2025-09-24",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "450.5"
+    },
+    {
       "time": "2025-10-16",
       "type": "standing",
       "category": "whale_cost",
       "price": "405"
     },
     {
-      "time": "2025-10-29",
+      "time": "2025-10-30",
       "type": "breakdown",
       "category": "whale_cost",
       "price": "405"
     },
     {
-      "time": "2025-10-30",
+      "time": "2025-10-31",
+      "type": "breakdown",
+      "category": "whale_cost",
+      "price": "405"
+    },
+    {
+      "time": "2026-01-26",
+      "type": "breakdown",
+      "category": "whale_cost",
+      "price": "405"
+    },
+    {
+      "time": "2026-03-30",
+      "type": "breakdown",
+      "category": "whale_cost",
+      "price": "405"
+    },
+    {
+      "time": "2026-03-31",
       "type": "breakdown",
       "category": "whale_cost",
       "price": "405"
@@ -2063,6 +2099,18 @@
     },
     {
       "time": "2026-05-11",
+      "type": "standing",
+      "category": "key_price",
+      "price": "466"
+    },
+    {
+      "time": "2026-05-12",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "503"
+    },
+    {
+      "time": "2026-05-18",
       "type": "standing",
       "category": "key_price",
       "price": "466"

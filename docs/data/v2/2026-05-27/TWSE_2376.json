@@ -2122,22 +2122,22 @@
       "price": "276.0-283.0"
     },
     {
-      "time": "2025-08-29",
-      "type": "breakdown",
-      "category": "poc",
-      "price": "276.0-283.0"
-    },
-    {
       "time": "2025-09-01",
       "type": "breakdown",
       "category": "key_price",
-      "price": "276.0"
+      "price": "283.0"
     },
     {
       "time": "2025-09-01",
       "type": "breakdown",
       "category": "poc",
       "price": "276.0-283.0"
+    },
+    {
+      "time": "2025-09-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "276.0"
     },
     {
       "time": "2025-09-10",
@@ -2149,13 +2149,37 @@
       "time": "2025-09-11",
       "type": "breakdown",
       "category": "key_price",
-      "price": "276.0"
+      "price": "292.0"
+    },
+    {
+      "time": "2025-09-11",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "283.0"
     },
     {
       "time": "2025-09-12",
       "type": "breakdown",
+      "category": "poc",
+      "price": "276.0-283.0"
+    },
+    {
+      "time": "2025-09-15",
+      "type": "breakdown",
       "category": "key_price",
       "price": "276.0"
+    },
+    {
+      "time": "2025-09-18",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "276.0"
+    },
+    {
+      "time": "2025-09-22",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "283.0"
     },
     {
       "time": "2025-09-22",
@@ -2164,16 +2188,22 @@
       "price": "276.0-283.0"
     },
     {
-      "time": "2025-09-24",
+      "time": "2025-09-23",
       "type": "breakdown",
-      "category": "poc",
-      "price": "276.0-283.0"
-    },
-    {
-      "time": "2025-09-25",
-      "type": "standing",
       "category": "key_price",
       "price": "283.0"
+    },
+    {
+      "time": "2025-09-24",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "283.0"
+    },
+    {
+      "time": "2025-09-26",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "300.0"
     },
     {
       "time": "2025-09-26",
@@ -2182,6 +2212,24 @@
       "price": "292.0"
     },
     {
+      "time": "2025-09-26",
+      "type": "standing",
+      "category": "key_price",
+      "price": "283.0"
+    },
+    {
+      "time": "2025-10-02",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "303.2"
+    },
+    {
+      "time": "2025-10-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "300.0"
+    },
+    {
       "time": "2025-10-07",
       "type": "standing",
       "category": "inner_support",
@@ -2194,18 +2242,6 @@
       "price": "300.0"
     },
     {
-      "time": "2025-10-09",
-      "type": "breakdown",
-      "category": "inner_support",
-      "price": "303.2"
-    },
-    {
-      "time": "2025-10-09",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "300.0"
-    },
-    {
       "time": "2025-10-13",
       "type": "breakdown",
       "category": "inner_support",
@@ -2218,44 +2254,44 @@
       "price": "300.0"
     },
     {
-      "time": "2025-10-13",
+      "time": "2025-10-15",
       "type": "breakdown",
       "category": "key_price",
       "price": "292.0"
     },
     {
-      "time": "2025-10-14",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "283.0"
-    },
-    {
       "time": "2025-10-15",
       "type": "breakdown",
       "category": "key_price",
       "price": "283.0"
     },
     {
-      "time": "2025-10-15",
-      "type": "breakdown",
+      "time": "2025-10-21",
+      "type": "standing",
+      "category": "key_price",
+      "price": "283.0"
+    },
+    {
+      "time": "2025-10-21",
+      "type": "standing",
       "category": "poc",
       "price": "276.0-283.0"
     },
     {
-      "time": "2025-10-17",
+      "time": "2025-10-23",
       "type": "breakdown",
+      "category": "key_price",
+      "price": "283.0"
+    },
+    {
+      "time": "2025-10-27",
+      "type": "standing",
       "category": "poc",
       "price": "276.0-283.0"
     },
     {
       "time": "2025-10-28",
       "type": "standing",
-      "category": "key_price",
-      "price": "283.0"
-    },
-    {
-      "time": "2025-10-30",
-      "type": "breakdown",
       "category": "key_price",
       "price": "283.0"
     },
@@ -2268,8 +2304,8 @@
     {
       "time": "2025-11-03",
       "type": "breakdown",
-      "category": "poc",
-      "price": "276.0-283.0"
+      "category": "key_price",
+      "price": "283.0"
     },
     {
       "time": "2025-11-04",
@@ -2278,16 +2314,64 @@
       "price": "276.0-283.0"
     },
     {
+      "time": "2025-11-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "276.0"
+    },
+    {
       "time": "2025-11-06",
       "type": "standing",
       "category": "key_price",
       "price": "261.7"
     },
     {
+      "time": "2025-11-07",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "283.0"
+    },
+    {
+      "time": "2025-11-07",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "276.0-283.0"
+    },
+    {
+      "time": "2025-11-10",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "276.0"
+    },
+    {
+      "time": "2025-11-12",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "276.0"
+    },
+    {
+      "time": "2025-11-12",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "276.0-283.0"
+    },
+    {
+      "time": "2025-11-13",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "276.0"
+    },
+    {
+      "time": "2025-11-14",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "276.0"
+    },
+    {
       "time": "2025-11-17",
       "type": "breakdown",
       "category": "key_price",
-      "price": "261.7"
+      "price": "276.0"
     },
     {
       "time": "2025-11-18",
@@ -2296,14 +2380,44 @@
       "price": "261.7"
     },
     {
-      "time": "2026-02-26",
-      "type": "standing",
+      "time": "2025-11-18",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "260.0"
+    },
+    {
+      "time": "2026-02-04",
+      "type": "breakdown",
       "category": "inner_support",
       "price": "230.5"
     },
     {
-      "time": "2026-03-03",
+      "time": "2026-02-06",
       "type": "breakdown",
+      "category": "inner_support",
+      "price": "230.5"
+    },
+    {
+      "time": "2026-02-10",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "230.5"
+    },
+    {
+      "time": "2026-02-23",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "230.5"
+    },
+    {
+      "time": "2026-02-24",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "230.5"
+    },
+    {
+      "time": "2026-02-26",
+      "type": "standing",
       "category": "inner_support",
       "price": "230.5"
     },
@@ -2318,6 +2432,18 @@
       "type": "standing",
       "category": "inner_support",
       "price": "209.0"
+    },
+    {
+      "time": "2026-03-16",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "230.5"
+    },
+    {
+      "time": "2026-03-31",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "230.5"
     },
     {
       "time": "2026-04-09",
@@ -2339,9 +2465,21 @@
     },
     {
       "time": "2026-04-16",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "283.0"
+    },
+    {
+      "time": "2026-04-16",
       "type": "standing",
       "category": "key_price",
       "price": "276.0"
+    },
+    {
+      "time": "2026-04-17",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "283.0"
     },
     {
       "time": "2026-04-17",
@@ -2352,8 +2490,14 @@
     {
       "time": "2026-04-20",
       "type": "breakdown",
-      "category": "poc",
-      "price": "276.0-283.0"
+      "category": "key_price",
+      "price": "283.0"
+    },
+    {
+      "time": "2026-04-21",
+      "type": "standing",
+      "category": "key_price",
+      "price": "276.0"
     },
     {
       "time": "2026-04-22",
@@ -2365,31 +2509,19 @@
       "time": "2026-04-23",
       "type": "breakdown",
       "category": "key_price",
+      "price": "292.0"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "breakdown",
+      "category": "key_price",
       "price": "283.0"
     },
     {
-      "time": "2026-04-23",
-      "type": "breakdown",
+      "time": "2026-04-27",
+      "type": "standing",
       "category": "key_price",
       "price": "276.0"
-    },
-    {
-      "time": "2026-04-23",
-      "type": "breakdown",
-      "category": "poc",
-      "price": "276.0-283.0"
-    },
-    {
-      "time": "2026-04-24",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "283.0"
-    },
-    {
-      "time": "2026-04-24",
-      "type": "breakdown",
-      "category": "poc",
-      "price": "276.0-283.0"
     },
     {
       "time": "2026-04-28",
@@ -2401,13 +2533,7 @@
       "time": "2026-04-29",
       "type": "breakdown",
       "category": "key_price",
-      "price": "276.0"
-    },
-    {
-      "time": "2026-04-29",
-      "type": "breakdown",
-      "category": "poc",
-      "price": "276.0-283.0"
+      "price": "283.0"
     },
     {
       "time": "2026-04-30",
@@ -2417,6 +2543,18 @@
     },
     {
       "time": "2026-04-30",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "276.0-283.0"
+    },
+    {
+      "time": "2026-05-04",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "276.0-283.0"
+    },
+    {
+      "time": "2026-05-05",
       "type": "breakdown",
       "category": "poc",
       "price": "276.0-283.0"
@@ -2458,6 +2596,36 @@
       "price": "303.2"
     },
     {
+      "time": "2026-05-12",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "328.5"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "328.5"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "323.0"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "322.5"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "gap",
+      "price": "323.0-328.5"
+    },
+    {
       "time": "2026-05-15",
       "type": "standing",
       "category": "key_price",
@@ -2478,26 +2646,26 @@
     {
       "time": "2026-05-19",
       "type": "breakdown",
+      "category": "support_transfer",
+      "price": "336"
+    },
+    {
+      "time": "2026-05-20",
+      "type": "breakdown",
       "category": "key_price",
       "price": "323.0"
-    },
-    {
-      "time": "2026-05-19",
-      "type": "breakdown",
-      "category": "inner_support",
-      "price": "322.5"
-    },
-    {
-      "time": "2026-05-19",
-      "type": "breakdown",
-      "category": "gap",
-      "price": "323.0-328.5"
     },
     {
       "time": "2026-05-20",
       "type": "breakdown",
       "category": "inner_support",
-      "price": "303.2"
+      "price": "322.5"
+    },
+    {
+      "time": "2026-05-21",
+      "type": "standing",
+      "category": "key_price",
+      "price": "300.0"
     },
     {
       "time": "2026-05-25",
@@ -2508,12 +2676,6 @@
     {
       "time": "2026-05-26",
       "type": "standing",
-      "category": "support_transfer",
-      "price": "336"
-    },
-    {
-      "time": "2026-05-27",
-      "type": "breakdown",
       "category": "support_transfer",
       "price": "336"
     }

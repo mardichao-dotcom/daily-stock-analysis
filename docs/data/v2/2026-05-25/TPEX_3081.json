@@ -2236,20 +2236,14 @@
       "price": "1344"
     },
     {
+      "time": "2026-03-09",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "1344"
+    },
+    {
       "time": "2026-03-11",
       "type": "standing",
-      "category": "poc",
-      "price": "1375-1510"
-    },
-    {
-      "time": "2026-03-12",
-      "type": "breakdown",
-      "category": "poc",
-      "price": "1375-1510"
-    },
-    {
-      "time": "2026-03-17",
-      "type": "breakdown",
       "category": "poc",
       "price": "1375-1510"
     },
@@ -2276,6 +2270,12 @@
       "type": "standing",
       "category": "key_price",
       "price": "2170"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "3305"
     },
     {
       "time": "2026-04-30",

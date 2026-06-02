@@ -2449,20 +2449,8 @@
       "price": "2155"
     },
     {
-      "time": "2025-11-27",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "2155"
-    },
-    {
       "time": "2025-12-01",
       "type": "standing",
-      "category": "key_price",
-      "price": "2155"
-    },
-    {
-      "time": "2025-12-03",
-      "type": "breakdown",
       "category": "key_price",
       "price": "2155"
     },
@@ -2479,19 +2467,13 @@
       "price": "2155"
     },
     {
-      "time": "2025-12-09",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "2155"
-    },
-    {
-      "time": "2025-12-16",
-      "type": "breakdown",
-      "category": "key_price",
-      "price": "2155"
-    },
-    {
       "time": "2025-12-17",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2155"
+    },
+    {
+      "time": "2025-12-29",
       "type": "breakdown",
       "category": "key_price",
       "price": "2155"
@@ -2503,6 +2485,36 @@
       "price": "2155"
     },
     {
+      "time": "2026-02-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2800"
+    },
+    {
+      "time": "2026-03-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2800"
+    },
+    {
+      "time": "2026-03-10",
+      "type": "standing",
+      "category": "key_price",
+      "price": "2155"
+    },
+    {
+      "time": "2026-04-01",
+      "type": "standing",
+      "category": "key_price",
+      "price": "2155"
+    },
+    {
+      "time": "2026-04-22",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3715-3905"
+    },
+    {
       "time": "2026-04-24",
       "type": "standing",
       "category": "order_block",
@@ -2510,6 +2522,12 @@
     },
     {
       "time": "2026-05-20",
+      "type": "standing",
+      "category": "fvg",
+      "price": "4285-4540"
+    },
+    {
+      "time": "2026-06-01",
       "type": "standing",
       "category": "fvg",
       "price": "4285-4540"

@@ -2207,8 +2207,20 @@
       "price": "3195"
     },
     {
-      "time": "2026-04-23",
+      "time": "2026-04-15",
       "type": "breakdown",
+      "category": "support_transfer",
+      "price": "3570"
+    },
+    {
+      "time": "2026-04-17",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "3195"
+    },
+    {
+      "time": "2026-04-22",
+      "type": "standing",
       "category": "inner_support",
       "price": "3195"
     },
@@ -2217,6 +2229,30 @@
       "type": "breakdown",
       "category": "inner_support",
       "price": "3195"
+    },
+    {
+      "time": "2026-04-27",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "3195"
+    },
+    {
+      "time": "2026-05-08",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "3195"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "inner_support",
+      "price": "3195"
+    },
+    {
+      "time": "2026-05-20",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "2560-2645"
     }
   ]
 }

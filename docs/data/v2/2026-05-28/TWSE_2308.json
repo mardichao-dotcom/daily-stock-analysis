@@ -2585,10 +2585,28 @@
       "price": "880"
     },
     {
-      "time": "2025-09-26",
+      "time": "2025-09-25",
+      "type": "standing",
+      "category": "key_price",
+      "price": "880"
+    },
+    {
+      "time": "2025-10-01",
       "type": "breakdown",
       "category": "key_price",
       "price": "880"
+    },
+    {
+      "time": "2025-10-30",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1085"
+    },
+    {
+      "time": "2026-01-08",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1085"
     },
     {
       "time": "2026-01-19",
@@ -2603,13 +2621,13 @@
       "price": "1350"
     },
     {
-      "time": "2026-03-03",
+      "time": "2026-03-04",
       "type": "breakdown",
       "category": "support_transfer",
       "price": "1350"
     },
     {
-      "time": "2026-03-04",
+      "time": "2026-03-06",
       "type": "breakdown",
       "category": "support_transfer",
       "price": "1350"
@@ -2619,6 +2637,18 @@
       "type": "standing",
       "category": "support_transfer",
       "price": "1350"
+    },
+    {
+      "time": "2026-03-17",
+      "type": "standing",
+      "category": "support_transfer",
+      "price": "1350"
+    },
+    {
+      "time": "2026-03-27",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1560"
     },
     {
       "time": "2026-04-09",
@@ -2633,7 +2663,19 @@
       "price": "1950"
     },
     {
-      "time": "2026-05-19",
+      "time": "2026-05-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2280"
+    },
+    {
+      "time": "2026-05-08",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2280"
+    },
+    {
+      "time": "2026-05-20",
       "type": "breakdown",
       "category": "key_price",
       "price": "1950"
@@ -2641,8 +2683,8 @@
     {
       "time": "2026-05-20",
       "type": "breakdown",
-      "category": "key_price",
-      "price": "1950"
+      "category": "fvg",
+      "price": "1905-1950"
     },
     {
       "time": "2026-05-26",

@@ -2354,13 +2354,91 @@
   },
   "events": [
     {
+      "time": "2025-11-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "674"
+    },
+    {
+      "time": "2025-11-13",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "567"
+    },
+    {
+      "time": "2025-12-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "567"
+    },
+    {
+      "time": "2025-12-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "567"
+    },
+    {
+      "time": "2025-12-26",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "567"
+    },
+    {
       "time": "2025-12-30",
       "type": "standing",
       "category": "key_price",
       "price": "567"
     },
     {
+      "time": "2026-01-05",
+      "type": "standing",
+      "category": "key_price",
+      "price": "567"
+    },
+    {
+      "time": "2026-01-08",
+      "type": "standing",
+      "category": "key_price",
+      "price": "567"
+    },
+    {
+      "time": "2026-03-20",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "980"
+    },
+    {
+      "time": "2026-03-23",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "980"
+    },
+    {
       "time": "2026-04-10",
+      "type": "standing",
+      "category": "key_price",
+      "price": "980"
+    },
+    {
+      "time": "2026-05-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1310"
+    },
+    {
+      "time": "2026-05-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1255"
+    },
+    {
+      "time": "2026-05-06",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1255"
+    },
+    {
+      "time": "2026-05-19",
       "type": "standing",
       "category": "key_price",
       "price": "980"

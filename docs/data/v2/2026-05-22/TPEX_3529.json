@@ -2190,14 +2190,32 @@
   },
   "events": [
     {
-      "time": "2025-09-24",
+      "time": "2025-09-02",
       "type": "standing",
       "category": "fvg",
       "price": "2090-2160"
     },
     {
-      "time": "2025-09-26",
+      "time": "2025-09-18",
       "type": "breakdown",
+      "category": "fvg",
+      "price": "2090-2160"
+    },
+    {
+      "time": "2025-09-19",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "2090-2160"
+    },
+    {
+      "time": "2025-09-22",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "2090-2160"
+    },
+    {
+      "time": "2025-09-24",
+      "type": "standing",
       "category": "fvg",
       "price": "2090-2160"
     },
@@ -2214,13 +2232,67 @@
       "price": "2090-2160"
     },
     {
-      "time": "2025-10-30",
+      "time": "2025-11-10",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "2090-2160"
+    },
+    {
+      "time": "2025-11-19",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "2090-2160"
+    },
+    {
+      "time": "2025-12-03",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "2090-2160"
+    },
+    {
+      "time": "2025-12-04",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "2090-2160"
+    },
+    {
+      "time": "2025-12-05",
       "type": "breakdown",
       "category": "fvg",
       "price": "2090-2160"
     },
     {
       "time": "2026-04-15",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "3242"
+    },
+    {
+      "time": "2026-04-22",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "4460-4665"
+    },
+    {
+      "time": "2026-05-08",
+      "type": "breakdown",
+      "category": "support_transfer",
+      "price": "4710"
+    },
+    {
+      "time": "2026-05-11",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "4460-4665"
+    },
+    {
+      "time": "2026-05-12",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "4460-4665"
+    },
+    {
+      "time": "2026-05-20",
       "type": "standing",
       "category": "inner_support",
       "price": "3242"
