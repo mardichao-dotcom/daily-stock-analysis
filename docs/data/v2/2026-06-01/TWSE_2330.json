@@ -2578,6 +2578,12 @@
       "etf": "00994A",
       "action": "減碼",
       "shares": 13
+    },
+    {
+      "time": "2026-06-01",
+      "etf": "00994A",
+      "action": "加碼",
+      "shares": 12
     }
   ],
   "key_prices": {

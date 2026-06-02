@@ -1,0 +1,15 @@
+[
+  {
+    "code": "TPEX:3693",
+    "name": "營邦",
+    "sector": "AI伺服器代工",
+    "key_prices": {
+      "lines": [
+        {"price": "690", "color": "black", "category": "support_transfer", "adjective": "small", "text": "賣壓"},
+        {"price": "427.5", "color": "black", "category": "inner_support", "adjective": "small", "text": "內撐"},
+        {"price": "385", "color": "red", "category": "support_transfer", "adjective": "important", "text": "撐轉"}
+      ],
+      "areas": []
+    }
+  }
+]

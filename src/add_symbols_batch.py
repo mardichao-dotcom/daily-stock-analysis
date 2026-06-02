@@ -411,13 +411,23 @@ def run_pipeline(
                         check=True, cwd=str(PROJECT_ROOT),
                         stdout=subprocess.DEVNULL)
             # live + watchlist + history + landing
+            # 注意 per-module CLI 不同:
+            #   render_watchlist_v2 接 --date
+            #   render_history      不接 --date(掃 docs/ 內 snapshot)
+            #   render_landing      不接 --date(讀 filtered_result_v2.json)
             latest = dates[0]
             shutil.copy(PROJECT_ROOT / "docs" / f"index_v2_{latest}.html",
                         PROJECT_ROOT / "docs" / "index_v2.html")
-            for mod in ("render_watchlist_v2", "render_history", "render_landing"):
-                _runner(["python3", "-m", f"src.{mod}", "--date", latest],
-                        check=True, cwd=str(PROJECT_ROOT),
-                        stdout=subprocess.DEVNULL)
+            _runner(["python3", "-m", "src.render_watchlist_v2",
+                     "--date", latest],
+                    check=True, cwd=str(PROJECT_ROOT),
+                    stdout=subprocess.DEVNULL)
+            _runner(["python3", "-m", "src.render_history"],
+                    check=True, cwd=str(PROJECT_ROOT),
+                    stdout=subprocess.DEVNULL)
+            _runner(["python3", "-m", "src.render_landing"],
+                    check=True, cwd=str(PROJECT_ROOT),
+                    stdout=subprocess.DEVNULL)
             result["ran_steps"].append("rerender")
         except subprocess.CalledProcessError as ex:
             result["ok"] = False

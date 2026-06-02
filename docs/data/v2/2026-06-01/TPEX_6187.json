@@ -2134,6 +2134,12 @@
       "etf": "00987A",
       "action": "加碼",
       "shares": 22
+    },
+    {
+      "time": "2026-06-01",
+      "etf": "00994A",
+      "action": "清倉",
+      "shares": 14
     }
   ],
   "key_prices": {

@@ -36,6 +36,7 @@
     "TWSE_2376",
     "TWSE_6669",
     "TWSE_2317",
+    "TPEX_3693",
     "TWSE_2383",
     "TPEX_6274",
     "TWSE_6213",
@@ -310,6 +311,13 @@
     "TWSE_2317": {
       "symbol": "TWSE:2317",
       "name": "鴻海",
+      "sector": "AI伺服器代工",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TPEX_3693": {
+      "symbol": "TPEX:3693",
+      "name": "營邦",
       "sector": "AI伺服器代工",
       "exchange": "TW",
       "status": "ready"
@@ -701,5 +709,5 @@
     }
   },
   "version": "2.2",
-  "generated_at": "2026-06-02T19:54:12+08:00"
+  "generated_at": "2026-06-03T01:37:57+08:00"
 }

@@ -2596,6 +2596,12 @@
       "etf": "00403A",
       "action": "加碼",
       "shares": 30
+    },
+    {
+      "time": "2026-06-01",
+      "etf": "00994A",
+      "action": "加碼",
+      "shares": 7
     }
   ],
   "key_prices": {

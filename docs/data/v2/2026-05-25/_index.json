@@ -36,6 +36,7 @@
     "TWSE_2376",
     "TWSE_6669",
     "TWSE_2317",
+    "TPEX_3693",
     "TWSE_2383",
     "TPEX_6274",
     "TWSE_6213",
@@ -313,6 +314,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TPEX_3693": {
+      "symbol": "TPEX:3693",
+      "name": "營邦",
+      "sector": "AI伺服器代工",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2383": {
       "symbol": "TWSE:2383",
       "name": "台光電",
@@ -480,7 +488,7 @@
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_TSM": {
       "symbol": "NYSE:TSM",
@@ -488,7 +496,7 @@
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_QCOM": {
       "symbol": "NASDAQ:QCOM",
@@ -496,7 +504,7 @@
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_SNPS": {
       "symbol": "NASDAQ:SNPS",
@@ -504,7 +512,7 @@
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_ARM": {
       "symbol": "NASDAQ:ARM",
@@ -512,7 +520,7 @@
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_LITE": {
       "symbol": "NASDAQ:LITE",
@@ -520,7 +528,7 @@
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_COHR": {
       "symbol": "NYSE:COHR",
@@ -528,7 +536,7 @@
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_ANET": {
       "symbol": "NYSE:ANET",
@@ -536,7 +544,7 @@
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_MRVL": {
       "symbol": "NASDAQ:MRVL",
@@ -544,7 +552,7 @@
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_ASML": {
       "symbol": "NASDAQ:ASML",
@@ -552,7 +560,7 @@
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "TSE_8035": {
       "symbol": "TSE:8035",
@@ -567,7 +575,7 @@
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_AMKR": {
       "symbol": "NASDAQ:AMKR",
@@ -575,7 +583,7 @@
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_ROG": {
       "symbol": "NYSE:ROG",
@@ -583,7 +591,7 @@
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "TSE_6752": {
       "symbol": "TSE:6752",
@@ -612,7 +620,7 @@
       "sector": "伺服器品牌代工",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NASDAQ_SMCI": {
       "symbol": "NASDAQ:SMCI",
@@ -620,7 +628,7 @@
       "sector": "伺服器品牌代工",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_HPE": {
       "symbol": "NYSE:HPE",
@@ -628,7 +636,7 @@
       "sector": "伺服器品牌代工",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_VRT": {
       "symbol": "NYSE:VRT",
@@ -636,7 +644,7 @@
       "sector": "AI_基礎設施",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_ETN": {
       "symbol": "NYSE:ETN",
@@ -644,7 +652,7 @@
       "sector": "AI_基礎設施",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_PWR": {
       "symbol": "NYSE:PWR",
@@ -652,7 +660,7 @@
       "sector": "AI_基礎設施",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "NYSE_GEV": {
       "symbol": "NYSE:GEV",
@@ -660,7 +668,7 @@
       "sector": "AI_基礎設施",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "TSE_6594": {
       "symbol": "TSE:6594",
@@ -689,7 +697,7 @@
       "sector": "被動元件_航運",
       "exchange": "US",
       "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "last_available_date": "2026-06-01"
     },
     "OMXCOP_MAERSK_B": {
       "symbol": "OMXCOP:MAERSK_B",
@@ -697,9 +705,9 @@
       "sector": "被動元件_航運",
       "exchange": "DK",
       "status": "waiting_us_close",
-      "last_available_date": "2026-06-01"
+      "last_available_date": "2026-06-02"
     }
   },
   "version": "2.2",
-  "generated_at": "2026-06-02T09:55:31+08:00"
+  "generated_at": "2026-06-03T01:37:50+08:00"
 }

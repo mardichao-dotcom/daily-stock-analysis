@@ -36,6 +36,7 @@
     "TWSE_2376",
     "TWSE_6669",
     "TWSE_2317",
+    "TPEX_3693",
     "TWSE_2383",
     "TPEX_6274",
     "TWSE_6213",
@@ -59,13 +60,34 @@
     "TWSE_2609",
     "TWSE_2059",
     "TWSE_3533",
+    "NASDAQ_NVDA",
+    "NYSE_TSM",
+    "NASDAQ_QCOM",
+    "NASDAQ_SNPS",
+    "NASDAQ_ARM",
+    "NASDAQ_LITE",
+    "NYSE_COHR",
+    "NYSE_ANET",
+    "NASDAQ_MRVL",
+    "NASDAQ_ASML",
     "TSE_8035",
+    "NASDAQ_AMAT",
+    "NASDAQ_AMKR",
+    "NYSE_ROG",
     "TSE_6752",
     "TSE_4062",
     "TSE_6146",
+    "NYSE_DELL",
+    "NASDAQ_SMCI",
+    "NYSE_HPE",
+    "NYSE_VRT",
+    "NYSE_ETN",
+    "NYSE_PWR",
+    "NYSE_GEV",
     "TSE_6594",
     "TSE_6981",
     "TSE_6762",
+    "NYSE_ZIM",
     "OMXCOP_MAERSK_B"
   ],
   "symbols": {
@@ -314,6 +336,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TPEX_3693": {
+      "symbol": "TPEX:3693",
+      "name": "營邦",
+      "sector": "AI伺服器代工",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2383": {
       "symbol": "TWSE:2383",
       "name": "台光電",
@@ -480,80 +509,70 @@
       "name": "NVIDIA",
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_TSM": {
       "symbol": "NYSE:TSM",
       "name": "台積電ADR",
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_QCOM": {
       "symbol": "NASDAQ:QCOM",
       "name": "Qualcomm",
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_SNPS": {
       "symbol": "NASDAQ:SNPS",
       "name": "Synopsys",
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_ARM": {
       "symbol": "NASDAQ:ARM",
       "name": "ARM Holdings",
       "sector": "AI晶片_IP_代工龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_LITE": {
       "symbol": "NASDAQ:LITE",
       "name": "Lumentum",
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_COHR": {
       "symbol": "NYSE:COHR",
       "name": "Coherent",
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_ANET": {
       "symbol": "NYSE:ANET",
       "name": "Arista",
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_MRVL": {
       "symbol": "NASDAQ:MRVL",
       "name": "Marvell",
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_ASML": {
       "symbol": "NASDAQ:ASML",
       "name": "ASML",
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "TSE_8035": {
       "symbol": "TSE:8035",
@@ -567,24 +586,21 @@
       "name": "Applied Materials",
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_AMKR": {
       "symbol": "NASDAQ:AMKR",
       "name": "Amkor",
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_ROG": {
       "symbol": "NYSE:ROG",
       "name": "Rogers",
       "sector": "半導體設備_材料_封測",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "TSE_6752": {
       "symbol": "TSE:6752",
@@ -612,56 +628,49 @@
       "name": "Dell",
       "sector": "伺服器品牌代工",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NASDAQ_SMCI": {
       "symbol": "NASDAQ:SMCI",
       "name": "SuperMicro",
       "sector": "伺服器品牌代工",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_HPE": {
       "symbol": "NYSE:HPE",
       "name": "HPE",
       "sector": "伺服器品牌代工",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_VRT": {
       "symbol": "NYSE:VRT",
       "name": "Vertiv",
       "sector": "AI_基礎設施",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_ETN": {
       "symbol": "NYSE:ETN",
       "name": "Eaton",
       "sector": "AI_基礎設施",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_PWR": {
       "symbol": "NYSE:PWR",
       "name": "Quanta Services",
       "sector": "AI_基礎設施",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "NYSE_GEV": {
       "symbol": "NYSE:GEV",
       "name": "GE Vernova",
       "sector": "AI_基礎設施",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "TSE_6594": {
       "symbol": "TSE:6594",
@@ -689,8 +698,7 @@
       "name": "ZIM",
       "sector": "被動元件_航運",
       "exchange": "US",
-      "status": "waiting_us_close",
-      "last_available_date": "2026-05-29"
+      "status": "ready"
     },
     "OMXCOP_MAERSK_B": {
       "symbol": "OMXCOP:MAERSK_B",
@@ -701,5 +709,5 @@
     }
   },
   "version": "2.2",
-  "generated_at": "2026-06-02T09:55:36+08:00"
+  "generated_at": "2026-06-03T01:37:56+08:00"
 }
