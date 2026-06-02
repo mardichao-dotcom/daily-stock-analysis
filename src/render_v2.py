@@ -179,55 +179,83 @@ def classify_stocks(stocks: dict) -> dict:
 
 # ─── 區塊渲染 ────────────────────────────────────────────────────────────────
 
-def render_top10(stocks: dict) -> str:
-    """區塊 1:當日前十名(by score 降冪)"""
+def render_top10(stocks: dict, date: str = "", status_map: dict | None = None) -> str:
+    """區塊 1:當日前十名(by score 降冪)。
+
+    2026-06-02 朋友 review:每項從純文字列表升級為可折疊 <details> 卡片,
+    展開後看 K 線。複用 chart_placeholder_html(id_prefix="chart-top10"),
+    避免跟 S/A/B 個股卡的 id 衝突(同檔股可能同時出現)。
+    """
     ranked = sorted(stocks.items(), key=lambda x: -x[1].get("score", 0))[:10]
     if not ranked:
         return _section_empty("🏆 當日前十名", "無資料")
 
-    items = []
+    status_map = status_map or {}
+    medals = {1: "🥇", 2: "🥈", 3: "🥉"}
+    cards = []
     for i, (symbol, stock) in enumerate(ranked, 1):
-        name = stock.get("name", "")
+        name  = stock.get("name", "")
         score = stock.get("score", 0)
         grade = stock.get("grade", "?")
-        items.append(
-            f'<li><span class="rank">{i}.</span>'
-            f'<span class="name">{_h(name)} <code>{_h(symbol)}</code></span>'
-            f'<span class="score">{score:.1f} <span class="grade-badge {_h(grade)}">{_h(grade)}</span></span></li>'
+        tags  = stock.get("tags", [])
+        sid   = _safe_id(symbol)
+        rank_badge = medals.get(i, f"#{i}")
+        # tag inline 前 3 個 emoji
+        tag_inline = "".join(
+            f'<span class="tag">{_h(t.split()[0])}</span>' for t in tags[:3]
         )
+        placeholder = chart_placeholder_html(
+            symbol, date, status_map.get(sid), id_prefix="chart-top10",
+        )
+        cards.append(f"""
+<details class="stock-card top10-card grade-{_h(grade)}">
+  <summary>
+    <span class="top10-rank">{rank_badge}</span>
+    <span class="stock-name">{_h(name)}</span>
+    <code class="stock-code">{_h(symbol)}</code>
+    <span class="stock-tags-inline">{tag_inline}</span>
+    <span class="stock-score">{score:.1f} <span class="grade-badge {_h(grade)}">{_h(grade)}</span></span>
+  </summary>
+  <div class="card-body">
+    {placeholder}
+  </div>
+</details>
+""")
     return f"""
 <section class="section">
   <h2>🏆 當日前十名</h2>
-  <ol class="top10-list">
-{chr(10).join("    " + it for it in items)}
-  </ol>
+{chr(10).join(cards)}
 </section>
 """
 
 
-def chart_placeholder_html(symbol: str, date: str, status_entry: dict | None) -> str:
+def chart_placeholder_html(symbol: str, date: str, status_entry: dict | None,
+                              id_prefix: str = "chart") -> str:
     """根據 _index.json 的 status 決定 chart placeholder 樣式。
 
+    id_prefix:用於同頁面多份相同個股 placeholder 時避免 id 衝突
+              (例:Top 10 用 "chart-top10",個股卡用 預設 "chart")
     status_entry 結構(from prepare_charts_v2 _index.json):
         {status: "ready" | "waiting_us_close" | "missing",
          exchange: "TW"/"US"/"JP"/"INTL", last_available_date?: ...}
     status_entry=None 時 fallback 預設 ready(向後相容)。
     """
     sid = _safe_id(symbol)
+    elem_id = f"{id_prefix}-{sid}"
     status = (status_entry or {}).get("status", "ready")
     if status == "waiting_us_close":
         exchange = (status_entry or {}).get("exchange", "INTL")
         last_d   = (status_entry or {}).get("last_available_date", "")
         last_txt = f"<br><small>最新資料:{_h(last_d)}</small>" if last_d else ""
-        return (f'<div id="chart-{_h(sid)}" class="chart-placeholder awaiting">'
+        return (f'<div id="{_h(elem_id)}" class="chart-placeholder awaiting">'
                 f'⏳ 等待 {_h(exchange)} 收盤資料(下個交易日更新){last_txt}'
                 f'</div>')
     if status == "missing":
-        return (f'<div id="chart-{_h(sid)}" class="chart-placeholder errored">'
+        return (f'<div id="{_h(elem_id)}" class="chart-placeholder errored">'
                 f'⚠️ 此檔無 K 線資料,請聯絡管理員'
                 f'</div>')
     # ready(或沒 status entry → 預設 ready)
-    return (f'<div id="chart-{_h(sid)}" class="chart-placeholder"'
+    return (f'<div id="{_h(elem_id)}" class="chart-placeholder"'
             f' data-symbol="{_h(symbol)}" data-date="{_h(date)}">'
             f'[點此載入 K 線圖]'
             f'</div>')
@@ -487,7 +515,7 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
 """
 
     parts = [
-        render_top10(stocks),
+        render_top10(stocks, date, status_map),
         render_grade_section("S", "🔴 S 級戰區",     buckets["S"], date, status_map),
         render_grade_section("A", "🟡 A 級戰區",     buckets["A"], date, status_map),
         render_grade_section("B", "🟢 B 級戰區",     buckets["B"], date, status_map),

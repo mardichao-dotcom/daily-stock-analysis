@@ -100,6 +100,26 @@ header .meta {
 .top10-list .name { flex: 1; }
 .top10-list .score { font-weight: bold; }
 
+/* ─── Top10 卡片(2026-06-02:朋友 review 後升級,可折疊看 K 線)─── */
+details.stock-card.top10-card {
+  margin: 4px 0;
+}
+.top10-card > summary {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.top10-rank {
+  display: inline-block;
+  min-width: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-mute);
+  text-align: center;
+}
+
 /* ─── 個股卡(S/A/B 用)─── */
 details.stock-card {
   border: 1px solid var(--border);

@@ -86,12 +86,37 @@ class TestRenderTop10(unittest.TestCase):
         # 應該是 N14 (14 分) 第一
         self.assertLess(html.index("N14"), html.index("N13"))
         # 只取 10 個 — N4 不該在,N5 應該在(最低分入榜)
-        self.assertNotIn(">N4 ", html)
-        self.assertIn(">N5 ", html)
+        # 新版用 <span class="stock-name">NX</span>,匹配閉合 tag
+        self.assertNotIn(">N4<", html)
+        self.assertIn(">N5<", html)
 
     def test_top10_empty_no_error(self):
         html = render_v2.render_top10({})
         self.assertIn("無資料", html)
+
+    def test_top10_collapsible_card_with_chart_placeholder(self):
+        """v2.2 polish:每項是 <details> 卡片,展開含 chart placeholder
+        id 用 chart-top10- 前綴,避免跟 S/A/B 級個股卡(chart-)衝突
+        """
+        stocks = {"TWSE:2382": make_stock(name="廣達", score=7.0, grade="S")}
+        html = render_v2.render_top10(stocks, date="2026-06-01")
+        self.assertIn('<details class="stock-card top10-card grade-S">', html)
+        self.assertIn('id="chart-top10-TWSE_2382"', html)
+        self.assertIn('data-symbol="TWSE:2382"', html)
+        self.assertIn('🥇', html)
+
+    def test_top10_waiting_us_close_uses_amber_placeholder(self):
+        """v2.2:status_map 標 waiting_us_close → top10 卡片內顯示 amber 文案"""
+        stocks = {"NASDAQ:NVDA": make_stock(name="NVIDIA", score=8.0, grade="S")}
+        status_map = {
+            "NASDAQ_NVDA": {"status": "waiting_us_close", "exchange": "US",
+                             "last_available_date": "2026-05-29"},
+        }
+        html = render_v2.render_top10(stocks, date="2026-06-01",
+                                         status_map=status_map)
+        self.assertIn("chart-placeholder awaiting", html)
+        self.assertIn("等待 US 收盤資料", html)
+        self.assertIn("2026-05-29", html)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
