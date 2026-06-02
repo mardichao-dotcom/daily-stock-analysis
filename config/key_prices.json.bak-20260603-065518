@@ -5399,43 +5399,6 @@
           "category": "order_block"
         }
       ]
-    },
-    "TPEX:3163": {
-      "name": "波若威",
-      "sector": "光通訊",
-      "market": "TW",
-      "lines": [
-        {
-          "price": "1300",
-          "color": "black",
-          "text": "",
-          "adjective": "",
-          "category": "key_price"
-        },
-        {
-          "price": "647",
-          "color": "black",
-          "text": "",
-          "adjective": "",
-          "category": "key_price"
-        },
-        {
-          "price": "489.5",
-          "color": "black",
-          "text": "",
-          "adjective": "",
-          "category": "key_price"
-        }
-      ],
-      "areas": [
-        {
-          "low": "866",
-          "high": "920",
-          "text": "買盤訂單塊",
-          "adjective": "",
-          "category": "order_block"
-        }
-      ]
     }
   }
 }
