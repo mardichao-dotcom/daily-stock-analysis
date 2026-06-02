@@ -350,16 +350,23 @@ def run_pipeline(
                 result["ran_steps"].append("rollback")
                 _print(f"[rollback] tv_collect 失敗,還原:{ex}")
                 return result
-        # import_kline 一次寫進 kline.db
-        try:
-            _runner(
-                ["python3", str(PROJECT_ROOT / "src" / "import_kline.py")],
-                check=True, cwd=str(PROJECT_ROOT),
-            )
-        except subprocess.CalledProcessError as ex:
-            result["ok"] = False
-            result["errors"].append(f"import_kline 失敗:{ex}")
-            return result
+            # 2026-06-03 bug fix:tv_collect 每跑一檔就把 /tmp/tv_daily_data.json
+            # 整個覆寫(不是 append)。loop 結束才呼叫 import_kline 會只 import
+            # 最後一檔。修補:每跑完一檔立刻 import。
+            try:
+                _runner(
+                    ["python3", str(PROJECT_ROOT / "src" / "import_kline.py")],
+                    check=True, cwd=str(PROJECT_ROOT),
+                )
+            except subprocess.CalledProcessError as ex:
+                result["ok"] = False
+                result["errors"].append(
+                    f"import_kline ({entry['code']}) 失敗:{ex}"
+                )
+                rollback(backups)
+                result["ran_steps"].append("rollback")
+                _print(f"[rollback] import_kline 失敗,還原:{ex}")
+                return result
         result["ran_steps"].append("tv_collect")
 
     # ── step 6: 增量補新檔的歷史 standing_state(慢,預設 off)─────────

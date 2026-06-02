@@ -333,3 +333,56 @@ class TestValidateDuplicateAndExisting(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+class TestTvCollectImportInterleaved(unittest.TestCase):
+    """Regression(2026-06-03):tv_collect 跑 N 檔時,import_kline 必須在每檔
+    後立刻呼叫,而不是 loop 結束才呼叫一次。
+
+    Bug 背景:tv_collect.mjs 每跑一檔把 /tmp/tv_daily_data.json 整個覆寫
+    (不 append),loop 結束才 import 只會抓到最後一檔。
+    這個 test 鎖死「N 檔 → N 次 tv_collect + N 次 import_kline」。
+    """
+
+    def test_each_symbol_followed_by_import(self):
+        with tempfile.TemporaryDirectory() as td:
+            wl, kp, sc = write_files(td)
+            entries = [
+                {"code": "TWSE:2454", "name": "聯發科", "sector": "IC設計"},
+                {"code": "TWSE:9991", "name": "範例A", "sector": "IC設計"},
+                {"code": "TWSE:9992", "name": "範例B", "sector": "IC設計"},
+            ]
+            calls: list[tuple[str, str]] = []
+            def fake_runner(args, **kw):
+                # 第一個 arg 是 "node" 或 "python3" — 用第二個 arg 識別腳本
+                script = args[1]
+                if "tv_collect" in script:
+                    calls.append(("tv_collect", args[3]))   # --symbol value
+                elif "import_kline" in script:
+                    calls.append(("import_kline", ""))
+                # 不模擬實際失敗(回正常 done)
+                class _Done:
+                    returncode = 0
+                return _Done()
+
+            result = asb.run_pipeline(
+                entries=entries,
+                watchlist_path=wl, key_prices_path=kp, sectors_path=sc,
+                apply=True, do_tv_collect=True,
+                _runner=fake_runner,
+                _print=lambda *a, **k: None,
+            )
+
+            self.assertTrue(result["ok"], f"errors={result.get('errors')}")
+            # 預期 interleave: tv_collect A → import → tv_collect B → import →
+            # tv_collect C → import(共 6 次)
+            self.assertEqual(len(calls), 6,
+                              f"expected 6 calls (3×{{tv_collect+import}}),got {len(calls)}: {calls}")
+            self.assertEqual(calls[0], ("tv_collect", "TWSE:2454"))
+            self.assertEqual(calls[1], ("import_kline", ""))
+            self.assertEqual(calls[2], ("tv_collect", "TWSE:9991"))
+            self.assertEqual(calls[3], ("import_kline", ""))
+            self.assertEqual(calls[4], ("tv_collect", "TWSE:9992"))
+            self.assertEqual(calls[5], ("import_kline", ""))
