@@ -8,6 +8,7 @@
     "TWSE_6285",
     "TPEX_4979",
     "TPEX_3491",
+    "TPEX_3163",
     "TWSE_3653",
     "TWSE_3017",
     "TWSE_2421",
@@ -136,6 +137,13 @@
     "TPEX_3491": {
       "symbol": "TPEX:3491",
       "name": "昇達科",
+      "sector": "光通訊",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TPEX_3163": {
+      "symbol": "TPEX:3163",
+      "name": "波若威",
       "sector": "光通訊",
       "exchange": "TW",
       "status": "ready"
@@ -828,5 +836,5 @@
     }
   },
   "version": "2.2",
-  "generated_at": "2026-06-03T06:47:34+08:00"
+  "generated_at": "2026-06-03T06:56:35+08:00"
 }
