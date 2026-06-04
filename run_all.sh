@@ -151,11 +151,23 @@ fi
 DATA_DATE=$(cat .data_date 2>/dev/null || echo "")
 [[ -n "$DATA_DATE" ]] && echo "      data_date=${DATA_DATE}"
 
-# ── 資料取得層屏障 ────────────────────────────────────────────────────────────
-if [[ $TV_EC -ne 0 || $DU_EC -ne 0 || $IK_EC -ne 0 ]]; then
+# ── 資料取得層屏障(2026-06-04 修正)──────────────────────────────────────
+# 原本 daily_update 失敗也擋下游 — 但 daily_update 經常在「資料寫入後」的
+# 周邊步驟失敗(例:Pine script 產生時 KeyError、etfedge 偶爾抓不到),
+# 此時 etf_operations.db 仍有資料,V2 計分照常用得到。
+# 改為:只 tv_collect / import_kline(K 線資料路徑)失敗才擋下游;
+# daily_update 失敗只影響當日 ETF 共識的「新鮮度」,V2 仍會跑(用最新可
+# 取得的 ETF 資料),由 daily_supervisor 的 freshness watchdog 後續告警。
+if [[ $TV_EC -ne 0 || $IK_EC -ne 0 ]]; then
     echo ""
-    echo "⚠️  資料取得層有失敗，跳過後續資料處理與發佈步驟。"
-    ABORT_AFTER="資料取得層"
+    echo "⚠️  K 線資料層失敗(tv_collect/import_kline)— 跳過後續資料處理與發佈步驟。"
+    ABORT_AFTER="K 線資料層"
+fi
+if [[ $DU_EC -ne 0 ]]; then
+    echo ""
+    echo "⚠️  ETF daily_update 失敗 — 但 etf_operations.db 可能仍有新資料"
+    echo "    繼續跑 V1/V2 計分(會用 DB 內最新可得 ETF 共識資料)。"
+    echo "    daily_supervisor freshness watchdog 會獨立告警 ETF 新鮮度。"
 fi
 
 # ── [4] run_filters (V1) ──────────────────────────────────────────────────────
