@@ -38,6 +38,7 @@
     "TPEX_3680",
     "TPEX_6187",
     "TWSE_7795",
+    "TPEX_7734",
     "TWSE_2382",
     "TWSE_3231",
     "TWSE_2376",
@@ -55,6 +56,7 @@
     "TWSE_2313",
     "TWSE_2368",
     "TWSE_4958",
+    "TWSE_2367",
     "TWSE_3037",
     "TWSE_3189",
     "TWSE_8046",
@@ -101,7 +103,7 @@
     },
     "TPEX_4908": {
       "symbol": "TPEX:4908",
-      "name": "銓訊",
+      "name": "前鼎",
       "sector": "光通訊",
       "exchange": "TW",
       "status": "ready"
@@ -290,7 +292,7 @@
     },
     "TWSE_3711": {
       "symbol": "TWSE:3711",
-      "name": "日月光",
+      "name": "日月光投控",
       "sector": "封裝測試",
       "exchange": "TW",
       "status": "ready"
@@ -340,6 +342,13 @@
     "TWSE_7795": {
       "symbol": "TWSE:7795",
       "name": "長廣",
+      "sector": "半導體設備耗材",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TPEX_7734": {
+      "symbol": "TPEX:7734",
+      "name": "印能",
       "sector": "半導體設備耗材",
       "exchange": "TW",
       "status": "ready"
@@ -463,6 +472,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_2367": {
+      "symbol": "TWSE:2367",
+      "name": "燿華",
+      "sector": "PCB",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_3037": {
       "symbol": "TWSE:3037",
       "name": "欣興",
@@ -521,7 +537,7 @@
     },
     "TWSE_6412": {
       "symbol": "TWSE:6412",
-      "name": "喬鼎",
+      "name": "群電",
       "sector": "電源供應以及能源基礎",
       "exchange": "TW",
       "status": "ready"
@@ -549,7 +565,7 @@
     },
     "TWSE_1514": {
       "symbol": "TWSE:1514",
-      "name": "東元",
+      "name": "亞力",
       "sector": "重電與電網",
       "exchange": "TW",
       "status": "ready"
@@ -829,5 +845,5 @@
     }
   },
   "version": "2.2",
-  "generated_at": "2026-06-04T21:06:16+08:00"
+  "generated_at": "2026-06-05T09:31:48+08:00"
 }
