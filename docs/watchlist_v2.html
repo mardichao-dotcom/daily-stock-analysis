@@ -5,6 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>觀察名單 — 台股動能 Watchlist</title>
 <link rel="stylesheet" href="assets/style_v2.css">
+<style>
+  /* sticky 搜尋 bar(2026-06-07 朋友 review 後加)*/
+  .wl-search-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg, #ffffff);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: -12px -8px 12px;   /* 反 padding,撐到 .container 邊界 */
+  }
+  .wl-search-bar .wl-search-icon {
+    font-size: 16px;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+  .wl-search-bar input {
+    flex: 1;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 6px;
+    background: var(--code-bg, #f9fafb);
+    color: var(--text, #1f2937);
+    font-family: inherit;
+  }
+  .wl-search-bar input:focus {
+    outline: none;
+    border-color: var(--etf-buy, #3b82f6);
+    background: #fff;
+  }
+  .wl-search-bar .wl-search-clear {
+    background: var(--code-bg, #f3f4f6);
+    border: 1px solid var(--border, #e5e7eb);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-mute, #6b7280);
+    line-height: 1;
+  }
+  .wl-search-bar .wl-search-clear:hover {
+    background: var(--border, #e5e7eb);
+    color: var(--text, #1f2937);
+  }
+  .wl-search-stats {
+    font-size: 11px;
+    color: var(--text-mute, #6b7280);
+    flex-shrink: 0;
+    min-width: 60px;
+    text-align: right;
+  }
+  .wl-no-results {
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--text-mute, #6b7280);
+    font-style: italic;
+    font-size: 14px;
+  }
+  /* 手機收緊 */
+  @media (max-width: 480px) {
+    .wl-search-stats { display: none; }
+  }
+</style>
 </head>
 <body>
 
@@ -18,15 +85,25 @@
     <div class="meta">
       資料日期 <strong>2026-06-05</strong> ｜
       台股 98 檔 ｜ 國際 33 檔 ｜
-      watchlist 更新日 2026-05-14 ｜ 產出時間 2026-06-07 01:38
+      watchlist 更新日 2026-05-14 ｜ 產出時間 2026-06-07 03:31
     </div>
   </div>
 </header>
 
 <main class="container">
 
-<section class="section">
-  <h2>📊 台股板塊 (18 板塊 / 98 檔)</h2>
+<div class="wl-search-bar">
+  <span class="wl-search-icon">🔍</span>
+  <input type="text" id="wl-search" placeholder="搜尋名稱 / 代號(例:廣達、2382、NVDA)"
+         autocomplete="off" spellcheck="false">
+  <button type="button" class="wl-search-clear" id="wl-search-clear" hidden>×</button>
+  <span class="wl-search-stats" id="wl-search-stats"></span>
+</div>
+
+<div class="wl-no-results" id="wl-no-results" hidden>找不到符合的個股</div>
+
+<section class="section" id="wl-section-tw">
+  <h2>📊 台股板塊 (18 板塊 / <span id="wl-stats-tw">98</span> 檔)</h2>
 
 <details class="wl-sector" open>
   <summary>
@@ -36,7 +113,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3081" data-name="聯亞">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">聯亞</span>
@@ -49,7 +126,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2345" data-name="智邦">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">智邦</span>
@@ -62,7 +139,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:4908" data-name="前鼎">
   <summary>
     
     <span class="wl-name">前鼎</span>
@@ -75,7 +152,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3363" data-name="上詮">
   <summary>
     
     <span class="wl-name">上詮</span>
@@ -88,7 +165,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6285" data-name="啟碁">
   <summary>
     
     <span class="wl-name">啟碁</span>
@@ -101,7 +178,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:4979" data-name="華星光">
   <summary>
     
     <span class="wl-name">華星光</span>
@@ -114,7 +191,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3491" data-name="昇達科">
   <summary>
     
     <span class="wl-name">昇達科</span>
@@ -127,7 +204,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3163" data-name="波若威">
   <summary>
     
     <span class="wl-name">波若威</span>
@@ -140,7 +217,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2455" data-name="全新">
   <summary>
     
     <span class="wl-name">全新</span>
@@ -153,7 +230,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6442" data-name="光聖">
   <summary>
     
     <span class="wl-name">光聖</span>
@@ -176,7 +253,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3653" data-name="健策">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">健策</span>
@@ -189,7 +266,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3017" data-name="奇鋐">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">奇鋐</span>
@@ -202,7 +279,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2421" data-name="建準">
   <summary>
     
     <span class="wl-name">建準</span>
@@ -215,7 +292,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3324" data-name="雙鴻">
   <summary>
     
     <span class="wl-name">雙鴻</span>
@@ -228,7 +305,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:8996" data-name="高力">
   <summary>
     
     <span class="wl-name">高力</span>
@@ -241,7 +318,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3338" data-name="泰碩">
   <summary>
     
     <span class="wl-name">泰碩</span>
@@ -264,7 +341,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2454" data-name="聯發科">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">聯發科</span>
@@ -277,7 +354,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6526" data-name="達發">
   <summary>
     
     <span class="wl-name">達發</span>
@@ -290,7 +367,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3034" data-name="聯詠">
   <summary>
     
     <span class="wl-name">聯詠</span>
@@ -303,7 +380,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2379" data-name="瑞昱">
   <summary>
     
     <span class="wl-name">瑞昱</span>
@@ -316,7 +393,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:5269" data-name="祥碩">
   <summary>
     
     <span class="wl-name">祥碩</span>
@@ -329,7 +406,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6531" data-name="愛普">
   <summary>
     
     <span class="wl-name">愛普</span>
@@ -342,7 +419,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3545" data-name="敦泰">
   <summary>
     
     <span class="wl-name">敦泰</span>
@@ -355,7 +432,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:5274" data-name="信驊">
   <summary>
     
     <span class="wl-name">信驊</span>
@@ -378,7 +455,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3529" data-name="力旺">
   <summary>
     
     <span class="wl-name">力旺</span>
@@ -391,7 +468,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3443" data-name="創意">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">創意</span>
@@ -404,7 +481,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3661" data-name="世芯-KY">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">世芯-KY</span>
@@ -417,7 +494,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:6643" data-name="M31">
   <summary>
     
     <span class="wl-name">M31</span>
@@ -430,7 +507,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3035" data-name="智原">
   <summary>
     
     <span class="wl-name">智原</span>
@@ -453,7 +530,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2330" data-name="台積電">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台積電</span>
@@ -466,7 +543,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:5347" data-name="世界先進">
   <summary>
     
     <span class="wl-name">世界先進</span>
@@ -479,7 +556,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2303" data-name="聯電">
   <summary>
     
     <span class="wl-name">聯電</span>
@@ -502,7 +579,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2449" data-name="京元電子">
   <summary>
     
     <span class="wl-name">京元電子</span>
@@ -515,7 +592,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6239" data-name="力成">
   <summary>
     
     <span class="wl-name">力成</span>
@@ -528,7 +605,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3711" data-name="日月光投控">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">日月光投控</span>
@@ -541,7 +618,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2474" data-name="可成">
   <summary>
     
     <span class="wl-name">可成</span>
@@ -564,7 +641,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6515" data-name="穎崴">
   <summary>
     
     <span class="wl-name">穎崴</span>
@@ -577,7 +654,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:6223" data-name="旺矽">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">旺矽</span>
@@ -590,7 +667,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3131" data-name="弘塑">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">弘塑</span>
@@ -603,7 +680,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3583" data-name="辛耘">
   <summary>
     
     <span class="wl-name">辛耘</span>
@@ -616,7 +693,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3680" data-name="家登">
   <summary>
     
     <span class="wl-name">家登</span>
@@ -629,7 +706,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:6187" data-name="萬潤">
   <summary>
     
     <span class="wl-name">萬潤</span>
@@ -642,7 +719,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:7734" data-name="印能">
   <summary>
     
     <span class="wl-name">印能</span>
@@ -655,7 +732,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:7769" data-name="鴻勁">
   <summary>
     
     <span class="wl-name">鴻勁</span>
@@ -668,7 +745,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2360" data-name="致茂">
   <summary>
     
     <span class="wl-name">致茂</span>
@@ -681,7 +758,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3413" data-name="京鼎">
   <summary>
     
     <span class="wl-name">京鼎</span>
@@ -704,7 +781,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2382" data-name="廣達">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">廣達</span>
@@ -717,7 +794,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3231" data-name="緯創">
   <summary>
     
     <span class="wl-name">緯創</span>
@@ -730,7 +807,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2376" data-name="技嘉">
   <summary>
     
     <span class="wl-name">技嘉</span>
@@ -743,7 +820,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6669" data-name="緯穎">
   <summary>
     
     <span class="wl-name">緯穎</span>
@@ -756,7 +833,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2317" data-name="鴻海">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">鴻海</span>
@@ -769,7 +846,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:3693" data-name="營邦">
   <summary>
     
     <span class="wl-name">營邦</span>
@@ -782,7 +859,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2399" data-name="微星">
   <summary>
     
     <span class="wl-name">微星</span>
@@ -795,7 +872,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6805" data-name="富世達">
   <summary>
     
     <span class="wl-name">富世達</span>
@@ -808,7 +885,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2465" data-name="麗臺">
   <summary>
     
     <span class="wl-name">麗臺</span>
@@ -821,7 +898,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:8210" data-name="勤誠">
   <summary>
     
     <span class="wl-name">勤誠</span>
@@ -834,7 +911,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2357" data-name="華碩">
   <summary>
     
     <span class="wl-name">華碩</span>
@@ -847,7 +924,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2356" data-name="英業達">
   <summary>
     
     <span class="wl-name">英業達</span>
@@ -870,7 +947,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2383" data-name="台光電">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台光電</span>
@@ -883,7 +960,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:6274" data-name="台燿">
   <summary>
     
     <span class="wl-name">台燿</span>
@@ -896,7 +973,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6213" data-name="聯茂">
   <summary>
     
     <span class="wl-name">聯茂</span>
@@ -919,7 +996,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3715" data-name="定穎投控">
   <summary>
     
     <span class="wl-name">定穎投控</span>
@@ -932,7 +1009,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2313" data-name="華通">
   <summary>
     
     <span class="wl-name">華通</span>
@@ -945,7 +1022,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2368" data-name="金像電">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">金像電</span>
@@ -958,7 +1035,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:4958" data-name="臻鼎-KY">
   <summary>
     
     <span class="wl-name">臻鼎-KY</span>
@@ -971,7 +1048,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2367" data-name="燿華">
   <summary>
     
     <span class="wl-name">燿華</span>
@@ -984,7 +1061,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6269" data-name="台郡">
   <summary>
     
     <span class="wl-name">台郡</span>
@@ -1007,7 +1084,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3037" data-name="欣興">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">欣興</span>
@@ -1020,7 +1097,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3189" data-name="景碩">
   <summary>
     
     <span class="wl-name">景碩</span>
@@ -1033,7 +1110,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:8046" data-name="南電">
   <summary>
     
     <span class="wl-name">南電</span>
@@ -1046,7 +1123,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:7795" data-name="長廣">
   <summary>
     
     <span class="wl-name">長廣</span>
@@ -1069,7 +1146,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2327" data-name="國巨">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">國巨</span>
@@ -1082,7 +1159,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2492" data-name="華新科">
   <summary>
     
     <span class="wl-name">華新科</span>
@@ -1095,7 +1172,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6862" data-name="三集瑞-KY">
   <summary>
     
     <span class="wl-name">三集瑞-KY</span>
@@ -1118,7 +1195,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2308" data-name="台達電">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台達電</span>
@@ -1131,7 +1208,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2301" data-name="光寶科">
   <summary>
     
     <span class="wl-name">光寶科</span>
@@ -1144,7 +1221,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6412" data-name="群電">
   <summary>
     
     <span class="wl-name">群電</span>
@@ -1157,7 +1234,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6282" data-name="康舒">
   <summary>
     
     <span class="wl-name">康舒</span>
@@ -1170,7 +1247,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3015" data-name="全漢">
   <summary>
     
     <span class="wl-name">全漢</span>
@@ -1193,7 +1270,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:1519" data-name="華城">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">華城</span>
@@ -1206,7 +1283,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:1513" data-name="中興電">
   <summary>
     
     <span class="wl-name">中興電</span>
@@ -1219,7 +1296,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:1503" data-name="士電">
   <summary>
     
     <span class="wl-name">士電</span>
@@ -1232,7 +1309,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:1514" data-name="亞力">
   <summary>
     
     <span class="wl-name">亞力</span>
@@ -1255,7 +1332,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2603" data-name="長榮">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">長榮</span>
@@ -1268,7 +1345,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2609" data-name="陽明">
   <summary>
     
     <span class="wl-name">陽明</span>
@@ -1291,7 +1368,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2059" data-name="川湖">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">川湖</span>
@@ -1304,7 +1381,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3533" data-name="嘉澤">
   <summary>
     
     <span class="wl-name">嘉澤</span>
@@ -1317,7 +1394,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6117" data-name="迎廣">
   <summary>
     
     <span class="wl-name">迎廣</span>
@@ -1330,7 +1407,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:3665" data-name="貿聯-KY">
   <summary>
     
     <span class="wl-name">貿聯-KY</span>
@@ -1353,7 +1430,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2049" data-name="上銀">
   <summary>
     
     <span class="wl-name">上銀</span>
@@ -1366,7 +1443,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2395" data-name="研華">
   <summary>
     
     <span class="wl-name">研華</span>
@@ -1379,7 +1456,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2359" data-name="所羅門">
   <summary>
     
     <span class="wl-name">所羅門</span>
@@ -1402,7 +1479,7 @@
     </h3>
   </summary>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2344" data-name="華邦電">
   <summary>
     
     <span class="wl-name">華邦電</span>
@@ -1415,7 +1492,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2408" data-name="南亞科">
   <summary>
     
     <span class="wl-name">南亞科</span>
@@ -1428,7 +1505,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:2337" data-name="旺宏">
   <summary>
     
     <span class="wl-name">旺宏</span>
@@ -1441,7 +1518,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TWSE:6770" data-name="力積電">
   <summary>
     
     <span class="wl-name">力積電</span>
@@ -1454,7 +1531,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:8299" data-name="群聯">
   <summary>
     
     <span class="wl-name">群聯</span>
@@ -1467,7 +1544,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TPEX:5289" data-name="宜鼎">
   <summary>
     
     <span class="wl-name">宜鼎</span>
@@ -1483,8 +1560,8 @@
 
 </section>
 
-<section class="section">
-  <h2>🌏 國際族群 (7 群 / 33 檔)</h2>
+<section class="section" id="wl-section-intl">
+  <h2>🌏 國際族群 (7 群 / <span id="wl-stats-intl">33</span> 檔)</h2>
 
 <details class="wl-sector" open>
   <summary>
@@ -1494,7 +1571,7 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:晶圓代工 / IC設計 / IP與ASIC</div>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:NVDA" data-name="NVIDIA">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">NVIDIA</span>
@@ -1507,7 +1584,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:TSM" data-name="台積電ADR">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台積電ADR</span>
@@ -1520,7 +1597,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:QCOM" data-name="Qualcomm">
   <summary>
     
     <span class="wl-name">Qualcomm</span>
@@ -1533,7 +1610,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:SNPS" data-name="Synopsys">
   <summary>
     
     <span class="wl-name">Synopsys</span>
@@ -1546,7 +1623,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:ARM" data-name="ARM Holdings">
   <summary>
     
     <span class="wl-name">ARM Holdings</span>
@@ -1569,7 +1646,7 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:光通訊 / CCL / PCB</div>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:LITE" data-name="Lumentum">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Lumentum</span>
@@ -1582,7 +1659,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:COHR" data-name="Coherent">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Coherent</span>
@@ -1595,7 +1672,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:ANET" data-name="Arista">
   <summary>
     
     <span class="wl-name">Arista</span>
@@ -1608,7 +1685,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:MRVL" data-name="Marvell">
   <summary>
     
     <span class="wl-name">Marvell</span>
@@ -1621,7 +1698,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:HIMX" data-name="Himax">
   <summary>
     
     <span class="wl-name">Himax</span>
@@ -1644,7 +1721,7 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:半導體設備耗材 / 封裝測試 / ABF</div>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:ASML" data-name="ASML">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">ASML</span>
@@ -1657,7 +1734,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TSE:8035" data-name="東京威力科創">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">東京威力科創</span>
@@ -1670,7 +1747,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:AMAT" data-name="Applied Materials">
   <summary>
     
     <span class="wl-name">Applied Materials</span>
@@ -1683,7 +1760,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:AMKR" data-name="Amkor">
   <summary>
     
     <span class="wl-name">Amkor</span>
@@ -1696,7 +1773,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:ROG" data-name="Rogers">
   <summary>
     
     <span class="wl-name">Rogers</span>
@@ -1709,7 +1786,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TSE:6752" data-name="松下">
   <summary>
     
     <span class="wl-name">松下</span>
@@ -1722,7 +1799,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TSE:4062" data-name="Ibiden">
   <summary>
     
     <span class="wl-name">Ibiden</span>
@@ -1735,7 +1812,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TSE:6146" data-name="DISCO">
   <summary>
     
     <span class="wl-name">DISCO</span>
@@ -1758,7 +1835,7 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:AI伺服器代工 / 伺服器關鍵零組件</div>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:DELL" data-name="Dell">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Dell</span>
@@ -1771,7 +1848,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:SMCI" data-name="SuperMicro">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">SuperMicro</span>
@@ -1784,7 +1861,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:HPE" data-name="HPE">
   <summary>
     
     <span class="wl-name">HPE</span>
@@ -1807,7 +1884,7 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:散熱 / 電源供應以及能源基礎 / 重電與電網</div>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:VRT" data-name="Vertiv">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Vertiv</span>
@@ -1820,7 +1897,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:ETN" data-name="Eaton">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Eaton</span>
@@ -1833,7 +1910,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:PWR" data-name="Quanta Services">
   <summary>
     
     <span class="wl-name">Quanta Services</span>
@@ -1846,7 +1923,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:GEV" data-name="GE Vernova">
   <summary>
     
     <span class="wl-name">GE Vernova</span>
@@ -1859,7 +1936,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TSE:6594" data-name="日本電產">
   <summary>
     
     <span class="wl-name">日本電產</span>
@@ -1882,7 +1959,7 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:被動元件 / 航運物流</div>
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="TSE:6981" data-name="村田製造所">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">村田製造所</span>
@@ -1895,7 +1972,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="TSE:6762" data-name="TDK">
   <summary>
     
     <span class="wl-name">TDK</span>
@@ -1908,7 +1985,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="NYSE:ZIM" data-name="ZIM">
   <summary>
     
     <span class="wl-name">ZIM</span>
@@ -1921,7 +1998,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="OMXCOP:MAERSK_B" data-name="Maersk B">
   <summary>
     
     <span class="wl-name">Maersk B</span>
@@ -1944,7 +2021,7 @@
   </summary>
   
   
-<details class="wl-stock">
+<details class="wl-stock" data-code="NASDAQ:MU" data-name="Micron">
   <summary>
     
     <span class="wl-name">Micron</span>
@@ -1957,7 +2034,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="KRX:005930" data-name="Samsung Electronics">
   <summary>
     
     <span class="wl-name">Samsung Electronics</span>
@@ -1970,7 +2047,7 @@
 </details>
 
 
-<details class="wl-stock">
+<details class="wl-stock" data-code="KRX:000660" data-name="SK Hynix">
   <summary>
     
     <span class="wl-name">SK Hynix</span>
@@ -1989,5 +2066,68 @@
 </main>
 
 <script src="assets/chart_v2.js" defer></script>
+<script>
+(function() {
+  // 純前端 search(2026-06-07):toLowerCase 大小寫無關;名稱 / 代號雙欄掃描;
+  // 板塊全空 → 隱藏整個 sector;結果為 0 → 顯示「找不到」橫幅。
+  const input    = document.getElementById('wl-search');
+  const clearBtn = document.getElementById('wl-search-clear');
+  const statsEl  = document.getElementById('wl-search-stats');
+  const twStats  = document.getElementById('wl-stats-tw');
+  const intlStats= document.getElementById('wl-stats-intl');
+  const twSec    = document.getElementById('wl-section-tw');
+  const intlSec  = document.getElementById('wl-section-intl');
+  const noResults= document.getElementById('wl-no-results');
+  const stocks   = document.querySelectorAll('details.wl-stock');
+  const sectors  = document.querySelectorAll('details.wl-sector');
+
+  function applyFilter() {
+    const q = input.value.trim().toLowerCase();
+    clearBtn.hidden = !q;
+
+    let twHit = 0, intlHit = 0;
+    stocks.forEach(el => {
+      const code = (el.dataset.code || '').toLowerCase();
+      const name = (el.dataset.name || '').toLowerCase();
+      const hit = !q || code.includes(q) || name.includes(q);
+      el.hidden = !hit;
+      if (hit) {
+        if (twSec.contains(el)) twHit++;
+        else if (intlSec.contains(el)) intlHit++;
+      }
+    });
+
+    // 板塊全空 → 隱藏整個 sector
+    sectors.forEach(sec => {
+      const anyVisible = Array.from(
+        sec.querySelectorAll('details.wl-stock')
+      ).some(s => !s.hidden);
+      sec.hidden = !anyVisible;
+    });
+
+    const total = twHit + intlHit;
+    twStats.textContent = twHit;
+    intlStats.textContent = intlHit;
+    statsEl.textContent = q ? `${total} 檔` : '';
+    twSec.hidden = twHit === 0;
+    intlSec.hidden = intlHit === 0;
+    noResults.hidden = total > 0;
+  }
+
+  input.addEventListener('input', applyFilter);
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    applyFilter();
+    input.focus();
+  });
+  // Esc 清空
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && input.value) {
+      input.value = '';
+      applyFilter();
+    }
+  });
+})();
+</script>
 </body>
 </html>

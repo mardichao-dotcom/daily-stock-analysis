@@ -69,8 +69,9 @@ def render_member(member: dict, leaders_set: set, date: str,
         symbol, date, (status_map or {}).get(sid)
     )
 
+    # data-code / data-name 給前端 search 用(大小寫無關,前端 toLowerCase)
     return f"""
-<details class="wl-stock">
+<details class="wl-stock" data-code="{_h(symbol)}" data-name="{_h(name)}">
   <summary>
     {leader_mark}
     <span class="wl-name">{_h(name)}</span>
@@ -174,6 +175,73 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>觀察名單 — 台股動能 Watchlist</title>
 <link rel="stylesheet" href="assets/style_v2.css">
+<style>
+  /* sticky 搜尋 bar(2026-06-07 朋友 review 後加)*/
+  .wl-search-bar {{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg, #ffffff);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: -12px -8px 12px;   /* 反 padding,撐到 .container 邊界 */
+  }}
+  .wl-search-bar .wl-search-icon {{
+    font-size: 16px;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }}
+  .wl-search-bar input {{
+    flex: 1;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 6px;
+    background: var(--code-bg, #f9fafb);
+    color: var(--text, #1f2937);
+    font-family: inherit;
+  }}
+  .wl-search-bar input:focus {{
+    outline: none;
+    border-color: var(--etf-buy, #3b82f6);
+    background: #fff;
+  }}
+  .wl-search-bar .wl-search-clear {{
+    background: var(--code-bg, #f3f4f6);
+    border: 1px solid var(--border, #e5e7eb);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-mute, #6b7280);
+    line-height: 1;
+  }}
+  .wl-search-bar .wl-search-clear:hover {{
+    background: var(--border, #e5e7eb);
+    color: var(--text, #1f2937);
+  }}
+  .wl-search-stats {{
+    font-size: 11px;
+    color: var(--text-mute, #6b7280);
+    flex-shrink: 0;
+    min-width: 60px;
+    text-align: right;
+  }}
+  .wl-no-results {{
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--text-mute, #6b7280);
+    font-style: italic;
+    font-size: 14px;
+  }}
+  /* 手機收緊 */
+  @media (max-width: 480px) {{
+    .wl-search-stats {{ display: none; }}
+  }}
+</style>
 </head>
 <body>
 
@@ -194,19 +262,92 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
 
 <main class="container">
 
-<section class="section">
-  <h2>📊 台股板塊 ({len(tw_raw)} 板塊 / {tw_total} 檔)</h2>
+<div class="wl-search-bar">
+  <span class="wl-search-icon">🔍</span>
+  <input type="text" id="wl-search" placeholder="搜尋名稱 / 代號(例:廣達、2382、NVDA)"
+         autocomplete="off" spellcheck="false">
+  <button type="button" class="wl-search-clear" id="wl-search-clear" hidden>×</button>
+  <span class="wl-search-stats" id="wl-search-stats"></span>
+</div>
+
+<div class="wl-no-results" id="wl-no-results" hidden>找不到符合的個股</div>
+
+<section class="section" id="wl-section-tw">
+  <h2>📊 台股板塊 ({len(tw_raw)} 板塊 / <span id="wl-stats-tw">{tw_total}</span> 檔)</h2>
 {tw_sectors_html}
 </section>
 
-<section class="section">
-  <h2>🌏 國際族群 ({len(intl_raw)} 群 / {intl_total} 檔)</h2>
+<section class="section" id="wl-section-intl">
+  <h2>🌏 國際族群 ({len(intl_raw)} 群 / <span id="wl-stats-intl">{intl_total}</span> 檔)</h2>
 {intl_groups_html}
 </section>
 
 </main>
 
 <script src="assets/chart_v2.js" defer></script>
+<script>
+(function() {{
+  // 純前端 search(2026-06-07):toLowerCase 大小寫無關;名稱 / 代號雙欄掃描;
+  // 板塊全空 → 隱藏整個 sector;結果為 0 → 顯示「找不到」橫幅。
+  const input    = document.getElementById('wl-search');
+  const clearBtn = document.getElementById('wl-search-clear');
+  const statsEl  = document.getElementById('wl-search-stats');
+  const twStats  = document.getElementById('wl-stats-tw');
+  const intlStats= document.getElementById('wl-stats-intl');
+  const twSec    = document.getElementById('wl-section-tw');
+  const intlSec  = document.getElementById('wl-section-intl');
+  const noResults= document.getElementById('wl-no-results');
+  const stocks   = document.querySelectorAll('details.wl-stock');
+  const sectors  = document.querySelectorAll('details.wl-sector');
+
+  function applyFilter() {{
+    const q = input.value.trim().toLowerCase();
+    clearBtn.hidden = !q;
+
+    let twHit = 0, intlHit = 0;
+    stocks.forEach(el => {{
+      const code = (el.dataset.code || '').toLowerCase();
+      const name = (el.dataset.name || '').toLowerCase();
+      const hit = !q || code.includes(q) || name.includes(q);
+      el.hidden = !hit;
+      if (hit) {{
+        if (twSec.contains(el)) twHit++;
+        else if (intlSec.contains(el)) intlHit++;
+      }}
+    }});
+
+    // 板塊全空 → 隱藏整個 sector
+    sectors.forEach(sec => {{
+      const anyVisible = Array.from(
+        sec.querySelectorAll('details.wl-stock')
+      ).some(s => !s.hidden);
+      sec.hidden = !anyVisible;
+    }});
+
+    const total = twHit + intlHit;
+    twStats.textContent = twHit;
+    intlStats.textContent = intlHit;
+    statsEl.textContent = q ? `${{total}} 檔` : '';
+    twSec.hidden = twHit === 0;
+    intlSec.hidden = intlHit === 0;
+    noResults.hidden = total > 0;
+  }}
+
+  input.addEventListener('input', applyFilter);
+  clearBtn.addEventListener('click', () => {{
+    input.value = '';
+    applyFilter();
+    input.focus();
+  }});
+  // Esc 清空
+  input.addEventListener('keydown', e => {{
+    if (e.key === 'Escape' && input.value) {{
+      input.value = '';
+      applyFilter();
+    }}
+  }});
+}})();
+</script>
 </body>
 </html>
 """
