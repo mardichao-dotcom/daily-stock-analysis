@@ -2,7 +2,7 @@
   "code": "7795",
   "symbol": "TWSE:7795",
   "name": "長廣",
-  "sector": "半導體設備耗材",
+  "sector": "ABF",
   "market": "TW",
   "data_date": "2026-06-05",
   "version": "2.1",
@@ -1008,8 +1008,49 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "441.5",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "324.5",
+        "high": "337",
+        "text": "買盤訂單塊",
+        "adjective": "",
+        "category": "order_block"
+      }
+    ]
   },
-  "events": []
+  "events": [
+    {
+      "time": "2026-01-23",
+      "type": "standing",
+      "category": "order_block",
+      "price": "324.5-337"
+    },
+    {
+      "time": "2026-04-07",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "324.5-337"
+    },
+    {
+      "time": "2026-04-23",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "441.5"
+    },
+    {
+      "time": "2026-05-26",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "441.5"
+    }
+  ]
 }

@@ -9,11 +9,14 @@
     "TPEX_4979",
     "TPEX_3491",
     "TPEX_3163",
+    "TWSE_2455",
+    "TWSE_6442",
     "TWSE_3653",
     "TWSE_3017",
     "TWSE_2421",
     "TPEX_3324",
     "TWSE_8996",
+    "TWSE_3338",
     "TWSE_2454",
     "TWSE_6526",
     "TWSE_3034",
@@ -21,6 +24,7 @@
     "TWSE_5269",
     "TWSE_6531",
     "TWSE_3545",
+    "TPEX_5274",
     "TPEX_3529",
     "TWSE_3443",
     "TWSE_3661",
@@ -28,17 +32,21 @@
     "TWSE_3035",
     "TWSE_2330",
     "TPEX_5347",
+    "TWSE_2303",
     "TWSE_2449",
     "TWSE_6239",
     "TWSE_3711",
+    "TWSE_2474",
     "TWSE_6515",
     "TPEX_6223",
     "TPEX_3131",
     "TWSE_3583",
     "TPEX_3680",
     "TPEX_6187",
-    "TWSE_7795",
     "TPEX_7734",
+    "TWSE_7769",
+    "TWSE_2360",
+    "TWSE_3413",
     "TWSE_2382",
     "TWSE_3231",
     "TWSE_2376",
@@ -49,6 +57,8 @@
     "TWSE_6805",
     "TWSE_2465",
     "TWSE_8210",
+    "TWSE_2357",
+    "TWSE_2356",
     "TWSE_2383",
     "TPEX_6274",
     "TWSE_6213",
@@ -57,15 +67,19 @@
     "TWSE_2368",
     "TWSE_4958",
     "TWSE_2367",
+    "TWSE_6269",
     "TWSE_3037",
     "TWSE_3189",
     "TWSE_8046",
+    "TWSE_7795",
     "TWSE_2327",
     "TWSE_2492",
     "TWSE_6862",
     "TWSE_2308",
     "TWSE_2301",
     "TWSE_6412",
+    "TWSE_6282",
+    "TWSE_3015",
     "TWSE_1519",
     "TWSE_1513",
     "TWSE_1503",
@@ -74,9 +88,17 @@
     "TWSE_2609",
     "TWSE_2059",
     "TWSE_3533",
+    "TWSE_6117",
+    "TWSE_3665",
     "TWSE_2049",
     "TWSE_2395",
     "TWSE_2359",
+    "TWSE_2344",
+    "TWSE_2408",
+    "TWSE_2337",
+    "TWSE_6770",
+    "TPEX_8299",
+    "TPEX_5289",
     "NASDAQ_NVDA",
     "NYSE_TSM",
     "NASDAQ_QCOM",
@@ -86,6 +108,7 @@
     "NYSE_COHR",
     "NYSE_ANET",
     "NASDAQ_MRVL",
+    "NASDAQ_HIMX",
     "NASDAQ_ASML",
     "TSE_8035",
     "NASDAQ_AMAT",
@@ -104,7 +127,10 @@
     "TSE_6594",
     "TSE_6981",
     "TSE_6762",
-    "NYSE_ZIM"
+    "NYSE_ZIM",
+    "NASDAQ_MU",
+    "KRX_005930",
+    "KRX_000660"
   ],
   "symbols": {
     "TPEX_3081": {
@@ -163,6 +189,20 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_2455": {
+      "symbol": "TWSE:2455",
+      "name": "全新",
+      "sector": "光通訊",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_6442": {
+      "symbol": "TWSE:6442",
+      "name": "光聖",
+      "sector": "光通訊",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_3653": {
       "symbol": "TWSE:3653",
       "name": "健策",
@@ -194,6 +234,13 @@
     "TWSE_8996": {
       "symbol": "TWSE:8996",
       "name": "高力",
+      "sector": "散熱",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_3338": {
+      "symbol": "TWSE:3338",
+      "name": "泰碩",
       "sector": "散熱",
       "exchange": "TW",
       "status": "ready"
@@ -247,6 +294,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TPEX_5274": {
+      "symbol": "TPEX:5274",
+      "name": "信驊",
+      "sector": "IC設計",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TPEX_3529": {
       "symbol": "TPEX:3529",
       "name": "力旺",
@@ -296,6 +350,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_2303": {
+      "symbol": "TWSE:2303",
+      "name": "聯電",
+      "sector": "晶圓代工",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2449": {
       "symbol": "TWSE:2449",
       "name": "京元電子",
@@ -313,6 +374,13 @@
     "TWSE_3711": {
       "symbol": "TWSE:3711",
       "name": "日月光投控",
+      "sector": "封裝測試",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_2474": {
+      "symbol": "TWSE:2474",
+      "name": "可成",
       "sector": "封裝測試",
       "exchange": "TW",
       "status": "ready"
@@ -359,16 +427,30 @@
       "exchange": "TW",
       "status": "ready"
     },
-    "TWSE_7795": {
-      "symbol": "TWSE:7795",
-      "name": "長廣",
+    "TPEX_7734": {
+      "symbol": "TPEX:7734",
+      "name": "印能",
       "sector": "半導體設備耗材",
       "exchange": "TW",
       "status": "ready"
     },
-    "TPEX_7734": {
-      "symbol": "TPEX:7734",
-      "name": "印能",
+    "TWSE_7769": {
+      "symbol": "TWSE:7769",
+      "name": "鴻勁",
+      "sector": "半導體設備耗材",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_2360": {
+      "symbol": "TWSE:2360",
+      "name": "致茂",
+      "sector": "半導體設備耗材",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_3413": {
+      "symbol": "TWSE:3413",
+      "name": "京鼎",
       "sector": "半導體設備耗材",
       "exchange": "TW",
       "status": "ready"
@@ -443,6 +525,20 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_2357": {
+      "symbol": "TWSE:2357",
+      "name": "華碩",
+      "sector": "AI伺服器代工",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_2356": {
+      "symbol": "TWSE:2356",
+      "name": "英業達",
+      "sector": "AI伺服器代工",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2383": {
       "symbol": "TWSE:2383",
       "name": "台光電",
@@ -499,6 +595,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_6269": {
+      "symbol": "TWSE:6269",
+      "name": "台郡",
+      "sector": "PCB",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_3037": {
       "symbol": "TWSE:3037",
       "name": "欣興",
@@ -516,6 +619,13 @@
     "TWSE_8046": {
       "symbol": "TWSE:8046",
       "name": "南電",
+      "sector": "ABF",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_7795": {
+      "symbol": "TWSE:7795",
+      "name": "長廣",
       "sector": "ABF",
       "exchange": "TW",
       "status": "ready"
@@ -558,6 +668,20 @@
     "TWSE_6412": {
       "symbol": "TWSE:6412",
       "name": "群電",
+      "sector": "電源供應以及能源基礎",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_6282": {
+      "symbol": "TWSE:6282",
+      "name": "康舒",
+      "sector": "電源供應以及能源基礎",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_3015": {
+      "symbol": "TWSE:3015",
+      "name": "全漢",
       "sector": "電源供應以及能源基礎",
       "exchange": "TW",
       "status": "ready"
@@ -618,6 +742,20 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_6117": {
+      "symbol": "TWSE:6117",
+      "name": "迎廣",
+      "sector": "伺服器關鍵零組件",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_3665": {
+      "symbol": "TWSE:3665",
+      "name": "貿聯-KY",
+      "sector": "伺服器關鍵零組件",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2049": {
       "symbol": "TWSE:2049",
       "name": "上銀",
@@ -636,6 +774,48 @@
       "symbol": "TWSE:2359",
       "name": "所羅門",
       "sector": "機器人",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_2344": {
+      "symbol": "TWSE:2344",
+      "name": "華邦電",
+      "sector": "記憶體",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_2408": {
+      "symbol": "TWSE:2408",
+      "name": "南亞科",
+      "sector": "記憶體",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_2337": {
+      "symbol": "TWSE:2337",
+      "name": "旺宏",
+      "sector": "記憶體",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_6770": {
+      "symbol": "TWSE:6770",
+      "name": "力積電",
+      "sector": "記憶體",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TPEX_8299": {
+      "symbol": "TPEX:8299",
+      "name": "群聯",
+      "sector": "記憶體",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TPEX_5289": {
+      "symbol": "TPEX:5289",
+      "name": "宜鼎",
+      "sector": "記憶體",
       "exchange": "TW",
       "status": "ready"
     },
@@ -698,6 +878,13 @@
     "NASDAQ_MRVL": {
       "symbol": "NASDAQ:MRVL",
       "name": "Marvell",
+      "sector": "網通_光通訊_傳輸龍頭",
+      "exchange": "US",
+      "status": "ready"
+    },
+    "NASDAQ_HIMX": {
+      "symbol": "NASDAQ:HIMX",
+      "name": "Himax",
       "sector": "網通_光通訊_傳輸龍頭",
       "exchange": "US",
       "status": "ready"
@@ -842,8 +1029,29 @@
       "exchange": "DK",
       "status": "waiting_us_close",
       "last_available_date": "2026-06-04"
+    },
+    "NASDAQ_MU": {
+      "symbol": "NASDAQ:MU",
+      "name": "Micron",
+      "sector": "記憶體",
+      "exchange": "US",
+      "status": "ready"
+    },
+    "KRX_005930": {
+      "symbol": "KRX:005930",
+      "name": "Samsung Electronics",
+      "sector": "記憶體",
+      "exchange": "INTL",
+      "status": "ready"
+    },
+    "KRX_000660": {
+      "symbol": "KRX:000660",
+      "name": "SK Hynix",
+      "sector": "記憶體",
+      "exchange": "INTL",
+      "status": "ready"
     }
   },
   "version": "2.2",
-  "generated_at": "2026-06-06T19:10:05+08:00"
+  "generated_at": "2026-06-07T01:38:43+08:00"
 }

@@ -57,7 +57,7 @@ DEFAULT_KEY_PRICES = PROJECT_ROOT / "config" / "key_prices.json"
 DEFAULT_SECTORS    = PROJECT_ROOT / "config" / "sectors.json"
 
 
-CODE_RE = re.compile(r"^(TWSE|TPEX|NASDAQ|NYSE|TSE|OMXCOP):[\w\.\-]+$")
+CODE_RE = re.compile(r"^(TWSE|TPEX|NASDAQ|NYSE|TSE|OMXCOP|KRX|KOSPI|KOSDAQ):[\w\.\-]+$")
 
 
 # 朋友規則使用的 category(中→英)。input 接受中文,內部寫英文 key。
