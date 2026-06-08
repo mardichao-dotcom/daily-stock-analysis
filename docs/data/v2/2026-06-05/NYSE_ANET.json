@@ -1998,7 +1998,43 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
+    "lines": [
+      {
+        "price": "177.68",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "162.54",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "151.8",
+        "color": "black",
+        "text": "撐轉",
+        "adjective": null,
+        "category": "support_transfer"
+      },
+      {
+        "price": "136.25",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "116.02",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
     "areas": []
   },
   "events": []

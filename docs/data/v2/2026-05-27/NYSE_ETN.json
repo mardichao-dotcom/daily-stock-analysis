@@ -1998,8 +1998,45 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "435.18",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "400",
+        "color": "black",
+        "text": "內撐 400",
+        "adjective": null,
+        "category": "inner_support"
+      },
+      {
+        "price": "343.12",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "315.16",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "357.56",
+        "high": "364.34",
+        "text": "POC",
+        "adjective": null,
+        "category": "poc"
+      }
+    ]
   },
   "events": []
 }

@@ -2505,23 +2505,9 @@
   "key_prices": {
     "lines": [
       {
-        "price": "2865",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "1945",
         "color": "red",
         "text": "1945",
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "1775",
-        "color": "black",
-        "text": null,
         "adjective": null,
         "category": "key_price"
       },

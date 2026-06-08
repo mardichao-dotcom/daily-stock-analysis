@@ -1998,7 +1998,50 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
+    "lines": [
+      {
+        "price": "158.2",
+        "color": "black",
+        "text": "短線買盤底部 158.2",
+        "adjective": "short_term",
+        "category": "support_transfer"
+      },
+      {
+        "price": "128.6",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "107.72",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "102.00",
+        "color": "black",
+        "text": "重要撐轉",
+        "adjective": "important",
+        "category": "support_transfer"
+      },
+      {
+        "price": "84.97",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "73.17",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
     "areas": []
   },
   "events": []

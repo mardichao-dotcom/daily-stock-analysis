@@ -986,8 +986,24 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "441.5",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "324.5",
+        "high": "337",
+        "text": "買盤訂單塊",
+        "adjective": "",
+        "category": "order_block"
+      }
+    ]
   },
   "events": []
 }

@@ -1998,8 +1998,38 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "2764.5",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "3111",
+        "high": "3185",
+        "text": "短線賣盤訂單塊",
+        "adjective": "short_term",
+        "category": "order_block"
+      },
+      {
+        "low": "2451.5",
+        "high": "2532.0",
+        "text": "買盤訂單塊",
+        "adjective": null,
+        "category": "order_block"
+      },
+      {
+        "low": "2168.5",
+        "high": "2241.5",
+        "text": "POC",
+        "adjective": null,
+        "category": "poc"
+      }
+    ]
   },
   "events": []
 }

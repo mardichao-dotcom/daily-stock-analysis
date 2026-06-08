@@ -2108,13 +2108,6 @@
         "category": "support_transfer"
       },
       {
-        "price": "295.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "292.6",
         "color": "black",
         "text": "小內撐",
@@ -2122,22 +2115,8 @@
         "category": "inner_support"
       },
       {
-        "price": "289.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "272.5",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "262.5",
-        "color": "black",
         "text": null,
         "adjective": null,
         "category": "key_price"

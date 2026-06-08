@@ -2011,50 +2011,7 @@
     }
   ],
   "key_prices": {
-    "lines": [
-      {
-        "price": "160.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "155.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "136.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "134.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "123.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "119.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      }
-    ],
+    "lines": [],
     "areas": [
       {
         "low": "155.5",

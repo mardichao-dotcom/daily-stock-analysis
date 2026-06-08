@@ -1998,8 +1998,59 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "5965",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "4795",
+        "color": "black",
+        "text": "內撐 4795",
+        "adjective": null,
+        "category": "inner_support"
+      },
+      {
+        "price": "4377",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "4334",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "3473",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "5810",
+        "high": "5962",
+        "text": "訂單塊",
+        "adjective": null,
+        "category": "order_block"
+      },
+      {
+        "low": "5263",
+        "high": "5401",
+        "text": "多頭跳空缺口",
+        "adjective": null,
+        "category": "gap"
+      }
+    ]
   },
   "events": []
 }

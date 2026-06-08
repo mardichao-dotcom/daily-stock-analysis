@@ -1998,8 +1998,52 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "2387000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "1059000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "801000",
+        "color": "red",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "626000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "1945000",
+        "high": "2007000",
+        "text": "買盤訂單塊",
+        "adjective": "",
+        "category": "order_block"
+      },
+      {
+        "low": "1446000",
+        "high": "1566000",
+        "text": "跳空缺口",
+        "adjective": "important",
+        "category": "gap"
+      }
+    ]
   },
   "events": []
 }

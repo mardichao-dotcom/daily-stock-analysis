@@ -2224,25 +2224,11 @@
         "category": "inner_support"
       },
       {
-        "price": "128.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "122.5",
         "color": "black",
         "text": null,
         "adjective": null,
         "category": "key_price"
-      },
-      {
-        "price": "122.0",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
       },
       {
         "price": "109.0",

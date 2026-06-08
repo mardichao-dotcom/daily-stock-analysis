@@ -1998,7 +1998,36 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
+    "lines": [
+      {
+        "price": "1081.51",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "820.23",
+        "color": "red",
+        "text": "",
+        "adjective": "important",
+        "category": "key_price"
+      },
+      {
+        "price": "663.86",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "465.07",
+        "color": "red",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      }
+    ],
     "areas": []
   },
   "events": []

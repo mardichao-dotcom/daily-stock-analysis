@@ -2039,34 +2039,6 @@
         "category": "key_price"
       },
       {
-        "price": "164.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "160",
-        "color": "black",
-        "text": "小內撐 160",
-        "adjective": "small",
-        "category": "inner_support"
-      },
-      {
-        "price": "144.0",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
-      },
-      {
-        "price": "141.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "130.5",
         "color": "red",
         "text": null,

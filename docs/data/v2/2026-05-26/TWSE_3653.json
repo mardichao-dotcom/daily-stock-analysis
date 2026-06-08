@@ -2493,13 +2493,6 @@
   "key_prices": {
     "lines": [
       {
-        "price": "4755",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "4055",
         "color": "black",
         "text": "賣壓",
@@ -2516,20 +2509,6 @@
       {
         "price": "2660",
         "color": "gray",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "2515",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "2115",
-        "color": "black",
         "text": null,
         "adjective": null,
         "category": "key_price"

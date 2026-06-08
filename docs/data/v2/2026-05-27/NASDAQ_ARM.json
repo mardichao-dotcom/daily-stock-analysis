@@ -1998,8 +1998,45 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "179.76",
+        "color": "black",
+        "text": "180",
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "157.2",
+        "color": "black",
+        "text": "預估大戶成本 157.2",
+        "adjective": "estimated",
+        "category": "whale_cost"
+      },
+      {
+        "price": "143.64",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "104.49",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "232.88",
+        "high": "239.41",
+        "text": "賣盤訂單塊",
+        "adjective": null,
+        "category": "order_block"
+      }
+    ]
   },
   "events": []
 }

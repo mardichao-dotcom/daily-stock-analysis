@@ -1998,7 +1998,43 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
+    "lines": [
+      {
+        "price": "3300",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "3050",
+        "color": "black",
+        "text": "小賣壓 3050",
+        "adjective": "small",
+        "category": "support_transfer"
+      },
+      {
+        "price": "2817",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "2470",
+        "color": "black",
+        "text": "內撐 2470",
+        "adjective": null,
+        "category": "inner_support"
+      },
+      {
+        "price": "1943",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
     "areas": []
   },
   "events": []

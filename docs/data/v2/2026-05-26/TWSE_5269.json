@@ -2037,13 +2037,6 @@
   "key_prices": {
     "lines": [
       {
-        "price": "1600",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "1295",
         "color": "black",
         "text": null,

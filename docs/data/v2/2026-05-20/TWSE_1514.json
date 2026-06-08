@@ -2014,20 +2014,6 @@
         "category": "support_transfer"
       },
       {
-        "price": "139.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "133.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "126.5",
         "color": "black",
         "text": "小內撐",
@@ -2042,53 +2028,11 @@
         "category": "inner_support"
       },
       {
-        "price": "115.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "112.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "111.2",
         "color": "black",
         "text": "小內撐",
         "adjective": "small",
         "category": "inner_support"
-      },
-      {
-        "price": "103.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "100.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "99.8",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "98.4",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
       },
       {
         "price": "93.4",

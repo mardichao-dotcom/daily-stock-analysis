@@ -2021,21 +2021,7 @@
         "category": "key_price"
       },
       {
-        "price": "211.5",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
-      },
-      {
         "price": "208.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "201.5",
         "color": "black",
         "text": null,
         "adjective": null,
@@ -2049,13 +2035,6 @@
         "category": "key_price"
       },
       {
-        "price": "179.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "178.5",
         "color": "red",
         "text": null,
@@ -2063,29 +2042,8 @@
         "category": "key_price"
       },
       {
-        "price": "177.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "162.5",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "161.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "159.0",
-        "color": "black",
         "text": null,
         "adjective": null,
         "category": "key_price"

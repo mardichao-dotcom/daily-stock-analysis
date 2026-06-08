@@ -1954,7 +1954,29 @@
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
+    "lines": [
+      {
+        "price": "690",
+        "color": "black",
+        "text": "賣壓",
+        "adjective": "small",
+        "category": "support_transfer"
+      },
+      {
+        "price": "427.5",
+        "color": "black",
+        "text": "內撐",
+        "adjective": "small",
+        "category": "inner_support"
+      },
+      {
+        "price": "385",
+        "color": "red",
+        "text": "撐轉",
+        "adjective": "important",
+        "category": "support_transfer"
+      }
+    ],
     "areas": []
   },
   "events": []

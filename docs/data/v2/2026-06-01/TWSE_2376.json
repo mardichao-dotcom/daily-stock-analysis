@@ -2014,20 +2014,6 @@
         "category": "support_transfer"
       },
       {
-        "price": "328.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "323.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "322.5",
         "color": "black",
         "text": "內撐",
@@ -2051,20 +2037,6 @@
       {
         "price": "292.0",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "283.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "276.0",
-        "color": "black",
         "text": null,
         "adjective": null,
         "category": "key_price"
