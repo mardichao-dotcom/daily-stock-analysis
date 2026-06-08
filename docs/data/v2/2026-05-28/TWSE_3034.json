@@ -2002,33 +2002,27 @@
       {
         "price": "503",
         "color": "red",
-        "text": "重要 503",
+        "category": "key_price",
         "adjective": "important",
-        "category": "key_price"
-      },
-      {
-        "price": "466",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "450.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "text": ""
       },
       {
         "price": "405",
         "color": "red",
-        "text": "大戶成本線 405",
-        "adjective": null,
-        "category": "whale_cost"
+        "category": "key_price",
+        "adjective": "",
+        "text": "大戶成本"
       }
     ],
-    "areas": []
+    "areas": [
+      {
+        "low": "450.5",
+        "high": "465.5",
+        "category": "order_block",
+        "adjective": "",
+        "text": "短線買盤"
+      }
+    ]
   },
   "events": [
     {

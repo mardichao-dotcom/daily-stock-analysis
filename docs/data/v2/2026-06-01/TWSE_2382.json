@@ -2073,76 +2073,41 @@
   "key_prices": {
     "lines": [
       {
-        "price": "345.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "price": "417",
+        "color": "gray",
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "344.0",
+        "price": "390.5",
         "color": "black",
-        "text": "前高壓力位",
-        "adjective": null,
-        "category": "support_transfer"
-      },
-      {
-        "price": "335.0",
-        "color": "black",
-        "text": "撐轉位",
-        "adjective": null,
-        "category": "support_transfer"
-      },
-      {
-        "price": "328.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "302",
-        "color": "black",
-        "text": "撐轉 302",
-        "adjective": null,
-        "category": "support_transfer"
-      },
-      {
-        "price": "292.6",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
         "price": "272.5",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "176.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
     "areas": [
       {
-        "low": "289.5",
-        "high": "295.5",
-        "text": "跳空缺口",
-        "adjective": null,
-        "category": "gap"
+        "low": "328",
+        "high": "335",
+        "category": "poc",
+        "adjective": "",
+        "text": "撐轉"
       },
       {
-        "low": "256.0",
-        "high": "262.5",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "low": "289.5",
+        "high": "295.5",
+        "category": "poc",
+        "adjective": "",
+        "text": ""
       }
     ]
   },

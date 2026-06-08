@@ -2037,34 +2037,41 @@
   "key_prices": {
     "lines": [
       {
+        "price": "1740",
+        "color": "red",
+        "category": "key_price",
+        "adjective": "",
+        "text": "大戶空單成本價"
+      },
+      {
         "price": "1295",
         "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
     "areas": [
       {
         "low": "1920",
         "high": "1965",
-        "text": "POC",
-        "adjective": null,
-        "category": "poc"
+        "category": "poc",
+        "adjective": "",
+        "text": "POC"
       },
       {
         "low": "1545",
         "high": "1600",
-        "text": "賣盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "category": "order_block",
+        "adjective": "",
+        "text": "賣盤訂單塊"
       },
       {
         "low": "1065",
         "high": "1115",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "category": "order_block",
+        "adjective": "",
+        "text": "買盤訂單塊"
       }
     ]
   },

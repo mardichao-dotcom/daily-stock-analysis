@@ -2002,74 +2002,39 @@
       {
         "price": "154.5",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "144.5",
-        "color": "black",
-        "text": "前高壓力位",
-        "adjective": null,
-        "category": "support_transfer"
-      },
-      {
-        "price": "126.5",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
-      },
-      {
-        "price": "117.2",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
-      },
-      {
-        "price": "111.2",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
         "price": "93.4",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
     "areas": [
       {
         "low": "133.0",
         "high": "139.5",
-        "text": "賣盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "category": "order_block",
+        "adjective": "",
+        "text": "賣盤訂單塊"
       },
       {
         "low": "112.0",
         "high": "115.0",
-        "text": "POC",
-        "adjective": null,
-        "category": "poc"
+        "category": "poc",
+        "adjective": "",
+        "text": "POC"
       },
       {
         "low": "99.8",
         "high": "103.5",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
-      },
-      {
-        "low": "98.4",
-        "high": "100.5",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "category": "order_block",
+        "adjective": "",
+        "text": "買盤訂單塊"
       }
     ]
   },

@@ -2002,30 +2002,23 @@
       {
         "price": "152",
         "color": "black",
-        "text": "",
+        "category": "key_price",
         "adjective": "",
-        "category": "key_price"
-      },
-      {
-        "price": "135",
-        "color": "black",
-        "text": "內撐",
-        "adjective": "",
-        "category": "inner_support"
+        "text": ""
       },
       {
         "price": "119",
         "color": "black",
-        "text": "",
+        "category": "key_price",
         "adjective": "",
-        "category": "key_price"
+        "text": ""
       },
       {
         "price": "108",
         "color": "red",
-        "text": "",
+        "category": "key_price",
         "adjective": "",
-        "category": "key_price"
+        "text": ""
       }
     ],
     "areas": [

@@ -2205,48 +2205,34 @@
   "key_prices": {
     "lines": [
       {
-        "price": "3305",
+        "price": "2470",
         "color": "black",
-        "text": "前高壓力位",
-        "adjective": null,
-        "category": "support_transfer"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "2445",
+        "price": "2170",
         "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "2410",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "1344",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
     "areas": [
       {
-        "low": "2035",
-        "high": "2170",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "low": "3055",
+        "high": "3220",
+        "category": "order_block",
+        "adjective": "",
+        "text": "賣盤訂單塊"
       },
       {
         "low": "1375",
         "high": "1510",
-        "text": "POC",
-        "adjective": null,
-        "category": "poc"
+        "category": "poc",
+        "adjective": "",
+        "text": "POC"
       }
     ]
   },

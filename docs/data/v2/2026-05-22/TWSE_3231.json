@@ -2175,76 +2175,41 @@
   "key_prices": {
     "lines": [
       {
-        "price": "178.0",
+        "price": "159",
         "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "161.5",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "159.5",
-        "color": "black",
-        "text": "前高壓力位",
-        "adjective": null,
-        "category": "support_transfer"
-      },
-      {
-        "price": "144.5",
-        "color": "black",
-        "text": "壓力位",
-        "adjective": null,
-        "category": "support_transfer"
-      },
-      {
-        "price": "137.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "134.5",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
         "price": "132.5",
-        "color": "black",
-        "text": "內撐 132.5",
-        "adjective": null,
-        "category": "inner_support"
+        "color": "gray",
+        "category": "inner_support",
+        "adjective": "",
+        "text": "內撐"
       },
       {
         "price": "122.5",
         "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "109.0",
+        "price": "109",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
     "areas": [
       {
-        "low": "122.0",
-        "high": "128.0",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "low": "194",
+        "high": "201",
+        "category": "order_block",
+        "adjective": "",
+        "text": "賣盤訂單塊"
       }
     ]
   },

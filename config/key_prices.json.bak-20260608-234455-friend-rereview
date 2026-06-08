@@ -141,27 +141,33 @@
         {
           "price": "503",
           "color": "red",
-          "category": "key_price",
+          "text": "重要 503",
           "adjective": "important",
-          "text": ""
+          "category": "key_price"
+        },
+        {
+          "price": "466",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "450.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
           "price": "405",
           "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": "大戶成本"
+          "text": "大戶成本線 405",
+          "adjective": null,
+          "category": "whale_cost"
         }
       ],
-      "areas": [
-        {
-          "low": "450.5",
-          "high": "465.5",
-          "category": "order_block",
-          "adjective": "",
-          "text": "短線買盤"
-        }
-      ]
+      "areas": []
     },
     "TWSE:2379": {
       "name": "瑞昱",
@@ -206,41 +212,34 @@
       "market": "TW",
       "lines": [
         {
-          "price": "1740",
-          "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": "大戶空單成本價"
-        },
-        {
           "price": "1295",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
         {
           "low": "1920",
           "high": "1965",
-          "category": "poc",
-          "adjective": "",
-          "text": "POC"
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
         },
         {
           "low": "1545",
           "high": "1600",
-          "category": "order_block",
-          "adjective": "",
-          "text": "賣盤訂單塊"
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         },
         {
           "low": "1065",
           "high": "1115",
-          "category": "order_block",
-          "adjective": "",
-          "text": "買盤訂單塊"
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         }
       ]
     },
@@ -682,41 +681,48 @@
       "market": "TW",
       "lines": [
         {
+          "price": "1310",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1255",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
           "price": "980",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": "980",
+          "adjective": null,
+          "category": "key_price"
         },
         {
           "price": "674",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": "674",
+          "adjective": null,
+          "category": "key_price"
         },
         {
           "price": "567",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": "567",
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
         {
-          "low": "1255",
-          "high": "1305",
-          "category": "order_block",
-          "adjective": "",
-          "text": "賣盤訂單塊"
-        },
-        {
           "low": "432.5",
           "high": "461.5",
-          "category": "order_block",
-          "adjective": "",
-          "text": "買盤訂單塊"
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         }
       ]
     },
@@ -1128,41 +1134,76 @@
       "market": "TW",
       "lines": [
         {
-          "price": "417",
-          "color": "gray",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "price": "345.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
-          "price": "390.5",
+          "price": "344.0",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "335.0",
+          "color": "black",
+          "text": "撐轉位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "328.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "302",
+          "color": "black",
+          "text": "撐轉 302",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "292.6",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
         },
         {
           "price": "272.5",
           "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "176.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
         {
-          "low": "328",
-          "high": "335",
-          "category": "poc",
-          "adjective": "",
-          "text": "撐轉"
-        },
-        {
           "low": "289.5",
           "high": "295.5",
-          "category": "poc",
-          "adjective": "",
-          "text": ""
+          "text": "跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        },
+        {
+          "low": "256.0",
+          "high": "262.5",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         }
       ]
     },
@@ -1172,41 +1213,76 @@
       "market": "TW",
       "lines": [
         {
-          "price": "159",
+          "price": "178.0",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "161.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "159.5",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "144.5",
+          "color": "black",
+          "text": "壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "137.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "134.5",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
         },
         {
           "price": "132.5",
-          "color": "gray",
-          "category": "inner_support",
-          "adjective": "",
-          "text": "內撐"
+          "color": "black",
+          "text": "內撐 132.5",
+          "adjective": null,
+          "category": "inner_support"
         },
         {
           "price": "122.5",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
-          "price": "109",
+          "price": "109.0",
           "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
         {
-          "low": "194",
-          "high": "201",
-          "category": "order_block",
-          "adjective": "",
-          "text": "賣盤訂單塊"
+          "low": "122.0",
+          "high": "128.0",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         }
       ]
     },
@@ -1216,55 +1292,83 @@
       "market": "TW",
       "lines": [
         {
-          "price": "398.5",
+          "price": "336",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
         },
         {
-          "price": "370",
-          "color": "gray",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "price": "322.5",
+          "color": "black",
+          "text": "內撐",
+          "adjective": null,
+          "category": "inner_support"
         },
         {
-          "price": "260",
-          "color": "gray",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "price": "303.2",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
         },
         {
-          "price": "209",
+          "price": "300.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "292.0",
           "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "261.7",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "260.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "230.5",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "209.0",
+          "color": "red",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
         }
       ],
       "areas": [
         {
-          "low": "323",
+          "low": "323.0",
           "high": "328.5",
-          "category": "poc",
-          "adjective": "",
-          "text": ""
+          "text": "跳空缺口",
+          "adjective": null,
+          "category": "gap"
         },
         {
-          "low": "292",
-          "high": "300",
-          "category": "fvg",
-          "adjective": "",
-          "text": "FVG"
-        },
-        {
-          "low": "276",
-          "high": "283",
-          "category": "poc",
-          "adjective": "",
-          "text": "POC"
+          "low": "276.0",
+          "high": "283.0",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
         }
       ]
     },
@@ -1529,39 +1633,74 @@
         {
           "price": "154.5",
           "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "144.5",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "126.5",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "117.2",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "111.2",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
         },
         {
           "price": "93.4",
           "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
         {
           "low": "133.0",
           "high": "139.5",
-          "category": "order_block",
-          "adjective": "",
-          "text": "賣盤訂單塊"
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         },
         {
           "low": "112.0",
           "high": "115.0",
-          "category": "poc",
-          "adjective": "",
-          "text": "POC"
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
         },
         {
           "low": "99.8",
           "high": "103.5",
-          "category": "order_block",
-          "adjective": "",
-          "text": "買盤訂單塊"
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "98.4",
+          "high": "100.5",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         }
       ]
     },
@@ -1621,34 +1760,48 @@
       "market": "TW",
       "lines": [
         {
-          "price": "2470",
+          "price": "3305",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
         },
         {
-          "price": "2170",
+          "price": "2445",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "2410",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1344",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
         }
       ],
       "areas": [
         {
-          "low": "3055",
-          "high": "3220",
-          "category": "order_block",
-          "adjective": "",
-          "text": "賣盤訂單塊"
+          "low": "2035",
+          "high": "2170",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         },
         {
           "low": "1375",
           "high": "1510",
-          "category": "poc",
-          "adjective": "",
-          "text": "POC"
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
         }
       ]
     },
@@ -1945,40 +2098,55 @@
         {
           "price": "1465",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
         },
         {
-          "price": "1280",
+          "price": "1405",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
-          "price": "980",
+          "price": "1330",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
-          "price": "792",
+          "price": "600",
           "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
-          "price": "602",
-          "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "price": "195",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
-      "areas": []
+      "areas": [
+        {
+          "low": "993",
+          "high": "1055",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "781",
+          "high": "832",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
     },
     "TPEX:7734": {
       "name": "印能",
@@ -3084,48 +3252,34 @@
       "market": "INTL",
       "lines": [
         {
-          "price": "4108",
-          "color": "black",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
-        },
-        {
-          "price": "3575",
-          "color": "black",
-          "category": "inner_support",
-          "adjective": "",
-          "text": "內撐"
-        },
-        {
           "price": "2764.5",
           "color": "red",
-          "category": "key_price",
-          "adjective": "",
-          "text": ""
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
         {
           "low": "3111",
           "high": "3185",
-          "category": "order_block",
-          "adjective": "",
-          "text": "賣盤訂單塊"
+          "text": "短線賣盤訂單塊",
+          "adjective": "short_term",
+          "category": "order_block"
         },
         {
           "low": "2451.5",
-          "high": "2532",
-          "category": "order_block",
-          "adjective": "",
-          "text": "買盤訂單塊"
+          "high": "2532.0",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
         },
         {
           "low": "2168.5",
           "high": "2241.5",
-          "category": "poc",
-          "adjective": "",
-          "text": "POC"
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
         }
       ]
     },
@@ -4395,32 +4549,39 @@
         {
           "price": "152",
           "color": "black",
-          "category": "key_price",
+          "text": "",
           "adjective": "",
-          "text": ""
+          "category": "key_price"
+        },
+        {
+          "price": "135",
+          "color": "black",
+          "text": "內撐",
+          "adjective": "",
+          "category": "inner_support"
         },
         {
           "price": "119",
           "color": "black",
-          "category": "key_price",
+          "text": "",
           "adjective": "",
-          "text": ""
+          "category": "key_price"
         },
         {
           "price": "108",
           "color": "red",
-          "category": "key_price",
+          "text": "",
           "adjective": "",
-          "text": ""
+          "category": "key_price"
         }
       ],
       "areas": [
         {
           "low": "172",
           "high": "175.5",
-          "category": "order_block",
+          "text": "賣盤訂單塊",
           "adjective": "",
-          "text": "賣盤訂單塊"
+          "category": "order_block"
         }
       ]
     },

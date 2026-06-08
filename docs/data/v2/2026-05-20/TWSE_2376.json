@@ -2000,83 +2000,55 @@
   "key_prices": {
     "lines": [
       {
-        "price": "336",
+        "price": "398.5",
         "color": "black",
-        "text": "前高壓力位",
-        "adjective": null,
-        "category": "support_transfer"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "322.5",
-        "color": "black",
-        "text": "內撐",
-        "adjective": null,
-        "category": "inner_support"
+        "price": "370",
+        "color": "gray",
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "303.2",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
+        "price": "260",
+        "color": "gray",
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "300.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "292.0",
+        "price": "209",
         "color": "red",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "261.7",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "260.0",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "230.5",
-        "color": "black",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
-      },
-      {
-        "price": "209.0",
-        "color": "red",
-        "text": "小內撐",
-        "adjective": "small",
-        "category": "inner_support"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
     "areas": [
       {
-        "low": "323.0",
+        "low": "323",
         "high": "328.5",
-        "text": "跳空缺口",
-        "adjective": null,
-        "category": "gap"
+        "category": "poc",
+        "adjective": "",
+        "text": ""
       },
       {
-        "low": "276.0",
-        "high": "283.0",
-        "text": "POC",
-        "adjective": null,
-        "category": "poc"
+        "low": "292",
+        "high": "300",
+        "category": "fvg",
+        "adjective": "",
+        "text": "FVG"
+      },
+      {
+        "low": "276",
+        "high": "283",
+        "category": "poc",
+        "adjective": "",
+        "text": "POC"
       }
     ]
   },

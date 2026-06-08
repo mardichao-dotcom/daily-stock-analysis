@@ -2135,55 +2135,40 @@
       {
         "price": "1465",
         "color": "black",
-        "text": "前高壓力位",
-        "adjective": null,
-        "category": "support_transfer"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "1405",
+        "price": "1280",
         "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "1330",
+        "price": "980",
         "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "600",
+        "price": "792",
         "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
-        "price": "195",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
+        "price": "602",
+        "color": "red",
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
-    "areas": [
-      {
-        "low": "993",
-        "high": "1055",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
-      },
-      {
-        "low": "781",
-        "high": "832",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
-      }
-    ]
+    "areas": []
   },
   "events": [
     {

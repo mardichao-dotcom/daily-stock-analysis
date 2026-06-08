@@ -2313,48 +2313,41 @@
   "key_prices": {
     "lines": [
       {
-        "price": "1310",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
-        "price": "1255",
-        "color": "black",
-        "text": null,
-        "adjective": null,
-        "category": "key_price"
-      },
-      {
         "price": "980",
         "color": "black",
-        "text": "980",
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
         "price": "674",
         "color": "black",
-        "text": "674",
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       },
       {
         "price": "567",
         "color": "black",
-        "text": "567",
-        "adjective": null,
-        "category": "key_price"
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
       }
     ],
     "areas": [
       {
+        "low": "1255",
+        "high": "1305",
+        "category": "order_block",
+        "adjective": "",
+        "text": "賣盤訂單塊"
+      },
+      {
         "low": "432.5",
         "high": "461.5",
-        "text": "買盤訂單塊",
-        "adjective": null,
-        "category": "order_block"
+        "category": "order_block",
+        "adjective": "",
+        "text": "買盤訂單塊"
       }
     ]
   },
