@@ -314,8 +314,10 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
 <header class="page-header">
   <div class="container">
     <nav class="page-nav">
+      <a href="index.html">← 回首頁</a>
       <a href="index_v2.html">📈 儀表板</a>
       <span class="page-nav-current">📋 Watchlist</span>
+      <a href="tags.html">🔥 主題熱度</a>
     </nav>
     <h1>📋 觀察名單 Watchlist</h1>
     <div class="meta">
