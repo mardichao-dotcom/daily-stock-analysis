@@ -216,9 +216,13 @@ render_v2_all() {
     # 9-3 全 watchlist 折疊 K 線頁
     python3 src/render_watchlist_v2.py --date "$DATA_DATE" \
         --result filtered_result_v2.json && \
-    # 9-4 歷史索引(掃 docs/index_v2_*.html)
+    # 9-4 theme_returns(L2+L3+L4 標籤每日等權平均漲幅,N>=3 上榜)
+    python3 -m src.theme_returns --date "$DATA_DATE" && \
+    # 9-5 主題熱度詳情頁 tags.html
+    python3 -m src.render_themes_v2 --date "$DATA_DATE" && \
+    # 9-6 歷史索引(掃 docs/index_v2_*.html)
     python3 src/render_history.py && \
-    # 9-5 入口頁(landing)
+    # 9-7 入口頁(landing)
     python3 src/render_landing.py --result filtered_result_v2.json
 }
 try_step render_v2 render_v2_all

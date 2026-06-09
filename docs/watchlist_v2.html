@@ -67,9 +67,29 @@
     font-style: italic;
     font-size: 14px;
   }
+  /* 副標籤 chip(2026-06-09)— L2 前 3 + L4 前 2,灰色小字 */
+  .wl-subtags {
+    color: var(--text-mute, #6b7280);
+    font-size: 11px;
+    margin-left: 4px;
+    word-break: keep-all;
+  }
+  .wl-subtag {
+    display: inline;
+  }
+  .wl-subtag + .wl-subtag {
+    margin-left: 0;
+  }
   /* 手機收緊 */
   @media (max-width: 480px) {
     .wl-search-stats { display: none; }
+    .wl-subtags {
+      display: block;
+      flex-basis: 100%;
+      margin-left: 0;
+      margin-top: 2px;
+      font-size: 10px;
+    }
   }
 </style>
 </head>
@@ -85,7 +105,7 @@
     <div class="meta">
       資料日期 <strong>2026-06-08</strong> ｜
       台股 98 檔 ｜ 國際 33 檔 ｜
-      watchlist 更新日 2026-05-14 ｜ 產出時間 2026-06-08 23:46
+      watchlist 更新日 2026-05-14 ｜ 產出時間 2026-06-09 08:36
     </div>
   </div>
 </header>
@@ -94,7 +114,7 @@
 
 <div class="wl-search-bar">
   <span class="wl-search-icon">🔍</span>
-  <input type="text" id="wl-search" placeholder="搜尋名稱 / 代號(例:廣達、2382、NVDA)"
+  <input type="text" id="wl-search" placeholder="搜尋名稱 / 代號 / 副標籤(例:廣達、2382、NVDA、HBM、老AI)"
          autocomplete="off" spellcheck="false">
   <button type="button" class="wl-search-clear" id="wl-search-clear" hidden>×</button>
   <span class="wl-search-stats" id="wl-search-stats"></span>
@@ -113,11 +133,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TPEX:3081" data-name="聯亞">
+<details class="wl-stock" data-code="TPEX:3081" data-name="聯亞" data-tags="CPO 矽光子 光通訊 CW雷射/EML磊晶(光源)">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">聯亞</span>
     <code class="wl-code">TPEX:3081</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">矽光子</span> · <span class="wl-subtag">光通訊</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -126,11 +147,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2345" data-name="智邦">
+<details class="wl-stock" data-code="TWSE:2345" data-name="智邦" data-tags="CPO DPU 光通訊 AI伺服器 白牌交換器(800G/1.6T) AI加速卡模組 Scale-out NVIDIA">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">智邦</span>
     <code class="wl-code">TWSE:2345</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">DPU</span> · <span class="wl-subtag">光通訊</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -139,11 +161,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:4908" data-name="前鼎">
+<details class="wl-stock" data-code="TPEX:4908" data-name="前鼎" data-tags="CPO 光通訊 光收發模組 CPO外置光源(ELS)">
   <summary>
     
     <span class="wl-name">前鼎</span>
     <code class="wl-code">TPEX:4908</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">光通訊</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -152,11 +175,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:3363" data-name="上詮">
+<details class="wl-stock" data-code="TPEX:3363" data-name="上詮" data-tags="CPO 矽光子 光通訊 FAU光纖陣列(耦合) 台積電COUPE">
   <summary>
     
     <span class="wl-name">上詮</span>
     <code class="wl-code">TPEX:3363</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">矽光子</span> · <span class="wl-subtag">光通訊</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -165,11 +189,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6285" data-name="啟碁">
+<details class="wl-stock" data-code="TWSE:6285" data-name="啟碁" data-tags="低軌衛星 網通 LEO地面設備 800G交換器/AI-RAN">
   <summary>
     
     <span class="wl-name">啟碁</span>
     <code class="wl-code">TWSE:6285</code>
+    <span class="wl-subtags"><span class="wl-subtag">低軌衛星</span> · <span class="wl-subtag">網通</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -178,11 +203,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:4979" data-name="華星光">
+<details class="wl-stock" data-code="TPEX:4979" data-name="華星光" data-tags="CPO 矽光子 光通訊 光收發模組(800G) CW雷射(光源) Google TPU">
   <summary>
     
     <span class="wl-name">華星光</span>
     <code class="wl-code">TPEX:4979</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">矽光子</span> · <span class="wl-subtag">光通訊</span> · <span class="wl-subtag">Google TPU</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -191,11 +217,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:3491" data-name="昇達科">
+<details class="wl-stock" data-code="TPEX:3491" data-name="昇達科" data-tags="低軌衛星 毫米波元件 衛星光通訊/直連手機">
   <summary>
     
     <span class="wl-name">昇達科</span>
     <code class="wl-code">TPEX:3491</code>
+    <span class="wl-subtags"><span class="wl-subtag">低軌衛星</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -204,11 +231,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:3163" data-name="波若威">
+<details class="wl-stock" data-code="TPEX:3163" data-name="波若威" data-tags="CPO 矽光子 光通訊 光纖套件/Shuffle Box(耦合)">
   <summary>
     
     <span class="wl-name">波若威</span>
     <code class="wl-code">TPEX:3163</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">矽光子</span> · <span class="wl-subtag">光通訊</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -217,11 +245,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2455" data-name="全新">
+<details class="wl-stock" data-code="TWSE:2455" data-name="全新" data-tags="CPO 矽光子 光通訊 低軌衛星 化合物半導體磊晶(GaAs/InP) PD/PIN/VCSEL(光源)">
   <summary>
     
     <span class="wl-name">全新</span>
     <code class="wl-code">TWSE:2455</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">矽光子</span> · <span class="wl-subtag">光通訊</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -230,11 +259,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6442" data-name="光聖">
+<details class="wl-stock" data-code="TWSE:6442" data-name="光聖" data-tags="CPO 光通訊 低軌衛星 光纖跳線/OCS(耦合) Google TPU">
   <summary>
     
     <span class="wl-name">光聖</span>
     <code class="wl-code">TWSE:6442</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">光通訊</span> · <span class="wl-subtag">低軌衛星</span> · <span class="wl-subtag">Google TPU</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -253,11 +283,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:3653" data-name="健策">
+<details class="wl-stock" data-code="TWSE:3653" data-name="健策" data-tags="散熱 GPU散熱 均熱片(IHS)/導線架 NVIDIA AMD">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">健策</span>
     <code class="wl-code">TWSE:3653</code>
+    <span class="wl-subtags"><span class="wl-subtag">散熱</span> · <span class="wl-subtag">GPU散熱</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">2.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -266,11 +297,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3017" data-name="奇鋐">
+<details class="wl-stock" data-code="TWSE:3017" data-name="奇鋐" data-tags="液冷 散熱 冷板/CDU液冷 氣冷模組">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">奇鋐</span>
     <code class="wl-code">TWSE:3017</code>
+    <span class="wl-subtags"><span class="wl-subtag">液冷</span> · <span class="wl-subtag">散熱</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -279,11 +311,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2421" data-name="建準">
+<details class="wl-stock" data-code="TWSE:2421" data-name="建準" data-tags="散熱 散熱風扇/馬達">
   <summary>
     
     <span class="wl-name">建準</span>
     <code class="wl-code">TWSE:2421</code>
+    <span class="wl-subtags"><span class="wl-subtag">散熱</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -292,11 +325,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:3324" data-name="雙鴻">
+<details class="wl-stock" data-code="TPEX:3324" data-name="雙鴻" data-tags="液冷 散熱 冷板/CDU液冷 均熱板">
   <summary>
     
     <span class="wl-name">雙鴻</span>
     <code class="wl-code">TPEX:3324</code>
+    <span class="wl-subtags"><span class="wl-subtag">液冷</span> · <span class="wl-subtag">散熱</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -305,11 +339,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:8996" data-name="高力">
+<details class="wl-stock" data-code="TWSE:8996" data-name="高力" data-tags="液冷 散熱 燃料電池 板式熱交換器 液冷CDU/熱交換器">
   <summary>
     
     <span class="wl-name">高力</span>
     <code class="wl-code">TWSE:8996</code>
+    <span class="wl-subtags"><span class="wl-subtag">液冷</span> · <span class="wl-subtag">散熱</span> · <span class="wl-subtag">燃料電池</span></span>
     <span class="wl-score">2.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -318,11 +353,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3338" data-name="泰碩">
+<details class="wl-stock" data-code="TWSE:3338" data-name="泰碩" data-tags="散熱 熱管/均熱板">
   <summary>
     
     <span class="wl-name">泰碩</span>
     <code class="wl-code">TWSE:3338</code>
+    <span class="wl-subtags"><span class="wl-subtag">散熱</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -341,11 +377,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2454" data-name="聯發科">
+<details class="wl-stock" data-code="TWSE:2454" data-name="聯發科" data-tags="ASIC 邊緣AI 手機SoC 手機SoC(天璣) AI ASIC設計 NVIDIA">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">聯發科</span>
     <code class="wl-code">TWSE:2454</code>
+    <span class="wl-subtags"><span class="wl-subtag">ASIC</span> · <span class="wl-subtag">邊緣AI</span> · <span class="wl-subtag">手機SoC</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -354,11 +391,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6526" data-name="達發">
+<details class="wl-stock" data-code="TWSE:6526" data-name="達發" data-tags="網通 衛星 網通SoC Wi-Fi/衛星定位 聯發科集團">
   <summary>
     
     <span class="wl-name">達發</span>
     <code class="wl-code">TWSE:6526</code>
+    <span class="wl-subtags"><span class="wl-subtag">網通</span> · <span class="wl-subtag">衛星</span> · <span class="wl-subtag">聯發科集團</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -367,11 +405,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3034" data-name="聯詠">
+<details class="wl-stock" data-code="TWSE:3034" data-name="聯詠" data-tags="顯示驅動 顯示驅動IC OLED/TDDI">
   <summary>
     
     <span class="wl-name">聯詠</span>
     <code class="wl-code">TWSE:3034</code>
+    <span class="wl-subtags"><span class="wl-subtag">顯示驅動</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -380,11 +419,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2379" data-name="瑞昱">
+<details class="wl-stock" data-code="TWSE:2379" data-name="瑞昱" data-tags="網通 網通IC 交換器IC/乙太網路">
   <summary>
     
     <span class="wl-name">瑞昱</span>
     <code class="wl-code">TWSE:2379</code>
+    <span class="wl-subtags"><span class="wl-subtag">網通</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -393,11 +433,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:5269" data-name="祥碩">
+<details class="wl-stock" data-code="TWSE:5269" data-name="祥碩" data-tags="高速傳輸 USB/PCIe控制IC AMD">
   <summary>
     
     <span class="wl-name">祥碩</span>
     <code class="wl-code">TWSE:5269</code>
+    <span class="wl-subtags"><span class="wl-subtag">高速傳輸</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -406,11 +447,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6531" data-name="愛普">
+<details class="wl-stock" data-code="TWSE:6531" data-name="愛普" data-tags="記憶體 HBM4 先進封裝 記憶體IC S-SiCap矽電容(VHM耗材)">
   <summary>
     
     <span class="wl-name">愛普</span>
     <code class="wl-code">TWSE:6531</code>
+    <span class="wl-subtags"><span class="wl-subtag">記憶體</span> · <span class="wl-subtag">HBM4</span> · <span class="wl-subtag">先進封裝</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -419,11 +461,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3545" data-name="敦泰">
+<details class="wl-stock" data-code="TWSE:3545" data-name="敦泰" data-tags="顯示驅動 觸控IC/TDDI">
   <summary>
     
     <span class="wl-name">敦泰</span>
     <code class="wl-code">TWSE:3545</code>
+    <span class="wl-subtags"><span class="wl-subtag">顯示驅動</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -432,11 +475,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:5274" data-name="信驊">
+<details class="wl-stock" data-code="TPEX:5274" data-name="信驊" data-tags="AI伺服器 BMC伺服器管理晶片">
   <summary>
     
     <span class="wl-name">信驊</span>
     <code class="wl-code">TPEX:5274</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -455,11 +499,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TPEX:3529" data-name="力旺">
+<details class="wl-stock" data-code="TPEX:3529" data-name="力旺" data-tags="矽智財 NVM IP/安全IP">
   <summary>
     
     <span class="wl-name">力旺</span>
     <code class="wl-code">TPEX:3529</code>
+    <span class="wl-subtags"><span class="wl-subtag">矽智財</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -468,11 +513,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3443" data-name="創意">
+<details class="wl-stock" data-code="TWSE:3443" data-name="創意" data-tags="ASIC 異質運算 CoWoS ASIC設計服務(turnkey) NVIDIA 台積電集團">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">創意</span>
     <code class="wl-code">TWSE:3443</code>
+    <span class="wl-subtags"><span class="wl-subtag">ASIC</span> · <span class="wl-subtag">異質運算</span> · <span class="wl-subtag">CoWoS</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">台積電集團</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -481,11 +527,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3661" data-name="世芯-KY">
+<details class="wl-stock" data-code="TWSE:3661" data-name="世芯-KY" data-tags="ASIC 異質運算 ASIC設計服務 高速運算 KY股">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">世芯-KY</span>
     <code class="wl-code">TWSE:3661</code>
+    <span class="wl-subtags"><span class="wl-subtag">ASIC</span> · <span class="wl-subtag">異質運算</span> · <span class="wl-subtag">KY股</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -494,11 +541,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:6643" data-name="M31">
+<details class="wl-stock" data-code="TPEX:6643" data-name="M31" data-tags="矽智財 介面IP/高速介面IP">
   <summary>
     
     <span class="wl-name">M31</span>
     <code class="wl-code">TPEX:6643</code>
+    <span class="wl-subtags"><span class="wl-subtag">矽智財</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -507,11 +555,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3035" data-name="智原">
+<details class="wl-stock" data-code="TWSE:3035" data-name="智原" data-tags="ASIC 異質運算 ASIC設計服務 矽智財 聯電集團">
   <summary>
     
     <span class="wl-name">智原</span>
     <code class="wl-code">TWSE:3035</code>
+    <span class="wl-subtags"><span class="wl-subtag">ASIC</span> · <span class="wl-subtag">異質運算</span> · <span class="wl-subtag">聯電集團</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -530,11 +579,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2330" data-name="台積電">
+<details class="wl-stock" data-code="TWSE:2330" data-name="台積電" data-tags="先進製程 CoWoS CoPoS CPO HBM4 先進封裝 晶圓代工(2/3nm) 矽中介層 COUPE矽光引擎 HBM4 Base die NVIDIA AMD 護國神山">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台積電</span>
     <code class="wl-code">TWSE:2330</code>
+    <span class="wl-subtags"><span class="wl-subtag">先進製程</span> · <span class="wl-subtag">CoWoS</span> · <span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -543,11 +593,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:5347" data-name="世界先進">
+<details class="wl-stock" data-code="TPEX:5347" data-name="世界先進" data-tags="成熟製程 電源IC 8吋晶圓代工 PMIC/驅動IC">
   <summary>
     
     <span class="wl-name">世界先進</span>
     <code class="wl-code">TPEX:5347</code>
+    <span class="wl-subtags"><span class="wl-subtag">成熟製程</span> · <span class="wl-subtag">電源IC</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -556,11 +607,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2303" data-name="聯電">
+<details class="wl-stock" data-code="TWSE:2303" data-name="聯電" data-tags="成熟製程 晶圓代工(22/28nm) 特殊製程">
   <summary>
     
     <span class="wl-name">聯電</span>
     <code class="wl-code">TWSE:2303</code>
+    <span class="wl-subtags"><span class="wl-subtag">成熟製程</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -579,11 +631,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2449" data-name="京元電子">
+<details class="wl-stock" data-code="TWSE:2449" data-name="京元電子" data-tags="封測 AI晶片測試 專業測試(晶圓/成品)">
   <summary>
     
     <span class="wl-name">京元電子</span>
     <code class="wl-code">TWSE:2449</code>
+    <span class="wl-subtags"><span class="wl-subtag">封測</span> · <span class="wl-subtag">AI晶片測試</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -592,11 +645,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6239" data-name="力成">
+<details class="wl-stock" data-code="TWSE:6239" data-name="力成" data-tags="封測 FOPLP EFB 先進封裝 記憶體 記憶體封測 面板級封裝(EFB panel版) AMD">
   <summary>
     
     <span class="wl-name">力成</span>
     <code class="wl-code">TWSE:6239</code>
+    <span class="wl-subtags"><span class="wl-subtag">封測</span> · <span class="wl-subtag">FOPLP</span> · <span class="wl-subtag">EFB</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -605,11 +659,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3711" data-name="日月光投控">
+<details class="wl-stock" data-code="TWSE:3711" data-name="日月光投控" data-tags="封測 CoPoS FOPLP EFB CPO 先進封裝 封測代工(FOCoS) 面板級封裝(EFB wafer版) 光電共封 AMD">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">日月光投控</span>
     <code class="wl-code">TWSE:3711</code>
+    <span class="wl-subtags"><span class="wl-subtag">封測</span> · <span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">FOPLP</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -618,11 +673,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2474" data-name="可成">
+<details class="wl-stock" data-code="TWSE:2474" data-name="可成" data-tags="機殼 金屬機殼/機構件">
   <summary>
     
     <span class="wl-name">可成</span>
     <code class="wl-code">TWSE:2474</code>
+    <span class="wl-subtags"><span class="wl-subtag">機殼</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -641,11 +697,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:6515" data-name="穎崴">
+<details class="wl-stock" data-code="TWSE:6515" data-name="穎崴" data-tags="CPO AI晶片測試 測試介面/socket CPO光電測試">
   <summary>
     
     <span class="wl-name">穎崴</span>
     <code class="wl-code">TWSE:6515</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">AI晶片測試</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -654,11 +711,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:6223" data-name="旺矽">
+<details class="wl-stock" data-code="TPEX:6223" data-name="旺矽" data-tags="CPO HBM4 AI晶片測試 MEMS探針卡 CPO/HBM測試">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">旺矽</span>
     <code class="wl-code">TPEX:6223</code>
+    <span class="wl-subtags"><span class="wl-subtag">CPO</span> · <span class="wl-subtag">HBM4</span> · <span class="wl-subtag">AI晶片測試</span></span>
     <span class="wl-score">3.0 <span class="grade-badge C">C</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -667,11 +725,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:3131" data-name="弘塑">
+<details class="wl-stock" data-code="TPEX:3131" data-name="弘塑" data-tags="CoPoS 先進封裝設備 濕製程設備">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">弘塑</span>
     <code class="wl-code">TPEX:3131</code>
+    <span class="wl-subtags"><span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">先進封裝設備</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -680,11 +739,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3583" data-name="辛耘">
+<details class="wl-stock" data-code="TWSE:3583" data-name="辛耘" data-tags="CoPoS 先進封裝設備 濕製程設備 再生晶圓">
   <summary>
     
     <span class="wl-name">辛耘</span>
     <code class="wl-code">TWSE:3583</code>
+    <span class="wl-subtags"><span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">先進封裝設備</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -693,11 +753,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:3680" data-name="家登">
+<details class="wl-stock" data-code="TPEX:3680" data-name="家登" data-tags="CoPoS 先進製程 光罩盒(EUV pod) 載具/搬運">
   <summary>
     
     <span class="wl-name">家登</span>
     <code class="wl-code">TPEX:3680</code>
+    <span class="wl-subtags"><span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">先進製程</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -706,11 +767,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:6187" data-name="萬潤">
+<details class="wl-stock" data-code="TPEX:6187" data-name="萬潤" data-tags="CoPoS 被動元件設備 封裝/點膠設備 面板級自動化">
   <summary>
     
     <span class="wl-name">萬潤</span>
     <code class="wl-code">TPEX:6187</code>
+    <span class="wl-subtags"><span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">被動元件設備</span></span>
     <span class="wl-score">1.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -719,11 +781,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:7734" data-name="印能">
+<details class="wl-stock" data-code="TPEX:7734" data-name="印能" data-tags="CoPoS CoWoS FOPLP 先進封裝設備 熱壓/除泡設備(市占傳~80%)">
   <summary>
     
     <span class="wl-name">印能</span>
     <code class="wl-code">TPEX:7734</code>
+    <span class="wl-subtags"><span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">CoWoS</span> · <span class="wl-subtag">FOPLP</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -732,11 +795,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:7769" data-name="鴻勁">
+<details class="wl-stock" data-code="TWSE:7769" data-name="鴻勁" data-tags="AI晶片測試 先進封裝 測試設備(handler)">
   <summary>
     
     <span class="wl-name">鴻勁</span>
     <code class="wl-code">TWSE:7769</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI晶片測試</span> · <span class="wl-subtag">先進封裝</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -745,11 +809,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2360" data-name="致茂">
+<details class="wl-stock" data-code="TWSE:2360" data-name="致茂" data-tags="CoPoS HBM4 量測測試 量測/AOI檢測 電池/EV測試">
   <summary>
     
     <span class="wl-name">致茂</span>
     <code class="wl-code">TWSE:2360</code>
+    <span class="wl-subtags"><span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">HBM4</span> · <span class="wl-subtag">量測測試</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -758,11 +823,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3413" data-name="京鼎">
+<details class="wl-stock" data-code="TWSE:3413" data-name="京鼎" data-tags="半導體設備 設備機構件/模組 應材(AMAT)供應鏈 鴻海集團">
   <summary>
     
     <span class="wl-name">京鼎</span>
     <code class="wl-code">TWSE:3413</code>
+    <span class="wl-subtags"><span class="wl-subtag">半導體設備</span> · <span class="wl-subtag">應材(AMAT)供應鏈</span> · <span class="wl-subtag">鴻海集團</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -781,11 +847,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2382" data-name="廣達">
+<details class="wl-stock" data-code="TWSE:2382" data-name="廣達" data-tags="AI伺服器 AI機櫃 雲端 整機代工 筆電/車載 NVIDIA AMD 老AI">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">廣達</span>
     <code class="wl-code">TWSE:2382</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI機櫃</span> · <span class="wl-subtag">雲端</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">3.0 <span class="grade-badge C">C</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -794,11 +861,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3231" data-name="緯創">
+<details class="wl-stock" data-code="TWSE:3231" data-name="緯創" data-tags="AI伺服器 AI機櫃 EFB 整機代工(Helios) 網通 AMD NVIDIA 老AI">
   <summary>
     
     <span class="wl-name">緯創</span>
     <code class="wl-code">TWSE:3231</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI機櫃</span> · <span class="wl-subtag">EFB</span> · <span class="wl-subtag">AMD</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -807,11 +875,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2376" data-name="技嘉">
+<details class="wl-stock" data-code="TWSE:2376" data-name="技嘉" data-tags="AI伺服器 液冷 AI伺服器(品牌+代工) 板卡/電競 NVIDIA AMD 老AI">
   <summary>
     
     <span class="wl-name">技嘉</span>
     <code class="wl-code">TWSE:2376</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">液冷</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -820,11 +889,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6669" data-name="緯穎">
+<details class="wl-stock" data-code="TWSE:6669" data-name="緯穎" data-tags="AI伺服器 AI機櫃 EFB ASIC伺服器/整機(Helios) 超大型CSP AMD NVIDIA 老AI">
   <summary>
     
     <span class="wl-name">緯穎</span>
     <code class="wl-code">TWSE:6669</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI機櫃</span> · <span class="wl-subtag">EFB</span> · <span class="wl-subtag">AMD</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -833,11 +903,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2317" data-name="鴻海">
+<details class="wl-stock" data-code="TWSE:2317" data-name="鴻海" data-tags="AI伺服器 AI機櫃 雲端 整機代工(GB200/300) SiC NVIDIA AMD 老AI">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">鴻海</span>
     <code class="wl-code">TWSE:2317</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI機櫃</span> · <span class="wl-subtag">雲端</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">1.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -846,11 +917,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:3693" data-name="營邦">
+<details class="wl-stock" data-code="TPEX:3693" data-name="營邦" data-tags="AI伺服器 準系統(L10)/機殼 儲存 AMD 老AI">
   <summary>
     
     <span class="wl-name">營邦</span>
     <code class="wl-code">TPEX:3693</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AMD</span> · <span class="wl-subtag">老AI</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -859,11 +931,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2399" data-name="微星">
+<details class="wl-stock" data-code="TWSE:2399" data-name="微星" data-tags="AI伺服器 AI PC 板卡 主機板/顯示卡 電競筆電 AI伺服器(品牌) NVIDIA AMD">
   <summary>
     
     <span class="wl-name">微星</span>
     <code class="wl-code">TWSE:2399</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI PC</span> · <span class="wl-subtag">板卡</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -872,11 +945,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6805" data-name="富世達">
+<details class="wl-stock" data-code="TWSE:6805" data-name="富世達" data-tags="液冷 AI伺服器 水冷快接頭(QDC) 鉸鏈">
   <summary>
     
     <span class="wl-name">富世達</span>
     <code class="wl-code">TWSE:6805</code>
+    <span class="wl-subtags"><span class="wl-subtag">液冷</span> · <span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -885,11 +959,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2465" data-name="麗臺">
+<details class="wl-stock" data-code="TWSE:2465" data-name="麗臺" data-tags="AI伺服器 邊緣AI AI工作站 NVIDIA AIC顯卡 NVIDIA">
   <summary>
     
     <span class="wl-name">麗臺</span>
     <code class="wl-code">TWSE:2465</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">邊緣AI</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -898,11 +973,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:8210" data-name="勤誠">
+<details class="wl-stock" data-code="TWSE:8210" data-name="勤誠" data-tags="AI伺服器 AI機櫃 液冷 伺服器機殼 ASIC機殼">
   <summary>
     
     <span class="wl-name">勤誠</span>
     <code class="wl-code">TWSE:8210</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI機櫃</span> · <span class="wl-subtag">液冷</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -911,11 +987,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2357" data-name="華碩">
+<details class="wl-stock" data-code="TWSE:2357" data-name="華碩" data-tags="AI伺服器 AI PC AI伺服器(品牌) 電競(ROG) NVIDIA AMD 老AI">
   <summary>
     
     <span class="wl-name">華碩</span>
     <code class="wl-code">TWSE:2357</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI PC</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -924,11 +1001,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2356" data-name="英業達">
+<details class="wl-stock" data-code="TWSE:2356" data-name="英業達" data-tags="AI伺服器 AI機櫃 EFB ASIC伺服器(L10/L11) 筆電 NVIDIA AMD 老AI">
   <summary>
     
     <span class="wl-name">英業達</span>
     <code class="wl-code">TWSE:2356</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI機櫃</span> · <span class="wl-subtag">EFB</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">AMD</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -947,11 +1025,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2383" data-name="台光電">
+<details class="wl-stock" data-code="TWSE:2383" data-name="台光電" data-tags="CCL高速材料 AI伺服器 銅箔基板(M8/M9) 800G交換器材料">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台光電</span>
     <code class="wl-code">TWSE:2383</code>
+    <span class="wl-subtags"><span class="wl-subtag">CCL高速材料</span> · <span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -960,11 +1039,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:6274" data-name="台燿">
+<details class="wl-stock" data-code="TPEX:6274" data-name="台燿" data-tags="CCL高速材料 AI伺服器 銅箔基板(M8) ASIC/800G材料">
   <summary>
     
     <span class="wl-name">台燿</span>
     <code class="wl-code">TPEX:6274</code>
+    <span class="wl-subtags"><span class="wl-subtag">CCL高速材料</span> · <span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">2.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -973,11 +1053,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6213" data-name="聯茂">
+<details class="wl-stock" data-code="TWSE:6213" data-name="聯茂" data-tags="CCL高速材料 AI伺服器 銅箔基板(PCIe Gen6/7)">
   <summary>
     
     <span class="wl-name">聯茂</span>
     <code class="wl-code">TWSE:6213</code>
+    <span class="wl-subtags"><span class="wl-subtag">CCL高速材料</span> · <span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -996,11 +1077,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:3715" data-name="定穎投控">
+<details class="wl-stock" data-code="TWSE:3715" data-name="定穎投控" data-tags="車用PCB 車用PCB">
   <summary>
     
     <span class="wl-name">定穎投控</span>
     <code class="wl-code">TWSE:3715</code>
+    <span class="wl-subtags"><span class="wl-subtag">車用PCB</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1009,11 +1091,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2313" data-name="華通">
+<details class="wl-stock" data-code="TWSE:2313" data-name="華通" data-tags="低軌衛星 HDI AI伺服器 衛星板(市佔~80%) HDI/AI眼鏡板">
   <summary>
     
     <span class="wl-name">華通</span>
     <code class="wl-code">TWSE:2313</code>
+    <span class="wl-subtags"><span class="wl-subtag">低軌衛星</span> · <span class="wl-subtag">HDI</span> · <span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1022,11 +1105,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2368" data-name="金像電">
+<details class="wl-stock" data-code="TWSE:2368" data-name="金像電" data-tags="AI伺服器 低軌衛星 伺服器PCB ASIC/800G交換器板">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">金像電</span>
     <code class="wl-code">TWSE:2368</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">低軌衛星</span></span>
     <span class="wl-score">1.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1035,11 +1119,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:4958" data-name="臻鼎-KY">
+<details class="wl-stock" data-code="TWSE:4958" data-name="臻鼎-KY" data-tags="軟板 ABF載板 AI伺服器 光通訊 軟板FPC IC載板(ABF/BT) 折疊機板 蘋果供應鏈 KY股">
   <summary>
     
     <span class="wl-name">臻鼎-KY</span>
     <code class="wl-code">TWSE:4958</code>
+    <span class="wl-subtags"><span class="wl-subtag">軟板</span> · <span class="wl-subtag">ABF載板</span> · <span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">蘋果供應鏈</span> · <span class="wl-subtag">KY股</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1048,11 +1133,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2367" data-name="燿華">
+<details class="wl-stock" data-code="TWSE:2367" data-name="燿華" data-tags="低軌衛星 HDI 車用PCB PCB/HDI LEO地面設備板">
   <summary>
     
     <span class="wl-name">燿華</span>
     <code class="wl-code">TWSE:2367</code>
+    <span class="wl-subtags"><span class="wl-subtag">低軌衛星</span> · <span class="wl-subtag">HDI</span> · <span class="wl-subtag">車用PCB</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1061,11 +1147,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6269" data-name="台郡">
+<details class="wl-stock" data-code="TWSE:6269" data-name="台郡" data-tags="軟板 軟板FPC 高頻天線/AR-VR板 蘋果供應鏈">
   <summary>
     
     <span class="wl-name">台郡</span>
     <code class="wl-code">TWSE:6269</code>
+    <span class="wl-subtags"><span class="wl-subtag">軟板</span> · <span class="wl-subtag">蘋果供應鏈</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1084,11 +1171,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:3037" data-name="欣興">
+<details class="wl-stock" data-code="TWSE:3037" data-name="欣興" data-tags="ABF載板 EFB CoPoS 先進封裝 ABF載板 玻璃基板研發 NVIDIA">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">欣興</span>
     <code class="wl-code">TWSE:3037</code>
+    <span class="wl-subtags"><span class="wl-subtag">ABF載板</span> · <span class="wl-subtag">EFB</span> · <span class="wl-subtag">CoPoS</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1097,11 +1185,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3189" data-name="景碩">
+<details class="wl-stock" data-code="TWSE:3189" data-name="景碩" data-tags="ABF載板 EFB 先進封裝 BT載板 ABF載板 NVIDIA">
   <summary>
     
     <span class="wl-name">景碩</span>
     <code class="wl-code">TWSE:3189</code>
+    <span class="wl-subtags"><span class="wl-subtag">ABF載板</span> · <span class="wl-subtag">EFB</span> · <span class="wl-subtag">先進封裝</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1110,11 +1199,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:8046" data-name="南電">
+<details class="wl-stock" data-code="TWSE:8046" data-name="南電" data-tags="ABF載板 EFB AI伺服器 ABF載板 BT載板/800G">
   <summary>
     
     <span class="wl-name">南電</span>
     <code class="wl-code">TWSE:8046</code>
+    <span class="wl-subtags"><span class="wl-subtag">ABF載板</span> · <span class="wl-subtag">EFB</span> · <span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1123,11 +1213,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:7795" data-name="長廣">
+<details class="wl-stock" data-code="TWSE:7795" data-name="長廣" data-tags="ABF載板 先進封裝設備 先進封裝 真空壓膜機(ABF/先進封裝) 長興集團">
   <summary>
     
     <span class="wl-name">長廣</span>
     <code class="wl-code">TWSE:7795</code>
+    <span class="wl-subtags"><span class="wl-subtag">ABF載板</span> · <span class="wl-subtag">先進封裝設備</span> · <span class="wl-subtag">先進封裝</span> · <span class="wl-subtag">長興集團</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1146,11 +1237,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2327" data-name="國巨">
+<details class="wl-stock" data-code="TWSE:2327" data-name="國巨" data-tags="MLCC 被動元件 MLCC 鉭電容/晶片電阻 感測器">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">國巨</span>
     <code class="wl-code">TWSE:2327</code>
+    <span class="wl-subtags"><span class="wl-subtag">MLCC</span> · <span class="wl-subtag">被動元件</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1159,11 +1251,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2492" data-name="華新科">
+<details class="wl-stock" data-code="TWSE:2492" data-name="華新科" data-tags="MLCC 被動元件 MLCC 晶片電阻">
   <summary>
     
     <span class="wl-name">華新科</span>
     <code class="wl-code">TWSE:2492</code>
+    <span class="wl-subtags"><span class="wl-subtag">MLCC</span> · <span class="wl-subtag">被動元件</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1172,11 +1265,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6862" data-name="三集瑞-KY">
+<details class="wl-stock" data-code="TWSE:6862" data-name="三集瑞-KY" data-tags="TLVR 被動元件 AI電源 電感 TLVR穿越電感(美系GPU平台) KY股">
   <summary>
     
     <span class="wl-name">三集瑞-KY</span>
     <code class="wl-code">TWSE:6862</code>
+    <span class="wl-subtags"><span class="wl-subtag">TLVR</span> · <span class="wl-subtag">被動元件</span> · <span class="wl-subtag">AI電源</span> · <span class="wl-subtag">KY股</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1195,11 +1289,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2308" data-name="台達電">
+<details class="wl-stock" data-code="TWSE:2308" data-name="台達電" data-tags="AI電源 HVDC 液冷 伺服器電源 800V HVDC 車用電源 NVIDIA 老AI">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台達電</span>
     <code class="wl-code">TWSE:2308</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI電源</span> · <span class="wl-subtag">HVDC</span> · <span class="wl-subtag">液冷</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">老AI</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1208,11 +1303,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2301" data-name="光寶科">
+<details class="wl-stock" data-code="TWSE:2301" data-name="光寶科" data-tags="AI電源 伺服器電源 LED NVIDIA 老AI">
   <summary>
     
     <span class="wl-name">光寶科</span>
     <code class="wl-code">TWSE:2301</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI電源</span> · <span class="wl-subtag">NVIDIA</span> · <span class="wl-subtag">老AI</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1221,11 +1317,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6412" data-name="群電">
+<details class="wl-stock" data-code="TWSE:6412" data-name="群電" data-tags="AI電源 高功率電源 車用電源">
   <summary>
     
     <span class="wl-name">群電</span>
     <code class="wl-code">TWSE:6412</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI電源</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1234,11 +1331,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6282" data-name="康舒">
+<details class="wl-stock" data-code="TWSE:6282" data-name="康舒" data-tags="AI電源 電源供應器/能源整合">
   <summary>
     
     <span class="wl-name">康舒</span>
     <code class="wl-code">TWSE:6282</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI電源</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1247,11 +1345,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3015" data-name="全漢">
+<details class="wl-stock" data-code="TWSE:3015" data-name="全漢" data-tags="AI電源 電源供應器">
   <summary>
     
     <span class="wl-name">全漢</span>
     <code class="wl-code">TWSE:3015</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI電源</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1270,11 +1369,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:1519" data-name="華城">
+<details class="wl-stock" data-code="TWSE:1519" data-name="華城" data-tags="重電電網 電網升級 美國電網 超高壓變壓器 輸配電設備 美國基建 台電供應鏈">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">華城</span>
     <code class="wl-code">TWSE:1519</code>
+    <span class="wl-subtags"><span class="wl-subtag">重電電網</span> · <span class="wl-subtag">電網升級</span> · <span class="wl-subtag">美國電網</span> · <span class="wl-subtag">美國基建</span> · <span class="wl-subtag">台電供應鏈</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1283,11 +1383,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:1513" data-name="中興電">
+<details class="wl-stock" data-code="TWSE:1513" data-name="中興電" data-tags="重電電網 電網升級 儲能 GIS氣體絕緣開關設備 統包工程(EPC) 台電供應鏈">
   <summary>
     
     <span class="wl-name">中興電</span>
     <code class="wl-code">TWSE:1513</code>
+    <span class="wl-subtags"><span class="wl-subtag">重電電網</span> · <span class="wl-subtag">電網升級</span> · <span class="wl-subtag">儲能</span> · <span class="wl-subtag">台電供應鏈</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1296,11 +1397,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:1503" data-name="士電">
+<details class="wl-stock" data-code="TWSE:1503" data-name="士電" data-tags="重電電網 電網升級 變壓器/配電盤 馬達/電梯 台電供應鏈">
   <summary>
     
     <span class="wl-name">士電</span>
     <code class="wl-code">TWSE:1503</code>
+    <span class="wl-subtags"><span class="wl-subtag">重電電網</span> · <span class="wl-subtag">電網升級</span> · <span class="wl-subtag">台電供應鏈</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1309,11 +1411,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:1514" data-name="亞力">
+<details class="wl-stock" data-code="TWSE:1514" data-name="亞力" data-tags="重電電網 電網升級 AI電源 低壓配電盤/開關箱 資料中心配電 台電供應鏈">
   <summary>
     
     <span class="wl-name">亞力</span>
     <code class="wl-code">TWSE:1514</code>
+    <span class="wl-subtags"><span class="wl-subtag">重電電網</span> · <span class="wl-subtag">電網升級</span> · <span class="wl-subtag">AI電源</span> · <span class="wl-subtag">台電供應鏈</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span><span class="tag">🔴</span><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1332,11 +1435,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2603" data-name="長榮">
+<details class="wl-stock" data-code="TWSE:2603" data-name="長榮" data-tags="航運 貨櫃航運 景氣循環">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">長榮</span>
     <code class="wl-code">TWSE:2603</code>
+    <span class="wl-subtags"><span class="wl-subtag">航運</span> · <span class="wl-subtag">景氣循環</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1345,11 +1449,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2609" data-name="陽明">
+<details class="wl-stock" data-code="TWSE:2609" data-name="陽明" data-tags="航運 貨櫃航運 景氣循環">
   <summary>
     
     <span class="wl-name">陽明</span>
     <code class="wl-code">TWSE:2609</code>
+    <span class="wl-subtags"><span class="wl-subtag">航運</span> · <span class="wl-subtag">景氣循環</span></span>
     <span class="wl-score">1.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1368,11 +1473,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2059" data-name="川湖">
+<details class="wl-stock" data-code="TWSE:2059" data-name="川湖" data-tags="AI伺服器 AI機櫃 伺服器滑軌/導軌 機構件">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">川湖</span>
     <code class="wl-code">TWSE:2059</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">AI機櫃</span></span>
     <span class="wl-score">1.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⛔</span><span class="tag">🟢</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1381,11 +1487,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3533" data-name="嘉澤">
+<details class="wl-stock" data-code="TWSE:3533" data-name="嘉澤" data-tags="連接器 AI伺服器 液冷 SOCAMM CPU Socket 水冷快接頭(UQD) CAMM連接器布局">
   <summary>
     
     <span class="wl-name">嘉澤</span>
     <code class="wl-code">TWSE:3533</code>
+    <span class="wl-subtags"><span class="wl-subtag">連接器</span> · <span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">液冷</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1394,11 +1501,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6117" data-name="迎廣">
+<details class="wl-stock" data-code="TWSE:6117" data-name="迎廣" data-tags="AI伺服器 液冷 伺服器機殼 系統組裝(L11)/電源">
   <summary>
     
     <span class="wl-name">迎廣</span>
     <code class="wl-code">TWSE:6117</code>
+    <span class="wl-subtags"><span class="wl-subtag">AI伺服器</span> · <span class="wl-subtag">液冷</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1407,11 +1515,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:3665" data-name="貿聯-KY">
+<details class="wl-stock" data-code="TWSE:3665" data-name="貿聯-KY" data-tags="高速線纜 HVDC AEC高速線纜 800V HVDC/連接器 電動車(Tesla) 機器人 KY股">
   <summary>
     
     <span class="wl-name">貿聯-KY</span>
     <code class="wl-code">TWSE:3665</code>
+    <span class="wl-subtags"><span class="wl-subtag">高速線纜</span> · <span class="wl-subtag">HVDC</span> · <span class="wl-subtag">電動車(Tesla)</span> · <span class="wl-subtag">機器人</span></span>
     <span class="wl-score">3.0 <span class="grade-badge C">C</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1430,11 +1539,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2049" data-name="上銀">
+<details class="wl-stock" data-code="TWSE:2049" data-name="上銀" data-tags="機器人 半導體設備 線性傳動(滾珠螺桿/滑軌) 諧波減速機">
   <summary>
     
     <span class="wl-name">上銀</span>
     <code class="wl-code">TWSE:2049</code>
+    <span class="wl-subtags"><span class="wl-subtag">機器人</span> · <span class="wl-subtag">半導體設備</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1443,11 +1553,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2395" data-name="研華">
+<details class="wl-stock" data-code="TWSE:2395" data-name="研華" data-tags="邊緣AI 機器人 工業電腦IPC AIoT/Physical AI">
   <summary>
     
     <span class="wl-name">研華</span>
     <code class="wl-code">TWSE:2395</code>
+    <span class="wl-subtags"><span class="wl-subtag">邊緣AI</span> · <span class="wl-subtag">機器人</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1456,11 +1567,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2359" data-name="所羅門">
+<details class="wl-stock" data-code="TWSE:2359" data-name="所羅門" data-tags="機器人 AI電源 機器視覺(3D/AI) 發電機/能源代理 NVIDIA">
   <summary>
     
     <span class="wl-name">所羅門</span>
     <code class="wl-code">TWSE:2359</code>
+    <span class="wl-subtags"><span class="wl-subtag">機器人</span> · <span class="wl-subtag">AI電源</span> · <span class="wl-subtag">NVIDIA</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">🔴</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1479,11 +1591,12 @@
     </h3>
   </summary>
   
-<details class="wl-stock" data-code="TWSE:2344" data-name="華邦電">
+<details class="wl-stock" data-code="TWSE:2344" data-name="華邦電" data-tags="記憶體漲價 DRAM 利基DRAM NOR Flash/CMS">
   <summary>
     
     <span class="wl-name">華邦電</span>
     <code class="wl-code">TWSE:2344</code>
+    <span class="wl-subtags"><span class="wl-subtag">記憶體漲價</span> · <span class="wl-subtag">DRAM</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1492,11 +1605,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2408" data-name="南亞科">
+<details class="wl-stock" data-code="TWSE:2408" data-name="南亞科" data-tags="記憶體漲價 DRAM DRAM(DDR5) HBM布局">
   <summary>
     
     <span class="wl-name">南亞科</span>
     <code class="wl-code">TWSE:2408</code>
+    <span class="wl-subtags"><span class="wl-subtag">記憶體漲價</span> · <span class="wl-subtag">DRAM</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1505,11 +1619,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:2337" data-name="旺宏">
+<details class="wl-stock" data-code="TWSE:2337" data-name="旺宏" data-tags="記憶體漲價 HBF NOR Flash NAND(eMMC/MLC)/ROM">
   <summary>
     
     <span class="wl-name">旺宏</span>
     <code class="wl-code">TWSE:2337</code>
+    <span class="wl-subtags"><span class="wl-subtag">記憶體漲價</span> · <span class="wl-subtag">HBF</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1518,11 +1633,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TWSE:6770" data-name="力積電">
+<details class="wl-stock" data-code="TWSE:6770" data-name="力積電" data-tags="記憶體漲價 先進封裝 成熟製程 記憶體代工 3D Hybrid Bonding">
   <summary>
     
     <span class="wl-name">力積電</span>
     <code class="wl-code">TWSE:6770</code>
+    <span class="wl-subtags"><span class="wl-subtag">記憶體漲價</span> · <span class="wl-subtag">先進封裝</span> · <span class="wl-subtag">成熟製程</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"><span class="tag">⚡</span></span>
   </summary>
   <div class="wl-stock-body">
@@ -1531,11 +1647,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:8299" data-name="群聯">
+<details class="wl-stock" data-code="TPEX:8299" data-name="群聯" data-tags="記憶體漲價 HBF AI伺服器 NAND控制IC SSD/aiDAPTIV+">
   <summary>
     
     <span class="wl-name">群聯</span>
     <code class="wl-code">TPEX:8299</code>
+    <span class="wl-subtags"><span class="wl-subtag">記憶體漲價</span> · <span class="wl-subtag">HBF</span> · <span class="wl-subtag">AI伺服器</span></span>
     <span class="wl-score">0.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1544,11 +1661,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TPEX:5289" data-name="宜鼎">
+<details class="wl-stock" data-code="TPEX:5289" data-name="宜鼎" data-tags="記憶體漲價 邊緣AI 工業儲存/嵌入式SSD 工業DRAM模組">
   <summary>
     
     <span class="wl-name">宜鼎</span>
     <code class="wl-code">TPEX:5289</code>
+    <span class="wl-subtags"><span class="wl-subtag">記憶體漲價</span> · <span class="wl-subtag">邊緣AI</span></span>
     <span class="wl-score">1.0 <span class="grade-badge D">D</span></span><span class="wl-tags-inline"></span>
   </summary>
   <div class="wl-stock-body">
@@ -1571,11 +1689,12 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:晶圓代工 / IC設計 / IP與ASIC</div>
   
-<details class="wl-stock" data-code="NASDAQ:NVDA" data-name="NVIDIA">
+<details class="wl-stock" data-code="NASDAQ:NVDA" data-name="NVIDIA" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">NVIDIA</span>
     <code class="wl-code">NASDAQ:NVDA</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1584,11 +1703,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:TSM" data-name="台積電ADR">
+<details class="wl-stock" data-code="NYSE:TSM" data-name="台積電ADR" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">台積電ADR</span>
     <code class="wl-code">NYSE:TSM</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1597,11 +1717,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:QCOM" data-name="Qualcomm">
+<details class="wl-stock" data-code="NASDAQ:QCOM" data-name="Qualcomm" data-tags="">
   <summary>
     
     <span class="wl-name">Qualcomm</span>
     <code class="wl-code">NASDAQ:QCOM</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1610,11 +1731,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:SNPS" data-name="Synopsys">
+<details class="wl-stock" data-code="NASDAQ:SNPS" data-name="Synopsys" data-tags="">
   <summary>
     
     <span class="wl-name">Synopsys</span>
     <code class="wl-code">NASDAQ:SNPS</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1623,11 +1745,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:ARM" data-name="ARM Holdings">
+<details class="wl-stock" data-code="NASDAQ:ARM" data-name="ARM Holdings" data-tags="">
   <summary>
     
     <span class="wl-name">ARM Holdings</span>
     <code class="wl-code">NASDAQ:ARM</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1646,11 +1769,12 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:光通訊 / CCL / PCB</div>
   
-<details class="wl-stock" data-code="NASDAQ:LITE" data-name="Lumentum">
+<details class="wl-stock" data-code="NASDAQ:LITE" data-name="Lumentum" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Lumentum</span>
     <code class="wl-code">NASDAQ:LITE</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1659,11 +1783,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:COHR" data-name="Coherent">
+<details class="wl-stock" data-code="NYSE:COHR" data-name="Coherent" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Coherent</span>
     <code class="wl-code">NYSE:COHR</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1672,11 +1797,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:ANET" data-name="Arista">
+<details class="wl-stock" data-code="NYSE:ANET" data-name="Arista" data-tags="">
   <summary>
     
     <span class="wl-name">Arista</span>
     <code class="wl-code">NYSE:ANET</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1685,11 +1811,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:MRVL" data-name="Marvell">
+<details class="wl-stock" data-code="NASDAQ:MRVL" data-name="Marvell" data-tags="">
   <summary>
     
     <span class="wl-name">Marvell</span>
     <code class="wl-code">NASDAQ:MRVL</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1698,11 +1825,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:HIMX" data-name="Himax">
+<details class="wl-stock" data-code="NASDAQ:HIMX" data-name="Himax" data-tags="">
   <summary>
     
     <span class="wl-name">Himax</span>
     <code class="wl-code">NASDAQ:HIMX</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1721,11 +1849,12 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:半導體設備耗材 / 封裝測試 / ABF</div>
   
-<details class="wl-stock" data-code="NASDAQ:ASML" data-name="ASML">
+<details class="wl-stock" data-code="NASDAQ:ASML" data-name="ASML" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">ASML</span>
     <code class="wl-code">NASDAQ:ASML</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1734,11 +1863,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TSE:8035" data-name="東京威力科創">
+<details class="wl-stock" data-code="TSE:8035" data-name="東京威力科創" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">東京威力科創</span>
     <code class="wl-code">TSE:8035</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1747,11 +1877,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:AMAT" data-name="Applied Materials">
+<details class="wl-stock" data-code="NASDAQ:AMAT" data-name="Applied Materials" data-tags="">
   <summary>
     
     <span class="wl-name">Applied Materials</span>
     <code class="wl-code">NASDAQ:AMAT</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1760,11 +1891,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:AMKR" data-name="Amkor">
+<details class="wl-stock" data-code="NASDAQ:AMKR" data-name="Amkor" data-tags="">
   <summary>
     
     <span class="wl-name">Amkor</span>
     <code class="wl-code">NASDAQ:AMKR</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1773,11 +1905,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:ROG" data-name="Rogers">
+<details class="wl-stock" data-code="NYSE:ROG" data-name="Rogers" data-tags="">
   <summary>
     
     <span class="wl-name">Rogers</span>
     <code class="wl-code">NYSE:ROG</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1786,11 +1919,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TSE:6752" data-name="松下">
+<details class="wl-stock" data-code="TSE:6752" data-name="松下" data-tags="">
   <summary>
     
     <span class="wl-name">松下</span>
     <code class="wl-code">TSE:6752</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1799,11 +1933,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TSE:4062" data-name="Ibiden">
+<details class="wl-stock" data-code="TSE:4062" data-name="Ibiden" data-tags="">
   <summary>
     
     <span class="wl-name">Ibiden</span>
     <code class="wl-code">TSE:4062</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1812,11 +1947,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TSE:6146" data-name="DISCO">
+<details class="wl-stock" data-code="TSE:6146" data-name="DISCO" data-tags="">
   <summary>
     
     <span class="wl-name">DISCO</span>
     <code class="wl-code">TSE:6146</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1835,11 +1971,12 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:AI伺服器代工 / 伺服器關鍵零組件</div>
   
-<details class="wl-stock" data-code="NYSE:DELL" data-name="Dell">
+<details class="wl-stock" data-code="NYSE:DELL" data-name="Dell" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Dell</span>
     <code class="wl-code">NYSE:DELL</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1848,11 +1985,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NASDAQ:SMCI" data-name="SuperMicro">
+<details class="wl-stock" data-code="NASDAQ:SMCI" data-name="SuperMicro" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">SuperMicro</span>
     <code class="wl-code">NASDAQ:SMCI</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1861,11 +1999,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:HPE" data-name="HPE">
+<details class="wl-stock" data-code="NYSE:HPE" data-name="HPE" data-tags="">
   <summary>
     
     <span class="wl-name">HPE</span>
     <code class="wl-code">NYSE:HPE</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1884,11 +2023,12 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:散熱 / 電源供應以及能源基礎 / 重電與電網</div>
   
-<details class="wl-stock" data-code="NYSE:VRT" data-name="Vertiv">
+<details class="wl-stock" data-code="NYSE:VRT" data-name="Vertiv" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Vertiv</span>
     <code class="wl-code">NYSE:VRT</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1897,11 +2037,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:ETN" data-name="Eaton">
+<details class="wl-stock" data-code="NYSE:ETN" data-name="Eaton" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">Eaton</span>
     <code class="wl-code">NYSE:ETN</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1910,11 +2051,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:PWR" data-name="Quanta Services">
+<details class="wl-stock" data-code="NYSE:PWR" data-name="Quanta Services" data-tags="">
   <summary>
     
     <span class="wl-name">Quanta Services</span>
     <code class="wl-code">NYSE:PWR</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1923,11 +2065,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:GEV" data-name="GE Vernova">
+<details class="wl-stock" data-code="NYSE:GEV" data-name="GE Vernova" data-tags="">
   <summary>
     
     <span class="wl-name">GE Vernova</span>
     <code class="wl-code">NYSE:GEV</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1936,11 +2079,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TSE:6594" data-name="日本電產">
+<details class="wl-stock" data-code="TSE:6594" data-name="日本電產" data-tags="">
   <summary>
     
     <span class="wl-name">日本電產</span>
     <code class="wl-code">TSE:6594</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1959,11 +2103,12 @@
   </summary>
   <div class="wl-intl-corresp">對應台股族群:被動元件 / 航運物流</div>
   
-<details class="wl-stock" data-code="TSE:6981" data-name="村田製造所">
+<details class="wl-stock" data-code="TSE:6981" data-name="村田製造所" data-tags="">
   <summary>
     <span class="leader-mark" title="族群長子">⭐</span>
     <span class="wl-name">村田製造所</span>
     <code class="wl-code">TSE:6981</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1972,11 +2117,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="TSE:6762" data-name="TDK">
+<details class="wl-stock" data-code="TSE:6762" data-name="TDK" data-tags="">
   <summary>
     
     <span class="wl-name">TDK</span>
     <code class="wl-code">TSE:6762</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1985,11 +2131,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="NYSE:ZIM" data-name="ZIM">
+<details class="wl-stock" data-code="NYSE:ZIM" data-name="ZIM" data-tags="">
   <summary>
     
     <span class="wl-name">ZIM</span>
     <code class="wl-code">NYSE:ZIM</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -1998,11 +2145,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="OMXCOP:MAERSK_B" data-name="Maersk B">
+<details class="wl-stock" data-code="OMXCOP:MAERSK_B" data-name="Maersk B" data-tags="">
   <summary>
     
     <span class="wl-name">Maersk B</span>
     <code class="wl-code">OMXCOP:MAERSK_B</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -2021,11 +2169,12 @@
   </summary>
   
   
-<details class="wl-stock" data-code="NASDAQ:MU" data-name="Micron">
+<details class="wl-stock" data-code="NASDAQ:MU" data-name="Micron" data-tags="">
   <summary>
     
     <span class="wl-name">Micron</span>
     <code class="wl-code">NASDAQ:MU</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -2034,11 +2183,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="KRX:005930" data-name="Samsung Electronics">
+<details class="wl-stock" data-code="KRX:005930" data-name="Samsung Electronics" data-tags="">
   <summary>
     
     <span class="wl-name">Samsung Electronics</span>
     <code class="wl-code">KRX:005930</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -2047,11 +2197,12 @@
 </details>
 
 
-<details class="wl-stock" data-code="KRX:000660" data-name="SK Hynix">
+<details class="wl-stock" data-code="KRX:000660" data-name="SK Hynix" data-tags="">
   <summary>
     
     <span class="wl-name">SK Hynix</span>
     <code class="wl-code">KRX:000660</code>
+    
     
   </summary>
   <div class="wl-stock-body">
@@ -2089,7 +2240,8 @@
     stocks.forEach(el => {
       const code = (el.dataset.code || '').toLowerCase();
       const name = (el.dataset.name || '').toLowerCase();
-      const hit = !q || code.includes(q) || name.includes(q);
+      const tags = (el.dataset.tags || '').toLowerCase();
+      const hit = !q || code.includes(q) || name.includes(q) || tags.includes(q);
       el.hidden = !hit;
       if (hit) {
         if (twSec.contains(el)) twHit++;

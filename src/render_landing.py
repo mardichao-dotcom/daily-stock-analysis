@@ -97,6 +97,14 @@ def render(*,
       <p class="landing-detail">含 ETF 加減碼箭頭、關鍵價、MA</p>
     </a>
 
+    <a class="landing-card" href="tags.html">
+      <div class="landing-icon">🔥</div>
+      <h2>主題熱度</h2>
+      <p class="landing-tagline">當日標籤漲幅排行</p>
+      <p class="landing-detail">L2+L3+L4 標籤等權平均</p>
+      <p class="landing-detail">N≥3 上榜,展開看成員</p>
+    </a>
+
     <a class="landing-card" href="history.html">
       <div class="landing-icon">📅</div>
       <h2>歷史儀表板</h2>

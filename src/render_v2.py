@@ -179,6 +179,60 @@ def classify_stocks(stocks: dict) -> dict:
 
 # ─── 區塊渲染 ────────────────────────────────────────────────────────────────
 
+def load_theme_returns(date: str) -> dict | None:
+    """讀 docs/data/v2/<date>/theme_returns.json,失敗回 None。"""
+    path = PROJECT_ROOT / "docs" / "data" / "v2" / date / "theme_returns.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def render_themes(date: str, top_n: int = 10) -> str:
+    """區塊 1.5:主題熱度 Top N(L2+L3+L4 N>=3 標籤等權平均漲幅排行)。
+
+    2026-06-09 加入,讀 theme_returns.json。
+    JSON 不存在 → 整個 section 跳過(向後相容歷史 snapshot)。
+    """
+    data = load_theme_returns(date)
+    if not data:
+        return ""
+
+    rankable = [t for t in data.get("tags", []) if t.get("rankable")]
+    if not rankable:
+        return ""
+
+    items = []
+    medals = {1: "🥇", 2: "🥈", 3: "🥉"}
+    for i, t in enumerate(rankable[:top_n], 1):
+        rank = medals.get(i, f"#{i}")
+        ret = t.get("return_pct") or 0.0
+        cls = "gain" if ret > 0 else ("loss" if ret < 0 else "flat")
+        sign = "+" if ret > 0 else ""
+        n = t.get("n_traded", 0)
+        items.append(f"""
+  <li>
+    <span class="rank">{rank}</span>
+    <span class="theme-return {cls}">{sign}{ret:.2f}%</span>
+    <span class="name">{_h(t.get("tag", ""))}</span>
+    <span class="theme-n">(n={n})</span>
+  </li>""")
+
+    total = data.get("stats", {}).get("rankable_tags", len(rankable))
+    return f"""
+<section class="section">
+  <h2>🔥 主題熱度 Top {min(top_n, len(rankable))}</h2>
+  <ul class="themes-list">{''.join(items)}
+  </ul>
+  <div class="themes-footer">
+    <a href="tags.html">查看完整列表(共 {total} 個上榜標籤）→</a>
+  </div>
+</section>
+"""
+
+
 def render_top10(stocks: dict, date: str = "", status_map: dict | None = None) -> str:
     """區塊 1:當日前十名(by score 降冪)。
 
@@ -516,6 +570,7 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
 
     parts = [
         render_top10(stocks, date, status_map),
+        render_themes(date),
         render_grade_section("S", "🔴 S 級戰區",     buckets["S"], date, status_map),
         render_grade_section("A", "🟡 A 級戰區",     buckets["A"], date, status_map),
         render_grade_section("B", "🟢 B 級戰區",     buckets["B"], date, status_map),

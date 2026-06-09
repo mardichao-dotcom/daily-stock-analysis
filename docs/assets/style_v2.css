@@ -100,6 +100,57 @@ header .meta {
 .top10-list .name { flex: 1; }
 .top10-list .score { font-weight: bold; }
 
+/* ─── 主題熱度 Top N(2026-06-09 加入,讀 theme_returns.json)─── */
+.themes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.themes-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.themes-list li:last-child { border-bottom: none; }
+.themes-list .rank {
+  font-weight: bold;
+  color: var(--text-mute);
+  width: 34px;
+  flex-shrink: 0;
+}
+.themes-list .theme-return {
+  font-weight: bold;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  width: 72px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.themes-list .theme-return.gain { color: #10b981; }
+.themes-list .theme-return.loss { color: #ef4444; }
+.themes-list .theme-return.flat { color: var(--text-mute); }
+.themes-list .name { flex: 1; }
+.themes-list .theme-n {
+  color: var(--text-mute);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.themes-footer {
+  margin-top: 8px;
+  padding: 6px 8px;
+  text-align: right;
+  font-size: 13px;
+}
+.themes-footer a {
+  color: var(--etf-buy);
+  text-decoration: none;
+}
+.themes-footer a:hover {
+  text-decoration: underline;
+}
+
 /* ─── Top10 卡片(2026-06-02:朋友 review 後升級,可折疊看 K 線)─── */
 details.stock-card.top10-card {
   margin: 4px 0;

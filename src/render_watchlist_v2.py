@@ -53,11 +53,37 @@ def _summary_for_member(symbol: str, stocks_index: dict) -> str:
             f'<span class="wl-tags-inline">{tag_inline}</span>')
 
 
+def load_subtags_index(subtags_path=None) -> dict:
+    """讀 config/subtags.json,回 code -> {chips: [...], all_tags: [...]}。
+    chips = L2 前 3 + L4 前 2(混排,最多 5 個)— 顯示用
+    all_tags = L2 + L3 + L4 全部 — 搜尋用(寫進 data-tags)
+    """
+    path = Path(subtags_path) if subtags_path else (PROJECT_ROOT / "config" / "subtags.json")
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+    index = {}
+    for code, info in (data.get("stocks") or {}).items():
+        l2 = info.get("L2", []) or []
+        l3 = info.get("L3", []) or []
+        l4 = info.get("L4", []) or []
+        chips = l2[:3] + l4[:2]
+        all_tags = l2 + l3 + l4
+        index[code] = {"chips": chips, "all_tags": all_tags}
+    return index
+
+
 def render_member(member: dict, leaders_set: set, date: str,
                    stocks_index: dict,
-                   status_map: dict | None = None) -> str:
+                   status_map: dict | None = None,
+                   subtags_map: dict | None = None) -> str:
     """單一個股的 <details> 折疊區。status_map 給 chart_placeholder_html 區分
     ready / waiting_us_close / missing。
+    subtags_map: from load_subtags_index(),per-code chips + all_tags(2026-06-09)。
     """
     symbol = member["code"]
     name   = member["name"]
@@ -69,13 +95,28 @@ def render_member(member: dict, leaders_set: set, date: str,
         symbol, date, (status_map or {}).get(sid)
     )
 
-    # data-code / data-name 給前端 search 用(大小寫無關,前端 toLowerCase)
+    sub = (subtags_map or {}).get(symbol, {})
+    chips = sub.get("chips", [])
+    all_tags = sub.get("all_tags", [])
+
+    if chips:
+        subtags_html = (
+            '<span class="wl-subtags">'
+            + " · ".join(f'<span class="wl-subtag">{_h(t)}</span>' for t in chips)
+            + '</span>'
+        )
+    else:
+        subtags_html = ""
+
+    # data-code / data-name / data-tags 給前端 search 用(大小寫無關,前端 toLowerCase)
+    tags_attr = _h(" ".join(all_tags))
     return f"""
-<details class="wl-stock" data-code="{_h(symbol)}" data-name="{_h(name)}">
+<details class="wl-stock" data-code="{_h(symbol)}" data-name="{_h(name)}" data-tags="{tags_attr}">
   <summary>
     {leader_mark}
     <span class="wl-name">{_h(name)}</span>
     <code class="wl-code">{_h(symbol)}</code>
+    {subtags_html}
     {summary_extra}
   </summary>
   <div class="wl-stock-body">
@@ -86,12 +127,14 @@ def render_member(member: dict, leaders_set: set, date: str,
 
 
 def render_sector(sector_name: str, sector_raw: dict, date: str,
-                   stocks_index: dict, status_map: dict | None = None) -> str:
+                   stocks_index: dict, status_map: dict | None = None,
+                   subtags_map: dict | None = None) -> str:
     """單一板塊:含長子標記 + 全成員 <details>。"""
     members = sector_raw.get("成員", [])
     leaders = set(sector_raw.get("長子", []))
     member_html = "\n".join(
-        render_member(m, leaders, date, stocks_index, status_map) for m in members
+        render_member(m, leaders, date, stocks_index, status_map, subtags_map)
+        for m in members
     )
     leader_names = []
     for lc in sector_raw.get("長子", []):
@@ -116,12 +159,14 @@ def render_sector(sector_name: str, sector_raw: dict, date: str,
 
 def render_intl_group(group_name: str, group_raw: dict, date: str,
                         stocks_index: dict,
-                        status_map: dict | None = None) -> str:
+                        status_map: dict | None = None,
+                        subtags_map: dict | None = None) -> str:
     """國際族群:跟台股板塊類似,但加「對應台股族群」說明。"""
     members = group_raw.get("成員", [])
     leaders = set(group_raw.get("長子", []))
     member_html = "\n".join(
-        render_member(m, leaders, date, stocks_index, status_map) for m in members
+        render_member(m, leaders, date, stocks_index, status_map, subtags_map)
+        for m in members
     )
     corresp = group_raw.get("對應台股族群", [])
     corresp_html = (f'<div class="wl-intl-corresp">對應台股族群:'
@@ -150,16 +195,17 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
     stocks_index = (filtered_result or {}).get("stocks", {})
     if status_map is None:
         status_map = load_status_map(date)
+    subtags_map = load_subtags_index()
 
     tw_raw   = watchlist.get("台股板塊", {})
     intl_raw = watchlist.get("國際族群", {})
 
     tw_sectors_html = "\n".join(
-        render_sector(name, raw, date, stocks_index, status_map)
+        render_sector(name, raw, date, stocks_index, status_map, subtags_map)
         for name, raw in tw_raw.items()
     )
     intl_groups_html = "\n".join(
-        render_intl_group(name, raw, date, stocks_index, status_map)
+        render_intl_group(name, raw, date, stocks_index, status_map, subtags_map)
         for name, raw in intl_raw.items()
     )
 
@@ -237,9 +283,29 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
     font-style: italic;
     font-size: 14px;
   }}
+  /* 副標籤 chip(2026-06-09)— L2 前 3 + L4 前 2,灰色小字 */
+  .wl-subtags {{
+    color: var(--text-mute, #6b7280);
+    font-size: 11px;
+    margin-left: 4px;
+    word-break: keep-all;
+  }}
+  .wl-subtag {{
+    display: inline;
+  }}
+  .wl-subtag + .wl-subtag {{
+    margin-left: 0;
+  }}
   /* 手機收緊 */
   @media (max-width: 480px) {{
     .wl-search-stats {{ display: none; }}
+    .wl-subtags {{
+      display: block;
+      flex-basis: 100%;
+      margin-left: 0;
+      margin-top: 2px;
+      font-size: 10px;
+    }}
   }}
 </style>
 </head>
@@ -264,7 +330,7 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
 
 <div class="wl-search-bar">
   <span class="wl-search-icon">🔍</span>
-  <input type="text" id="wl-search" placeholder="搜尋名稱 / 代號(例:廣達、2382、NVDA)"
+  <input type="text" id="wl-search" placeholder="搜尋名稱 / 代號 / 副標籤(例:廣達、2382、NVDA、HBM、老AI)"
          autocomplete="off" spellcheck="false">
   <button type="button" class="wl-search-clear" id="wl-search-clear" hidden>×</button>
   <span class="wl-search-stats" id="wl-search-stats"></span>
@@ -308,7 +374,8 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
     stocks.forEach(el => {{
       const code = (el.dataset.code || '').toLowerCase();
       const name = (el.dataset.name || '').toLowerCase();
-      const hit = !q || code.includes(q) || name.includes(q);
+      const tags = (el.dataset.tags || '').toLowerCase();
+      const hit = !q || code.includes(q) || name.includes(q) || tags.includes(q);
       el.hidden = !hit;
       if (hit) {{
         if (twSec.contains(el)) twHit++;
