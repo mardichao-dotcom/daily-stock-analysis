@@ -338,6 +338,11 @@
       + `<span class="legend-item"><span class="legend-dot down">🔴</span> 跌破</span>`
       + etfNote
       + `<span class="legend-count">(${eventCount} 筆站穩/跌破事件)</span>`;
+    // P0-A:資料晚於 data_date(美股 19:00 台北跑時晚一個交易日)→ 灰色標註「資料至 MM-DD」
+    if (data.data_through && data.data_date && data.data_through < data.data_date) {
+      legend.innerHTML +=
+        `<span class="legend-stale">資料至 ${data.data_through}</span>`;
+    }
     container.appendChild(legend);
 
     // Tooltip for ETF events on hover

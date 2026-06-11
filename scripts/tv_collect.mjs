@@ -4,9 +4,12 @@
  * - 預設 180 bars；CLI：node scripts/tv_collect.mjs [--days N]
  * - 增量模式：查 kline.db MIN+MAX date 決定抓取策略
  *     新代號           → full 180 bars
- *     歷史不足 180 天  → backfill 180 bars（INSERT OR IGNORE 去重）
+ *     歷史不足 180 天  → backfill 180 bars
  *     歷史足夠但非最新 → increment 10 bars
- *     已是最新         → skip
+ *     已是最新(台股)   → skip(19:00 跑時台股已收盤,當日 bar 安全)
+ *     已是最新(非台股) → refresh 最近 N 根(預設 3,--refresh-bars 可調)
+ *                        ★ P0-C:美/歐股 19:00 台北跑時尚未收盤,當日 bar 是盤中半成品,
+ *                          永遠重抓最近幾根 + import REPLACE,半成品隔天自動被收盤值覆寫
  * - 重試：每支 symbol 最多 2 次（4s / 7s）
  * - 失敗寫 logs/tv_collect_{YYYY-MM-DD}.log
  * Run: node scripts/tv_collect.mjs [--days N]
@@ -34,6 +37,12 @@ const symbolIdx = args.indexOf('--symbol');
 const SINGLE_SYMBOL = symbolIdx >= 0 ? args[symbolIdx + 1] : null;
 const timeoutIdx = args.indexOf('--timeout-min');
 const TIMEOUT_MIN = timeoutIdx >= 0 ? parseInt(args[timeoutIdx + 1], 10) : 30;
+// P0-C:非台股已是最新時,重抓最近 N 根覆寫半成品(一次性清洗可調大,如 --refresh-bars 5)
+const refreshIdx = args.indexOf('--refresh-bars');
+const REFRESH_BARS = refreshIdx >= 0 ? parseInt(args[refreshIdx + 1], 10) : 3;
+// 只跑指定交易所(P0-D 美股補跑 / 一次性非台股清洗用),逗號分隔,如 --exchanges NASDAQ,NYSE
+const exIdx = args.indexOf('--exchanges');
+const ONLY_EXCHANGES = exIdx >= 0 ? new Set(args[exIdx + 1].split(',')) : null;
 
 // ── 整體 timeout(避免 5/31 那種 TV Desktop 自己卡連帶 tv_collect 跟著卡)──
 const GLOBAL_TIMEOUT_MS = TIMEOUT_MIN * 60 * 1000;
@@ -85,12 +94,21 @@ print(json.dumps({r[0]: {'min': r[1], 'max': r[2]} for r in rows}))
   }
 }
 
+// 台股(TWSE/TPEX)19:00 跑時已收盤,當日 bar 安全;其餘市場(美/歐/日韓)需防半成品
+function isTW(symbol) {
+  return symbol.startsWith('TWSE:') || symbol.startsWith('TPEX:');
+}
+
 // ── 抓取策略決定 ─────────────────────────────────────────────────────────────
 function getStrategy(symbol, status, today, threshold) {
   const s = status[symbol];
   if (!s)            return { mode: 'full',      bars: DAYS, reason: '新代號' };
   if (s.min > threshold) return { mode: 'backfill', bars: DAYS, reason: `歷史不足(${s.min}>${threshold})` };
-  if (s.max >= today)    return { mode: 'skip',      bars: 0,    reason: `已是最新(${s.max})` };
+  if (s.max >= today) {
+    // P0-C:非台股「已是最新」也重抓最近 N 根覆寫(當日 bar 可能是收盤前半成品)
+    if (isTW(symbol)) return { mode: 'skip',    bars: 0,            reason: `已是最新(${s.max})` };
+    return              { mode: 'refresh', bars: REFRESH_BARS, reason: `非台股重抓最近${REFRESH_BARS}根(${s.max})` };
+  }
   return               { mode: 'increment', bars: 10,   reason: `往前補(${s.max}→${today})` };
 }
 
@@ -202,9 +220,13 @@ async function main() {
   const today     = TODAY_STR;
   const threshold = new Date(Date.now() - DAYS * 24 * 3600 * 1000).toISOString().slice(0, 10);
 
-  // 單檔模式(debug)
-  const targetSymbols = SINGLE_SYMBOL ? [SINGLE_SYMBOL] : ALL_SYMBOLS;
-  const modeTag = SINGLE_SYMBOL ? ` SINGLE=${SINGLE_SYMBOL}` : '';
+  // 單檔模式(debug)/ 交易所過濾(P0-D 美股補跑、一次性非台股清洗)
+  let targetSymbols = SINGLE_SYMBOL ? [SINGLE_SYMBOL] : ALL_SYMBOLS;
+  if (ONLY_EXCHANGES) {
+    targetSymbols = targetSymbols.filter(s => ONLY_EXCHANGES.has(s.split(':')[0]));
+  }
+  const modeTag = SINGLE_SYMBOL ? ` SINGLE=${SINGLE_SYMBOL}`
+                : ONLY_EXCHANGES ? ` EXCHANGES=${[...ONLY_EXCHANGES].join(',')}` : '';
 
   console.log(`[START] ${new Date().toISOString()} | ${targetSymbols.length} symbols${modeTag} | DAYS=${DAYS} | TIMEOUT=${TIMEOUT_MIN}min`);
   console.log(`        threshold(${DAYS}d ago)=${threshold} | today=${today}`);

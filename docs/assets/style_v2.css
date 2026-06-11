@@ -481,6 +481,14 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   font-style: italic;
 }
 
+/* P0-A:資料晚於 data_date(美股 19:00 跑時晚一個交易日)的灰色標註「資料至 MM-DD」 */
+.chart-legend .legend-stale {
+  margin-left: 8px;
+  font-size: 11px;
+  color: var(--text-mute);
+  font-style: italic;
+}
+
 /* ─── ETF 勾選控制(chart 上方)─── */
 .etf-filter-bar {
   display: flex;

@@ -278,11 +278,13 @@ class TestBuildChartForStock(unittest.TestCase):
         chart = pc.build_chart_for_stock(
             "TPEX:6223", stock_entry, conn_kline, None, last_day,
         )
-        # top-level keys
+        # top-level keys(P0-A 加 data_through,P0-B 加 key_prices_source)
         required = {"code", "symbol", "name", "sector", "market",
-                    "data_date", "version", "ohlcv", "ma",
-                    "etf_events", "key_prices", "events"}
+                    "data_date", "data_through", "version", "ohlcv", "ma",
+                    "etf_events", "key_prices", "key_prices_source", "events"}
         self.assertEqual(set(chart.keys()), required)
+        # snapshot 路徑(stock_entry 帶 key_prices_snapshot)標 "snapshot"
+        self.assertEqual(chart["key_prices_source"], "snapshot")
         conn_kline.close()
 
     def test_market_field_tw(self):
@@ -316,6 +318,79 @@ class TestBuildChartForStock(unittest.TestCase):
                                           conn_kline, None, "2026-05-20")
         self.assertIsNone(chart)
         conn_kline.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+class TestStaleBarStillProduces(unittest.TestCase):
+    """P0-A 防回歸(2026-06-11):last bar < date(美股 19:00 台北跑時晚一個交易日)
+    仍必須產 chart,並以 data_through 標明真實末根日期。
+    舊 code `kline[-1]["time"] != date → return None` 讓全部美股圖停產(線上 404)。"""
+
+    def test_us_stale_bar_still_charts(self):
+        from datetime import date, timedelta
+        start = date(2026, 1, 1)
+        rows = [("NASDAQ:NVDA", (start + timedelta(days=i)).isoformat(),
+                 100, 105, 95, 100, 1000) for i in range(30)]
+        conn = setup_kline_db(rows)
+        last_bar   = (start + timedelta(days=29)).isoformat()
+        data_date  = (start + timedelta(days=31)).isoformat()   # 比末根晚 2 天
+        minimal = {"name": "NVIDIA", "sector": ""}
+        chart = pc.build_chart_for_stock(
+            "NASDAQ:NVDA", minimal, conn, None, data_date, config_key_prices={})
+        self.assertIsNotNone(chart)                       # 舊 code 會回 None(404 回歸)
+        self.assertEqual(chart["data_date"], data_date)
+        self.assertEqual(chart["data_through"], last_bar)
+        conn.close()
+
+
+class TestKeyPricesIntlRegression(unittest.TestCase):
+    """P0-B 防回歸(2026-06-11):國際股無 key_prices_snapshot(不經 TW-only filter),
+    chart 層必須 fallback 自 config/key_prices.json,lines/areas 數量 == 來源數量。
+    根因:國際股從未被 run_filters_v2 計分 → 舊 code 給空 {lines:[],areas:[]} → 線上 lines=0。"""
+
+    CONFIG_PATH = os.path.join(PROJECT_ROOT, "config", "key_prices.json")
+
+    def _config(self):
+        with open(self.CONFIG_PATH, encoding="utf-8") as f:
+            return json.load(f)
+
+    def _kline_for(self, symbol, last_day):
+        from datetime import date, timedelta
+        y, m, d = map(int, last_day.split("-"))
+        end = date(y, m, d)
+        rows = [(symbol, (end - timedelta(days=29 - i)).isoformat(),
+                 100, 105, 95, 100, 1000) for i in range(30)]
+        return setup_kline_db(rows)
+
+    def _assert_intl(self, symbol):
+        cfg = self._config()
+        src = cfg.get("stocks", {}).get(symbol, {})
+        src_lines = len(src.get("lines", []))
+        src_areas = len(src.get("areas", []))
+        # 來源必須真有關鍵價,否則此測試無意義(守住「朋友畫的線確實在 config」)
+        self.assertGreater(src_lines + src_areas, 0,
+                           f"{symbol} 在 config/key_prices.json 應有關鍵價")
+        last_day = "2026-06-10"
+        conn = self._kline_for(symbol, last_day)
+        minimal = {"name": "X", "sector": "X"}   # 模擬國際股:無 key_prices_snapshot
+        chart = pc.build_chart_for_stock(
+            symbol, minimal, conn, None, last_day, config_key_prices=cfg)
+        self.assertIsNotNone(chart)
+        self.assertEqual(len(chart["key_prices"]["lines"]), src_lines,
+                         f"{symbol} chart lines 應 == config 來源 {src_lines}")
+        self.assertEqual(len(chart["key_prices"]["areas"]), src_areas,
+                         f"{symbol} chart areas 應 == config 來源 {src_areas}")
+        self.assertEqual(chart["key_prices_source"], "config_fallback")
+        conn.close()
+
+    def test_tse_6594(self):
+        self._assert_intl("TSE:6594")
+
+    def test_krx_005930(self):
+        self._assert_intl("KRX:005930")
+
+    def test_nyse_tsm(self):
+        self._assert_intl("NYSE:TSM")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

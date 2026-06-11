@@ -194,14 +194,29 @@ def build_chart_for_stock(
     conn_kline: sqlite3.Connection,
     conn_etf:   sqlite3.Connection | None,
     date:       str,
+    config_key_prices: dict | None = None,   # P0-B: chart 層 key_prices fallback 來源
 ) -> dict | None:
-    """產生單一個股的 chart JSON。回 None 代表沒 K 線資料 → skip。
+    """產生單一個股的 chart JSON。回 None 代表 kline.db 完全沒該 symbol 資料 → skip。
+
+    P0-A(2026-06-11 回歸修復):不再要求 last bar == date。watchlist 內且
+    kline.db 有任何資料即產——美股 19:00 台北跑時資料晚一個交易日也照產,
+    chart 加 `data_through`(最後一根 bar 日期),前端據此顯示「資料至 MM-DD」。
+    舊行為(last bar != date → return None → 404)讓全部美股圖停產,是本次回歸主因。
+
+    key_prices 來源(P0-B 2026-06-11 回歸修復):
+      - stock_entry 帶 key_prices_snapshot(台股經 run_filters_v2 計分)→ 用 snapshot,
+        標 key_prices_source="snapshot"(當日凍結值,跟分數一致)
+      - 無 snapshot(國際股不經 TW-only filter、或略過的台股)→ fallback 直接讀
+        config/key_prices.json,標 key_prices_source="config_fallback"(活檔案值)。
+        國際股「從未被 run_filters_v2 計分」是關鍵價遺失的真正根因(非 lookup 斷裂)。
 
     name / sector 直接從 stock_entry 讀(2026-05-31 改進:
     run_filters_v2 已把這兩欄寫進 stocks entry)。"""
     kline = load_chart_kline(conn_kline, symbol, date)
-    if not kline or kline[-1]["time"] != date:
+    if not kline:
         return None
+
+    data_through = kline[-1]["time"]   # 最後一根 bar 日期(可能 < date,如美股晚一天)
 
     # ETF events(若 conn_etf 存在)
     start_date = kline[0]["time"]
@@ -211,8 +226,15 @@ def build_chart_for_stock(
     # MA arrays
     ma = compute_ma_arrays(kline)
 
-    # key_prices snapshot(從 filtered_result_v2 抄,保證 chart 跟 score 一致)
-    kp = stock_entry.get("key_prices_snapshot", {"lines": [], "areas": []})
+    # key_prices:snapshot 優先(台股當日凍結),否則 fallback config(國際股活檔案)
+    snapshot = stock_entry.get("key_prices_snapshot")
+    if snapshot is not None:
+        kp = snapshot
+        kp_source = "snapshot"
+    else:
+        cfg = (config_key_prices or {}).get("stocks", {}).get(symbol, {})
+        kp = {"lines": cfg.get("lines", []), "areas": cfg.get("areas", [])}
+        kp_source = "config_fallback"
 
     # events 重算(W2.4 review 確認方法)
     events = replay_all_events(kline, kp.get("lines", []), kp.get("areas", []))
@@ -231,11 +253,13 @@ def build_chart_for_stock(
         "sector":    sector,
         "market":    market,
         "data_date": date,
+        "data_through": data_through,
         "version":   "2.1",
         "ohlcv":     kline,
         "ma":        ma,
         "etf_events": etf_events,
         "key_prices": kp,
+        "key_prices_source": kp_source,
         "events":    events,
     }
 
@@ -342,9 +366,14 @@ def run(
     conn_etf:    sqlite3.Connection | None,
     outdir:      Path,
     all_watchlist: dict | None = None,    # 給 watchlist_v2 用:全 87 檔
+    config_key_prices: dict | None = None,  # P0-B: 無 snapshot 時的 key_prices fallback 來源
+    only_exchanges: set[str] | None = None,  # P0-D: 只重產指定交易所(如 {"NASDAQ","NYSE"})
 ) -> dict:
     """產 chart JSON。預設只產 S/A/B,給 all_watchlist=watchlist.json 內容則產全部。
     全模式下:有 filtered_result entry 就用(含 key_prices_snapshot),沒則用 minimal。
+
+    only_exchanges(P0-D 美股補跑):只處理指定交易所的 symbols,且**不重寫 _index.json**
+    (補跑只覆寫對應 chart JSON,_index/status 由 19:00 主跑負責,避免把其他市場條目洗掉)。
     """
     if all_watchlist is None:
         targets = list(filter_sab_stocks(filtered_result).items())
@@ -362,6 +391,10 @@ def run(
             # 回退到 minimal(只 name/sector)
             targets.append((sym, sab_index.get(sym, minimal)))
 
+    if only_exchanges:
+        targets = [(s, e) for (s, e) in targets
+                   if s.split(":")[0] in only_exchanges]
+
     written: list[str] = []
     skipped: list[str] = []
     status_map: dict[str, dict] = {}
@@ -369,6 +402,7 @@ def run(
     for symbol, entry in targets:
         chart = build_chart_for_stock(
             symbol, entry, conn_kline, conn_etf, date,
+            config_key_prices=config_key_prices,
         )
         safe = _safe_filename(symbol)
         meta = {
@@ -394,7 +428,10 @@ def run(
                 # 完全沒資料 — setup 問題,不該發生於 watchlist 個股
                 status_map[safe] = {**meta, "status": "missing"}
 
-    write_index(outdir, date, written, status_map)
+    # 補跑模式(only_exchanges)只覆寫對應 chart JSON,不動 _index.json:
+    # _index/status 由 19:00 主跑(全 watchlist)負責,避免單市場補跑洗掉其他條目。
+    if not only_exchanges:
+        write_index(outdir, date, written, status_map)
 
     return {
         "date":      date,
@@ -417,6 +454,11 @@ def main():
     parser.add_argument("--all-watchlist", action="store_true",
                          help="產全 watchlist 87 檔 chart JSON(給 watchlist_v2.html)")
     parser.add_argument("--watchlist", default=str(PROJECT_ROOT / "config" / "watchlist.json"))
+    parser.add_argument("--key-prices", dest="key_prices",
+                         default=str(PROJECT_ROOT / "config" / "key_prices.json"),
+                         help="key_prices.json(P0-B chart 層 fallback 來源)")
+    parser.add_argument("--only-exchanges", dest="only_exchanges", default=None,
+                         help="逗號分隔交易所,只重產這些(P0-D 美股補跑用),如 NASDAQ,NYSE")
     args = parser.parse_args()
 
     with open(args.result, encoding="utf-8") as f:
@@ -426,6 +468,14 @@ def main():
     if args.all_watchlist:
         with open(args.watchlist, encoding="utf-8") as f:
             all_watchlist = json.load(f)
+
+    config_key_prices = None
+    if os.path.exists(args.key_prices):
+        with open(args.key_prices, encoding="utf-8") as f:
+            config_key_prices = json.load(f)
+
+    only_exchanges = (set(args.only_exchanges.split(","))
+                      if args.only_exchanges else None)
 
     conn_kline = sqlite3.connect(args.kline)
     conn_etf   = sqlite3.connect(args.etf) if os.path.exists(args.etf) else None
@@ -438,6 +488,8 @@ def main():
             conn_etf=conn_etf,
             outdir=Path(args.outdir),
             all_watchlist=all_watchlist,
+            config_key_prices=config_key_prices,
+            only_exchanges=only_exchanges,
         )
     finally:
         conn_kline.close()
