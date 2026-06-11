@@ -5,6 +5,7 @@
   "sector": "半導體設備_材料_封測",
   "market": "INTL",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -1418,10 +1419,10 @@
     {
       "time": "2026-06-08",
       "open": 3450.0,
-      "high": 3592.0,
+      "high": 3607.0,
       "low": 3431.0,
-      "close": 3584.0,
-      "volume": 7788900.0
+      "close": 3574.0,
+      "volume": 13293300.0
     },
     {
       "time": "2026-06-09",
@@ -1626,10 +1627,10 @@
       3465.7,
       3488.25,
       3510.05,
-      3522.55,
-      3548.5,
-      3572.55,
-      3592.05
+      3522.05,
+      3548.0,
+      3572.05,
+      3591.55
     ],
     "ma_60": [
       null,
@@ -1808,10 +1809,10 @@
       3006.55,
       3028.85,
       3049.7833333333333,
-      3069.0416666666665,
-      3092.8333333333335,
-      3111.391666666667,
-      3130.641666666667
+      3068.875,
+      3092.6666666666665,
+      3111.225,
+      3130.475
     ],
     "ma_90": [
       null,
@@ -1990,16 +1991,114 @@
       2791.1388888888887,
       2807.9222222222224,
       2824.4444444444443,
-      2838.6666666666665,
-      2856.766666666667,
-      2874.1944444444443,
-      2891.7444444444445
+      2838.5555555555557,
+      2856.6555555555556,
+      2874.0833333333335,
+      2891.633333333333
     ]
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "2327.5",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "1907.0",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "1578.5",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "2639.5",
+        "high": "2712.0",
+        "text": "POC",
+        "adjective": null,
+        "category": "poc"
+      }
+    ]
   },
-  "events": []
+  "key_prices_source": "config_fallback",
+  "events": [
+    {
+      "time": "2025-09-17",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1578.5"
+    },
+    {
+      "time": "2025-09-24",
+      "type": "standing",
+      "category": "key_price",
+      "price": "1578.5"
+    },
+    {
+      "time": "2025-10-03",
+      "type": "standing",
+      "category": "key_price",
+      "price": "1578.5"
+    },
+    {
+      "time": "2025-12-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1907.0"
+    },
+    {
+      "time": "2025-12-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1907.0"
+    },
+    {
+      "time": "2025-12-11",
+      "type": "standing",
+      "category": "key_price",
+      "price": "1907.0"
+    },
+    {
+      "time": "2026-01-23",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2327.5"
+    },
+    {
+      "time": "2026-01-26",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2327.5"
+    },
+    {
+      "time": "2026-03-10",
+      "type": "standing",
+      "category": "key_price",
+      "price": "2327.5"
+    },
+    {
+      "time": "2026-03-23",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "2639.5-2712.0"
+    },
+    {
+      "time": "2026-03-30",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "2639.5-2712.0"
+    }
+  ]
 }

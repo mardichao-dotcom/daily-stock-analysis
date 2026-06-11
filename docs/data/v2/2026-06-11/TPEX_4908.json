@@ -5,6 +5,7 @@
   "sector": "光通訊",
   "market": "TW",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -2031,6 +2032,7 @@
       }
     ]
   },
+  "key_prices_source": "snapshot",
   "events": [
     {
       "time": "2026-03-23",

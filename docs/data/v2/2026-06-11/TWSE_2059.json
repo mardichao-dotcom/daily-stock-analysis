@@ -5,6 +5,7 @@
   "sector": "伺服器關鍵零組件",
   "market": "TW",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -2385,6 +2386,7 @@
       }
     ]
   },
+  "key_prices_source": "snapshot",
   "events": [
     {
       "time": "2025-10-22",

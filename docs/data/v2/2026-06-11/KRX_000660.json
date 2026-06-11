@@ -5,6 +5,7 @@
   "sector": "記憶體",
   "market": "INTL",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -1420,8 +1421,8 @@
       "open": 1856000.0,
       "high": 2072000.0,
       "low": 1855000.0,
-      "close": 2018000.0,
-      "volume": 4380632.0
+      "close": 1911000.0,
+      "volume": 6610833.0
     },
     {
       "time": "2026-06-09",
@@ -1626,10 +1627,10 @@
       1935950.0,
       1978500.0,
       2001950.0,
-      2020150.0,
-      2046600.0,
-      2055000.0,
-      2068300.0
+      2014800.0,
+      2041250.0,
+      2049650.0,
+      2062950.0
     ],
     "ma_60": [
       null,
@@ -1808,10 +1809,10 @@
       1332216.6666666667,
       1355116.6666666667,
       1375683.3333333333,
-      1393683.3333333333,
-      1414683.3333333333,
-      1433316.6666666667,
-      1453166.6666666667
+      1391900.0,
+      1412900.0,
+      1431533.3333333333,
+      1451383.3333333333
     ],
     "ma_90": [
       null,
@@ -1990,16 +1991,116 @@
       1180711.111111111,
       1197755.5555555555,
       1212500.0,
-      1226700.0,
-      1242922.2222222222,
-      1257155.5555555555,
-      1272322.2222222222
+      1225511.111111111,
+      1241733.3333333333,
+      1255966.6666666667,
+      1271133.3333333333
     ]
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "2387000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "1059000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "801000",
+        "color": "red",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "626000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "1945000",
+        "high": "2007000",
+        "text": "買盤訂單塊",
+        "adjective": "",
+        "category": "order_block"
+      },
+      {
+        "low": "1446000",
+        "high": "1566000",
+        "text": "跳空缺口",
+        "adjective": "important",
+        "category": "gap"
+      }
+    ]
   },
-  "events": []
+  "key_prices_source": "config_fallback",
+  "events": [
+    {
+      "time": "2025-11-12",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "626000"
+    },
+    {
+      "time": "2025-12-30",
+      "type": "standing",
+      "category": "key_price",
+      "price": "626000"
+    },
+    {
+      "time": "2026-02-09",
+      "type": "standing",
+      "category": "key_price",
+      "price": "801000"
+    },
+    {
+      "time": "2026-03-19",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "1059000"
+    },
+    {
+      "time": "2026-05-14",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "1945000-2007000"
+    },
+    {
+      "time": "2026-05-15",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "1945000-2007000"
+    },
+    {
+      "time": "2026-05-18",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "1945000-2007000"
+    },
+    {
+      "time": "2026-06-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2387000"
+    },
+    {
+      "time": "2026-06-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2387000"
+    }
+  ]
 }

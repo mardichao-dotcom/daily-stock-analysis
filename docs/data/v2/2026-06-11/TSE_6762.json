@@ -5,6 +5,7 @@
   "sector": "被動元件_航運",
   "market": "INTL",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -1420,8 +1421,8 @@
       "open": 3700.0,
       "high": 3824.0,
       "low": 3637.0,
-      "close": 3768.0,
-      "volume": 11548700.0
+      "close": 3715.0,
+      "volume": 17890100.0
     },
     {
       "time": "2026-06-09",
@@ -1626,10 +1627,10 @@
       3339.5,
       3392.2,
       3451.575,
-      3493.175,
-      3536.875,
-      3573.05,
-      3597.5
+      3490.525,
+      3534.225,
+      3570.4,
+      3594.85
     ],
     "ma_60": [
       null,
@@ -1808,10 +1809,10 @@
       2631.383333333333,
       2660.65,
       2691.866666666667,
-      2719.6666666666665,
-      2746.7833333333333,
-      2771.525,
-      2794.6666666666665
+      2718.7833333333333,
+      2745.9,
+      2770.641666666667,
+      2793.7833333333333
     ],
     "ma_90": [
       null,
@@ -1990,16 +1991,248 @@
       2478.3,
       2500.1833333333334,
       2523.883333333333,
-      2543.5944444444444,
-      2563.983333333333,
-      2583.1055555555554,
-      2601.188888888889
+      2543.0055555555555,
+      2563.3944444444446,
+      2582.516666666667,
+      2600.6
     ]
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "4108",
+        "color": "black",
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
+      },
+      {
+        "price": "3575",
+        "color": "black",
+        "category": "inner_support",
+        "adjective": "",
+        "text": "內撐"
+      },
+      {
+        "price": "2764.5",
+        "color": "red",
+        "category": "key_price",
+        "adjective": "",
+        "text": ""
+      }
+    ],
+    "areas": [
+      {
+        "low": "3111",
+        "high": "3185",
+        "category": "order_block",
+        "adjective": "",
+        "text": "賣盤訂單塊"
+      },
+      {
+        "low": "2451.5",
+        "high": "2532",
+        "category": "order_block",
+        "adjective": "",
+        "text": "買盤訂單塊"
+      },
+      {
+        "low": "2168.5",
+        "high": "2241.5",
+        "category": "poc",
+        "adjective": "",
+        "text": "POC"
+      }
+    ]
   },
-  "events": []
+  "key_prices_source": "config_fallback",
+  "events": [
+    {
+      "time": "2025-09-22",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2025-10-06",
+      "type": "standing",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2025-10-16",
+      "type": "standing",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2025-10-23",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-10-27",
+      "type": "standing",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-11-06",
+      "type": "standing",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-11-13",
+      "type": "standing",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-11-21",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-11-26",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-11-28",
+      "type": "standing",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-12-02",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-12-03",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-12-04",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2025-12-17",
+      "type": "standing",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2026-01-05",
+      "type": "standing",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2026-01-08",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2026-02-18",
+      "type": "standing",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2026-02-27",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2026-03-04",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2026-03-12",
+      "type": "breakdown",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2026-04-10",
+      "type": "standing",
+      "category": "poc",
+      "price": "2168.5-2241.5"
+    },
+    {
+      "time": "2026-04-17",
+      "type": "standing",
+      "category": "order_block",
+      "price": "2451.5-2532"
+    },
+    {
+      "time": "2026-04-24",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2764.5"
+    },
+    {
+      "time": "2026-04-28",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "2764.5"
+    },
+    {
+      "time": "2026-05-18",
+      "type": "breakdown",
+      "category": "order_block",
+      "price": "3111-3185"
+    },
+    {
+      "time": "2026-05-25",
+      "type": "standing",
+      "category": "order_block",
+      "price": "3111-3185"
+    },
+    {
+      "time": "2026-05-26",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "3575"
+    },
+    {
+      "time": "2026-05-29",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "3575"
+    },
+    {
+      "time": "2026-06-01",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "4108"
+    },
+    {
+      "time": "2026-06-02",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "4108"
+    },
+    {
+      "time": "2026-06-10",
+      "type": "standing",
+      "category": "inner_support",
+      "price": "3575"
+    }
+  ]
 }

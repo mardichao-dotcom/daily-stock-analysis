@@ -5,6 +5,7 @@
   "sector": "記憶體",
   "market": "INTL",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -1420,8 +1421,8 @@
       "open": 293000.0,
       "high": 315500.0,
       "low": 292500.0,
-      "close": 310250.0,
-      "volume": 24674614.0
+      "close": 295500.0,
+      "volume": 38929682.0
     },
     {
       "time": "2026-06-09",
@@ -1626,10 +1627,10 @@
       290500.0,
       296450.0,
       299600.0,
-      301537.5,
-      304212.5,
-      305062.5,
-      306062.5
+      300800.0,
+      303475.0,
+      304325.0,
+      305325.0
     ],
     "ma_60": [
       null,
@@ -1808,10 +1809,10 @@
       229743.33333333334,
       232465.0,
       235056.66666666666,
-      237095.83333333334,
-      239295.83333333334,
-      241205.83333333334,
-      243130.83333333334
+      236850.0,
+      239050.0,
+      240960.0,
+      242885.0
     ],
     "ma_90": [
       null,
@@ -1990,16 +1991,121 @@
       210698.88888888888,
       212945.55555555556,
       214987.77777777778,
-      216773.88888888888,
-      218659.44444444444,
-      220330.55555555556,
-      221962.77777777778
+      216610.0,
+      218495.55555555556,
+      220166.66666666666,
+      221798.88888888888
     ]
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "366000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "291000",
+        "color": "black",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "198100",
+        "color": "gray",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      },
+      {
+        "price": "168600",
+        "color": "red",
+        "text": "",
+        "adjective": "",
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "233000",
+        "high": "254000",
+        "text": "跳空缺口",
+        "adjective": "important",
+        "category": "gap"
+      }
+    ]
   },
-  "events": []
+  "key_prices_source": "config_fallback",
+  "events": [
+    {
+      "time": "2026-02-10",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "168600"
+    },
+    {
+      "time": "2026-02-25",
+      "type": "standing",
+      "category": "key_price",
+      "price": "198100"
+    },
+    {
+      "time": "2026-03-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "198100"
+    },
+    {
+      "time": "2026-03-06",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "198100"
+    },
+    {
+      "time": "2026-03-10",
+      "type": "standing",
+      "category": "key_price",
+      "price": "168600"
+    },
+    {
+      "time": "2026-05-13",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "291000"
+    },
+    {
+      "time": "2026-05-18",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "291000"
+    },
+    {
+      "time": "2026-05-22",
+      "type": "standing",
+      "category": "key_price",
+      "price": "291000"
+    },
+    {
+      "time": "2026-05-29",
+      "type": "standing",
+      "category": "key_price",
+      "price": "291000"
+    },
+    {
+      "time": "2026-06-04",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "366000"
+    },
+    {
+      "time": "2026-06-05",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "366000"
+    }
+  ]
 }

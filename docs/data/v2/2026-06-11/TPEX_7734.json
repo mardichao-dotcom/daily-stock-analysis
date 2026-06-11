@@ -5,6 +5,7 @@
   "sector": "半導體設備耗材",
   "market": "TW",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -2043,6 +2044,7 @@
     ],
     "areas": []
   },
+  "key_prices_source": "snapshot",
   "events": [
     {
       "time": "2026-02-25",

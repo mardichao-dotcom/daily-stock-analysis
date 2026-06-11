@@ -5,6 +5,7 @@
   "sector": "AI伺服器代工",
   "market": "TW",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -2030,6 +2031,7 @@
     ],
     "areas": []
   },
+  "key_prices_source": "snapshot",
   "events": [
     {
       "time": "2025-10-09",

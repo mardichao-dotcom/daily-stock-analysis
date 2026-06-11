@@ -5,6 +5,7 @@
   "sector": "半導體設備_材料_封測",
   "market": "INTL",
   "data_date": "2026-06-11",
+  "data_through": "2026-06-11",
   "version": "2.1",
   "ohlcv": [
     {
@@ -1420,8 +1421,8 @@
       "open": 66580.0,
       "high": 68700.0,
       "low": 66440.0,
-      "close": 67850.0,
-      "volume": 1290900.0
+      "close": 67480.0,
+      "volume": 1918000.0
     },
     {
       "time": "2026-06-09",
@@ -1626,10 +1627,10 @@
       67741.5,
       67522.5,
       67401.5,
-      67125.0,
-      67061.0,
-      66922.0,
-      66923.5
+      67106.5,
+      67042.5,
+      66903.5,
+      66905.0
     ],
     "ma_60": [
       null,
@@ -1808,10 +1809,10 @@
       68781.0,
       68790.16666666667,
       68774.66666666667,
-      68797.16666666667,
-      68826.0,
-      68787.5,
-      68767.33333333333
+      68791.0,
+      68819.83333333333,
+      68781.33333333333,
+      68761.16666666667
     ],
     "ma_90": [
       null,
@@ -1990,16 +1991,187 @@
       69269.33333333333,
       69405.0,
       69560.66666666667,
-      69552.66666666667,
-      69592.33333333333,
-      69631.88888888889,
-      69644.11111111111
+      69548.55555555556,
+      69588.22222222222,
+      69627.77777777778,
+      69640.0
     ]
   },
   "etf_events": [],
   "key_prices": {
-    "lines": [],
-    "areas": []
+    "lines": [
+      {
+        "price": "77130",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "60670",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "50700",
+        "color": "black",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      },
+      {
+        "price": "37310",
+        "color": "red",
+        "text": null,
+        "adjective": null,
+        "category": "key_price"
+      }
+    ],
+    "areas": [
+      {
+        "low": "69944",
+        "high": "70748",
+        "text": "FVG",
+        "adjective": null,
+        "category": "fvg"
+      }
+    ]
   },
-  "events": []
+  "key_prices_source": "config_fallback",
+  "events": [
+    {
+      "time": "2025-09-26",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "50700"
+    },
+    {
+      "time": "2025-10-03",
+      "type": "standing",
+      "category": "key_price",
+      "price": "50700"
+    },
+    {
+      "time": "2025-10-24",
+      "type": "standing",
+      "category": "key_price",
+      "price": "50700"
+    },
+    {
+      "time": "2025-11-04",
+      "type": "standing",
+      "category": "key_price",
+      "price": "50700"
+    },
+    {
+      "time": "2025-11-07",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "50700"
+    },
+    {
+      "time": "2025-12-11",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "50700"
+    },
+    {
+      "time": "2026-01-06",
+      "type": "standing",
+      "category": "key_price",
+      "price": "50700"
+    },
+    {
+      "time": "2026-01-21",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "60670"
+    },
+    {
+      "time": "2026-01-26",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-01-30",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-02-10",
+      "type": "standing",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-03-06",
+      "type": "standing",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-03-23",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-04-01",
+      "type": "standing",
+      "category": "key_price",
+      "price": "60670"
+    },
+    {
+      "time": "2026-04-15",
+      "type": "standing",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-04-30",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "77130"
+    },
+    {
+      "time": "2026-05-08",
+      "type": "breakdown",
+      "category": "key_price",
+      "price": "77130"
+    },
+    {
+      "time": "2026-05-18",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-05-27",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-05-28",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-06-05",
+      "type": "standing",
+      "category": "fvg",
+      "price": "69944-70748"
+    },
+    {
+      "time": "2026-06-11",
+      "type": "breakdown",
+      "category": "fvg",
+      "price": "69944-70748"
+    }
+  ]
 }
