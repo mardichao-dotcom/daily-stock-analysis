@@ -104,8 +104,8 @@ if ! curl -s -m 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
         python3 src/status_writer.py --tool "$TOOL" \
             --step tv_collect --status fail --duration 0 \
             --note "CDP port 9222 not responding (auto-recovery failed)"
-        for s in daily_update import_kline run_filters prepare_charts render \
-                  run_filters_v2 prepare_charts_v2 render_v2 publish; do
+        for s in daily_update import_kline \
+                  run_filters_v2 prepare_charts_v2 site_meta render_v2 publish; do
             skip_step "$s" "CDP 不通"
         done
         python3 src/status_writer.py --finish --tool "$TOOL"
@@ -166,28 +166,16 @@ fi
 if [[ $DU_EC -ne 0 ]]; then
     echo ""
     echo "⚠️  ETF daily_update 失敗 — 但 etf_operations.db 可能仍有新資料"
-    echo "    繼續跑 V1/V2 計分(會用 DB 內最新可得 ETF 共識資料)。"
+    echo "    繼續跑 V2 計分(會用 DB 內最新可得 ETF 共識資料)。"
     echo "    daily_supervisor freshness watchdog 會獨立告警 ETF 新鮮度。"
 fi
 
-# ── [4] run_filters (V1) ──────────────────────────────────────────────────────
-echo "[4/10] 跑五階段過濾(V1)..."
-try_step run_filters python3 src/run_filters.py \
-    --date "$DATA_DATE" --kline "$KLINE_DB" --etf "$ETF_DB"
-
-# ── [5] prepare_charts (V1) ──────────────────────────────────────────────────
-echo "[5/10] 準備圖表資料(V1)..."
-try_step prepare_charts python3 src/prepare_charts.py \
-    --date "$DATA_DATE" --kline "$KLINE_DB"
-
-# ── [6] render (V1,含 watchlist + index) ────────────────────────────────────
-echo "[6/10] 渲染儀表板(V1)..."
-render_all() {
-    python3 src/render.py && \
-    python3 src/render_watchlist.py && \
-    python3 src/generate_index.py
-}
-try_step render render_all
+# ── [4~6] V1 舊管線已停產(hotfix 2026-06-11 §6.7)─────────────────────────────
+# 用戶裁決:線上唯一指向 v1 archives/ 的連結在孤兒頁 dashboard.html(無入口可達),
+# 故從 run_all.sh 移除 v1 run_filters / prepare_charts / render 三步。
+# docs/ 下既有 v1 檔案(dashboard.html / watchlist.html / archives/)保留不刪,
+# dashboard.html 頂部已加 deprecated 註記導向 index.html。
+# V2 管線(run_filters_v2 起)不依賴 v1 任何輸出,移除後行為不變。
 
 # ── [7] run_filters_v2 (V2 純加分制 + v2.2 規則) ─────────────────────────────
 # 2026-06-02 補:V1 → V2 串行,V1 失敗自動跳過 V2(try_step 機制)
