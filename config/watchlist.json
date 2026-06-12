@@ -707,7 +707,8 @@
         },
         {
           "code": "OMXCOP:MAERSK_B",
-          "name": "Maersk B"
+          "name": "Maersk B",
+          "_note": "TradingView 實際代號,非 typo,勿改為 MAERSK-B(production 連續抓取成功,改 -B 會拍不到資料)"
         }
       ],
       "長子": [
