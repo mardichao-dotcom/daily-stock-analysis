@@ -226,6 +226,19 @@ async function getOHLCV(client, bars) {
   return { bars: JSON.parse(raw || '[]') };
 }
 
+// ── CDP 重連(hyp2 修復)──────────────────────────────────────────────────────
+// 單檔逾時後,withTimeout 的 Promise.race 只是「放棄等待」,底層那個卡住的
+// Runtime.evaluate 仍掛在同一條 CDP 連線上 → 會污染下一檔(6/12 事故:symbol 6
+// 的 60s 計時器在累積的殭屍操作下沒能正常觸發,一路卡到 30 分全域逾時)。
+// 修法:每次失敗就 close 舊 client + 重新 connect + 重跑 preflight,讓殭屍操作
+// 隨死掉的 socket 一起被丟棄,下一檔在乾淨連線上重來。
+async function reconnectClient(oldClient) {
+  try { await oldClient?.close(); } catch { /* 已壞,忽略 */ }
+  const c = await connectCDP();
+  await waitForApiReady(c, 30000);
+  return c;
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
   const startTime = Date.now();
@@ -246,7 +259,7 @@ async function main() {
   const klineStatus = getKlineStatus();
   console.log(`        kline.db: ${Object.keys(klineStatus).length} symbols already tracked`);
 
-  const client = await connectCDP();
+  let client = await connectCDP();
   // ★ Preflight:等 TradingViewApi expose,否則 0 秒 87 檔全 fail(5/31 教訓)
   try {
     await waitForApiReady(client, 30000);
@@ -259,6 +272,10 @@ async function main() {
   const results = {};
   const errors  = {};
   let skipped = 0, totalBars = 0;
+  // hyp2/hyp3:連續失敗達上限 → TradingView Desktop 疑似劣化,提前中止(不空耗到全域逾時)
+  let consecutiveFails = 0;
+  let bailed = false;
+  const MAX_CONSECUTIVE_FAILS = 5;
 
   for (let i = 0; i < targetSymbols.length; i++) {
     const symbol   = targetSymbols[i];
@@ -299,6 +316,7 @@ async function main() {
       if (data?.bars?.length > 0) {
         results[symbol] = data;
         totalBars += data.bars.length;
+        consecutiveFails = 0;
         process.stdout.write(`OK (${data.bars.length} bars)\n`);
       } else {
         errors[symbol] = errors[symbol] || 'empty data';
@@ -308,9 +326,28 @@ async function main() {
       errors[symbol] = err.message.slice(0, 120);
       process.stdout.write(`FAIL: ${errors[symbol]}\n`);
     }
+
+    // hyp2/hyp3:本檔失敗 → (a) 連續失敗達上限就提前中止;(b) 否則重連 CDP 再跑下一檔
+    if (errors[symbol]) {
+      consecutiveFails++;
+      if (consecutiveFails >= MAX_CONSECUTIVE_FAILS) {
+        console.error(`\n[FATAL] 連續 ${consecutiveFails} 檔失敗 — TradingView Desktop 疑似劣化,`
+          + `提前中止(不空耗到 ${TIMEOUT_MIN} 分全域逾時)。建議重啟 TV Desktop 後重跑。`);
+        bailed = true;
+        break;
+      }
+      try {
+        process.stdout.write(`     ↻ 重連 CDP(丟棄卡住的底層操作)...\n`);
+        client = await withTimeout(reconnectClient(client), 45000);
+      } catch (e) {
+        console.error(`\n[FATAL] CDP 重連失敗:${e.message} — 中止`);
+        bailed = true;
+        break;
+      }
+    }
   }
 
-  await client.close();
+  await client.close().catch(() => {});
 
   const elapsed   = Math.round((Date.now() - startTime) / 1000);
   const failList  = Object.keys(errors).join(', ') || 'none';
@@ -340,6 +377,12 @@ async function main() {
     errors,
   }));
   console.log('[SAVED] /tmp/tv_daily_data.json');
+
+  // 提前中止(TV 劣化)→ 以非 0 退出,讓 run_all 安全跳過 import_kline(不匯入殘缺資料)
+  if (bailed) {
+    console.error('[EXIT 3] 因連續失敗提前中止 — 下游將被跳過,請重啟 TV Desktop 後重跑');
+    process.exit(3);
+  }
 }
 
 main().catch(e => { console.error('[FATAL]', e.message); process.exit(1); });
