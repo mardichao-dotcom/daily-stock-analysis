@@ -25,6 +25,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.render_v2 import _h
+from src import site_meta
 
 
 HISTORY_PATTERN = re.compile(r"^index_v2_(2\d{3}-\d{2}-\d{2})\.html$")
@@ -52,7 +53,12 @@ def render(*,
             latest_date: str,
             history_count: int) -> str:
     tw_secs, tw_n, intl_secs, intl_n = count_watchlist(watchlist)
-    total_n = tw_n + intl_n
+    # §6.3 meta 列只從 site_meta 取值(版本/檔數)
+    sm = site_meta.load(latest_date) or {}
+    tw_n   = sm.get("tw_count", tw_n)
+    intl_n = sm.get("intl_count", intl_n)
+    total_n = sm.get("total_count", tw_n + intl_n)
+    sm_rule = sm.get("rule_version", "v2.2")
     generated_at = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     history_blurb = f"{history_count} 天可選" if history_count > 0 else "今天開始累積"
@@ -62,7 +68,7 @@ def render(*,
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>台股動能作戰系統 — Stage 8 v2.1</title>
+  <title>台股動能作戰系統 — 規則 {_h(sm_rule)}</title>
   <link rel="stylesheet" href="assets/style_v2.css">
 </head>
 <body class="page-landing">
@@ -71,7 +77,7 @@ def render(*,
   <div class="container">
     <h1>🧭 台股動能作戰系統</h1>
     <div class="meta">
-      資料日期 <strong>{_h(latest_date)}</strong> ｜ 版本 v2.1 ｜
+      資料日期 <strong>{_h(latest_date)}</strong> ｜ 規則 {_h(sm_rule)} ｜
       個股 {total_n} 檔(台股 {tw_n} + 國際 {intl_n}) ｜
       產出時間 {generated_at}
     </div>

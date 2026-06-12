@@ -26,6 +26,9 @@ from datetime import datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from src import site_meta
 
 
 SPECIAL_TAG_KEYWORDS = ("站穩", "跌破", "MACD", "個股輪動", "ETF 減碼")
@@ -447,7 +450,12 @@ def render_etf_active(etf_active: dict, stocks: dict) -> str:
     decrease = etf_active.get("decrease", []) or []
 
     def _name_of(sym):
-        return stocks.get(sym, {}).get("name", "")
+        # §6.1#2:ETF 掃描到的個股可能不在觀察名單(stocks 無 name)→ fallback 代號 + 標記,
+        # 避免空白 <strong></strong>
+        nm = stocks.get(sym, {}).get("name", "")
+        if nm:
+            return nm
+        return f'{sym.split(":")[-1]}(非觀察名單)'
 
     def _table(rows, kind: str) -> str:
         if not rows:
@@ -553,6 +561,13 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
     etf_active = filtered_result.get("etf_active", {"increase": [], "decrease": []})
     metadata = filtered_result.get("metadata", {})
 
+    # §6.3 meta 列只從 site_meta 取值(版本/檔數/略過)
+    meta = site_meta.load(date) or {}
+    sm_rule    = meta.get("rule_version", "v2.2")
+    sm_tw      = meta.get("tw_count", len(stocks))
+    sm_skipped = meta.get("skipped", [])
+    sm_skip_txt = f"(略過 {len(sm_skipped)} 檔)" if sm_skipped else ""
+
     if status_map is None:
         status_map = load_status_map(date)
 
@@ -587,7 +602,7 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>台股動能儀表板 {_h(date)} — Stage 8 v2.1</title>
+  <title>台股動能儀表板 {_h(date)} — 規則 {_h(sm_rule)}</title>
   <link rel="stylesheet" href="assets/style_v2.css">
 </head>
 <body>
@@ -602,7 +617,7 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
     </nav>
     <h1>🧭 台股右側動能作戰儀表板</h1>
     <div class="meta">
-      資料日期 <strong>{_h(date)}</strong> ｜ 版本 v2.1 ｜ 個股 {len(stocks)} 檔 ｜ 產出時間 {generated_at}
+      資料日期 <strong>{_h(date)}</strong> ｜ 規則 {_h(sm_rule)} ｜ 台股 {sm_tw} 檔{sm_skip_txt} ｜ 產出時間 {generated_at}
     </div>
   </div>
 </header>
@@ -615,6 +630,28 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
 <script src="assets/chart_v2.js" defer></script>
 </body>
 </html>"""
+
+
+def write_summary(filtered_result: dict, outdir: Path) -> Path | None:
+    """寫 docs/data/v2/{date}/_summary.json = {S,A,B,etf_inc,etf_dec}(§6.1#1 history 摘要)。"""
+    date = filtered_result.get("date")
+    if not date:
+        return None
+    counts = {"S": 0, "A": 0, "B": 0}
+    for s in filtered_result.get("stocks", {}).values():
+        g = s.get("grade")
+        if g in counts:
+            counts[g] += 1
+    ea = filtered_result.get("etf_active", {})
+    summary = {**counts,
+               "etf_inc": len(ea.get("increase", [])),
+               "etf_dec": len(ea.get("decrease", []))}
+    day_dir = outdir / date
+    day_dir.mkdir(parents=True, exist_ok=True)
+    path = day_dir / "_summary.json"
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(summary, f, ensure_ascii=False, indent=2)
+    return path
 
 
 def main():
@@ -634,6 +671,9 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✅ 寫入 {out_path}")
+
+    # §6.1#1 history 摘要來源:寫 per-date _summary.json(S/A/B + ETF),供 render_history 讀
+    write_summary(filtered_result, PROJECT_ROOT / "docs" / "data" / "v2")
 
 
 if __name__ == "__main__":

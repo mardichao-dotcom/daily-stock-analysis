@@ -26,6 +26,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.render_v2 import _h, _safe_id, chart_placeholder_html, load_status_map
+from src import site_meta
 
 
 # ── 結構建構 ─────────────────────────────────────────────────────────────────
@@ -209,10 +210,15 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
         for name, raw in intl_raw.items()
     )
 
-    tw_total   = sum(len(s.get("成員", [])) for s in tw_raw.values())
-    intl_total = sum(len(g.get("成員", [])) for g in intl_raw.values())
+    # §6.3 meta 列只從 site_meta 取值;watchlist 更新日改用實際 mtime(不再用 stale 內嵌欄位)
+    sm = site_meta.load(date) or {}
+    tw_total   = sm.get("tw_count", sum(len(s.get("成員", [])) for s in tw_raw.values()))
+    intl_total = sm.get("intl_count", sum(len(g.get("成員", [])) for g in intl_raw.values()))
     generated_at = datetime.now().strftime("%Y-%m-%d %H:%M")
-    update_date = watchlist.get("更新日期", "")
+    update_date = sm.get("watchlist_updated", watchlist.get("更新日期", ""))
+    sm_rule = sm.get("rule_version", "v2.2")
+    sm_skipped = sm.get("skipped", [])
+    skip_txt = f" (略過 {len(sm_skipped)} 檔)" if sm_skipped else ""
 
     return f"""<!DOCTYPE html>
 <html lang="zh-Hant">
@@ -321,8 +327,8 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
     </nav>
     <h1>📋 觀察名單 Watchlist</h1>
     <div class="meta">
-      資料日期 <strong>{_h(date)}</strong> ｜
-      台股 {tw_total} 檔 ｜ 國際 {intl_total} 檔 ｜
+      資料日期 <strong>{_h(date)}</strong> ｜ 規則 {_h(sm_rule)} ｜
+      台股 {tw_total} 檔<span title="{_h('略過: ' + ', '.join(sm_skipped)) if sm_skipped else ''}">{_h(skip_txt)}</span> ｜ 國際 {intl_total} 檔 ｜
       watchlist 更新日 {_h(update_date)} ｜ 產出時間 {generated_at}
     </div>
   </div>

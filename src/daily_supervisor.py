@@ -146,6 +146,22 @@ def _check_data_freshness() -> list[str]:
     return warnings
 
 
+def _skipped_detail() -> list[str]:
+    """§6.2:讀 filtered_result_v2 metadata.skipped_symbols,回 Discord 明細行(無略過回 [])。"""
+    path = os.path.join(PROJECT_ROOT, "filtered_result_v2.json")
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, encoding="utf-8") as f:
+            meta = json.load(f).get("metadata", {})
+    except (json.JSONDecodeError, OSError):
+        return []
+    skipped = meta.get("skipped_symbols", []) or []
+    if not skipped:
+        return []
+    return [f"     └ 略過 {len(skipped)} 檔:" + ", ".join(skipped) + "(當日 K 棒缺漏)"]
+
+
 def _build_message(status: dict) -> str:
     today = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d")
     lines = []
@@ -185,6 +201,10 @@ def _build_message(status: dict) -> str:
             # 組行：  ✅ tv_collect     5m12s  87 symbols, 0 errors
             row = f"  {icon} {name:<18} {dur_str:<8} {note}".rstrip()
             lines.append(row)
+
+            # §6.2 skip 透明化:run_filters_v2 步驟附上略過明細(哪幾檔)
+            if name == "run_filters_v2":
+                lines.extend(_skipped_detail())
 
             # 失敗時附 log_tail
             if st == "fail":

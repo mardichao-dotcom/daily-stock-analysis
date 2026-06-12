@@ -47,9 +47,16 @@ git add docs/ src/ config/ templates/ run_all.sh publish.sh README.md .gitignore
 git add -f docs/data/v2/ 2>/dev/null || true
 git commit -m "儀表板更新 ${TODAY}" || echo "      無新變更，跳過 commit。"
 
-echo "[3/3] git push..."
+echo "[3/4] git push..."
 git push origin main
 
 echo ""
 echo "完成。GitHub Pages 約 1-2 分鐘後更新。"
 echo "網址：https://mardichao-dotcom.github.io/daily-stock-analysis/"
+
+# ── [4/4] 發布後線上驗證(P1 §6.4)─────────────────────────────────────────
+# 對線上 URL 斷言(四頁/版本/chart 抽查/history 摘要/ETF 表)。Pages 有部署延遲,
+# verify_publish 內部先 sleep 90s 再驗、失敗 retry 1 次。任一斷言失敗 → exit 非 0
+# → run_all.sh try_step 標 publish ❌ + verify_publish 自身發 Discord ❌ 明細。
+echo "[4/4] 發布後線上驗證(verify_publish)..."
+python3 src/verify_publish.py

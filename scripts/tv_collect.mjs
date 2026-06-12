@@ -43,6 +43,8 @@ const REFRESH_BARS = refreshIdx >= 0 ? parseInt(args[refreshIdx + 1], 10) : 3;
 // 只跑指定交易所(P0-D 美股補跑 / 一次性非台股清洗用),逗號分隔,如 --exchanges NASDAQ,NYSE
 const exIdx = args.indexOf('--exchanges');
 const ONLY_EXCHANGES = exIdx >= 0 ? new Set(args[exIdx + 1].split(',')) : null;
+// §6.5:單檔逾時(6/7 事故:第 2 檔卡死燒光 30 分鐘全域額度)。逾時 → 記 errors → 下一檔。
+const PER_SYMBOL_TIMEOUT_MS = 60000;
 
 // ── 整體 timeout(避免 5/31 那種 TV Desktop 自己卡連帶 tv_collect 跟著卡)──
 const GLOBAL_TIMEOUT_MS = TIMEOUT_MIN * 60 * 1000;
@@ -125,6 +127,16 @@ function logFail(symbol, attempt, reason) {
 
 // ── CDP helpers ───────────────────────────────────────────────────────────────
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// §6.5:單檔逾時包裝 — 卡死的個股不再拖垮整批,逾時即 reject 換下一檔
+function withTimeout(promise, ms) {
+  let t;
+  const timer = new Promise((_, reject) => {
+    t = setTimeout(() => reject(new Error(`單檔逾時 ${ms / 1000}s`)), ms);
+    t.unref?.();
+  });
+  return Promise.race([promise, timer]).finally(() => clearTimeout(t));
+}
 
 // fetch 包 timeout(防 5/31 那種「CDP server 接受連線但不回應」)
 async function fetchWithTimeout(url, ms) {
@@ -261,32 +273,41 @@ async function main() {
 
     process.stdout.write(`${tag} ${symbol} (${strategy.mode}, ${strategy.bars}bars) ... `);
 
-    let ok = false;
-    for (let attempt = 0; attempt < 2; attempt++) {
-      try {
-        await setSymbol(client, symbol);
-        await sleep(attempt === 0 ? 4000 : 7000);
-        await waitReady(client, 10000);
-        const data = await getOHLCV(client, strategy.bars);
-        if (data?.bars?.length > 0) {
-          results[symbol] = data;
-          totalBars += data.bars.length;
-          ok = true;
-          process.stdout.write(`OK (${data.bars.length} bars)\n`);
-          break;
-        } else {
+    // 單檔採集(含 2 次重試),整包以 60s 逾時保護(§6.5)
+    const attemptCollect = async () => {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          await setSymbol(client, symbol);
+          await sleep(attempt === 0 ? 4000 : 7000);
+          await waitReady(client, 10000);
+          const data = await getOHLCV(client, strategy.bars);
+          if (data?.bars?.length > 0) return data;
           throw new Error('empty bars');
-        }
-      } catch (err) {
-        logFail(symbol, attempt + 1, err.message.slice(0, 200));
-        if (attempt === 0) process.stdout.write(`retry... `);
-        else {
-          errors[symbol] = err.message.slice(0, 120);
-          process.stdout.write(`FAIL: ${errors[symbol]}\n`);
+        } catch (err) {
+          logFail(symbol, attempt + 1, err.message.slice(0, 200));
+          if (attempt === 0) process.stdout.write(`retry... `);
+          else throw err;
         }
       }
+      return null;
+    };
+
+    const work = attemptCollect();
+    work.catch(() => {});   // 逾時後被遺棄的 promise 之後若 reject,避免 unhandledRejection
+    try {
+      const data = await withTimeout(work, PER_SYMBOL_TIMEOUT_MS);
+      if (data?.bars?.length > 0) {
+        results[symbol] = data;
+        totalBars += data.bars.length;
+        process.stdout.write(`OK (${data.bars.length} bars)\n`);
+      } else {
+        errors[symbol] = errors[symbol] || 'empty data';
+        process.stdout.write(`FAIL: ${errors[symbol]}\n`);
+      }
+    } catch (err) {
+      errors[symbol] = err.message.slice(0, 120);
+      process.stdout.write(`FAIL: ${errors[symbol]}\n`);
     }
-    if (!ok && !errors[symbol]) errors[symbol] = 'empty data';
   }
 
   await client.close();

@@ -50,26 +50,61 @@ def filter_recent(dates: list[str], max_days: int) -> list[str]:
     return [d for d in dates if dt_date.fromisoformat(d) >= cutoff]
 
 
-def load_summary(project_root: Path, date_str: str) -> dict:
-    """讀 filtered_result_{date}.json,回 {S, A, B, etf_inc, etf_dec}(找不到回空)。"""
-    path = project_root / f"filtered_result_{date_str}.json"
-    if not path.exists():
+def _grade_counts_from_score_history(project_root: Path, date_str: str) -> dict:
+    """從 kline.db score_history 算當日 S/A/B 數(retained,所有歷史日皆可回填)。
+    §6.1#1:V2 era 不再寫 filtered_result_{date}.json,改以 score_history 為摘要來源。"""
+    import sqlite3
+    db = project_root / "kline.db"
+    if not db.exists():
         return {}
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        conn = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        rows = conn.execute(
+            "SELECT grade, COUNT(*) FROM score_history WHERE date=? GROUP BY grade",
+            (date_str,)).fetchall()
+        conn.close()
     except Exception:
         return {}
     counts = {"S": 0, "A": 0, "B": 0}
-    for s in data.get("stocks", {}).values():
-        g = s.get("grade")
+    for g, n in rows:
         if g in counts:
-            counts[g] += 1
-    ea = data.get("etf_active", {})
-    return {
-        **counts,
-        "etf_inc": len(ea.get("increase", [])),
-        "etf_dec": len(ea.get("decrease", [])),
-    }
+            counts[g] = n
+    return counts if sum(counts.values()) >= 0 and rows else {}
+
+
+def load_summary(project_root: Path, date_str: str) -> dict:
+    """回 {S, A, B[, etf_inc, etf_dec]}(找不到回空 {})。來源優先序:
+      1) docs/data/v2/{date}/_summary.json — render 時寫,含 ETF(今日 + 未來)
+      2) filtered_result_{date}.json        — legacy V1 era(~6/05 前)
+      3) score_history(kline.db)            — S/A/B 回填(6/08~,V2 era 無 dated 檔)
+    """
+    # 1) per-date _summary.json(完整,含 ETF)
+    sm_path = project_root / "docs" / "data" / "v2" / date_str / "_summary.json"
+    if sm_path.exists():
+        try:
+            return json.loads(sm_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+
+    # 2) legacy dated filtered_result
+    path = project_root / f"filtered_result_{date_str}.json"
+    if path.exists():
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            counts = {"S": 0, "A": 0, "B": 0}
+            for s in data.get("stocks", {}).values():
+                g = s.get("grade")
+                if g in counts:
+                    counts[g] += 1
+            ea = data.get("etf_active", {})
+            return {**counts,
+                    "etf_inc": len(ea.get("increase", [])),
+                    "etf_dec": len(ea.get("decrease", []))}
+        except Exception:
+            pass
+
+    # 3) score_history 回填(S/A/B,無 ETF)
+    return _grade_counts_from_score_history(project_root, date_str)
 
 
 def weekday_zh(date_str: str) -> str:
@@ -82,8 +117,9 @@ def weekday_zh(date_str: str) -> str:
 def render_item(date_str: str, summary: dict) -> str:
     wd = weekday_zh(date_str)
     if summary:
-        sab = (f"S {summary['S']} / A {summary['A']} / B {summary['B']} ｜ "
-               f"ETF 加 {summary['etf_inc']} 減 {summary['etf_dec']}")
+        sab = f"S {summary.get('S', 0)} / A {summary.get('A', 0)} / B {summary.get('B', 0)}"
+        if "etf_inc" in summary and "etf_dec" in summary:
+            sab += f" ｜ ETF 加 {summary['etf_inc']} 減 {summary['etf_dec']}"
     else:
         sab = "(無摘要)"
     return f"""

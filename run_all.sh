@@ -203,6 +203,10 @@ try_step prepare_charts_v2 python3 src/prepare_charts_v2.py \
     --date "$DATA_DATE" --kline "$KLINE_DB" \
     --result filtered_result_v2.json --all-watchlist
 
+# ── [8.5] site_meta (P1 §6.3 渲染單一資料源:版本/檔數/略過/更新日)──────────
+echo "[8.5/10] 產 site_meta.json(渲染單一資料源)..."
+try_step site_meta python3 -m src.site_meta --date "$DATA_DATE"
+
 # ── [9] render_v2 (live + 日期 snapshot + watchlist + history + landing) ────
 echo "[9/10] 渲染 V2 儀表板(7 區塊 + 入口頁 + 歷史索引)..."
 render_v2_all() {

@@ -24,6 +24,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.render_v2 import _h
+from src import site_meta
 
 
 def _ret_class(ret):
@@ -97,6 +98,7 @@ def render_tag_card(idx: int, tag: dict, rankable: bool) -> str:
 def render(data: dict) -> str:
     date = data.get("date", "?")
     generated_at = data.get("generated_at", datetime.now().isoformat(timespec="seconds"))
+    sm_rule = (site_meta.load(date) or {}).get("rule_version", "v2.2")   # §6.3 版本單一來源
     stats = data.get("stats", {})
     rules = data.get("rules", {})
 
@@ -211,8 +213,8 @@ def render(data: dict) -> str:
     flex-shrink: 0;
     font-size: 15px;
   }}
-  .theme-return.gain {{ color: #10b981; }}
-  .theme-return.loss {{ color: #ef4444; }}
+  .theme-return.gain {{ color: #ef4444; }}   /* §6.1#3 台式紅漲 */
+  .theme-return.loss {{ color: #10b981; }}   /* 綠跌 */
   .theme-return.flat {{ color: var(--text-mute); }}
   .theme-card .theme-tag-name {{
     font-weight: 600;
@@ -251,8 +253,8 @@ def render(data: dict) -> str:
     font-weight: 600;
     flex-shrink: 0;
   }}
-  .m-return.gain {{ color: #10b981; }}
-  .m-return.loss {{ color: #ef4444; }}
+  .m-return.gain {{ color: #ef4444; }}   /* §6.1#3 台式紅漲 */
+  .m-return.loss {{ color: #10b981; }}   /* 綠跌 */
   .m-return.flat {{ color: var(--text-mute); }}
   .m-code {{
     color: var(--text-mute);
@@ -299,7 +301,7 @@ def render(data: dict) -> str:
     </nav>
     <h1>🔥 主題熱度排行</h1>
     <div class="meta">
-      資料日期 <strong>{_h(date)}</strong> ｜
+      資料日期 <strong>{_h(date)}</strong> ｜ 規則 {_h(sm_rule)} ｜
       上榜 <strong>{len(rankable_tags)}</strong> 個(N≥{n_threshold})｜
       未上榜 {len(unrankable_tags)} 個 ｜
       產出時間 {generated_at[:16].replace('T', ' ')}
