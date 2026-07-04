@@ -16,11 +16,12 @@ import argparse
 import json
 import os
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 DEFAULT_JSON = "/tmp/tv_daily_data.json"
 DEFAULT_DB   = os.path.join(PROJECT_ROOT, "kline.db")
+TZ_TAIPEI    = timezone(timedelta(hours=8))
 
 
 def main():
@@ -65,12 +66,22 @@ def main():
                 f.write(last_date)
         return
 
+    # 幽靈 bar 防護(2026-07-04,停更 19 天事故):拒絕日期在「今天(台北)」之後的 bar。
+    # 6/14 週日跑批時 TWSE:2317 拿到一根 6/15 未來 bar → 被當 MAX 推進 data_date=6/15
+    # → 隔天起 97/98 檔查不到 6/15 K 線全略過 → 骨牌。未來日期的 bar 一律不入庫。
+    today_taipei = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d")
+
     inserted = 0
+    rejected_future = []          # [(symbol, date_str)] 被擋下的未來 bar
     last_date = ""
     for symbol, payload in results.items():
         for bar in payload["bars"]:
             dt       = datetime.utcfromtimestamp(bar["time"])
             date_str = dt.strftime("%Y-%m-%d")
+            if date_str > today_taipei:
+                # 未來日期 = 幽靈 bar,不入庫、不參與 data_date 計算
+                rejected_future.append((symbol, date_str))
+                continue
             cur.execute(
                 # P0-C:REPLACE 覆寫——收盤後重抓的正確值覆蓋盤中半成品
                 "INSERT OR REPLACE INTO kline VALUES (?,?,?,?,?,?,?)",
@@ -85,6 +96,10 @@ def main():
     conn.close()
 
     print(f"[import_kline] {inserted} rows → {args.db}")
+    if rejected_future:
+        print(f"[import_kline] ⚠️ 擋下 {len(rejected_future)} 根未來日期(幽靈)bar,"
+              f"未入庫:{rejected_future[:5]}"
+              + ("..." if len(rejected_future) > 5 else ""))
     print(f"[import_kline] data_date={last_date}")
 
     if not args.no_data_date:

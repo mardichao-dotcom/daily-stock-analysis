@@ -20,6 +20,7 @@ import json
 import os
 import sqlite3
 import sys
+import time
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone, timedelta
@@ -56,25 +57,65 @@ def _preview(content: str) -> None:
     print(content)
     print("─" * 50)
 
-def _send(webhook_url: str, content: str) -> None:
-    payload = json.dumps({"content": content}).encode("utf-8")
-    req = urllib.request.Request(
-        webhook_url.strip(),
-        data=payload,
-        headers={
-            "Content-Type": "application/json",
-            "User-Agent": "stock-dashboard-supervisor/1.0",
-        },
-        method="POST",
-    )
+DISCORD_MAX_LEN = 2000        # Discord content 硬上限
+_SEND_LOG = os.path.join(PROJECT_ROOT, "logs", "discord_send.log")
+
+
+def _log_send(line: str) -> None:
+    """把發送結果寫入 logs/discord_send.log(告警通道本身失效時仍留痕,可事後查)。"""
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            if resp.status not in (200, 204):
-                print(f"[supervisor] Discord 回傳非 2xx: {resp.status}", file=sys.stderr)
-            else:
-                print("[supervisor] Discord 訊息發送成功")
-    except urllib.error.URLError as e:
-        print(f"[supervisor] Discord 發送失敗: {e}", file=sys.stderr)
+        os.makedirs(os.path.dirname(_SEND_LOG), exist_ok=True)
+        with open(_SEND_LOG, "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now(TZ_TAIPEI).strftime('%Y-%m-%dT%H:%M:%S+08:00')}\t{line}\n")
+    except OSError:
+        pass
+
+
+def _send(webhook_url: str, content: str, *, retries: int = 3) -> bool:
+    """發 Discord。超限截斷 + 送失敗重試 + 全程記 log(告警通道失效必須可見)。
+    回傳 True=成功 / False=最終失敗。"""
+    # 1) 長度防護:超過 2000 直接截斷(留註記),不讓 Discord 因超限整則拒收
+    if len(content) > DISCORD_MAX_LEN:
+        keep = DISCORD_MAX_LEN - 20
+        content = content[:keep] + "\n…(訊息過長已截斷)"
+        _log_send(f"WARN 訊息超 {DISCORD_MAX_LEN} 已截斷至 {len(content)}")
+
+    payload = json.dumps({"content": content}).encode("utf-8")
+    last_err = ""
+    for attempt in range(1, retries + 1):
+        req = urllib.request.Request(
+            webhook_url.strip(),
+            data=payload,
+            headers={
+                "Content-Type": "application/json",
+                "User-Agent": "stock-dashboard-supervisor/1.0",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                if resp.status in (200, 204):
+                    print("[supervisor] Discord 訊息發送成功")
+                    _log_send(f"OK attempt={attempt} len={len(content)}")
+                    return True
+                last_err = f"非 2xx: {resp.status}"
+        except urllib.error.HTTPError as e:
+            # 400 多半是內容問題(超限/格式)——重試同內容沒用,直接記並停
+            last_err = f"HTTP {e.code}: {e.read()[:200] if hasattr(e,'read') else ''}"
+            if e.code == 400:
+                print(f"[supervisor] Discord 400(內容問題),不重試: {last_err}", file=sys.stderr)
+                _log_send(f"FAIL attempt={attempt} {last_err}")
+                return False
+        except urllib.error.URLError as e:
+            last_err = f"URLError: {e}"
+        print(f"[supervisor] Discord 發送失敗(attempt {attempt}/{retries}): {last_err}",
+              file=sys.stderr)
+        _log_send(f"RETRY attempt={attempt} {last_err}")
+        if attempt < retries:
+            time.sleep(2 * attempt)
+    print(f"[supervisor] ❌ Discord 最終發送失敗({retries} 次): {last_err}", file=sys.stderr)
+    _log_send(f"FINAL-FAIL after {retries} attempts: {last_err}")
+    return False
 
 # ── 格式化工具 ────────────────────────────────────────────────────────────────
 
@@ -159,7 +200,11 @@ def _skipped_detail() -> list[str]:
     skipped = meta.get("skipped_symbols", []) or []
     if not skipped:
         return []
-    return [f"     └ 略過 {len(skipped)} 檔:" + ", ".join(skipped) + "(當日 K 棒缺漏)"]
+    # 訊息長度防護:只列前 5 檔 + 共 N 檔(97 檔全列會撐爆 Discord 2000 上限 → 靜默送失敗,
+    # 正是 6/14~7/3 停更 19 天沒被告警的根因)
+    head = ", ".join(skipped[:5])
+    more = f" …等共 {len(skipped)} 檔" if len(skipped) > 5 else f"(共 {len(skipped)} 檔)"
+    return [f"     └ 略過 {head}{more}(當日 K 棒缺漏)"]
 
 
 def _build_message(status: dict) -> str:

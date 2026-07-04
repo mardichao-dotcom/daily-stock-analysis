@@ -964,9 +964,23 @@ def main(args) -> None:
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
+    scored  = len(output["stocks"])
+    skipped = len(output["metadata"]["skipped_symbols"])
     mode_tag = " (incremental)" if restrict_symbols else ""
-    print(f"✅ {len(output['stocks'])} symbols / "
-          f"{len(output['metadata']['skipped_symbols'])} skipped → {args.output}{mode_tag}")
+
+    # 規模略過閘(2026-07-04,停更 19 天事故):全量模式下略過 > 20% 代表資料層出事
+    # (6/14:97/98 略過卻標 ✅ 照發,是第一張骨牌)→ 整步 fail、非 0 退出,擋下 publish。
+    # 增量模式本來就只跑少數指定 symbol,不套此閘。
+    if restrict_symbols is None:
+        total = scored + skipped
+        ratio = (skipped / total) if total else 0.0
+        if ratio > 0.20:
+            print(f"❌ {scored} symbols / {skipped} skipped(略過 {ratio:.0%} > 20% 上限)"
+                  f" → 資料層疑似異常,整步標 fail、不發布 → {args.output}{mode_tag}",
+                  file=sys.stderr)
+            sys.exit(1)
+
+    print(f"✅ {scored} symbols / {skipped} skipped → {args.output}{mode_tag}")
 
 
 if __name__ == "__main__":

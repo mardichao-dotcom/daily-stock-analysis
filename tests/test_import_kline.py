@@ -70,5 +70,58 @@ class TestImportUpsert(unittest.TestCase):
             self.assertEqual(before, after)
 
 
+class TestFutureBarGuard(unittest.TestCase):
+    """2026-07-04 停更 19 天事故:週末跑批抓到未來日期 bar(TWSE:2317@6/15)→
+    被當 MAX 推進 data_date → 隔天 97/98 檔查無當日 K 線全略過 → 骨牌。
+    import 必須拒絕 date > today(台北)的幽靈 bar。"""
+
+    def _run(self, db, bars):
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump({"results": {"TWSE:2317": {"bars": bars}}}, f)
+            jpath = f.name
+        try:
+            r = subprocess.run(
+                [sys.executable, "src/import_kline.py", "--json", jpath,
+                 "--db", db, "--no-data-date"],
+                cwd=PROJECT_ROOT, check=True, capture_output=True, text=True)
+            return r.stdout
+        finally:
+            os.unlink(jpath)
+
+    def test_future_bar_rejected_not_inserted(self):
+        from datetime import datetime, timezone, timedelta
+        today = datetime.now(timezone(timedelta(hours=8))).date()
+        past   = (today - timedelta(days=1)).isoformat()
+        future = (today + timedelta(days=3)).isoformat()
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            out = self._run(db, [
+                {"time": _ts(past),   "open": 1, "high": 1, "low": 1, "close": 10, "volume": 1},
+                {"time": _ts(future), "open": 1, "high": 1, "low": 1, "close": 99, "volume": 1},
+            ])
+            conn = sqlite3.connect(db)
+            dates = [r[0] for r in conn.execute(
+                "SELECT date FROM kline WHERE symbol='TWSE:2317' ORDER BY date")]
+            conn.close()
+            self.assertIn(past, dates)              # 過去 bar 正常入庫
+            self.assertNotIn(future, dates)         # 未來 bar 被擋
+            self.assertIn("擋下", out)              # 有明確 log
+
+    def test_future_bar_not_advancing_data_date(self):
+        from datetime import datetime, timezone, timedelta
+        today = datetime.now(timezone(timedelta(hours=8))).date()
+        past   = (today - timedelta(days=1)).isoformat()
+        future = (today + timedelta(days=5)).isoformat()
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            out = self._run(db, [
+                {"time": _ts(past),   "open": 1, "high": 1, "low": 1, "close": 10, "volume": 1},
+                {"time": _ts(future), "open": 1, "high": 1, "low": 1, "close": 99, "volume": 1},
+            ])
+            # data_date 應停在過去 bar,不被未來幽靈 bar 推進
+            self.assertIn(f"data_date={past}", out)
+            self.assertNotIn(f"data_date={future}", out)
+
+
 if __name__ == "__main__":
     unittest.main()
