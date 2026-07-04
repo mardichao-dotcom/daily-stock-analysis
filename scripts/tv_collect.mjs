@@ -111,7 +111,12 @@ function getStrategy(symbol, status, today, threshold) {
     if (isTW(symbol)) return { mode: 'skip',    bars: 0,            reason: `已是最新(${s.max})` };
     return              { mode: 'refresh', bars: REFRESH_BARS, reason: `非台股重抓最近${REFRESH_BARS}根(${s.max})` };
   }
-  return               { mode: 'increment', bars: 10,   reason: `往前補(${s.max}→${today})` };
+  // 增量:抓足以覆蓋 s.max→today 缺口的根數(每日曆日 ≥1 bar,加 5 根緩衝)。
+  // 2026-07-04 停更 19 天事故教訓:固定 10 根在多日停更(缺口 > 10 交易日)時補不齊,
+  // 留洞導致 data_date 永遠追不上。改為依缺口天數自動加深(上限 DAYS),自癒多日缺口。
+  const gapDays = Math.round((Date.parse(today) - Date.parse(s.max)) / 86400000);
+  const incBars = Math.min(DAYS, Math.max(10, gapDays + 5));
+  return { mode: 'increment', bars: incBars, reason: `往前補(${s.max}→${today}, ${incBars}根)` };
 }
 
 // ── Log ──────────────────────────────────────────────────────────────────────
