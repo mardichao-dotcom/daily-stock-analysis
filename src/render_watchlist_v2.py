@@ -112,7 +112,7 @@ def render_member(member: dict, leaders_set: set, date: str,
     # data-code / data-name / data-tags 給前端 search 用(大小寫無關,前端 toLowerCase)
     tags_attr = _h(" ".join(all_tags))
     return f"""
-<details class="wl-stock" data-code="{_h(symbol)}" data-name="{_h(name)}" data-tags="{tags_attr}">
+<details class="wl-stock" data-code="{_h(symbol)}" data-symbol="{_h(symbol)}" id="card-{_h(symbol.replace(':','_'))}" data-name="{_h(name)}" data-tags="{tags_attr}">
   <summary>
     {leader_mark}
     <span class="wl-name">{_h(name)}</span>
@@ -359,6 +359,7 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
 </main>
 
 <script src="assets/chart_v2.js" defer></script>
+<script src="assets/events.js" defer></script>
 <script>
 (function() {{
   // 純前端 search(2026-06-07):toLowerCase 大小寫無關;名稱 / 代號雙欄掃描;

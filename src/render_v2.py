@@ -265,7 +265,7 @@ def render_top10(stocks: dict, date: str = "", status_map: dict | None = None) -
             symbol, date, status_map.get(sid), id_prefix="chart-top10",
         )
         cards.append(f"""
-<details class="stock-card top10-card grade-{_h(grade)}">
+<details class="stock-card top10-card grade-{_h(grade)}" data-symbol="{_h(symbol)}">
   <summary>
     <span class="top10-rank">{rank_badge}</span>
     <span class="stock-name">{_h(name)}</span>
@@ -345,7 +345,7 @@ def render_stock_card(symbol: str, stock: dict, date: str,
     placeholder_html = chart_placeholder_html(symbol, date, status_entry)
 
     return f"""
-<details class="stock-card grade-{_h(grade)}">
+<details class="stock-card grade-{_h(grade)}" data-symbol="{_h(symbol)}" id="card-{_h(symbol.replace(':','_'))}">
   <summary>
     <span class="stock-name">{_h(name)}</span>
     <code class="stock-code">{_h(symbol)}</code>
@@ -587,6 +587,9 @@ def render(filtered_result: dict, status_map: dict | None = None,
 """
 
     parts = [
+        # 📅 事件中樞(events.js client-side fetch events.json 填入;與 render 解耦)
+        '<section class="section" id="events-hub" hidden>'
+        '<h2>📅 未來 14 天</h2><div class="events-body"></div></section>',
         render_top10(stocks, date, status_map),
         render_themes(date),
         render_grade_section("S", "🔴 S 級戰區",     buckets["S"], date, status_map),
@@ -631,6 +634,7 @@ def render(filtered_result: dict, status_map: dict | None = None,
 </main>
 
 <script src="assets/chart_v2.js" defer></script>
+<script src="assets/events.js" defer></script>
 </body>
 </html>"""
 

@@ -100,7 +100,8 @@ class TestRenderTop10(unittest.TestCase):
         """
         stocks = {"TWSE:2382": make_stock(name="廣達", score=7.0, grade="S")}
         html = render_v2.render_top10(stocks, date="2026-06-01")
-        self.assertIn('<details class="stock-card top10-card grade-S">', html)
+        # top10 卡帶 data-symbol(stage9 事件徽章 hook)
+        self.assertIn('<details class="stock-card top10-card grade-S" data-symbol="TWSE:2382">', html)
         self.assertIn('id="chart-top10-TWSE_2382"', html)
         self.assertIn('data-symbol="TWSE:2382"', html)
         self.assertIn('🥇', html)
