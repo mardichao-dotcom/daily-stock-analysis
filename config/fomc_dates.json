@@ -1,0 +1,13 @@
+{
+  "_note": "Fed FOMC 年度會議日程,一年一更(FRED 無 FOMC release,故寫死)。event date = 決議公布日(會議第二天)。來源:federalreserve.gov/monetarypolicy/fomccalendars.htm。2026-07-05 錄入。",
+  "meetings": [
+    {"start": "2026-01-27", "decision": "2026-01-28", "smp": false},
+    {"start": "2026-03-17", "decision": "2026-03-18", "smp": true},
+    {"start": "2026-04-28", "decision": "2026-04-29", "smp": false},
+    {"start": "2026-06-16", "decision": "2026-06-17", "smp": true},
+    {"start": "2026-07-28", "decision": "2026-07-29", "smp": false},
+    {"start": "2026-09-15", "decision": "2026-09-16", "smp": true},
+    {"start": "2026-10-27", "decision": "2026-10-28", "smp": false},
+    {"start": "2026-12-08", "decision": "2026-12-09", "smp": true}
+  ]
+}
