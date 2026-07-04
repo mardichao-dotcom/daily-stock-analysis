@@ -223,6 +223,16 @@ try_step render_v2 render_v2_all
 echo "[10/10] 推上線..."
 try_step publish bash publish.sh
 
+# ── 外部心跳(任務二):verify_publish 全綠(publish 未被 abort)才 ping ──────────
+# healthchecks 在逾時未收到 ping 時主動告警,補「整台當掉/排程沒跑」的死角。
+# 失敗只記 log 不擋流程(heartbeat 模組永遠 exit 0)。
+if [[ -z "$ABORT_AFTER" ]]; then
+    echo "[心跳] 主跑全綠 → ping healthchecks..."
+    python3 -m src.heartbeat --body "main-run ${DATA_DATE} ok" || true
+else
+    echo "[心跳] 主跑未全綠(${ABORT_AFTER} 失敗)→ 不 ping(讓 healthchecks 逾時告警)"
+fi
+
 python3 src/status_writer.py --finish --tool "$TOOL"
 
 echo ""

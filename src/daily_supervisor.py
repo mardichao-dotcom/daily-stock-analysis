@@ -35,6 +35,11 @@ TZ_TAIPEI = timezone(timedelta(hours=8))
 # 資料新鮮度告警閾值(天)— 5/21~5/31 那 11 天靜默不再發生
 FRESHNESS_ALERT_DAYS = 3
 
+# us_refresh 連續失敗升級告警(任務二 2026-07-04):這次 us-refresh 連錯 18 天,每天
+# 只有一行小字混在回報裡沒被注意。連續 ≥N 天失敗 → 發一則獨立醒目的 🚨 升級告警。
+US_STREAK_FILE = os.path.join(PROJECT_ROOT, "state", "us_refresh_streak.json")
+US_ESCALATE_THRESHOLD = 3
+
 # ── Discord 工具 ──────────────────────────────────────────────────────────────
 
 def _load_webhook() -> str:
@@ -278,6 +283,53 @@ def _build_message(status: dict) -> str:
 
     return "\n".join(lines)
 
+def _check_us_refresh_escalation(status: dict) -> str | None:
+    """追蹤 us_refresh 連續失敗(跨天,持久化 state/us_refresh_streak.json)。
+    連續失敗 ≥ US_ESCALATE_THRESHOLD 天 → 回獨立升級告警訊息,否則 None。
+    只在 us_refresh.run_date 前進時計數(避免週末/重跑重複計同一輪)。"""
+    us = status.get("us_refresh")
+    if not us or not us.get("run_date"):
+        return None
+    run_date = us["run_date"]
+    overall  = us.get("overall")
+
+    st = {"last_run_date": "", "consecutive_fails": 0}
+    if os.path.exists(US_STREAK_FILE):
+        try:
+            with open(US_STREAK_FILE, encoding="utf-8") as f:
+                st = json.load(f)
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    # 只在看到「新的一輪 us_refresh」時更新計數
+    if run_date != st.get("last_run_date"):
+        if overall == "fail":
+            st["consecutive_fails"] = st.get("consecutive_fails", 0) + 1
+        elif overall == "ok":
+            st["consecutive_fails"] = 0
+        # overall 其他值(未知/進行中):不動計數
+        st["last_run_date"] = run_date
+        try:
+            os.makedirs(os.path.dirname(US_STREAK_FILE), exist_ok=True)
+            with open(US_STREAK_FILE, "w", encoding="utf-8") as f:
+                json.dump(st, f, ensure_ascii=False, indent=2)
+        except OSError:
+            pass
+
+    n = st.get("consecutive_fails", 0)
+    if n >= US_ESCALATE_THRESHOLD:
+        today = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d")
+        return (
+            f"🚨🚨 升級告警 {today}:美股補跑 us_refresh 已連續 {n} 天失敗 🚨🚨\n"
+            f"─────────────────────────────────\n"
+            f"最近失敗輪:{run_date}\n"
+            f"影響:美股 K 線每日補跑未更新 → 線上美股圖停在較舊收盤日。\n"
+            f"請人工檢查:05:30 排程 / TradingView Desktop / CDP 9222 / logs/us_refresh.log\n"
+            f"🔗 {DASHBOARD_URL}"
+        )
+    return None
+
+
 def _fallback_message(reason: str) -> str:
     today = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d")
     return (
@@ -298,24 +350,31 @@ def main() -> None:
 
     webhook = _load_webhook()
 
+    escalation = None
     try:
         if not os.path.exists(STATUS_FILE):
             raise FileNotFoundError(f"狀態檔不存在：{STATUS_FILE}")
         with open(STATUS_FILE, encoding="utf-8") as f:
             status = json.load(f)
         message = _build_message(status)
+        escalation = _check_us_refresh_escalation(status)   # 任務二:us_refresh 連錯升級
     except Exception as e:
         message = _fallback_message(str(e))
 
     if args.dry_run:
         # 明確 --dry-run：秀完整預覽
         _preview(message)
+        if escalation:
+            _preview(escalation)
     elif not webhook:
         # 未設定 webhook：靜默跳過，不發送也不秀預覽
         print("[supervisor] 未設定 Discord webhook，跳過發送。"
               "（可設定 config/secrets.json 或環境變數 DISCORD_WEBHOOK_URL）")
     else:
         _send(webhook, message)
+        # us_refresh 連續失敗 → 獨立再發一則醒目升級告警(不與日報混在一起)
+        if escalation:
+            _send(webhook, escalation)
 
 if __name__ == "__main__":
     main()

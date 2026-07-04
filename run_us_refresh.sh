@@ -105,5 +105,7 @@ run_step publish publish_us
 
 python3 src/status_writer.py --finish --tool "$TOOL"
 notify "✅ us-refresh ${DATA_DATE} 完成:${US_COUNT} 檔美股圖已更新(分數/分級維持前晚快照)"
+# 外部心跳(任務二):us_refresh 與主跑共用同一 check(主跑為權威),body 標記來源供 log 區分
+python3 -m src.heartbeat --body "us-refresh ${DATA_DATE} ok (${US_COUNT} 檔)" || true
 echo ""
 echo "[us-refresh] 完成。${US_COUNT} 檔美股 chart JSON 已更新並 push。"
