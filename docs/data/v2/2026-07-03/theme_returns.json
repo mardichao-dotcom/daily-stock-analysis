@@ -1,0 +1,5244 @@
+{
+  "date": "2026-07-03",
+  "generated_at": "2026-07-04T17:36:37",
+  "rules": {
+    "n_threshold": 3,
+    "calculation": "equal_weight_average",
+    "scope": "L2 + L3 + L4 標籤混排"
+  },
+  "stats": {
+    "total_tags": 242,
+    "rankable_tags": 36,
+    "tags_with_no_data": 0
+  },
+  "tags": [
+    {
+      "tag": "CCL高速材料",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": 7.78,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6213",
+          "name": "聯茂",
+          "return_pct": 9.9,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2383",
+          "name": "台光電",
+          "return_pct": 7.52,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:6274",
+          "name": "台燿",
+          "return_pct": 5.92,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "矽光子",
+      "n": 5,
+      "n_traded": 5,
+      "n_excluded": 0,
+      "return_pct": 6.36,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:3363",
+          "name": "上詮",
+          "return_pct": 9.83,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3081",
+          "name": "聯亞",
+          "return_pct": 8.25,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3163",
+          "name": "波若威",
+          "return_pct": 5.55,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:4979",
+          "name": "華星光",
+          "return_pct": 5.28,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2455",
+          "name": "全新",
+          "return_pct": 2.87,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "光通訊",
+      "n": 9,
+      "n_traded": 9,
+      "n_excluded": 0,
+      "return_pct": 4.33,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:3363",
+          "name": "上詮",
+          "return_pct": 9.83,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3081",
+          "name": "聯亞",
+          "return_pct": 8.25,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3163",
+          "name": "波若威",
+          "return_pct": 5.55,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:4979",
+          "name": "華星光",
+          "return_pct": 5.28,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:4908",
+          "name": "前鼎",
+          "return_pct": 4.93,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2455",
+          "name": "全新",
+          "return_pct": 2.87,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6442",
+          "name": "光聖",
+          "return_pct": 0.31,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CPO",
+      "n": 12,
+      "n_traded": 12,
+      "n_excluded": 0,
+      "return_pct": 3.13,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:3363",
+          "name": "上詮",
+          "return_pct": 9.83,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3081",
+          "name": "聯亞",
+          "return_pct": 8.25,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6515",
+          "name": "穎崴",
+          "return_pct": 6.34,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3163",
+          "name": "波若威",
+          "return_pct": 5.55,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:4979",
+          "name": "華星光",
+          "return_pct": 5.28,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:4908",
+          "name": "前鼎",
+          "return_pct": 4.93,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2455",
+          "name": "全新",
+          "return_pct": 2.87,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:6223",
+          "name": "旺矽",
+          "return_pct": 1.72,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6442",
+          "name": "光聖",
+          "return_pct": 0.31,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "低軌衛星",
+      "n": 7,
+      "n_traded": 7,
+      "n_excluded": 0,
+      "return_pct": 2.46,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:3491",
+          "name": "昇達科",
+          "return_pct": 5.93,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2368",
+          "name": "金像電",
+          "return_pct": 5.67,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2455",
+          "name": "全新",
+          "return_pct": 2.87,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2367",
+          "name": "燿華",
+          "return_pct": 2.04,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2313",
+          "name": "華通",
+          "return_pct": 0.44,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6442",
+          "name": "光聖",
+          "return_pct": 0.31,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6285",
+          "name": "啟碁",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI伺服器",
+      "n": 25,
+      "n_traded": 25,
+      "n_excluded": 0,
+      "return_pct": 1.91,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6213",
+          "name": "聯茂",
+          "return_pct": 9.9,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2383",
+          "name": "台光電",
+          "return_pct": 7.52,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:6274",
+          "name": "台燿",
+          "return_pct": 5.92,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": 5.74,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2368",
+          "name": "金像電",
+          "return_pct": 5.67,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": 3.82,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8046",
+          "name": "南電",
+          "return_pct": 3.49,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:8299",
+          "name": "群聯",
+          "return_pct": 2.46,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6117",
+          "name": "迎廣",
+          "return_pct": 1.64,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2059",
+          "name": "川湖",
+          "return_pct": 1.52,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.2,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2313",
+          "name": "華通",
+          "return_pct": 0.44,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8210",
+          "name": "勤誠",
+          "return_pct": -0.38,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6805",
+          "name": "富世達",
+          "return_pct": -2.4,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:5274",
+          "name": "信驊",
+          "return_pct": -2.73,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "老AI",
+      "n": 10,
+      "n_traded": 10,
+      "n_excluded": 0,
+      "return_pct": 1.61,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": 5.74,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.2,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2301",
+          "name": "光寶科",
+          "return_pct": -1.13,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ABF載板",
+      "n": 5,
+      "n_traded": 5,
+      "n_excluded": 0,
+      "return_pct": 1.56,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:8046",
+          "name": "南電",
+          "return_pct": 3.49,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:7795",
+          "name": "長廣",
+          "return_pct": 2.45,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3189",
+          "name": "景碩",
+          "return_pct": 0.36,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3037",
+          "name": "欣興",
+          "return_pct": -1.02,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "HBM4",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": 1.53,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6531",
+          "name": "愛普",
+          "return_pct": 2.71,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2360",
+          "name": "致茂",
+          "return_pct": 2.49,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:6223",
+          "name": "旺矽",
+          "return_pct": 1.72,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI機櫃",
+      "n": 7,
+      "n_traded": 7,
+      "n_excluded": 0,
+      "return_pct": 0.87,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2059",
+          "name": "川湖",
+          "return_pct": 1.52,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8210",
+          "name": "勤誠",
+          "return_pct": -0.38,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI電源",
+      "n": 8,
+      "n_traded": 8,
+      "n_excluded": 0,
+      "return_pct": 0.76,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6862",
+          "name": "三集瑞-KY",
+          "return_pct": 1.56,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1514",
+          "name": "亞力",
+          "return_pct": 1.23,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6412",
+          "name": "群電",
+          "return_pct": 1.03,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3015",
+          "name": "全漢",
+          "return_pct": 0.74,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6282",
+          "name": "康舒",
+          "return_pct": 0.34,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2301",
+          "name": "光寶科",
+          "return_pct": -1.13,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2359",
+          "name": "所羅門",
+          "return_pct": -3.07,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI晶片測試",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": 0.53,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6515",
+          "name": "穎崴",
+          "return_pct": 6.34,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:6223",
+          "name": "旺矽",
+          "return_pct": 1.72,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:7769",
+          "name": "鴻勁",
+          "return_pct": -2.35,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2449",
+          "name": "京元電子",
+          "return_pct": -3.6,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "重電電網",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": 0.41,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:1514",
+          "name": "亞力",
+          "return_pct": 1.23,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1519",
+          "name": "華城",
+          "return_pct": 0.39,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1503",
+          "name": "士電",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1513",
+          "name": "中興電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電網升級",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": 0.41,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:1514",
+          "name": "亞力",
+          "return_pct": 1.23,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1519",
+          "name": "華城",
+          "return_pct": 0.39,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1503",
+          "name": "士電",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1513",
+          "name": "中興電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "台電供應鏈",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": 0.41,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:1514",
+          "name": "亞力",
+          "return_pct": 1.23,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1519",
+          "name": "華城",
+          "return_pct": 0.39,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1503",
+          "name": "士電",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:1513",
+          "name": "中興電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "被動元件",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": 0.32,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6862",
+          "name": "三集瑞-KY",
+          "return_pct": 1.56,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2492",
+          "name": "華新科",
+          "return_pct": 0.36,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2327",
+          "name": "國巨",
+          "return_pct": -0.95,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AMD",
+      "n": 14,
+      "n_traded": 14,
+      "n_excluded": 0,
+      "return_pct": 0.17,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": 5.74,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.2,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:5269",
+          "name": "祥碩",
+          "return_pct": 0.66,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3653",
+          "name": "健策",
+          "return_pct": -1.58,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "液冷",
+      "n": 9,
+      "n_traded": 9,
+      "n_excluded": 0,
+      "return_pct": 0.06,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6117",
+          "name": "迎廣",
+          "return_pct": 1.64,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3017",
+          "name": "奇鋐",
+          "return_pct": 0.73,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8210",
+          "name": "勤誠",
+          "return_pct": -0.38,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3324",
+          "name": "雙鴻",
+          "return_pct": -1.92,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6805",
+          "name": "富世達",
+          "return_pct": -2.4,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8996",
+          "name": "高力",
+          "return_pct": -2.47,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "EFB",
+      "n": 8,
+      "n_traded": 8,
+      "n_excluded": 0,
+      "return_pct": 0.02,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:8046",
+          "name": "南電",
+          "return_pct": 3.49,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3189",
+          "name": "景碩",
+          "return_pct": 0.36,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3037",
+          "name": "欣興",
+          "return_pct": -1.02,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NVIDIA",
+      "n": 19,
+      "n_traded": 19,
+      "n_excluded": 0,
+      "return_pct": -0.23,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": 3.82,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.2,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3189",
+          "name": "景碩",
+          "return_pct": 0.36,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3037",
+          "name": "欣興",
+          "return_pct": -1.02,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2301",
+          "name": "光寶科",
+          "return_pct": -1.13,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3653",
+          "name": "健策",
+          "return_pct": -1.58,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2359",
+          "name": "所羅門",
+          "return_pct": -3.07,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科",
+          "return_pct": -3.45,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3443",
+          "name": "創意",
+          "return_pct": -5.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "成熟製程",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": -0.33,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2303",
+          "name": "聯電",
+          "return_pct": 3.02,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6770",
+          "name": "力積電",
+          "return_pct": -1.74,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:5347",
+          "name": "世界先進",
+          "return_pct": -2.27,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "邊緣AI",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": -0.54,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": 3.82,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2395",
+          "name": "研華",
+          "return_pct": 2.16,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科",
+          "return_pct": -3.45,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:5289",
+          "name": "宜鼎",
+          "return_pct": -4.66,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "先進封裝",
+      "n": 9,
+      "n_traded": 9,
+      "n_excluded": 0,
+      "return_pct": -0.58,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6531",
+          "name": "愛普",
+          "return_pct": 2.71,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:7795",
+          "name": "長廣",
+          "return_pct": 2.45,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3189",
+          "name": "景碩",
+          "return_pct": 0.36,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3037",
+          "name": "欣興",
+          "return_pct": -1.02,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6770",
+          "name": "力積電",
+          "return_pct": -1.74,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:7769",
+          "name": "鴻勁",
+          "return_pct": -2.35,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "散熱",
+      "n": 6,
+      "n_traded": 6,
+      "n_excluded": 0,
+      "return_pct": -0.62,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:3338",
+          "name": "泰碩",
+          "return_pct": 0.84,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3017",
+          "name": "奇鋐",
+          "return_pct": 0.73,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2421",
+          "name": "建準",
+          "return_pct": 0.68,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3653",
+          "name": "健策",
+          "return_pct": -1.58,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3324",
+          "name": "雙鴻",
+          "return_pct": -1.92,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8996",
+          "name": "高力",
+          "return_pct": -2.47,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "網通",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": -0.75,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6526",
+          "name": "達發",
+          "return_pct": 0.14,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6285",
+          "name": "啟碁",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2379",
+          "name": "瑞昱",
+          "return_pct": -3.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "KY股",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": -0.79,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6862",
+          "name": "三集瑞-KY",
+          "return_pct": 1.56,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3665",
+          "name": "貿聯-KY",
+          "return_pct": -2.21,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3661",
+          "name": "世芯-KY",
+          "return_pct": -5.01,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "記憶體漲價",
+      "n": 6,
+      "n_traded": 6,
+      "n_excluded": 0,
+      "return_pct": -0.81,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:8299",
+          "name": "群聯",
+          "return_pct": 2.46,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2408",
+          "name": "南亞科",
+          "return_pct": 0.61,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2344",
+          "name": "華邦電",
+          "return_pct": 0.54,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6770",
+          "name": "力積電",
+          "return_pct": -1.74,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2337",
+          "name": "旺宏",
+          "return_pct": -2.06,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:5289",
+          "name": "宜鼎",
+          "return_pct": -4.66,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "機器人",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": -0.92,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2395",
+          "name": "研華",
+          "return_pct": 2.16,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2049",
+          "name": "上銀",
+          "return_pct": -0.57,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3665",
+          "name": "貿聯-KY",
+          "return_pct": -2.21,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2359",
+          "name": "所羅門",
+          "return_pct": -3.07,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "矽智財",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": -1.68,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:6643",
+          "name": "M31",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3035",
+          "name": "智原",
+          "return_pct": -0.67,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3529",
+          "name": "力旺",
+          "return_pct": -6.89,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CoPoS",
+      "n": 9,
+      "n_traded": 9,
+      "n_excluded": 0,
+      "return_pct": -1.9,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TPEX:6187",
+          "name": "萬潤",
+          "return_pct": 2.49,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2360",
+          "name": "致茂",
+          "return_pct": 2.49,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3037",
+          "name": "欣興",
+          "return_pct": -1.02,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:7734",
+          "name": "印能",
+          "return_pct": -1.85,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3680",
+          "name": "家登",
+          "return_pct": -2.88,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3131",
+          "name": "弘塑",
+          "return_pct": -3.07,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3583",
+          "name": "辛耘",
+          "return_pct": -6.28,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "先進封裝設備",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": -2.19,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:7795",
+          "name": "長廣",
+          "return_pct": 2.45,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:7734",
+          "name": "印能",
+          "return_pct": -1.85,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3131",
+          "name": "弘塑",
+          "return_pct": -3.07,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3583",
+          "name": "辛耘",
+          "return_pct": -6.28,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "FOPLP",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": -2.23,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:7734",
+          "name": "印能",
+          "return_pct": -1.85,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CoWoS",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": -2.7,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:7734",
+          "name": "印能",
+          "return_pct": -1.85,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3443",
+          "name": "創意",
+          "return_pct": -5.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "封測",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": -2.81,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2449",
+          "name": "京元電子",
+          "return_pct": -3.6,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": -3.64,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:3035",
+          "name": "智原",
+          "return_pct": -0.67,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科",
+          "return_pct": -3.45,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3661",
+          "name": "世芯-KY",
+          "return_pct": -5.01,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3443",
+          "name": "創意",
+          "return_pct": -5.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "異質運算",
+      "n": 3,
+      "n_traded": 3,
+      "n_excluded": 0,
+      "return_pct": -3.71,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:3035",
+          "name": "智原",
+          "return_pct": -0.67,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3661",
+          "name": "世芯-KY",
+          "return_pct": -5.01,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3443",
+          "name": "創意",
+          "return_pct": -5.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "銅箔基板(PCIe Gen6/7)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 9.9,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6213",
+          "name": "聯茂",
+          "return_pct": 9.9,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "FAU光纖陣列(耦合)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 9.83,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3363",
+          "name": "上詮",
+          "return_pct": 9.83,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "台積電COUPE",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 9.83,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3363",
+          "name": "上詮",
+          "return_pct": 9.83,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CW雷射/EML磊晶(光源)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 8.25,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3081",
+          "name": "聯亞",
+          "return_pct": 8.25,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "銅箔基板(M8/M9)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 7.52,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2383",
+          "name": "台光電",
+          "return_pct": 7.52,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "800G交換器材料",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 7.52,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2383",
+          "name": "台光電",
+          "return_pct": 7.52,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "測試介面/socket",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 6.34,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6515",
+          "name": "穎崴",
+          "return_pct": 6.34,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CPO光電測試",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 6.34,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6515",
+          "name": "穎崴",
+          "return_pct": 6.34,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "毫米波元件",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.93,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3491",
+          "name": "昇達科",
+          "return_pct": 5.93,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "衛星光通訊/直連手機",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.93,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3491",
+          "name": "昇達科",
+          "return_pct": 5.93,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "銅箔基板(M8)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.92,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6274",
+          "name": "台燿",
+          "return_pct": 5.92,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC/800G材料",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.92,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6274",
+          "name": "台燿",
+          "return_pct": 5.92,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "準系統(L10)/機殼",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.74,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": 5.74,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "儲存",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.74,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": 5.74,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "伺服器PCB",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.67,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2368",
+          "name": "金像電",
+          "return_pct": 5.67,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC/800G交換器板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.67,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2368",
+          "name": "金像電",
+          "return_pct": 5.67,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "光纖套件/Shuffle Box(耦合)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.55,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3163",
+          "name": "波若威",
+          "return_pct": 5.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "800V HVDC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.33,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "光收發模組(800G)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.28,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:4979",
+          "name": "華星光",
+          "return_pct": 5.28,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CW雷射(光源)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 5.28,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:4979",
+          "name": "華星光",
+          "return_pct": 5.28,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "光收發模組",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 4.93,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:4908",
+          "name": "前鼎",
+          "return_pct": 4.93,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CPO外置光源(ELS)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 4.93,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:4908",
+          "name": "前鼎",
+          "return_pct": 4.93,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "航運",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 3.93,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2603",
+          "name": "長榮",
+          "return_pct": 5.12,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2609",
+          "name": "陽明",
+          "return_pct": 2.75,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "貨櫃航運",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 3.93,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2603",
+          "name": "長榮",
+          "return_pct": 5.12,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2609",
+          "name": "陽明",
+          "return_pct": 2.75,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "景氣循環",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 3.93,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2603",
+          "name": "長榮",
+          "return_pct": 5.12,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2609",
+          "name": "陽明",
+          "return_pct": 2.75,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI工作站",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 3.82,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": 3.82,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NVIDIA AIC顯卡",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 3.82,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": 3.82,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "BT載板/800G",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 3.49,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:8046",
+          "name": "南電",
+          "return_pct": 3.49,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "車用電源",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 3.18,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6412",
+          "name": "群電",
+          "return_pct": 1.03,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "晶圓代工(22/28nm)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 3.02,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2303",
+          "name": "聯電",
+          "return_pct": 3.02,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "特殊製程",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 3.02,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2303",
+          "name": "聯電",
+          "return_pct": 3.02,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "化合物半導體磊晶(GaAs/InP)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.87,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2455",
+          "name": "全新",
+          "return_pct": 2.87,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "PD/PIN/VCSEL(光源)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.87,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2455",
+          "name": "全新",
+          "return_pct": 2.87,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "Google TPU",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 2.79,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:4979",
+          "name": "華星光",
+          "return_pct": 5.28,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6442",
+          "name": "光聖",
+          "return_pct": 0.31,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "機殼",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.73,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2474",
+          "name": "可成",
+          "return_pct": 2.73,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "金屬機殼/機構件",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.73,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2474",
+          "name": "可成",
+          "return_pct": 2.73,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "記憶體IC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.71,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6531",
+          "name": "愛普",
+          "return_pct": 2.71,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "S-SiCap矽電容(VHM耗材)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.71,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6531",
+          "name": "愛普",
+          "return_pct": 2.71,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "介面IP/高速介面IP",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.51,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6643",
+          "name": "M31",
+          "return_pct": 2.51,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "IC載板(ABF/BT)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.51,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "折疊機板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.51,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "被動元件設備",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.49,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6187",
+          "name": "萬潤",
+          "return_pct": 2.49,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "封裝/點膠設備",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.49,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6187",
+          "name": "萬潤",
+          "return_pct": 2.49,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "面板級自動化",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.49,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6187",
+          "name": "萬潤",
+          "return_pct": 2.49,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "量測測試",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.49,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2360",
+          "name": "致茂",
+          "return_pct": 2.49,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "量測/AOI檢測",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.49,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2360",
+          "name": "致茂",
+          "return_pct": 2.49,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電池/EV測試",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.49,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2360",
+          "name": "致茂",
+          "return_pct": 2.49,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NAND控制IC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.46,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:8299",
+          "name": "群聯",
+          "return_pct": 2.46,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "SSD/aiDAPTIV+",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.46,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:8299",
+          "name": "群聯",
+          "return_pct": 2.46,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "真空壓膜機(ABF/先進封裝)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:7795",
+          "name": "長廣",
+          "return_pct": 2.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "長興集團",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:7795",
+          "name": "長廣",
+          "return_pct": 2.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "整機代工",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.17,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "筆電/車載",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.17,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "工業電腦IPC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.16,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2395",
+          "name": "研華",
+          "return_pct": 2.16,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AIoT/Physical AI",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.16,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2395",
+          "name": "研華",
+          "return_pct": 2.16,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "伺服器電源",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 2.1,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2301",
+          "name": "光寶科",
+          "return_pct": -1.13,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "軟板",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 2.09,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6269",
+          "name": "台郡",
+          "return_pct": 1.67,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "軟板FPC",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 2.09,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6269",
+          "name": "台郡",
+          "return_pct": 1.67,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "蘋果供應鏈",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 2.09,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": 2.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6269",
+          "name": "台郡",
+          "return_pct": 1.67,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "PCB/HDI",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.04,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2367",
+          "name": "燿華",
+          "return_pct": 2.04,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "LEO地面設備板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 2.04,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2367",
+          "name": "燿華",
+          "return_pct": 2.04,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "記憶體",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 2.03,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6531",
+          "name": "愛普",
+          "return_pct": 2.71,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "MEMS探針卡",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.72,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6223",
+          "name": "旺矽",
+          "return_pct": 1.72,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CPO/HBM測試",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.72,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:6223",
+          "name": "旺矽",
+          "return_pct": 1.72,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "高頻天線/AR-VR板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.67,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6269",
+          "name": "台郡",
+          "return_pct": 1.67,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "系統組裝(L11)/電源",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.64,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6117",
+          "name": "迎廣",
+          "return_pct": 1.64,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "HVDC",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 1.56,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 5.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3665",
+          "name": "貿聯-KY",
+          "return_pct": -2.21,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "TLVR",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.56,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6862",
+          "name": "三集瑞-KY",
+          "return_pct": 1.56,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電感",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.56,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6862",
+          "name": "三集瑞-KY",
+          "return_pct": 1.56,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "TLVR穿越電感(美系GPU平台)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.56,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6862",
+          "name": "三集瑞-KY",
+          "return_pct": 1.56,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "伺服器滑軌/導軌",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.52,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2059",
+          "name": "川湖",
+          "return_pct": 1.52,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "機構件",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.52,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2059",
+          "name": "川湖",
+          "return_pct": 1.52,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "雲端",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 1.4,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 2.17,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "記憶體封測",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.35,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "面板級封裝(EFB panel版)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.35,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 1.35,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC伺服器/整機(Helios)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.25,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "超大型CSP",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.25,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 1.25,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "HDI",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 1.24,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2367",
+          "name": "燿華",
+          "return_pct": 2.04,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2313",
+          "name": "華通",
+          "return_pct": 0.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "低壓配電盤/開關箱",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.23,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1514",
+          "name": "亞力",
+          "return_pct": 1.23,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "資料中心配電",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.23,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1514",
+          "name": "亞力",
+          "return_pct": 1.23,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電競(ROG)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.2,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.2,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "高功率電源",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 1.03,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6412",
+          "name": "群電",
+          "return_pct": 1.03,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "熱管/均熱板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.84,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3338",
+          "name": "泰碩",
+          "return_pct": 0.84,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電源供應器",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.74,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3015",
+          "name": "全漢",
+          "return_pct": 0.74,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "氣冷模組",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.73,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3017",
+          "name": "奇鋐",
+          "return_pct": 0.73,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "散熱風扇/馬達",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.68,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2421",
+          "name": "建準",
+          "return_pct": 0.68,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "高速傳輸",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.66,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:5269",
+          "name": "祥碩",
+          "return_pct": 0.66,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "USB/PCIe控制IC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.66,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:5269",
+          "name": "祥碩",
+          "return_pct": 0.66,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "整機代工(GB200/300)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.63,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "SiC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.63,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.63,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "伺服器機殼",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 0.63,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6117",
+          "name": "迎廣",
+          "return_pct": 1.64,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8210",
+          "name": "勤誠",
+          "return_pct": -0.38,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "DRAM(DDR5)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.61,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2408",
+          "name": "南亞科",
+          "return_pct": 0.61,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "HBM布局",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.61,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2408",
+          "name": "南亞科",
+          "return_pct": 0.61,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC伺服器(L10/L11)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.6,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "筆電",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.6,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.6,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "DRAM",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 0.58,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2408",
+          "name": "南亞科",
+          "return_pct": 0.61,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2344",
+          "name": "華邦電",
+          "return_pct": 0.54,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "利基DRAM",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.54,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2344",
+          "name": "華邦電",
+          "return_pct": 0.54,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NOR Flash/CMS",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.54,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2344",
+          "name": "華邦電",
+          "return_pct": 0.54,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "衛星板(市佔~80%)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.44,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2313",
+          "name": "華通",
+          "return_pct": 0.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "HDI/AI眼鏡板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.44,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2313",
+          "name": "華通",
+          "return_pct": 0.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "美國電網",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.39,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1519",
+          "name": "華城",
+          "return_pct": 0.39,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "超高壓變壓器",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.39,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1519",
+          "name": "華城",
+          "return_pct": 0.39,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "輸配電設備",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.39,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1519",
+          "name": "華城",
+          "return_pct": 0.39,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "美國基建",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.39,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1519",
+          "name": "華城",
+          "return_pct": 0.39,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "晶片電阻",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.36,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2492",
+          "name": "華新科",
+          "return_pct": 0.36,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "BT載板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.36,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3189",
+          "name": "景碩",
+          "return_pct": 0.36,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電源供應器/能源整合",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.34,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6282",
+          "name": "康舒",
+          "return_pct": 0.34,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "整機代工(Helios)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.32,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.32,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "光纖跳線/OCS(耦合)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.31,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6442",
+          "name": "光聖",
+          "return_pct": 0.31,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "HBF",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 0.2,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:8299",
+          "name": "群聯",
+          "return_pct": 2.46,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2337",
+          "name": "旺宏",
+          "return_pct": -2.06,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "衛星",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.14,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6526",
+          "name": "達發",
+          "return_pct": 0.14,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "網通SoC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.14,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6526",
+          "name": "達發",
+          "return_pct": 0.14,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "Wi-Fi/衛星定位",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.14,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6526",
+          "name": "達發",
+          "return_pct": 0.14,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "聯發科集團",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.14,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6526",
+          "name": "達發",
+          "return_pct": 0.14,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "車用PCB",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": 0.02,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2367",
+          "name": "燿華",
+          "return_pct": 2.04,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3715",
+          "name": "定穎投控",
+          "return_pct": -1.99,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "變壓器/配電盤",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1503",
+          "name": "士電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "馬達/電梯",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1503",
+          "name": "士電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "儲能",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1513",
+          "name": "中興電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "GIS氣體絕緣開關設備",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1513",
+          "name": "中興電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "統包工程(EPC)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:1513",
+          "name": "中興電",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI伺服器(品牌+代工)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "板卡/電競",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "LEO地面設備",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6285",
+          "name": "啟碁",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "800G交換器/AI-RAN",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6285",
+          "name": "啟碁",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "連接器",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "SOCAMM",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CPU Socket",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "水冷快接頭(UQD)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "CAMM連接器布局",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.0,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": 0.0,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "MLCC",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -0.3,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2492",
+          "name": "華新科",
+          "return_pct": 0.36,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2327",
+          "name": "國巨",
+          "return_pct": -0.95,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "觸控IC/TDDI",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.35,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3545",
+          "name": "敦泰",
+          "return_pct": -0.35,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC機殼",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.38,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:8210",
+          "name": "勤誠",
+          "return_pct": -0.38,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "顯示驅動",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -0.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3545",
+          "name": "敦泰",
+          "return_pct": -0.35,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3034",
+          "name": "聯詠",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "顯示驅動IC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.55,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3034",
+          "name": "聯詠",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "OLED/TDDI",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.55,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3034",
+          "name": "聯詠",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "DPU",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.55,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "白牌交換器(800G/1.6T)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.55,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI加速卡模組",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.55,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "Scale-out",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.55,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -0.55,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "線性傳動(滾珠螺桿/滑軌)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.57,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2049",
+          "name": "上銀",
+          "return_pct": -0.57,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "諧波減速機",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.57,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2049",
+          "name": "上銀",
+          "return_pct": -0.57,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "冷板/CDU液冷",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -0.6,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3017",
+          "name": "奇鋐",
+          "return_pct": 0.73,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3324",
+          "name": "雙鴻",
+          "return_pct": -1.92,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "聯電集團",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.67,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3035",
+          "name": "智原",
+          "return_pct": -0.67,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "晶圓代工(2/3nm)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.81,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "矽中介層",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.81,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "COUPE矽光引擎",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.81,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "HBM4 Base die",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.81,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "護國神山",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.81,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "半導體設備",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -0.81,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2049",
+          "name": "上銀",
+          "return_pct": -0.57,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3413",
+          "name": "京鼎",
+          "return_pct": -1.06,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI PC",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -0.86,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.2,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI伺服器(品牌)",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -0.86,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.2,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "鉭電容/晶片電阻",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.95,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2327",
+          "name": "國巨",
+          "return_pct": -0.95,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "感測器",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -0.95,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2327",
+          "name": "國巨",
+          "return_pct": -0.95,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "玻璃基板研發",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.02,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3037",
+          "name": "欣興",
+          "return_pct": -1.02,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "設備機構件/模組",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.06,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3413",
+          "name": "京鼎",
+          "return_pct": -1.06,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "應材(AMAT)供應鏈",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.06,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3413",
+          "name": "京鼎",
+          "return_pct": -1.06,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "鴻海集團",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.06,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3413",
+          "name": "京鼎",
+          "return_pct": -1.06,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "LED",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.13,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2301",
+          "name": "光寶科",
+          "return_pct": -1.13,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "GPU散熱",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.58,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3653",
+          "name": "健策",
+          "return_pct": -1.58,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "均熱片(IHS)/導線架",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.58,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3653",
+          "name": "健策",
+          "return_pct": -1.58,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "記憶體代工",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.74,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6770",
+          "name": "力積電",
+          "return_pct": -1.74,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "3D Hybrid Bonding",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.74,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6770",
+          "name": "力積電",
+          "return_pct": -1.74,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "先進製程",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -1.85,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -0.81,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3680",
+          "name": "家登",
+          "return_pct": -2.88,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "熱壓/除泡設備(市占傳~80%)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.85,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:7734",
+          "name": "印能",
+          "return_pct": -1.85,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "均熱板",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -1.92,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3324",
+          "name": "雙鴻",
+          "return_pct": -1.92,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NOR Flash",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.06,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2337",
+          "name": "旺宏",
+          "return_pct": -2.06,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NAND(eMMC/MLC)/ROM",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.06,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2337",
+          "name": "旺宏",
+          "return_pct": -2.06,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "高速線纜",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.21,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3665",
+          "name": "貿聯-KY",
+          "return_pct": -2.21,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AEC高速線纜",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.21,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3665",
+          "name": "貿聯-KY",
+          "return_pct": -2.21,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "800V HVDC/連接器",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.21,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3665",
+          "name": "貿聯-KY",
+          "return_pct": -2.21,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電動車(Tesla)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.21,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3665",
+          "name": "貿聯-KY",
+          "return_pct": -2.21,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電源IC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.27,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:5347",
+          "name": "世界先進",
+          "return_pct": -2.27,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "8吋晶圓代工",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.27,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:5347",
+          "name": "世界先進",
+          "return_pct": -2.27,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "PMIC/驅動IC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.27,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:5347",
+          "name": "世界先進",
+          "return_pct": -2.27,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "測試設備(handler)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.35,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:7769",
+          "name": "鴻勁",
+          "return_pct": -2.35,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "水冷快接頭(QDC)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.4,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6805",
+          "name": "富世達",
+          "return_pct": -2.4,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "鉸鏈",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.4,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6805",
+          "name": "富世達",
+          "return_pct": -2.4,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "燃料電池",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.47,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:8996",
+          "name": "高力",
+          "return_pct": -2.47,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "板式熱交換器",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.47,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:8996",
+          "name": "高力",
+          "return_pct": -2.47,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "液冷CDU/熱交換器",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.47,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:8996",
+          "name": "高力",
+          "return_pct": -2.47,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "BMC伺服器管理晶片",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.73,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:5274",
+          "name": "信驊",
+          "return_pct": -2.73,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC設計服務",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -2.84,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3035",
+          "name": "智原",
+          "return_pct": -0.67,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3661",
+          "name": "世芯-KY",
+          "return_pct": -5.01,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "光罩盒(EUV pod)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.88,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3680",
+          "name": "家登",
+          "return_pct": -2.88,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "載具/搬運",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.88,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3680",
+          "name": "家登",
+          "return_pct": -2.88,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "板卡",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.91,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "主機板/顯示卡",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.91,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "電競筆電",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.91,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2399",
+          "name": "微星",
+          "return_pct": -2.91,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "機器視覺(3D/AI)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.07,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2359",
+          "name": "所羅門",
+          "return_pct": -3.07,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "發電機/能源代理",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.07,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2359",
+          "name": "所羅門",
+          "return_pct": -3.07,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "手機SoC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科",
+          "return_pct": -3.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "手機SoC(天璣)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科",
+          "return_pct": -3.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI ASIC設計",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科",
+          "return_pct": -3.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "網通IC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2379",
+          "name": "瑞昱",
+          "return_pct": -3.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "交換器IC/乙太網路",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.45,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2379",
+          "name": "瑞昱",
+          "return_pct": -3.45,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "專業測試(晶圓/成品)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -3.6,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2449",
+          "name": "京元電子",
+          "return_pct": -3.6,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "工業儲存/嵌入式SSD",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -4.66,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:5289",
+          "name": "宜鼎",
+          "return_pct": -4.66,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "工業DRAM模組",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -4.66,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:5289",
+          "name": "宜鼎",
+          "return_pct": -4.66,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "濕製程設備",
+      "n": 2,
+      "n_traded": 2,
+      "n_excluded": 0,
+      "return_pct": -4.68,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3131",
+          "name": "弘塑",
+          "return_pct": -3.07,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3583",
+          "name": "辛耘",
+          "return_pct": -6.28,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "高速運算",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -5.01,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3661",
+          "name": "世芯-KY",
+          "return_pct": -5.01,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "ASIC設計服務(turnkey)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -5.44,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3443",
+          "name": "創意",
+          "return_pct": -5.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "台積電集團",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -5.44,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3443",
+          "name": "創意",
+          "return_pct": -5.44,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "封測代工(FOCoS)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -6.19,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "面板級封裝(EFB wafer版)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -6.19,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "光電共封",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -6.19,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -6.19,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "再生晶圓",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -6.28,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:3583",
+          "name": "辛耘",
+          "return_pct": -6.28,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NVM IP/安全IP",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -6.89,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TPEX:3529",
+          "name": "力旺",
+          "return_pct": -6.89,
+          "excluded": false
+        }
+      ]
+    }
+  ]
+}
