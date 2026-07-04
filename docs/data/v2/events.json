@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-07-05T03:02:10+08:00",
+  "data_through": "2026-07-05",
+  "conference_stale": false,
+  "conference_source_date": "2026-07-05",
+  "macro_count": 2,
+  "conference_count": 2,
+  "events": [
+    {
+      "date": "2026-07-10",
+      "type": "conference",
+      "symbol": "TWSE:2408",
+      "name": "南亞科",
+      "title": "南亞科 法說會(線上法說會)",
+      "importance": "2026年第2季營運狀況說明",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:00",
+      "fetched_at": "2026-07-05T03:02:10+08:00"
+    },
+    {
+      "date": "2026-07-14",
+      "type": "macro",
+      "name": "美國 CPI",
+      "title": "美國 CPI 發布",
+      "importance": "high",
+      "source": "FRED release_id 10",
+      "fetched_at": "2026-07-05T03:02:10+08:00"
+    },
+    {
+      "date": "2026-07-15",
+      "type": "macro",
+      "name": "美國 PPI",
+      "title": "美國 PPI 發布",
+      "importance": "medium",
+      "source": "FRED release_id 46",
+      "fetched_at": "2026-07-05T03:02:10+08:00"
+    },
+    {
+      "date": "2026-07-16",
+      "type": "conference",
+      "symbol": "TWSE:2330",
+      "name": "台積電",
+      "title": "台積電 法說會(台北文華東方酒店B2 文華廳（台北市松山)",
+      "importance": "(1)公布本公司2026年第2季財務報告及2026年第3季業績展望。(2)參加方式：請參見https://investo",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "14:00",
+      "fetched_at": "2026-07-05T03:02:10+08:00"
+    }
+  ]
+}
