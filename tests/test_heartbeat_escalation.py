@@ -107,5 +107,48 @@ class TestUsRefreshEscalation(unittest.TestCase):
         self.assertIn("連續 4 天", msg)
 
 
+class TestTomorrowEventsLine(unittest.TestCase):
+    """stage9 §3.1:Discord 日報「明日事件:N 場法說會、M 項總經數據」。"""
+
+    def _with_events(self, events):
+        import tempfile
+        tmp = tempfile.mkdtemp()
+        os.makedirs(os.path.join(tmp, "docs", "data", "v2"))
+        with open(os.path.join(tmp, "docs", "data", "v2", "events.json"), "w",
+                  encoding="utf-8") as f:
+            json.dump({"events": events}, f)
+        return tmp
+
+    def test_counts_tomorrow_only(self):
+        from datetime import datetime, timezone, timedelta
+        tz = timezone(timedelta(hours=8))
+        tomorrow = (datetime.now(tz).date() + timedelta(days=1)).isoformat()
+        day_after = (datetime.now(tz).date() + timedelta(days=2)).isoformat()
+        events = [
+            {"date": tomorrow, "type": "conference", "symbol": "TWSE:2330"},
+            {"date": tomorrow, "type": "conference", "symbol": "TWSE:2408"},
+            {"date": tomorrow, "type": "macro", "name": "CPI"},
+            {"date": day_after, "type": "macro", "name": "PPI"},   # 後天,不算
+        ]
+        tmp = self._with_events(events)
+        orig = ds.PROJECT_ROOT
+        ds.PROJECT_ROOT = tmp
+        try:
+            line = ds._tomorrow_events_line()
+        finally:
+            ds.PROJECT_ROOT = orig
+        self.assertIn("2 場法說會", line)
+        self.assertIn("1 項總經", line)
+
+    def test_none_when_no_tomorrow_events(self):
+        tmp = self._with_events([{"date": "2020-01-01", "type": "macro", "name": "x"}])
+        orig = ds.PROJECT_ROOT
+        ds.PROJECT_ROOT = tmp
+        try:
+            self.assertIsNone(ds._tomorrow_events_line())
+        finally:
+            ds.PROJECT_ROOT = orig
+
+
 if __name__ == "__main__":
     unittest.main()

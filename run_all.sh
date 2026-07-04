@@ -195,6 +195,12 @@ try_step prepare_charts_v2 python3 src/prepare_charts_v2.py \
 echo "[8.5/10] 產 site_meta.json(渲染單一資料源)..."
 try_step site_meta python3 -m src.site_meta --date "$DATA_DATE"
 
+# ── [8.6] fetch_events (stage9 §3.1 事件中樞:FRED 總經 + FOMC + Playwright 法說會)─
+# 非阻斷:events 是 client-fetch 側功能,第四道護欄保證 events.json 一定產出
+# (抓取失敗保留前一日 + stale),故用 run_step 不設 ABORT_AFTER,失敗不擋主儀表板發布。
+echo "[8.6/10] 抓事件中樞(events.json:總經日曆 + 法說會)..."
+run_step fetch_events python3 -m src.fetch_events
+
 # ── [9] render_v2 (live + 日期 snapshot + watchlist + history + landing) ────
 echo "[9/10] 渲染 V2 儀表板(7 區塊 + 入口頁 + 歷史索引)..."
 render_v2_all() {

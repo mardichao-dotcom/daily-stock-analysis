@@ -276,12 +276,37 @@ def _build_message(status: dict) -> str:
                 publish_step = s
                 break
 
+    # stage9 §3.1:明日事件一行
+    ev_line = _tomorrow_events_line()
+    if ev_line:
+        lines.append(ev_line)
+
     if publish_step and publish_step["status"] == "ok":
         lines.append(f"🔗 {DASHBOARD_URL}")
     else:
         lines.append(f"🔗 {DASHBOARD_URL}（今日未更新）")
 
     return "\n".join(lines)
+
+def _tomorrow_events_line() -> str | None:
+    """stage9 §3.1:讀 events.json,回「明日事件:N 場法說會、M 項總經數據」。無則 None。"""
+    path = os.path.join(PROJECT_ROOT, "docs", "data", "v2", "events.json")
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, encoding="utf-8") as f:
+            ev = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return None
+    tomorrow = (datetime.now(TZ_TAIPEI).date() + timedelta(days=1)).isoformat()
+    conf = sum(1 for e in ev.get("events", [])
+               if e.get("type") == "conference" and e.get("date") == tomorrow)
+    macro = sum(1 for e in ev.get("events", [])
+                if e.get("type") == "macro" and e.get("date") == tomorrow)
+    if conf == 0 and macro == 0:
+        return None
+    return f"📅 明日事件:{conf} 場法說會、{macro} 項總經數據"
+
 
 def _check_us_refresh_escalation(status: dict) -> str | None:
     """追蹤 us_refresh 連續失敗(跨天,持久化 state/us_refresh_streak.json)。

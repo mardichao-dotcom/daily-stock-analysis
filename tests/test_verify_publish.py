@@ -24,6 +24,21 @@ US_JSON = json.dumps({"key_prices": {"lines": [1, 2, 3, 4, 5, 6, 7, 8, 9]}})
 OK_JSON = json.dumps({"key_prices": {"lines": []}})
 
 
+def _fresh_events_json():
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    return json.dumps({
+        "generated_at": now, "conference_stale": False,
+        "conference_source_date": DATE,
+        "events": [
+            {"date": "2026-07-16", "type": "conference", "symbol": "TWSE:2330",
+             "name": "台積電", "title": "法說會", "importance": ""},
+            {"date": "2026-07-14", "type": "macro", "name": "CPI",
+             "title": "CPI", "importance": "high"},
+        ],
+    })
+
+
 def make_fetch(overrides=None):
     """回一個 fetch(url)->(code, body);overrides 可覆寫特定 URL 的回應。"""
     overrides = overrides or {}
@@ -33,6 +48,8 @@ def make_fetch(overrides=None):
             return overrides[url]
         if url.endswith("site_meta.json"):
             return 200, json.dumps(SITE_META)
+        if url.endswith("events.json"):
+            return 200, _fresh_events_json()
         if url.endswith("history.html"):
             return 200, GOOD_HISTORY
         if url.endswith("NYSE_TSM.json"):
@@ -83,6 +100,27 @@ class TestVerifyPublish(unittest.TestCase):
         f = make_fetch({f"{BASE}/watchlist_v2.html": (200, bad)})
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("台股檔數" in e for e in errors))
+
+    def test_events_404_caught(self):
+        f = make_fetch({f"{BASE}/data/v2/events.json": (404, "")})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("events.json HTTP 404" in e for e in errors))
+
+    def test_events_stale_generated_at_caught(self):
+        stale = json.dumps({"generated_at": "2020-01-01T00:00:00+08:00",
+                            "events": []})
+        f = make_fetch({f"{BASE}/data/v2/events.json": (200, stale)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("generated_at 超過 24h" in e for e in errors))
+
+    def test_events_conference_missing_field_caught(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone(timedelta(hours=8))).isoformat()
+        bad = json.dumps({"generated_at": now, "events": [
+            {"date": "2026-07-16", "type": "conference", "name": "缺symbol"}]})
+        f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("法說會條目缺欄位" in e for e in errors))
 
 
 if __name__ == "__main__":

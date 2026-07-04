@@ -21,6 +21,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -109,7 +110,45 @@ def run_checks(base: str, data_date: str, *, fetch=_fetch) -> list[str]:
     if "<strong></strong>" in page_html.get("index_v2.html", ""):
         errors.append("index_v2.html 含空白 <strong></strong>(ETF 名稱缺漏)")
 
+    # ── 6:events.json 新鮮度 + 結構(stage9 §3.1/§5)──
+    errors.extend(_check_events(base, fetch))
+
     return errors
+
+
+def _check_events(base: str, fetch) -> list[str]:
+    """events.json 斷言:200、generated_at 24h 內、結構完整、conference 抽驗欄位。
+    (§2.1 護欄②「抽 3 筆對 MOPS」為人工覆核;此處做機器可驗的結構/新鮮度。)"""
+    errs: list[str] = []
+    code, body = fetch(f"{base}/data/v2/events.json")
+    if code != 200:
+        return [f"events.json HTTP {code}"]
+    try:
+        ev = json.loads(body)
+    except json.JSONDecodeError:
+        return ["events.json 非合法 JSON"]
+    # 新鮮度:generated_at 在 24h 內
+    ga = ev.get("generated_at", "")
+    try:
+        gen = datetime.fromisoformat(ga)
+        now = datetime.now(gen.tzinfo)
+        if (now - gen).total_seconds() > 24 * 3600:
+            errs.append(f"events.json generated_at 超過 24h({ga})")
+    except (ValueError, TypeError):
+        errs.append(f"events.json generated_at 格式異常({ga!r})")
+    # 結構:events 為 list;conference 抽 3 筆有 date/symbol/name
+    events = ev.get("events")
+    if not isinstance(events, list):
+        return errs + ["events.json events 非 list"]
+    confs = [e for e in events if e.get("type") == "conference"]
+    for e in confs[:3]:
+        if not (e.get("date") and e.get("symbol") and e.get("name")):
+            errs.append(f"events.json 法說會條目缺欄位:{e.get('symbol') or e}")
+    # 若標記 stale,提示(不算 fail — 第四道護欄設計為保留舊資料)
+    if ev.get("conference_stale"):
+        print(f"[verify_publish] ⚠️ events.json 法說會為 stale"
+              f"(source {ev.get('conference_source_date')})— 第四道護欄啟用")
+    return errs
 
 
 def _notify_fail(errors: list[str], data_date: str) -> None:
