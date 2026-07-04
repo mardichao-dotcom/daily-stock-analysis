@@ -550,11 +550,14 @@ def load_status_map(date: str, docs_root: Path | None = None) -> dict:
         return {}
 
 
-def render(filtered_result: dict, status_map: dict | None = None) -> str:
+def render(filtered_result: dict, status_map: dict | None = None,
+           recompute_note: str = "") -> str:
     """產出完整 HTML 字串。
 
     status_map: from load_status_map(date),per-symbol status from _index.json
     若 None,則自動讀 docs/data/v2/{date}/_index.json。
+    recompute_note: 非空時在頁首插入「事後重算」橫幅(停更期間回補 snapshot 用),
+                    live 頁不傳此參數,行為不變。
     """
     date = filtered_result.get("date", "?")
     stocks = filtered_result.get("stocks", {})
@@ -606,7 +609,7 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
   <link rel="stylesheet" href="assets/style_v2.css">
 </head>
 <body>
-
+{('<div style="background:#78350f;color:#fde68a;padding:10px 16px;text-align:center;font-size:13px">⚠️ ' + _h(recompute_note) + '</div>') if recompute_note else ''}
 <header class="page-header">
   <div class="container">
     <nav class="page-nav">
@@ -617,7 +620,7 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
     </nav>
     <h1>🧭 台股右側動能作戰儀表板</h1>
     <div class="meta">
-      資料日期 <strong>{_h(date)}</strong> ｜ 規則 {_h(sm_rule)} ｜ 台股 {sm_tw} 檔{sm_skip_txt} ｜ 產出時間 {generated_at}
+      資料日期 <strong>{_h(date)}</strong> ｜ 規則 {_h(sm_rule)} ｜ 台股 {sm_tw} 檔{sm_skip_txt} ｜ 產出時間 {generated_at}{' ｜ <strong style=color:#f59e0b>' + _h(recompute_note) + '</strong>' if recompute_note else ''}
     </div>
   </div>
 </header>
@@ -632,8 +635,10 @@ def render(filtered_result: dict, status_map: dict | None = None) -> str:
 </html>"""
 
 
-def write_summary(filtered_result: dict, outdir: Path) -> Path | None:
-    """寫 docs/data/v2/{date}/_summary.json = {S,A,B,etf_inc,etf_dec}(§6.1#1 history 摘要)。"""
+def write_summary(filtered_result: dict, outdir: Path,
+                  recomputed: str = "") -> Path | None:
+    """寫 docs/data/v2/{date}/_summary.json = {S,A,B,etf_inc,etf_dec}(§6.1#1 history 摘要)。
+    recomputed 非空時加註記(停更回補),render_history 據此在該日標「事後重算」。"""
     date = filtered_result.get("date")
     if not date:
         return None
@@ -646,6 +651,8 @@ def write_summary(filtered_result: dict, outdir: Path) -> Path | None:
     summary = {**counts,
                "etf_inc": len(ea.get("increase", [])),
                "etf_dec": len(ea.get("decrease", []))}
+    if recomputed:
+        summary["recomputed"] = recomputed
     day_dir = outdir / date
     day_dir.mkdir(parents=True, exist_ok=True)
     path = day_dir / "_summary.json"
@@ -659,12 +666,14 @@ def main():
     parser.add_argument("--date",   required=True)
     parser.add_argument("--result", default=str(PROJECT_ROOT / "filtered_result_v2.json"))
     parser.add_argument("--output", default=str(PROJECT_ROOT / "docs" / "index_v2.html"))
+    parser.add_argument("--recompute-note", dest="recompute_note", default="",
+                        help="非空 → 頁首加事後重算橫幅 + _summary 標記(停更回補用)")
     args = parser.parse_args()
 
     with open(args.result, encoding="utf-8") as f:
         filtered_result = json.load(f)
 
-    html = render(filtered_result)
+    html = render(filtered_result, recompute_note=args.recompute_note)
 
     out_path = Path(args.output)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -673,7 +682,10 @@ def main():
     print(f"✅ 寫入 {out_path}")
 
     # §6.1#1 history 摘要來源:寫 per-date _summary.json(S/A/B + ETF),供 render_history 讀
-    write_summary(filtered_result, PROJECT_ROOT / "docs" / "data" / "v2")
+    # 回補模式把重算日期記進 _summary,render_history 據此標「事後重算」
+    recomputed = "2026-07-04" if args.recompute_note else ""
+    write_summary(filtered_result, PROJECT_ROOT / "docs" / "data" / "v2",
+                  recomputed=recomputed)
 
 
 if __name__ == "__main__":

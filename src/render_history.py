@@ -116,10 +116,13 @@ def weekday_zh(date_str: str) -> str:
 
 def render_item(date_str: str, summary: dict) -> str:
     wd = weekday_zh(date_str)
+    recomputed = ""
     if summary:
         sab = f"S {summary.get('S', 0)} / A {summary.get('A', 0)} / B {summary.get('B', 0)}"
         if "etf_inc" in summary and "etf_dec" in summary:
             sab += f" ｜ ETF 加 {summary['etf_inc']} 減 {summary['etf_dec']}"
+        if summary.get("recomputed"):
+            recomputed = f'<span class="history-recomputed" style="color:#f59e0b;font-size:11px">⚠️ {_h(summary["recomputed"])} 事後重算</span>'
     else:
         sab = "(無摘要)"
     return f"""
@@ -127,6 +130,7 @@ def render_item(date_str: str, summary: dict) -> str:
   <span class="history-date">{_h(date_str)}</span>
   <span class="history-day">{_h(wd)}</span>
   <span class="history-summary">{_h(sab)}</span>
+  {recomputed}
 </a>"""
 
 
