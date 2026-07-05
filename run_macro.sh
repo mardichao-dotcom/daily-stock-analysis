@@ -31,14 +31,16 @@ fi
 # ── [2] publish 輕量(git pull --rebase 防 Actions 並行衝突)───────────────────
 echo "[macro 2/3] publish 輕量(git pull --rebase)..."
 publish_macro() {
-    git pull --rebase origin main || { echo "git pull --rebase 失敗"; return 1; }
+    # 先 commit 本輪 macro 檔(fetch_macro 剛改了 macro.json),再 rebase:
     git add -f docs/data/v2/macro.json docs/assets/events.js docs/assets/style_v2.css \
         config/news_keywords.json 2>/dev/null || true
     if git diff --cached --quiet; then
-        echo "      無變更,跳過 commit"
+        echo "      無變更,仍嘗試同步 origin"
     else
         git commit -m "macro $(date +%Y-%m-%d) 總經快覽更新"
     fi
+    # ★ pull --rebase --autostash:並行期防衝突;--autostash 處理無關的未暫存檔(如 state/)
+    git pull --rebase --autostash origin main || { echo "git pull --rebase 失敗"; return 1; }
     git push origin main
 }
 publish_macro
