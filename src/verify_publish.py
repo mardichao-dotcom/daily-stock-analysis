@@ -116,6 +116,9 @@ def run_checks(base: str, data_date: str, *, fetch=_fetch) -> list[str]:
     # ── 7:weekly.json/html 週報斷言(stage9 §3.3)──
     errors.extend(_check_weekly(base, fetch))
 
+    # ── 8:chips 籌碼結構斷言(stage9 §3.5)──
+    errors.extend(_check_chips(base, data_date, fetch))
+
     return errors
 
 
@@ -206,6 +209,49 @@ def _check_weekly(base: str, fetch) -> list[str]:
         errs.append(f"weekly.html HTTP {hcode}")
     elif "每週市場情緒週報" not in hbody:
         errs.append("weekly.html 缺週報標題(渲染異常)")
+    return errs
+
+
+def _check_chips(base: str, data_date: str, fetch) -> list[str]:
+    """§3.5 籌碼:抽一檔上市 watchlist chart JSON。含 chips → 驗陣列長度一致;
+    缺 chips → 警示不 fail(N/A 護欄:當日 fetch_chips 失敗不應擋整體發布)。
+    「抽 3 檔對證交所官網」屬人工覆核(同 events 對 MOPS)。"""
+    code, body = fetch(f"{base}/data/v2/{data_date}/_index.json")
+    if code != 200:
+        return []                              # 缺 index 由既有檢查涵蓋,不重複報
+    try:
+        idx = json.loads(body)
+    except json.JSONDecodeError:
+        return []
+    syms = idx.get("symbols", {}) or {}
+    tw = sorted(k for k, v in syms.items()
+                if k.startswith("TWSE_") and (v or {}).get("status") == "ready")
+    if not tw:
+        tw = sorted(s for s in idx.get("stocks", []) if str(s).startswith("TWSE_"))
+    if not tw:
+        return []
+    sample = tw[0]
+    c2, b2 = fetch(f"{base}/data/v2/{data_date}/{sample}.json")
+    if c2 != 200:
+        return [f"chips 抽樣 {sample}.json HTTP {c2}"]
+    try:
+        j = json.loads(b2)
+    except json.JSONDecodeError:
+        return [f"chips 抽樣 {sample}.json 非合法 JSON"]
+    chips = j.get("chips")
+    if not chips:
+        print(f"[verify_publish] ⚠️ {sample} 無 chips(fetch_chips 當日失敗/尚未建),N/A 護欄放行")
+        return []
+    errs: list[str] = []
+    dates = chips.get("dates", [])
+    if not dates:
+        errs.append(f"chips {sample} dates 空")
+    for key in ("foreign_net", "trust_net"):
+        arr = chips.get(key)
+        if not isinstance(arr, list) or len(arr) != len(dates):
+            errs.append(f"chips {sample} {key} 長度不符 dates({len(dates)})")
+    if not errs:
+        print(f"[verify_publish] ✅ chips 抽樣 {sample}:{len(dates)} 日,外資/投信長度一致")
     return errs
 
 

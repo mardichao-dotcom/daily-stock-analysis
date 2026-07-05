@@ -2079,5 +2079,25 @@
       "category": "inner_support",
       "price": "521"
     }
-  ]
+  ],
+  "chips": {
+    "unit": "張",
+    "dates": [
+      "2026-07-03"
+    ],
+    "foreign_net": [
+      -67
+    ],
+    "trust_net": [
+      0
+    ],
+    "margin": [
+      2364
+    ],
+    "trust_markers": [],
+    "large_holder": {
+      "date": "2026-07-03",
+      "ratio": 33.83
+    }
+  }
 }

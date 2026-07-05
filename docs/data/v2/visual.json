@@ -56,5 +56,6 @@
     }
   },
   "etf_arrow_buy": "#3b82f6",
-  "etf_arrow_sell": "#ef4444"
+  "etf_arrow_sell": "#ef4444",
+  "chip_trust_buy": "#f97316"
 }

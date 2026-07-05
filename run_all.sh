@@ -105,7 +105,7 @@ if ! curl -s -m 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
             --step tv_collect --status fail --duration 0 \
             --note "CDP port 9222 not responding (auto-recovery failed)"
         for s in daily_update import_kline \
-                  run_filters_v2 prepare_charts_v2 site_meta render_v2 publish; do
+                  run_filters_v2 fetch_chips prepare_charts_v2 site_meta render_v2 publish; do
             skip_step "$s" "CDP 不通"
         done
         python3 src/status_writer.py --finish --tool "$TOOL"
@@ -184,6 +184,12 @@ echo "[7/10] 跑 V2 計分(rule v2.2)..."
 try_step run_filters_v2 python3 src/run_filters_v2.py \
     --date "$DATA_DATE" --kline "$KLINE_DB" --etf "$ETF_DB" \
     --output filtered_result_v2.json
+
+# ── [7.5] fetch_chips (stage9 §3.5 籌碼:三大法人+融資券+千張大戶 → kline.db chips 表)─
+# 非阻斷:籌碼是個股卡純顯示功能,任一來源失敗標 N/A 不冒充,不擋主儀表板發布。
+# 須在 prepare_charts_v2 之前(圖表 JSON 會嵌入 chips)。TDCC 每週五自動抓。
+echo "[7.5/10] 抓籌碼面(三大法人/融資/千張大戶,全市場過濾 watchlist)..."
+run_step fetch_chips python3 -m src.fetch_chips --date "$DATA_DATE"
 
 # ── [8] prepare_charts_v2 (V2 全 watchlist chart JSON + _index.json status) ──
 echo "[8/10] 準備 V2 圖表資料(全 watchlist + waiting_us_close 標記)..."

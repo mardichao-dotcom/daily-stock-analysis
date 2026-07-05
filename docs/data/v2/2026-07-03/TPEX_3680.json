@@ -2185,5 +2185,25 @@
       "category": "order_block",
       "price": "479.0-501.0"
     }
-  ]
+  ],
+  "chips": {
+    "unit": "張",
+    "dates": [
+      "2026-07-03"
+    ],
+    "foreign_net": [
+      243
+    ],
+    "trust_net": [
+      -348
+    ],
+    "margin": [
+      3881
+    ],
+    "trust_markers": [],
+    "large_holder": {
+      "date": "2026-07-03",
+      "ratio": 43.32
+    }
+  }
 }

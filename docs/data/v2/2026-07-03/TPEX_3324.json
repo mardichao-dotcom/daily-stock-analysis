@@ -2387,5 +2387,30 @@
       "category": "support_transfer",
       "price": "1095"
     }
-  ]
+  ],
+  "chips": {
+    "unit": "張",
+    "dates": [
+      "2026-07-03"
+    ],
+    "foreign_net": [
+      110
+    ],
+    "trust_net": [
+      1
+    ],
+    "margin": [
+      5477
+    ],
+    "trust_markers": [
+      {
+        "time": "2026-07-03",
+        "value": 1
+      }
+    ],
+    "large_holder": {
+      "date": "2026-07-03",
+      "ratio": 27.55
+    }
+  }
 }

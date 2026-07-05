@@ -267,6 +267,15 @@
       }
     });
 
+    // 投信買超 K 線標記(§3.5,橘色圓點——不與紅漲綠跌 K 棒/事件、ETF 藍箭頭衝突)
+    const trustMarkColor = visual.chip_trust_buy || '#f97316';
+    (data.chips?.trust_markers || []).forEach(m => {
+      allMarkers.push({
+        time: m.time, position: 'belowBar', color: trustMarkColor,
+        shape: 'circle', text: '投',
+      });
+    });
+
     // ETF 箭頭(▲ 買單色 / ▼ 賣單色,2026-06-01 朋友確認不分 ETF 顏色)
     const etfBuyColor  = visual.etf_arrow_buy  || '#3b82f6';
     const etfSellColor = visual.etf_arrow_sell || '#ef4444';
@@ -333,10 +342,15 @@
         + `<span class="legend-item"><span class="legend-arrow" style="color:${etfSellColor}">▼</span> ETF 減碼</span>`
         + `<span class="legend-count">(${etfEventCount} 筆 ETF 動作)</span>`
       : `<span class="legend-note">過去 ${data.ohlcv.length} 天無 ETF 動作</span>`;
+    const trustMarkCount = (data.chips?.trust_markers || []).length;
+    const trustNote = trustMarkCount > 0
+      ? `<span class="legend-item"><span class="legend-arrow" style="color:${trustMarkColor}">●</span> 投信買超</span>`
+      : '';
     legend.innerHTML =
       `<span class="legend-item"><span class="legend-dot up">🟢</span> 站穩</span>`
       + `<span class="legend-item"><span class="legend-dot down">🔴</span> 跌破</span>`
       + etfNote
+      + trustNote
       + `<span class="legend-count">(${eventCount} 筆站穩/跌破事件)</span>`;
     // P0-A:資料晚於 data_date(美股 19:00 台北跑時晚一個交易日)→ 灰色標註「資料至 MM-DD」
     if (data.data_through && data.data_date && data.data_through < data.data_date) {
@@ -344,6 +358,56 @@
         `<span class="legend-stale">資料至 ${data.data_through}</span>`;
     }
     container.appendChild(legend);
+
+    // ─── 籌碼小區(§3.5:近 20 日外資/投信買賣超柱狀 + 融資餘額 + 千張大戶,純顯示)───
+    function renderChips(chips) {
+      if (!chips || !Array.isArray(chips.dates) || chips.dates.length === 0) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'chips-section';
+
+      const holder = chips.large_holder;
+      const marginVals = (chips.margin || []).filter(v => v != null);
+      const marginLast = marginVals.length ? marginVals[marginVals.length - 1] : null;
+      const head = document.createElement('div');
+      head.className = 'chips-head';
+      head.innerHTML =
+        `<span class="chips-title">📊 籌碼(近 ${chips.dates.length} 日,單位 張)</span>`
+        + (holder ? `<span class="chips-kv">千張大戶 <b>${holder.ratio}%</b></span>` : '')
+        + (marginLast != null
+            ? `<span class="chips-kv">融資餘額 <b>${Number(marginLast).toLocaleString()}</b> 張`
+              + (marginVals.length < 2 ? '<i>（趨勢累積中）</i>' : '') + '</span>'
+            : '');
+      wrap.appendChild(head);
+      container.appendChild(wrap);
+
+      function miniHist(title, values) {
+        const row = document.createElement('div');
+        row.className = 'chips-mini';
+        row.innerHTML = `<span class="chips-mini-label">${title}</span>`;
+        const el = document.createElement('div');
+        el.className = 'chips-mini-chart';
+        row.appendChild(el);
+        wrap.appendChild(row);
+        const c = LightweightCharts.createChart(el, {
+          width: el.clientWidth || 620, height: 74,
+          layout: { background: { color: '#fff' }, textColor: '#94a3b8', fontSize: 9 },
+          grid: { vertLines: { visible: false }, horzLines: { color: '#f5f5f5' } },
+          timeScale: { visible: false, borderVisible: false },
+          rightPriceScale: { borderVisible: false },
+          handleScroll: false, handleScale: false,
+          crosshair: { horzLine: { visible: false }, vertLine: { visible: false } },
+        });
+        const h = c.addHistogramSeries({ priceFormat: { type: 'volume' }, base: 0 });
+        h.setData(chips.dates.map((d, i) => ({
+          time: d, value: values[i] == null ? 0 : values[i],
+          color: (values[i] || 0) >= 0 ? '#ef4444' : '#10b981',   // 買超紅/賣超綠(同紅漲綠跌語意)
+        })));
+        c.timeScale().fitContent();
+      }
+      miniHist('外資', chips.foreign_net || []);
+      miniHist('投信', chips.trust_net || []);
+    }
+    renderChips(data.chips);
 
     // Tooltip for ETF events on hover
     const tooltip = document.createElement('div');

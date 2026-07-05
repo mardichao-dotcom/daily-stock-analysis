@@ -82,6 +82,41 @@ def load_etf_events(conn: sqlite3.Connection, symbol: str,
     ]
 
 
+def load_chips(conn: sqlite3.Connection, symbol: str, date: str,
+               lookback: int = 20) -> dict | None:
+    """載入近 lookback 交易日籌碼(§3.5,純顯示)。外資/投信買賣超轉張(股數/1000)。
+    chips 表可能尚未建(fetch_chips 未跑)→ 回 None,不阻斷出圖。"""
+    try:
+        cur = conn.execute(
+            "SELECT date, foreign_net, trust_net, margin_balance FROM chips "
+            "WHERE symbol = ? AND date <= ? ORDER BY date DESC LIMIT ?",
+            (symbol, date, lookback))
+        rows = cur.fetchall()
+    except sqlite3.OperationalError:
+        return None
+    if not rows:
+        return None
+    rows.reverse()
+    dates = [r[0] for r in rows]
+    def to_lot(v):
+        return round(v / 1000) if v is not None else None
+    foreign = [to_lot(r[1]) for r in rows]
+    trust = [to_lot(r[2]) for r in rows]
+    margin = [r[3] for r in rows]
+    trust_markers = [{"time": d, "value": t} for d, t in zip(dates, trust) if t and t > 0]
+    holder = None
+    try:
+        h = conn.execute(
+            "SELECT date, ratio FROM chips_holder WHERE symbol = ? AND date <= ? "
+            "ORDER BY date DESC LIMIT 1", (symbol, date)).fetchone()
+        if h:
+            holder = {"date": h[0], "ratio": h[1]}
+    except sqlite3.OperationalError:
+        pass
+    return {"unit": "張", "dates": dates, "foreign_net": foreign, "trust_net": trust,
+            "margin": margin, "trust_markers": trust_markers, "large_holder": holder}
+
+
 # ── MA arrays 計算 ────────────────────────────────────────────────────────────
 
 def compute_ma_arrays(kline: list[dict],
@@ -261,6 +296,7 @@ def build_chart_for_stock(
         "key_prices": kp,
         "key_prices_source": kp_source,
         "events":    events,
+        "chips":     load_chips(conn_kline, symbol, date),   # §3.5 籌碼(純顯示,可為 None)
     }
 
 

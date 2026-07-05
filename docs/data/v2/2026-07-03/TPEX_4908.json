@@ -2094,5 +2094,25 @@
       "category": "key_price",
       "price": "220.5"
     }
-  ]
+  ],
+  "chips": {
+    "unit": "張",
+    "dates": [
+      "2026-07-03"
+    ],
+    "foreign_net": [
+      -414
+    ],
+    "trust_net": [
+      0
+    ],
+    "margin": [
+      3542
+    ],
+    "trust_markers": [],
+    "large_holder": {
+      "date": "2026-07-03",
+      "ratio": 44.3
+    }
+  }
 }
