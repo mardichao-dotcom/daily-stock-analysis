@@ -801,7 +801,8 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   border-radius: 8px; padding: 8px 12px; margin: 8px 0; font-size: 13px; }
 .wk-src { color: var(--text-mute); font-size: 12px; margin-top: 16px; }
 /* ─── 個股卡籌碼小區(§3.5)─── */
-.chips-section { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border); }
+.chips-section { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border);
+  width: 100%; align-self: stretch; box-sizing: border-box; }
 .chips-head { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: baseline;
   font-size: 12px; color: var(--text-mute); margin-bottom: 4px; }
 .chips-title { font-weight: 600; color: var(--text); }

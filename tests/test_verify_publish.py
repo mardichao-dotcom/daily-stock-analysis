@@ -56,6 +56,18 @@ def _fresh_weekly_json():
 
 WEEKLY_HTML = '<h1>📅 每週市場情緒週報</h1>'
 
+CHIPS_INDEX = json.dumps({"date": DATE, "symbols": {"TWSE_2345": {"status": "ready"}},
+                          "stocks": ["TWSE_2345"]})
+
+
+def _chips_chart_json(foreign=None):
+    return json.dumps({"symbol": "TWSE:2345", "chips": {
+        "dates": ["2026-07-01", "2026-07-02", "2026-07-03"],
+        "foreign_net": foreign if foreign is not None else [10, -5, 3],
+        "trust_net": [1, 2, -1], "margin": [100, 101, 102],
+        "trust_markers": [{"time": "2026-07-01", "value": 1}],
+        "large_holder": {"date": DATE, "ratio": 57.0}}})
+
 
 def make_fetch(overrides=None):
     """回一個 fetch(url)->(code, body);overrides 可覆寫特定 URL 的回應。"""
@@ -70,6 +82,10 @@ def make_fetch(overrides=None):
             return 200, _fresh_events_json()
         if url.endswith("weekly.json"):
             return 200, _fresh_weekly_json()
+        if url.endswith("_index.json"):
+            return 200, CHIPS_INDEX
+        if url.endswith("TWSE_2345.json"):
+            return 200, _chips_chart_json()
         if url.endswith("history.html"):
             return 200, GOOD_HISTORY
         if url.endswith("weekly.html"):
@@ -184,6 +200,19 @@ class TestVerifyPublish(unittest.TestCase):
         f = make_fetch({f"{BASE}/weekly.html": (200, "<h1>錯的頁</h1>")})
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("weekly.html 缺週報標題" in e for e in errors))
+
+    # ── 籌碼斷言(§3.5)──
+    def test_chips_malformed_length_caught(self):
+        bad = _chips_chart_json(foreign=[10, -5])   # 長度 2 ≠ dates 3
+        f = make_fetch({f"{BASE}/data/v2/{DATE}/TWSE_2345.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("chips TWSE_2345 foreign_net 長度不符" in e for e in errors))
+
+    def test_chips_absent_is_soft(self):
+        nochips = json.dumps({"symbol": "TWSE:2345"})   # 無 chips → N/A 護欄放行
+        f = make_fetch({f"{BASE}/data/v2/{DATE}/TWSE_2345.json": (200, nochips)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertEqual([e for e in errors if "chips" in e], [])
 
 
 if __name__ == "__main__":

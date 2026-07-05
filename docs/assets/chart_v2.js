@@ -362,6 +362,9 @@
     // ─── 籌碼小區(§3.5:近 20 日外資/投信買賣超柱狀 + 融資餘額 + 千張大戶,純顯示)───
     function renderChips(chips) {
       if (!chips || !Array.isArray(chips.dates) || chips.dates.length === 0) return;
+      // container(.chart-placeholder)是 flex row → 塞進去會被擠成窄欄;改掛到卡片 body 的區塊流。
+      const host = container.closest('.card-body') || container.parentElement || container;
+      host.querySelectorAll(':scope > .chips-section').forEach(e => e.remove());  // 去重(重渲染)
       const wrap = document.createElement('div');
       wrap.className = 'chips-section';
 
@@ -378,7 +381,7 @@
               + (marginVals.length < 2 ? '<i>（趨勢累積中）</i>' : '') + '</span>'
             : '');
       wrap.appendChild(head);
-      container.appendChild(wrap);
+      host.appendChild(wrap);
 
       function miniHist(title, values) {
         const row = document.createElement('div');
@@ -388,8 +391,9 @@
         el.className = 'chips-mini-chart';
         row.appendChild(el);
         wrap.appendChild(row);
+        const cw = Math.max((host.clientWidth || 660) - 44, 200);
         const c = LightweightCharts.createChart(el, {
-          width: el.clientWidth || 620, height: 74,
+          width: el.clientWidth || cw, height: 74,
           layout: { background: { color: '#fff' }, textColor: '#94a3b8', fontSize: 9 },
           grid: { vertLines: { visible: false }, horzLines: { color: '#f5f5f5' } },
           timeScale: { visible: false, borderVisible: false },

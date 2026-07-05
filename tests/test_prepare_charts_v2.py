@@ -281,7 +281,7 @@ class TestBuildChartForStock(unittest.TestCase):
         # top-level keys(P0-A 加 data_through,P0-B 加 key_prices_source)
         required = {"code", "symbol", "name", "sector", "market",
                     "data_date", "data_through", "version", "ohlcv", "ma",
-                    "etf_events", "key_prices", "key_prices_source", "events"}
+                    "etf_events", "key_prices", "key_prices_source", "events", "chips"}
         self.assertEqual(set(chart.keys()), required)
         # snapshot 路徑(stock_entry 帶 key_prices_snapshot)標 "snapshot"
         self.assertEqual(chart["key_prices_source"], "snapshot")
