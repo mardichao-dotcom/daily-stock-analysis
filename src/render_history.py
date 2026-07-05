@@ -157,6 +157,7 @@ def render(dates: list[str], summaries: dict[str, dict]) -> str:
       <a href="index_v2.html">📈 今日儀表板</a>
       <a href="watchlist_v2.html">📋 Watchlist</a>
       <a href="tags.html">🔥 主題熱度</a>
+      <a href="weekly.html">📅 週報</a>
       <span class="page-nav-current">📅 歷史</span>
     </nav>
     <h1>📅 歷史儀表板</h1>

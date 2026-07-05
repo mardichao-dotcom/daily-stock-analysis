@@ -113,6 +113,9 @@ def run_checks(base: str, data_date: str, *, fetch=_fetch) -> list[str]:
     # ── 6:events.json 新鮮度 + 結構(stage9 §3.1/§5)──
     errors.extend(_check_events(base, fetch))
 
+    # ── 7:weekly.json/html 週報斷言(stage9 §3.3)──
+    errors.extend(_check_weekly(base, fetch))
+
     return errors
 
 
@@ -149,6 +152,69 @@ def _check_events(base: str, fetch) -> list[str]:
         print(f"[verify_publish] ⚠️ events.json 法說會為 stale"
               f"(source {ev.get('conference_source_date')})— 第四道護欄啟用")
     return errs
+
+
+def _check_weekly(base: str, fetch) -> list[str]:
+    """weekly.json/html 週報斷言(§3.3):200、8 天內新鮮(週頻+緩衝)、結構完整、
+    NAAIM 官方錨點比對(值永不修訂;錨點若落在已發佈 series 窗內須吻合,窗外自動略過)。"""
+    errs: list[str] = []
+    code, body = fetch(f"{base}/data/v2/weekly.json")
+    if code != 200:
+        return [f"weekly.json HTTP {code}"]
+    try:
+        wk = json.loads(body)
+    except json.JSONDecodeError:
+        return ["weekly.json 非合法 JSON"]
+    # 新鮮度:週頻,允許 8 天(7 + 1 緩衝)
+    ga = wk.get("generated_at", "")
+    try:
+        gen = datetime.fromisoformat(ga)
+        now = datetime.now(gen.tzinfo)
+        if (now - gen).total_seconds() > 8 * 86400:
+            errs.append(f"weekly.json generated_at 超過 8 天({ga})")
+    except (ValueError, TypeError):
+        errs.append(f"weekly.json generated_at 格式異常({ga!r})")
+    # 結構:五大區塊齊全
+    for k in ("naaim", "vix", "xly_xlp", "margin", "taiex"):
+        if k not in wk:
+            errs.append(f"weekly.json 缺區塊 {k}")
+    # NAAIM:狀態 ok、最新值為數、全量筆數合理(2006→今 > 1000 週)
+    n = wk.get("naaim", {})
+    if n.get("status") == "ok":
+        if not isinstance(n.get("latest_value"), (int, float)):
+            errs.append("weekly.json NAAIM latest_value 非數值")
+        if not isinstance(n.get("count"), int) or n.get("count", 0) < 1000:
+            errs.append(f"weekly.json NAAIM count 異常({n.get('count')} < 1000,疑非全量重建)")
+        # 官方錨點比對(3 點對官方)
+        series = n.get("series", {})
+        dv = dict(zip(series.get("dates", []), series.get("exposure", [])))
+        anchors = _load_weekly_cfg().get("naaim_anchors", {}).get("points", {})
+        matched = 0
+        for d, v in anchors.items():
+            if d in dv:
+                if abs(dv[d] - v) > 0.01:
+                    errs.append(f"weekly.json NAAIM 錨點 {d} 不符官方(線上 {dv[d]} ≠ 官方 {v})")
+                else:
+                    matched += 1
+        if anchors and matched == 0 and dv:
+            print("[verify_publish] ⚠️ NAAIM 錨點全落在 series 窗外,建議更新 config 錨點")
+        else:
+            print(f"[verify_publish] ✅ NAAIM 官方錨點比對 {matched}/{len(anchors)} 吻合")
+    # weekly.html 存在且含標題
+    hcode, hbody = fetch(f"{base}/weekly.html")
+    if hcode != 200:
+        errs.append(f"weekly.html HTTP {hcode}")
+    elif "每週市場情緒週報" not in hbody:
+        errs.append("weekly.html 缺週報標題(渲染異常)")
+    return errs
+
+
+def _load_weekly_cfg() -> dict:
+    try:
+        with open(PROJECT_ROOT / "config" / "weekly_alerts.json", encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
 
 
 def _notify_fail(errors: list[str], data_date: str) -> None:

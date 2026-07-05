@@ -39,6 +39,24 @@ def _fresh_events_json():
     })
 
 
+def _fresh_weekly_json():
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    return json.dumps({
+        "generated_at": now, "data_through": DATE, "errors": [], "alerts": [],
+        "naaim": {"status": "ok", "latest_date": "2026-07-01", "latest_value": 84.69,
+                  "count": 1043,
+                  "series": {"dates": ["2025-07-02", "2025-12-31", "2026-07-01"],
+                             "exposure": [99.3, 92.93, 84.69]}},   # 含 3 官方錨點
+        "vix": {"value": 16.15}, "xly_xlp": {"ratio": 1.378, "cross": "none", "trend": "risk_off"},
+        "margin": {"total": 12089437, "wow_pct": None},
+        "taiex": {"close": 46780.62, "week_change_pct": 4.96},
+    })
+
+
+WEEKLY_HTML = '<h1>📅 每週市場情緒週報</h1>'
+
+
 def make_fetch(overrides=None):
     """回一個 fetch(url)->(code, body);overrides 可覆寫特定 URL 的回應。"""
     overrides = overrides or {}
@@ -50,8 +68,12 @@ def make_fetch(overrides=None):
             return 200, json.dumps(SITE_META)
         if url.endswith("events.json"):
             return 200, _fresh_events_json()
+        if url.endswith("weekly.json"):
+            return 200, _fresh_weekly_json()
         if url.endswith("history.html"):
             return 200, GOOD_HISTORY
+        if url.endswith("weekly.html"):
+            return 200, WEEKLY_HTML
         if url.endswith("NYSE_TSM.json"):
             return 200, US_JSON
         if url.endswith(".json"):
@@ -121,6 +143,47 @@ class TestVerifyPublish(unittest.TestCase):
         f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("法說會條目缺欄位" in e for e in errors))
+
+    # ── 週報斷言(§3.3)──
+    def test_weekly_404_caught(self):
+        f = make_fetch({f"{BASE}/data/v2/weekly.json": (404, "")})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("weekly.json HTTP 404" in e for e in errors))
+
+    def test_weekly_stale_over_8d_caught(self):
+        stale = json.dumps({"generated_at": "2020-01-01T00:00:00+08:00",
+                            "naaim": {"status": "N/A"}, "vix": {}, "xly_xlp": {},
+                            "margin": {}, "taiex": {}})
+        f = make_fetch({f"{BASE}/data/v2/weekly.json": (200, stale)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("weekly.json generated_at 超過 8 天" in e for e in errors))
+
+    def test_weekly_naaim_anchor_mismatch_caught(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone(timedelta(hours=8))).isoformat()
+        bad = json.dumps({"generated_at": now, "naaim": {
+            "status": "ok", "latest_value": 84.69, "count": 1043,
+            "series": {"dates": ["2026-07-01"], "exposure": [50.0]}},  # 官方應為 84.69
+            "vix": {}, "xly_xlp": {}, "margin": {}, "taiex": {}})
+        f = make_fetch({f"{BASE}/data/v2/weekly.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("NAAIM 錨點 2026-07-01 不符官方" in e for e in errors))
+
+    def test_weekly_naaim_count_not_full_caught(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone(timedelta(hours=8))).isoformat()
+        bad = json.dumps({"generated_at": now, "naaim": {
+            "status": "ok", "latest_value": 84.69, "count": 12,  # 疑非全量(舊 seed)
+            "series": {"dates": [], "exposure": []}},
+            "vix": {}, "xly_xlp": {}, "margin": {}, "taiex": {}})
+        f = make_fetch({f"{BASE}/data/v2/weekly.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("NAAIM count 異常" in e for e in errors))
+
+    def test_weekly_html_missing_title_caught(self):
+        f = make_fetch({f"{BASE}/weekly.html": (200, "<h1>錯的頁</h1>")})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("weekly.html 缺週報標題" in e for e in errors))
 
 
 if __name__ == "__main__":

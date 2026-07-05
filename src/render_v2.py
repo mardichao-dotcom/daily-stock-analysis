@@ -620,6 +620,7 @@ def render(filtered_result: dict, status_map: dict | None = None,
       <span class="page-nav-current">📈 儀表板</span>
       <a href="watchlist_v2.html">📋 Watchlist</a>
       <a href="tags.html">🔥 主題熱度</a>
+      <a href="weekly.html">📅 週報</a>
     </nav>
     <h1>🧭 台股右側動能作戰儀表板</h1>
     <div class="meta">
