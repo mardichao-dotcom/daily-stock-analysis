@@ -765,3 +765,22 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   color: var(--text-mute); font-size: 11px; }
 /* 個股卡 7 天內法說會徽章 */
 .stock-card .conf-badge { margin-right: 5px; cursor: help; }
+
+/* ─── 總經快覽橫條(stage9 Day2 §3.2)─── */
+.macro-bar { background: #1f2937; color: #e5e7eb; font-size: 13px; overflow-x: auto; }
+.macro-bar-inner { display: flex; align-items: center; gap: 16px; padding: 8px 16px;
+  white-space: nowrap; }
+.mb-item { display: inline-flex; align-items: baseline; gap: 5px; }
+.mb-label { color: #9ca3af; font-size: 12px; }
+.mb-val { font-weight: 600; font-family: ui-monospace, Menlo, monospace; }
+.mb-chg { font-size: 12px; font-family: ui-monospace, Menlo, monospace; }
+.mb-na b { color: #9ca3af; }
+.mb-fail { color: #f59e0b; font-size: 12px; }
+.mb-gen { margin-left: auto; color: #6b7280; font-size: 11px; }
+/* ─── 新聞關鍵字列(§3.4)─── */
+.news-kw-bar { background: #f3f4f6; color: var(--text-mute); font-size: 12px;
+  border-bottom: 1px solid var(--border); }
+.news-kw-bar .container { padding: 6px 16px; }
+.news-kw-bar .nk-list { color: var(--text); }
+.news-kw-bar .nk-edit { margin-left: 8px; color: var(--etf-buy); text-decoration: none; }
+.news-kw-bar .nk-edit:hover { text-decoration: underline; }

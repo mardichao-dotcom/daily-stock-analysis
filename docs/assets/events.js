@@ -90,7 +90,62 @@
     markCardBadges(data);
   }
 
+  // ── 總經快覽橫條(§3.2)+ 新聞關鍵字(§3.4)—— 僅儀表板(有 events-hub)注入 ──
+  const REPO = 'mardichao-dotcom/daily-stock-analysis';
+  const NEWS_KW_RAW = `https://raw.githubusercontent.com/${REPO}/main/config/news_keywords.json`;
+  const NEWS_KW_EDIT = `https://github.com/${REPO}/edit/main/config/news_keywords.json`;
+
+  function macroItem(it) {
+    if (!it || it.value === 'N/A') {
+      return `<span class="mb-item mb-na" title="${esc((it && it.error) || '')}">${esc(it ? it.label : '')} <b>N/A</b></span>`;
+    }
+    const pct = typeof it.change_pct === 'number' ? it.change_pct : 0;
+    const col = pct > 0 ? '#ef4444' : (pct < 0 ? '#10b981' : 'var(--text-mute)'); // 紅漲綠跌
+    const arrow = pct > 0 ? '▲' : (pct < 0 ? '▼' : '');
+    const u = it.unit === '張' ? ' 張' : '';
+    const val = it.unit === '張' ? Number(it.value).toLocaleString() : it.value;
+    return `<span class="mb-item"><span class="mb-label">${esc(it.label)}</span>`
+         + `<span class="mb-val">${esc(val)}${u}</span>`
+         + `<span class="mb-chg" style="color:${col}">${arrow}${pct.toFixed(2)}%</span></span>`;
+  }
+
+  function injectMacroBar(header, m) {
+    const order = ['taiex', 'sp500', 'nasdaq', 'vix', 'nikkei', 'dxy', 'margin'];
+    const items = order.map(k => macroItem(m.data && m.data[k])).join('');
+    const staleWarn = (m.sources_failed > 0)
+      ? `<span class="mb-fail" title="${esc((m.errors || []).join('; '))}">⚠️ ${m.sources_failed} 項失敗</span>` : '';
+    const gen = (m.generated_at || '').slice(5, 16).replace('T', ' ');
+    const bar = document.createElement('div');
+    bar.className = 'macro-bar';
+    bar.innerHTML = `<div class="container macro-bar-inner">${items}${staleWarn}`
+                  + `<span class="mb-gen">總經 ${esc(gen)}</span></div>`;
+    header.parentNode.insertBefore(bar, header.nextSibling);
+  }
+
+  function injectNewsKeywords(header, kw) {
+    const list = (kw.keywords || []).map(esc).join('、');
+    const bar = document.createElement('div');
+    bar.className = 'news-kw-bar';
+    bar.innerHTML = `<div class="container">📰 新聞關鍵字:<span class="nk-list">${list || '（無）'}</span>`
+                  + ` <a class="nk-edit" href="${NEWS_KW_EDIT}" target="_blank" rel="noopener">✏️ 編輯</a></div>`;
+    header.parentNode.insertBefore(bar, header.nextSibling);
+  }
+
+  async function initMacro() {
+    const header = document.querySelector('header.page-header');
+    if (!header || !document.getElementById('events-hub')) return; // 僅儀表板
+    try {
+      const r = await fetch('data/v2/macro.json', { cache: 'no-cache' });
+      if (r.ok) injectMacroBar(header, await r.json());
+    } catch (e) { /* 靜默 */ }
+    try {
+      const r = await fetch(NEWS_KW_RAW, { cache: 'no-cache' });
+      if (r.ok) injectNewsKeywords(header, await r.json());
+    } catch (e) { /* 靜默 */ }
+  }
+
+  function boot() { init(); initMacro(); }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
+    document.addEventListener('DOMContentLoaded', boot);
+  } else { boot(); }
 })();
