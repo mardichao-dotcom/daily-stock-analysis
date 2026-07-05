@@ -1,0 +1,18 @@
+{
+  "_note": "週報警報閾值(stage9 §3.3),不寫死於程式。可調。",
+  "naaim": {
+    "extreme_high": 90,
+    "extreme_low": 20,
+    "_meaning": "NAAIM 曝險 > high = 過度樂觀(逆向警戒);< low = 過度悲觀(逆向機會)"
+  },
+  "xly_xlp": {
+    "ma_short": 20,
+    "ma_long": 50,
+    "_meaning": "XLY/XLP 比值 MA_short 下穿 MA_long = 死亡交叉(消費信心轉弱/避險)"
+  },
+  "vix": {
+    "high": 25,
+    "_meaning": "VIX > high = 市場恐慌升溫"
+  },
+  "updated_at": "2026-07-05"
+}

@@ -784,3 +784,19 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 .news-kw-bar .nk-list { color: var(--text); }
 .news-kw-bar .nk-edit { margin-left: 8px; color: var(--etf-buy); text-decoration: none; }
 .news-kw-bar .nk-edit:hover { text-decoration: underline; }
+/* ─── 週報頁(§3.3)─── */
+.wk-cards { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 4px; }
+.wk-card { flex: 1 1 180px; background: var(--card, #fff); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px; }
+.wk-card-label { color: var(--text-mute); font-size: 12px; margin-bottom: 4px; }
+.wk-card-val { font-size: 24px; font-weight: 700; font-family: ui-monospace, Menlo, monospace; }
+.wk-card-sub { color: var(--text-mute); font-size: 12px; margin-top: 4px; }
+.wk-chart { width: 100%; max-width: 760px; height: auto; margin: 10px 0;
+  border: 1px solid var(--border); border-radius: 8px; }
+.wk-alerts { list-style: none; padding: 0; margin: 6px 0; }
+.wk-alerts li { padding: 8px 12px; margin: 4px 0; border-radius: 8px;
+  background: #fef2f2; border-left: 3px solid #ef4444; font-size: 14px; }
+.wk-alerts li.wk-noalert { background: #f0fdf4; border-left-color: #10b981; color: var(--text-mute); }
+.wk-errors { background: #fffbeb; border: 1px solid #f59e0b; color: #92400e;
+  border-radius: 8px; padding: 8px 12px; margin: 8px 0; font-size: 13px; }
+.wk-src { color: var(--text-mute); font-size: 12px; margin-top: 16px; }
