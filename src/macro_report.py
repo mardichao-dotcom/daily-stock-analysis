@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.abspath(PROJECT_ROOT))
 SECRETS = os.path.join(PROJECT_ROOT, "config", "secrets.json")
 MACRO   = os.path.join(PROJECT_ROOT, "docs", "data", "v2", "macro.json")
 NEWS_KW = os.path.join(PROJECT_ROOT, "config", "news_keywords.json")
+NEWS_KW_CACHE = os.path.join(PROJECT_ROOT, "config", ".news_keywords.last_valid.json")
 HAIKU_MODEL = "claude-haiku-4-5"   # 用戶拍板 Haiku 級
 
 
@@ -28,6 +29,33 @@ def _load(path):
             return json.load(f)
     except (json.JSONDecodeError, OSError, FileNotFoundError):
         return None
+
+
+def _load_news_keywords() -> tuple[list, str | None]:
+    """讀 news_keywords.json 的防呆版:
+      - 解析成功且 keywords 為 list → 更新 last_valid 快取,回 (keywords, None)
+      - 解析失敗(手滑改壞 JSON)→ 沿用上一份有效清單 + 回 Discord 告警字串
+      - 連快取都沒有 → 回 ([], 告警)。絕不因單次手滑開天窗。"""
+    try:
+        with open(NEWS_KW, encoding="utf-8") as f:
+            data = json.load(f)
+        kws = data.get("keywords")
+        if not isinstance(kws, list):
+            raise ValueError("keywords 欄非 list")
+        try:                                   # 有效 → 落地快取
+            with open(NEWS_KW_CACHE, "w", encoding="utf-8") as f:
+                json.dump({"keywords": kws}, f, ensure_ascii=False)
+        except OSError:
+            pass
+        return kws, None
+    except (json.JSONDecodeError, OSError, FileNotFoundError, ValueError) as e:
+        cached = _load(NEWS_KW_CACHE)
+        if cached and isinstance(cached.get("keywords"), list):
+            return cached["keywords"], (
+                f"⚠️ news_keywords.json 解析失敗({str(e)[:50]}),"
+                f"已沿用上一份有效清單({len(cached['keywords'])} 個關鍵字)——請修正檔案")
+        return [], (f"⚠️ news_keywords.json 解析失敗且無有效快取({str(e)[:50]}),"
+                    f"本次早報暫無新聞關鍵字")
 
 
 def _anthropic_key() -> str:
@@ -90,16 +118,16 @@ def _ai_report(macro: dict, keywords: list[str], key: str) -> str | None:
         return None
 
 
-def build_report() -> tuple[str, bool]:
-    """回 (訊息文字, used_ai)。"""
+def build_report() -> tuple[str, bool, str | None]:
+    """回 (訊息文字, used_ai, 關鍵字告警或 None)。"""
     macro = _load(MACRO) or {"data": {}, "errors": ["macro.json 讀取失敗"]}
-    keywords = (_load(NEWS_KW) or {}).get("keywords", [])
+    keywords, kw_alert = _load_news_keywords()
     key = _anthropic_key()
     if key:
         ai = _ai_report(macro, keywords, key)
         if ai:
-            return ai, True
-    return _template_report(macro, keywords), False
+            return ai, True, kw_alert
+    return _template_report(macro, keywords), False, kw_alert
 
 
 def main() -> int:
@@ -107,9 +135,12 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    msg, used_ai = build_report()
+    msg, used_ai, kw_alert = build_report()
     tag = "Haiku AI 散文" if used_ai else "結構化模板(無 API key)"
     print(f"[macro_report] 早報產出({tag})")
+    if kw_alert:
+        print(f"[macro_report] {kw_alert}")
+        msg = msg + "\n\n" + kw_alert          # 告警隨早報一起推 Discord,不另開天窗
 
     if args.dry_run:
         print("── 早報預覽 ──\n" + msg)

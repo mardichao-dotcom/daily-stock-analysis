@@ -77,6 +77,15 @@ def record_mac(date: str | None = None, path: str = MACRO) -> dict:
     return rec
 
 
+def record_note(note: str, date: str | None = None, day: int | None = None) -> dict:
+    """記一筆觀察註記(非數值比對日,如颱風假雙方空跑=一種一致)。"""
+    date = date or _today()
+    rec = {"date": date, "side": "note", "note": note, "day": day,
+           "generated_at": datetime.now(TZ).strftime("%Y-%m-%dT%H:%M:%S+08:00")}
+    _append(rec)
+    return rec
+
+
 def record_actions(values: dict, date: str | None = None, source: str = "manual") -> dict:
     """記錄 Actions 側數值(來源:investment-summary)。values 只取 FIELDS 中的數值欄。"""
     date = date or _today()
@@ -153,6 +162,10 @@ def main() -> int:
     pa.add_argument("--source", default="manual")
     pd = sub.add_parser("day", help="顯示某日比對")
     pd.add_argument("--date", default=None)
+    pn = sub.add_parser("record-note", help="記觀察註記(如颱風假空跑)")
+    pn.add_argument("--note", required=True)
+    pn.add_argument("--date", default=None)
+    pn.add_argument("--day", type=int, default=None)
     sub.add_parser("summary", help="5 交易日彙總報告")
     args = ap.parse_args()
 
@@ -163,6 +176,9 @@ def main() -> int:
         vals = json.loads(args.values)
         r = record_actions(vals, date=args.date, source=args.source)
         print(f"✅ Actions 側記錄 {r['date']}(source={r['source']}):{r['values']}")
+    elif args.cmd == "record-note":
+        r = record_note(args.note, date=args.date, day=args.day)
+        print(f"✅ 註記 {r['date']}" + (f"(Day {r['day']})" if r['day'] else "") + f":{r['note']}")
     elif args.cmd == "day":
         d = compare_day(args.date or _today())
         print(json.dumps(d, ensure_ascii=False, indent=2))
