@@ -46,6 +46,11 @@ publish_macro() {
 publish_macro
 [[ $? -ne 0 ]] && echo "[macro $(TS)] ⚠️ publish 失敗(早報仍會發,網站待下次)"
 
+# ── [2.5] 並行比對:記錄 Mac 側指數/融資(§4,非致命)─────────────────────────
+echo "[macro 2.5] 並行比對記錄 Mac 側..."
+python3 -m src.parallel_compare record-mac 2>&1 | grep -vE 'NotOpenSSL|warnings.warn' || \
+    echo "[macro $(TS)] ⚠️ 並行比對記錄失敗(不影響早報)"
+
 # ── [3] Discord 早報(Haiku 散文 / 模板 fallback)──────────────────────────────
 echo "[macro 3/3] Discord 早報..."
 python3 -m src.macro_report 2>&1 | grep -vE 'NotOpenSSL|warnings.warn'
