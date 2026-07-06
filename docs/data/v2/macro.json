@@ -1,8 +1,10 @@
 {
-  "generated_at": "2026-07-05T13:40:47+08:00",
-  "sources_ok": 7,
-  "sources_failed": 0,
-  "errors": [],
+  "generated_at": "2026-07-06T08:30:04+08:00",
+  "sources_ok": 6,
+  "sources_failed": 1,
+  "errors": [
+    "margin: IncompleteRead(261743 bytes read, 283843 more expected)"
+  ],
   "data": {
     "taiex": {
       "label": "加權指數",
@@ -35,25 +37,23 @@
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 69744.07,
+      "value": 70232.86,
       "source": "yfinance ^N225",
-      "change": 1010.92,
-      "change_pct": 1.47
+      "change": 488.79,
+      "change_pct": 0.7
     },
     "dxy": {
       "label": "美元指數",
-      "value": 100.86,
+      "value": 100.87,
       "source": "yfinance DX-Y.NYB",
-      "change": -0.53,
-      "change_pct": -0.52
+      "change": 0.01,
+      "change_pct": 0.01
     },
     "margin": {
       "label": "融資餘額",
-      "value": 12089437,
-      "source": "TWSE MI_MARGN + TPEx",
-      "change": 102557,
-      "change_pct": 0.86,
-      "unit": "張"
+      "value": "N/A",
+      "error": "IncompleteRead(261743 bytes read, 283843 more expected)",
+      "source": "TWSE MI_MARGN + TPEx"
     }
   }
 }
