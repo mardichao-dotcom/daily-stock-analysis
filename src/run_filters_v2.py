@@ -607,6 +607,15 @@ def _score_one_line(
     return score, details, tags, tags_today, events
 
 
+def _validate_area_input(area_low: float, area_high: float,
+                         category: str, weights: dict) -> None:
+    """W2-4:區域輸入預檢(進場即驗,不等到計分日才炸)。壞區域由上層 try/except 隔離。"""
+    if not area_low < area_high:
+        raise ValueError(f"區域 low({area_low}) 未小於 high({area_high})")
+    if category not in weights["given_price"]:
+        raise ValueError(f"Unknown given_price category: {category!r}")
+
+
 def _score_one_area(
     conn: sqlite3.Connection,
     symbol: str,
@@ -616,20 +625,34 @@ def _score_one_area(
     weights: dict,
     now_iso: str,
 ) -> tuple[float, list[dict], list[str], list[dict]]:
-    """區域處理:price_str = f"{low}-{high}"、given_price = 中點。
+    """區域處理:price_str = f"{low}-{high}"。
 
-    規則 v2.2 §1-D:K 棒「碰到」區域(K_low ≤ high AND K_high ≥ low)即觸發。
-    狀態機跟線類共用,但 touch 預檢用 K 棒交集而非中點。
-    若交集 → 把今天 K bar 「夾」進區域中點(low ≤ mid ≤ high),
-    讓 standing.evaluate_standing 的 line-style touch 條件成立。
+    規則 v2.2 §3-B(2026-07-08 起對齊,審計 D1):
+      「區域類:K 棒碰到當天 +N(v2.2 起區域不需要兩天確認,碰到即算)
+        (與線類站穩 +N 的時機差異:線類強調『站穩確認』,區域類強調『進入區域』)」
+    §1-D 觸發 = K 棒與區域交集:K_low ≤ high AND K_high ≥ low(含影線觸及)。
+
+    語意(用戶 2026-07-07 拍板):
+      - 交集當天即 +N(不再走線類兩天狀態機,不再有任何「區間中點」門檻)
+      - 連續多天都在區域內 = 同一次「進入」,只有首日計分(§3-B「只算 1 次」)
+      - 離開後再進入 = 新觸發,再 +N(§3-B「跌破後重新站上 → 可以再 +N」同理)
+      - 同一日不重複計(同日重跑由 last_evaluated_date 冪等擋)
+
+    狀態編碼(沿用 standing_state 5 值,不改 schema):
+      STANDING    = 今天首次進入(計分日)
+      MAINTAINING = 續留區域內(同一 episode,不再計分)
+      UNTRIGGERED = 不在區域內(下次交集 = 新觸發)
+      舊制遺留 TRIGGERED(= 舊制昨天碰到、等隔天確認)視為 in-episode,
+      避免換制首日對同一次進入重複計分;歷史分數不重算(斷點以 commit 為準)。
     """
     low_str     = area["low"]
     high_str    = area["high"]
     area_low    = float(low_str)
     area_high   = float(high_str)
     price_str   = f"{low_str}-{high_str}"
-    given_price = (area_low + area_high) / 2.0
+    given_price = (area_low + area_high) / 2.0    # 僅供跌破 event 參考,不再是計分門檻
     category    = area["category"]
+    _validate_area_input(area_low, area_high, category, weights)
 
     prev_state = state_io.read_state(conn, symbol, category, price_str)
 
@@ -639,27 +662,28 @@ def _score_one_area(
         should_score = (prev_state["state"] == standing.STANDING
                         and prev_state.get("standing_date") == date)
     else:
-        # v2.2 §1-D 區域觸發:K 棒範圍 ∩ 區域範圍
+        # v2.2 §1-D 區域觸發:K 棒範圍 ∩ 區域範圍(含影線)
         today_k = kline_history[-1]
         intersects = today_k["low"] <= area_high and today_k["high"] >= area_low
+        in_episode = bool(prev_state) and prev_state.get("state") in (
+            standing.TRIGGERED, standing.STANDING, standing.MAINTAINING)
 
-        if intersects:
-            # 把今天 K bar low/high 撐開到涵蓋 midpoint,讓 line-style touch 條件成立
-            adj_today = {
-                **today_k,
-                "low":  min(today_k["low"],  given_price),
-                "high": max(today_k["high"], given_price),
-            }
-            # close 也需 ≥ midpoint 才能進入 line-style 站穩流程 — 用 close 跟 midpoint 取大
-            if adj_today["close"] < given_price:
-                adj_today["close"] = given_price
-            history_adj = kline_history[:-1] + [adj_today]
+        if intersects and not in_episode:
+            # 新進入 → 當天 +N(v2.2 §3-B「碰到當天 +N」)
+            new_state = {"state": standing.STANDING,
+                         "trigger_date": date, "standing_date": date}
+            should_score = True
+        elif intersects and in_episode:
+            # 續留 → 同一 episode 不再計分
+            new_state = {"state": standing.MAINTAINING,
+                         "trigger_date": prev_state.get("trigger_date"),
+                         "standing_date": prev_state.get("standing_date")}
+            should_score = False
         else:
-            history_adj = kline_history
-
-        new_state, should_score = standing.evaluate_standing(
-            history_adj, given_price, prev_state, date,
-        )
+            # 離開(或本來就不在)→ 下次交集視為新觸發
+            new_state = {"state": standing.UNTRIGGERED,
+                         "trigger_date": None, "standing_date": None}
+            should_score = False
 
         state_io.write_state(conn, symbol, category, price_str, new_state, now_iso,
                              last_evaluated_date=date)
