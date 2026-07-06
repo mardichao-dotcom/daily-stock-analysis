@@ -168,6 +168,13 @@ fi
 DATA_DATE=$(cat .data_date 2>/dev/null || echo "")
 [[ -n "$DATA_DATE" ]] && echo "      data_date=${DATA_DATE}"
 
+# ── [3.5] verify_kline(W1-2:抽 5 檔對 TWSE 官方收盤,>0.5% Discord 告警)────
+# 非阻斷:資料完整性「告警」層,不擋當晚發布(mismatch 由人工/隔日處置)。
+if [[ $IK_EC -eq 0 && -n "$DATA_DATE" ]]; then
+    echo "[3.5/10] K 線抽查對 TWSE 官方收盤價..."
+    run_step verify_kline python3 -m src.verify_kline --date "$DATA_DATE" --db "$KLINE_DB"
+fi
+
 # ── 資料取得層屏障(2026-06-04 修正)──────────────────────────────────────
 # 原本 daily_update 失敗也擋下游 — 但 daily_update 經常在「資料寫入後」的
 # 周邊步驟失敗(例:Pine script 產生時 KeyError、etfedge 偶爾抓不到),

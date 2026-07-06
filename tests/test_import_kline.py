@@ -123,5 +123,112 @@ class TestFutureBarGuard(unittest.TestCase):
             self.assertNotIn(f"data_date={future}", out)
 
 
+class TestSanityGate(unittest.TestCase):
+    """W1(審計 2026-07-07):數值 sanity 閘——結構違規/單日跳變 >30%/覆寫差異 >30%
+    進 kline_quarantine 隔離區,不入 kline、不覆寫既有正確歷史;可 --approve 核可覆寫。"""
+
+    def _run(self, db, bars, symbol="TWSE:2330", extra=()):
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump({"results": {symbol: {"bars": bars}}}, f)
+            jpath = f.name
+        env = {**os.environ, "IMPORT_KLINE_NO_ALERT": "1"}
+        try:
+            r = subprocess.run(
+                [sys.executable, "src/import_kline.py", "--json", jpath,
+                 "--db", db, "--no-data-date", *extra],
+                cwd=PROJECT_ROOT, check=True, capture_output=True, text=True, env=env)
+            return r.stdout
+        finally:
+            os.unlink(jpath)
+
+    def _counts(self, db):
+        conn = sqlite3.connect(db)
+        k = conn.execute("SELECT COUNT(*) FROM kline").fetchone()[0]
+        q = conn.execute("SELECT COUNT(*) FROM kline_quarantine").fetchone()[0]
+        conn.close()
+        return k, q
+
+    def test_high_lt_low_quarantined(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            out = self._run(db, [{"time": _ts("2026-06-10"), "open": 100, "high": 90,
+                                  "low": 95, "close": 92, "volume": 1}])
+            self.assertIn("隔離", out)
+            self.assertEqual(self._counts(db), (0, 1))
+
+    def test_negative_price_and_volume_quarantined(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            self._run(db, [
+                {"time": _ts("2026-06-10"), "open": 10, "high": 12, "low": -1, "close": 11, "volume": 1},
+                {"time": _ts("2026-06-11"), "open": 10, "high": 12, "low": 9, "close": 11, "volume": -5},
+            ])
+            self.assertEqual(self._counts(db), (0, 2))
+
+    def test_jump_over_30pct_vs_db_prev_quarantined(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            self._run(db, [{"time": _ts("2026-06-10"), "open": 100, "high": 101,
+                            "low": 99, "close": 100, "volume": 1}])
+            # 隔日 close 140 = +40% 跳變 → 隔離
+            out = self._run(db, [{"time": _ts("2026-06-11"), "open": 100, "high": 141,
+                                  "low": 99, "close": 140, "volume": 1}])
+            self.assertIn("跳變", out)
+            k, q = self._counts(db)
+            self.assertEqual((k, q), (1, 1))            # 既有 row 完好,新 bar 進隔離
+
+    def test_overwrite_existing_over_30pct_quarantined(self):
+        """整批平移(還原權息)序列不得靜默覆寫既有正確歷史。"""
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            self._run(db, [{"time": _ts("2026-06-10"), "open": 100, "high": 101,
+                            "low": 99, "close": 100, "volume": 1}])
+            # same-date 覆寫成 50(-50%)→ 隔離,原值保留
+            self._run(db, [{"time": _ts("2026-06-10"), "open": 50, "high": 51,
+                            "low": 49, "close": 50, "volume": 1}])
+            conn = sqlite3.connect(db)
+            close = conn.execute("SELECT close FROM kline WHERE date='2026-06-10'").fetchone()[0]
+            conn.close()
+            self.assertEqual(close, 100.0)              # 原正確值未被覆寫
+            self.assertEqual(self._counts(db), (1, 1))
+
+    def test_normal_move_passes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            self._run(db, [
+                {"time": _ts("2026-06-10"), "open": 100, "high": 101, "low": 99, "close": 100, "volume": 1},
+                {"time": _ts("2026-06-11"), "open": 100, "high": 110, "low": 99, "close": 109, "volume": 1},
+            ])
+            self.assertEqual(self._counts(db), (2, 0))  # +9% 正常,全過
+
+    def test_approve_moves_to_kline(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            self._run(db, [{"time": _ts("2026-06-10"), "open": 100, "high": 101,
+                            "low": 99, "close": 100, "volume": 1}])
+            self._run(db, [{"time": _ts("2026-06-11"), "open": 100, "high": 141,
+                            "low": 99, "close": 140, "volume": 2}])   # 隔離
+            # 隔日核可(如確認為合法除權息跳變)
+            env = {**os.environ, "IMPORT_KLINE_NO_ALERT": "1"}
+            subprocess.run([sys.executable, "src/import_kline.py", "--db", db,
+                            "--approve", "TWSE:2330:2026-06-11"],
+                           cwd=PROJECT_ROOT, check=True, capture_output=True, text=True, env=env)
+            conn = sqlite3.connect(db)
+            close = conn.execute("SELECT close FROM kline WHERE date='2026-06-11'").fetchone()[0]
+            conn.close()
+            self.assertEqual(close, 140.0)
+            self.assertEqual(self._counts(db), (2, 0))  # 隔離區清空
+
+    def test_quarantine_not_advancing_data_date(self):
+        """整批被隔離時 data_date 退回 DB 既有最大日,不寫空/不推進。"""
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            self._run(db, [{"time": _ts("2026-06-10"), "open": 100, "high": 101,
+                            "low": 99, "close": 100, "volume": 1}])
+            out = self._run(db, [{"time": _ts("2026-06-11"), "open": 100, "high": 150,
+                                  "low": 99, "close": 150, "volume": 1}])   # 全隔離
+            self.assertIn("data_date=2026-06-10", out)
+
+
 if __name__ == "__main__":
     unittest.main()
