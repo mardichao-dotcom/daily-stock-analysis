@@ -36,7 +36,7 @@ standing.py — 站穩 / 跌破 純函式(規則 v2.2 §3-A, §3-B)
   CONSEC_DOWN = today.close < p AND prev_day.close < p
                 (連 2 天收盤 < p)
 
-  ε = 1e-6(避免浮點)
+  ε = 0.01(v2.2 §3-A 原文:業務容差一個 tick;審計 D3 由 1e-6 對齊)
 
 ────────────────────────────────────────────────────────────────────────────
 轉移規則(prev_state → new_state):
@@ -81,8 +81,10 @@ ALL_STATES = {UNTRIGGERED, TRIGGERED, STANDING, MAINTAINING, CANCELLED}
 # v2.2:Day 2 必須是隔天(days_since==1)。> 1 視為視窗到期。
 MAX_TRIGGER_WINDOW_DAYS = 1
 
-# 浮點 epsilon,避免 open / close 跟 given_price 差幾個尾數誤判
-EPS = 1e-6
+# ε = 0.01:規則 v2.2 §3-A 原文「ε = 0.01(避免浮點)」——業務容差(一個 tick),
+# 非浮點 epsilon。open/close 落在 given±0.01 內視為「未離開」。
+# (審計 D3:曾誤用 1e-6,對 tick=0.01 的低價股會出現與規則不符的取消;2026-07-07 對齊)
+EPS = 0.01
 
 
 # ── pure helpers ──────────────────────────────────────────────────────────────

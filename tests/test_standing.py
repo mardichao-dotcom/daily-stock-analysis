@@ -585,3 +585,44 @@ class TestStrictMode(unittest.TestCase):
                 100, state(TRIGGERED, trigger_date="2026-05-10"), "2026-05-14",
             )
         self.assertIn("2026-05-10", str(cm.exception))
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# D3(審計 2026-07-07):ε = 0.01(v2.2 §3-A 業務容差),低價股邊界
+# ═════════════════════════════════════════════════════════════════════════════
+class TestEpsilonLowPriceBoundary(unittest.TestCase):
+    """規則:open/close 落在 given±0.01 內 = 「未離開」。
+    舊 1e-6 會把 10.005 判成 leave_up → 錯誤取消;0.01 判「未離開」→ MAINTAINING。"""
+
+    def test_eps_is_business_tolerance(self):
+        from src.triggers.standing import EPS
+        self.assertEqual(EPS, 0.01)
+
+    def test_within_eps_above_not_cancelled(self):
+        """低價股 p=10.00:open 10.005 / close 10.008(±0.01 內)→ 未離開,維持。"""
+        new, _ = evaluate_standing(
+            [k("2026-06-01", 10.005, 10.02, 10.0, 10.008)],
+            10.00, state(MAINTAINING, standing_date="2026-05-28"), "2026-06-01")
+        self.assertEqual(new["state"], MAINTAINING)       # 1e-6 舊制:CANCELLED
+
+    def test_within_eps_below_not_cancelled(self):
+        """open 9.995 / close 9.992(p−0.01 內)→ 未離開(非 leave_down)。"""
+        new, _ = evaluate_standing(
+            [k("2026-05-31", 10.1, 10.2, 10.0, 10.05),
+             k("2026-06-01", 9.995, 10.05, 9.99, 10.0)],   # prev close ≥ p,無 consec_down
+            10.00, state(MAINTAINING, standing_date="2026-05-28"), "2026-06-01")
+        self.assertEqual(new["state"], MAINTAINING)
+
+    def test_beyond_eps_above_cancelled(self):
+        """open/close 都 > p+0.01(如 10.02/10.05)→ leave_up → CANCELLED。"""
+        new, _ = evaluate_standing(
+            [k("2026-06-01", 10.02, 10.10, 10.015, 10.05)],
+            10.00, state(MAINTAINING, standing_date="2026-05-28"), "2026-06-01")
+        self.assertEqual(new["state"], CANCELLED)
+
+    def test_beyond_eps_below_cancelled(self):
+        """open/close 都 < p−0.01 → leave_down → CANCELLED。"""
+        new, _ = evaluate_standing(
+            [k("2026-06-01", 9.98, 9.99, 9.9, 9.95)],
+            10.00, state(MAINTAINING, standing_date="2026-05-28"), "2026-06-01")
+        self.assertEqual(new["state"], CANCELLED)

@@ -122,7 +122,43 @@ def run_checks(base: str, data_date: str, *, fetch=_fetch) -> list[str]:
     # ── 9:news.json 新聞資料層(欄位齊全 + 版權紅線:無內文)──
     errors.extend(_check_news(base, fetch))
 
+    # ── 10:macro.json 新鮮度 + 結構(stage9 spec §5,審計 D2 補齊)──
+    errors.extend(_check_macro(base, fetch))
+
     return errors
+
+
+def _check_macro(base: str, fetch) -> list[str]:
+    """macro.json 斷言(stage9 spec §5 白紙黑字:generated_at 24h 內 + 結構)。
+    macro 管線(08:30)與主驗證(19:00)解耦——「排程有跑、產物沒被驗」
+    正是 19 天停更的模式,此斷言補上這個盲區(審計 D2)。"""
+    errs: list[str] = []
+    code, body = fetch(f"{base}/data/v2/macro.json")
+    if code != 200:
+        return [f"macro.json HTTP {code}"]
+    try:
+        mj = json.loads(body)
+    except json.JSONDecodeError:
+        return ["macro.json 非合法 JSON"]
+    ga = mj.get("generated_at", "")
+    try:
+        gen = datetime.fromisoformat(ga)
+        now = datetime.now(gen.tzinfo)
+        if (now - gen).total_seconds() > 24 * 3600:
+            errs.append(f"macro.json generated_at 超過 24h({ga})")
+    except (ValueError, TypeError):
+        errs.append(f"macro.json generated_at 格式異常({ga!r})")
+    data = mj.get("data")
+    if not isinstance(data, dict) or not data:
+        errs.append("macro.json data 缺或為空")
+    else:
+        for key, item in list(data.items())[:10]:
+            if not isinstance(item, dict) or "value" not in item:
+                errs.append(f"macro.json data.{key} 缺 value 欄")
+                break
+    if not errs:
+        print(f"[verify_publish] ✅ macro.json 新鮮({ga[:16]})+ 結構完整({len(data)} 項)")
+    return errs
 
 
 def _check_news(base: str, fetch) -> list[str]:

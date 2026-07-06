@@ -78,6 +78,15 @@ def _fresh_news_json():
                                   "url": "https://ex.com/a", "matched_keywords": ["AI"]}]})
 
 
+def _fresh_macro_json():
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    return json.dumps({"generated_at": now, "sources_ok": 7, "sources_failed": 0,
+                       "errors": [],
+                       "data": {"taiex": {"label": "加權指數", "value": 46780.62,
+                                          "change_pct": 0.08}}})
+
+
 def make_fetch(overrides=None):
     """回一個 fetch(url)->(code, body);overrides 可覆寫特定 URL 的回應。"""
     overrides = overrides or {}
@@ -85,6 +94,8 @@ def make_fetch(overrides=None):
     def fetch(url, timeout=15):
         if url in overrides:
             return overrides[url]
+        if url.endswith("macro.json"):
+            return 200, _fresh_macro_json()
         if url.endswith("news.json"):
             return 200, _fresh_news_json()
         if url.endswith("site_meta.json"):
@@ -239,6 +250,27 @@ class TestVerifyPublish(unittest.TestCase):
         f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("非法 level" in e for e in errors))
+
+    # ── macro.json 斷言(審計 D2)──
+    def test_macro_404_caught(self):
+        f = make_fetch({f"{BASE}/data/v2/macro.json": (404, "")})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("macro.json HTTP 404" in e for e in errors))
+
+    def test_macro_stale_over_24h_caught(self):
+        stale = json.dumps({"generated_at": "2020-01-01T08:30:00+08:00",
+                            "data": {"taiex": {"value": 1}}})
+        f = make_fetch({f"{BASE}/data/v2/macro.json": (200, stale)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("macro.json generated_at 超過 24h" in e for e in errors))
+
+    def test_macro_empty_data_caught(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone(timedelta(hours=8))).isoformat()
+        bad = json.dumps({"generated_at": now, "data": {}})
+        f = make_fetch({f"{BASE}/data/v2/macro.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("macro.json data 缺或為空" in e for e in errors))
 
     # ── 新聞資料層斷言 ──
     def test_news_missing_field_caught(self):
