@@ -122,7 +122,10 @@ def render_item(date_str: str, summary: dict) -> str:
         if "etf_inc" in summary and "etf_dec" in summary:
             sab += f" ｜ ETF 加 {summary['etf_inc']} 減 {summary['etf_dec']}"
         if summary.get("recomputed"):
-            recomputed = f'<span class="history-recomputed" style="color:#f59e0b;font-size:11px">⚠️ {_h(summary["recomputed"])} 事後重算</span>'
+            # 審計歸檔 13(2026-07-07 拍板):停更回補批(6/15~7/2)標注升級——
+            # 明示「以當前 config 重放,非當日等價」(當日 key_prices 可能不同)
+            recomputed = (f'<span class="history-recomputed" style="color:#f59e0b;font-size:11px">'
+                          f'⚠️ {_h(summary["recomputed"])} 事後重算(以當前 config 重放,非當日等價)</span>')
     else:
         sab = "(無摘要)"
     return f"""
