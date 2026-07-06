@@ -138,15 +138,18 @@ class TestGuardrail4(unittest.TestCase):
             with open(evp, "w", encoding="utf-8") as f:
                 json.dump(prev, f, ensure_ascii=False)
 
-            orig_ev, orig_scrape = fe.EVENTS_JSON, fe.scrape_conferences_guarded
+            orig_ev, orig_scrape, orig_div = (
+                fe.EVENTS_JSON, fe.scrape_conferences_guarded, fe.fetch_dividends_guarded)
             fe.EVENTS_JSON = evp
             fe.scrape_conferences_guarded = lambda years: None   # 模擬抓取失敗
+            fe.fetch_dividends_guarded = lambda: []              # 除權息不打網路
             alerted = []
             try:
-                out, _ = fe.run(fred_key="", today=date(2026, 7, 5),
-                                alert=lambda: alerted.append(1))
+                out, _, _ = fe.run(fred_key="", today=date(2026, 7, 5),
+                                   alert=lambda: alerted.append(1), config_alert=None)
             finally:
-                fe.EVENTS_JSON, fe.scrape_conferences_guarded = orig_ev, orig_scrape
+                (fe.EVENTS_JSON, fe.scrape_conferences_guarded,
+                 fe.fetch_dividends_guarded) = orig_ev, orig_scrape, orig_div
 
             self.assertTrue(out["conference_stale"])
             self.assertEqual(out["conference_source_date"], "2026-07-04")
@@ -155,6 +158,93 @@ class TestGuardrail4(unittest.TestCase):
             self.assertEqual(len(conf), 1)
             self.assertEqual(conf[0]["symbol"], "TWSE:2330")
             self.assertEqual(alerted, [1])          # 有發告警
+
+
+class TestSettlement(unittest.TestCase):
+    """台指期結算 = 每月第三個週三,含跨年正確性。"""
+    def test_third_wednesday_known(self):
+        self.assertEqual(fe.third_wednesday(2026, 1), date(2026, 1, 21))
+        self.assertEqual(fe.third_wednesday(2026, 7), date(2026, 7, 15))
+        self.assertEqual(fe.third_wednesday(2026, 12), date(2026, 12, 16))
+        self.assertEqual(fe.third_wednesday(2027, 1), date(2027, 1, 20))   # 跨年
+
+    def test_all_third_wednesdays_are_wednesday(self):
+        for y in (2026, 2027):
+            for m in range(1, 13):
+                self.assertEqual(fe.third_wednesday(y, m).weekday(), 2)   # Wed
+
+    def test_settlement_in_window(self):
+        ev = fe.build_settlement_events(date(2026, 7, 5), "now", days=14)
+        self.assertEqual([e["date"] for e in ev], ["2026-07-15"])
+        self.assertEqual(ev[0]["type"], "settlement")
+        self.assertEqual(ev[0]["level"], "medium")
+
+    def test_settlement_crosses_year(self):
+        # 12/20 起 14 天 → 12 月結算已過、跨到 1 月(1/20)不在窗 → 空;確認不炸
+        ev = fe.build_settlement_events(date(2026, 12, 20), "now", days=14)
+        self.assertEqual(ev, [])
+        # 1/10 起 → 1/21 在窗
+        ev2 = fe.build_settlement_events(date(2027, 1, 10), "now", days=14)
+        self.assertEqual([e["date"] for e in ev2], ["2027-01-20"])
+
+
+class TestMonthlyRevenue(unittest.TestCase):
+    def test_next_business_day_weekend(self):
+        hol, _ = fe._load_holidays()
+        self.assertEqual(fe.next_business_day(date(2026, 1, 10), hol), date(2026, 1, 12))  # Sat→Mon
+
+    def test_next_business_day_holiday(self):
+        hol, _ = fe._load_holidays()
+        # 元旦 2026-01-01(四,假)→ 01-02(五)
+        self.assertEqual(fe.next_business_day(date(2026, 1, 1), hol), date(2026, 1, 2))
+
+    def test_revenue_deadline_shifted(self):
+        ev = fe.build_monthly_revenue_events(date(2026, 1, 5), "now", days=14)
+        self.assertEqual([e["date"] for e in ev], ["2026-01-12"])  # 1/10 Sat 順延
+        self.assertEqual(ev[0]["type"], "macro_tw")
+        self.assertEqual(ev[0]["level"], "medium_high")
+
+
+class TestCbcAndTwMacro(unittest.TestCase):
+    def test_cbc_in_window(self):
+        ev = fe.build_cbc_events(date(2026, 3, 10), "now", days=14)
+        self.assertEqual([e["date"] for e in ev], ["2026-03-19"])
+        self.assertEqual(ev[0]["type"], "macro_tw")
+        self.assertEqual(ev[0]["level"], "medium_high")
+
+    def test_tw_macro_cpi_export(self):
+        ev = fe.build_tw_macro_events(date(2026, 7, 1), "now", days=14)
+        names = {e["name"] for e in ev}
+        self.assertIn("台灣 CPI", names)       # 2026-07-06 在窗
+        self.assertTrue(all(e["type"] == "macro_tw" for e in ev))
+
+    def test_config_expiry_warns_when_stale(self):
+        warns = fe.config_expiry_warnings(date(2030, 1, 1))
+        self.assertTrue(any("央行" in w for w in warns))
+        self.assertTrue(any("假日表" in w for w in warns))
+
+    def test_config_not_expired_2026(self):
+        self.assertEqual(fe.config_expiry_warnings(date(2026, 7, 6)), [])
+
+
+class TestDividends(unittest.TestCase):
+    def test_roc_compact(self):
+        self.assertEqual(fe._roc_compact_to_iso("1150709"), "2026-07-09")
+        self.assertIsNone(fe._roc_compact_to_iso("115022"))     # 太短
+        self.assertIsNone(fe._roc_compact_to_iso("1150732"))    # 非法日
+
+    def test_dividends_watchlist_filter_and_kind(self):
+        rows = [
+            {"code": "2330", "name": "台積電", "date": "2026-07-10", "kind": "息", "market": "TWSE"},
+            {"code": "9999", "name": "非清單", "date": "2026-07-11", "kind": "權", "market": "TWSE"},
+        ]
+        ev = fe.dividends_to_events(rows, date(2026, 7, 5), "now",
+                                    {"2330": "TWSE"}, days=30)
+        self.assertEqual(len(ev), 1)                            # 只留 watchlist
+        self.assertEqual(ev[0]["type"], "dividend")
+        self.assertEqual(ev[0]["symbol"], "TWSE:2330")
+        self.assertIn("除息", ev[0]["title"])
+        self.assertEqual(ev[0]["level"], "medium")
 
 
 if __name__ == "__main__":

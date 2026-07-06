@@ -150,6 +150,20 @@ def _check_events(base: str, fetch) -> list[str]:
     for e in confs[:3]:
         if not (e.get("date") and e.get("symbol") and e.get("name")):
             errs.append(f"events.json 法說會條目缺欄位:{e.get('symbol') or e}")
+    # 事件擴充(§3.5):type/date/level 合法;個股類(dividend)須帶 symbol
+    VALID_TYPES = {"conference", "macro", "macro_tw", "settlement", "dividend"}
+    VALID_LEVELS = {"high", "medium_high", "medium"}
+    for e in events[:80]:
+        t = e.get("type")
+        if t not in VALID_TYPES:
+            errs.append(f"events.json 未知 type:{t}")
+        if not e.get("date"):
+            errs.append(f"events.json 事件缺 date:{e.get('name') or e}")
+        if e.get("level") and e["level"] not in VALID_LEVELS:
+            errs.append(f"events.json 非法 level:{e.get('level')}")
+    for e in [x for x in events if x.get("type") == "dividend"][:3]:
+        if not (e.get("date") and e.get("symbol") and e.get("name")):
+            errs.append(f"events.json 除權息條目缺欄位:{e.get('symbol') or e}")
     # 若標記 stale,提示(不算 fail — 第四道護欄設計為保留舊資料)
     if ev.get("conference_stale"):
         print(f"[verify_publish] ⚠️ events.json 法說會為 stale"

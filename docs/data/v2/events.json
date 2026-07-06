@@ -1,11 +1,200 @@
 {
-  "generated_at": "2026-07-05T19:13:17+08:00",
-  "data_through": "2026-07-05",
+  "generated_at": "2026-07-06T17:50:34+08:00",
+  "data_through": "2026-07-06",
   "conference_stale": false,
-  "conference_source_date": "2026-07-05",
-  "macro_count": 2,
+  "conference_source_date": "2026-07-06",
+  "dividend_stale": false,
+  "dividend_source_date": "2026-07-06",
+  "macro_count": 6,
   "conference_count": 2,
+  "dividend_count": 30,
+  "config_warnings": [],
   "events": [
+    {
+      "date": "2026-07-06",
+      "type": "dividend",
+      "symbol": "TWSE:2474",
+      "name": "可成",
+      "title": "可成 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-06",
+      "type": "dividend",
+      "symbol": "TWSE:3037",
+      "name": "欣興",
+      "title": "欣興 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-06",
+      "type": "dividend",
+      "symbol": "TPEX:5347",
+      "name": "世界",
+      "title": "世界 除息日",
+      "importance": "除息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-06",
+      "type": "dividend",
+      "symbol": "TPEX:7734",
+      "name": "印能科技",
+      "title": "印能科技 除息日",
+      "importance": "除息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-06",
+      "type": "macro_tw",
+      "name": "台灣 CPI",
+      "title": "台灣 CPI 消費者物價指數發布(主計總處)",
+      "importance": "台灣總經",
+      "level": "medium_high",
+      "source": "官方月度時程(config,標準日推估待校正)",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-07",
+      "type": "dividend",
+      "symbol": "TWSE:2408",
+      "name": "南亞科",
+      "title": "南亞科 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-07",
+      "type": "dividend",
+      "symbol": "TWSE:2454",
+      "name": "聯發科",
+      "title": "聯發科 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-07",
+      "type": "dividend",
+      "symbol": "TWSE:6526",
+      "name": "達發",
+      "title": "達發 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-07",
+      "type": "dividend",
+      "symbol": "TWSE:6862",
+      "name": "三集瑞-KY",
+      "title": "三集瑞-KY 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-07",
+      "type": "dividend",
+      "symbol": "TPEX:5274",
+      "name": "信驊",
+      "title": "信驊 除權日",
+      "importance": "除權",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-08",
+      "type": "dividend",
+      "symbol": "TWSE:2049",
+      "name": "上銀",
+      "title": "上銀 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-08",
+      "type": "dividend",
+      "symbol": "TWSE:2303",
+      "name": "聯電",
+      "title": "聯電 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-08",
+      "type": "dividend",
+      "symbol": "TWSE:3231",
+      "name": "緯創",
+      "title": "緯創 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-08",
+      "type": "macro_tw",
+      "name": "台灣出口統計",
+      "title": "財政部 進出口貿易統計發布",
+      "importance": "台灣總經",
+      "level": "medium_high",
+      "source": "官方月度時程(config,標準日推估待校正)",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-09",
+      "type": "dividend",
+      "symbol": "TWSE:1513",
+      "name": "中興電",
+      "title": "中興電 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-09",
+      "type": "dividend",
+      "symbol": "TWSE:2492",
+      "name": "華新科",
+      "title": "華新科 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-09",
+      "type": "dividend",
+      "symbol": "TPEX:6223",
+      "name": "旺矽",
+      "title": "旺矽 除息日",
+      "importance": "除息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
     {
       "date": "2026-07-10",
       "type": "conference",
@@ -13,9 +202,64 @@
       "name": "南亞科",
       "title": "南亞科 法說會(線上法說會)",
       "importance": "2026年第2季營運狀況說明",
+      "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-07-05T19:13:17+08:00"
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-10",
+      "type": "dividend",
+      "symbol": "TWSE:3034",
+      "name": "聯詠",
+      "title": "聯詠 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-10",
+      "type": "macro_tw",
+      "name": "台股月營收公布截止",
+      "title": "上市櫃全體月營收公布截止(每月 10 日前,遇假順延)",
+      "importance": "當月營收動能揭曉",
+      "level": "medium_high",
+      "source": "證交法/公司法 每月 10 日前",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-13",
+      "type": "dividend",
+      "symbol": "TWSE:2359",
+      "name": "所羅門",
+      "title": "所羅門 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-14",
+      "type": "dividend",
+      "symbol": "TWSE:2609",
+      "name": "陽明",
+      "title": "陽明 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-14",
+      "type": "dividend",
+      "symbol": "TPEX:4979",
+      "name": "華星光",
+      "title": "華星光 除息日",
+      "importance": "除息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
     },
     {
       "date": "2026-07-14",
@@ -23,8 +267,53 @@
       "name": "美國 CPI",
       "title": "美國 CPI 發布",
       "importance": "high",
+      "level": "high",
       "source": "FRED release_id 10",
-      "fetched_at": "2026-07-05T19:13:17+08:00"
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-15",
+      "type": "dividend",
+      "symbol": "TWSE:2356",
+      "name": "英業達",
+      "title": "英業達 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-15",
+      "type": "dividend",
+      "symbol": "TWSE:3665",
+      "name": "貿聯-KY",
+      "title": "貿聯-KY 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-15",
+      "type": "dividend",
+      "symbol": "TWSE:6442",
+      "name": "光聖",
+      "title": "光聖 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-15",
+      "type": "dividend",
+      "symbol": "TPEX:3081",
+      "name": "聯亞",
+      "title": "聯亞 除權息日",
+      "importance": "除權息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
     },
     {
       "date": "2026-07-15",
@@ -32,8 +321,19 @@
       "name": "美國 PPI",
       "title": "美國 PPI 發布",
       "importance": "medium",
+      "level": "medium",
       "source": "FRED release_id 46",
-      "fetched_at": "2026-07-05T19:13:17+08:00"
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-15",
+      "type": "settlement",
+      "name": "台指期結算",
+      "title": "台指期(TX)月結算日",
+      "importance": "期貨/選擇權結算,留意尾盤波動",
+      "level": "medium",
+      "source": "程式推算(每月第三個週三)",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
     },
     {
       "date": "2026-07-16",
@@ -42,9 +342,87 @@
       "name": "台積電",
       "title": "台積電 法說會(台北文華東方酒店B2 文華廳（台北市松山)",
       "importance": "(1)公布本公司2026年第2季財務報告及2026年第3季業績展望。(2)參加方式：請參見https://investo",
+      "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-07-05T19:13:17+08:00"
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-16",
+      "type": "dividend",
+      "symbol": "TWSE:2382",
+      "name": "廣達",
+      "title": "廣達 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-17",
+      "type": "dividend",
+      "symbol": "TWSE:2395",
+      "name": "研華",
+      "title": "研華 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-17",
+      "type": "dividend",
+      "symbol": "TWSE:6515",
+      "name": "穎崴",
+      "title": "穎崴 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-22",
+      "type": "dividend",
+      "symbol": "TWSE:3653",
+      "name": "健策",
+      "title": "健策 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-07-23",
+      "type": "dividend",
+      "symbol": "TWSE:1503",
+      "name": "士電",
+      "title": "士電 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-08-03",
+      "type": "dividend",
+      "symbol": "TWSE:2376",
+      "name": "技嘉",
+      "title": "技嘉 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
+    },
+    {
+      "date": "2026-08-04",
+      "type": "dividend",
+      "symbol": "TWSE:3533",
+      "name": "嘉澤",
+      "title": "嘉澤 除息日",
+      "importance": "息",
+      "level": "medium",
+      "source": "TWSE/TPEx 除權除息預告表",
+      "fetched_at": "2026-07-06T17:50:34+08:00"
     }
   ]
 }

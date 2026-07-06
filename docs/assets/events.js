@@ -6,7 +6,12 @@
 (function () {
   'use strict';
 
-  const IMP_COLOR = { high: '#ef4444', medium: '#f59e0b' };
+  // 重要度分級(§3.5 事件擴充):中高以上 = {high, medium_high}
+  const LV = { high: { i: '🔴', c: '#ef4444' }, medium_high: { i: '🟠', c: '#f59e0b' },
+               medium: { i: '⚪', c: '#94a3b8' } };
+  const CROWD_LIMIT = 20;                    // >20 條 → 只留中高以上,其餘折疊
+  const FOLD_NAME = { dividend: '除權息', settlement: '結算', conference: '法說會',
+                      macro_tw: '台灣總經', macro: '美國總經' };
   const WD = ['日', '一', '二', '三', '四', '五', '六'];
 
   function fmtDate(iso) {
@@ -19,57 +24,101 @@
       c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   }
 
+  function lvlOf(e) { return e.level || (e.importance === 'high' ? 'high' : 'medium'); }
+  function isHigh(e) { const l = lvlOf(e); return l === 'high' || l === 'medium_high'; }
+  function cardLink(sym, label) {
+    const a = sym ? `watchlist_v2.html#card-${esc(sym).replace(/:/g, '_')}` : '';
+    return a ? `<a href="${a}">${label}</a>` : label;
+  }
+
+  function mergedLine(icon, label, arr) {
+    if (arr.length === 1) {
+      const e = arr[0];
+      const nm = `${esc(e.name)} <code>${esc(e.symbol || '')}</code>`;
+      return `<li><span class="ev-conf">${icon} ${cardLink(e.symbol, nm)}</span>`
+           + `<span class="ev-detail">${esc(e.title || '')}</span></li>`;
+    }
+    const links = arr.map(e => cardLink(e.symbol, esc(e.name))).join('、');
+    return `<li><span class="ev-conf">${icon} ${label} ${arr.length} 檔:</span>`
+         + ` <span class="ev-merged">${links}</span></li>`;
+  }
+
+  function renderDayItems(items) {
+    // 同日多事件合併:個股類(法說會/除權息)併成一行;總經類一行一條
+    const g = {};
+    items.forEach(e => { (g[e.type] = g[e.type] || []).push(e); });
+    let h = '';
+    ['macro', 'macro_tw', 'settlement'].forEach(t => {
+      (g[t] || []).forEach(e => {
+        const L = LV[lvlOf(e)] || LV.medium;
+        h += `<li><span class="ev-macro" style="color:${L.c}">${L.i} ${esc(e.name)}</span>`
+           + `<span class="ev-detail">${esc(e.title || '')}</span></li>`;
+      });
+    });
+    if (g.conference && g.conference.length) h += mergedLine('📅', '法說會', g.conference);
+    if (g.dividend && g.dividend.length) h += mergedLine('💰', '除權息', g.dividend);
+    return h;
+  }
+
   function renderBlock(data) {
-    const evs = (data.events || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+    let evs = (data.events || []).slice();
     if (!evs.length) return '<div class="events-empty">未來 14 天無重大事件</div>';
 
-    // group by date
+    // 密度控制:超過 CROWD_LIMIT 條 → 只顯示中高以上,其餘按類折疊
+    const folded = {};
+    if (evs.length > CROWD_LIMIT) {
+      const shown = [];
+      evs.forEach(e => { if (isHigh(e)) shown.push(e); else folded[e.type] = (folded[e.type] || 0) + 1; });
+      evs = shown;
+    }
+    evs.sort((a, b) => a.date.localeCompare(b.date));
     const byDate = {};
     evs.forEach(e => { (byDate[e.date] = byDate[e.date] || []).push(e); });
 
     let html = '';
     if (data.conference_stale) {
-      html += `<div class="events-stale">⚠️ 法說會資料抓取失敗,顯示 ${esc(data.conference_source_date || '前次')} 的排程(可能過時);總經數據為最新</div>`;
+      html += `<div class="events-stale">⚠️ 法說會抓取失敗,顯示 ${esc(data.conference_source_date || '前次')} 排程(可能過時);其餘為最新</div>`;
+    }
+    if (data.dividend_stale) {
+      html += `<div class="events-stale">⚠️ 除權息抓取失敗,顯示前次資料(可能過時)</div>`;
     }
     Object.keys(byDate).sort().forEach(date => {
-      html += `<div class="events-day"><div class="events-date">${esc(fmtDate(date))}</div><ul class="events-list">`;
-      byDate[date].forEach(e => {
-        if (e.type === 'macro') {
-          const col = IMP_COLOR[e.importance] || 'var(--text-mute)';
-          const dot = e.importance === 'high' ? '🔴' : '🟠';
-          html += `<li><span class="ev-macro" style="color:${col}">${dot} ${esc(e.name)}</span>`
-                + `<span class="ev-src">${esc(e.source)}</span></li>`;
-        } else { // conference — 連到 watchlist 頁該個股卡(全 grade 皆有卡)
-          const anchor = e.symbol ? `watchlist_v2.html#card-${esc(e.symbol).replace(/[:]/g, '_')}` : '';
-          const nm = `📅 ${esc(e.name)} <code>${esc(e.symbol || '')}</code>`;
-          html += `<li><span class="ev-conf">${anchor ? `<a href="${anchor}">${nm}</a>` : nm}</span>`
-                + `<span class="ev-detail">${esc(e.time || '')} ${esc(e.title || '')}</span></li>`;
-        }
-      });
-      html += '</ul></div>';
+      html += `<div class="events-day"><div class="events-date">${esc(fmtDate(date))}</div>`
+            + `<ul class="events-list">${renderDayItems(byDate[date])}</ul></div>`;
     });
+    const parts = Object.keys(folded).map(t => `${FOLD_NAME[t] || t} ${folded[t]}`);
+    if (parts.length) {
+      html += `<div class="events-folded">＋ 另有 ${parts.join('、')} 條(中/低重要度)已折疊`
+            + ` — 見個股卡 📅💰 徽章</div>`;
+    }
     return html;
   }
 
+  function _addBadge(summary, cls, txt, title) {
+    const b = document.createElement('span');
+    b.className = cls; b.title = title; b.textContent = txt;
+    summary.insertBefore(b, summary.firstChild);
+  }
+
   function markCardBadges(data) {
-    const today = new Date();
-    const soon = new Date(today.getTime() + 7 * 86400000);
-    const soonSyms = {};
+    const t0 = new Date(new Date().toDateString());
+    const soon = new Date(t0.getTime() + 7 * 86400000);
+    const conf = {}, div = {};
     (data.events || []).forEach(e => {
-      if (e.type !== 'conference' || !e.symbol) return;
+      if (!e.symbol) return;
       const d = new Date(e.date + 'T00:00:00+08:00');
-      if (d >= new Date(today.toDateString()) && d <= soon) soonSyms[e.symbol] = e.date;
+      if (d < t0 || d > soon) return;
+      if (e.type === 'conference') conf[e.symbol] = e.date;
+      else if (e.type === 'dividend') div[e.symbol] = e.date;
     });
     document.querySelectorAll('.stock-card[data-symbol], .wl-stock[data-symbol]').forEach(card => {
       const sym = card.getAttribute('data-symbol');
-      if (soonSyms[sym] && !card.querySelector('.conf-badge')) {
-        const b = document.createElement('span');
-        b.className = 'conf-badge';
-        b.title = `${soonSyms[sym]} 有法說會`;
-        b.textContent = '📅';
-        const summary = card.querySelector('summary');
-        if (summary) summary.insertBefore(b, summary.firstChild);
-      }
+      const summary = card.querySelector('summary');
+      if (!summary) return;
+      if (conf[sym] && !card.querySelector('.conf-badge'))
+        _addBadge(summary, 'conf-badge', '📅', `${conf[sym]} 有法說會`);
+      if (div[sym] && !card.querySelector('.div-badge'))
+        _addBadge(summary, 'div-badge', '💰', `${div[sym]} 除權息`);
     });
   }
 

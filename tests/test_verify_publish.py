@@ -201,6 +201,34 @@ class TestVerifyPublish(unittest.TestCase):
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("weekly.html 缺週報標題" in e for e in errors))
 
+    # ── 事件擴充斷言(§3.5 新事件類型)──
+    def test_events_unknown_type_caught(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone(timedelta(hours=8))).isoformat()
+        bad = json.dumps({"generated_at": now, "events": [
+            {"date": "2026-07-15", "type": "bogus", "name": "怪"}]})
+        f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("未知 type" in e for e in errors))
+
+    def test_events_dividend_missing_symbol_caught(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone(timedelta(hours=8))).isoformat()
+        bad = json.dumps({"generated_at": now, "events": [
+            {"date": "2026-07-15", "type": "dividend", "name": "缺symbol", "level": "medium"}]})
+        f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("除權息條目缺欄位" in e for e in errors))
+
+    def test_events_bad_level_caught(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone(timedelta(hours=8))).isoformat()
+        bad = json.dumps({"generated_at": now, "events": [
+            {"date": "2026-07-15", "type": "settlement", "name": "結算", "level": "超高"}]})
+        f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("非法 level" in e for e in errors))
+
     # ── 籌碼斷言(§3.5)──
     def test_chips_malformed_length_caught(self):
         bad = _chips_chart_json(foreign=[10, -5])   # 長度 2 ≠ dates 3

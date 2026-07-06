@@ -763,8 +763,13 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 .events-list .ev-conf code { font-size: 11px; }
 .events-list .ev-src, .events-list .ev-detail {
   color: var(--text-mute); font-size: 11px; }
-/* 個股卡 7 天內法說會徽章 */
-.stock-card .conf-badge { margin-right: 5px; cursor: help; }
+.events-list .ev-merged { color: var(--text); font-size: 12px; flex: 1 1 100%; }
+.events-list .ev-merged a { text-decoration: none; }
+.events-folded { color: var(--text-mute); font-size: 12px; padding: 6px 0 2px;
+  font-style: italic; }
+/* 個股卡 7 天內事件徽章(法說會 📅 / 除權息 💰) */
+.stock-card .conf-badge, .stock-card .div-badge,
+.wl-stock .conf-badge, .wl-stock .div-badge { margin-right: 4px; cursor: help; }
 
 /* ─── 總經快覽橫條(stage9 Day2 §3.2)─── */
 .macro-bar { background: #1f2937; color: #e5e7eb; font-size: 13px; overflow-x: auto; }
