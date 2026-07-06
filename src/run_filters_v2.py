@@ -556,12 +556,21 @@ def _score_one_line(
     prev_state = state_io.read_state(conn, symbol, category, price_str)
 
     # 2. evaluate 狀態機
-    new_state, should_score = standing.evaluate_standing(
-        kline_history, given_price, prev_state, date,
-    )
-
-    # 3. 寫回 standing_state
-    state_io.write_state(conn, symbol, category, price_str, new_state, now_iso)
+    # W2-3 冪等(審計 2026-07-07):同日重跑 no-op —— 不重新評估、不推進狀態。
+    # 否則當天剛 STANDING 的線會被推進 MAINTAINING(should_score 變 False →
+    # 分數變低、C 級「今天新成立」消失、score_history 被覆寫成錯值)。
+    # 用今天已寫回的 state 重建與首跑相同的輸出。
+    if prev_state and prev_state.get("last_evaluated_date") == date:
+        new_state = prev_state
+        should_score = (prev_state["state"] == standing.STANDING
+                        and prev_state.get("standing_date") == date)
+    else:
+        new_state, should_score = standing.evaluate_standing(
+            kline_history, given_price, prev_state, date,
+        )
+        # 3. 寫回 standing_state(帶本次評估日,供同日重跑判 no-op)
+        state_io.write_state(conn, symbol, category, price_str, new_state, now_iso,
+                             last_evaluated_date=date)
 
     # 4. 計分(should_score=False 自動回 0)
     score, details = score_line(line, should_score, weights)
@@ -624,29 +633,36 @@ def _score_one_area(
 
     prev_state = state_io.read_state(conn, symbol, category, price_str)
 
-    # v2.2 §1-D 區域觸發:K 棒範圍 ∩ 區域範圍
-    today_k = kline_history[-1]
-    intersects = today_k["low"] <= area_high and today_k["high"] >= area_low
-
-    if intersects:
-        # 把今天 K bar low/high 撐開到涵蓋 midpoint,讓 line-style touch 條件成立
-        adj_today = {
-            **today_k,
-            "low":  min(today_k["low"],  given_price),
-            "high": max(today_k["high"], given_price),
-        }
-        # close 也需 ≥ midpoint 才能進入 line-style 站穩流程 — 用 close 跟 midpoint 取大
-        if adj_today["close"] < given_price:
-            adj_today["close"] = given_price
-        history_adj = kline_history[:-1] + [adj_today]
+    # W2-3 冪等:同日重跑 no-op(同 _score_one_line)
+    if prev_state and prev_state.get("last_evaluated_date") == date:
+        new_state = prev_state
+        should_score = (prev_state["state"] == standing.STANDING
+                        and prev_state.get("standing_date") == date)
     else:
-        history_adj = kline_history
+        # v2.2 §1-D 區域觸發:K 棒範圍 ∩ 區域範圍
+        today_k = kline_history[-1]
+        intersects = today_k["low"] <= area_high and today_k["high"] >= area_low
 
-    new_state, should_score = standing.evaluate_standing(
-        history_adj, given_price, prev_state, date,
-    )
+        if intersects:
+            # 把今天 K bar low/high 撐開到涵蓋 midpoint,讓 line-style touch 條件成立
+            adj_today = {
+                **today_k,
+                "low":  min(today_k["low"],  given_price),
+                "high": max(today_k["high"], given_price),
+            }
+            # close 也需 ≥ midpoint 才能進入 line-style 站穩流程 — 用 close 跟 midpoint 取大
+            if adj_today["close"] < given_price:
+                adj_today["close"] = given_price
+            history_adj = kline_history[:-1] + [adj_today]
+        else:
+            history_adj = kline_history
 
-    state_io.write_state(conn, symbol, category, price_str, new_state, now_iso)
+        new_state, should_score = standing.evaluate_standing(
+            history_adj, given_price, prev_state, date,
+        )
+
+        state_io.write_state(conn, symbol, category, price_str, new_state, now_iso,
+                             last_evaluated_date=date)
 
     score, details = score_area(area, should_score, weights)
     for d in details:
@@ -691,9 +707,15 @@ def score_one_symbol(
     watchlist:        dict,
     now_iso:          str,
     intl_activations: dict[str, list[str]] | None = None,
+    input_errors:     list | None = None,
 ) -> dict | None:
     """對單一個股算當日結果。回傳 filtered_result_v2 stocks dict 一個 entry,
     或 None(該檔當日無 K 線資料)。
+
+    input_errors(W2-4 壞線隔離,審計 2026-07-07):key_prices 是朋友每週手繪轉檔
+    (輸入錯誤是常態,已有 6 個 .bak 修正輪次)。單條線/區域解析或計分炸掉時,
+    錯誤記入此 list(哪檔哪條),該條跳過、其餘照算——一條壞線不再 = 整跑崩潰
+    = 當晚停更。caller(run_pipeline)彙整進 metadata,main() 發 Discord。
     """
     kline_history = load_kline_history(conn_kline, symbol, date)
     if not kline_history:
@@ -767,16 +789,33 @@ def score_one_symbol(
     all_tags_today: list[str] = []
 
     for line in lines:
-        s, d, t, t2, e = _score_one_line(
-            conn_kline, symbol, line, kline_history, date, weights, now_iso,
-        )
+        try:
+            s, d, t, t2, e = _score_one_line(
+                conn_kline, symbol, line, kline_history, date, weights, now_iso,
+            )
+        except Exception as exc:                # noqa: BLE001 — W2-4 壞線隔離
+            msg = (f"{symbol} 線 {line.get('category', '?')} "
+                   f"price={line.get('price', '?')!r}:{type(exc).__name__} {exc}")
+            print(f"[run_filters] ⚠️ 壞線隔離:{msg}", file=sys.stderr)
+            if input_errors is not None:
+                input_errors.append(msg)
+            continue
         total_score += s; all_details.extend(d); all_tags.extend(t)
         all_tags_today.extend(t2); all_events.extend(e)
 
     for area in areas:
-        s, d, t, t2, e = _score_one_area(
-            conn_kline, symbol, area, kline_history, date, weights, now_iso,
-        )
+        try:
+            s, d, t, t2, e = _score_one_area(
+                conn_kline, symbol, area, kline_history, date, weights, now_iso,
+            )
+        except Exception as exc:                # noqa: BLE001 — W2-4 壞區域隔離
+            msg = (f"{symbol} 區域 {area.get('category', '?')} "
+                   f"low={area.get('low', '?')!r} high={area.get('high', '?')!r}:"
+                   f"{type(exc).__name__} {exc}")
+            print(f"[run_filters] ⚠️ 壞區域隔離:{msg}", file=sys.stderr)
+            if input_errors is not None:
+                input_errors.append(msg)
+            continue
         total_score += s; all_details.extend(d); all_tags.extend(t)
         all_tags_today.extend(t2); all_events.extend(e)
 
@@ -849,6 +888,7 @@ def run_pipeline(
 
     results:        dict       = {}
     skipped:        list[str]  = []
+    input_errors:   list[str]  = []          # W2-4 壞線/區域隔離報告
 
     # 增量模式:filter target list
     target_iter = iter_tw_symbols(watchlist)
@@ -860,6 +900,7 @@ def run_pipeline(
             conn_kline, conn_etf, symbol, date,
             weights, sectors, key_prices, watchlist, now_iso,
             intl_activations=intl_activations,
+            input_errors=input_errors,
         )
         if entry is None:
             skipped.append(symbol)
@@ -901,6 +942,7 @@ def run_pipeline(
             "generated_at":        now_iso,
             "version":             "2.1",
             "skipped_symbols":     skipped,
+            "input_errors":        input_errors,   # W2-4 壞線隔離(哪檔哪條)
             "incremental":         restrict_symbols is not None,
         },
         "stocks":     results,
@@ -963,6 +1005,23 @@ def main(args) -> None:
 
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
+
+    # W2-4:壞線隔離報告 → Discord(列出哪檔哪條;整跑未崩,其餘照常)
+    input_errors = output["metadata"].get("input_errors", [])
+    if input_errors:
+        print(f"⚠️ key_prices 壞線隔離 {len(input_errors)} 條(該條跳過、其餘照算):")
+        for msg in input_errors:
+            print(f"   • {msg}")
+        try:
+            from src.daily_supervisor import _load_webhook, _send
+            wh = _load_webhook()
+            if wh:
+                _send(wh, f"⚠️ [key_prices 壞線] {args.date} 隔離 {len(input_errors)} 條"
+                          f"(已跳過,其餘照常計分,請修 key_prices.json):\n"
+                          + "\n".join(f"• {m}" for m in input_errors[:10])
+                          + ("\n…" if len(input_errors) > 10 else ""))
+        except Exception as exc:                # noqa: BLE001
+            print(f"[run_filters] Discord 告警失敗: {exc}", file=sys.stderr)
 
     scored  = len(output["stocks"])
     skipped = len(output["metadata"]["skipped_symbols"])

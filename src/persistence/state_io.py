@@ -27,14 +27,21 @@ MIGRATION_PATH = (
 
 
 def init_schema(conn: sqlite3.Connection) -> None:
-    """套用 migrations/001_standing_state.sql。
+    """套用 migrations/001_standing_state.sql + 程式端欄位升級。
 
-    idempotent — 重跑無副作用(SQL 內全是 CREATE IF NOT EXISTS)。
-    Production 跑一次,unittest 每次 setUp 跑。
+    idempotent — 重跑無副作用(SQL 內全是 CREATE IF NOT EXISTS;
+    ALTER 前先查 PRAGMA,欄位已存在則跳過)。
+    Production 每次 run_filters_v2 都跑,舊庫自動升級。
     """
     with open(MIGRATION_PATH, encoding="utf-8") as f:
         sql = f.read()
     conn.executescript(sql)
+    # W2-3(審計 2026-07-07):同日重跑冪等 —— 記錄每 row 最後評估日,
+    # 同日再評估一律 no-op,重跑不再把 STANDING 推進 MAINTAINING(分數變低、
+    # C 級標籤消失、score_history 被覆寫成錯值)。
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(standing_state)")}
+    if "last_evaluated_date" not in cols:
+        conn.execute("ALTER TABLE standing_state ADD COLUMN last_evaluated_date TEXT")
     conn.commit()
 
 
@@ -53,7 +60,7 @@ def read_state(
     (caller 傳給 evaluate_standing 時,None 會被視為 UNTRIGGERED)。
     """
     cur = conn.execute(
-        "SELECT state, trigger_date, standing_date "
+        "SELECT state, trigger_date, standing_date, last_evaluated_date "
         "FROM standing_state "
         "WHERE symbol = ? AND category = ? AND price_str = ?",
         (symbol, category, price_str),
@@ -62,9 +69,10 @@ def read_state(
     if row is None:
         return None
     return {
-        "state":         row[0],
-        "trigger_date":  row[1],
-        "standing_date": row[2],
+        "state":               row[0],
+        "trigger_date":        row[1],
+        "standing_date":       row[2],
+        "last_evaluated_date": row[3],
     }
 
 
@@ -75,24 +83,28 @@ def write_state(
     price_str: str,
     state_dict: dict,
     last_updated: str,
+    last_evaluated_date: str | None = None,
 ) -> None:
-    """UPSERT。新 row 直接 INSERT,既有 row 更新 5 個欄位。
+    """UPSERT。新 row 直接 INSERT,既有 row 更新欄位。
 
     state_dict 必含: "state"(5 種 enum 之一)
     state_dict 可選: "trigger_date" / "standing_date"(可為 None)
     last_updated 由 caller 傳 ISO datetime(讓測試可控時間)。
+    last_evaluated_date(W2-3 冪等):本次評估對應的交易日;同日重跑據此 no-op。
 
     不 commit;caller 視 batch 邊界決定 commit 時機。
     """
     conn.execute(
         "INSERT INTO standing_state "
-        "(symbol, category, price_str, state, trigger_date, standing_date, last_updated) "
-        "VALUES (?, ?, ?, ?, ?, ?, ?) "
+        "(symbol, category, price_str, state, trigger_date, standing_date, "
+        " last_updated, last_evaluated_date) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?) "
         "ON CONFLICT(symbol, category, price_str) DO UPDATE SET "
-        "  state         = excluded.state, "
-        "  trigger_date  = excluded.trigger_date, "
-        "  standing_date = excluded.standing_date, "
-        "  last_updated  = excluded.last_updated",
+        "  state               = excluded.state, "
+        "  trigger_date        = excluded.trigger_date, "
+        "  standing_date       = excluded.standing_date, "
+        "  last_updated        = excluded.last_updated, "
+        "  last_evaluated_date = excluded.last_evaluated_date",
         (
             symbol,
             category,
@@ -101,6 +113,7 @@ def write_state(
             state_dict.get("trigger_date"),
             state_dict.get("standing_date"),
             last_updated,
+            last_evaluated_date,
         ),
     )
 

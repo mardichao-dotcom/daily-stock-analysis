@@ -354,9 +354,22 @@ def main() -> None:
         sys.exit(1)
 
     stocks, stats = parse_markdown(args.md)
+
+    # W2-4 schema 驗證(審計 2026-07-07):壞資料不落地。
+    # 價格可 float、區域 low<high、category 在白名單(config/weights.json given_price)。
+    sys.path.insert(0, PROJECT_ROOT)
+    from src.key_prices_schema import load_valid_categories, validate_key_prices
+    problems = validate_key_prices({"stocks": stocks}, load_valid_categories())
+    if problems:
+        print(f"\n❌ schema 驗證失敗 {len(problems)} 條,未寫出(修正 md 後重跑):",
+              file=sys.stderr)
+        for p in problems:
+            print(f"   • {p}", file=sys.stderr)
+        sys.exit(1)
+
     write_json(stocks, args.out)
     print_stats(stocks, stats)
-    print(f"\n✅ 寫入: {args.out}")
+    print(f"\n✅ 寫入: {args.out}(schema 驗證通過)")
 
 if __name__ == "__main__":
     main()

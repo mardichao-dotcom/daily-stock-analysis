@@ -201,6 +201,81 @@ class TestWangXiEightDayCycle(unittest.TestCase):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+class TestSameDayRerunIdempotent(unittest.TestCase):
+    """W2-3(審計 2026-07-07):同日重跑一律 no-op。
+
+    修前 bug:對同一 date 重跑 run_filters,當天剛 STANDING 的線會走
+    STANDING→MAINTAINING 轉移 → should_score 變 False → 分數變低、
+    C 級「今天新成立」標籤消失、score_history 被 UPSERT 成錯值。
+    修後:standing_state.last_evaluated_date == date → no-op,
+    重跑輸出與首跑完全一致(分數/狀態/標籤/score_history)。"""
+
+    def setUp(self):
+        self.conn = setup_fixture_kline_db()
+        self.weights = load_real_weights()
+
+    def tearDown(self):
+        self.conn.close()
+
+    def _run_day(self, date: str) -> dict:
+        return run_filters_v2.run_pipeline(
+            date       = date,
+            conn_kline = self.conn,
+            conn_etf   = None,
+            weights    = self.weights,
+            sectors    = FIXTURE_SECTORS,
+            key_prices = FIXTURE_KEY_PRICES,
+            watchlist  = FIXTURE_WATCHLIST,
+            now_iso    = f"{date}T19:00:00+08:00",
+        )
+
+    def _hist(self):
+        return self.conn.execute(
+            "SELECT date, symbol, score, grade FROM score_history "
+            "ORDER BY date, symbol").fetchall()
+
+    def test_rerun_standing_day_no_op(self):
+        """STANDING 成立日(+0.7)重跑:分數/狀態/標籤/score_history 全不變。"""
+        self._run_day("2026-05-13")                       # Day1 TRIGGERED
+        r1 = self._run_day("2026-05-14")                  # Day2 STANDING +0.7
+        s1 = r1["stocks"]["TPEX:6223"]
+        state1 = state_io.read_state(self.conn, "TPEX:6223", "inner_support", "4640")
+        hist1 = self._hist()
+        self.assertEqual(state1["state"], "STANDING")
+        self.assertAlmostEqual(s1["score"], 0.7)
+
+        r2 = self._run_day("2026-05-14")                  # ★ 同日重跑
+        s2 = r2["stocks"]["TPEX:6223"]
+        state2 = state_io.read_state(self.conn, "TPEX:6223", "inner_support", "4640")
+        self.assertAlmostEqual(s2["score"], s1["score"])              # 分數不變
+        self.assertEqual(state2["state"], "STANDING")                 # 不被推進 MAINTAINING
+        self.assertEqual(state2["standing_date"], state1["standing_date"])
+        self.assertEqual(s2["tags"], s1["tags"])                      # 🟢 站穩 tag 不消失
+        self.assertEqual(s2["tags_today"], s1["tags_today"])          # C 級標籤不消失
+        self.assertEqual(s2["events"], s1["events"])
+        self.assertEqual(self._hist(), hist1)                         # score_history 不變
+
+    def test_rerun_triggered_day_no_op(self):
+        """TRIGGERED 日重跑:不重起 trigger_date、狀態不變。"""
+        r1 = self._run_day("2026-05-13")
+        state1 = state_io.read_state(self.conn, "TPEX:6223", "inner_support", "4640")
+        r2 = self._run_day("2026-05-13")
+        state2 = state_io.read_state(self.conn, "TPEX:6223", "inner_support", "4640")
+        self.assertEqual(state2, state1)
+        self.assertEqual(r2["stocks"]["TPEX:6223"]["score"],
+                         r1["stocks"]["TPEX:6223"]["score"])
+
+    def test_next_day_still_advances(self):
+        """冪等只擋『同日』;隔天照常推進(STANDING → 續走狀態機)。"""
+        self._run_day("2026-05-13")
+        self._run_day("2026-05-14")
+        self._run_day("2026-05-14")                       # 重跑不影響
+        self._run_day("2026-05-15")                       # 隔天照常評估
+        state = state_io.read_state(self.conn, "TPEX:6223", "inner_support", "4640")
+        self.assertEqual(state["state"], "CANCELLED")     # 8 天表:5/15 → CANCELLED
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 class TestOutputStructure(unittest.TestCase):
     """輸出 JSON 結構驗證(對齊 spec §4.4 + 5.2)"""
 

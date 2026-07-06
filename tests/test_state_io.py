@@ -64,13 +64,28 @@ class TestInitSchema(StateIoTestBase):
         """duplicate composite key 應該觸發 IntegrityError"""
         self.conn.execute(
             "INSERT INTO standing_state VALUES "
-            "('X', 'key_price', '100', 'UNTRIGGERED', NULL, NULL, '2026-05-26')"
+            "('X', 'key_price', '100', 'UNTRIGGERED', NULL, NULL, '2026-05-26', NULL)"
         )
         with self.assertRaises(sqlite3.IntegrityError):
             self.conn.execute(
                 "INSERT INTO standing_state VALUES "
-                "('X', 'key_price', '100', 'TRIGGERED', NULL, NULL, '2026-05-26')"
+                "('X', 'key_price', '100', 'TRIGGERED', NULL, NULL, '2026-05-26', NULL)"
             )
+
+    def test_upgrades_old_schema_with_last_evaluated_date(self):
+        """W2-3:舊庫(無 last_evaluated_date 欄)跑 init_schema 自動 ALTER 升級。"""
+        old = sqlite3.connect(":memory:")
+        old.execute("CREATE TABLE standing_state ("
+                    "symbol TEXT NOT NULL, category TEXT NOT NULL, price_str TEXT NOT NULL,"
+                    "state TEXT NOT NULL, trigger_date TEXT, standing_date TEXT,"
+                    "last_updated TEXT NOT NULL, PRIMARY KEY (symbol, category, price_str))")
+        old.execute("INSERT INTO standing_state VALUES "
+                    "('X','key_price','100','STANDING','2026-05-13','2026-05-14','t')")
+        state_io.init_schema(old)                        # 應 ALTER 而非炸
+        r = state_io.read_state(old, "X", "key_price", "100")
+        self.assertEqual(r["state"], "STANDING")
+        self.assertIsNone(r["last_evaluated_date"])      # 舊 row 補 NULL
+        old.close()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -91,22 +106,33 @@ class TestReadState(StateIoTestBase):
         )
         result = state_io.read_state(self.conn, "TPEX:6223", "inner_support", "4640")
         self.assertEqual(result, {
-            "state":         "STANDING",
-            "trigger_date":  "2026-05-13",
-            "standing_date": "2026-05-14",
+            "state":               "STANDING",
+            "trigger_date":        "2026-05-13",
+            "standing_date":       "2026-05-14",
+            "last_evaluated_date": None,
         })
 
     def test_returned_dict_matches_evaluate_standing_input(self):
-        """read_state 回的 dict 結構應該直接可餵給 evaluate_standing"""
+        """read_state 回的 dict 結構應該直接可餵給 evaluate_standing
+        (W2-3 起多帶 last_evaluated_date;evaluate_standing 忽略多餘 key)"""
         state_io.write_state(
             self.conn, "X", "key_price", "100",
             {"state": "TRIGGERED", "trigger_date": "2026-05-13", "standing_date": None},
             last_updated="2026-05-13",
         )
         result = state_io.read_state(self.conn, "X", "key_price", "100")
-        # evaluate_standing 預期 keys: state / trigger_date / standing_date
         self.assertEqual(set(result.keys()),
-                         {"state", "trigger_date", "standing_date"})
+                         {"state", "trigger_date", "standing_date", "last_evaluated_date"})
+
+    def test_write_and_read_last_evaluated_date(self):
+        """W2-3:last_evaluated_date 寫入/讀回(冪等判斷的依據)。"""
+        state_io.write_state(
+            self.conn, "X", "key_price", "100",
+            {"state": "STANDING", "trigger_date": "2026-05-13", "standing_date": "2026-05-14"},
+            last_updated="t", last_evaluated_date="2026-05-14",
+        )
+        r = state_io.read_state(self.conn, "X", "key_price", "100")
+        self.assertEqual(r["last_evaluated_date"], "2026-05-14")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -279,4 +305,5 @@ class TestRoundTrip(StateIoTestBase):
             state_io.write_state(self.conn, "X", "cat", str(i),
                                   state_dict, last_updated=f"2026-05-{14+i:02d}")
             result = state_io.read_state(self.conn, "X", "cat", str(i))
-            self.assertEqual(result, state_dict)
+            # W2-3 起 read 多帶 last_evaluated_date(未傳則 None)
+            self.assertEqual(result, {**state_dict, "last_evaluated_date": None})
