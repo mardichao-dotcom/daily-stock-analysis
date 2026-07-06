@@ -125,7 +125,24 @@ if [[ ! -f "$ETF_DB" ]]; then
     python3 src/daily_supervisor.py
     exit 1
 fi
-echo "      ✅ 健康檢查通過（CDP OK、kline.db OK、etf_operations.db OK）"
+# ── API-ready preflight(7/6 事故修補)──────────────────────────────────────────
+# 不只驗「chart 頁存在」,還驗 TradingViewApi 在 N 秒內可用。7/6 事故:chart 頁在
+# 但 API 永不 ready,tv_collect 卡在單檔迴圈之前燒滿 30 分。此處提前 fail-fast(≤120s)。
+echo "      驗 TradingViewApi ready(preflight)..."
+if ! node scripts/tv_collect.mjs --preflight-only 2>&1; then
+    echo "❌ TradingViewApi preflight 失敗（chart 頁在但 API 未 ready / 初始化卡死）"
+    python3 src/status_writer.py --tool "$TOOL" \
+        --step tv_collect --status fail --duration 0 \
+        --note "TradingViewApi preflight failed (chart present but API not ready)"
+    for s in daily_update import_kline \
+              run_filters_v2 fetch_chips prepare_charts_v2 site_meta render_v2 publish; do
+        skip_step "$s" "API preflight 失敗"
+    done
+    python3 src/status_writer.py --finish --tool "$TOOL"
+    python3 src/daily_supervisor.py
+    exit 0
+fi
+echo "      ✅ 健康檢查通過（CDP OK、TradingViewApi ready、kline.db OK、etf_operations.db OK）"
 
 # ── [1] tv_collect（K 線採集）────────────────────────────────────────────────
 echo "[1/10] 採集 K 線資料..."

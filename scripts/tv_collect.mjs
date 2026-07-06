@@ -43,6 +43,8 @@ const REFRESH_BARS = refreshIdx >= 0 ? parseInt(args[refreshIdx + 1], 10) : 3;
 // 只跑指定交易所(P0-D 美股補跑 / 一次性非台股清洗用),逗號分隔,如 --exchanges NASDAQ,NYSE
 const exIdx = args.indexOf('--exchanges');
 const ONLY_EXCHANGES = exIdx >= 0 ? new Set(args[exIdx + 1].split(',')) : null;
+// 健康檢查升級:只做 CDP 連線 + TradingViewApi ready 探測就退出(0=ready / 2=卡死)
+const PREFLIGHT_ONLY = args.includes('--preflight-only');
 // §6.5:單檔逾時(6/7 事故:第 2 檔卡死燒光 30 分鐘全域額度)。逾時 → 記 errors → 下一檔。
 const PER_SYMBOL_TIMEOUT_MS = 60000;
 
@@ -133,15 +135,21 @@ function logFail(symbol, attempt, reason) {
 // ── CDP helpers ───────────────────────────────────────────────────────────────
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-// §6.5:單檔逾時包裝 — 卡死的個股不再拖垮整批,逾時即 reject 換下一檔
-function withTimeout(promise, ms) {
+// §6.5:逾時包裝 — 卡死的操作不再拖垮整批,逾時即 reject。label 標明哪一段(單檔/evaluate/初始化)
+function withTimeout(promise, ms, label = '單檔') {
   let t;
   const timer = new Promise((_, reject) => {
-    t = setTimeout(() => reject(new Error(`單檔逾時 ${ms / 1000}s`)), ms);
+    t = setTimeout(() => reject(new Error(`${label}逾時 ${ms / 1000}s`)), ms);
     t.unref?.();
   });
   return Promise.race([promise, timer]).finally(() => clearTimeout(t));
 }
+
+// 單次 Runtime.evaluate 硬上限:page wedged 時 evaluate 可能永不回,若不包 timeout,
+// waitForApiReady 的 while(30s) 因為 await 卡住永遠回不到迴圈條件 → 燒到全域 30 分(7/6 事故)。
+const EVAL_TIMEOUT_MS = 20000;
+// 初始化階段(connectCDP + waitForApiReady)獨立硬上限:單檔迴圈「之前」的等待專用護欄。
+const INIT_TIMEOUT_MS = 120000;
 
 // fetch 包 timeout(防 5/31 那種「CDP server 接受連線但不回應」)
 async function fetchWithTimeout(url, ms) {
@@ -157,9 +165,11 @@ async function fetchWithTimeout(url, ms) {
 async function connectCDP() {
   const resp    = await fetchWithTimeout(`http://localhost:${CDP_PORT}/json/list`, 5000);
   const targets = await resp.json();
-  const target  = targets.find(t => t.type === 'page' && /tradingview\.com\/chart/i.test(t.url))
-                || targets.find(t => t.type === 'page' && /tradingview/i.test(t.url));
-  if (!target) throw new Error('No TradingView chart target found');
+  // 只認真正的 chart 頁(https://…tradingview.com/chart/…)。
+  // 7/6 白屏事故:舊 fallback /tradingview/i 會誤中 file:///…TradingView.app/…/new-tab 頁,
+  // 於是連到 new-tab 空頁苦等 API → 卡死。白屏/停 new-tab 時應直接 throw,讓上層明確判失敗。
+  const target  = targets.find(t => t.type === 'page' && /https?:\/\/[^\s]*tradingview\.com\/chart/i.test(t.url || ''));
+  if (!target) throw new Error('No TradingView chart target found（只剩 app 內部頁,疑白屏/停在 new-tab）');
   console.log(`[CDP] target: ${target.url.slice(0, 80)}`);
   const client = await CDP({ host: 'localhost', port: CDP_PORT, target: target.id });
   await client.Runtime.enable();
@@ -189,7 +199,9 @@ async function waitForApiReady(client, timeoutMs = 30000) {
 }
 
 async function ev(client, expr, awaitPromise = false) {
-  const res = await client.Runtime.evaluate({ expression: expr, returnByValue: true, awaitPromise });
+  const res = await withTimeout(
+    client.Runtime.evaluate({ expression: expr, returnByValue: true, awaitPromise }),
+    EVAL_TIMEOUT_MS, 'evaluate');
   if (res.exceptionDetails) {
     const msg = res.exceptionDetails.exception?.description || res.exceptionDetails.text || 'Unknown';
     throw new Error(msg);
@@ -264,14 +276,28 @@ async function main() {
   const klineStatus = getKlineStatus();
   console.log(`        kline.db: ${Object.keys(klineStatus).length} symbols already tracked`);
 
-  let client = await connectCDP();
-  // ★ Preflight:等 TradingViewApi expose,否則 0 秒 87 檔全 fail(5/31 教訓)
+  // ★ 初始化階段(單檔迴圈「之前」):CDP 連線 + 等 TradingViewApi expose。
+  // 7/6 事故:chart 頁存在但 API 永不 ready,evaluate 卡死 → 燒滿 30 分無任何 [N/131]。
+  // 修法:整段獨立硬 timeout(≤120s),失敗明確報「初始化卡死」而非空耗全域額度。
+  let client = null;
   try {
-    await waitForApiReady(client, 30000);
+    await withTimeout((async () => {
+      client = await connectCDP();
+      await waitForApiReady(client, 30000);      // 內部 ev() 已包 EVAL_TIMEOUT,30s 迴圈才真的有效
+    })(), INIT_TIMEOUT_MS, '初始化');
   } catch (e) {
-    await client.close().catch(() => {});
-    console.error(`[FATAL] preflight failed: ${e.message}`);
+    try { await client?.close?.(); } catch { /* orphan socket,忽略 */ }
+    console.error(`[FATAL] 初始化卡死:${e.message}`);
+    console.error(`        CDP 連線或 TradingViewApi 初始化未在 ${INIT_TIMEOUT_MS / 1000}s 內完成`
+      + ` —— chart 頁可能存在但 API 未 ready(版面載入不完整)。請確認 TV Desktop 停在可用 chart。`);
     process.exit(2);
+  }
+
+  // --preflight-only:只驗「TradingViewApi 在 N 秒內可用」,供 run_all 健康檢查升級用(不只驗 chart 頁存在)
+  if (PREFLIGHT_ONLY) {
+    console.log('[PREFLIGHT] ✓ TradingViewApi ready — OK');
+    await client.close().catch(() => {});
+    process.exit(0);
   }
 
   const results = {};
@@ -390,4 +416,10 @@ async function main() {
   }
 }
 
-main().catch(e => { console.error('[FATAL]', e.message); process.exit(1); });
+// 只在「直接執行」時跑 main;被 import(測試)時不跑,方便單元測試初始化逾時等純邏輯。
+const _isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
+if (_isMain) {
+  main().catch(e => { console.error('[FATAL]', e.message); process.exit(1); });
+}
+
+export { withTimeout, ev, waitForApiReady, connectCDP, EVAL_TIMEOUT_MS, INIT_TIMEOUT_MS };
