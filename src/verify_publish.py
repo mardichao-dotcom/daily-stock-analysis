@@ -119,7 +119,51 @@ def run_checks(base: str, data_date: str, *, fetch=_fetch) -> list[str]:
     # ── 8:chips 籌碼結構斷言(stage9 §3.5)──
     errors.extend(_check_chips(base, data_date, fetch))
 
+    # ── 9:news.json 新聞資料層(欄位齊全 + 版權紅線:無內文)──
+    errors.extend(_check_news(base, fetch))
+
     return errors
+
+
+def _check_news(base: str, fetch) -> list[str]:
+    """news.json:200 + 欄位齊全 + 版權紅線(只有標題+連結,無內文欄位)。
+    缺檔(macro 08:30 產出)→ 警示不 fail(不讓主跑耦合 macro 管線健康)。"""
+    code, body = fetch(f"{base}/data/v2/news.json")
+    if code != 200:
+        print(f"[verify_publish] ⚠️ news.json HTTP {code}(macro 08:30 產出,N/A 護欄放行)")
+        return []
+    try:
+        nj = json.loads(body)
+    except json.JSONDecodeError:
+        return ["news.json 非合法 JSON"]
+    items = nj.get("items")
+    if not isinstance(items, list):
+        return ["news.json items 非 list"]
+    REQ = {"title", "source", "published_at", "fetched_at", "url", "matched_keywords"}
+    BODY_KEYS = {"description", "content", "summary", "body", "encoded", "content_encoded"}
+    errs: list[str] = []
+    for it in items[:20]:
+        miss = REQ - set(it.keys())
+        if miss:
+            errs.append(f"news.json 條目缺欄位 {sorted(miss)}")
+            break
+        leak = BODY_KEYS & set(it.keys())
+        if leak:                                   # 版權紅線:不得有內文欄位
+            errs.append(f"news.json 含內文欄位 {sorted(leak)}(版權紅線)")
+            break
+        if not it.get("url"):
+            errs.append("news.json 條目缺 url")
+            break
+    ga = nj.get("generated_at", "")
+    try:
+        gen = datetime.fromisoformat(ga)
+        if (datetime.now(gen.tzinfo) - gen).total_seconds() > 5 * 86400:
+            print(f"[verify_publish] ⚠️ news.json generated_at 逾 5 天({ga})")
+    except (ValueError, TypeError):
+        pass
+    if not errs:
+        print(f"[verify_publish] ✅ news.json {len(items)} 條,欄位齊全無內文")
+    return errs
 
 
 def _check_events(base: str, fetch) -> list[str]:

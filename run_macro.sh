@@ -28,12 +28,17 @@ if [[ $FM_EC -ne 0 ]]; then
     exit 1
 fi
 
+# ── [1.5] fetch_news(新聞資料層,只做資料;過濾共用 news_keywords.json,非致命)──
+echo "[macro 1.5] 抓新聞 RSS → news.json(關鍵字過濾,只存標題+連結)..."
+python3 -m src.fetch_news 2>&1 | grep -vE 'NotOpenSSL|warnings.warn' || \
+    echo "[macro $(TS)] ⚠️ fetch_news 失敗(不影響早報與總經)"
+
 # ── [2] publish 輕量(git pull --rebase 防 Actions 並行衝突)───────────────────
 echo "[macro 2/3] publish 輕量(git pull --rebase)..."
 publish_macro() {
     # 先 commit 本輪 macro 檔(fetch_macro 剛改了 macro.json),再 rebase:
-    git add -f docs/data/v2/macro.json docs/assets/events.js docs/assets/style_v2.css \
-        config/news_keywords.json 2>/dev/null || true
+    git add -f docs/data/v2/macro.json docs/data/v2/news.json docs/assets/events.js \
+        docs/assets/style_v2.css config/news_keywords.json 2>/dev/null || true
     if git diff --cached --quiet; then
         echo "      無變更,仍嘗試同步 origin"
     else

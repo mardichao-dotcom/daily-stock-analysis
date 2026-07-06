@@ -69,6 +69,15 @@ def _chips_chart_json(foreign=None):
         "large_holder": {"date": DATE, "ratio": 57.0}}})
 
 
+def _fresh_news_json():
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    return json.dumps({"generated_at": now, "sources": ["中央社財經"], "count": 1,
+                       "items": [{"title": "台積電 AI 需求強", "source": "中央社財經",
+                                  "published_at": now, "fetched_at": now,
+                                  "url": "https://ex.com/a", "matched_keywords": ["AI"]}]})
+
+
 def make_fetch(overrides=None):
     """回一個 fetch(url)->(code, body);overrides 可覆寫特定 URL 的回應。"""
     overrides = overrides or {}
@@ -76,6 +85,8 @@ def make_fetch(overrides=None):
     def fetch(url, timeout=15):
         if url in overrides:
             return overrides[url]
+        if url.endswith("news.json"):
+            return 200, _fresh_news_json()
         if url.endswith("site_meta.json"):
             return 200, json.dumps(SITE_META)
         if url.endswith("events.json"):
@@ -228,6 +239,28 @@ class TestVerifyPublish(unittest.TestCase):
         f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("非法 level" in e for e in errors))
+
+    # ── 新聞資料層斷言 ──
+    def test_news_missing_field_caught(self):
+        bad = json.dumps({"generated_at": "2026-07-06T08:30:00+08:00", "items": [
+            {"title": "缺url", "source": "x", "published_at": "p", "fetched_at": "f",
+             "matched_keywords": []}]})
+        f = make_fetch({f"{BASE}/data/v2/news.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("news.json 條目缺欄位" in e for e in errors))
+
+    def test_news_body_leak_caught(self):
+        bad = json.dumps({"generated_at": "2026-07-06T08:30:00+08:00", "items": [
+            {"title": "t", "source": "s", "published_at": "p", "fetched_at": "f",
+             "url": "u", "matched_keywords": ["AI"], "description": "全文內容"}]})
+        f = make_fetch({f"{BASE}/data/v2/news.json": (200, bad)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("版權紅線" in e for e in errors))
+
+    def test_news_absent_is_soft(self):
+        f = make_fetch({f"{BASE}/data/v2/news.json": (404, "")})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertEqual([e for e in errors if "news" in e], [])
 
     # ── 籌碼斷言(§3.5)──
     def test_chips_malformed_length_caught(self):
