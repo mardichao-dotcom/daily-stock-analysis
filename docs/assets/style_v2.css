@@ -765,8 +765,11 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   color: var(--text-mute); font-size: 11px; }
 .events-list .ev-merged { color: var(--text); font-size: 12px; flex: 1 1 100%; }
 .events-list .ev-merged a { text-decoration: none; }
-.events-folded { color: var(--text-mute); font-size: 12px; padding: 6px 0 2px;
-  font-style: italic; }
+.events-lowfold { margin-top: 4px; }
+.events-lowfold > summary { color: var(--text-mute); font-size: 12px; padding: 6px 0 2px;
+  cursor: pointer; }
+.events-lowfold > summary:hover { color: var(--text); }
+.events-lowfold-body { padding-left: 2px; border-left: 2px solid var(--border, #e5e7eb); }
 /* 個股卡 7 天內事件徽章(法說會 📅 / 除權息 💰) */
 .stock-card .conf-badge, .stock-card .div-badge,
 .wl-stock .conf-badge, .wl-stock .div-badge { margin-right: 4px; cursor: help; }

@@ -9,9 +9,6 @@
   // 重要度分級(§3.5 事件擴充):中高以上 = {high, medium_high}
   const LV = { high: { i: '🔴', c: '#ef4444' }, medium_high: { i: '🟠', c: '#f59e0b' },
                medium: { i: '⚪', c: '#94a3b8' } };
-  const CROWD_LIMIT = 20;                    // >20 條 → 只留中高以上,其餘折疊
-  const FOLD_NAME = { dividend: '除權息', settlement: '結算', conference: '法說會',
-                      macro_tw: '台灣總經', macro: '美國總經' };
   const WD = ['日', '一', '二', '三', '四', '五', '六'];
 
   function fmtDate(iso) {
@@ -60,20 +57,26 @@
     return h;
   }
 
+  function renderDays(arr) {
+    const byDate = {};
+    arr.forEach(e => { (byDate[e.date] = byDate[e.date] || []).push(e); });
+    let h = '';
+    Object.keys(byDate).sort().forEach(date => {
+      h += `<div class="events-day"><div class="events-date">${esc(fmtDate(date))}</div>`
+         + `<ul class="events-list">${renderDayItems(byDate[date])}</ul></div>`;
+    });
+    return h;
+  }
+
   function renderBlock(data) {
-    let evs = (data.events || []).slice();
+    const evs = (data.events || []).slice().sort((a, b) => a.date.localeCompare(b.date));
     if (!evs.length) return '<div class="events-empty">未來 14 天無重大事件</div>';
 
-    // 密度控制:超過 CROWD_LIMIT 條 → 只顯示中高以上,其餘按類折疊
-    const folded = {};
-    if (evs.length > CROWD_LIMIT) {
-      const shown = [];
-      evs.forEach(e => { if (isHigh(e)) shown.push(e); else folded[e.type] = (folded[e.type] || 0) + 1; });
-      evs = shown;
-    }
-    evs.sort((a, b) => a.date.localeCompare(b.date));
-    const byDate = {};
-    evs.forEach(e => { (byDate[e.date] = byDate[e.date] || []).push(e); });
+    // 顯示規則(最終版):
+    //   直接顯示 = 中高重要度 OR watchlist 個股事件(有 symbol:法說會/除權息,與卡片徽章並存)
+    //   預設折疊 = 其餘低重要度(結算、美國中低總經等,無 symbol)→ 可點展開
+    const shown = [], low = [];
+    evs.forEach(e => ((isHigh(e) || e.symbol) ? shown : low).push(e));
 
     let html = '';
     if (data.conference_stale) {
@@ -82,14 +85,10 @@
     if (data.dividend_stale) {
       html += `<div class="events-stale">⚠️ 除權息抓取失敗,顯示前次資料(可能過時)</div>`;
     }
-    Object.keys(byDate).sort().forEach(date => {
-      html += `<div class="events-day"><div class="events-date">${esc(fmtDate(date))}</div>`
-            + `<ul class="events-list">${renderDayItems(byDate[date])}</ul></div>`;
-    });
-    const parts = Object.keys(folded).map(t => `${FOLD_NAME[t] || t} ${folded[t]}`);
-    if (parts.length) {
-      html += `<div class="events-folded">＋ 另有 ${parts.join('、')} 條(中/低重要度)已折疊`
-            + ` — 見個股卡 📅💰 徽章</div>`;
+    html += renderDays(shown) || '<div class="events-empty">未來 14 天無中高重要度或個股事件</div>';
+    if (low.length) {
+      html += `<details class="events-lowfold"><summary>＋ ${low.length} 筆較低重要度事件</summary>`
+            + `<div class="events-lowfold-body">${renderDays(low)}</div></details>`;
     }
     return html;
   }
