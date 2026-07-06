@@ -41,6 +41,12 @@ fi
 # ── [3] publish 輕量(git pull --rebase 防 Actions 並行衝突)───────────────────
 echo "[weekly 3/4] publish 輕量(git pull --rebase)..."
 publish_weekly() {
+    # W3:git 工作樹殘留檢查 → 告警 + 跳過本輪 publish
+    if ! bash scripts/git_worktree_check.sh; then
+        python3 -m src.notify_discord --message \
+            "🚨 [git 工作樹] weekly publish 偵測到 rebase/merge 殘留,本輪跳過 push。請人工處理。" || true
+        return 1
+    fi
     git add -f docs/weekly.html docs/weekly_*.html docs/data/v2/weekly.json \
         docs/assets/weekly/*.png docs/assets/style_v2.css 2>/dev/null || true
     if git diff --cached --quiet; then
@@ -76,6 +82,16 @@ lines.append("🚨 **本週警報**:\n" + ("\n".join(alerts) if alerts else "無
 errs = d.get("errors", [])
 if errs:
     lines.append("⚠️ 失敗來源:" + "; ".join(errs))
+# W3 慢指標(審計):.git 大小 + publish→verify 耗時(膨脹是跨月曲線,週報盯趨勢)
+try:
+    rows = [json.loads(l) for l in open("state/slow_metrics.jsonl", encoding="utf-8")
+            if l.strip()][-5:]
+    if rows:
+        secs = sorted(r.get("publish_verify_sec", 0) for r in rows)
+        lines.append(f"🩺 慢指標(近 {len(rows)} 跑):.git {rows[-1].get('git_mb','?')}MB"
+                     f" ｜ publish→verify 中位 {secs[len(secs)//2]}s / 最大 {secs[-1]}s")
+except (OSError, json.JSONDecodeError):
+    pass
 print("\n".join(lines))
 PY
 )

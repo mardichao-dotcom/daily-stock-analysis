@@ -312,7 +312,9 @@ def write_chart(outdir: Path, date: str, symbol: str, chart_data: dict) -> Path:
     day_dir.mkdir(parents=True, exist_ok=True)
     path = day_dir / f"{_safe_filename(symbol)}.json"
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(chart_data, f, ensure_ascii=False, indent=2)
+        # W3(審計):無 indent —— 單檔 −40~50%,131 檔/日 6MB→~3.4MB,
+        # 直接壓 git 歷史增量與 Pages 站量曲線。前端 fetch+JSON.parse 不受影響。
+        json.dump(chart_data, f, ensure_ascii=False, separators=(",", ":"))
     return path
 
 

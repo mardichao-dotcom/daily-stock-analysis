@@ -36,6 +36,12 @@ python3 -m src.fetch_news 2>&1 | grep -vE 'NotOpenSSL|warnings.warn' || \
 # ── [2] publish 輕量(git pull --rebase 防 Actions 並行衝突)───────────────────
 echo "[macro 2/3] publish 輕量(git pull --rebase)..."
 publish_macro() {
+    # W3:git 工作樹殘留檢查(rebase 撞車後遺症)→ 告警 + 跳過本輪 publish
+    if ! bash scripts/git_worktree_check.sh; then
+        python3 -m src.notify_discord --message \
+            "🚨 [git 工作樹] macro publish 偵測到 rebase/merge 殘留,本輪跳過 push。請人工處理。" || true
+        return 1
+    fi
     # 先 commit 本輪 macro 檔(fetch_macro 剛改了 macro.json),再 rebase:
     git add -f docs/data/v2/macro.json docs/data/v2/news.json docs/assets/events.js \
         docs/assets/style_v2.css config/news_keywords.json 2>/dev/null || true

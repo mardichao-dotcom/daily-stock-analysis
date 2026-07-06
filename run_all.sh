@@ -125,6 +125,14 @@ if [[ ! -f "$ETF_DB" ]]; then
     python3 src/daily_supervisor.py
     exit 1
 fi
+# ── git 工作樹健康檢查(W3,審計:rebase/merge 殘留即告警中止)──────────────────
+if ! bash scripts/git_worktree_check.sh; then
+    python3 -m src.notify_discord --message \
+        "🚨 [git 工作樹] 偵測到 rebase/merge 殘留(多排程 push 撞車後遺症),主跑中止。請人工 git rebase --abort 後重跑。" || true
+    python3 src/status_writer.py --finish --tool "$TOOL" --aborted
+    exit 1
+fi
+
 # ── API-ready preflight(7/6 事故修補)──────────────────────────────────────────
 # 不只驗「chart 頁存在」,還驗 TradingViewApi 在 N 秒內可用。7/6 事故:chart 頁在
 # 但 API 永不 ready,tv_collect 卡在單檔迴圈之前燒滿 30 分。此處提前 fail-fast(≤120s)。
@@ -257,7 +265,18 @@ try_step render_v2 render_v2_all
 
 # ── [10] publish ──────────────────────────────────────────────────────────────
 echo "[10/10] 推上線..."
+PUB_T0=$(date +%s)
 try_step publish bash publish.sh
+# ── 慢指標(W3,審計):.git 大小 + publish→verify 耗時 → 週報 ─────────────────
+# 膨脹是跨月曲線,單次 run 的護欄看不到;此處逐日記錄,週六週報彙總。
+if [[ -z "$ABORT_AFTER" ]]; then
+    PUB_SECS=$(( $(date +%s) - PUB_T0 ))
+    GIT_MB=$(du -sm .git 2>/dev/null | cut -f1)
+    mkdir -p state
+    echo "{\"date\":\"$DATA_DATE\",\"git_mb\":${GIT_MB:-0},\"publish_verify_sec\":$PUB_SECS}" \
+        >> state/slow_metrics.jsonl
+    echo "      [慢指標] .git=${GIT_MB}MB publish→verify=${PUB_SECS}s → state/slow_metrics.jsonl"
+fi
 
 # ── 外部心跳(任務二):verify_publish 全綠(publish 未被 abort)才 ping ──────────
 # healthchecks 在逾時未收到 ping 時主動告警,補「整台當掉/排程沒跑」的死角。
