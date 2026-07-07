@@ -446,38 +446,43 @@
         + `<div class="chips2-cell"><span class="c2-label">ETF 7日</span>${etfCell}</div>`;
       wrap.appendChild(cells);
 
-      // 柱狀圖標頭:「三大法人買賣超 · 20 日(張)」+ 今日 ±N
-      const today = sum[n - 1] || 0;
-      const head = document.createElement('div');
-      head.className = 'chips2-barhead';
-      head.innerHTML =
-        `<span>三大法人${hasDealer ? '' : '(外資+投信)'}買賣超 · ${n} 日(張)</span>`
-        + `<span class="chips2-today ${today >= 0 ? 'up' : 'down'}">今日 ${today > 0 ? '+' : ''}${today.toLocaleString()}</span>`;
-      wrap.appendChild(head);
-
-      // 純 CSS 柱:零軸置中,向上紅(買超)向下綠(賣超),高=|值|/量程×半高(min 2px)
-      const maxAbs = Math.max.apply(null, sum.map(Math.abs).concat([1]));
-      const chart = document.createElement('div');
-      chart.className = 'chips2-chart';
-      const bars = document.createElement('div');
-      bars.className = 'chips2-bars';
-      sum.forEach(v => {
-        const b = document.createElement('div');
-        b.className = 'chips2-bar';
-        const i = document.createElement('i');
-        i.className = v >= 0 ? 'up' : 'down';
-        i.style.height = Math.max(2, Math.round(Math.abs(v) / maxAbs * 50)) + '%';
-        b.appendChild(i);
-        bars.appendChild(b);
-      });
+      // 2026-07-07 調整:三張 20 日柱垂直堆疊——外資 / 投信 / 三大法人合計
+      // (資料零新增:chips 已含 foreign_net/trust_net;紅買綠賣、零軸置中、±刻度同現版)
       const kfmt = x => (Math.abs(x) >= 1000 ? (x / 1000).toFixed(x % 1000 ? 1 : 0) + 'k' : String(x));
-      const scale = document.createElement('div');
-      scale.className = 'chips2-scale';
-      scale.innerHTML = `<span>+${kfmt(maxAbs)}</span><span>0</span><span>-${kfmt(maxAbs)}</span>`;
-      chart.appendChild(bars); chart.appendChild(scale);
-      wrap.appendChild(chart);
-
       const mmdd = s => (s || '').slice(5).replace('-', '/');
+      function barChart(title, series) {
+        const vals = series.map(v => v || 0);
+        const today = vals[n - 1] || 0;
+        const head = document.createElement('div');
+        head.className = 'chips2-barhead';
+        head.innerHTML =
+          `<span>${title} · ${n} 日(張)</span>`
+          + `<span class="chips2-today ${today >= 0 ? 'up' : 'down'}">今日 ${today > 0 ? '+' : ''}${today.toLocaleString()}</span>`;
+        wrap.appendChild(head);
+        const maxAbs = Math.max.apply(null, vals.map(Math.abs).concat([1]));
+        const chart = document.createElement('div');
+        chart.className = 'chips2-chart chips2-multi';
+        const bars = document.createElement('div');
+        bars.className = 'chips2-bars';
+        vals.forEach(v => {
+          const b = document.createElement('div');
+          b.className = 'chips2-bar';
+          const i = document.createElement('i');
+          i.className = v >= 0 ? 'up' : 'down';
+          i.style.height = Math.max(2, Math.round(Math.abs(v) / maxAbs * 50)) + '%';
+          b.appendChild(i);
+          bars.appendChild(b);
+        });
+        const scale = document.createElement('div');
+        scale.className = 'chips2-scale';
+        scale.innerHTML = `<span>+${kfmt(maxAbs)}</span><span>0</span><span>-${kfmt(maxAbs)}</span>`;
+        chart.appendChild(bars); chart.appendChild(scale);
+        wrap.appendChild(chart);
+      }
+      barChart('外資買賣超', F.slice(0, n));
+      barChart('投信買賣超', T.slice(0, n));
+      barChart(`三大法人${hasDealer ? '' : '(外資+投信)'}合計`, sum);
+
       const dates = document.createElement('div');
       dates.className = 'chips2-dates';
       dates.innerHTML = `<span>${mmdd(chips.dates[0])}</span><span>${mmdd(chips.dates[n-1])}</span>`;

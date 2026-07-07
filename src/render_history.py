@@ -117,6 +117,17 @@ def weekday_zh(date_str: str) -> str:
 
 def render_item(date_str: str, summary: dict) -> str:
     wd = weekday_zh(date_str)
+    # §17 大盤漲跌幅(2026-07-07 調整:taiex_daily 序列到位,原落差項補上)
+    taiex_html = ""
+    try:
+        from src.taiex_daily import chg_pct, MACRO_DB
+        chg = chg_pct(MACRO_DB, date_str)
+        if chg is not None:
+            cls = "up" if chg > 0 else ("down" if chg < 0 else "flat")
+            sign = "+" if chg > 0 else ""
+            taiex_html = f'<span class="hd-taiex {cls}">大盤 {sign}{chg:.2f}%</span>'
+    except Exception:
+        pass
     recomputed = ""
     # §17(Batch4)日型徽章:熱鬧(S+A≥1)=A 級樣式;安靜=中性 outline;殘缺(無摘要)=虛線
     if summary:
@@ -144,6 +155,7 @@ def render_item(date_str: str, summary: dict) -> str:
   {day_badge}
   <span class="history-summary">{_h(sab)}</span>
   {recomputed}
+  {taiex_html}
   <span class="li-go">→</span>
 </a>"""
 

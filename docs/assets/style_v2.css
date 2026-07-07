@@ -1192,3 +1192,10 @@ details.wl-stock.rb-flash { border: 1px solid var(--accent); border-radius: var(
 /* ── §18 週報(Batch4:閱讀型窄欄 + 圖虛線框)── */
 .wk-narrow { max-width: 760px; }
 .wk-chart { border: 1px dashed var(--border-strong); }
+.hd-taiex { font: var(--type-num-sm); font-variant-numeric: tabular-nums;
+  text-align: right; min-width: 84px; }
+.hd-taiex.up { color: var(--color-up); }
+.hd-taiex.down { color: var(--color-down); }
+.hd-taiex.flat { color: var(--text-muted); }
+/* 三柱堆疊(2026-07-07 調整):單張高度收斂,三張不擠版面 */
+.chips2-multi .chips2-bars, .chips2-multi .chips2-scale { height: 52px; }

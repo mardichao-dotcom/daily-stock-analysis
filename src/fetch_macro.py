@@ -163,6 +163,12 @@ def fetch_margin() -> dict:
 # ── 主流程 ────────────────────────────────────────────────────────────────────
 def run() -> dict:
     now_iso = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    # 加權指數日收盤序列(週報雙軸 + §17 大盤欄):當月月檔冪等 upsert,失敗不擋
+    try:
+        from src import taiex_daily
+        taiex_daily.collect_current_month()
+    except Exception as e:                        # noqa: BLE001
+        print(f"[fetch_macro] taiex_daily upsert 失敗(不擋):{str(e)[:60]}", file=sys.stderr)
     data = {
         "taiex":  fetch_taiex(),
         "sp500":  fetch_index("sp500"),

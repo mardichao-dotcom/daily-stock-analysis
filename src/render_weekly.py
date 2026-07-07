@@ -74,19 +74,34 @@ def _plot_naaim(naaim: dict, cfg: dict, path: str):
 
 
 def _plot_margin(mg: dict, path: str):
-    """§18 + 融資改版:市場融資 30 日趨勢(億元)。"""
+    """§18 + 2026-07-07 調整:融資 vs 加權指數 雙軸疊圖。
+    左軸=融資餘額(億元,margin_daily 序列);右軸=加權指數(taiex_daily,同日對齊)。"""
     s = mg.get("series", {})
     dates, vals = s.get("dates", []), s.get("total", [])
     if len(vals) < 5:
         return False
-    fig, ax = plt.subplots(figsize=(7, 2.2), dpi=110)
-    ax.plot(range(len(vals)), vals, color="#2962ff", lw=1.4)
+    from src.taiex_daily import closes_for, MACRO_DB
+    tx = closes_for(MACRO_DB, dates)
+    fig, ax = plt.subplots(figsize=(7, 2.4), dpi=110)
+    ax.plot(range(len(vals)), vals, color="#2962ff", lw=1.4, label="融資餘額(億元)")
     ax.fill_between(range(len(vals)), min(vals), vals, color="#2962ff", alpha=0.08)
+    ax.set_ylabel("融資(億元)", fontsize=7, color="#2962ff")
+    ax.tick_params(axis="y", labelcolor="#2962ff", labelsize=7)
+    title = f"市場融資餘額(億元)最新 {vals[-1]:,.1f}"
+    if any(d in tx for d in dates):
+        ax2 = ax.twinx()
+        tvals = [tx.get(d) for d in dates]
+        xs = [i for i, v in enumerate(tvals) if v is not None]
+        ys = [tvals[i] for i in xs]
+        ax2.plot(xs, ys, color="#787b86", lw=1.1, ls="--", label="加權指數")
+        ax2.set_ylabel("加權指數", fontsize=7, color="#787b86")
+        ax2.tick_params(axis="y", labelcolor="#787b86", labelsize=7)
+        title += f" vs 加權指數 {ys[-1]:,.0f}" if ys else ""
     step = max(1, len(dates) // 5)
     ax.set_xticks(range(0, len(dates), step))
     ax.set_xticklabels([dates[i][5:] for i in range(0, len(dates), step)], fontsize=7)
-    ax.set_title(f"市場融資餘額(億元,近 {len(vals)} 交易日,最新 {vals[-1]:,.1f})", fontsize=9)
-    ax.tick_params(labelsize=7); ax.grid(alpha=0.15)
+    ax.set_title(f"{title}(近 {len(vals)} 交易日)", fontsize=9)
+    ax.tick_params(axis="x", labelsize=7); ax.grid(alpha=0.15)
     fig.tight_layout(); fig.savefig(path); plt.close(fig)
     return True
 
