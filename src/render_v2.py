@@ -100,56 +100,72 @@ def _merge_ma_entries(ma_details: list[dict]) -> str | None:
             f"(close {close_str} &gt; {' / '.join(ma_vals)})")
 
 
-def _format_breakdown_by_module(details: list[dict]) -> str:
-    """按 5 大 module 分類渲染計分明細表格。空 module 顯示「—」。
-    回傳已 escape 的 HTML(table 元素)。"""
-    # 先依 module 分桶
+def _scorebar_class(score: float) -> str:
+    """分數條色階(交接包 §4:滿分→低分四段藍階)。"""
+    if score >= 2:
+        return "sb-100"
+    if score >= 1.5:
+        return "sb-75"
+    if score >= 1:
+        return "sb-50"
+    return "sb-25"
+
+
+def _format_breakdown_by_module(details: list[dict], score: float = 0.0,
+                                grade: str = "") -> str:
+    """計分明細表(交接包 §4「無黑箱」,2026-07-07 Batch2 對齊):
+    每列 = 分數(mono 右對齊)+ 分數條(寬=分值/2 比例,藍階)+ 規則名稱(佐證值接後);
+    底部合計列「9.5 → S」;未觸發類別收進註腳(§3 --text-faint)。
+    MA 多筆合併維持既有行為(數值內容不變,只改排版)。"""
     by_mod: dict[str, list[dict]] = {}
     for d in details:
         by_mod.setdefault(d.get("module", "?"), []).append(d)
 
-    rows = []
+    rows: list[str] = []
+    untouched: list[str] = []
+
+    def _row(sc: float, reason_html: str, title: str = "") -> str:
+        pct = max(6, min(100, round(sc / 2 * 100)))          # 寬=分值/2,下限保條可見
+        t = f' title="{_h(title)}"' if title else ""
+        return (f'<div class="bd2-row"{t}>'
+                f'<span class="bd2-score">+{sc:.1f}</span>'
+                f'<span class="bd2-bar"><i class="{_scorebar_class(sc)}" style="width:{pct}%"></i></span>'
+                f'<span class="bd2-name">{reason_html}</span>'
+                f'</div>')
+
     for label, modules in MODULE_CATEGORIES:
         items = [d for m in modules for d in by_mod.get(m, [])]
         if not items:
-            rows.append(
-                f'<tr class="bd-row bd-empty">'
-                f'<td class="bd-cat">{_h(label)}</td>'
-                f'<td class="bd-score">—</td>'
-                f'<td class="bd-desc">—</td>'
-                f'</tr>'
-            )
+            untouched.append(label)
             continue
-
-        total = sum(d.get("score", 0) for d in items)
-
-        # 「關鍵價/MA」特殊處理:ma 合併、given_price 各自一行
         if label == "關鍵價/MA":
-            descs: list[str] = []
             ma_entries = [d for d in items if d.get("module") == "ma"]
             merged = _merge_ma_entries(ma_entries)
             if merged:
-                descs.append(merged)
+                ma_total = sum(d.get("score", 0) for d in ma_entries)
+                rows.append(_row(ma_total, merged))
             for d in items:
                 if d.get("module") == "ma":
                     continue
-                descs.append(_h(d.get("reason", "")))
-            desc_html = "<br>".join(descs)
+                rows.append(_row(d.get("score", 0), _h(d.get("reason", "")),
+                                 title=d.get("reason", "")))
         else:
-            # 其他類別:每筆 reason 一行
-            desc_html = "<br>".join(_h(d.get("reason", "")) for d in items)
+            for d in items:
+                rows.append(_row(d.get("score", 0), _h(d.get("reason", "")),
+                                 title=d.get("reason", "")))
 
-        rows.append(
-            f'<tr class="bd-row">'
-            f'<td class="bd-cat">{_h(label)}</td>'
-            f'<td class="bd-score">+{total:.1f}</td>'
-            f'<td class="bd-desc">{desc_html}</td>'
-            f'</tr>'
-        )
-
-    return ('<table class="score-breakdown-table">\n'
-            + "\n".join("  " + r for r in rows)
-            + '\n</table>')
+    grade_cls = _h(grade) if grade else ""
+    total_row = (f'<div class="bd2-total">'
+                 f'<span class="bd2-total-label">合計</span>'
+                 f'<span class="bd2-total-val">{score:.1f}'
+                 f' <span class="bd2-arrow">→</span>'
+                 f' <span class="bd2-grade g-{grade_cls}">{grade_cls or "?"}</span></span>'
+                 f'</div>')
+    foot = (f'<div class="bd2-untouched">未觸發:{_h("、".join(untouched))}</div>'
+            if untouched else "")
+    return (f'<div class="score-breakdown-v2">'
+            f'<div class="bd2-head">計分明細</div>'
+            + "".join(rows) + total_row + foot + '</div>')
 
 
 # ─── 個股分類 ─────────────────────────────────────────────────────────────────
@@ -312,11 +328,56 @@ def chart_placeholder_html(symbol: str, date: str, status_entry: dict | None,
         return (f'<div id="{_h(elem_id)}" class="chart-placeholder errored">'
                 f'⚠️ 此檔無 K 線資料,請聯絡管理員'
                 f'</div>')
-    # ready(或沒 status entry → 預設 ready)
+    # ready(或沒 status entry → 預設 ready);§3 等待態文案 mono 置中
     return (f'<div id="{_h(elem_id)}" class="chart-placeholder"'
             f' data-symbol="{_h(symbol)}" data-date="{_h(date)}">'
-            f'[點此載入 K 線圖]'
+            f'點此載入 K 線'
             f'</div>')
+
+
+# ── 收盤/漲跌顯示資料(§2 折疊列;display-only,read-only 讀 kline.db)─────────
+_CLOSE_MAP: dict[str, tuple] = {}
+
+
+def load_close_map(kline_db: str, date: str) -> dict:
+    """{symbol: (close, chg_pct)}——§2 折疊列的收盤+漲跌幅,純顯示,不進任何計分。"""
+    import sqlite3
+    out: dict[str, tuple] = {}
+    try:
+        conn = sqlite3.connect(f"file:{kline_db}?mode=ro", uri=True)
+        rows = conn.execute(
+            "SELECT symbol, date, close FROM kline WHERE date <= ? "
+            "AND date >= date(?, '-14 day') ORDER BY symbol, date", (date, date)).fetchall()
+        conn.close()
+    except Exception:
+        return out
+    by_sym: dict[str, list] = {}
+    for sym, d, c in rows:
+        by_sym.setdefault(sym, []).append((d, c))
+    for sym, seq in by_sym.items():
+        seq = [x for x in seq if x[1] is not None]
+        if not seq or seq[-1][0] != date:
+            continue
+        close = seq[-1][1]
+        prev = seq[-2][1] if len(seq) >= 2 else None
+        chg = round((close - prev) / prev * 100, 2) if prev else None
+        out[sym] = (close, chg)
+    return out
+
+
+def _close_cell(symbol: str) -> str:
+    """折疊列右側:收盤 + 漲跌幅(唯一紅綠語意);無資料回空。"""
+    v = _CLOSE_MAP.get(symbol)
+    if not v:
+        return ""
+    close, chg = v
+    close_txt = f"{close:,.1f}" if close >= 100 else f"{close:,.2f}"
+    if chg is None:
+        return f'<span class="sc-close">{close_txt}</span>'
+    cls = "up" if chg > 0 else ("down" if chg < 0 else "flat")
+    arrow = "▲" if chg > 0 else ("▼" if chg < 0 else "")
+    return (f'<span class="sc-close">{close_txt}</span>'
+            f'<span class="sc-chg {cls}">{arrow}{abs(chg):.2f}%</span>')
 
 
 def render_stock_card(symbol: str, stock: dict, date: str,
@@ -332,32 +393,37 @@ def render_stock_card(symbol: str, stock: dict, date: str,
     tags   = stock.get("tags", [])
     details = stock.get("details", [])
 
-    # tag inline 顯示前 3 個 emoji(空間有限)
-    tag_inline = "".join(f'<span class="tag">{_h(t.split()[0])}</span>' for t in tags[:3])
+    # §2 折疊列:徽章 → 股名 → 代號 → 標籤 chips → [auto] 收盤+漲跌 → 總分 → ▾
+    tag_chips = "".join(f'<span class="tag-chip">{_h(t.split()[0])}</span>' for t in tags[:3])
 
-    # score breakdown:by-module 分組(5 類,空類別顯示 —)
-    breakdown_html = _format_breakdown_by_module(details)
-
-    # tag list(完整)
+    # §4 計分明細(左欄)+ §3 右欄(chart 容器;籌碼小區由 chart_v2.js 掛在其後)
+    breakdown_html = _format_breakdown_by_module(details, score=score, grade=grade)
     tag_html = "".join(f'<span class="tag">{_h(t)}</span>' for t in tags)
     if not tag_html:
-        tag_html = '<span class="tag" style="color: var(--text-mute);">(無標籤)</span>'
-
+        tag_html = '<span class="tag tag-none">(無標籤)</span>'
     placeholder_html = chart_placeholder_html(symbol, date, status_entry)
 
     return f"""
 <details class="stock-card grade-{_h(grade)}" data-symbol="{_h(symbol)}" id="card-{_h(symbol.replace(':','_'))}">
   <summary>
+    <span class="grade-badge {_h(grade)}">{_h(grade)}</span>
     <span class="stock-name">{_h(name)}</span>
     <code class="stock-code">{_h(symbol)}</code>
-    <span class="stock-tags-inline">{tag_inline}</span>
-    <span class="stock-score">{score:.1f} <span class="grade-badge {_h(grade)}">{_h(grade)}</span></span>
+    <span class="stock-tags-inline">{tag_chips}</span>
+    <span class="sc-right">{_close_cell(symbol)}<span class="stock-score">{score:.1f}</span></span>
+    <span class="sc-caret">▾</span>
   </summary>
   <div class="card-body">
-    <div style="font-size: 12px; color: var(--text-mute); margin-bottom: 6px;">板塊:{_h(sector)}</div>
-    {breakdown_html}
-    <div class="tags">{tag_html}</div>
-    {placeholder_html}
+    <div class="card-grid">
+      <div class="card-left">
+        {breakdown_html}
+        <div class="card-sector">板塊:{_h(sector)}</div>
+        <div class="tags">{tag_html}</div>
+      </div>
+      <div class="card-right">
+        {placeholder_html}
+      </div>
+    </div>
   </div>
 </details>
 """
@@ -674,10 +740,16 @@ def main():
     parser.add_argument("--output", default=str(PROJECT_ROOT / "docs" / "index_v2.html"))
     parser.add_argument("--recompute-note", dest="recompute_note", default="",
                         help="非空 → 頁首加事後重算橫幅 + _summary 標記(停更回補用)")
+    parser.add_argument("--kline", default=str(PROJECT_ROOT / "kline.db"),
+                        help="§2 折疊列收盤/漲跌顯示來源(read-only,不進計分)")
     args = parser.parse_args()
 
     with open(args.result, encoding="utf-8") as f:
         filtered_result = json.load(f)
+
+    # §2:載入收盤/漲跌顯示 map(read-only;kline.db 缺/無該日 → 折疊列不顯示,不擋 render)
+    _CLOSE_MAP.clear()
+    _CLOSE_MAP.update(load_close_map(args.kline, args.date))
 
     html = render(filtered_result, recompute_note=args.recompute_note)
 

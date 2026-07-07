@@ -86,9 +86,35 @@
     return checked;
   }
 
+  function esc0(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g,
+      c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+
+  // ─── 主題感知(stage10 Batch2)────────────────────────────────────────────
+  function cssVar(name, fallback) {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(name);
+    return (v || '').trim() || fallback;
+  }
+  function chartThemeOptions() {
+    return {
+      layout: { background: { color: cssVar('--surface-panel', '#fff') },
+                textColor: cssVar('--text-muted', '#333') },
+      grid: { vertLines: { color: cssVar('--divider', '#f0f0f0') },
+              horzLines: { color: cssVar('--divider', '#f0f0f0') } },
+      rightPriceScale: { borderColor: cssVar('--border', '#e5e7eb') },
+    };
+  }
+  const _liveCharts = [];
+  window.addEventListener('themechange', function () {
+    const opts = chartThemeOptions();
+    _liveCharts.forEach(c => { try { c.applyOptions(opts); } catch (e) { /* 已銷毀 */ } });
+  });
+
   // ─── 渲染單張 chart ─────────────────────────────────────────────────────
   async function renderChart(container, data, visual) {
     container.innerHTML = '';
+    container.classList.add('chart-loaded');   // §3:載入後容器轉 block/實底(等待態斜紋只給未載入)
     container.style.minHeight = '420px';
 
     // 建立 chart 容器(扣掉 ETF filter bar 的高度)
@@ -99,14 +125,15 @@
     // 先掛進 DOM,讓 clientWidth 量得到(details 剛展開時若仍是 0,退到 660)
     container.appendChild(chartEl);
 
+    // §3(stage10 Batch2):圖表容器底/文字/格線跟 tokens 走(深淺主題皆正確);
+    // K 棒/均線/關鍵價/箭頭顏色照舊(紅線:圖表內部邏輯不動)。
     const chart = LightweightCharts.createChart(chartEl, {
       width:  chartEl.clientWidth || 660,
       height: 420,
-      layout: { background: { color: '#fff' }, textColor: '#333' },
-      grid:   { vertLines: { color: '#f0f0f0' }, horzLines: { color: '#f0f0f0' } },
+      ...chartThemeOptions(),
       timeScale: { timeVisible: false, secondsVisible: false },
-      rightPriceScale: { borderColor: '#e5e7eb' },
     });
+    _liveCharts.push(chart);
 
     // K 棒
     const candleSeries = chart.addCandlestickSeries({
@@ -357,59 +384,122 @@
       legend.innerHTML +=
         `<span class="legend-stale">資料至 ${data.data_through}</span>`;
     }
-    container.appendChild(legend);
+    // §3 legend 移圖上方 + 股名代號+週期標題(MA 圓點沿用實際線色,忠於圖表);
+    // 內容(計數/stale)保留不動,只改位置與樣式
+    legend.innerHTML =
+      `<span class="legend-title">${esc0(data.name || '')} ${esc0(data.code || '')} · 1D</span>`
+      + `<span class="legend-item"><span style="color:#fbbf24">●</span> MA20</span>`
+      + `<span class="legend-item"><span style="color:#a855f7">●</span> MA60</span>`
+      + `<span class="legend-item"><span style="color:#06b6d4">●</span> MA90</span>`
+      + legend.innerHTML;
+    container.insertBefore(legend, container.firstChild);
 
-    // ─── 籌碼小區(§3.5:近 20 日外資/投信買賣超柱狀 + 融資餘額 + 千張大戶,純顯示)───
+    // ─── 籌碼小區 v2(交接包 §5:4 格數字列 + 三大法人合計 20 日純 CSS 柱)───
+    // 紅=買超、綠=賣超(唯一紅綠語意);ETF 走 --etf-buy/--etf-sell;純顯示不進計分。
     function renderChips(chips) {
       if (!chips || !Array.isArray(chips.dates) || chips.dates.length === 0) return;
-      // container(.chart-placeholder)是 flex row → 塞進去會被擠成窄欄;改掛到卡片 body 的區塊流。
       const host = container.closest('.card-body') || container.parentElement || container;
-      host.querySelectorAll(':scope > .chips-section').forEach(e => e.remove());  // 去重(重渲染)
+      host.querySelectorAll('.chips2').forEach(e => e.remove());   // 去重(重渲染)
       const wrap = document.createElement('div');
-      wrap.className = 'chips-section';
+      wrap.className = 'chips2';
 
+      const n = chips.dates.length;
+      const F = chips.foreign_net || [], T = chips.trust_net || [];
+      const D = chips.dealer_net || [];                 // 舊 chart JSON 無此欄 → 顯示 —
+      const hasDealer = D.some(v => v != null);
+      const sum = chips.dates.map((_, i) =>
+        (F[i] || 0) + (T[i] || 0) + (hasDealer ? (D[i] || 0) : 0));
+
+      function lot(v) { return v == null ? null : v; }
+      function cellVal(v, kind) {
+        if (v == null) return '<span class="c2-val na">—</span>';
+        const cls = v > 0 ? 'up' : (v < 0 ? 'down' : 'na');
+        const sign = v > 0 ? '+' : '';
+        return `<span class="c2-val ${kind || cls}">${sign}${Number(v).toLocaleString()}</span>`;
+      }
+      // ETF 7 日:由 etf_events 就地彙總(±張數、檔數;無 → 「— 無共識」)
+      let etfCell = '<span class="c2-val na">— 無共識</span>';
+      try {
+        const thru = new Date((data.data_through || data.data_date) + 'T00:00:00+08:00');
+        const from = new Date(thru.getTime() - 6 * 86400000);
+        const BUY = new Set(['加碼', '建倉']);
+        let net = 0; const etfs = new Set();
+        (data.etf_events || []).forEach(e => {
+          const d = new Date(e.time + 'T00:00:00+08:00');
+          if (d < from || d > thru) return;
+          net += (BUY.has(e.action) ? 1 : -1) * (Number(e.shares) || 0);
+          etfs.add(e.etf);
+        });
+        if (etfs.size > 0) {
+          const arrow = net >= 0 ? '▲' : '▽';
+          const cls = net >= 0 ? 'etf-buy' : 'etf-sell';
+          etfCell = `<span class="c2-val ${cls}">${arrow} ${net > 0 ? '+' : ''}${net.toLocaleString()} · ${etfs.size}檔</span>`;
+        }
+      } catch (e) { /* etf events 缺 → 保持無共識 */ }
+
+      const cells = document.createElement('div');
+      cells.className = 'chips2-cells';
+      cells.innerHTML =
+        `<div class="chips2-cell"><span class="c2-label">外資</span>${cellVal(lot(F[n-1]))}</div>`
+        + `<div class="chips2-cell"><span class="c2-label">投信</span>${cellVal(lot(T[n-1]))}</div>`
+        + `<div class="chips2-cell"><span class="c2-label">自營</span>${cellVal(hasDealer ? lot(D[n-1]) : null)}</div>`
+        + `<div class="chips2-cell"><span class="c2-label">ETF 7日</span>${etfCell}</div>`;
+      wrap.appendChild(cells);
+
+      // 柱狀圖標頭:「三大法人買賣超 · 20 日(張)」+ 今日 ±N
+      const today = sum[n - 1] || 0;
+      const head = document.createElement('div');
+      head.className = 'chips2-barhead';
+      head.innerHTML =
+        `<span>三大法人${hasDealer ? '' : '(外資+投信)'}買賣超 · ${n} 日(張)</span>`
+        + `<span class="chips2-today ${today >= 0 ? 'up' : 'down'}">今日 ${today > 0 ? '+' : ''}${today.toLocaleString()}</span>`;
+      wrap.appendChild(head);
+
+      // 純 CSS 柱:零軸置中,向上紅(買超)向下綠(賣超),高=|值|/量程×半高(min 2px)
+      const maxAbs = Math.max.apply(null, sum.map(Math.abs).concat([1]));
+      const chart = document.createElement('div');
+      chart.className = 'chips2-chart';
+      const bars = document.createElement('div');
+      bars.className = 'chips2-bars';
+      sum.forEach(v => {
+        const b = document.createElement('div');
+        b.className = 'chips2-bar';
+        const i = document.createElement('i');
+        i.className = v >= 0 ? 'up' : 'down';
+        i.style.height = Math.max(2, Math.round(Math.abs(v) / maxAbs * 50)) + '%';
+        b.appendChild(i);
+        bars.appendChild(b);
+      });
+      const kfmt = x => (Math.abs(x) >= 1000 ? (x / 1000).toFixed(x % 1000 ? 1 : 0) + 'k' : String(x));
+      const scale = document.createElement('div');
+      scale.className = 'chips2-scale';
+      scale.innerHTML = `<span>+${kfmt(maxAbs)}</span><span>0</span><span>-${kfmt(maxAbs)}</span>`;
+      chart.appendChild(bars); chart.appendChild(scale);
+      wrap.appendChild(chart);
+
+      const mmdd = s => (s || '').slice(5).replace('-', '/');
+      const dates = document.createElement('div');
+      dates.className = 'chips2-dates';
+      dates.innerHTML = `<span>${mmdd(chips.dates[0])}</span><span>${mmdd(chips.dates[n-1])}</span>`;
+      wrap.appendChild(dates);
+
+      // 千張大戶/融資(stage9 §3.5 既有資訊,補充列保留——設計落差清單項,待朋友 review)
       const holder = chips.large_holder;
       const marginVals = (chips.margin || []).filter(v => v != null);
       const marginLast = marginVals.length ? marginVals[marginVals.length - 1] : null;
-      const head = document.createElement('div');
-      head.className = 'chips-head';
-      head.innerHTML =
-        `<span class="chips-title">📊 籌碼(近 ${chips.dates.length} 日,單位 張)</span>`
-        + (holder ? `<span class="chips-kv">千張大戶 <b>${holder.ratio}%</b></span>` : '')
-        + (marginLast != null
-            ? `<span class="chips-kv">融資餘額 <b>${Number(marginLast).toLocaleString()}</b> 張`
-              + (marginVals.length < 2 ? '<i>（趨勢累積中）</i>' : '') + '</span>'
-            : '');
-      wrap.appendChild(head);
-      host.appendChild(wrap);
-
-      function miniHist(title, values) {
-        const row = document.createElement('div');
-        row.className = 'chips-mini';
-        row.innerHTML = `<span class="chips-mini-label">${title}</span>`;
-        const el = document.createElement('div');
-        el.className = 'chips-mini-chart';
-        row.appendChild(el);
-        wrap.appendChild(row);
-        const cw = Math.max((host.clientWidth || 660) - 44, 200);
-        const c = LightweightCharts.createChart(el, {
-          width: el.clientWidth || cw, height: 74,
-          layout: { background: { color: '#fff' }, textColor: '#94a3b8', fontSize: 9 },
-          grid: { vertLines: { visible: false }, horzLines: { color: '#f5f5f5' } },
-          timeScale: { visible: false, borderVisible: false },
-          rightPriceScale: { borderVisible: false },
-          handleScroll: false, handleScale: false,
-          crosshair: { horzLine: { visible: false }, vertLine: { visible: false } },
-        });
-        const h = c.addHistogramSeries({ priceFormat: { type: 'volume' }, base: 0 });
-        h.setData(chips.dates.map((d, i) => ({
-          time: d, value: values[i] == null ? 0 : values[i],
-          color: (values[i] || 0) >= 0 ? '#ef4444' : '#10b981',   // 買超紅/賣超綠(同紅漲綠跌語意)
-        })));
-        c.timeScale().fitContent();
+      const extras = [];
+      if (holder) extras.push(`千張大戶 ${holder.ratio}%`);
+      if (marginLast != null) extras.push(`融資餘額 ${Number(marginLast).toLocaleString()} 張`);
+      if (extras.length) {
+        const ex = document.createElement('div');
+        ex.className = 'chips2-extra';
+        ex.textContent = extras.join(' · ');
+        wrap.appendChild(ex);
       }
-      miniHist('外資', chips.foreign_net || []);
-      miniHist('投信', chips.trust_net || []);
+
+      // 展開態右欄(.card-right)優先;無(watchlist 舊結構)退回 card-body 區塊流
+      const right = container.closest('.card-right');
+      (right || host).appendChild(wrap);
     }
     renderChips(data.chips);
 

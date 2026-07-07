@@ -21,6 +21,8 @@
       document.documentElement.dataset.theme = next;
       try { localStorage.setItem('theme', next); } catch (e) { /* 私密模式等,忽略 */ }
       btn.textContent = label();
+      // 通知既存元件(如 chart_v2 已開圖表)套用新主題色
+      try { window.dispatchEvent(new Event('themechange')); } catch (e) { /* 舊瀏覽器忽略 */ }
     });
     document.body.appendChild(btn);
   }

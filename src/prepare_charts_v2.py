@@ -88,7 +88,7 @@ def load_chips(conn: sqlite3.Connection, symbol: str, date: str,
     chips 表可能尚未建(fetch_chips 未跑)→ 回 None,不阻斷出圖。"""
     try:
         cur = conn.execute(
-            "SELECT date, foreign_net, trust_net, margin_balance FROM chips "
+            "SELECT date, foreign_net, trust_net, margin_balance, dealer_net FROM chips "
             "WHERE symbol = ? AND date <= ? ORDER BY date DESC LIMIT ?",
             (symbol, date, lookback))
         rows = cur.fetchall()
@@ -103,6 +103,7 @@ def load_chips(conn: sqlite3.Connection, symbol: str, date: str,
     foreign = [to_lot(r[1]) for r in rows]
     trust = [to_lot(r[2]) for r in rows]
     margin = [r[3] for r in rows]
+    dealer = [to_lot(r[4]) for r in rows]        # §5 自營格 + 三大法人合計柱(Batch2)
     trust_markers = [{"time": d, "value": t} for d, t in zip(dates, trust) if t and t > 0]
     holder = None
     try:
@@ -114,7 +115,8 @@ def load_chips(conn: sqlite3.Connection, symbol: str, date: str,
     except sqlite3.OperationalError:
         pass
     return {"unit": "張", "dates": dates, "foreign_net": foreign, "trust_net": trust,
-            "margin": margin, "trust_markers": trust_markers, "large_holder": holder}
+            "dealer_net": dealer, "margin": margin, "trust_markers": trust_markers,
+            "large_holder": holder}
 
 
 # ── MA arrays 計算 ────────────────────────────────────────────────────────────

@@ -212,38 +212,52 @@ details.stock-card summary {
   gap: 8px;
 }
 details.stock-card summary::-webkit-details-marker { display: none; }
-details.stock-card summary::before {
-  content: "▸";
-  color: var(--text-mute);
-  transition: transform 0.15s;
-}
-details.stock-card[open] summary::before { transform: rotate(90deg); }
 
-.stock-card .stock-name { font-weight: 600; }
-.stock-card .stock-code { color: var(--text-mute); font-size: 13px; font-family: var(--font-mono);
+
+/* §2:等級同時控制同列股名顏色/字重(S=strong 700、A/B/C=primary、D=secondary 400)*/
+.stock-card .stock-name { font: var(--type-card-title); color: var(--text-primary); }
+.stock-card.grade-S .stock-name { color: var(--text-strong); }
+.stock-card.grade-D .stock-name { color: var(--text-secondary); font-weight: 400; }
+.stock-card .stock-code { color: var(--text-muted); font: var(--type-num-sm);
   font-variant-numeric: tabular-nums; }
-.stock-card .stock-tags-inline { display: flex; gap: 4px; font-size: 12px; }
-.stock-card .stock-score {
-  margin-left: auto;
-  font-weight: bold;
-  font-size: 15px;
+.stock-card .stock-tags-inline { display: flex; gap: 4px; }
+.tag-chip {
+  font: var(--type-label); color: var(--text-muted);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  padding: 0 5px; white-space: nowrap;
 }
+/* 右側數字欄:固定寬右對齊,永不換行(§2 溢出規則) */
+.sc-right { margin-left: auto; display: inline-flex; align-items: baseline; gap: 10px;
+  white-space: nowrap; }
+.sc-close { font: var(--type-num); font-variant-numeric: tabular-nums;
+  color: var(--text-primary); min-width: 64px; text-align: right; }
+.sc-chg { font: var(--type-num); font-variant-numeric: tabular-nums;
+  min-width: 60px; text-align: right; }
+.sc-chg.up { color: var(--color-up); }
+.sc-chg.down { color: var(--color-down); }
+.sc-chg.flat { color: var(--text-muted); }
+.stock-card .stock-score { font: 700 14px/1.2 var(--font-mono);
+  font-variant-numeric: tabular-nums; color: var(--text-primary); min-width: 36px;
+  text-align: right; }
+.sc-caret { color: var(--text-muted); font-size: 11px; transition: transform var(--transition-fast); }
+details.stock-card[open] > summary .sc-caret { transform: rotate(180deg); }
+details.stock-card summary:hover { background: var(--surface-hover); }
 
-/* 級別徽章 */
+/* ── §1 等級徽章(交接包:單字元 mono 11/700,padding 1px 7px,radius 2px)──
+   S 實心 / A 填色+亮邊 / B 描邊 / C 中性描邊 / D 純文字 / N-A 虛線框。鐵律 2:只用藍階 */
 .grade-badge {
   display: inline-block;
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-  color: var(--grade-s-text);
-  margin-left: 4px;
+  padding: 1px 7px;
+  border-radius: var(--radius-sm);
+  font: 700 11px/1.35 var(--font-mono);
+  border: 1px solid transparent;
 }
-.grade-badge.S { background: var(--grade-s); }
-.grade-badge.A { background: var(--grade-a); }
-.grade-badge.B { background: var(--grade-b); }
-.grade-badge.C { background: var(--grade-c); }
-.grade-badge.D { background: var(--grade-d); }
+.grade-badge.S  { background: var(--grade-s-bg); color: var(--grade-s-text); }
+.grade-badge.A  { background: var(--grade-a-bg); border-color: var(--grade-a-border); color: var(--grade-a-text); }
+.grade-badge.B  { background: var(--grade-b-bg); border-color: var(--grade-b-border); color: var(--grade-b-text); }
+.grade-badge.C  { background: var(--grade-c-bg); border-color: var(--grade-c-border); color: var(--grade-c-text); }
+.grade-badge.D  { color: var(--grade-d-text); }
+.grade-badge.NA, .grade-badge.\? { border: 1px dashed var(--grade-na-border); color: var(--text-faint); }
 
 /* 卡片主體 */
 .card-body {
@@ -321,14 +335,17 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 
 /* Chart 預留區 */
 .chart-placeholder {
-  min-height: 320px;
-  background: var(--surface-chart-wait);
+  min-height: 210px;                     /* §3:200–220px */
+  background: repeating-linear-gradient(45deg,
+    var(--surface-chart-wait), var(--surface-chart-wait) 10px,
+    var(--surface-panel) 10px, var(--surface-panel) 20px);  /* 斜紋等待底 */
   border: 1px dashed var(--border-strong);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-mute);
+  color: var(--text-muted);
+  font: var(--type-num-sm);
   cursor: pointer;
   margin-top: 8px;
 }
@@ -863,3 +880,91 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   font: var(--type-caption); padding: 4px 10px; cursor: pointer;
 }
 .theme-toggle:hover { background: var(--surface-hover); }
+
+/* ── §3 展開態兩欄 grid(360px 1fr;<900px 單欄、明細在上)── */
+.card-grid { display: grid; grid-template-columns: 360px 1fr; gap: var(--space-6); }
+.card-left { min-width: 0; }
+.card-right { min-width: 0; }
+.card-sector { font: var(--type-caption); color: var(--text-muted); margin-top: 8px; }
+.tag-none { color: var(--text-faint); }
+@media (max-width: 900px) { .card-grid { grid-template-columns: 1fr; } }
+/* 展開動畫(§2:max-height+opacity 180ms;details 原生限制 → 以 opacity 近似) */
+details.stock-card > .card-body { animation: cardExpand var(--transition-expand); }
+@keyframes cardExpand { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── §4 計分明細表(無黑箱)── */
+.score-breakdown-v2 { font: var(--type-body); }
+.bd2-head { font: var(--type-label); color: var(--text-muted); margin-bottom: 4px; }
+.bd2-row { display: grid; grid-template-columns: 44px 56px 1fr; gap: 8px;
+  align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid var(--divider); }
+.bd2-score { font: var(--type-num); font-variant-numeric: tabular-nums;
+  text-align: right; color: var(--text-primary); }
+.bd2-bar { height: 5px; background: var(--scorebar-track); border-radius: var(--radius-sm);
+  overflow: hidden; }
+.bd2-bar i { display: block; height: 100%; }
+.bd2-bar .sb-100 { background: var(--scorebar-100); }
+.bd2-bar .sb-75  { background: var(--scorebar-75); }
+.bd2-bar .sb-50  { background: var(--scorebar-50); }
+.bd2-bar .sb-25  { background: var(--scorebar-25); }
+.bd2-name { color: var(--text-secondary); white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; }                        /* 溢出:單行截斷,完整值在 title */
+.bd2-total { display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--border); margin-top: 2px; padding-top: var(--space-3); }
+.bd2-total-label { font: var(--type-label); color: var(--text-muted); }
+.bd2-total-val { font: 700 16px/1.2 var(--font-mono); font-variant-numeric: tabular-nums;
+  color: var(--text-strong); }
+.bd2-arrow { color: var(--text-muted); font-weight: 400; }
+.bd2-grade.g-S { color: var(--grade-s-text); background: var(--grade-s-bg);
+  padding: 0 6px; border-radius: var(--radius-sm); font-size: 12px; }
+.bd2-grade.g-A { color: var(--grade-a-text); }
+.bd2-grade.g-B { color: var(--grade-b-text); }
+.bd2-grade.g-C { color: var(--grade-c-text); }
+.bd2-grade.g-D { color: var(--grade-d-text); }
+.bd2-untouched { font: var(--type-label); color: var(--text-faint); margin-top: 6px; }
+
+/* ── §5 籌碼小區 v2(數字列 + 純 CSS 柱狀圖)── */
+.chips2 { margin-top: var(--space-5); }
+.chips2-cells { display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.chips2-cell { padding: 6px 10px; border-right: 1px solid var(--divider); min-width: 0; }
+.chips2-cell:last-child { border-right: none; }
+.chips2-cell .c2-label { font: var(--type-label); color: var(--text-muted); display: block; }
+.chips2-cell .c2-val { font: 700 12px/1.4 var(--font-mono);
+  font-variant-numeric: tabular-nums; white-space: nowrap; }
+.c2-val.up { color: var(--color-up); }        /* 買超紅 */
+.c2-val.down { color: var(--color-down); }    /* 賣超綠 */
+.c2-val.etf-buy { color: var(--etf-buy); }
+.c2-val.etf-sell { color: var(--etf-sell); }
+.c2-val.na { color: var(--text-faint); font-weight: 400; }
+.chips2-barhead { display: flex; justify-content: space-between; align-items: baseline;
+  margin: var(--space-4) 0 var(--space-2); font: var(--type-label); color: var(--text-muted); }
+.chips2-today { font: var(--type-num-sm); font-variant-numeric: tabular-nums; }
+.chips2-today.up { color: var(--color-up); }
+.chips2-today.down { color: var(--color-down); }
+.chips2-chart { display: flex; align-items: center; gap: 6px; }
+.chips2-bars { flex: 1; display: flex; align-items: center; gap: 3px; height: 72px;
+  position: relative; }
+.chips2-bars::before { content: ""; position: absolute; left: 0; right: 0; top: 50%;
+  border-top: 1px solid var(--divider); }           /* 零軸 */
+.chips2-bar { width: 9px; flex: 0 0 9px; position: relative; height: 100%; }
+.chips2-bar i { position: absolute; left: 0; width: 100%; display: block;
+  border-radius: 1px; }
+.chips2-bar i.up { background: var(--color-up); bottom: 50%; }
+.chips2-bar i.down { background: var(--color-down); top: 50%; }
+.chips2-scale { display: flex; flex-direction: column; justify-content: space-between;
+  height: 72px; font: 400 9px/1 var(--font-mono); color: var(--text-faint);
+  text-align: right; }
+.chips2-dates { display: flex; justify-content: space-between;
+  font: var(--type-label); color: var(--text-faint); margin-top: 2px; }
+.chips2-extra { font: var(--type-label); color: var(--text-faint); margin-top: var(--space-3); }
+@media (max-width: 760px) {
+  .chips2-bar { width: 6px; flex-basis: 6px; }      /* §5 響應:柱寬縮 6px,保留 20 根 */
+  .stock-card .stock-tags-inline { display: none; } /* §2:<760 隱藏題材 chip */
+}
+/* §3:圖表載入後容器(等待態斜紋/dashed 只屬未載入;載入後 block 流,ETF 勾選列/legend 各占整行)*/
+.chart-placeholder.chart-loaded {
+  display: block; background: var(--surface-panel);
+  border: 1px solid var(--border); cursor: default; padding: var(--space-2);
+}
+.chart-legend .legend-title { font: var(--type-card-title); color: var(--text-primary);
+  margin-right: 4px; }
