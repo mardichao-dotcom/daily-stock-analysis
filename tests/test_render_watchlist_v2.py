@@ -132,8 +132,8 @@ class TestFullRender(unittest.TestCase):
         html = rwl.render(wl, "2026-05-19")
         # HTML 骨架
         self.assertIn("<!DOCTYPE html>", html)
-        self.assertIn('<link rel="stylesheet" href="assets/style_v2.css">', html)
-        self.assertIn('<script src="assets/chart_v2.js"', html)
+        self.assertRegex(html, r'href="assets/style_v2\.css\?v=[0-9a-f]{8}"')  # Batch1 cache-busting
+        self.assertRegex(html, r'<script src="assets/chart_v2\.js\?v=[0-9a-f]{8}"')  # Batch1
         # nav 連回 index_v2
         self.assertIn('href="index_v2.html"', html)
         self.assertIn("📈 儀表板", html)

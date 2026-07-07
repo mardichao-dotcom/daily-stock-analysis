@@ -18,8 +18,19 @@ DATE = "2026-06-11"
 SITE_META = {"data_date": DATE, "rule_version": "v2.2", "tw_count": 98,
              "intl_count": 33, "total_count": 131, "skipped": []}
 
-GOOD_PAGE = '<div class="meta">資料日期 2026-06-11 ｜ 規則 v2.2 ｜ 台股 98 檔 ｜ 國際 33 檔</div>'
-GOOD_HISTORY = '<span class="history-summary">S 3 / A 2 / B 2</span>'
+# 資產版本 mock(Batch1 cache-busting):V = 資產內容 md5 前 8 碼
+import hashlib as _hashlib
+MOCK_ASSETS = {"tokens.css": ":root{--x:1}", "style_v2.css": "body{}",
+               "theme.js": "//t", "chart_v2.js": "//c", "events.js": "//e"}
+_h5 = _hashlib.md5()
+for _n in ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js"]:
+    _h5.update(MOCK_ASSETS[_n].encode())
+MOCK_V = _h5.hexdigest()[:8]
+_VLINK = f'<link rel="stylesheet" href="assets/style_v2.css?v={MOCK_V}">'
+
+GOOD_PAGE = (_VLINK +
+             '<div class="meta">資料日期 2026-06-11 ｜ 規則 v2.2 ｜ 台股 98 檔 ｜ 國際 33 檔</div>')
+GOOD_HISTORY = _VLINK + '<span class="history-summary">S 3 / A 2 / B 2</span>'
 US_JSON = json.dumps({"key_prices": {"lines": [1, 2, 3, 4, 5, 6, 7, 8, 9]}})
 OK_JSON = json.dumps({"key_prices": {"lines": []}})
 
@@ -94,6 +105,9 @@ def make_fetch(overrides=None):
     def fetch(url, timeout=15):
         if url in overrides:
             return overrides[url]
+        if "/assets/" in url:
+            name = url.split("/assets/")[1].split("?")[0]
+            return (200, MOCK_ASSETS[name]) if name in MOCK_ASSETS else (404, "")
         if url.endswith("macro.json"):
             return 200, _fresh_macro_json()
         if url.endswith("news.json"):
@@ -250,6 +264,26 @@ class TestVerifyPublish(unittest.TestCase):
         f = make_fetch({f"{BASE}/data/v2/events.json": (200, bad)})
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("非法 level" in e for e in errors))
+
+    # ── 資產版本斷言(stage10 Batch1)──
+    def test_assets_hash_mismatch_caught(self):
+        # style_v2.css 內容被換(部署滯後)→ 內容 hash ≠ 頁面引用 v
+        f = make_fetch({f"{BASE}/assets/style_v2.css?v={MOCK_V}": (200, "body{OLD}")})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("資產版本" in e and "≠" in e for e in errors))
+
+    def test_assets_missing_version_ref_caught(self):
+        # index_v2.html 沒帶 ?v=(回退到無版本化)
+        nov = GOOD_PAGE.replace(f"?v={MOCK_V}", "")
+        f = make_fetch({f"{BASE}/index_v2.html": (200, nov)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("無 ?v= 引用" in e for e in errors))
+
+    def test_assets_inconsistent_versions_caught(self):
+        torn = GOOD_PAGE.replace(MOCK_V, "deadbeef")
+        f = make_fetch({f"{BASE}/tags.html": (200, torn)})
+        errors = vp.run_checks(BASE, DATE, fetch=f)
+        self.assertTrue(any("v 不一致" in e for e in errors))
 
     # ── macro.json 斷言(審計 D2)──
     def test_macro_404_caught(self):

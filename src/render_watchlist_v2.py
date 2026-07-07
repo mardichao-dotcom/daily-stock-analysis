@@ -27,6 +27,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.render_v2 import _h, _safe_id, chart_placeholder_html, load_status_map
 from src import site_meta
+from src import asset_version
 
 
 # ── 結構建構 ─────────────────────────────────────────────────────────────────
@@ -226,16 +227,16 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>觀察名單 — 台股動能 Watchlist</title>
-<link rel="stylesheet" href="assets/style_v2.css">
+{asset_version.head_snippet()}
 <style>
   /* sticky 搜尋 bar(2026-06-07 朋友 review 後加)*/
   .wl-search-bar {{
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--bg, #ffffff);
+    background: var(--bg);
     padding: 10px 12px;
-    border-bottom: 1px solid var(--border, #e5e7eb);
+    border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -250,34 +251,34 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
     flex: 1;
     font-size: 14px;
     padding: 8px 12px;
-    border: 1px solid var(--border, #e5e7eb);
+    border: 1px solid var(--border);
     border-radius: 6px;
-    background: var(--code-bg, #f9fafb);
-    color: var(--text, #1f2937);
+    background: var(--code-bg);
+    color: var(--text);
     font-family: inherit;
   }}
   .wl-search-bar input:focus {{
     outline: none;
-    border-color: var(--etf-buy, #3b82f6);
-    background: #fff;
+    border-color: var(--etf-buy);
+    background: var(--surface-panel);
   }}
   .wl-search-bar .wl-search-clear {{
-    background: var(--code-bg, #f3f4f6);
-    border: 1px solid var(--border, #e5e7eb);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
     padding: 6px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     line-height: 1;
   }}
   .wl-search-bar .wl-search-clear:hover {{
-    background: var(--border, #e5e7eb);
-    color: var(--text, #1f2937);
+    background: var(--border);
+    color: var(--text);
   }}
   .wl-search-stats {{
     font-size: 11px;
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     flex-shrink: 0;
     min-width: 60px;
     text-align: right;
@@ -285,13 +286,13 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
   .wl-no-results {{
     text-align: center;
     padding: 32px 16px;
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     font-style: italic;
     font-size: 14px;
   }}
   /* 副標籤 chip(2026-06-09)— L2 前 3 + L4 前 2,灰色小字 */
   .wl-subtags {{
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     font-size: 11px;
     margin-left: 4px;
     word-break: keep-all;
@@ -359,8 +360,8 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
 
 </main>
 
-<script src="assets/chart_v2.js" defer></script>
-<script src="assets/events.js" defer></script>
+<script src="{asset_version.versioned('assets/chart_v2.js')}" defer></script>
+<script src="{asset_version.versioned('assets/events.js')}" defer></script>
 <script>
 (function() {{
   // 純前端 search(2026-06-07):toLowerCase 大小寫無關;名稱 / 代號雙欄掃描;

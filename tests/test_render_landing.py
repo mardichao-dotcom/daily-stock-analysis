@@ -93,7 +93,7 @@ class TestRender(unittest.TestCase):
     def test_css_link_and_doctype(self):
         html = rl.render(watchlist=make_watchlist(), latest_date="?", history_count=0)
         self.assertIn("<!DOCTYPE html>", html)
-        self.assertIn('href="assets/style_v2.css"', html)
+        self.assertRegex(html, r'href="assets/style_v2\.css\?v=[0-9a-f]{8}"')  # Batch1 cache-busting
 
 
 if __name__ == "__main__":

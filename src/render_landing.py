@@ -26,6 +26,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.render_v2 import _h
 from src import site_meta
+from src import asset_version
 
 
 HISTORY_PATTERN = re.compile(r"^index_v2_(2\d{3}-\d{2}-\d{2})\.html$")
@@ -69,7 +70,7 @@ def render(*,
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>台股動能作戰系統 — 規則 {_h(sm_rule)}</title>
-  <link rel="stylesheet" href="assets/style_v2.css">
+  {asset_version.head_snippet()}
 </head>
 <body class="page-landing">
 

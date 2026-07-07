@@ -244,8 +244,11 @@ class TestFullRender(unittest.TestCase):
         # HTML 基本骨架
         self.assertIn("<!DOCTYPE html>", html)
         self.assertIn('<html lang="zh-Hant">', html)
-        self.assertIn('<link rel="stylesheet" href="assets/style_v2.css">', html)
-        self.assertIn('<script src="assets/chart_v2.js"', html)
+        # Batch1:tokens+style 帶 ?v=(cache-busting),深色 pre-paint script 在前
+        self.assertRegex(html, r'href="assets/tokens\.css\?v=[0-9a-f]{8}"')
+        self.assertRegex(html, r'href="assets/style_v2\.css\?v=[0-9a-f]{8}"')
+        self.assertIn("dataset.theme", html)
+        self.assertRegex(html, r'<script src="assets/chart_v2\.js\?v=[0-9a-f]{8}"')  # Batch1
         # 7 區塊都在
         self.assertIn("🏆 當日前十名", html)
         self.assertIn("🔴 S 級戰區", html)

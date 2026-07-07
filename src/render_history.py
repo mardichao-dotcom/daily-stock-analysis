@@ -22,6 +22,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.render_v2 import _h
+from src import asset_version
 
 
 SNAPSHOT_PATTERN = re.compile(r"^index_v2_(2\d{3}-\d{2}-\d{2})\.html$")
@@ -124,7 +125,7 @@ def render_item(date_str: str, summary: dict) -> str:
         if summary.get("recomputed"):
             # 審計歸檔 13(2026-07-07 拍板):停更回補批(6/15~7/2)標注升級——
             # 明示「以當前 config 重放,非當日等價」(當日 key_prices 可能不同)
-            recomputed = (f'<span class="history-recomputed" style="color:#f59e0b;font-size:11px">'
+            recomputed = (f'<span class="history-recomputed" style="color:var(--accent-hi);font-size:11px">'
                           f'⚠️ {_h(summary["recomputed"])} 事後重算(以當前 config 重放,非當日等價)</span>')
     else:
         sab = "(無摘要)"
@@ -149,7 +150,7 @@ def render(dates: list[str], summaries: dict[str, dict]) -> str:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>歷史儀表板 — 台股動能作戰系統</title>
-  <link rel="stylesheet" href="assets/style_v2.css">
+  {asset_version.head_snippet()}
 </head>
 <body>
 

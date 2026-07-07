@@ -1,0 +1,172 @@
+/* ============================================================
+   台股盤後決策儀表板 — Design Tokens v1.0(方向:1b 單色藍・填色強度階)
+   深色為主方案(:root),淺色為次方案([data-theme="light"])
+   規則:紅=漲/多、綠=跌/空(台式,全站唯一紅綠語意);
+        等級 S/A/B/C/D 一律用藍色填色強度,不得使用紅綠;
+        ETF 買賣、互動、焦點一律走 accent 藍系。
+   ============================================================ */
+
+:root {
+  /* ---- 表面 Surface ---- */
+  --surface-canvas: #131722;        /* 頁面底 */
+  --surface-panel: #1e222d;         /* 卡片、表格、橫條 */
+  --surface-sunken: #161b26;        /* 狀態列、折疊列、次要條 */
+  --surface-hover: #232838;         /* 列 hover */
+  --surface-chart-wait: #161a25;    /* K線等待區斜紋底(搭配 #181d29 交錯) */
+
+  /* ---- 邊框 / 分隔 ---- */
+  --border: #2a2e39;                /* 面板外框 */
+  --border-strong: #363c4a;         /* 徽章、chip 外框 */
+  --divider: #1a1e29;               /* 表格列分隔線 */
+
+  /* ---- 文字 ---- */
+  --text-strong: #ffffff;           /* S 級股名、關鍵數字 */
+  --text-primary: #d1d4dc;          /* 主要內文、數字 */
+  --text-secondary: #a8adb8;        /* 計分明細內文 */
+  --text-muted: #787b86;            /* 標籤、欄頭、代號 */
+  --text-faint: #4c525e;            /* 時間戳、註腳、N/A */
+  --text-disabled: #5d6470;         /* 明細補充值、ETF 名單 */
+
+  /* ---- 漲跌(唯一紅綠語意)---- */
+  --color-up: #f23645;              /* 漲/多/買超 */
+  --color-up-bg: rgba(242, 54, 69, .14);
+  --color-down: #089981;            /* 跌/空/賣超 */
+  --color-down-soft: #26a69a;       /* 跌破徽章文字(深底上的可讀綠) */
+  --color-down-bg: rgba(8, 153, 129, .14);
+
+  /* ---- Accent(互動/焦點/事件重要度)---- */
+  --accent: #2962ff;
+  --accent-hi: #5b8cff;             /* 連結、hover、可點提示 */
+  --accent-bg: rgba(41, 98, 255, .22);
+  --accent-border: rgba(91, 140, 255, .4);
+  --accent-selection: rgba(41, 98, 255, .4);
+
+  /* ---- 等級(藍・填色強度階;與紅綠完全脫鉤)---- */
+  --grade-s-bg: #2962ff;            /* S:實心 */
+  --grade-s-text: #ffffff;
+  --grade-a-bg: rgba(41, 98, 255, .22);   /* A:22% 填色 + 亮邊 */
+  --grade-a-border: rgba(91, 140, 255, .55);
+  --grade-a-text: #7da2ff;
+  --grade-b-bg: transparent;        /* B:描邊 */
+  --grade-b-border: rgba(91, 140, 255, .35);
+  --grade-b-text: #6d84c4;
+  --grade-c-bg: transparent;        /* C:中性描邊 */
+  --grade-c-border: var(--border-strong);
+  --grade-c-text: var(--text-muted);
+  --grade-d-text: var(--text-faint);/* D:純文字,無框 */
+  --grade-na-border: var(--text-faint); /* N/A:虛線框(border-style:dashed) */
+
+  /* ---- 計分明細分數條(藍階,滿分→低分)---- */
+  --scorebar-100: #2962ff;
+  --scorebar-75: #3b6ef0;
+  --scorebar-50: #54619e;
+  --scorebar-25: #414a6e;
+  --scorebar-track: var(--divider);
+
+  /* ---- ETF 雙向(不佔紅綠)---- */
+  --etf-buy: #5b8cff;               /* ▲ 加碼 */
+  --etf-sell: #8a93b8;              /* ▽ 減碼 */
+
+  /* ---- K線圖 legend(沿用 lightweight-charts 現配)---- */
+  --chart-ma5: #f5c542;
+  --chart-ma20: #42a5f5;
+  --chart-ma60: #ab47bc;
+
+  /* ---- 字體 ---- */
+  /* Batch1 字體 spike 決定(spec §Batch1-3 選項 b):系統字優先(零下載),
+     Noto 僅作已安裝者的 fallback;數字用自架 JetBrains Mono(42KB,見 style_v2 @font-face)*/
+  --font-sans: 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Roboto Mono', 'Courier New', monospace;
+  /* 所有數字容器必加:font-variant-numeric: tabular-nums; */
+
+  /* ---- 字級階層(px / 行高 / 字重)---- */
+  --type-page-title: 700 18px/1.35 var(--font-sans);   /* 狀態列主句 */
+  --type-section: 700 14px/1.35 var(--font-sans);      /* 區塊標題 */
+  --type-card-title: 700 13px/1.35 var(--font-sans);   /* 卡片股名 */
+  --type-body: 400 12px/1.4 var(--font-sans);          /* 內文、明細 */
+  --type-caption: 400 11px/1.35 var(--font-sans);      /* 註解 */
+  --type-label: 400 10px/1.3 var(--font-sans);         /* 欄頭、徽章 */
+  --type-num-lg: 700 16px/1.2 var(--font-mono);        /* 總分 */
+  --type-num-md: 700 15px/1.2 var(--font-mono);        /* 指數值 */
+  --type-num: 400 12px/1.2 var(--font-mono);           /* 漲跌幅、明細分數 */
+  --type-num-sm: 400 11px/1.2 var(--font-mono);        /* 代號、時間戳 */
+
+  /* ---- 間距刻度 ---- */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;   /* 表格列垂直 padding */
+  --space-4: 8px;
+  --space-5: 10px;  /* 區塊間距 */
+  --space-6: 14px;  /* 面板水平 padding */
+  --space-7: 16px;
+  --space-8: 20px;  /* 大區塊間距、狀態列 padding */
+
+  /* ---- 圓角 ---- */
+  --radius-sm: 2px;  /* 徽章、chip、分數條 */
+  --radius-md: 4px;  /* 面板、卡片 */
+
+  /* ---- 陰影(僅浮層使用;平面卡片一律用邊框,不用陰影)---- */
+  --shadow-overlay: 0 4px 16px rgba(0, 0, 0, .5);
+  --shadow-none: none;
+
+  /* ---- 動效 ---- */
+  --transition-fast: 120ms ease;      /* hover 背景 */
+  --transition-expand: 180ms ease-out;/* 卡片展開(max-height/opacity) */
+}
+
+/* ============================================================
+   淺色次方案 — 對齊 TradingView Light
+   ============================================================ */
+[data-theme="light"] {
+  --surface-canvas: #f0f3fa;
+  --surface-panel: #ffffff;
+  --surface-sunken: #f7f8fb;
+  --surface-hover: #f0f3fa;
+  --surface-chart-wait: #f4f6fb;
+
+  --border: #e0e3eb;
+  --border-strong: #c9cdd8;
+  --divider: #eef1f7;
+
+  --text-strong: #0c0e15;
+  --text-primary: #131722;
+  --text-secondary: #434651;
+  --text-muted: #787b86;
+  --text-faint: #9aa0ac;
+  --text-disabled: #8d94a1;
+
+  --color-up: #e02234;              /* 淺底加深一級保持對比 */
+  --color-up-bg: rgba(224, 34, 52, .09);
+  --color-down: #00806b;
+  --color-down-soft: #0a8f77;
+  --color-down-bg: rgba(0, 128, 107, .09);
+
+  --accent: #1e53e5;
+  --accent-hi: #2962ff;
+  --accent-bg: rgba(41, 98, 255, .10);
+  --accent-border: rgba(41, 98, 255, .35);
+  --accent-selection: rgba(41, 98, 255, .25);
+
+  --grade-s-bg: #1e53e5;
+  --grade-s-text: #ffffff;
+  --grade-a-bg: rgba(41, 98, 255, .12);
+  --grade-a-border: rgba(41, 98, 255, .5);
+  --grade-a-text: #1e53e5;
+  --grade-b-border: rgba(41, 98, 255, .35);
+  --grade-b-text: #4a6fd6;
+  --grade-c-border: var(--border-strong);
+  --grade-c-text: var(--text-muted);
+  --grade-d-text: var(--text-faint);
+  --grade-na-border: var(--text-faint);
+
+  --scorebar-100: #1e53e5;
+  --scorebar-75: #3b6ef0;
+  --scorebar-50: #7f92cf;
+  --scorebar-25: #aab7e0;
+  --scorebar-track: var(--divider);
+
+  --etf-buy: #1e53e5;
+  --etf-sell: #6b768f;
+
+  --shadow-overlay: 0 4px 16px rgba(19, 23, 34, .16);
+}

@@ -29,6 +29,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src import site_meta
+from src import asset_version
 
 
 SPECIAL_TAG_KEYWORDS = ("站穩", "跌破", "MACD", "個股輪動", "ETF 減碼")
@@ -581,7 +582,7 @@ def render(filtered_result: dict, status_map: dict | None = None,
     if etf_delayed:
         etf_max = metadata.get("etf_max_date_in_db", "?")
         etf_warn = f"""
-<div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:8px 12px;margin-bottom:12px;border-radius:4px;font-size:13px;">
+<div style="background:var(--surface-sunken);border-left:4px solid var(--accent);color:var(--text-primary);padding:8px 12px;margin-bottom:12px;border-radius:4px;font-size:13px;">
   ⚠️ ETF 籌碼資料延遲(最新:{_h(etf_max)},顯示資料日:{_h(date)})
 </div>
 """
@@ -609,10 +610,10 @@ def render(filtered_result: dict, status_map: dict | None = None,
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>台股動能儀表板 {_h(date)} — 規則 {_h(sm_rule)}</title>
-  <link rel="stylesheet" href="assets/style_v2.css">
+  {asset_version.head_snippet()}
 </head>
 <body>
-{('<div style="background:#78350f;color:#fde68a;padding:10px 16px;text-align:center;font-size:13px">⚠️ ' + _h(recompute_note) + '</div>') if recompute_note else ''}
+{('<div style="background:var(--surface-sunken);color:var(--text-muted);border:1px dashed var(--border-strong);padding:10px 16px;text-align:center;font-size:13px">⚠️ ' + _h(recompute_note) + '</div>') if recompute_note else ''}
 <header class="page-header">
   <div class="container">
     <nav class="page-nav">
@@ -624,7 +625,7 @@ def render(filtered_result: dict, status_map: dict | None = None,
     </nav>
     <h1>🧭 台股右側動能作戰儀表板</h1>
     <div class="meta">
-      資料日期 <strong>{_h(date)}</strong> ｜ 規則 {_h(sm_rule)} ｜ 台股 {sm_tw} 檔{sm_skip_txt} ｜ 產出時間 {generated_at}{' ｜ <strong style=color:#f59e0b>' + _h(recompute_note) + '</strong>' if recompute_note else ''}
+      資料日期 <strong>{_h(date)}</strong> ｜ 規則 {_h(sm_rule)} ｜ 台股 {sm_tw} 檔{sm_skip_txt} ｜ 產出時間 {generated_at}{' ｜ <strong style=color:var(--accent-hi)>' + _h(recompute_note) + '</strong>' if recompute_note else ''}
     </div>
   </div>
 </header>
@@ -634,8 +635,8 @@ def render(filtered_result: dict, status_map: dict | None = None,
 {body}
 </main>
 
-<script src="assets/chart_v2.js" defer></script>
-<script src="assets/events.js" defer></script>
+<script src="{asset_version.versioned('assets/chart_v2.js')}" defer></script>
+<script src="{asset_version.versioned('assets/events.js')}" defer></script>
 </body>
 </html>"""
 

@@ -1,50 +1,30 @@
 /* style_v2.css — Stage 8 W3 樣式(2026-06-01) */
 
-/* ═══════════════════════════════════════════════════════════════
-   語意鐵律(stage10 §0,寫進 CSS 的合約):
-   1. --color-up / --color-down 是全站唯一紅綠,只用於 漲跌/多空/買賣超
-   2. 等級 S/A/B/C/D 只用藍階 token,任何等級元素不得出現紅綠
-   3. 所有數字容器 font-variant-numeric: tabular-nums
-   顏色/字體/間距一律引用 tokens.css 變數,不得寫死。
-   ═══════════════════════════════════════════════════════════════ */
-
-/* 數字字體:自架 JetBrains Mono(latin 42KB;中文走系統字,見 tokens --font-sans)*/
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('fonts/jetbrains-mono-400.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('fonts/jetbrains-mono-700.woff2') format('woff2');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-
-/* ── 舊名 → tokens 別名層(Batch 1 機械替換;Batch 2+ 逐步改用原生 token 名)──
-   等級舊制紅/橘/綠踩鐵律 2,Batch 1 即移入藍階(徽章三元組樣式屬 Batch 2 §1)*/
 :root {
-  --bg:        var(--surface-canvas);
-  --bg-card:   var(--surface-panel);
-  --surface:   var(--surface-panel);
-  --card:      var(--surface-panel);
-  --text:      var(--text-primary);
-  --text-mute: var(--text-muted);
-  --code-bg:   var(--surface-sunken);
-  --grade-s:   var(--grade-s-bg);
-  --grade-a:   var(--scorebar-75);
-  --grade-b:   var(--scorebar-50);
-  --grade-c:   var(--scorebar-25);
-  --grade-d:   var(--border-strong);
+  /* 級別配色 */
+  --grade-s: #ef4444;       /* 紅 */
+  --grade-a: #f59e0b;       /* 黃/橘 */
+  --grade-b: #10b981;       /* 綠 */
+  --grade-c: #6b7280;       /* 灰 */
+  --grade-d: #9ca3af;       /* 淺灰 */
+
+  /* 中性色 */
+  --bg:          #fafafa;
+  --bg-card:    #ffffff;
+  --border:      #e5e7eb;
+  --text:        #1f2937;
+  --text-mute:  #6b7280;
+  --code-bg:    #f3f4f6;
+
+  /* ETF 雙向 */
+  --etf-buy:   #3b82f6;     /* 藍(加碼)*/
+  --etf-sell:  #ef4444;     /* 紅(減碼)*/
 }
 
 * { box-sizing: border-box; }
 
-/* 全域連結:深底上瀏覽器預設藍不可讀(Batch 1 破版修補);互動一律 accent 系 */
-a { color: var(--accent-hi); }
-a:hover { color: var(--accent); }
-
 body {
-  font-family: var(--font-sans);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: var(--text);
@@ -143,14 +123,13 @@ header .meta {
 }
 .themes-list .theme-return {
   font-weight: bold;
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   width: 72px;
   text-align: right;
   flex-shrink: 0;
 }
-.themes-list .theme-return.gain { color: var(--color-up); }  /* §6.1#3 台式紅漲 */
-.themes-list .theme-return.loss { color: var(--color-down); }  /* 綠跌 */
+.themes-list .theme-return.gain { color: #ef4444; }  /* §6.1#3 台式紅漲 */
+.themes-list .theme-return.loss { color: #10b981; }  /* 綠跌 */
 .themes-list .theme-return.flat { color: var(--text-mute); }
 .themes-list .name { flex: 1; }
 .themes-list .theme-n {
@@ -165,7 +144,7 @@ header .meta {
   font-size: 13px;
 }
 .themes-footer a {
-  color: var(--accent-hi);
+  color: var(--etf-buy);
   text-decoration: none;
 }
 .themes-footer a:hover {
@@ -201,7 +180,7 @@ details.stock-card {
   transition: box-shadow 0.15s;
 }
 details.stock-card[open] {
-  border-color: var(--accent-border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 details.stock-card summary {
   cursor: pointer;
@@ -220,8 +199,7 @@ details.stock-card summary::before {
 details.stock-card[open] summary::before { transform: rotate(90deg); }
 
 .stock-card .stock-name { font-weight: 600; }
-.stock-card .stock-code { color: var(--text-mute); font-size: 13px; font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums; }
+.stock-card .stock-code { color: var(--text-mute); font-size: 13px; font-family: monospace; }
 .stock-card .stock-tags-inline { display: flex; gap: 4px; font-size: 12px; }
 .stock-card .stock-score {
   margin-left: auto;
@@ -236,7 +214,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   border-radius: 4px;
   font-size: 12px;
   font-weight: bold;
-  color: var(--grade-s-text);
+  color: #fff;
   margin-left: 4px;
 }
 .grade-badge.S { background: var(--grade-s); }
@@ -251,8 +229,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   border-top: 1px solid var(--border);
 }
 .score-breakdown {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
   font-size: 12px;
   background: var(--code-bg);
   padding: 8px;
@@ -287,15 +264,13 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 }
 .score-breakdown-table .bd-score {
   width: 60px;
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
   text-align: right;
   font-weight: 600;
-  color: var(--accent-hi);
+  color: var(--etf-buy);
 }
 .score-breakdown-table .bd-desc {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
   line-height: 1.5;
   color: var(--text);
 }
@@ -322,8 +297,8 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 /* Chart 預留區 */
 .chart-placeholder {
   min-height: 320px;
-  background: var(--surface-chart-wait);
-  border: 1px dashed var(--border-strong);
+  background: #f9fafb;
+  border: 1px dashed var(--border);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -332,12 +307,12 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   cursor: pointer;
   margin-top: 8px;
 }
-.chart-placeholder.loading { color: var(--accent-hi); }
+.chart-placeholder.loading { color: var(--etf-buy); }
 .chart-placeholder.awaiting {
-  background: var(--surface-chart-wait);
+  background: #fff7ed;          /* warm amber tint */
   border-style: solid;
-  border-color: var(--border-strong);
-  color: var(--text-muted);
+  border-color: #fed7aa;
+  color: #b45309;
   cursor: default;
   text-align: center;
   font-size: 13px;
@@ -348,13 +323,13 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 .chart-placeholder.awaiting small {
   display: block;
   margin-top: 6px;
-  color: var(--text-faint);
+  color: #9a3412;
   font-size: 11px;
 }
 .chart-placeholder.errored {
-  background: var(--surface-chart-wait);
-  border-color: var(--border-strong);
-  color: var(--accent-hi);
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
   cursor: default;
   min-height: 100px;
   font-size: 13px;
@@ -397,8 +372,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   color: var(--text-mute);
 }
 .c-special-list .c-score {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
   color: var(--text-mute);
   margin-left: auto;
   font-size: 11px;
@@ -459,8 +433,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 .etf-table .shares.positive { color: var(--etf-buy); }
 .etf-table .shares.negative { color: var(--etf-sell); }
 .etf-table .etfs-list {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
   font-size: 11px;
   color: var(--text-mute);
 }
@@ -468,10 +441,8 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 /* ─── Chart tooltip(JS 動態建立)─── */
 .chart-tooltip {
   position: absolute;
-  background: var(--surface-panel);
-  border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-overlay);
-  color: var(--text-strong);
+  background: rgba(31, 41, 55, 0.95);
+  color: #fff;
   padding: 6px 10px;
   border-radius: 4px;
   font-size: 12px;
@@ -636,8 +607,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   margin-left: auto;
   font-size: 12px;
   color: var(--text-mute);
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
 }
 .wl-tags-inline {
   display: inline-flex;
@@ -649,7 +619,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 }
 
 /* ─── 入口頁(landing)──────────────────────────────────── */
-.page-landing { background: var(--surface-canvas); min-height: 100vh; }
+.page-landing { background: linear-gradient(to bottom, var(--bg) 0%, #f3f4f6 100%); min-height: 100vh; }
 .landing-header { margin-bottom: 24px; }
 .landing-subtitle {
   font-size: 14px;
@@ -666,7 +636,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 }
 .landing-card {
   display: block;
-  background: var(--surface-panel);
+  background: var(--surface, #fff);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px 20px;
@@ -676,12 +646,13 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   position: relative;
 }
 .landing-card:hover {
-  box-shadow: var(--shadow-overlay);
-  border-color: var(--accent-border);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border-color: var(--etf-buy);
 }
 .landing-card.landing-primary {
-  border-color: var(--accent-border);
-  background: linear-gradient(135deg, var(--surface-panel) 0%, var(--surface-sunken) 100%);
+  border-color: var(--etf-buy);
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
 }
 .landing-card .landing-icon {
   font-size: 32px;
@@ -693,7 +664,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 }
 .landing-card .landing-tagline {
   font-size: 13px;
-  color: var(--accent-hi);
+  color: var(--etf-buy);
   font-weight: 600;
   margin: 0 0 6px;
 }
@@ -730,14 +701,13 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
   transition: border-color 0.12s, background 0.12s;
 }
 .history-item:hover {
-  border-color: var(--accent-border);
-  background: var(--surface-hover);
+  border-color: var(--etf-buy);
+  background: #eff6ff;
 }
 .history-item .history-date {
   font-size: 15px;
   font-weight: 600;
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
 }
 .history-item .history-day {
   font-size: 11px;
@@ -746,8 +716,7 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 .history-item .history-summary {
   font-size: 12px;
   color: var(--text);
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+  font-family: monospace;
   margin-top: 4px;
 }
 
@@ -778,12 +747,12 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 /* ─── 事件中樞「未來 14 天」(stage9 Day1)─── */
 #events-hub .events-body { display: flex; flex-direction: column; gap: 8px; }
 .events-stale {
-  background: var(--surface-sunken); color: var(--text-muted); padding: 8px 12px;
-  border: 1px dashed var(--border-strong); border-radius: 4px; font-size: 12px; margin-bottom: 6px;
+  background: #78350f; color: #fde68a; padding: 8px 12px;
+  border-radius: 4px; font-size: 12px; margin-bottom: 6px;
 }
 .events-empty { color: var(--text-mute); font-size: 13px; padding: 6px 0; }
 .events-day { display: flex; gap: 12px; align-items: flex-start;
-  padding: 6px 0; border-bottom: 1px solid var(--border); }
+  padding: 6px 0; border-bottom: 1px solid var(--border, #e5e7eb); }
 .events-date { flex-shrink: 0; width: 92px; font-weight: 600; font-size: 13px;
   color: var(--text-mute); }
 .events-list { list-style: none; margin: 0; padding: 0; flex: 1; }
@@ -800,47 +769,43 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 .events-lowfold > summary { color: var(--text-mute); font-size: 12px; padding: 6px 0 2px;
   cursor: pointer; }
 .events-lowfold > summary:hover { color: var(--text); }
-.events-lowfold-body { padding-left: 2px; border-left: 2px solid var(--border); }
+.events-lowfold-body { padding-left: 2px; border-left: 2px solid var(--border, #e5e7eb); }
 /* 個股卡 7 天內事件徽章(法說會 📅 / 除權息 💰) */
 .stock-card .conf-badge, .stock-card .div-badge,
 .wl-stock .conf-badge, .wl-stock .div-badge { margin-right: 4px; cursor: help; }
 
 /* ─── 總經快覽橫條(stage9 Day2 §3.2)─── */
-.macro-bar { background: var(--surface-sunken); color: var(--text-primary); font-size: 13px; overflow-x: auto;
-  border-bottom: 1px solid var(--border); }
+.macro-bar { background: #1f2937; color: #e5e7eb; font-size: 13px; overflow-x: auto; }
 .macro-bar-inner { display: flex; align-items: center; gap: 16px; padding: 8px 16px;
   white-space: nowrap; }
 .mb-item { display: inline-flex; align-items: baseline; gap: 5px; }
-.mb-label { color: var(--text-muted); font-size: 12px; }
-.mb-val { font-weight: 600; font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums; }
-.mb-chg { font-size: 12px; font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums; }
-.mb-na b { color: var(--text-faint); }
-.mb-fail { color: var(--accent-hi); font-size: 12px; }
-.mb-gen { margin-left: auto; color: var(--text-faint); font-size: 11px; }
+.mb-label { color: #9ca3af; font-size: 12px; }
+.mb-val { font-weight: 600; font-family: ui-monospace, Menlo, monospace; }
+.mb-chg { font-size: 12px; font-family: ui-monospace, Menlo, monospace; }
+.mb-na b { color: #9ca3af; }
+.mb-fail { color: #f59e0b; font-size: 12px; }
+.mb-gen { margin-left: auto; color: #6b7280; font-size: 11px; }
 /* ─── 新聞關鍵字列(§3.4)─── */
-.news-kw-bar { background: var(--surface-sunken); color: var(--text-mute); font-size: 12px;
+.news-kw-bar { background: #f3f4f6; color: var(--text-mute); font-size: 12px;
   border-bottom: 1px solid var(--border); }
 .news-kw-bar .container { padding: 6px 16px; }
 .news-kw-bar .nk-list { color: var(--text); }
-.news-kw-bar .nk-edit { margin-left: 8px; color: var(--accent-hi); text-decoration: none; }
+.news-kw-bar .nk-edit { margin-left: 8px; color: var(--etf-buy); text-decoration: none; }
 .news-kw-bar .nk-edit:hover { text-decoration: underline; }
 /* ─── 週報頁(§3.3)─── */
 .wk-cards { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 4px; }
-.wk-card { flex: 1 1 180px; background: var(--card); border: 1px solid var(--border);
+.wk-card { flex: 1 1 180px; background: var(--card, #fff); border: 1px solid var(--border);
   border-radius: 10px; padding: 12px 14px; }
 .wk-card-label { color: var(--text-mute); font-size: 12px; margin-bottom: 4px; }
-.wk-card-val { font-size: 24px; font-weight: 700; font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums; }
+.wk-card-val { font-size: 24px; font-weight: 700; font-family: ui-monospace, Menlo, monospace; }
 .wk-card-sub { color: var(--text-mute); font-size: 12px; margin-top: 4px; }
 .wk-chart { width: 100%; max-width: 760px; height: auto; margin: 10px 0;
   border: 1px solid var(--border); border-radius: 8px; }
 .wk-alerts { list-style: none; padding: 0; margin: 6px 0; }
 .wk-alerts li { padding: 8px 12px; margin: 4px 0; border-radius: 8px;
-  background: var(--accent-bg); border-left: 3px solid var(--accent); font-size: 14px; }
-.wk-alerts li.wk-noalert { background: var(--surface-sunken); border-left-color: var(--border-strong); color: var(--text-mute); }
-.wk-errors { background: var(--surface-sunken); border: 1px dashed var(--border-strong); color: var(--text-muted);
+  background: #fef2f2; border-left: 3px solid #ef4444; font-size: 14px; }
+.wk-alerts li.wk-noalert { background: #f0fdf4; border-left-color: #10b981; color: var(--text-mute); }
+.wk-errors { background: #fffbeb; border: 1px solid #f59e0b; color: #92400e;
   border-radius: 8px; padding: 8px 12px; margin: 8px 0; font-size: 13px; }
 .wk-src { color: var(--text-mute); font-size: 12px; margin-top: 16px; }
 /* ─── 個股卡籌碼小區(§3.5)─── */
@@ -849,17 +814,8 @@ details.stock-card[open] summary::before { transform: rotate(90deg); }
 .chips-head { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: baseline;
   font-size: 12px; color: var(--text-mute); margin-bottom: 4px; }
 .chips-title { font-weight: 600; color: var(--text); }
-.chips-kv b { color: var(--text); font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums; }
-.chips-kv i { font-style: normal; color: var(--text-faint); font-size: 11px; }
+.chips-kv b { color: var(--text); font-family: ui-monospace, Menlo, monospace; }
+.chips-kv i { font-style: normal; color: #f59e0b; font-size: 11px; }
 .chips-mini { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
 .chips-mini-label { flex: 0 0 32px; font-size: 11px; color: var(--text-mute); text-align: right; }
 .chips-mini-chart { flex: 1 1 auto; min-width: 0; height: 74px; }
-/* ─── 主題切換鈕(Batch 1)─── */
-.theme-toggle {
-  position: fixed; top: 10px; right: 12px; z-index: 200;
-  background: var(--surface-panel); color: var(--text-primary);
-  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
-  font: var(--type-caption); padding: 4px 10px; cursor: pointer;
-}
-.theme-toggle:hover { background: var(--surface-hover); }

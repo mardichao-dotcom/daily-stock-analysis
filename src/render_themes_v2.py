@@ -25,6 +25,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.render_v2 import _h
 from src import site_meta
+from src import asset_version
 
 
 def _ret_class(ret):
@@ -124,15 +125,15 @@ def render(data: dict) -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>主題熱度排行 — 台股動能</title>
-<link rel="stylesheet" href="assets/style_v2.css">
+{asset_version.head_snippet()}
 <style>
   .themes-page-bar {{
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--bg, #fafafa);
+    background: var(--bg);
     padding: 10px 12px;
-    border-bottom: 1px solid var(--border, #e5e7eb);
+    border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -140,42 +141,42 @@ def render(data: dict) -> str:
   }}
   .themes-page-bar .sort-label {{
     font-size: 13px;
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     flex-shrink: 0;
   }}
   .themes-page-bar button {{
-    background: var(--code-bg, #f3f4f6);
-    border: 1px solid var(--border, #e5e7eb);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 13px;
-    color: var(--text, #1f2937);
+    color: var(--text);
     font-family: inherit;
   }}
   .themes-page-bar button:hover {{
-    background: var(--border, #e5e7eb);
+    background: var(--border);
   }}
   .themes-page-bar button.active {{
-    background: var(--etf-buy, #3b82f6);
-    color: #fff;
-    border-color: var(--etf-buy, #3b82f6);
+    background: var(--accent);
+    color: var(--grade-s-text);
+    border-color: var(--accent);
   }}
   .themes-page-bar .stats {{
     margin-left: auto;
     font-size: 12px;
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     text-align: right;
   }}
   details.theme-card {{
-    background: var(--bg-card, #fff);
-    border: 1px solid var(--border, #e5e7eb);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 6px;
     margin: 6px 0;
     transition: background 0.1s;
   }}
   details.theme-card[open] {{
-    background: #f9fafb;
+    background: var(--surface-hover);
   }}
   .theme-card > summary {{
     padding: 10px 12px;
@@ -199,7 +200,7 @@ def render(data: dict) -> str:
   }}
   .theme-card .theme-rank {{
     font-weight: bold;
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     width: 38px;
     text-align: center;
     flex-shrink: 0;
@@ -207,14 +208,15 @@ def render(data: dict) -> str:
   }}
   .theme-card .theme-return {{
     font-weight: bold;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
     width: 80px;
     text-align: right;
     flex-shrink: 0;
     font-size: 15px;
   }}
-  .theme-return.gain {{ color: #ef4444; }}   /* §6.1#3 台式紅漲 */
-  .theme-return.loss {{ color: #10b981; }}   /* 綠跌 */
+  .theme-return.gain {{ color: var(--color-up); }}   /* §6.1#3 台式紅漲 */
+  .theme-return.loss {{ color: var(--color-down); }}   /* 綠跌 */
   .theme-return.flat {{ color: var(--text-mute); }}
   .theme-card .theme-tag-name {{
     font-weight: 600;
@@ -222,19 +224,19 @@ def render(data: dict) -> str:
     font-size: 15px;
   }}
   .theme-card .theme-n {{
-    color: var(--text-mute, #6b7280);
+    color: var(--text-mute);
     font-size: 12px;
     flex-shrink: 0;
   }}
   .theme-excluded-note {{
-    color: #f59e0b;
+    color: var(--text-faint);
     margin-left: 4px;
   }}
   ul.theme-members {{
     list-style: none;
     margin: 0;
     padding: 4px 12px 12px 50px;
-    border-top: 1px solid var(--border, #e5e7eb);
+    border-top: 1px solid var(--border);
   }}
   li.theme-member {{
     display: flex;
@@ -249,12 +251,13 @@ def render(data: dict) -> str:
   .m-return {{
     width: 64px;
     text-align: right;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
     font-weight: 600;
     flex-shrink: 0;
   }}
-  .m-return.gain {{ color: #ef4444; }}   /* §6.1#3 台式紅漲 */
-  .m-return.loss {{ color: #10b981; }}   /* 綠跌 */
+  .m-return.gain {{ color: var(--color-up); }}   /* §6.1#3 台式紅漲 */
+  .m-return.loss {{ color: var(--color-down); }}   /* 綠跌 */
   .m-return.flat {{ color: var(--text-mute); }}
   .m-code {{
     color: var(--text-mute);

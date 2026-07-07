@@ -125,7 +125,55 @@ def run_checks(base: str, data_date: str, *, fetch=_fetch) -> list[str]:
     # ── 10:macro.json 新鮮度 + 結構(stage9 spec §5,審計 D2 補齊)──
     errors.extend(_check_macro(base, fetch))
 
+    # ── 11:資產版本一致性(stage10 Batch1 cache-busting)──
+    errors.extend(_check_assets(base, fetch))
+
     return errors
+
+
+# 每晚重產的頁面(同一輪 render → 必須引用同一 ?v=);weekly.html 週六才重產,不在此列
+_VERSIONED_PAGES = ["index.html", "index_v2.html", "watchlist_v2.html",
+                    "tags.html", "history.html"]
+_VERSIONED_ASSETS = ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js"]
+
+
+def _check_assets(base: str, fetch) -> list[str]:
+    """資產版本斷言(stage10 Batch1):
+    ① 每晚重產的五頁引用同一 ?v= hash(缺引用 = 回退到無版本化,fail)
+    ② 以該 v 取回五個資產皆 200
+    ③ 線上資產內容重算 md5 前 8 碼 == 頁面引用的 v
+       —— 頁面與資產不同步(Pages CDN 舊快取/部署滯後,7/6 事故類型)當場抓包。"""
+    import hashlib
+    errs: list[str] = []
+    versions: dict[str, str] = {}
+    for page in _VERSIONED_PAGES:
+        code, html = fetch(f"{base}/{page}")
+        if code != 200:
+            continue                            # 頁面可用性由既有斷言負責,不重複報
+        m = re.search(r"style_v2\.css\?v=([0-9a-f]{8})", html)
+        if not m:
+            errs.append(f"資產版本:{page} 無 ?v= 引用(cache-busting 回退)")
+            continue
+        versions[page] = m.group(1)
+    if not versions:
+        return errs + ["資產版本:五頁皆無 ?v= 引用"]
+    if len(set(versions.values())) > 1:
+        errs.append(f"資產版本:頁面間 v 不一致 {versions}(部署撕裂/部分頁未重產)")
+    v = list(versions.values())[0]
+    h = hashlib.md5()
+    for name in _VERSIONED_ASSETS:
+        code, body = fetch(f"{base}/assets/{name}?v={v}")
+        if code != 200:
+            errs.append(f"資產版本:assets/{name}?v={v} HTTP {code}")
+            return errs
+        h.update(body.encode("utf-8"))
+    served = h.hexdigest()[:8]
+    if served != v:
+        errs.append(f"資產版本:線上資產內容 hash {served} ≠ 頁面引用 {v}"
+                    f"(Pages 部署滯後或資產未同步)")
+    if not errs:
+        print(f"[verify_publish] ✅ 資產版本一致(v={v},五頁 × 五資產)")
+    return errs
 
 
 def _check_macro(base: str, fetch) -> list[str]:

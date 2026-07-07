@@ -33,6 +33,7 @@ _set_cjk_font()
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 sys.path.insert(0, os.path.abspath(PROJECT_ROOT))
 from src.render_v2 import _h
+from src import asset_version
 
 DOCS = os.path.join(PROJECT_ROOT, "docs")
 WEEKLY_JSON = os.path.join(DOCS, "data", "v2", "weekly.json")
@@ -112,14 +113,14 @@ def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool) -> str:
                   if alerts else '<li class="wk-noalert">本週無極端訊號</li>')
 
     def _pct_color(v):
-        return "#ef4444" if (isinstance(v, (int, float)) and v > 0) else \
-               ("#10b981" if (isinstance(v, (int, float)) and v < 0) else "var(--text-mute)")
+        return "var(--color-up)" if (isinstance(v, (int, float)) and v > 0) else \
+               ("var(--color-down)" if (isinstance(v, (int, float)) and v < 0) else "var(--text-mute)")
 
     # 情緒卡
     naaim_card = _sentiment_card(
         "NAAIM 機構曝險", naaim.get("latest_value", "N/A"),
         f"最新 {naaim.get('latest_date','')}",
-        "#ef4444" if isinstance(naaim.get("latest_value"), (int, float)) and
+        "var(--color-up)" if isinstance(naaim.get("latest_value"), (int, float)) and
         naaim["latest_value"] > cfg.get("naaim", {}).get("extreme_high", 90) else "")
     vix_card = _sentiment_card("VIX 波動率", vix.get("value", "N/A"),
                                "恐慌指標(替代恐慌貪婪)")
@@ -151,7 +152,7 @@ def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool) -> str:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>週報 {_h(date)} — 情緒面 + 籌碼</title>
-  <link rel="stylesheet" href="assets/style_v2.css">
+  {asset_version.head_snippet()}
 </head>
 <body>
 <header class="page-header">

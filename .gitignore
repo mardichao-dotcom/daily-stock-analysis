@@ -48,3 +48,6 @@ filtered_result*.json
 # 歷史 chart JSON(每天 ~3.7MB × 87 檔,可由 prepare_charts_v2 重產)
 docs/data/v2/2[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
 config/.news_keywords.last_valid.json
+design/
+handoff/
+台股盤後決策儀表板改版.zip
