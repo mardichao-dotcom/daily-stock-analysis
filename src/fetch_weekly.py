@@ -85,25 +85,34 @@ def xly_xlp_signal(cfg: dict) -> dict:
         return {"status": "N/A", "error": str(e)[:80]}
 
 
-# ── 週融資餘額(市場合計,逐週累積入 macro.db)────────────────────────────────
+# ── 週融資餘額(2026-07-07 融資改版:金額億元,讀 margin_daily 日頻序列)────────
+# 舊制 margin_weekly(張數週頻)已廢——張數跨股加總無金額意義;
+# 週報一律億元(單位分工:市場=億元、個股籌碼=張)。
 def weekly_margin(db_path: str = MACRO_DB) -> dict:
-    m = fetch_margin()                                          # 當前市場合計(張)
+    from src import margin_daily as md
     today = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d")
-    if m.get("value") == "N/A":
-        return {"status": "N/A", "error": m.get("error", "")}
-    conn = sqlite3.connect(db_path)
-    conn.execute("CREATE TABLE IF NOT EXISTS margin_weekly ("
-                 "date TEXT PRIMARY KEY, total REAL NOT NULL)")
-    conn.execute("INSERT OR REPLACE INTO margin_weekly VALUES (?,?)", (today, m["value"]))
-    conn.commit()
-    rows = conn.execute(
-        "SELECT date,total FROM margin_weekly ORDER BY date DESC LIMIT 12").fetchall()
-    conn.close()
-    rows = list(reversed(rows))
+    try:
+        md.collect_day(today, db_path)                          # 今日有檔就順手入庫
+    except Exception:                             # noqa: BLE001 — 週六跑,今日多半非交易日
+        pass
+    conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    try:
+        rows = conn.execute(
+            "SELECT date, total_yi FROM margin_daily WHERE date <= ? "
+            "ORDER BY date DESC LIMIT 30", (today,)).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    finally:
+        conn.close()
+    if not rows:
+        return {"status": "N/A", "error": "margin_daily 無資料(需先回補)"}
+    rows = list(reversed(rows))                                 # 舊→新
+    latest_d, latest = rows[-1]
+    # 週對週:取 5 個交易日前
     wow = None
-    if len(rows) >= 2:
-        wow = round((rows[-1][1] - rows[-2][1]) / rows[-2][1] * 100, 2) if rows[-2][1] else None
-    return {"status": "ok", "date": today, "total": m["value"], "unit": "張",
+    if len(rows) >= 6 and rows[-6][1]:
+        wow = round((latest - rows[-6][1]) / rows[-6][1] * 100, 2)
+    return {"status": "ok", "date": latest_d, "total": latest, "unit": "億元",
             "wow_pct": wow, "series": {"dates": [r[0] for r in rows],
                                         "total": [r[1] for r in rows]}}
 

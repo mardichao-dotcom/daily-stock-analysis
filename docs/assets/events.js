@@ -164,8 +164,15 @@
       chgHtml = `<span class="mb2-chg ${cls}">${arrow}${Math.abs(chg).toFixed(2)}%</span>`;
     }
     const unit = it.unit ? `<span class="mb2-unit">${esc(it.unit)}</span>` : '';
+    // §6 融資脈絡字(2026-07-07 改版):N日連增/連減 · 近一年百分位
+    let ctx = '';
+    if (typeof it.streak === 'number' && typeof it.percentile === 'number') {
+      const trend = it.streak > 0 ? `${it.streak}日連增`
+                  : (it.streak < 0 ? `${-it.streak}日連減` : '持平');
+      ctx = `<span class="mb2-ctx">${trend}｜近一年 ${it.percentile}%</span>`;
+    }
     return `<div class="mb2-cell"><span class="mb2-label">${label}</span>`
-         + `<span class="mb2-val">${Number(it.value).toLocaleString()}${unit}</span>${chgHtml}</div>`;
+         + `<span class="mb2-val">${Number(it.value).toLocaleString()}${unit}</span>${chgHtml}${ctx}</div>`;
   }
 
   function injectMacroBar(header, m) {

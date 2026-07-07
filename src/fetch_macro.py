@@ -125,24 +125,37 @@ def fetch_index(key: str) -> dict:
     return _item(label, error=f"yfinance:{yf_err}", source=f"yfinance {yf_sym}")
 
 
-# ── 融資餘額(市場合計 = MI_MARGN + 櫃買 逐檔加總)──────────────────────────
+# ── 融資餘額(2026-07-07 融資改版:金額億元 + 脈絡字)─────────────────────────
 def fetch_margin() -> dict:
+    """市場融資餘額 = 兩市官方彙總「融資金額(仟元)」→ 億元。
+
+    舊制加總兩市每股「張數」——張數跨股加總無金額意義,已廢
+    (單位分工:市場=億元、個股籌碼=張)。
+    每日寫 macro.db margin_daily,並算 5 日趨勢(streak)與近一年百分位
+    供 §6 橫條脈絡字;schema 增欄已於 2026-07-07 拍板批准。
+    今日無檔(假日/未出)自動回退最近交易日,不冒充今日值。"""
     label = "融資餘額"
-    src = "TWSE MI_MARGN + TPEx"
+    src = "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)"
+    from src import margin_daily as md
     try:
-        today = prev = 0.0
-        # 上市
-        for r in json.loads(_http_get("https://openapi.twse.com.tw/v1/exchangeReport/MI_MARGN")):
-            today += float(r.get("融資今日餘額", "0").replace(",", "") or 0)
-            prev  += float(r.get("融資前日餘額", "0").replace(",", "") or 0)
-        # 上櫃
-        for r in json.loads(_http_get("https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance")):
-            today += float(r.get("MarginPurchaseBalance", "0").replace(",", "") or 0)
-            prev  += float(r.get("MarginPurchaseBalancePreviousDay", "0").replace(",", "") or 0)
-        chg = today - prev
-        pct = (chg / prev * 100) if prev else 0.0
-        return _item(label, round(today), round(chg), round(pct, 2),
-                     source=src, unit="張")
+        today = datetime.now(TZ_TAIPEI).date()
+        got_date = None
+        for i in range(7):                        # 回看一週內最近交易日
+            d = today - timedelta(days=i)
+            if d.weekday() >= 5:
+                continue
+            if md.collect_day(d.isoformat()) is not None:
+                got_date = d.isoformat()
+                break
+        if got_date is None:
+            return _item(label, error="兩市金額彙總 7 日內皆無檔", source=src)
+        st = md.stats(md.MACRO_DB, got_date)
+        item = _item(label, st["amount_yi"], st["change_yi"], st["change_pct"],
+                     date=got_date, source=src, unit="億元")
+        item["streak"] = st["streak"]             # +N 連增 / −N 連減 / 0
+        item["percentile"] = st["percentile"]     # 近一年百分位(≤252 交易日)
+        item["history_days"] = st["days"]
+        return item
     except Exception as e:                        # noqa: BLE001
         return _item(label, error=str(e)[:80], source=src)
 

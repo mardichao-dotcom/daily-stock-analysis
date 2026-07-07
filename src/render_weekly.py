@@ -130,8 +130,9 @@ def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool) -> str:
          ("偏多" if xx.get("trend") == "risk_on" else "偏空")}.get(xx.get("cross"), ""))
     mg_wow = mg.get("wow_pct")
     mg_card = _sentiment_card(
-        "市場融資餘額(張)", f"{mg.get('total','N/A'):,}" if isinstance(mg.get("total"), (int, float)) else "N/A",
-        (f"週增減 {mg_wow:+.2f}%" if isinstance(mg_wow, (int, float)) else "本週首錄,趨勢累積中"),
+        "市場融資餘額(億元)",                                     # 2026-07-07 融資改版:市場=億元
+        f"{mg.get('total','N/A'):,.1f}" if isinstance(mg.get("total"), (int, float)) else "N/A",
+        (f"週增減 {mg_wow:+.2f}%" if isinstance(mg_wow, (int, float)) else "序列累積中"),
         _pct_color(mg_wow))
     tw_wk = tw.get("week_change_pct")
     tw_close = f"{tw['close']:,.2f}" if isinstance(tw.get("close"), (int, float)) else "N/A"

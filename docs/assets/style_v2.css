@@ -1112,3 +1112,4 @@ details.stock-card.rb-flash { border-color: var(--accent); transition: border-co
 .card-events { font: var(--type-caption); color: var(--text-secondary);
   padding: 4px 0 8px; border-bottom: 1px solid var(--divider); margin-bottom: 8px; }
 .ce-label { font: var(--type-label); color: var(--text-muted); margin-right: 8px; }
+.mb2-ctx { display: block; font: var(--type-label); color: var(--text-muted); }
