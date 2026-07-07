@@ -1,0 +1,78 @@
+{
+  "_note": "持股水位模型參數 v1.2(所有權:朋友;最終點頭尚未回——凍結前此檔為唯一真值,凍結後只改此檔。spec §3:實作依 config,引擎零硬編碼)。分數方向:正=加碼傾向。VIX 檔位分界為實作初始值(v1.2 原文僅給 +1/0/−1/−2 四檔),待朋友回覆校正。",
+  "version": "1.2",
+  "categories": {
+    "technical": 0.50,
+    "sentiment": 0.15,
+    "cycle": 0.10,
+    "macro": 0.25
+  },
+  "technical": {
+    "markets": ["TAIEX", "SPX"],
+    "ma_rules": [
+      {"ma": "ma20", "above": 0.5, "below": -0.5},
+      {"ma": "ma60", "above": 1.0, "below": -1.0},
+      {"ma": "ma200", "above": 0.5, "below": -0.5}
+    ],
+    "buffer_pct": 0.5,
+    "stale_days_max": 7
+  },
+  "sentiment": {
+    "vix_weight": 0.6667,
+    "umich_weight": 0.3333,
+    "vix_bands": [
+      {"below": 15, "score": 1},
+      {"below": 20, "score": 0},
+      {"below": 30, "score": -1},
+      {"below": null, "score": -2}
+    ],
+    "vix_warning_level": 40,
+    "umich_percentile_low": 20,
+    "umich_percentile_high": 80,
+    "umich_scores": {"low": 1, "mid": 0, "high": -1}
+  },
+  "cycle": {
+    "band_pp": 0.1,
+    "double_at_pp": 0.3,
+    "scores": {"hot": -1, "inline": 0, "cool": 1}
+  },
+  "macro": {
+    "light_scores": {"藍": 3, "黃藍": 2, "綠": 1, "黃紅": 0, "紅": -1},
+    "dgs10": {
+      "bands": [
+        {"below": 3.5, "score": 1},
+        {"below": 4.5, "score": 0},
+        {"below": 5.0, "score": -1},
+        {"below": null, "score": -2}
+      ],
+      "speed_rise_bp_month": 40,
+      "speed_lookback_days": 30,
+      "speed_double_needs": {"cpi_surprise_hot": true, "fed_hawkish": true},
+      "speed_exempt_needs": {"cpi_mild": true, "fed_on_hold": true}
+    },
+    "usdtwd": {
+      "window_trading_days": 20,
+      "appreciate_pct": 1.5,
+      "depreciate_pct": 1.5,
+      "crash_pct": 3.0,
+      "scores": {"appreciate": 1, "flat": 0, "depreciate": -1, "crash": -2}
+    },
+    "fedwatch": {
+      "daily_dovish_bp": -12.5,
+      "daily_hawkish_bp": 12.5,
+      "daily_scores": {"dovish": 1, "neutral": 0, "hawkish": -1},
+      "surprise_one_step_bp": 25,
+      "surprise_two_step_bp": 50,
+      "surprise_scores": {"one_step": 1.0, "two_step": 1.2},
+      "replay_daily_lock": true
+    }
+  },
+  "position_bands": [
+    {"min": 1.2, "label": "100~130%"},
+    {"min": 0.4, "label": "70~100%"},
+    {"min": -0.4, "label": "40~70%"},
+    {"min": -1.2, "label": "0~40%"},
+    {"min": null, "label": "-30~0%"}
+  ],
+  "hysteresis_trading_days": 3
+}
