@@ -25,7 +25,8 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.render_v2 import _h, _safe_id, chart_placeholder_html, load_status_map
+from src.render_v2 import (_h, _safe_id, chart_placeholder_html, load_status_map,
+                            load_close_map)
 from src import site_meta
 from src import asset_version
 
@@ -37,22 +38,43 @@ def _short_code(full: str) -> str:
     return full.split(":")[-1]
 
 
-def _summary_for_member(symbol: str, stocks_index: dict) -> str:
-    """根據 filtered_result(若有)生成 summary 摘要。
-    格式:'  [B 4.0]  ⚡ MACD ⛔ ETF 減碼'
-    沒在 filtered_result 就回空字串。"""
-    entry = stocks_index.get(symbol)
-    if not entry:
+def _grade_badge(symbol: str, stocks_index: dict) -> str:
+    """§15 列首等級徽章;未計分(國際股)顯示中性 C 樣式空缺不佔位。"""
+    grade = (stocks_index.get(symbol) or {}).get("grade", "")
+    return f'<span class="grade-badge {_h(grade)}">{_h(grade)}</span>' if grade else ""
+
+
+def _tag_chips(symbol: str, stocks_index: dict) -> str:
+    tags = (stocks_index.get(symbol) or {}).get("tags", [])
+    return "".join(f'<span class="tag-chip">{_h(t.split()[0])}</span>' for t in tags[:3])
+
+
+def _close_cells(symbol: str, close_map: dict) -> str:
+    """§15:收盤(右對齊)+ 漲跌幅(唯一紅綠);無資料留空欄保持對位。"""
+    v = close_map.get(symbol)
+    if not v:
+        return '<span class="wlc-close"></span><span class="wlc-chg"></span>'
+    close, chg = v
+    ctxt = f"{close:,.1f}" if close >= 100 else f"{close:,.2f}"
+    if chg is None:
+        return f'<span class="wlc-close">{ctxt}</span><span class="wlc-chg"></span>'
+    cls = "up" if chg > 0 else ("down" if chg < 0 else "flat")
+    arrow = "▲" if chg > 0 else ("▼" if chg < 0 else "")
+    return (f'<span class="wlc-close">{ctxt}</span>'
+            f'<span class="wlc-chg {cls}">{arrow}{abs(chg):.2f}%</span>')
+
+
+def _etf_summary(symbol: str, etf_map: dict) -> str:
+    """§15 ETF 摘要欄([auto] 靠右;<900 隱藏):▲+N·K檔 / ▽-N·K檔。"""
+    e = etf_map.get(symbol)
+    if not e:
         return ""
-    grade = entry.get("grade", "")
-    score = entry.get("score", 0)
-    tags  = entry.get("tags", [])
-    tag_inline = "".join(
-        f'<span class="tag">{_h(t.split()[0])}</span>' for t in tags[:3]
-    )
-    badge = f'<span class="grade-badge {_h(grade)}">{_h(grade)}</span>' if grade else ""
-    return (f'<span class="wl-score">{score:.1f} {badge}</span>'
-            f'<span class="wl-tags-inline">{tag_inline}</span>')
+    shares = e.get("total_shares", 0)
+    n = e.get("etf_count", 0)
+    if shares >= 0:
+        return f'<span class="wl-etf etf-b">▲ +{shares:,} · {n}檔</span>'
+    return f'<span class="wl-etf etf-s">▽ {shares:,} · {n}檔</span>'
+
 
 
 def load_subtags_index(subtags_path=None) -> dict:
@@ -82,7 +104,9 @@ def load_subtags_index(subtags_path=None) -> dict:
 def render_member(member: dict, leaders_set: set, date: str,
                    stocks_index: dict,
                    status_map: dict | None = None,
-                   subtags_map: dict | None = None) -> str:
+                   subtags_map: dict | None = None,
+                   close_map: dict | None = None,
+                   etf_map: dict | None = None) -> str:
     """單一個股的 <details> 折疊區。status_map 給 chart_placeholder_html 區分
     ready / waiting_us_close / missing。
     subtags_map: from load_subtags_index(),per-code chips + all_tags(2026-06-09)。
@@ -91,7 +115,8 @@ def render_member(member: dict, leaders_set: set, date: str,
     name   = member["name"]
     is_leader = symbol in leaders_set
     sid = _safe_id(symbol)
-    summary_extra = _summary_for_member(symbol, stocks_index)
+    close_map = close_map if close_map is not None else {}
+    etf_map = etf_map if etf_map is not None else {}
     leader_mark = '<span class="leader-mark" title="族群長子">⭐</span>' if is_leader else ""
     placeholder = chart_placeholder_html(
         symbol, date, (status_map or {}).get(sid)
@@ -115,11 +140,14 @@ def render_member(member: dict, leaders_set: set, date: str,
     return f"""
 <details class="wl-stock" data-code="{_h(symbol)}" data-symbol="{_h(symbol)}" id="card-{_h(symbol.replace(':','_'))}" data-name="{_h(name)}" data-tags="{tags_attr}">
   <summary>
+    {_grade_badge(symbol, stocks_index)}
     {leader_mark}
     <span class="wl-name">{_h(name)}</span>
-    <code class="wl-code">{_h(symbol)}</code>
+    <code class="wl-code">{_h(symbol.split(":")[-1])}</code>
+    {_close_cells(symbol, close_map)}
     {subtags_html}
-    {summary_extra}
+    {_tag_chips(symbol, stocks_index)}
+    <span class="wl-right">{_etf_summary(symbol, etf_map)}<span class="wl-caret">▾ K線</span></span>
   </summary>
   <div class="wl-stock-body">
     {placeholder}
@@ -130,14 +158,27 @@ def render_member(member: dict, leaders_set: set, date: str,
 
 def render_sector(sector_name: str, sector_raw: dict, date: str,
                    stocks_index: dict, status_map: dict | None = None,
-                   subtags_map: dict | None = None) -> str:
+                   subtags_map: dict | None = None,
+                   close_map: dict | None = None,
+                   etf_map: dict | None = None) -> str:
     """單一板塊:含長子標記 + 全成員 <details>。"""
     members = sector_raw.get("成員", [])
     leaders = set(sector_raw.get("長子", []))
     member_html = "\n".join(
-        render_member(m, leaders, date, stocks_index, status_map, subtags_map)
+        render_member(m, leaders, date, stocks_index, status_map, subtags_map,
+                      close_map, etf_map)
         for m in members
     )
+    # §15 板塊標頭:當日均漲跌(成員 close_map 有值者等權平均)
+    chgs = [close_map[m["code"]][1] for m in members
+            if close_map and m["code"] in close_map and close_map[m["code"]][1] is not None]
+    avg = sum(chgs) / len(chgs) if chgs else None
+    if avg is None:
+        avg_html = ""
+    else:
+        cls = "up" if avg > 0 else ("down" if avg < 0 else "flat")
+        sign = "+" if avg > 0 else ""
+        avg_html = f'<span class="wl-sector-avg {cls}">{sign}{avg:.2f}%</span>'
     leader_names = []
     for lc in sector_raw.get("長子", []):
         for m in members:
@@ -151,6 +192,7 @@ def render_sector(sector_name: str, sector_raw: dict, date: str,
   <summary>
     <h3 class="wl-sector-title">{_h(sector_name)}
       <span class="wl-sector-count">({len(members)} 檔)</span>
+      {avg_html}
       {leader_inline}
     </h3>
   </summary>
@@ -162,12 +204,15 @@ def render_sector(sector_name: str, sector_raw: dict, date: str,
 def render_intl_group(group_name: str, group_raw: dict, date: str,
                         stocks_index: dict,
                         status_map: dict | None = None,
-                        subtags_map: dict | None = None) -> str:
+                        subtags_map: dict | None = None,
+                        close_map: dict | None = None,
+                        etf_map: dict | None = None) -> str:
     """國際族群:跟台股板塊類似,但加「對應台股族群」說明。"""
     members = group_raw.get("成員", [])
     leaders = set(group_raw.get("長子", []))
     member_html = "\n".join(
-        render_member(m, leaders, date, stocks_index, status_map, subtags_map)
+        render_member(m, leaders, date, stocks_index, status_map, subtags_map,
+                      close_map, etf_map)
         for m in members
     )
     corresp = group_raw.get("對應台股族群", [])
@@ -198,16 +243,24 @@ def render(watchlist: dict, date: str, filtered_result: dict | None = None,
     if status_map is None:
         status_map = load_status_map(date)
     subtags_map = load_subtags_index()
+    # §15:收盤/漲跌(read-only 讀 kline.db)+ ETF 摘要(etf_active 雙向表)
+    close_map = load_close_map(str(PROJECT_ROOT / "kline.db"), date)
+    etf_map = {}
+    for side in ("increase", "decrease"):
+        for e in (filtered_result or {}).get("etf_active", {}).get(side, []):
+            etf_map[e.get("symbol")] = e
 
     tw_raw   = watchlist.get("台股板塊", {})
     intl_raw = watchlist.get("國際族群", {})
 
     tw_sectors_html = "\n".join(
-        render_sector(name, raw, date, stocks_index, status_map, subtags_map)
+        render_sector(name, raw, date, stocks_index, status_map, subtags_map,
+                      close_map, etf_map)
         for name, raw in tw_raw.items()
     )
     intl_groups_html = "\n".join(
-        render_intl_group(name, raw, date, stocks_index, status_map, subtags_map)
+        render_intl_group(name, raw, date, stocks_index, status_map, subtags_map,
+                          close_map, etf_map)
         for name, raw in intl_raw.items()
     )
 

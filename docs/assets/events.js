@@ -259,6 +259,27 @@
     } catch (e) { /* macro 缺 → 不注入 */ }
   }
 
+  // Batch4 深連結:任何頁面以 #card-SYMBOL 落地(排行條 C/D、事件股名、其餘品項 chip、
+  // 徽章連結)→ 自動展開該卡(含外層板塊折疊)、平滑捲動、邊框高亮 1.2s——
+  // 與儀表板內錨點同體驗(用戶 Batch3 實測回報:落地後要自己滾動找)。
+  function initDeepLink() {
+    const h = location.hash;
+    if (!h || !h.startsWith('#card-')) return;
+    const card = document.getElementById(h.slice(1));
+    if (!card) return;
+    // 展開自身 + 所有外層 <details>(watchlist 板塊折疊)
+    let el = card;
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement ? el.parentElement.closest('details') : null;
+    }
+    setTimeout(function () {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.classList.add('rb-flash');
+      setTimeout(() => card.classList.remove('rb-flash'), 1200);
+    }, 150);                                   // 等展開後再定位
+  }
+
   // §9 排行條:點擊平滑捲動至戰區卡 + 邊框高亮 1.2s 淡出
   function initRankingBar() {
     document.querySelectorAll('.rb-name[data-rb-target]').forEach(a => {
@@ -273,7 +294,7 @@
     });
   }
 
-  function boot() { init(); initMacro(); initNews(); initRankingBar(); }
+  function boot() { init(); initMacro(); initNews(); initRankingBar(); initDeepLink(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })();

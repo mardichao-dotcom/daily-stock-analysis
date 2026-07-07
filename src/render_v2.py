@@ -225,19 +225,24 @@ def render_themes(date: str, top_n: int = 10) -> str:
         return ""
 
     items = []
-    medals = {1: "🥇", 2: "🥈", 3: "🥉"}
+    # §13(Batch4):熱度條 track=scorebar-track,填色按排名 4 段藍階,寬=漲幅/榜首漲幅
+    top_ret = max((t.get("return_pct") or 0.0) for t in rankable[:top_n]) or 1.0
+    def _heat_cls(i):
+        return "sb-100" if i <= 3 else ("sb-75" if i <= 5 else ("sb-50" if i <= 7 else "sb-25"))
     for i, t in enumerate(rankable[:top_n], 1):
-        rank = medals.get(i, f"#{i}")
         ret = t.get("return_pct") or 0.0
         cls = "gain" if ret > 0 else ("loss" if ret < 0 else "flat")
         sign = "+" if ret > 0 else ""
         n = t.get("n_traded", 0)
+        width = max(4, min(100, round(ret / top_ret * 100))) if top_ret > 0 else 4
+        name_cls = "th-top" if i <= 3 else ""
         items.append(f"""
   <li>
-    <span class="rank">{rank}</span>
+    <span class="rank">{i}</span>
+    <span class="name {name_cls}">{_h(t.get("tag", ""))}</span>
+    <span class="theme-heat"><i class="{_heat_cls(i)}" style="width:{width}%"></i></span>
     <span class="theme-return {cls}">{sign}{ret:.2f}%</span>
-    <span class="name">{_h(t.get("tag", ""))}</span>
-    <span class="theme-n">(n={n})</span>
+    <span class="theme-n">n={n}</span>
   </li>""")
 
     total = data.get("stats", {}).get("rankable_tags", len(rankable))

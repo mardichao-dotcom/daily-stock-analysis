@@ -81,12 +81,18 @@ def render_tag_card(idx: int, tag: dict, rankable: bool) -> str:
     members_html = "\n".join(render_member_li(m) for m in tag.get("members", []))
 
     ret_for_sort = ret if ret is not None else -999
+    # §13(Batch4):熱度條(寬由前端以榜首為基準設定,data-heat 已備)
+    heat_cls = ("sb-100" if (rankable and idx <= 3) else ("sb-75" if (rankable and idx <= 5)
+               else ("sb-50" if (rankable and idx <= 7) else "sb-25")))
+    heat = (f'<span class="theme-heat"><i class="{heat_cls}" data-heat="{max(ret or 0, 0):.4f}"></i></span>'
+            if rankable else "")
     return f"""
 <details class="theme-card" data-return="{ret_for_sort:.4f}" data-n="{n}" data-name="{_h(name)}">
   <summary>
     <span class="theme-rank">{rank_badge}</span>
+    <span class="theme-tag-name{' th-top' if rankable and idx <= 3 else ''}">{_h(name)}</span>
+    {heat}
     <span class="theme-return {_ret_class(ret)}">{_ret_text(ret)}</span>
-    <span class="theme-tag-name">{_h(name)}</span>
     <span class="theme-n">(n={n_traded}{('/' + str(n)) if n_excluded else ''}){excluded_note}</span>
   </summary>
   <ul class="theme-members">
@@ -340,6 +346,18 @@ def render(data: dict) -> str:
 
 </main>
 
+<script>
+// §13:熱度條寬度 = 漲幅 / 榜首漲幅(負漲幅最小寬)
+(function () {{
+  var bars = document.querySelectorAll('.theme-heat i[data-heat]');
+  var top = 0;
+  bars.forEach(function (b) {{ top = Math.max(top, parseFloat(b.dataset.heat) || 0); }});
+  bars.forEach(function (b) {{
+    var r = parseFloat(b.dataset.heat) || 0;
+    b.style.width = (top > 0 ? Math.max(4, Math.min(100, Math.round(r / top * 100))) : 4) + '%';
+  }});
+}})();
+</script>
 <script>
 (function() {{
   // 排序 + 展開收合(2026-06-09)

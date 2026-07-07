@@ -94,7 +94,7 @@ class TestRender(unittest.TestCase):
         html = rh.render(dates, summaries)
         self.assertIn("2026-06-01", html)
         self.assertIn("2026-05-20", html)
-        self.assertIn("S 1 / A 1 / B 2", html)
+        self.assertIn("S 1 · A 1 · B 2", html)   # §17 Batch4 分隔符
         self.assertIn("ETF 加 13 減 6", html)
         # nav 連結
         self.assertIn('href="index.html"', html)

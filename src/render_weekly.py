@@ -73,6 +73,24 @@ def _plot_naaim(naaim: dict, cfg: dict, path: str):
     return True
 
 
+def _plot_margin(mg: dict, path: str):
+    """§18 + 融資改版:市場融資 30 日趨勢(億元)。"""
+    s = mg.get("series", {})
+    dates, vals = s.get("dates", []), s.get("total", [])
+    if len(vals) < 5:
+        return False
+    fig, ax = plt.subplots(figsize=(7, 2.2), dpi=110)
+    ax.plot(range(len(vals)), vals, color="#2962ff", lw=1.4)
+    ax.fill_between(range(len(vals)), min(vals), vals, color="#2962ff", alpha=0.08)
+    step = max(1, len(dates) // 5)
+    ax.set_xticks(range(0, len(dates), step))
+    ax.set_xticklabels([dates[i][5:] for i in range(0, len(dates), step)], fontsize=7)
+    ax.set_title(f"市場融資餘額(億元,近 {len(vals)} 交易日,最新 {vals[-1]:,.1f})", fontsize=9)
+    ax.tick_params(labelsize=7); ax.grid(alpha=0.15)
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
 def _plot_xly_xlp(xx: dict, path: str):
     s = xx.get("series", {})
     dates, ratio = s.get("dates", []), s.get("ratio", [])
@@ -98,7 +116,8 @@ def _sentiment_card(label, value, sub="", color=""):
             f'<div class="wk-card-sub">{_h(sub)}</div></div>')
 
 
-def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool) -> str:
+def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool,
+           has_mg_png: bool = False) -> str:
     gen = data.get("generated_at", "")[:16].replace("T", " ")
     date = data.get("data_through", "")
     naaim = data.get("naaim", {})
@@ -169,7 +188,7 @@ def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool) -> str:
     <div class="meta">資料日期 <strong>{_h(date)}</strong> ｜ 情緒面 NAAIM + VIX（AAII 已停用）｜ 產出時間 {_h(gen)}</div>
   </div>
 </header>
-<main class="container">
+<main class="container wk-narrow">
 {err_html}
   <section class="section">
     <h2>🚨 本週警報</h2>
@@ -188,6 +207,7 @@ def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool) -> str:
   <section class="section">
     <h2>💰 週融資 + 大盤回顧</h2>
     <div class="wk-cards">{mg_card}{tw_card}</div>
+    {'<img class="wk-chart" src="assets/weekly/margin.png" alt="市場融資餘額趨勢(億元)">' if has_mg_png else ''}
   </section>
   <p class="wk-src">NAAIM 來源:官方 USE_Data since Inception({naaim.get('count','?')} 週全量);US 指數/VIX/ETF:yfinance;融資:證交所 OpenAPI。</p>
 </main>
@@ -207,7 +227,8 @@ def main() -> int:
     os.makedirs(IMG_DIR, exist_ok=True)
     has_naaim = _plot_naaim(data.get("naaim", {}), cfg, os.path.join(IMG_DIR, "naaim.png"))
     has_xx = _plot_xly_xlp(data.get("xly_xlp", {}), os.path.join(IMG_DIR, "xly_xlp.png"))
-    html = render(data, cfg, has_naaim, has_xx)
+    has_mg = _plot_margin(data.get("margin", {}), os.path.join(IMG_DIR, "margin.png"))
+    html = render(data, cfg, has_naaim, has_xx, has_mg)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(html)
     # 日期化 snapshot

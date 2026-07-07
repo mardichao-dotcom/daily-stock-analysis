@@ -1113,3 +1113,82 @@ details.stock-card.rb-flash { border-color: var(--accent); transition: border-co
   padding: 4px 0 8px; border-bottom: 1px solid var(--divider); margin-bottom: 8px; }
 .ce-label { font: var(--type-label); color: var(--text-muted); margin-right: 8px; }
 .mb2-ctx { display: block; font: var(--type-label); color: var(--text-muted); }
+details.wl-stock.rb-flash { border: 1px solid var(--accent); border-radius: var(--radius-sm);
+  transition: border-color 1.2s ease; }
+/* ── §15 Watchlist 列(Batch4)── */
+.wl-stock > summary { gap: 10px; }
+.wlc-close { font: var(--type-num); font-variant-numeric: tabular-nums;
+  color: var(--text-primary); min-width: 64px; text-align: right; }
+.wlc-chg { font: var(--type-num); font-variant-numeric: tabular-nums;
+  min-width: 60px; text-align: right; }
+.wlc-chg.up { color: var(--color-up); }
+.wlc-chg.down { color: var(--color-down); }
+.wlc-chg.flat { color: var(--text-muted); }
+.wl-right { margin-left: auto; display: inline-flex; align-items: baseline; gap: 12px;
+  white-space: nowrap; }
+.wl-etf { font: var(--type-num-sm); font-variant-numeric: tabular-nums; }
+.wl-etf.etf-b { color: var(--etf-buy); }
+.wl-etf.etf-s { color: var(--etf-sell); }
+.wl-caret { font: var(--type-label); color: var(--text-muted); }
+.wl-sector-avg { font: var(--type-num-sm); font-variant-numeric: tabular-nums;
+  margin-left: 8px; }
+.wl-sector-avg.up { color: var(--color-up); }
+.wl-sector-avg.down { color: var(--color-down); }
+.wl-sector-avg.flat { color: var(--text-muted); }
+/* 展開:1fr 300px 兩欄(chart placeholder 第 1 欄;chips2 由 chart_v2 掛入成第 2 欄) */
+.wl-stock-body { display: grid; grid-template-columns: 1fr 300px; gap: var(--space-6);
+  align-items: start; background: var(--surface-hover); }
+.wl-stock[open] > summary { background: var(--surface-hover); }
+@media (max-width: 900px) { .wl-etf { display: none; } }
+@media (max-width: 760px) { .wl-stock-body { grid-template-columns: 1fr; }
+  .wl-subtags { display: none; } }
+/* ── §16 入口頁(Batch4)── */
+.landing-index { display: flex; flex-direction: column; gap: var(--space-2);
+  margin-top: var(--space-5); }
+.li-row { display: flex; align-items: baseline; gap: 14px; text-decoration: none;
+  background: var(--surface-panel); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: var(--space-6) var(--space-7); }
+.li-row:hover { background: var(--surface-hover); }
+.li-name { font: var(--type-section); color: var(--text-primary); flex-shrink: 0;
+  min-width: 150px; }
+.li-sum { flex: 1; min-width: 0; font: var(--type-num-sm);
+  font-variant-numeric: tabular-nums; color: var(--text-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.li-go { color: var(--accent-hi); }
+.landing-settings { margin-top: var(--space-8); background: var(--surface-sunken);
+  border: 1px solid var(--border); border-radius: var(--radius-md); }
+.landing-settings > summary { padding: var(--space-5) var(--space-6); cursor: pointer;
+  list-style: none; color: var(--text-muted); font: var(--type-body); }
+.landing-settings > summary::-webkit-details-marker { display: none; }
+.ls-body { padding: 0 var(--space-6) var(--space-5); }
+.ls-item { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.ls-label { font: var(--type-label); color: var(--text-muted); }
+.ls-kws { font: 400 11px/1.5 var(--font-mono); color: var(--text-secondary); flex: 1;
+  min-width: 200px; }
+.ls-note { font: var(--type-label); color: var(--text-faint); margin-top: 6px; }
+/* ── §13 主題熱度條(Batch4)── */
+.theme-heat { flex: 1 1 auto; min-width: 60px; height: 6px;
+  background: var(--scorebar-track); border-radius: var(--radius-sm);
+  overflow: hidden; align-self: center; }
+.theme-heat i { display: block; height: 100%; }
+.theme-heat .sb-100 { background: var(--scorebar-100); }
+.theme-heat .sb-75  { background: var(--scorebar-75); }
+.theme-heat .sb-50  { background: var(--scorebar-50); }
+.theme-heat .sb-25  { background: var(--scorebar-25); }
+.themes-list .name.th-top, .theme-tag-name.th-top { font-weight: 700;
+  color: var(--text-strong); }
+.themes-list li { gap: 10px; }
+.themes-list .name { flex: 0 0 130px; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; }
+/* ── §17 歷史列(Batch4)── */
+.hd-badge { font: 700 10px/1.3 var(--font-mono); padding: 1px 7px;
+  border-radius: var(--radius-sm); border: 1px solid var(--border-strong);
+  color: var(--text-muted); }
+.hd-badge.hd-hot { background: var(--grade-a-bg); border-color: var(--grade-a-border);
+  color: var(--grade-a-text); }
+.hd-badge.hd-broken { border-style: dashed; color: var(--text-faint); }
+.history-item { flex-direction: row; align-items: baseline; gap: 12px; }
+.history-item .history-summary { flex: 1; margin-top: 0; }
+/* ── §18 週報(Batch4:閱讀型窄欄 + 圖虛線框)── */
+.wk-narrow { max-width: 760px; }
+.wk-chart { border: 1px dashed var(--border-strong); }

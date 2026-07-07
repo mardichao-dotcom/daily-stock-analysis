@@ -66,7 +66,7 @@ def _grade_counts_from_score_history(project_root: Path, date_str: str) -> dict:
         conn.close()
     except Exception:
         return {}
-    counts = {"S": 0, "A": 0, "B": 0}
+    counts = {"S": 0, "A": 0, "B": 0, "C": 0}          # §17:C 計數一併回填
     for g, n in rows:
         if g in counts:
             counts[g] = n
@@ -118,8 +118,17 @@ def weekday_zh(date_str: str) -> str:
 def render_item(date_str: str, summary: dict) -> str:
     wd = weekday_zh(date_str)
     recomputed = ""
+    # §17(Batch4)日型徽章:熱鬧(S+A≥1)=A 級樣式;安靜=中性 outline;殘缺(無摘要)=虛線
     if summary:
-        sab = f"S {summary.get('S', 0)} / A {summary.get('A', 0)} / B {summary.get('B', 0)}"
+        hot = (summary.get("S", 0) + summary.get("A", 0)) >= 1
+        day_badge = ('<span class="hd-badge hd-hot">熱鬧</span>' if hot
+                     else '<span class="hd-badge">安靜</span>')
+    else:
+        day_badge = '<span class="hd-badge hd-broken">殘缺</span>'
+    if summary:
+        sab = f"S {summary.get('S', 0)} · A {summary.get('A', 0)} · B {summary.get('B', 0)}"
+        if summary.get("C"):
+            sab += f" · C {summary['C']}"
         if "etf_inc" in summary and "etf_dec" in summary:
             sab += f" ｜ ETF 加 {summary['etf_inc']} 減 {summary['etf_dec']}"
         if summary.get("recomputed"):
@@ -131,10 +140,11 @@ def render_item(date_str: str, summary: dict) -> str:
         sab = "(無摘要)"
     return f"""
 <a class="history-item" href="index_v2_{_h(date_str)}.html">
-  <span class="history-date">{_h(date_str)}</span>
-  <span class="history-day">{_h(wd)}</span>
+  <span class="history-date">{_h(date_str)} <span class="history-day">{_h(wd)}</span></span>
+  {day_badge}
   <span class="history-summary">{_h(sab)}</span>
   {recomputed}
+  <span class="li-go">→</span>
 </a>"""
 
 

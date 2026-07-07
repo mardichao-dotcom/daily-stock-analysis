@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>台股動能作戰系統 — 規則 v2.2</title>
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark';}catch(e){document.documentElement.dataset.theme='dark';}</script>
-  <link rel="stylesheet" href="assets/tokens.css?v=f016e6ba">
-  <link rel="stylesheet" href="assets/style_v2.css?v=f016e6ba">
-  <script src="assets/theme.js?v=f016e6ba" defer></script>
+  <link rel="stylesheet" href="assets/tokens.css?v=e800cd0c">
+  <link rel="stylesheet" href="assets/style_v2.css?v=e800cd0c">
+  <script src="assets/theme.js?v=e800cd0c" defer></script>
 </head>
 <body class="page-landing">
 
@@ -17,51 +17,70 @@
     <div class="meta">
       資料日期 <strong>2026-07-06</strong> ｜ 規則 v2.2 ｜
       個股 131 檔(台股 98 + 國際 33) ｜
-      產出時間 2026-07-07 16:29
+      產出時間 2026-07-07 16:45
     </div>
     <div class="landing-subtitle">找買點的雷達 + ETF 籌碼面雙向掃描</div>
   </div>
 </header>
 
 <main class="container landing-main">
-  <div class="landing-grid">
-    <a class="landing-card landing-primary" href="index_v2.html">
-      <div class="landing-icon">📈</div>
-      <h2>今日儀表板</h2>
-      <p class="landing-tagline">找買點的雷達</p>
-      <p class="landing-detail">S/A/B 級個股 + ETF 主動式雙向掃描</p>
-      <p class="landing-detail">資料日 2026-07-06</p>
-    </a>
 
-    <a class="landing-card" href="watchlist_v2.html">
-      <div class="landing-icon">📋</div>
-      <h2>Watchlist</h2>
-      <p class="landing-tagline">全 131 檔可看 K 線</p>
-      <p class="landing-detail">18 板塊 + 7 國際族群</p>
-      <p class="landing-detail">含 ETF 加減碼箭頭、關鍵價、MA</p>
-    </a>
-
-    <a class="landing-card" href="tags.html">
-      <div class="landing-icon">🔥</div>
-      <h2>主題熱度</h2>
-      <p class="landing-tagline">當日標籤漲幅排行</p>
-      <p class="landing-detail">L2+L3+L4 標籤等權平均</p>
-      <p class="landing-detail">N≥3 上榜,展開看成員</p>
-    </a>
-
-    <a class="landing-card" href="history.html">
-      <div class="landing-icon">📅</div>
-      <h2>歷史儀表板</h2>
-      <p class="landing-tagline">過去 30 天回顧</p>
-      <p class="landing-detail">32 天可選</p>
-      <p class="landing-detail">每日 snapshot,30 天後 archive</p>
-    </a>
+<section class="status-bar">
+  <div class="sb-main"><span class="sb-dot">●</span><span class="sb-title">今日無 S/A/B 級 — 沒有需要注意的訊號</span>
+    <span class="sb-badges"><span class="sb-badge g-zero">S 0</span><span class="sb-badge g-zero">A 0</span><span class="sb-badge g-zero">B 0</span><span class="sb-badge g-C">C 98</span></span></div>
+  <div class="sb-sub">最高分 3.0(C 級) · 跌破警示 6 檔 · ETF 加碼 2 / 減碼 4 · 低分折疊 79 檔</div>
+</section>
+  <div class="landing-index">
+    <a class="li-row" href="index_v2.html"><span class="li-name">📈 今日儀表板</span>
+      <span class="li-sum">S/A/B 戰區 · ETF 雙向 · 跌破警示 ｜ 資料日 2026-07-06</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="watchlist_v2.html"><span class="li-name">📋 Watchlist</span>
+      <span class="li-sum">全 131 檔 K 線+籌碼 ｜ 18 板塊 + 7 國際族群</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="tags.html"><span class="li-name">🔥 主題熱度</span>
+      <span class="li-sum">L2+L3+L4 標籤等權漲幅排行(N≥3 上榜)</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="history.html"><span class="li-name">📅 歷史儀表板</span>
+      <span class="li-sum">32 天可選 · 每日 snapshot</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="weekly.html"><span class="li-name">🗂 週報</span>
+      <span class="li-sum">NAAIM · VIX · XLY/XLP · 週融資(億元)· 每週六 09:00</span>
+      <span class="li-go">→</span></a>
   </div>
+
+  <details class="landing-settings">
+    <summary>⚙ 設定</summary>
+    <div class="ls-body">
+      <div class="ls-item"><span class="ls-label">🔑 新聞關鍵字管理</span>
+        <span class="ls-kws" id="ls-kws">載入中…</span>
+        <a class="nwk-add" href="https://github.com/mardichao-dotcom/daily-stock-analysis/edit/main/config/news_keywords.json"
+           target="_blank" rel="noopener">✏️ 編輯</a></div>
+      <div class="ls-note">關鍵字同時作用於:新聞命中過濾(儀表板新聞區塊)與 Discord 早報關注列。</div>
+    </div>
+  </details>
 </main>
+
+<script>
+(function () {
+  // §16 IA 提案一:關鍵字管理移入口頁——顯示現行清單(raw github,08:30 後即最新)
+  fetch('https://raw.githubusercontent.com/mardichao-dotcom/daily-stock-analysis/main/config/news_keywords.json',
+        { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      var el = document.getElementById('ls-kws');
+      if (!el) return;
+      el.textContent = (d && d.keywords) ? d.keywords.join('、') : '(讀取失敗)';
+    })
+    .catch(function () {
+      var el = document.getElementById('ls-kws');
+      if (el) el.textContent = '(讀取失敗)';
+    });
+})();
+</script>
 
 <footer class="landing-footer">
   <div class="container">
-    Stage 8 W3 ｜ 個股 131 檔 ｜ 產出時間 2026-07-07 16:29
+    個股 131 檔 ｜ 產出時間 2026-07-07 16:45
   </div>
 </footer>
 

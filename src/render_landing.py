@@ -52,7 +52,8 @@ def count_watchlist(watchlist: dict) -> tuple[int, int, int, int]:
 def render(*,
             watchlist: dict,
             latest_date: str,
-            history_count: int) -> str:
+            history_count: int,
+            filtered_result: dict | None = None) -> str:
     tw_secs, tw_n, intl_secs, intl_n = count_watchlist(watchlist)
     # §6.3 meta 列只從 site_meta 取值(版本/檔數)
     sm = site_meta.load(latest_date) or {}
@@ -63,6 +64,16 @@ def render(*,
     generated_at = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     history_blurb = f"{history_count} 天可選" if history_count > 0 else "今天開始累積"
+
+    # §16:結論狀態列(§8 同款,重用 render_v2;無 filtered_result 時省略)
+    status_html = ""
+    if filtered_result:
+        from src import render_v2 as rv
+        stocks = filtered_result.get("stocks", {})
+        buckets = rv.classify_stocks(stocks)
+        status_map = rv.load_status_map(latest_date)
+        etf_active = filtered_result.get("etf_active", {"increase": [], "decrease": []})
+        status_html = rv.render_status_bar(buckets, stocks, status_map, etf_active, latest_date)
 
     return f"""<!DOCTYPE html>
 <html lang="zh-Hant">
@@ -87,44 +98,58 @@ def render(*,
 </header>
 
 <main class="container landing-main">
-  <div class="landing-grid">
-    <a class="landing-card landing-primary" href="index_v2.html">
-      <div class="landing-icon">📈</div>
-      <h2>今日儀表板</h2>
-      <p class="landing-tagline">找買點的雷達</p>
-      <p class="landing-detail">S/A/B 級個股 + ETF 主動式雙向掃描</p>
-      <p class="landing-detail">資料日 {_h(latest_date)}</p>
-    </a>
-
-    <a class="landing-card" href="watchlist_v2.html">
-      <div class="landing-icon">📋</div>
-      <h2>Watchlist</h2>
-      <p class="landing-tagline">全 {total_n} 檔可看 K 線</p>
-      <p class="landing-detail">{tw_secs} 板塊 + {intl_secs} 國際族群</p>
-      <p class="landing-detail">含 ETF 加減碼箭頭、關鍵價、MA</p>
-    </a>
-
-    <a class="landing-card" href="tags.html">
-      <div class="landing-icon">🔥</div>
-      <h2>主題熱度</h2>
-      <p class="landing-tagline">當日標籤漲幅排行</p>
-      <p class="landing-detail">L2+L3+L4 標籤等權平均</p>
-      <p class="landing-detail">N≥3 上榜,展開看成員</p>
-    </a>
-
-    <a class="landing-card" href="history.html">
-      <div class="landing-icon">📅</div>
-      <h2>歷史儀表板</h2>
-      <p class="landing-tagline">過去 30 天回顧</p>
-      <p class="landing-detail">{_h(history_blurb)}</p>
-      <p class="landing-detail">每日 snapshot,30 天後 archive</p>
-    </a>
+{status_html}
+  <div class="landing-index">
+    <a class="li-row" href="index_v2.html"><span class="li-name">📈 今日儀表板</span>
+      <span class="li-sum">S/A/B 戰區 · ETF 雙向 · 跌破警示 ｜ 資料日 {_h(latest_date)}</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="watchlist_v2.html"><span class="li-name">📋 Watchlist</span>
+      <span class="li-sum">全 {total_n} 檔 K 線+籌碼 ｜ {tw_secs} 板塊 + {intl_secs} 國際族群</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="tags.html"><span class="li-name">🔥 主題熱度</span>
+      <span class="li-sum">L2+L3+L4 標籤等權漲幅排行(N≥3 上榜)</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="history.html"><span class="li-name">📅 歷史儀表板</span>
+      <span class="li-sum">{_h(history_blurb)} · 每日 snapshot</span>
+      <span class="li-go">→</span></a>
+    <a class="li-row" href="weekly.html"><span class="li-name">🗂 週報</span>
+      <span class="li-sum">NAAIM · VIX · XLY/XLP · 週融資(億元)· 每週六 09:00</span>
+      <span class="li-go">→</span></a>
   </div>
+
+  <details class="landing-settings">
+    <summary>⚙ 設定</summary>
+    <div class="ls-body">
+      <div class="ls-item"><span class="ls-label">🔑 新聞關鍵字管理</span>
+        <span class="ls-kws" id="ls-kws">載入中…</span>
+        <a class="nwk-add" href="https://github.com/mardichao-dotcom/daily-stock-analysis/edit/main/config/news_keywords.json"
+           target="_blank" rel="noopener">✏️ 編輯</a></div>
+      <div class="ls-note">關鍵字同時作用於:新聞命中過濾(儀表板新聞區塊)與 Discord 早報關注列。</div>
+    </div>
+  </details>
 </main>
+
+<script>
+(function () {{
+  // §16 IA 提案一:關鍵字管理移入口頁——顯示現行清單(raw github,08:30 後即最新)
+  fetch('https://raw.githubusercontent.com/mardichao-dotcom/daily-stock-analysis/main/config/news_keywords.json',
+        {{ cache: 'no-cache' }})
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {{
+      var el = document.getElementById('ls-kws');
+      if (!el) return;
+      el.textContent = (d && d.keywords) ? d.keywords.join('、') : '(讀取失敗)';
+    }})
+    .catch(function () {{
+      var el = document.getElementById('ls-kws');
+      if (el) el.textContent = '(讀取失敗)';
+    }});
+}})();
+</script>
 
 <footer class="landing-footer">
   <div class="container">
-    Stage 8 W3 ｜ 個股 {total_n} 檔 ｜ 產出時間 {generated_at}
+    個股 {total_n} 檔 ｜ 產出時間 {generated_at}
   </div>
 </footer>
 
@@ -144,15 +169,18 @@ def main():
         watchlist = json.load(f)
 
     latest_date = "?"
+    filtered_result = None
     if os.path.exists(args.result):
         with open(args.result, encoding="utf-8") as f:
-            latest_date = json.load(f).get("date", "?")
+            filtered_result = json.load(f)
+        latest_date = filtered_result.get("date", "?")
 
     history_count = count_history_snapshots(Path(args.docs))
 
     html = render(
         watchlist=watchlist,
         latest_date=latest_date,
+        filtered_result=filtered_result,
         history_count=history_count,
     )
 

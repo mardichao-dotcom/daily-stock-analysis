@@ -63,9 +63,10 @@ class TestRenderMember(unittest.TestCase):
                             "tags": ["🟢 站穩 3000"]},
         }
         html = rwl.render_member(m, set(), "2026-05-19", stocks_index)
-        self.assertIn("4.0", html)
-        # grade badge
+        # §15(Batch4):列不再顯示獨立分數(等級徽章承載);收盤/漲跌欄保留對位
         self.assertIn('grade-badge B', html)
+        self.assertIn('wlc-close', html)
+        self.assertIn('wl-caret', html)
         # tag 第一個 emoji
         self.assertIn("🟢", html)
 
@@ -159,8 +160,7 @@ class TestFullRender(unittest.TestCase):
         })
         html = rwl.render(wl, "2026-05-19", result)
         self.assertIn("國巨", html)
-        self.assertIn("4.0", html)
-        self.assertIn("grade-badge B", html)
+        self.assertIn("grade-badge B", html)   # §15:分數欄移除,徽章承載等級
 
     def test_empty_watchlist_doesnt_crash(self):
         wl = make_watchlist()
