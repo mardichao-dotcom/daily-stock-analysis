@@ -239,6 +239,14 @@ try_step site_meta python3 -m src.site_meta --date "$DATA_DATE"
 echo "[8.6/10] 抓事件中樞(events.json:總經日曆 + 法說會)..."
 run_step fetch_events python3 -m src.fetch_events
 
+# ── [8.7] fetch_signals + fetch_taifex (stage12 持股水位模型訊號資料層)──────
+# 非阻斷:訊號層只寫 macro.db(水位模型/週報訊號區的資料源),失敗不擋主儀表板;
+# run_step 記 fail → daily_supervisor Discord 告警。日頻項在此(19:00);
+# 月頻項(密大/燈號/CPI nowcast)冪等,函式內自判是否需抓。
+echo "[8.7/10] 抓水位模型訊號層(指數MA/VIX/10Y/台幣/FF期貨/月頻)..."
+run_step fetch_signals python3 -m src.fetch_signals --daily
+run_step fetch_taifex python3 -m src.fetch_taifex
+
 # ── [9] render_v2 (live + 日期 snapshot + watchlist + history + landing) ────
 echo "[9/10] 渲染 V2 儀表板(7 區塊 + 入口頁 + 歷史索引)..."
 render_v2_all() {

@@ -1,0 +1,16 @@
+{
+  "_note": "stage12 訊號資料層設定(2026-07-08 拍板)。light_release:景氣燈號發布日規則近似——國發會於資料月次月 27 日左右發布,遇非營業日順延次一營業日;誤差 ±3 天對月頻慢變數影響趨近零(拍板紀錄)。overrides 供未來單月爭議時單點修正:{\"2020-03\": \"2020-04-28\"} 形式(key=資料月, value=實際發布日)。",
+  "light_release": {
+    "day_of_next_month": 27,
+    "holiday_shift": "next_business_day",
+    "overrides": {}
+  },
+  "usdtwd": {
+    "_note": "雙源:回放/歷史=FRED DEXTAUS(H.10,延遲3~5工作日);日常尾端=yfinance TWD=X 暫代,官方值到後覆寫(replace_provisional_days 內的 TWD=X 列每日重查 DEXTAUS 覆寫)。",
+    "replace_provisional_days": 10
+  },
+  "ff_futures": {
+    "_note": "日常端抓當月起 forward_months 個月份合約(FedWatch 自算需會議月+次月);回放端=ZQ=F 連續近月(會議月=近月,spike 2026-07-07 兩次 FOMC 手驗)。",
+    "forward_months": 13
+  }
+}
