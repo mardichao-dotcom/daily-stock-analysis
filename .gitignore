@@ -51,3 +51,5 @@ config/.news_keywords.last_valid.json
 design/
 handoff/
 台股盤後決策儀表板改版.zip
+# stage12 §4(2026-07-08 拍板修正):回放產物僅存本機,不進 docs、不隨 publish 上傳
+position_qa/
