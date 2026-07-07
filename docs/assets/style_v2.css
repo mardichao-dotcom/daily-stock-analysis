@@ -888,6 +888,18 @@ details.stock-card summary:hover { background: var(--surface-hover); }
 .card-sector { font: var(--type-caption); color: var(--text-muted); margin-top: 8px; }
 .tag-none { color: var(--text-faint); }
 @media (max-width: 900px) { .card-grid { grid-template-columns: 1fr; } }
+/* ── 零觸發/空 K 線邊界(2026-07-08 用戶實測拍板 b 案:單欄、K 線全寬)──
+   .single-col:渲染器(計分明細零觸發)或 chart_v2(ohlcv 空)標記 → 不留左欄空洞 */
+.card-grid.single-col, .wl-stock-body.single-col { grid-template-columns: 1fr; }
+/* 真因(達發 6526 截圖):events.js 把「近期事件」行插進 .wl-stock-body(grid)
+   firstChild → 佔走 1fr 欄,K 線被推到 300px 窄欄。事件行一律全跨列。 */
+.wl-stock-body > .card-events { grid-column: 1 / -1; }
+.bd2-none { font: var(--type-caption); color: var(--text-faint); padding: 2px 0; }
+.card-left-slim { display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: var(--space-4); }
+.card-left-slim .card-sector { margin-top: 0; }
+.chart-placeholder.chart-empty { min-height: 64px; display: flex; align-items: center;
+  justify-content: center; color: var(--text-muted); font: var(--type-caption); }
 /* 展開動畫(§2:max-height+opacity 180ms;details 原生限制 → 以 opacity 近似) */
 details.stock-card > .card-body { animation: cardExpand var(--transition-expand); }
 @keyframes cardExpand { from { opacity: 0; } to { opacity: 1; } }

@@ -353,11 +353,25 @@ def render_stock_card(symbol: str, stock: dict, date: str,
     tag_chips = "".join(f'<span class="tag-chip">{_h(t.split()[0])}</span>' for t in tags[:3])
 
     # §4 計分明細(左欄)+ §3 右欄(chart 容器;籌碼小區由 chart_v2.js 掛在其後)
-    breakdown_html = _format_breakdown_by_module(details, score=score, grade=grade)
     tag_html = "".join(f'<span class="tag">{_h(t)}</span>' for t in tags)
     if not tag_html:
         tag_html = '<span class="tag tag-none">(無標籤)</span>'
     placeholder_html = chart_placeholder_html(symbol, date, status_entry)
+
+    # 零觸發邊界(2026-07-08 用戶實測,達發 6526 例;拍板 b 案):
+    # 明細無任何觸發項 → 左欄改一行註腳(不渲染空明細表),卡轉單欄、K 線全寬。
+    if details:
+        left_html = (f'{_format_breakdown_by_module(details, score=score, grade=grade)}\n'
+                     f'        <div class="card-sector">板塊:{_h(sector)}</div>\n'
+                     f'        <div class="tags">{tag_html}</div>')
+        grid_cls = "card-grid"
+        left_cls = "card-left"
+    else:
+        left_html = (f'<span class="bd2-none">本日無計分觸發</span>\n'
+                     f'        <span class="card-sector">板塊:{_h(sector)}</span>\n'
+                     f'        <span class="tags">{tag_html}</span>')
+        grid_cls = "card-grid single-col"
+        left_cls = "card-left card-left-slim"
 
     return f"""
 <details class="stock-card grade-{_h(grade)}" data-symbol="{_h(symbol)}" id="card-{_h(symbol.replace(':','_'))}">
@@ -370,11 +384,9 @@ def render_stock_card(symbol: str, stock: dict, date: str,
     <span class="sc-caret">▾</span>
   </summary>
   <div class="card-body">
-    <div class="card-grid">
-      <div class="card-left">
-        {breakdown_html}
-        <div class="card-sector">板塊:{_h(sector)}</div>
-        <div class="tags">{tag_html}</div>
+    <div class="{grid_cls}">
+      <div class="{left_cls}">
+        {left_html}
       </div>
       <div class="card-right">
         {placeholder_html}

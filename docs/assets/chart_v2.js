@@ -113,6 +113,18 @@
 
   // ─── 渲染單張 chart ─────────────────────────────────────────────────────
   async function renderChart(container, data, visual) {
+    // 空 K 線防護(2026-07-08 用戶實測:展開卡左欄空白、chips 被擠成右側窄條):
+    // ohlcv 空(剛新增/隔離複核中)原本仍畫 420px 空畫布 + chips 掛右欄 300px。
+    // 改:一行空狀態 + 該卡轉單欄(chips 全寬),不留空洞。
+    if (!data || !Array.isArray(data.ohlcv) || data.ohlcv.length === 0) {
+      container.innerHTML = '';
+      container.classList.add('chart-loaded', 'chart-empty');
+      container.textContent = '📉 本日無 K 線資料(可能剛新增或資料隔離複核中)';
+      const emptyBody = container.closest('.wl-stock-body, .card-grid');
+      if (emptyBody) emptyBody.classList.add('single-col');
+      renderChips((data || {}).chips);        // chips 有資料照顯示(全寬),無則自然略過
+      return;
+    }
     container.innerHTML = '';
     container.classList.add('chart-loaded');   // §3:載入後容器轉 block/實底(等待態斜紋只給未載入)
     container.style.minHeight = '420px';
