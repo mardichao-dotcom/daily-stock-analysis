@@ -246,6 +246,7 @@ run_step fetch_events python3 -m src.fetch_events
 echo "[8.7/10] 抓水位模型訊號層(指數MA/VIX/10Y/台幣/FF期貨/月頻)..."
 run_step fetch_signals python3 -m src.fetch_signals --daily
 run_step fetch_taifex python3 -m src.fetch_taifex
+run_step fed_expectations python3 -m src.fed_expectations
 
 # ── [9] render_v2 (live + 日期 snapshot + watchlist + history + landing) ────
 echo "[9/10] 渲染 V2 儀表板(7 區塊 + 入口頁 + 歷史索引)..."

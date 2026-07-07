@@ -690,9 +690,13 @@ def build_fomc_meetings(db_path: str = MACRO_DB, year_from: int = 2013,
         return tar[i][1] if i is not None else None
 
     rows = []
+    today_iso = datetime.now(TZ).strftime("%Y-%m-%d")
     for start, dec, sched in sorted(set(meetings)):
-        if dec > datetime.now(TZ).strftime("%Y-%m-%d"):
-            continue                                # 未來會議不入表(引擎只看歷史)
+        if dec > today_iso:
+            # 未來會議入表但決策欄留 NULL(fed_expectations 需「下次會議」定位)
+            rows.append((dec, start, int(sched), None, None, None, None,
+                         "federalreserve.gov(未來會議)"))
+            continue
         # before 取決策日**前一日**:DFEDTARU 新值標記日不一致(2015/2016 標決策
         # 當日、2017 起標次日),前一日兩制皆為會前水準(會議間隔 ≥6 週,無污染)
         before = upper_at((dt_date.fromisoformat(dec) - timedelta(days=1)).isoformat())

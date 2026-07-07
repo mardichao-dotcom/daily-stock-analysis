@@ -250,3 +250,50 @@ class TestSanityGate(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ── FedWatch 自算(fed_expectations)──────────────────────────────────────────
+from src import fed_expectations as fe
+
+
+class TestFedExpectations(unittest.TestCase):
+    def test_implied_post_rate_hand_calc(self):
+        # 2022-06-15 手驗:6/14 隱含月均 1.19、r_pre 0.83、k=15、N=30
+        # r_post = (30×1.19 − 15×0.83)/15 = 1.55 → 期望 +72bp
+        r = fe.implied_post_rate(1.19, 0.83, "2022-06-15")
+        self.assertAlmostEqual(r, 1.55, places=6)
+
+    def test_month_end_leverage_guard(self):
+        # 7/31 會議:N−k = 0 → None(不硬算噪音)
+        self.assertIsNone(fe.implied_post_rate(2.405, 2.40, "2019-07-31"))
+
+    def test_two_bucket(self):
+        b = fe.two_bucket_prob(6.0)
+        self.assertEqual(b["buckets"]["+0bp"], 0.76)
+        self.assertEqual(b["buckets"]["+25bp"], 0.24)
+        b2 = fe.two_bucket_prob(-39.4)                # 2024-09 五五波
+        self.assertEqual(b2["buckets"]["-50bp"], 0.576)
+        self.assertEqual(b2["buckets"]["-25bp"], 0.424)
+
+    def test_tree_convolution_db(self):
+        db = tmpdb(self)
+        conn = sqlite3.connect(db)
+        fs.ensure_tables(conn)
+        conn.execute("CREATE TABLE dff_daily (date TEXT PRIMARY KEY, rate REAL, source TEXT)")
+        conn.execute("INSERT INTO dff_daily VALUES ('2026-07-07', 3.63, 't')")
+        conn.executemany("INSERT INTO fomc_meetings VALUES (?,?,?,?,?,?,?,?)", [
+            ("2026-07-29", "2026-07-28", 1, None, None, None, None, "t"),
+            ("2026-09-16", "2026-09-15", 1, None, None, None, None, "t")])
+        conn.executemany("INSERT INTO ff_futures_daily VALUES (?,?,?,?)", [
+            ("2026-07-07", "202607", 96.368, "t"),
+            ("2026-07-07", "202608", 96.310, "t"),
+            ("2026-07-07", "202609", 96.255, "t")])
+        conn.commit(); conn.close()
+        tree = fe.meeting_tree(db, "2026-07-07", 2)
+        self.assertEqual(len(tree), 2)
+        d1 = tree[0]["dist_bp_from_now"]
+        # 7/29 為月底會議(N−k=2 < 3)→ 走次月合約 fallback:
+        # r_post = 100 − 96.31 = 3.69 → +6.0bp → P(+25)=0.24(手算)
+        self.assertAlmostEqual(d1["+25"], 0.24, places=2)
+        # 捲積機率總和 = 1
+        self.assertAlmostEqual(sum(tree[1]["dist_bp_from_now"].values()), 1.0, places=2)
