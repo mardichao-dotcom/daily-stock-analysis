@@ -968,3 +968,147 @@ details.stock-card > .card-body { animation: cardExpand var(--transition-expand)
 }
 .chart-legend .legend-title { font: var(--type-card-title); color: var(--text-primary);
   margin-right: 4px; }
+/* ── §8 狀態列(儀表板置頂結論)── */
+.status-bar { background: var(--surface-sunken); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: var(--space-8); margin-bottom: var(--space-5); }
+.sb-main { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.sb-dot { color: var(--text-faint); }
+.sb-dot.hot { color: var(--accent); }
+.sb-dot.broken { color: var(--text-faint); }
+.sb-title { font: var(--type-page-title); color: var(--text-strong); }
+.sb-anchor { color: var(--accent-hi); text-decoration: none; }
+.sb-badges { margin-left: auto; display: inline-flex; gap: 6px; }
+.sb-badge { font: 700 11px/1.35 var(--font-mono); padding: 1px 7px;
+  border-radius: var(--radius-sm); border: 1px solid var(--border-strong);
+  color: var(--text-muted); }
+.sb-badge.g-S { background: var(--grade-s-bg); color: var(--grade-s-text); border-color: transparent; }
+.sb-badge.g-A { background: var(--grade-a-bg); color: var(--grade-a-text); border-color: var(--grade-a-border); }
+.sb-badge.g-B { color: var(--grade-b-text); border-color: var(--grade-b-border); }
+.sb-badge.g-C { color: var(--grade-c-text); }
+.sb-sub { font: var(--type-caption); color: var(--text-muted); margin-top: 6px; }
+
+/* ── §9 前十名排行條 ── */
+.ranking-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px;
+  padding: var(--space-5) var(--space-6); }
+.rb-head { font: var(--type-section); color: var(--text-primary); margin-right: 4px; }
+.rb-item { display: inline-flex; gap: 5px; align-items: baseline; white-space: nowrap; }
+.rb-rank { font: var(--type-num-sm); color: var(--text-faint); }
+.rb-name { color: var(--accent-hi); text-decoration: none; }
+.rb-score { font: var(--type-num); font-variant-numeric: tabular-nums; color: var(--text-primary); }
+.rb-dim .rb-name, .rb-dim .rb-score { color: var(--text-secondary); }
+details.stock-card.rb-flash { border-color: var(--accent); transition: border-color 1.2s ease; }
+
+/* ── §7 事件中樞:橫向日欄 ── */
+.evc-head { display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: var(--space-3); font: var(--type-caption); color: var(--text-muted); }
+.evc-src { color: var(--text-faint); }
+.evc-stale { border: 1px dashed var(--border-strong); color: var(--text-muted);
+  padding: 1px 7px; border-radius: var(--radius-sm); }
+.evc-scroll { display: flex; overflow-x: auto; }
+.evc-col { min-width: 150px; flex: 0 0 auto; padding: 0 var(--space-5);
+  border-right: 1px solid var(--divider); }
+.evc-col:first-child { padding-left: 0; }
+.evc-col:last-child { border-right: none; }
+.evc-date { font: 700 11px/1.35 var(--font-mono); font-variant-numeric: tabular-nums;
+  color: var(--text-muted); margin-bottom: 6px; }
+.evc-item { margin: 4px 0; display: flex; gap: 5px; align-items: baseline; }
+.evb { display: inline-block; font: var(--type-label); padding: 1px 7px;
+  border-radius: var(--radius-sm); border: 1px solid var(--border-strong);
+  color: var(--text-secondary); }
+.evb-high { background: var(--accent); border-color: var(--accent); color: #fff; }
+.evb-mid  { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent-hi); }
+.evc-chip { font: var(--type-label); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: 0 5px; color: var(--text-muted); flex-shrink: 0; }
+.evc-stock { color: var(--accent-hi); text-decoration: none; font-size: 12px; }
+.evc-divfold > summary { font: var(--type-label); color: var(--text-faint);
+  cursor: pointer; list-style: none; padding: 3px 0; }
+.evc-divfold > summary::-webkit-details-marker { display: none; }
+.evc-divfold[open] > summary { color: var(--text-muted); }
+
+/* ── §10 新聞區塊 ── */
+.news-head { display: flex; align-items: baseline; gap: 10px; cursor: pointer; }
+.news-head h2 { border: none; margin: 0; padding: 0; }
+.news-meta { font: var(--type-caption); color: var(--text-muted); font-weight: 400; }
+.news-peek { flex: 1; min-width: 0; font: var(--type-caption); color: var(--text-disabled);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.news-caret { color: var(--text-muted); font-size: 12px; }
+.news-list { margin-top: var(--space-4); }
+.nw-row { display: flex; gap: 8px; align-items: baseline; padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--divider); min-width: 0; }
+.nw-time { font: var(--type-label); font-variant-numeric: tabular-nums;
+  color: var(--text-faint); flex-shrink: 0; }
+.nw-kw { font: var(--type-label); border: 1px solid var(--grade-b-border);
+  color: var(--grade-b-text); border-radius: var(--radius-sm); padding: 0 5px; flex-shrink: 0; }
+.nw-title { flex: 1; min-width: 0; color: var(--text-primary); text-decoration: none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13px; }
+.nw-title:hover { color: var(--accent-hi); }
+.nw-src { font: var(--type-label); color: var(--text-faint); flex-shrink: 0; }
+.nw-empty { font: var(--type-caption); color: var(--text-faint); padding: var(--space-4) 0; }
+.news-kwfoot { background: var(--surface-sunken); border-radius: var(--radius-sm);
+  margin-top: var(--space-4); padding: var(--space-3) var(--space-5);
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; }
+.nwk-label { font: var(--type-label); color: var(--text-muted); }
+.nwk-chip { font: 400 10px/1.3 var(--font-mono); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: 0 5px; color: var(--text-secondary); }
+.nwk-add { font: var(--type-label); border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm); padding: 0 5px; color: var(--text-muted);
+  text-decoration: none; }
+.nwk-gen { margin-left: auto; font: var(--type-label); color: var(--text-faint); }
+
+/* ── §11 跌破警示表(空方語意合法用綠)── */
+.bk-badge { font: 700 11px/1.35 var(--font-mono); background: var(--color-down-bg);
+  color: var(--color-down-soft); padding: 1px 7px; border-radius: var(--radius-sm);
+  margin-left: 6px; }
+.bk-note { font: var(--type-caption); color: var(--text-muted); font-weight: 400;
+  margin-left: 8px; }
+.bk-table { font: var(--type-body); }
+.bk-row { display: grid; grid-template-columns: 120px 100px 1fr 170px 48px; gap: 8px;
+  align-items: baseline; padding: var(--space-3) 0; border-bottom: 1px solid var(--divider); }
+.bk-row.bk-head { font: var(--type-label); color: var(--text-muted); }
+.bk-name { color: var(--text-primary); }
+.bk-code { font: var(--type-num-sm); color: var(--text-muted); }
+.bk-pos { font: var(--type-num); font-variant-numeric: tabular-nums;
+  color: var(--color-down-soft); white-space: nowrap; }
+.bk-close { text-align: right; white-space: nowrap; }
+.bk-score { font: var(--type-num); font-variant-numeric: tabular-nums;
+  color: var(--text-faint); text-align: right; }
+
+/* ── §14 其餘品項折疊 ── */
+.other-fold { background: var(--surface-sunken); border: 1px solid var(--border);
+  border-radius: var(--radius-md); margin-bottom: 16px; }
+.other-fold > summary { padding: var(--space-5) var(--space-6); cursor: pointer;
+  list-style: none; font: var(--type-body); color: var(--text-muted);
+  display: flex; align-items: baseline; }
+.other-fold > summary::-webkit-details-marker { display: none; }
+.of-caret { margin-left: auto; }
+.other-fold[open] .of-caret { transform: rotate(180deg); }
+.other-chips { padding: 0 var(--space-6) var(--space-5); display: flex; flex-wrap: wrap; }
+.other-chip { font-size: 12px; color: var(--text-secondary); text-decoration: none;
+  padding: 2px 10px; border-right: 1px solid var(--divider); white-space: nowrap; }
+.other-chip code { color: var(--text-faint); font: var(--type-label); }
+.other-chip:hover { color: var(--accent-hi); }
+
+/* ── §6 總經橫條 v2(格線 cells)── */
+.macro-bar2 { background: var(--surface-panel); border-bottom: 1px solid var(--border); }
+.mb2-inner { display: flex; flex-wrap: wrap; align-items: stretch; padding: 0 16px; }
+.mb2-cell { flex: 1 1 148px; min-width: 0; padding: var(--space-3) var(--space-5);
+  border-right: 1px solid var(--divider); }
+.mb2-cell:last-of-type { border-right: none; }
+.mb2-label { display: block; font: var(--type-label); color: var(--text-muted); }
+.mb2-val { font: var(--type-num-md); font-variant-numeric: tabular-nums;
+  color: var(--text-primary); margin-right: 6px; }
+.mb2-unit { font: var(--type-label); color: var(--text-muted); }
+.mb2-chg { font: var(--type-num); font-variant-numeric: tabular-nums; }
+.mb2-chg.up { color: var(--color-up); }
+.mb2-chg.down { color: var(--color-down); }
+.mb2-chg.flat { color: var(--text-muted); }
+.mb2-wait { font: var(--type-num-sm); color: var(--text-faint); }
+.mb2-gen { margin-left: auto; align-self: center; font: var(--type-label);
+  color: var(--text-faint); padding: 0 var(--space-5); }
+/* 融資格較寬(§6:任何寬度不得裁切) */
+.mb2-cell:nth-child(7) { flex: 1.7 1 250px; }
+
+/* 個股卡「近期事件」行(Batch3 追加) */
+.card-events { font: var(--type-caption); color: var(--text-secondary);
+  padding: 4px 0 8px; border-bottom: 1px solid var(--divider); margin-bottom: 8px; }
+.ce-label { font: var(--type-label); color: var(--text-muted); margin-right: 8px; }

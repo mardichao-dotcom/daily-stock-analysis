@@ -76,48 +76,37 @@ class TestClassifyStocks(unittest.TestCase):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-class TestRenderTop10(unittest.TestCase):
+class TestRankingBar(unittest.TestCase):
+    """stage10 Batch3 §9:前十名排行條(取代前十名卡片區;無 chart placeholder)。"""
 
-    def test_top10_section_top_by_score_desc(self):
-        stocks = {f"S{i}": make_stock(name=f"N{i}", score=float(i))
-                  for i in range(15)}
-        html = render_v2.render_top10(stocks)
-        self.assertIn("🏆 當日前十名", html)
-        # 應該是 N14 (14 分) 第一
-        self.assertLess(html.index("N14"), html.index("N13"))
-        # 只取 10 個 — N4 不該在,N5 應該在(最低分入榜)
-        # 新版用 <span class="stock-name">NX</span>,匹配閉合 tag
-        self.assertNotIn(">N4<", html)
+    def _buckets(self, stocks):
+        return render_v2.classify_stocks(stocks)
+
+    def test_ranking_top_by_score_desc_max_10(self):
+        stocks = {f"S{i}": make_stock(name=f"N{i}", score=float(i)) for i in range(15)}
+        html = render_v2.render_ranking_bar(stocks, self._buckets(stocks))
+        self.assertIn("🏆 前十名", html)
+        self.assertLess(html.index("N14"), html.index("N13"))     # 降冪
+        self.assertNotIn(">N4<", html)                            # 只取 10
         self.assertIn(">N5<", html)
+        self.assertNotIn("chart-placeholder", html)               # 重複 chart 已移除
 
-    def test_top10_empty_no_error(self):
-        html = render_v2.render_top10({})
-        self.assertIn("無資料", html)
+    def test_ranking_empty_no_error(self):
+        self.assertEqual(render_v2.render_ranking_bar({}, self._buckets({})), "")
 
-    def test_top10_collapsible_card_with_chart_placeholder(self):
-        """v2.2 polish:每項是 <details> 卡片,展開含 chart placeholder
-        id 用 chart-top10- 前綴,避免跟 S/A/B 級個股卡(chart-)衝突
-        """
+    def test_ranking_anchor_carded_vs_watchlist(self):
+        """S/A/B 錨點跳本頁戰區卡;C/D 無本頁卡 → 跳 Watchlist。"""
+        stocks = {"TWSE:2382": make_stock(name="廣達", score=7.0, grade="S"),
+                  "TWSE:1503": make_stock(name="士電", score=1.0, grade="D")}
+        html = render_v2.render_ranking_bar(stocks, self._buckets(stocks))
+        self.assertIn('href="#card-TWSE_2382"', html)
+        self.assertIn('href="watchlist_v2.html#card-TWSE_1503"', html)
+        self.assertIn("rb-dim", html)                             # D 級降對比
+
+    def test_ranking_scores_shown(self):
         stocks = {"TWSE:2382": make_stock(name="廣達", score=7.0, grade="S")}
-        html = render_v2.render_top10(stocks, date="2026-06-01")
-        # top10 卡帶 data-symbol(stage9 事件徽章 hook)
-        self.assertIn('<details class="stock-card top10-card grade-S" data-symbol="TWSE:2382">', html)
-        self.assertIn('id="chart-top10-TWSE_2382"', html)
-        self.assertIn('data-symbol="TWSE:2382"', html)
-        self.assertIn('🥇', html)
-
-    def test_top10_waiting_us_close_uses_amber_placeholder(self):
-        """v2.2:status_map 標 waiting_us_close → top10 卡片內顯示 amber 文案"""
-        stocks = {"NASDAQ:NVDA": make_stock(name="NVIDIA", score=8.0, grade="S")}
-        status_map = {
-            "NASDAQ_NVDA": {"status": "waiting_us_close", "exchange": "US",
-                             "last_available_date": "2026-05-29"},
-        }
-        html = render_v2.render_top10(stocks, date="2026-06-01",
-                                         status_map=status_map)
-        self.assertIn("chart-placeholder awaiting", html)
-        self.assertIn("等待 US 收盤資料", html)
-        self.assertIn("2026-05-29", html)
+        html = render_v2.render_ranking_bar(stocks, self._buckets(stocks))
+        self.assertIn('class="rb-score">7.0<', html)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -141,9 +130,10 @@ class TestRenderGradeBlocks(unittest.TestCase):
         self.assertIn('data-symbol="TPEX:6223"', html)
 
     def test_render_grade_section_empty(self):
+        """Batch3:空戰區不渲染(安靜日由 §8 狀態列傳達,對齊交接包安靜日版面)"""
         html = render_v2.render_grade_section("A", "🟡 A 級戰區",
                                                 [], "2026-05-20")
-        self.assertIn("今日無A級個股", html)
+        self.assertEqual(html, "")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -217,7 +207,7 @@ class TestRenderOther(unittest.TestCase):
             ("S2", make_stock(name="Y")),
         ]
         html = render_v2.render_other(stocks_list)
-        self.assertIn("<details>", html)
+        self.assertIn('<details class="other-fold">', html)  # Batch3 §14
         self.assertNotIn("<details open>", html)   # default closed
         self.assertIn("其餘品項", html)
         self.assertIn("2 檔", html)
@@ -250,10 +240,12 @@ class TestFullRender(unittest.TestCase):
         self.assertIn("dataset.theme", html)
         self.assertRegex(html, r'<script src="assets/chart_v2\.js\?v=[0-9a-f]{8}"')  # Batch1
         # 7 區塊都在
-        self.assertIn("🏆 當日前十名", html)
+        self.assertIn("🏆 前十名", html)          # Batch3 §9 排行條取代卡片區
+        self.assertIn('class="status-bar', html)  # §8 狀態列
         self.assertIn("🔴 S 級戰區", html)
-        self.assertIn("🟡 A 級戰區", html)
-        self.assertIn("🟢 B 級戰區", html)
+        # Batch3:空戰區不渲染(fixture 只有 S 級 → A/B 區不出現)
+        self.assertNotIn("🟡 A 級戰區", html)
+        self.assertNotIn("🟢 B 級戰區", html)
         self.assertIn("⭐ C 級特殊", html)
         self.assertIn("⛔ ETF 主動式", html)
         # 旺矽 在 S 級戰區

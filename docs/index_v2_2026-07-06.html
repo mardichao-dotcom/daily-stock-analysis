@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>台股動能儀表板 2026-07-06 — 規則 v2.2</title>
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark';}catch(e){document.documentElement.dataset.theme='dark';}</script>
-  <link rel="stylesheet" href="assets/tokens.css?v=cb0b314a">
-  <link rel="stylesheet" href="assets/style_v2.css?v=cb0b314a">
-  <script src="assets/theme.js?v=cb0b314a" defer></script>
+  <link rel="stylesheet" href="assets/tokens.css?v=042db5ca">
+  <link rel="stylesheet" href="assets/style_v2.css?v=042db5ca">
+  <script src="assets/theme.js?v=042db5ca" defer></script>
 </head>
 <body>
 
@@ -22,157 +22,93 @@
     </nav>
     <h1>🧭 台股右側動能作戰儀表板</h1>
     <div class="meta">
-      資料日期 <strong>2026-07-06</strong> ｜ 規則 v2.2 ｜ 台股 98 檔 ｜ 產出時間 2026-07-07 10:42
+      資料日期 <strong>2026-07-06</strong> ｜ 規則 v2.2 ｜ 台股 98 檔 ｜ 產出時間 2026-07-07 11:12
     </div>
   </div>
 </header>
 
 <main class="container">
 
+
+<section class="status-bar">
+  <div class="sb-main"><span class="sb-dot">●</span><span class="sb-title">今日無 S/A/B 級 — 沒有需要注意的訊號</span>
+    <span class="sb-badges"><span class="sb-badge g-zero">S 0</span><span class="sb-badge g-zero">A 0</span><span class="sb-badge g-zero">B 0</span><span class="sb-badge g-C">C 98</span></span></div>
+  <div class="sb-sub">最高分 3.0(C 級) · 跌破警示 6 檔 · ETF 加碼 2 / 減碼 4 · 低分折疊 79 檔</div>
+</section>
 <section class="section" id="events-hub" hidden><h2>📅 未來 14 天</h2><div class="events-body"></div></section>
+<section class="section" id="news-block" hidden data-default-open="0"><div class="news-head" id="news-head"><h2>📰 今日新聞 <span class="news-meta" id="news-meta"></span></h2><span class="news-peek" id="news-peek"></span><span class="news-caret" id="news-caret">▾</span></div><div class="news-list" id="news-list"></div><div class="news-kwfoot" id="news-kwfoot"></div></section>
+<section class="section ranking-bar"><span class="rb-head">🏆 前十名</span><span class="rb-item"><span class="rb-rank">1</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_3443" data-rb-target="TWSE_3443">創意</a><span class="rb-score">3.0</span></span><span class="rb-item"><span class="rb-rank">2</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_3711" data-rb-target="TWSE_3711">日月光投控</a><span class="rb-score">3.0</span></span><span class="rb-item"><span class="rb-rank">3</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_1514" data-rb-target="TWSE_1514">亞力</a><span class="rb-score">3.0</span></span><span class="rb-item"><span class="rb-rank">4</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_2609" data-rb-target="TWSE_2609">陽明</a><span class="rb-score">3.0</span></span><span class="rb-item rb-dim"><span class="rb-rank">5</span><a class="rb-name" href="watchlist_v2.html#card-TPEX_3363" data-rb-target="TPEX_3363">上詮</a><span class="rb-score">2.0</span></span><span class="rb-item rb-dim"><span class="rb-rank">6</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_2399" data-rb-target="TWSE_2399">微星</a><span class="rb-score">2.0</span></span><span class="rb-item rb-dim"><span class="rb-rank">7</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_6412" data-rb-target="TWSE_6412">群電</a><span class="rb-score">2.0</span></span><span class="rb-item rb-dim"><span class="rb-rank">8</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_6282" data-rb-target="TWSE_6282">康舒</a><span class="rb-score">2.0</span></span><span class="rb-item rb-dim"><span class="rb-rank">9</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_3015" data-rb-target="TWSE_3015">全漢</a><span class="rb-score">2.0</span></span><span class="rb-item rb-dim"><span class="rb-rank">10</span><a class="rb-name" href="watchlist_v2.html#card-TWSE_2344" data-rb-target="TWSE_2344">華邦電</a><span class="rb-score">2.0</span></span></section>
+
+
+
+
+<section class="section grade-c">
+  <h2>⭐ C 級特殊標籤 (13 檔次)</h2>
+  <div class="c-group">
+    <h3 class="c-group-title">🟢 站穩 <span class="c-group-count">(13 檔)</span></h3>
+    <ul class="c-special-list">
+      <li><strong>上詮</strong> <code>TPEX:3363</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 547</span></li>
+      <li><strong>康舒</strong> <code>TWSE:6282</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 57.5</span></li>
+      <li><strong>華邦電</strong> <code>TWSE:2344</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 區域 184.5-193</span></li>
+      <li><strong>南亞科</strong> <code>TWSE:2408</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 區域 381.5-395</span></li>
+      <li><strong>鴻海</strong> <code>TWSE:2317</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 區域 239.0-245.0</span></li>
+      <li><strong>麗臺</strong> <code>TWSE:2465</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 72.8</span></li>
+      <li><strong>勤誠</strong> <code>TWSE:8210</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 1285</span></li>
+      <li><strong>金像電</strong> <code>TWSE:2368</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 1220</span></li>
+      <li><strong>三集瑞-KY</strong> <code>TWSE:6862</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 193</span></li>
+      <li><strong>台達電</strong> <code>TWSE:2308</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 區域 1905-1950</span></li>
+      <li><strong>華城</strong> <code>TWSE:1519</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 區域 756-787</span></li>
+      <li><strong>群聯</strong> <code>TPEX:8299</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 2270</span></li>
+      <li><strong>昇達科</strong> <code>TPEX:3491</code> <span class="c-score">0.7</span> <span class="c-tag-detail">🟢 站穩 1280</span></li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="section" id="breakdown-alerts">
+  <h2>跌破警示 <span class="bk-badge">▼ 6 檔</span>
+    <span class="bk-note">收盤跌破手繪關鍵價/區域,空方訊號觀察</span></h2>
+  <div class="bk-table">
+    <div class="bk-row bk-head"><span>股名</span><span>代號</span><span>跌破位置</span>
+      <span class="bk-close">收盤 / 漲跌</span><span class="bk-score">分數</span></div>
+    <div class="bk-row"><span class="bk-name">宜鼎</span><code class="bk-code">TPEX:5289</code><span class="bk-pos">▼ 1675</span><span class="bk-close"><span class="sc-close">1,645.0</span><span class="sc-chg up">▲0.61%</span></span><span class="bk-score">0.0</span></div><div class="bk-row"><span class="bk-name">長榮</span><code class="bk-code">TWSE:2603</code><span class="bk-pos">▼ 197.0</span><span class="bk-close"><span class="sc-close">195.5</span><span class="sc-chg up">▲0.26%</span></span><span class="bk-score">0.0</span></div><div class="bk-row"><span class="bk-name">印能</span><code class="bk-code">TPEX:7734</code><span class="bk-pos">▼ 3220</span><span class="bk-close"><span class="sc-close">2,955.0</span><span class="sc-chg down">▼7.37%</span></span><span class="bk-score">0.0</span></div><div class="bk-row"><span class="bk-name">M31</span><code class="bk-code">TPEX:6643</code><span class="bk-pos">▼ 521</span><span class="bk-close"><span class="sc-close">496.5</span><span class="sc-chg down">▼2.84%</span></span><span class="bk-score">0.0</span></div><div class="bk-row"><span class="bk-name">祥碩</span><code class="bk-code">TWSE:5269</code><span class="bk-pos">▼ 區域 1545-1600</span><span class="bk-close"><span class="sc-close">1,520.0</span><span class="sc-chg down">▼0.65%</span></span><span class="bk-score">0.0</span></div><div class="bk-row"><span class="bk-name">可成</span><code class="bk-code">TWSE:2474</code><span class="bk-pos">▼ 區域 203-212.5</span><span class="bk-close"><span class="sc-close">196.0</span><span class="sc-chg down">▼5.31%</span></span><span class="bk-score">0.0</span></div>
+  </div>
+</section>
 
 <section class="section">
-  <h2>🏆 當日前十名</h2>
+  <h2>⛔ ETF 主動式雙向掃描 <span style="font-size: 12px; color: var(--text-mute); font-weight: normal;">(近 7 日累計)</span></h2>
+  <div class="etf-active-grid">
+    <div class="etf-buy-block">
+      <h3>📈 加碼區 (2 檔)</h3>
+      
+<table class="etf-table">
+  <thead>
+    <tr><th>個股</th><th>共識</th><th>張數(7 日)</th><th>ETFs</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>創意</strong><br>  <code style='font-size:11px;'>TWSE:3443</code></td><td>3 檔</td><td class='shares positive'>+39</td><td class='etfs-list'>00403A、00987A、00994A</td></tr>
+    <tr><td><strong>日月光投控</strong><br>  <code style='font-size:11px;'>TWSE:3711</code></td><td>2 檔</td><td class='shares positive'>+1,134</td><td class='etfs-list'>00403A、00994A</td></tr>
+  </tbody>
+</table>
 
-<details class="stock-card top10-card grade-C" data-symbol="TWSE:3443">
-  <summary>
-    <span class="top10-rank">🥇</span>
-    <span class="stock-name">創意</span>
-    <code class="stock-code">TWSE:3443</code>
-    <span class="stock-tags-inline"></span>
-    <span class="stock-score">3.0 <span class="grade-badge C">C</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_3443" class="chart-placeholder" data-symbol="TWSE:3443" data-date="2026-07-06">點此載入 K 線</div>
+    </div>
+    <div class="etf-sell-block">
+      <h3>📉 減碼區 (4 檔)</h3>
+      
+<table class="etf-table">
+  <thead>
+    <tr><th>個股</th><th>共識</th><th>張數(7 日)</th><th>ETFs</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>台達電</strong><br>  <code style='font-size:11px;'>TWSE:2308</code></td><td>3 檔</td><td class='shares negative'>-621</td><td class='etfs-list'>00981A、00987A、00995A</td></tr>
+    <tr><td><strong>金像電</strong><br>  <code style='font-size:11px;'>TWSE:2368</code></td><td>3 檔</td><td class='shares negative'>-495</td><td class='etfs-list'>00403A、00992A、00995A</td></tr>
+    <tr><td><strong>京元電子</strong><br>  <code style='font-size:11px;'>TWSE:2449</code></td><td>2 檔</td><td class='shares negative'>-1,139</td><td class='etfs-list'>00981A、00994A</td></tr>
+    <tr><td><strong>穎崴</strong><br>  <code style='font-size:11px;'>TWSE:6515</code></td><td>2 檔</td><td class='shares negative'>-80</td><td class='etfs-list'>00981A、00992A</td></tr>
+  </tbody>
+</table>
+
+    </div>
   </div>
-</details>
-
-
-<details class="stock-card top10-card grade-C" data-symbol="TWSE:3711">
-  <summary>
-    <span class="top10-rank">🥈</span>
-    <span class="stock-name">日月光投控</span>
-    <code class="stock-code">TWSE:3711</code>
-    <span class="stock-tags-inline"></span>
-    <span class="stock-score">3.0 <span class="grade-badge C">C</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_3711" class="chart-placeholder" data-symbol="TWSE:3711" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-C" data-symbol="TWSE:1514">
-  <summary>
-    <span class="top10-rank">🥉</span>
-    <span class="stock-name">亞力</span>
-    <code class="stock-code">TWSE:1514</code>
-    <span class="stock-tags-inline"></span>
-    <span class="stock-score">3.0 <span class="grade-badge C">C</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_1514" class="chart-placeholder" data-symbol="TWSE:1514" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-C" data-symbol="TWSE:2609">
-  <summary>
-    <span class="top10-rank">#4</span>
-    <span class="stock-name">陽明</span>
-    <code class="stock-code">TWSE:2609</code>
-    <span class="stock-tags-inline"><span class="tag">⚡</span></span>
-    <span class="stock-score">3.0 <span class="grade-badge C">C</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_2609" class="chart-placeholder" data-symbol="TWSE:2609" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-D" data-symbol="TPEX:3363">
-  <summary>
-    <span class="top10-rank">#5</span>
-    <span class="stock-name">上詮</span>
-    <code class="stock-code">TPEX:3363</code>
-    <span class="stock-tags-inline"><span class="tag">🟢</span></span>
-    <span class="stock-score">2.0 <span class="grade-badge D">D</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TPEX_3363" class="chart-placeholder" data-symbol="TPEX:3363" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-D" data-symbol="TWSE:2399">
-  <summary>
-    <span class="top10-rank">#6</span>
-    <span class="stock-name">微星</span>
-    <code class="stock-code">TWSE:2399</code>
-    <span class="stock-tags-inline"><span class="tag">⚡</span></span>
-    <span class="stock-score">2.0 <span class="grade-badge D">D</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_2399" class="chart-placeholder" data-symbol="TWSE:2399" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-D" data-symbol="TWSE:6412">
-  <summary>
-    <span class="top10-rank">#7</span>
-    <span class="stock-name">群電</span>
-    <code class="stock-code">TWSE:6412</code>
-    <span class="stock-tags-inline"></span>
-    <span class="stock-score">2.0 <span class="grade-badge D">D</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_6412" class="chart-placeholder" data-symbol="TWSE:6412" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-D" data-symbol="TWSE:6282">
-  <summary>
-    <span class="top10-rank">#8</span>
-    <span class="stock-name">康舒</span>
-    <code class="stock-code">TWSE:6282</code>
-    <span class="stock-tags-inline"><span class="tag">🟢</span></span>
-    <span class="stock-score">2.0 <span class="grade-badge D">D</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_6282" class="chart-placeholder" data-symbol="TWSE:6282" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-D" data-symbol="TWSE:3015">
-  <summary>
-    <span class="top10-rank">#9</span>
-    <span class="stock-name">全漢</span>
-    <code class="stock-code">TWSE:3015</code>
-    <span class="stock-tags-inline"></span>
-    <span class="stock-score">2.0 <span class="grade-badge D">D</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_3015" class="chart-placeholder" data-symbol="TWSE:3015" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
-
-<details class="stock-card top10-card grade-D" data-symbol="TWSE:2344">
-  <summary>
-    <span class="top10-rank">#10</span>
-    <span class="stock-name">華邦電</span>
-    <code class="stock-code">TWSE:2344</code>
-    <span class="stock-tags-inline"><span class="tag">🟢</span></span>
-    <span class="stock-score">2.0 <span class="grade-badge D">D</span></span>
-  </summary>
-  <div class="card-body">
-    <div id="chart-top10-TWSE_2344" class="chart-placeholder" data-symbol="TWSE:2344" data-date="2026-07-06">點此載入 K 線</div>
-  </div>
-</details>
-
 </section>
 
 
@@ -246,185 +182,14 @@
 </section>
 
 
-<section class="section">
-  <h2>🔴 S 級戰區</h2>
-  <div class="empty-state">今日無S級個股</div>
-</section>
-
-
-<section class="section">
-  <h2>🟡 A 級戰區</h2>
-  <div class="empty-state">今日無A級個股</div>
-</section>
-
-
-<section class="section">
-  <h2>🟢 B 級戰區</h2>
-  <div class="empty-state">今日無B級個股</div>
-</section>
-
-
-<section class="section grade-c">
-  <h2>⭐ C 級特殊標籤 (19 檔次)</h2>
-  <div class="c-group">
-    <h3 class="c-group-title">🟢 站穩 <span class="c-group-count">(13 檔)</span></h3>
-    <ul class="c-special-list">
-      <li><strong>上詮</strong> <code>TPEX:3363</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 547</span></li>
-      <li><strong>康舒</strong> <code>TWSE:6282</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 57.5</span></li>
-      <li><strong>華邦電</strong> <code>TWSE:2344</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 區域 184.5-193</span></li>
-      <li><strong>南亞科</strong> <code>TWSE:2408</code> <span class="c-score">2.0</span> <span class="c-tag-detail">🟢 站穩 區域 381.5-395</span></li>
-      <li><strong>鴻海</strong> <code>TWSE:2317</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 區域 239.0-245.0</span></li>
-      <li><strong>麗臺</strong> <code>TWSE:2465</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 72.8</span></li>
-      <li><strong>勤誠</strong> <code>TWSE:8210</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 1285</span></li>
-      <li><strong>金像電</strong> <code>TWSE:2368</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 1220</span></li>
-      <li><strong>三集瑞-KY</strong> <code>TWSE:6862</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 193</span></li>
-      <li><strong>台達電</strong> <code>TWSE:2308</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 區域 1905-1950</span></li>
-      <li><strong>華城</strong> <code>TWSE:1519</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 區域 756-787</span></li>
-      <li><strong>群聯</strong> <code>TPEX:8299</code> <span class="c-score">1.0</span> <span class="c-tag-detail">🟢 站穩 2270</span></li>
-      <li><strong>昇達科</strong> <code>TPEX:3491</code> <span class="c-score">0.7</span> <span class="c-tag-detail">🟢 站穩 1280</span></li>
-    </ul>
-  </div>
-  <div class="c-group">
-    <h3 class="c-group-title">🔴 跌破 <span class="c-group-count">(6 檔)</span></h3>
-    <ul class="c-special-list">
-      <li><strong>祥碩</strong> <code>TWSE:5269</code> <span class="c-score">0.0</span> <span class="c-tag-detail">🔴 跌破 區域 1545-1600</span></li>
-      <li><strong>M31</strong> <code>TPEX:6643</code> <span class="c-score">0.0</span> <span class="c-tag-detail">🔴 跌破 521</span></li>
-      <li><strong>可成</strong> <code>TWSE:2474</code> <span class="c-score">0.0</span> <span class="c-tag-detail">🔴 跌破 區域 203-212.5</span></li>
-      <li><strong>印能</strong> <code>TPEX:7734</code> <span class="c-score">0.0</span> <span class="c-tag-detail">🔴 跌破 3220</span></li>
-      <li><strong>長榮</strong> <code>TWSE:2603</code> <span class="c-score">0.0</span> <span class="c-tag-detail">🔴 跌破 197.0</span></li>
-      <li><strong>宜鼎</strong> <code>TPEX:5289</code> <span class="c-score">0.0</span> <span class="c-tag-detail">🔴 跌破 1675</span></li>
-    </ul>
-  </div>
-</section>
-
-
-<section class="section">
-  <h2>⛔ ETF 主動式雙向掃描 <span style="font-size: 12px; color: var(--text-mute); font-weight: normal;">(近 7 日累計)</span></h2>
-  <div class="etf-active-grid">
-    <div class="etf-buy-block">
-      <h3>📈 加碼區 (2 檔)</h3>
-      
-<table class="etf-table">
-  <thead>
-    <tr><th>個股</th><th>共識</th><th>張數(7 日)</th><th>ETFs</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>創意</strong><br>  <code style='font-size:11px;'>TWSE:3443</code></td><td>3 檔</td><td class='shares positive'>+39</td><td class='etfs-list'>00403A、00987A、00994A</td></tr>
-    <tr><td><strong>日月光投控</strong><br>  <code style='font-size:11px;'>TWSE:3711</code></td><td>2 檔</td><td class='shares positive'>+1,134</td><td class='etfs-list'>00403A、00994A</td></tr>
-  </tbody>
-</table>
-
-    </div>
-    <div class="etf-sell-block">
-      <h3>📉 減碼區 (4 檔)</h3>
-      
-<table class="etf-table">
-  <thead>
-    <tr><th>個股</th><th>共識</th><th>張數(7 日)</th><th>ETFs</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>台達電</strong><br>  <code style='font-size:11px;'>TWSE:2308</code></td><td>3 檔</td><td class='shares negative'>-621</td><td class='etfs-list'>00981A、00987A、00995A</td></tr>
-    <tr><td><strong>金像電</strong><br>  <code style='font-size:11px;'>TWSE:2368</code></td><td>3 檔</td><td class='shares negative'>-495</td><td class='etfs-list'>00403A、00992A、00995A</td></tr>
-    <tr><td><strong>京元電子</strong><br>  <code style='font-size:11px;'>TWSE:2449</code></td><td>2 檔</td><td class='shares negative'>-1,139</td><td class='etfs-list'>00981A、00994A</td></tr>
-    <tr><td><strong>穎崴</strong><br>  <code style='font-size:11px;'>TWSE:6515</code></td><td>2 檔</td><td class='shares negative'>-80</td><td class='etfs-list'>00981A、00992A</td></tr>
-  </tbody>
-</table>
-
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <details>
-    <summary><h2 style="display: inline; border: none;">📋 其餘品項 (79 檔,預設折疊)</h2></summary>
-    <ul class="other-list">
-      <li>創意 <code>TWSE:3443</code></li>
-      <li>日月光投控 <code>TWSE:3711</code></li>
-      <li>亞力 <code>TWSE:1514</code></li>
-      <li>陽明 <code>TWSE:2609</code></li>
-      <li>微星 <code>TWSE:2399</code></li>
-      <li>群電 <code>TWSE:6412</code></li>
-      <li>全漢 <code>TWSE:3015</code></li>
-      <li>旺宏 <code>TWSE:2337</code></li>
-      <li>波若威 <code>TPEX:3163</code></li>
-      <li>全新 <code>TWSE:2455</code></li>
-      <li>力旺 <code>TPEX:3529</code></li>
-      <li>力成 <code>TWSE:6239</code></li>
-      <li>台光電 <code>TWSE:2383</code></li>
-      <li>聯茂 <code>TWSE:6213</code></li>
-      <li>迎廣 <code>TWSE:6117</code></li>
-      <li>聯亞 <code>TPEX:3081</code></li>
-      <li>智邦 <code>TWSE:2345</code></li>
-      <li>前鼎 <code>TPEX:4908</code></li>
-      <li>啟碁 <code>TWSE:6285</code></li>
-      <li>華星光 <code>TPEX:4979</code></li>
-      <li>光聖 <code>TWSE:6442</code></li>
-      <li>健策 <code>TWSE:3653</code></li>
-      <li>奇鋐 <code>TWSE:3017</code></li>
-      <li>建準 <code>TWSE:2421</code></li>
-      <li>雙鴻 <code>TPEX:3324</code></li>
-      <li>高力 <code>TWSE:8996</code></li>
-      <li>泰碩 <code>TWSE:3338</code></li>
-      <li>聯發科 <code>TWSE:2454</code></li>
-      <li>達發 <code>TWSE:6526</code></li>
-      <li>聯詠 <code>TWSE:3034</code></li>
-      <li>瑞昱 <code>TWSE:2379</code></li>
-      <li>愛普 <code>TWSE:6531</code></li>
-      <li>敦泰 <code>TWSE:3545</code></li>
-      <li>信驊 <code>TPEX:5274</code></li>
-      <li>世芯-KY <code>TWSE:3661</code></li>
-      <li>智原 <code>TWSE:3035</code></li>
-      <li>台積電 <code>TWSE:2330</code></li>
-      <li>世界先進 <code>TPEX:5347</code></li>
-      <li>聯電 <code>TWSE:2303</code></li>
-      <li>京元電子 <code>TWSE:2449</code></li>
-      <li>穎崴 <code>TWSE:6515</code></li>
-      <li>旺矽 <code>TPEX:6223</code></li>
-      <li>弘塑 <code>TPEX:3131</code></li>
-      <li>辛耘 <code>TWSE:3583</code></li>
-      <li>家登 <code>TPEX:3680</code></li>
-      <li>萬潤 <code>TPEX:6187</code></li>
-      <li>鴻勁 <code>TWSE:7769</code></li>
-      <li>致茂 <code>TWSE:2360</code></li>
-      <li>京鼎 <code>TWSE:3413</code></li>
-      <li>廣達 <code>TWSE:2382</code></li>
-      <li>緯創 <code>TWSE:3231</code></li>
-      <li>技嘉 <code>TWSE:2376</code></li>
-      <li>緯穎 <code>TWSE:6669</code></li>
-      <li>營邦 <code>TPEX:3693</code></li>
-      <li>富世達 <code>TWSE:6805</code></li>
-      <li>華碩 <code>TWSE:2357</code></li>
-      <li>英業達 <code>TWSE:2356</code></li>
-      <li>台燿 <code>TPEX:6274</code></li>
-      <li>定穎投控 <code>TWSE:3715</code></li>
-      <li>華通 <code>TWSE:2313</code></li>
-      <li>臻鼎-KY <code>TWSE:4958</code></li>
-      <li>燿華 <code>TWSE:2367</code></li>
-      <li>台郡 <code>TWSE:6269</code></li>
-      <li>欣興 <code>TWSE:3037</code></li>
-      <li>景碩 <code>TWSE:3189</code></li>
-      <li>南電 <code>TWSE:8046</code></li>
-      <li>長廣 <code>TWSE:7795</code></li>
-      <li>國巨 <code>TWSE:2327</code></li>
-      <li>華新科 <code>TWSE:2492</code></li>
-      <li>光寶科 <code>TWSE:2301</code></li>
-      <li>中興電 <code>TWSE:1513</code></li>
-      <li>士電 <code>TWSE:1503</code></li>
-      <li>川湖 <code>TWSE:2059</code></li>
-      <li>嘉澤 <code>TWSE:3533</code></li>
-      <li>貿聯-KY <code>TWSE:3665</code></li>
-      <li>上銀 <code>TWSE:2049</code></li>
-      <li>研華 <code>TWSE:2395</code></li>
-      <li>所羅門 <code>TWSE:2359</code></li>
-      <li>力積電 <code>TWSE:6770</code></li>
-    </ul>
-  </details>
-</section>
+<details class="other-fold">
+  <summary>📋 其餘品項 · 79 檔 · 未觸發任何規則<span class="of-caret">▾</span></summary>
+  <div class="other-chips"><a class="other-chip" href="watchlist_v2.html#card-TWSE_3443">創意 <code>3443</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3711">日月光投控 <code>3711</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_1514">亞力 <code>1514</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2609">陽明 <code>2609</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2399">微星 <code>2399</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6412">群電 <code>6412</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3015">全漢 <code>3015</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2337">旺宏 <code>2337</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_3163">波若威 <code>3163</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2455">全新 <code>2455</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_3529">力旺 <code>3529</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6239">力成 <code>6239</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2383">台光電 <code>2383</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6213">聯茂 <code>6213</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6117">迎廣 <code>6117</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_3081">聯亞 <code>3081</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2345">智邦 <code>2345</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_4908">前鼎 <code>4908</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6285">啟碁 <code>6285</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_4979">華星光 <code>4979</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6442">光聖 <code>6442</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3653">健策 <code>3653</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3017">奇鋐 <code>3017</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2421">建準 <code>2421</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_3324">雙鴻 <code>3324</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_8996">高力 <code>8996</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3338">泰碩 <code>3338</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2454">聯發科 <code>2454</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6526">達發 <code>6526</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3034">聯詠 <code>3034</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2379">瑞昱 <code>2379</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6531">愛普 <code>6531</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3545">敦泰 <code>3545</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_5274">信驊 <code>5274</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3661">世芯-KY <code>3661</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3035">智原 <code>3035</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2330">台積電 <code>2330</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_5347">世界先進 <code>5347</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2303">聯電 <code>2303</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2449">京元電子 <code>2449</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6515">穎崴 <code>6515</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_6223">旺矽 <code>6223</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_3131">弘塑 <code>3131</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3583">辛耘 <code>3583</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_3680">家登 <code>3680</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_6187">萬潤 <code>6187</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_7769">鴻勁 <code>7769</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2360">致茂 <code>2360</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3413">京鼎 <code>3413</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2382">廣達 <code>2382</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3231">緯創 <code>3231</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2376">技嘉 <code>2376</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6669">緯穎 <code>6669</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_3693">營邦 <code>3693</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6805">富世達 <code>6805</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2357">華碩 <code>2357</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2356">英業達 <code>2356</code></a><a class="other-chip" href="watchlist_v2.html#card-TPEX_6274">台燿 <code>6274</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3715">定穎投控 <code>3715</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2313">華通 <code>2313</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_4958">臻鼎-KY <code>4958</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2367">燿華 <code>2367</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6269">台郡 <code>6269</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3037">欣興 <code>3037</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3189">景碩 <code>3189</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_8046">南電 <code>8046</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_7795">長廣 <code>7795</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2327">國巨 <code>2327</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2492">華新科 <code>2492</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2301">光寶科 <code>2301</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_1513">中興電 <code>1513</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_1503">士電 <code>1503</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2059">川湖 <code>2059</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3533">嘉澤 <code>3533</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_3665">貿聯-KY <code>3665</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2049">上銀 <code>2049</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2395">研華 <code>2395</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_2359">所羅門 <code>2359</code></a><a class="other-chip" href="watchlist_v2.html#card-TWSE_6770">力積電 <code>6770</code></a></div>
+</details>
 
 </main>
 
-<script src="assets/chart_v2.js?v=cb0b314a" defer></script>
-<script src="assets/events.js?v=cb0b314a" defer></script>
+<script src="assets/chart_v2.js?v=042db5ca" defer></script>
+<script src="assets/events.js?v=042db5ca" defer></script>
 </body>
 </html>

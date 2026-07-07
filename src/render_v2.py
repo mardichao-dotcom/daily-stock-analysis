@@ -253,56 +253,7 @@ def render_themes(date: str, top_n: int = 10) -> str:
 """
 
 
-def render_top10(stocks: dict, date: str = "", status_map: dict | None = None) -> str:
-    """區塊 1:當日前十名(by score 降冪)。
-
-    2026-06-02 朋友 review:每項從純文字列表升級為可折疊 <details> 卡片,
-    展開後看 K 線。複用 chart_placeholder_html(id_prefix="chart-top10"),
-    避免跟 S/A/B 個股卡的 id 衝突(同檔股可能同時出現)。
-    """
-    ranked = sorted(stocks.items(), key=lambda x: -x[1].get("score", 0))[:10]
-    if not ranked:
-        return _section_empty("🏆 當日前十名", "無資料")
-
-    status_map = status_map or {}
-    medals = {1: "🥇", 2: "🥈", 3: "🥉"}
-    cards = []
-    for i, (symbol, stock) in enumerate(ranked, 1):
-        name  = stock.get("name", "")
-        score = stock.get("score", 0)
-        grade = stock.get("grade", "?")
-        tags  = stock.get("tags", [])
-        sid   = _safe_id(symbol)
-        rank_badge = medals.get(i, f"#{i}")
-        # tag inline 前 3 個 emoji
-        tag_inline = "".join(
-            f'<span class="tag">{_h(t.split()[0])}</span>' for t in tags[:3]
-        )
-        placeholder = chart_placeholder_html(
-            symbol, date, status_map.get(sid), id_prefix="chart-top10",
-        )
-        cards.append(f"""
-<details class="stock-card top10-card grade-{_h(grade)}" data-symbol="{_h(symbol)}">
-  <summary>
-    <span class="top10-rank">{rank_badge}</span>
-    <span class="stock-name">{_h(name)}</span>
-    <code class="stock-code">{_h(symbol)}</code>
-    <span class="stock-tags-inline">{tag_inline}</span>
-    <span class="stock-score">{score:.1f} <span class="grade-badge {_h(grade)}">{_h(grade)}</span></span>
-  </summary>
-  <div class="card-body">
-    {placeholder}
-  </div>
-</details>
-""")
-    return f"""
-<section class="section">
-  <h2>🏆 當日前十名</h2>
-{chr(10).join(cards)}
-</section>
-"""
-
-
+# (render_top10 已由 §9 前十名排行條取代——Batch3;舊卡片區含重複 chart placeholder 一併移除)
 def chart_placeholder_html(symbol: str, date: str, status_entry: dict | None,
                               id_prefix: str = "chart") -> str:
     """根據 _index.json 的 status 決定 chart placeholder 樣式。
@@ -431,9 +382,9 @@ def render_stock_card(symbol: str, stock: dict, date: str,
 
 def render_grade_section(grade: str, label: str, stocks_list, date: str,
                            status_map: dict | None = None) -> str:
-    """區塊 2-4:S/A/B 級戰區"""
+    """區塊 2-4:S/A/B 級戰區(Batch3:空戰區不渲染——安靜日由狀態列傳達,對齊交接包)"""
     if not stocks_list:
-        return _section_empty(label, f"今日無{grade}級個股")
+        return ""
 
     status_map = status_map or {}
     cards = "\n".join(
@@ -457,11 +408,11 @@ def render_c_special(stocks_list) -> str:
         return _section_empty("⭐ C 級特殊標籤", "今日無 C 級含特殊標籤個股")
 
     # (group label, keywords to match)
+    # Batch3 §11:「跌破」移出 C 特殊(獨立跌破警示表顯示,避免同資訊雙列)
     C_GROUP_DEFS: list[tuple[str, tuple[str, ...]]] = [
         ("🟢 站穩",          ("站穩",)),
         ("⚡ MACD 動能轉多",  ("MACD 動能轉多",)),
         ("⭐ 個股輪動",       ("個股輪動",)),
-        ("🔴 跌破",          ("跌破",)),
         ("⚡ MACD 動能轉空",  ("MACD 動能轉空",)),
         ("⛔ ETF 減碼",       ("ETF 減碼",)),
     ]
@@ -571,25 +522,154 @@ def render_etf_active(etf_active: dict, stocks: dict) -> str:
 
 
 def render_other(stocks_list) -> str:
-    """區塊 7:其餘品項(C 級無標籤,折疊)"""
+    """§14 其餘品項(折疊列 surface-sunken;展開 = chip 流式排列,點擊跳 Watchlist)。"""
     if not stocks_list:
         return ""
 
-    items = []
+    chips = []
     for symbol, stock in stocks_list:
-        name = stock.get("name", "")
-        items.append(f'<li>{_h(name)} <code>{_h(symbol)}</code></li>')
+        sid = symbol.replace(":", "_")
+        chips.append(
+            f'<a class="other-chip" href="watchlist_v2.html#card-{_h(sid)}">'
+            f'{_h(stock.get("name",""))} <code>{_h(symbol.split(":")[-1])}</code></a>')
 
     return f"""
-<section class="section">
-  <details>
-    <summary><h2 style="display: inline; border: none;">📋 其餘品項 ({len(stocks_list)} 檔,預設折疊)</h2></summary>
-    <ul class="other-list">
-{chr(10).join("      " + it for it in items)}
-    </ul>
-  </details>
-</section>
+<details class="other-fold">
+  <summary>📋 其餘品項 · {len(stocks_list)} 檔 · 未觸發任何規則<span class="of-caret">▾</span></summary>
+  <div class="other-chips">{''.join(chips)}</div>
+</details>
 """
+
+
+# ─── Batch 3 儀表板版面(交接包 §8/§9/§11/§14)──────────────────────────────
+
+def _parse_breakdown_tags(stocks: dict) -> list[dict]:
+    """從 tags_today 撈「🔴 跌破」→ [{symbol,name,pos,score}](§11 跌破警示表資料)。"""
+    out = []
+    for symbol, st in stocks.items():
+        for t in st.get("tags_today", []):
+            if "🔴 跌破" not in t:
+                continue
+            pos = t.replace("🔴 跌破", "").strip()
+            out.append({"symbol": symbol, "name": st.get("name", ""),
+                        "pos": pos, "score": st.get("score", 0)})
+            break
+    out.sort(key=lambda x: x["pos"])
+    return out
+
+
+def render_status_bar(buckets: dict, stocks: dict, status_map: dict,
+                      etf_active: dict, date: str) -> str:
+    """§8 狀態列(儀表板置頂結論):安靜/熱鬧/殘缺三態。
+    殘缺 = 任一 symbol waiting_us_close(19:00 常態,05:30 重render 後自動還原)。"""
+    n = {g: len(buckets[g]) for g in ("S", "A", "B")}
+    n_c = len(buckets["C_special"]) + len(buckets["C_other"])
+    waiting = sum(1 for v in (status_map or {}).values()
+                  if (v or {}).get("status") == "waiting_us_close")
+    breakdowns = _parse_breakdown_tags(stocks)
+    inc = len(etf_active.get("increase", []))
+    dec = len(etf_active.get("decrease", []))
+    top = max(stocks.items(), key=lambda x: x[1].get("score", 0), default=None)
+
+    hot = n["S"] >= 1 or n["A"] >= 1
+    if hot:
+        zone = buckets["S"] or buckets["A"]
+        g = "S" if buckets["S"] else "A"
+        names = " · ".join(
+            f'<a class="sb-anchor" href="#card-{_h(s.replace(":", "_"))}">{_h(st.get("name",""))}'
+            f' {st.get("score",0):.1f}</a>' for s, st in zone[:3])
+        dot = '<span class="sb-dot hot">●</span>'
+        main = f'今日 {g} 級 {len(zone)} 檔 — {names}'
+    elif waiting:
+        dot = '<span class="sb-dot broken">◌</span>'
+        main = "資料部分缺漏 — 美股待 08:30"
+    else:
+        dot = '<span class="sb-dot">●</span>'
+        main = "今日無 S/A/B 級 — 沒有需要注意的訊號"
+
+    subs = []
+    if top and not hot:
+        subs.append(f"最高分 {top[1].get('score',0):.1f}({top[1].get('grade','?')} 級)")
+    if breakdowns:
+        subs.append(f"跌破警示 {len(breakdowns)} 檔")
+    subs.append(f"ETF 加碼 {inc} / 減碼 {dec}")
+    if buckets["C_other"]:
+        subs.append(f"低分折疊 {len(buckets['C_other'])} 檔")
+    if waiting and hot:
+        subs.append(f"美股 {waiting} 檔待 08:30")
+
+    badges = "".join(
+        f'<span class="sb-badge {"g-" + g if cnt else "g-zero"}">{g} {cnt}</span>'
+        for g, cnt in (("S", n["S"]), ("A", n["A"]), ("B", n["B"]), ("C", n_c)))
+    return f"""
+<section class="status-bar{' status-hot' if hot else (' status-broken' if waiting and not hot else '')}">
+  <div class="sb-main">{dot}<span class="sb-title">{main}</span>
+    <span class="sb-badges">{badges}</span></div>
+  <div class="sb-sub">{_h(" · ".join(subs))}</div>
+</section>"""
+
+
+def render_ranking_bar(stocks: dict, buckets: dict) -> str:
+    """§9 前十名排行條(取代前十名卡片區;移除舊 top10 重複 chart placeholder)。
+    S/A/B 錨點跳本頁戰區卡;C/D 無本頁卡 → 跳 Watchlist 該檔。"""
+    ranked = sorted(stocks.items(), key=lambda x: -x[1].get("score", 0))[:10]
+    if not ranked:
+        return ""
+    carded = {s for g in ("S", "A", "B") for s, _ in buckets[g]}
+    items = []
+    for i, (symbol, st) in enumerate(ranked, 1):
+        sid = symbol.replace(":", "_")
+        href = f"#card-{sid}" if symbol in carded else f"watchlist_v2.html#card-{sid}"
+        dim = ' rb-dim' if st.get("grade") in ("D",) else ""
+        items.append(
+            f'<span class="rb-item{dim}"><span class="rb-rank">{i}</span>'
+            f'<a class="rb-name" href="{_h(href)}" data-rb-target="{_h(sid)}">{_h(st.get("name",""))}</a>'
+            f'<span class="rb-score">{st.get("score",0):.1f}</span></span>')
+    return (f'<section class="section ranking-bar"><span class="rb-head">🏆 前十名</span>'
+            + "".join(items) + '</section>')
+
+
+def render_breakdown_alerts(stocks: dict) -> str:
+    """§11 跌破警示表:grade 徽章合法用綠(空方語意);分數欄 0.0 faint。"""
+    rows = _parse_breakdown_tags(stocks)
+    if not rows:
+        return ""
+    trs = []
+    for r in rows:
+        sym = r["symbol"]
+        pos = r["pos"]
+        pos_html = f'▼ {_h(pos)}' if not pos.startswith("區域") else f'▼ {_h(pos)}'
+        trs.append(
+            f'<div class="bk-row">'
+            f'<span class="bk-name">{_h(r["name"])}</span>'
+            f'<code class="bk-code">{_h(sym)}</code>'
+            f'<span class="bk-pos">{pos_html}</span>'
+            f'<span class="bk-close">{_close_cell(sym)}</span>'
+            f'<span class="bk-score">{r["score"]:.1f}</span>'
+            f'</div>')
+    return f"""
+<section class="section" id="breakdown-alerts">
+  <h2>跌破警示 <span class="bk-badge">▼ {len(rows)} 檔</span>
+    <span class="bk-note">收盤跌破手繪關鍵價/區域,空方訊號觀察</span></h2>
+  <div class="bk-table">
+    <div class="bk-row bk-head"><span>股名</span><span>代號</span><span>跌破位置</span>
+      <span class="bk-close">收盤 / 漲跌</span><span class="bk-score">分數</span></div>
+    {''.join(trs)}
+  </div>
+</section>"""
+
+
+def render_news_shell(default_open: bool) -> str:
+    """§10 新聞區塊殼(內容由 events.js fetch news.json 填;08:30 更新不需重 render)。
+    預設:熱鬧日展開、安靜日收合(模板參數);使用者操作記 localStorage。"""
+    return (f'<section class="section" id="news-block" hidden '
+            f'data-default-open="{"1" if default_open else "0"}">'
+            f'<div class="news-head" id="news-head"><h2>📰 今日新聞 <span class="news-meta" id="news-meta"></span></h2>'
+            f'<span class="news-peek" id="news-peek"></span>'
+            f'<span class="news-caret" id="news-caret">▾</span></div>'
+            f'<div class="news-list" id="news-list"></div>'
+            f'<div class="news-kwfoot" id="news-kwfoot"></div>'
+            f'</section>')
 
 
 def _section_empty(title: str, msg: str) -> str:
@@ -653,18 +733,24 @@ def render(filtered_result: dict, status_map: dict | None = None,
 </div>
 """
 
+    # Batch3(交接包版面序):狀態列 → [總經橫條=events.js 注入 header] → 事件中樞 →
+    # 新聞 → 前十名排行條 → S/A/B 戰區 → C 特殊 → 跌破警示 → ETF → 主題 → 其餘折疊
+    hot_day = bool(buckets["S"] or buckets["A"])
     parts = [
+        render_status_bar(buckets, stocks, status_map, etf_active, date),
         # 📅 事件中樞(events.js client-side fetch events.json 填入;與 render 解耦)
         '<section class="section" id="events-hub" hidden>'
         '<h2>📅 未來 14 天</h2><div class="events-body"></div></section>',
-        render_top10(stocks, date, status_map),
-        render_themes(date),
+        render_news_shell(default_open=hot_day),          # §10(熱鬧日預設展開)
+        render_ranking_bar(stocks, buckets),              # §9(取代前十名卡片區)
         render_grade_section("S", "🔴 S 級戰區",     buckets["S"], date, status_map),
         render_grade_section("A", "🟡 A 級戰區",     buckets["A"], date, status_map),
         render_grade_section("B", "🟢 B 級戰區",     buckets["B"], date, status_map),
         render_c_special(buckets["C_special"]),
+        render_breakdown_alerts(stocks),                  # §11 跌破警示表
         render_etf_active(etf_active, stocks),
-        render_other(buckets["C_other"]),
+        render_themes(date),
+        render_other(buckets["C_other"]),                 # §14 折疊 chip 流
     ]
 
     generated_at = datetime.now().strftime("%Y-%m-%d %H:%M")

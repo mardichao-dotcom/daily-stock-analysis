@@ -1,98 +1,88 @@
 /**
- * events.js — 事件中樞前端(stage9 Day1)
- * fetch data/v2/events.json(與 19:00 render 解耦)→ 填「📅 未來 14 天」區塊
- * + 個股卡 7 天內法說會標 📅 徽章。
+ * events.js — 儀表板 client 資料層(stage9)+ Batch3 版面(stage10 §6/§7/§10)
+ * fetch events.json / macro.json / news.json(與 19:00 render 解耦,08:30 更新即生效)
+ *
+ * §7 事件中樞:橫向日欄(只 render 有事件日);重要度徽章 高=實心 accent/中高=填色/
+ *   中低=outline;法說=chip+股名連結(永不折疊);除權息=每日「+N 筆除權息」預設折疊
+ *   (2026-07-08 拍板,取代先前低重要度折疊規則);stale 標題列右側標示。
+ * §6 總經橫條:格線 cells;來源 N/A → 「— 等待美股 08:30」(不顯示 0/空白)。
+ * §10 新聞區塊:標頭折疊(安靜日收/熱鬧日開,localStorage 記憶)+ 關鍵字列在塊底。
+ * 追加:個股卡「近期事件」行(14 日內除權息/法說,同 events.json 資料源)。
  */
 (function () {
   'use strict';
 
-  // 重要度分級(§3.5 事件擴充):中高以上 = {high, medium_high}
-  const LV = { high: { i: '🔴', c: '#ef4444' }, medium_high: { i: '🟠', c: '#f59e0b' },
-               medium: { i: '⚪', c: '#94a3b8' } };
   const WD = ['日', '一', '二', '三', '四', '五', '六'];
+  const REPO = 'mardichao-dotcom/daily-stock-analysis';
+  const NEWS_KW_RAW = `https://raw.githubusercontent.com/${REPO}/main/config/news_keywords.json`;
+  const NEWS_KW_EDIT = `https://github.com/${REPO}/edit/main/config/news_keywords.json`;
 
   function fmtDate(iso) {
     const d = new Date(iso + 'T00:00:00+08:00');
-    return `${iso.slice(5)}（${WD[d.getDay()]}）`;
+    return `${iso.slice(5).replace('-', '/')}(${WD[d.getDay()]})`;
   }
-
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"]/g,
       c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   }
-
   function lvlOf(e) { return e.level || (e.importance === 'high' ? 'high' : 'medium'); }
-  function isHigh(e) { const l = lvlOf(e); return l === 'high' || l === 'medium_high'; }
-  function cardLink(sym, label) {
-    const a = sym ? `watchlist_v2.html#card-${esc(sym).replace(/:/g, '_')}` : '';
-    return a ? `<a href="${a}">${label}</a>` : label;
+  function wlHref(sym) { return `watchlist_v2.html#card-${esc(sym).replace(/:/g, '_')}`; }
+
+  // ─── §7 事件中樞:橫向日欄 ───────────────────────────────────────────────
+  function evBadge(e) {
+    const lv = lvlOf(e);
+    const cls = lv === 'high' ? 'evb-high' : (lv === 'medium_high' ? 'evb-mid' : 'evb-low');
+    return `<span class="evb ${cls}">${esc(e.name)}</span>`;
   }
 
-  function mergedLine(icon, label, arr) {
-    if (arr.length === 1) {
-      const e = arr[0];
-      const nm = `${esc(e.name)} <code>${esc(e.symbol || '')}</code>`;
-      return `<li><span class="ev-conf">${icon} ${cardLink(e.symbol, nm)}</span>`
-           + `<span class="ev-detail">${esc(e.title || '')}</span></li>`;
+  function renderDayCol(date, items) {
+    let h = `<div class="evc-col"><div class="evc-date">${esc(fmtDate(date))}</div>`;
+    // 總經/結算:重要度徽章(直接顯示)
+    items.filter(e => ['macro', 'macro_tw', 'settlement'].includes(e.type)).forEach(e => {
+      h += `<div class="evc-item" title="${esc(e.title || '')}">${evBadge(e)}</div>`;
+    });
+    // 法說會:chip + 股名連結(永不折疊)
+    items.filter(e => e.type === 'conference').forEach(e => {
+      h += `<div class="evc-item"><span class="evc-chip">法說</span>`
+         + `<a class="evc-stock" href="${wlHref(e.symbol || '')}">${esc(e.name)}</a></div>`;
+    });
+    // 除權息:預設折疊「+N 筆除權息」(2026-07-08 拍板)
+    const divs = items.filter(e => e.type === 'dividend');
+    if (divs.length) {
+      const rows = divs.map(e =>
+        `<div class="evc-item"><span class="evc-chip">${esc((e.importance || '除權息').slice(0, 3))}</span>`
+        + `<a class="evc-stock" href="${wlHref(e.symbol || '')}">${esc(e.name)}</a></div>`).join('');
+      h += `<details class="evc-divfold"><summary>+${divs.length} 筆除權息</summary>${rows}</details>`;
     }
-    const links = arr.map(e => cardLink(e.symbol, esc(e.name))).join('、');
-    return `<li><span class="ev-conf">${icon} ${label} ${arr.length} 檔:</span>`
-         + ` <span class="ev-merged">${links}</span></li>`;
-  }
-
-  function renderDayItems(items) {
-    // 同日多事件合併:個股類(法說會/除權息)併成一行;總經類一行一條
-    const g = {};
-    items.forEach(e => { (g[e.type] = g[e.type] || []).push(e); });
-    let h = '';
-    ['macro', 'macro_tw', 'settlement'].forEach(t => {
-      (g[t] || []).forEach(e => {
-        const L = LV[lvlOf(e)] || LV.medium;
-        h += `<li><span class="ev-macro" style="color:${L.c}">${L.i} ${esc(e.name)}</span>`
-           + `<span class="ev-detail">${esc(e.title || '')}</span></li>`;
-      });
-    });
-    if (g.conference && g.conference.length) h += mergedLine('📅', '法說會', g.conference);
-    if (g.dividend && g.dividend.length) h += mergedLine('💰', '除權息', g.dividend);
-    return h;
-  }
-
-  function renderDays(arr) {
-    const byDate = {};
-    arr.forEach(e => { (byDate[e.date] = byDate[e.date] || []).push(e); });
-    let h = '';
-    Object.keys(byDate).sort().forEach(date => {
-      h += `<div class="events-day"><div class="events-date">${esc(fmtDate(date))}</div>`
-         + `<ul class="events-list">${renderDayItems(byDate[date])}</ul></div>`;
-    });
-    return h;
+    return h + '</div>';
   }
 
   function renderBlock(data) {
     const evs = (data.events || []).slice().sort((a, b) => a.date.localeCompare(b.date));
-    if (!evs.length) return '<div class="events-empty">未來 14 天無重大事件</div>';
+    const byDate = {};
+    evs.forEach(e => { (byDate[e.date] = byDate[e.date] || []).push(e); });
+    const days = Object.keys(byDate).sort();
 
-    // 顯示規則(最終版):
-    //   直接顯示 = 中高重要度 OR watchlist 個股事件(有 symbol:法說會/除權息,與卡片徽章並存)
-    //   預設折疊 = 其餘低重要度(結算、美國中低總經等,無 symbol)→ 可點展開
-    const shown = [], low = [];
-    evs.forEach(e => ((isHigh(e) || e.symbol) ? shown : low).push(e));
-
-    let html = '';
-    if (data.conference_stale) {
-      html += `<div class="events-stale">⚠️ 法說會抓取失敗,顯示 ${esc(data.conference_source_date || '前次')} 排程(可能過時);其餘為最新</div>`;
+    // 標題列:區間 + 法說源狀態(>2 天 → stale 虛線)
+    const range = days.length ? `${days[0].slice(5).replace('-', '/')} – ${days[days.length - 1].slice(5).replace('-', '/')}` : '';
+    let src = '';
+    const confSrc = data.conference_source_date || '';
+    if (confSrc) {
+      const ageDays = Math.floor((new Date() - new Date(confSrc + 'T00:00:00+08:00')) / 86400000);
+      src = (data.conference_stale || ageDays > 2)
+        ? `<span class="evc-stale">法說源 stale · ${ageDays} 日前</span>`
+        : `<span class="evc-src">法說會源:${esc(confSrc.slice(5).replace('-', '/'))} 更新</span>`;
     }
+    let html = `<div class="evc-head"><span class="evc-range">${esc(range)}</span>${src}</div>`;
     if (data.dividend_stale) {
       html += `<div class="events-stale">⚠️ 除權息抓取失敗,顯示前次資料(可能過時)</div>`;
     }
-    html += renderDays(shown) || '<div class="events-empty">未來 14 天無中高重要度或個股事件</div>';
-    if (low.length) {
-      html += `<details class="events-lowfold"><summary>＋ ${low.length} 筆較低重要度事件</summary>`
-            + `<div class="events-lowfold-body">${renderDays(low)}</div></details>`;
-    }
+    if (!days.length) return html + '<div class="events-empty">未來 14 天無事件</div>';
+    html += `<div class="evc-scroll">${days.map(d => renderDayCol(d, byDate[d])).join('')}</div>`;
     return html;
   }
 
+  // ─── 個股卡徽章 + 近期事件行(14 日內,同一資料源)────────────────────────
   function _addBadge(summary, cls, txt, title) {
     const b = document.createElement('span');
     b.className = cls; b.title = title; b.textContent = txt;
@@ -101,12 +91,15 @@
 
   function markCardBadges(data) {
     const t0 = new Date(new Date().toDateString());
-    const soon = new Date(t0.getTime() + 7 * 86400000);
-    const conf = {}, div = {};
+    const soon7 = new Date(t0.getTime() + 7 * 86400000);
+    const soon14 = new Date(t0.getTime() + 14 * 86400000);
+    const conf = {}, div = {}, upcoming = {};
     (data.events || []).forEach(e => {
       if (!e.symbol) return;
       const d = new Date(e.date + 'T00:00:00+08:00');
-      if (d < t0 || d > soon) return;
+      if (d < t0 || d > soon14) return;
+      (upcoming[e.symbol] = upcoming[e.symbol] || []).push(e);
+      if (d > soon7) return;
       if (e.type === 'conference') conf[e.symbol] = e.date;
       else if (e.type === 'dividend') div[e.symbol] = e.date;
     });
@@ -118,6 +111,22 @@
         _addBadge(summary, 'conf-badge', '📅', `${conf[sym]} 有法說會`);
       if (div[sym] && !card.querySelector('.div-badge'))
         _addBadge(summary, 'div-badge', '💰', `${div[sym]} 除權息`);
+      // 展開態「近期事件」行(有才出現;插在 body 最上方)
+      const evsFor = upcoming[sym];
+      const body = card.querySelector('.card-body, .wl-stock-body');
+      if (evsFor && body && !card.querySelector('.card-events')) {
+        const parts = evsFor.sort((a, b) => a.date.localeCompare(b.date)).map(e => {
+          const mmdd = e.date.slice(5).replace('-', '/');
+          if (e.type === 'conference') return `📅 法說 ${mmdd}`;
+          const kind = (e.importance || '').includes('權')
+            ? ((e.importance || '').includes('息') ? '除權息' : '除權') : '除息';
+          return `💰 ${kind} ${mmdd}`;
+        });
+        const div2 = document.createElement('div');
+        div2.className = 'card-events';
+        div2.innerHTML = `<span class="ce-label">近期事件</span>${esc(parts.join(' · '))}`;
+        body.insertBefore(div2, body.firstChild);
+      }
     });
   }
 
@@ -138,62 +147,126 @@
     markCardBadges(data);
   }
 
-  // ── 總經快覽橫條(§3.2)+ 新聞關鍵字(§3.4)—— 僅儀表板(有 events-hub)注入 ──
-  const REPO = 'mardichao-dotcom/daily-stock-analysis';
-  const NEWS_KW_RAW = `https://raw.githubusercontent.com/${REPO}/main/config/news_keywords.json`;
-  const NEWS_KW_EDIT = `https://github.com/${REPO}/edit/main/config/news_keywords.json`;
-
-  function macroItem(it) {
-    if (!it || it.value === 'N/A') {
-      return `<span class="mb-item mb-na" title="${esc((it && it.error) || '')}">${esc(it ? it.label : '')} <b>N/A</b></span>`;
+  // ─── §6 總經快覽橫條(格線 cells)────────────────────────────────────────
+  function macroCell(it, key) {
+    if (!it) return '';
+    const label = esc(it.label || key);
+    if (it.value === 'N/A' || it.value == null) {
+      // 等待美股(§6):不顯示 0 或空白
+      return `<div class="mb2-cell"><span class="mb2-label">${label}</span>`
+           + `<span class="mb2-wait">— 等待美股 08:30</span></div>`;
     }
-    const pct = typeof it.change_pct === 'number' ? it.change_pct : 0;
-    const col = pct > 0 ? '#ef4444' : (pct < 0 ? '#10b981' : 'var(--text-mute)'); // 紅漲綠跌
-    const arrow = pct > 0 ? '▲' : (pct < 0 ? '▼' : '');
-    const u = it.unit === '張' ? ' 張' : '';
-    const val = it.unit === '張' ? Number(it.value).toLocaleString() : it.value;
-    return `<span class="mb-item"><span class="mb-label">${esc(it.label)}</span>`
-         + `<span class="mb-val">${esc(val)}${u}</span>`
-         + `<span class="mb-chg" style="color:${col}">${arrow}${pct.toFixed(2)}%</span></span>`;
+    const chg = it.change_pct;
+    let chgHtml = '';
+    if (typeof chg === 'number') {
+      const cls = chg > 0 ? 'up' : (chg < 0 ? 'down' : 'flat');
+      const arrow = chg > 0 ? '▲' : (chg < 0 ? '▼' : '');
+      chgHtml = `<span class="mb2-chg ${cls}">${arrow}${Math.abs(chg).toFixed(2)}%</span>`;
+    }
+    const unit = it.unit ? `<span class="mb2-unit">${esc(it.unit)}</span>` : '';
+    return `<div class="mb2-cell"><span class="mb2-label">${label}</span>`
+         + `<span class="mb2-val">${Number(it.value).toLocaleString()}${unit}</span>${chgHtml}</div>`;
   }
 
   function injectMacroBar(header, m) {
     const order = ['taiex', 'sp500', 'nasdaq', 'vix', 'nikkei', 'dxy', 'margin'];
-    const items = order.map(k => macroItem(m.data && m.data[k])).join('');
-    const staleWarn = (m.sources_failed > 0)
-      ? `<span class="mb-fail" title="${esc((m.errors || []).join('; '))}">⚠️ ${m.sources_failed} 項失敗</span>` : '';
+    const cells = order.map(k => macroCell(m.data && m.data[k], k)).join('');
     const gen = (m.generated_at || '').slice(5, 16).replace('T', ' ');
     const bar = document.createElement('div');
-    bar.className = 'macro-bar';
-    bar.innerHTML = `<div class="container macro-bar-inner">${items}${staleWarn}`
-                  + `<span class="mb-gen">總經 ${esc(gen)}</span></div>`;
-    header.parentNode.insertBefore(bar, header.nextSibling);
+    bar.className = 'macro-bar2';
+    bar.innerHTML = `<div class="container mb2-inner">${cells}`
+      + `<span class="mb2-gen">更新 ${esc(gen)}</span></div>`;
+    header.insertAdjacentElement('afterend', bar);
   }
 
-  function injectNewsKeywords(header, kw) {
-    const list = (kw.keywords || []).map(esc).join('、');
-    const bar = document.createElement('div');
-    bar.className = 'news-kw-bar';
-    bar.innerHTML = `<div class="container">📰 新聞關鍵字:<span class="nk-list">${list || '（無）'}</span>`
-                  + ` <a class="nk-edit" href="${NEWS_KW_EDIT}" target="_blank" rel="noopener">✏️ 編輯</a></div>`;
-    header.parentNode.insertBefore(bar, header.nextSibling);
+  // ─── §10 新聞區塊(折疊 + 關鍵字列在塊底)────────────────────────────────
+  function newsRow(it) {
+    const t = (it.published_at || '').slice(11, 16);
+    const kw = (it.matched_keywords || [])[0] || '';
+    const host = (() => { try { return new URL(it.url).host.replace('www.', ''); } catch (e) { return it.source || ''; } })();
+    return `<div class="nw-row">`
+      + `<span class="nw-time">${esc(t)}</span>`
+      + (kw ? `<span class="nw-kw">${esc(kw)}</span>` : '')
+      + `<a class="nw-title" href="${esc(it.url)}" target="_blank" rel="noopener" title="${esc(it.title)}">${esc(it.title)}</a>`
+      + `<span class="nw-src">${esc(it.source || host)} ↗</span></div>`;
+  }
+
+  async function initNews() {
+    const block = document.getElementById('news-block');
+    if (!block) return;
+    let news = null, kwCfg = null;
+    try {
+      const r = await fetch('data/v2/news.json', { cache: 'no-cache' });
+      if (r.ok) news = await r.json();
+    } catch (e) { /* 無 news.json → 空狀態 */ }
+    try {
+      const r2 = await fetch(NEWS_KW_RAW, { cache: 'no-cache' });
+      if (r2.ok) kwCfg = await r2.json();
+    } catch (e) { /* 關鍵字清單缺 → 只列新聞 */ }
+
+    const items = (news && news.items) || [];
+    const kws = (kwCfg && kwCfg.keywords) || [];
+    document.getElementById('news-meta').textContent =
+      `${items.length} 則命中 · 關鍵字 ${kws.length} 組`;
+    document.getElementById('news-list').innerHTML = items.length
+      ? items.map(newsRow).join('')
+      : '<div class="nw-empty">今日無命中新聞</div>';
+    const fetched = news && news.generated_at ? news.generated_at.slice(5, 16).replace('T', ' ') : '';
+    document.getElementById('news-kwfoot').innerHTML =
+      `<span class="nwk-label">🔑 關鍵字</span>`
+      + kws.map(k => `<span class="nwk-chip">${esc(k)}</span>`).join('')
+      + `<a class="nwk-add" href="${NEWS_KW_EDIT}" target="_blank" rel="noopener">+ 新增</a>`
+      + (fetched ? `<span class="nwk-gen">抓取 ${esc(fetched)}</span>` : '');
+
+    // 折疊:預設由模板參數(熱鬧日開/安靜日收);使用者操作記 localStorage
+    let open;
+    try { open = localStorage.getItem('newsFold'); } catch (e) { open = null; }
+    if (open === null || open === undefined) {
+      open = block.dataset.defaultOpen === '1' ? 'open' : 'closed';
+    }
+    function apply() {
+      const isOpen = open === 'open';
+      document.getElementById('news-list').style.display = isOpen ? '' : 'none';
+      document.getElementById('news-kwfoot').style.display = isOpen ? '' : 'none';
+      document.getElementById('news-caret').textContent = isOpen ? '▴' : '▾';
+      document.getElementById('news-peek').textContent =
+        (!isOpen && items.length) ? items.slice(0, 2).map(i => i.title).join(' / ') : '';
+    }
+    document.getElementById('news-head').addEventListener('click', () => {
+      open = open === 'open' ? 'closed' : 'open';
+      try { localStorage.setItem('newsFold', open); } catch (e) { /* ignore */ }
+      apply();
+    });
+    apply();
+    block.hidden = false;
   }
 
   async function initMacro() {
     const header = document.querySelector('header.page-header');
-    if (!header || !document.getElementById('events-hub')) return; // 僅儀表板
+    const hub = document.getElementById('events-hub');
+    if (!header || !hub) return;         // 只在儀表板注入
     try {
       const r = await fetch('data/v2/macro.json', { cache: 'no-cache' });
-      if (r.ok) injectMacroBar(header, await r.json());
-    } catch (e) { /* 靜默 */ }
-    try {
-      const r = await fetch(NEWS_KW_RAW, { cache: 'no-cache' });
-      if (r.ok) injectNewsKeywords(header, await r.json());
-    } catch (e) { /* 靜默 */ }
+      if (!r.ok) return;
+      injectMacroBar(header, await r.json());
+    } catch (e) { /* macro 缺 → 不注入 */ }
   }
 
-  function boot() { init(); initMacro(); }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else { boot(); }
+  // §9 排行條:點擊平滑捲動至戰區卡 + 邊框高亮 1.2s 淡出
+  function initRankingBar() {
+    document.querySelectorAll('.rb-name[data-rb-target]').forEach(a => {
+      a.addEventListener('click', function (ev) {
+        const card = document.getElementById('card-' + a.dataset.rbTarget);
+        if (!card) return;               // 無本頁卡(C/D)→ 走原 href 跳 Watchlist
+        ev.preventDefault();
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.add('rb-flash');
+        setTimeout(() => card.classList.remove('rb-flash'), 1200);
+      });
+    });
+  }
+
+  function boot() { init(); initMacro(); initNews(); initRankingBar(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();
