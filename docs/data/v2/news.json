@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T18:02:18+08:00",
+  "generated_at": "2026-07-07T08:30:10+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,98 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 16,
+  "count": 25,
   "items": [
+    {
+      "title": "輝達新機櫃傳卡關 SemiAnalysis 點名 PCB 設計不佳 波及台鏈",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T00:56:38+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://money.udn.com/money/story/5612/9611058",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "看好 AI 熱潮 欣興發 GDR 籌資448億 將用於支應海外購料",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T00:51:13+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://money.udn.com/money/story/5612/9611101",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達新機櫃卡關元凶？PCB 台系供應鏈喊冤",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T00:48:53+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://money.udn.com/money/story/5612/9611102",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "震旦通訊導入AI會員經濟 串連55家門市打破數據孤島",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T00:42:20+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://money.udn.com/money/story/5612/9611193",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "微軟加入AI所掀科技業裁員潮  砍4800名人力",
+      "source": "中央社財經",
+      "published_at": "2026-07-06T23:58:18+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607060371.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "不滿三星半導體員工獲優渥獎金　 非晶片部門擬抗議",
+      "source": "中央社財經",
+      "published_at": "2026-07-06T20:24:46+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607060332.aspx",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "外資賣超255億元連三賣 調節記憶體 反手敲進面板雙虎20萬張",
+      "source": "鉅亨網",
+      "published_at": "2026-07-06T18:30:37+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://news.cnyes.com/news/id/6524160",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "營收速報  - 昇陽半導體(8028)6月營收4.83億元年增率高達33.62％",
+      "source": "鉅亨網",
+      "published_at": "2026-07-06T18:20:16+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://news.cnyes.com/news/id/6524190",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "群益投信Q3展望：台股享獲利、資本雙漲利多 聚焦AI供應鏈缺料題材",
+      "source": "鉅亨網",
+      "published_at": "2026-07-06T17:59:18+08:00",
+      "fetched_at": "2026-07-07T08:30:10+08:00",
+      "url": "https://news.cnyes.com/news/id/6524052",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "鉅橡6月營收1.45億元 年增23% AI需求旺推升下半年展望佳",
       "source": "鉅亨網",
