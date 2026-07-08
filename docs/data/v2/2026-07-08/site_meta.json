@@ -1,0 +1,12 @@
+{
+  "data_date": "2026-07-08",
+  "rule_version": "v2.2",
+  "tw_count": 98,
+  "intl_count": 33,
+  "total_count": 131,
+  "skipped": [
+    "TWSE:2049"
+  ],
+  "generated_at": "2026-07-09T01:15:31+08:00",
+  "watchlist_updated": "2026-06-12"
+}
