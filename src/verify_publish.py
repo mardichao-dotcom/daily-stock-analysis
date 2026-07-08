@@ -182,7 +182,10 @@ def _check_assets(base: str, fetch) -> list[str]:
 # 現行清單以 v1.2 分界值為基礎;參數凍結後同步更新(config/position_model.json 為源)。
 _MD_BLACKLIST = ["100~130", "70~100", "40~70", "0~40", "-30~0", "水位", "檔位",
                  "遲滯", "權重", "加倍", "打分", "position_model", "hysteresis",
-                 "buffer_pct", "daily_dovish", "surprise_two_step"]
+                 "buffer_pct", "daily_dovish", "surprise_two_step",
+                 # 權重數字組合與類別小計字樣(2026-07-09 規格版補)
+                 "50/15/10/25", "50%/15%", "類別小計", "四類小計", "加權總分",
+                 "0.5,0.15", "technical\": 0.5"]
 
 
 def _check_macro_dashboard(base: str, fetch) -> list[str]:
@@ -194,8 +197,8 @@ def _check_macro_dashboard(base: str, fetch) -> list[str]:
     if code != 200:
         return [f"macro_dashboard.html HTTP {code}"]
     n_sig = html.count('class="md-chart"')
-    if n_sig != 9:
-        errs.append(f"宏觀頁訊號容器 {n_sig} ≠ 9")
+    if n_sig != 10:
+        errs.append(f"宏觀頁訊號容器 {n_sig} ≠ 10")
     if 'href="macro_dashboard.html"' not in fetch(f"{base}/index_v2.html")[1]:
         errs.append("儀表板 nav 無宏觀頁連結")
     code_j, body = fetch(f"{base}/data/v2/macro_signals.json")
@@ -211,7 +214,7 @@ def _check_macro_dashboard(base: str, fetch) -> list[str]:
             if age_h > 36:
                 errs.append(f"macro_signals.json 過期 {age_h:.0f}h(>36h)")
             missing = [k for k in ("taiex", "spx", "vix", "umich", "cpi", "light",
-                                   "dgs10", "usdtwd", "fedwatch")
+                                   "dgs10", "usdtwd", "fedwatch", "brent")
                        if k not in d.get("signals", {})]
             if missing:
                 errs.append(f"macro_signals.json 缺訊號 {missing}")

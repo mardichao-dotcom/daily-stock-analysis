@@ -1,10 +1,11 @@
-/* macro_dash.js — 宏觀數據頁(stage12 Day5-6 階段一,2026-07-09)
+/* macro_dash.js — 宏觀數據頁(stage12 Day5-6 階段一,2026-07-09 規格版)
  *
- * 讀 data/v2/macro_signals.json,以 Lightweight Charts 畫八訊號歷史線。
- * 🔴 紅線:本檔不得含內部模型的任何參數字樣(verify_publish 黑名單 grep 斷言,
- *          清單見 _MD_BLACKLIST——連註解都不能提,此處故意寫得含糊)。
- * 語意鐵律:不用紅綠(漲跌語意保留給行情頁);線色一律藍階+既有 MA 色。
- * 階段二將在此疊加警戒線(addPriceLine)與指針——增量,不重做。
+ * 讀 data/v2/macro_signals.json,以 Lightweight Charts 畫十圖(9 訊號,速度類上下疊)。
+ * 🔴 保密紅線:本檔不得含內部模型的任何參數字樣(verify_publish 黑名單 grep 斷言,
+ *              清單見 _MD_BLACKLIST——連註解都不能提,此處故意寫得含糊)。
+ * 畫法鐵律(spec):觀察指標一律線/點/柱不用 K 線;速度類主圖=20 日變化柱狀零軸置中;
+ *   燈號=官方五色時間軸(此為官方領域色,非漲跌語意);其餘線色藍階+既有 MA 色。
+ * 階段二:警戒線用 series.createPriceLine、指針掛 .md-current——增量疊加,不重做。
  */
 (function () {
   'use strict';
@@ -35,8 +36,11 @@
     };
   }
 
-  const BLUE = '#2962ff', LBLUE = '#8fb3ff', PALE = '#c9d6f2', GRAY = '#787b86';
+  const BLUE = '#2962ff', PALE = '#c9d6f2', GRAY = '#787b86';
   const MA_C = { ma20: '#fbbf24', ma60: '#a855f7', ma200: '#06b6d4' };
+  // 燈號官方五色(領域語意,非漲跌):紅/黃紅/綠/黃藍/藍
+  const LIGHT_C = { '紅': '#e03430', '黃紅': '#f59e0b', '綠': '#22c55e',
+                    '黃藍': '#38bdf8', '藍': '#2962ff' };
   const _charts = [];
 
   function line(chart, color, width) {
@@ -53,30 +57,55 @@
   const fmt = (v, nd) => v == null ? '—' :
     Number(v).toLocaleString('en-US', { minimumFractionDigits: nd == null ? 2 : nd,
                                         maximumFractionDigits: nd == null ? 2 : nd });
+  const rank = c => c && c.pct_rank != null
+    ? `<span class="md-note">歷史百分位 ${c.pct_rank}%</span>` : '';
 
   function mkChart(el, h) {
-    const chart = LightweightCharts.createChart(el, {
-      width: el.clientWidth || 800, height: h || 260, ...themeOpts(),
+    const div = document.createElement('div');
+    el.appendChild(div);
+    const chart = LightweightCharts.createChart(div, {
+      width: el.clientWidth || 800, height: h || 240, ...themeOpts(),
       timeScale: { timeVisible: false },
     });
-    _charts.push(chart);
+    _charts.push({ chart: chart, host: el });
     return chart;
   }
 
-  // 各訊號:當前值列 + 線序列
+  // 20 日變化柱狀(零軸置中;單色藍,速度非漲跌)
+  function speedBars(el, dates, vals, h) {
+    const c = mkChart(el, h || 200);
+    const s = c.addHistogramSeries({ color: BLUE, priceLineVisible: false,
+                                     lastValueVisible: false, base: 0 });
+    s.setData(pts(dates, vals).map(p => ({ ...p, color: BLUE })));
+    c.priceScale('right').applyOptions({ scaleMargins: { top: 0.15, bottom: 0.15 } });
+    return c;
+  }
+
+  function idx(el, s) {
+    const c = mkChart(el, 300);
+    line(c, BLUE, 2).setData(pts(s.dates, s.close));
+    ['ma20', 'ma60', 'ma200'].forEach(k => line(c, MA_C[k], 1).setData(pts(s.dates, s[k])));
+    return `收盤 <strong>${fmt(s.current.close)}</strong>`
+      + ` · MA20 ${fmt(s.current.ma20)} · MA60 ${fmt(s.current.ma60)} · MA200 ${fmt(s.current.ma200)}`
+      + legend([['收盤', BLUE], ['MA20', MA_C.ma20], ['MA60', MA_C.ma60], ['MA200', MA_C.ma200]]);
+  }
+
   const RENDER = {
     taiex: idx, spx: idx,
     vix: function (el, s) {
       const c = mkChart(el);
       line(c, BLUE, 2).setData(pts(s.dates, s.vix));
       line(c, PALE, 1).setData(pts(s.dates, s.vix3m));
+      const inv = (s.current.vix != null && s.current.vix3m != null
+                   && s.current.vix > s.current.vix3m);
       return `VIX <strong>${fmt(s.current.vix)}</strong> · VIX3M <strong>${fmt(s.current.vix3m)}</strong>`
-        + legend([['VIX', BLUE], ['VIX3M', PALE]]);
+        + `<span class="md-note">期限結構${inv ? '倒掛(短端恐慌高於中期)' : '正常(短端低於中期)'}</span>`
+        + rank(s.current) + legend([['VIX', BLUE], ['VIX3M', PALE]]);
     },
     umich: function (el, s) {
       const c = mkChart(el);
       line(c, BLUE, 2).setData(pts(mdates(s.months), s.values));
-      return `<strong>${fmt(s.current.value, 1)}</strong>`
+      return `<strong>${fmt(s.current.value, 1)}</strong>` + rank(s.current)
         + `<span class="md-note">資料月 ${s.last_date} · 發布 ${s.release_date}</span>`;
     },
     cpi: function (el, s) {
@@ -88,21 +117,35 @@
         + legend([['實際 m/m', BLUE], ['克里夫蘭預測', PALE]]);
     },
     light: function (el, s) {
-      const c = mkChart(el);
-      line(c, BLUE, 2).setData(pts(mdates(s.months), s.scores));
+      // 燈色時間軸:柱高=綜合分數、柱色=官方燈色
+      const c = mkChart(el, 220);
+      const hs = c.addHistogramSeries({ priceLineVisible: false, lastValueVisible: false });
+      const data = [];
+      for (let i = 0; i < s.months.length; i++) {
+        if (s.scores[i] == null) continue;
+        data.push({ time: s.months[i] + '-01', value: s.scores[i],
+                    color: LIGHT_C[s.lights[i]] || GRAY });
+      }
+      hs.setData(data);
       return `<strong>${fmt(s.current.score, 0)} 分(${s.current.light}燈)</strong>`
-        + `<span class="md-note">資料月 ${s.last_date} · 發布 ${s.release_date}</span>`;
+        + `<span class="md-note">資料月 ${s.last_date} · 發布 ${s.release_date}</span>`
+        + legend(Object.keys(LIGHT_C).map(k => [k, LIGHT_C[k]]));
     },
     dgs10: function (el, s) {
-      const c = mkChart(el);
-      line(c, BLUE, 2).setData(pts(s.dates, s.values));
-      return `<strong>${fmt(s.current.value)}%</strong>`;
+      speedBars(el, s.dates, s.chg20_bp);            // 主圖:20 日變化 bp
+      const c2 = mkChart(el, 140);                    // 副圖:絕對值
+      line(c2, GRAY, 1.2).setData(pts(s.dates, s.values));
+      return `<strong>${fmt(s.current.value)}%</strong> · 20日 <strong>${fmt(s.current.chg20_bp, 0)} bp</strong>`
+        + rank(s.current)
+        + legend([['20日變化(bp,上圖)', BLUE], ['絕對殖利率(下圖)', GRAY]]);
     },
     usdtwd: function (el, s) {
-      const c = mkChart(el);
-      line(c, BLUE, 2).setData(pts(s.dates, s.rates));
-      return `<strong>${fmt(s.current.rate, 3)}</strong>`
-        + (s.current.provisional ? '<span class="md-note">最新值為市場即時價暫代(官方 H.10 到值後覆寫)</span>' : '');
+      speedBars(el, s.dates, s.chg20_pct);           // 主圖:20 日變化 %
+      const c2 = mkChart(el, 140);                    // 副圖:絕對匯率
+      line(c2, GRAY, 1.2).setData(pts(s.dates, s.rates));
+      return `<strong>${fmt(s.current.rate, 3)}</strong> · 20日 <strong>${fmt(s.current.chg20_pct, 2)}%</strong>`
+        + (s.current.provisional ? '<span class="md-note">最新值為市場價暫代(官方 H.10 到值後覆寫)</span>' : '')
+        + legend([['20日變化(%,上圖;正=台幣貶)', BLUE], ['絕對匯率(下圖)', GRAY]]);
     },
     fedwatch: function (el, s) {
       const c = mkChart(el);
@@ -112,16 +155,13 @@
       return `下次會議 ${s.current.next_meeting}:隱含 <strong>${fmt(bp, 1)} bp</strong>(${dir})`
         + '<span class="md-note">單位:基點;非會議月的歷史段無市場數據屬正常</span>';
     },
+    brent: function (el, s) {
+      const c = mkChart(el);
+      line(c, BLUE, 2).setData(pts(s.dates, s.prices));
+      return `<strong>$${fmt(s.current.price)}</strong>/桶` + rank(s.current)
+        + '<span class="md-note">FRED/EIA 現貨,發布滯後數日;純觀察不進計分</span>';
+    },
   };
-
-  function idx(el, s) {
-    const c = mkChart(el, 300);
-    line(c, BLUE, 2).setData(pts(s.dates, s.close));
-    ['ma20', 'ma60', 'ma200'].forEach(k => line(c, MA_C[k], 1).setData(pts(s.dates, s[k])));
-    return `收盤 <strong>${fmt(s.current.close)}</strong>`
-      + ` · MA20 ${fmt(s.current.ma20)} · MA60 ${fmt(s.current.ma60)} · MA200 ${fmt(s.current.ma200)}`
-      + legend([['收盤', BLUE], ['MA20', MA_C.ma20], ['MA60', MA_C.ma60], ['MA200', MA_C.ma200]]);
-  }
 
   function legend(items) {
     return '<span class="md-legend">' + items.map(
@@ -154,14 +194,13 @@
         if (cur) cur.textContent = '⚠️ 圖表渲染失敗:' + e.message;
       }
     });
-    // 主題切換 → 重刷圖表底色(theme.js 派發 themechange)
     window.addEventListener('themechange', () => {
       const o = themeOpts();
-      _charts.forEach(ch => { try { ch.applyOptions(o); } catch (e) { /* 已銷毀 */ } });
+      _charts.forEach(c => { try { c.chart.applyOptions(o); } catch (e) { /* */ } });
     });
     window.addEventListener('resize', () => {
-      document.querySelectorAll('.md-chart').forEach((el, i) => {
-        try { _charts[i].applyOptions({ width: el.clientWidth }); } catch (e) { /* */ }
+      _charts.forEach(c => {
+        try { c.chart.applyOptions({ width: c.host.clientWidth }); } catch (e) { /* */ }
       });
     });
   }

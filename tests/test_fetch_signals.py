@@ -303,7 +303,7 @@ class TestFedExpectations(unittest.TestCase):
 class TestMacroDashboard(unittest.TestCase):
     def test_redline_blacklist_clean(self):
         """紅線:頁殼/JS 不含模型字樣(本地版,線上由 verify_publish 把關)。"""
-        from src.render_macro_dashboard import render_html, SIGNALS
+        from src.render_macro_dashboard import render_html
         from src.verify_publish import _MD_BLACKLIST
         html = render_html()
         js = open(os.path.join(PROJECT_ROOT, "docs", "assets", "macro_dash.js"),
@@ -312,8 +312,7 @@ class TestMacroDashboard(unittest.TestCase):
             hits = [b for b in _MD_BLACKLIST if b in text]
             self.assertEqual(hits, [], f"{label} 踩紅線:{hits}")
         # 九訊號容器 + 中性描述不含任何 v1.2 分界數字組合
-        self.assertEqual(html.count('class="md-chart"'), 9)
-        self.assertEqual(len(SIGNALS), 9)
+        self.assertEqual(html.count('class="md-chart"'), 10)
 
     def test_build_data_structure(self):
         from src.render_macro_dashboard import build_data
@@ -321,7 +320,14 @@ class TestMacroDashboard(unittest.TestCase):
         self.assertEqual(
             sorted(d["signals"]),
             sorted(["taiex", "spx", "vix", "umich", "cpi", "light",
-                    "dgs10", "usdtwd", "fedwatch"]))
+                    "dgs10", "usdtwd", "fedwatch", "brent"]))
+        # 速度序列(20日變化)與絕對值等長;燈色齊備
+        self.assertEqual(len(d["signals"]["dgs10"]["chg20_bp"]),
+                         len(d["signals"]["dgs10"]["values"]))
+        self.assertEqual(len(d["signals"]["usdtwd"]["chg20_pct"]),
+                         len(d["signals"]["usdtwd"]["rates"]))
+        self.assertIn(d["signals"]["light"]["lights"][-1],
+                      ("紅", "黃紅", "綠", "黃藍", "藍"))
         t = d["signals"]["taiex"]
         self.assertEqual(len(t["dates"]), len(t["close"]))
         self.assertGreater(len(t["dates"]), 3000)          # 12.9 年全序列

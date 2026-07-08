@@ -34,8 +34,7 @@ GOOD_PAGE = (_VLINK +
              '<a href="macro_dashboard.html">🌐 宏觀</a>'
              '<div class="meta">資料日期 2026-06-11 ｜ 規則 v2.2 ｜ 台股 98 檔 ｜ 國際 33 檔</div>')
 MACRO_DASH_PAGE = _VLINK + '<a href="macro_dashboard.html">x</a>' + (
-    '<div class="md-chart" data-signal="x"></div>' * 9).replace('div class="md-chart"',
-    'div class="md-chart"')
+    '<div class="md-chart" data-signal="x"></div>' * 10)
 
 
 def _fresh_macro_signals():
@@ -43,7 +42,7 @@ def _fresh_macro_signals():
     now = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S+08:00")
     return json.dumps({"generated_at": now, "signals": {
         k: {} for k in ("taiex", "spx", "vix", "umich", "cpi", "light",
-                        "dgs10", "usdtwd", "fedwatch")}})
+                        "dgs10", "usdtwd", "fedwatch", "brent")}})
 GOOD_HISTORY = _VLINK + '<span class="history-summary">S 3 / A 2 / B 2</span>'
 US_JSON = json.dumps({"key_prices": {"lines": [1, 2, 3, 4, 5, 6, 7, 8, 9]}})
 OK_JSON = json.dumps({"key_prices": {"lines": []}})

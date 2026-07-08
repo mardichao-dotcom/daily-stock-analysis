@@ -125,6 +125,8 @@ def ensure_tables(conn: sqlite3.Connection) -> None:
         decision_date TEXT PRIMARY KEY, start_date TEXT, scheduled INTEGER,
         tgt_upper_before REAL, tgt_upper_after REAL, change_bp REAL,
         pre_expected_bp REAL, source TEXT);
+    CREATE TABLE IF NOT EXISTS brent_daily (
+        date TEXT PRIMARY KEY, price REAL, source TEXT);
     """)
 
 
@@ -451,6 +453,17 @@ def upsert_usdtwd_provisional(db_path: str, start: str) -> int:
     return len(rows)
 
 
+# ── brent_daily(油價,stage12 Day5-6 階段一唯一新增源;純觀察,不進計分)──────
+def upsert_brent(db_path: str, start: str, *, key: str | None = None) -> int:
+    rows = [(d, v, "FRED DCOILBRENTEU") for d, v in
+            fetch_fred("DCOILBRENTEU", start, key=key) if 5 <= v <= 400]
+    conn = _conn(db_path)
+    conn.executemany("INSERT OR REPLACE INTO brent_daily VALUES (?,?,?)", rows)
+    conn.commit()
+    conn.close()
+    return len(rows)
+
+
 # ── cpi_events(克里夫蘭 nowcast)─────────────────────────────────────────────
 def _label_to_iso(label: str, target_year: int, target_month: int) -> str | None:
     """窗口內 'MM/DD' → ISO(年份由目標月推斷;窗口可跨 M-2..M+1)。"""
@@ -755,6 +768,7 @@ def run_daily(db_path: str = MACRO_DB) -> int:
         ("dgs10", lambda: upsert_dgs10(db_path, recent_fred, key=key)),
         ("usdtwd 官方", lambda: upsert_usdtwd_official(db_path, recent_fred, key=key)),
         ("usdtwd 暫代", lambda: upsert_usdtwd_provisional(db_path, recent_yf)),
+        ("brent 油價", lambda: upsert_brent(db_path, recent_fred, key=key)),
         ("ff 期貨", lambda: daily_zq_contracts(db_path)),
         ("umich", lambda: upsert_umich(
             db_path, fetch_umich_with_releases(recent_fred[:8] + "01", key=key))),
