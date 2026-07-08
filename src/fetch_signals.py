@@ -219,6 +219,7 @@ def backfill_taiex(db_path: str = MACRO_DB, start_ym: str = "201206",
             "SELECT substr(date,1,4)||substr(date,6,2), COUNT(*) FROM idx_daily "
             "WHERE market='TAIEX' GROUP BY 1").fetchall())
         conn.close()
+    cur_ym = datetime.now(TZ).strftime("%Y%m")
     total, consec_fail = 0, 0
     for ym in months:
         if skip_existing and have_counts.get(ym, 0) >= 15:
@@ -226,10 +227,21 @@ def backfill_taiex(db_path: str = MACRO_DB, start_ym: str = "201206",
         rows = None
         for attempt in range(3):
             try:
-                rows = [(d, c) for d, c, _ in taiex_daily.fetch_month(ym)
-                        if _sane("TAIEX", c)]
+                got = taiex_daily.fetch_month(ym)
+                # 防護 2(2026-07-08 回放體檢教訓):限流時 TWSE 可能回「別月資料」
+                # 或空結果(stat 查無)——別月列會被 REPLACE 蓋進錯的月、本月留空,
+                # 且不拋例外 → 靜默漏洞(2022-07/09/11、2024-03/04 五個月中招)。
+                # 一律過濾非請求月列;歷史月拿到空結果視同限流重試。
+                rows_ok = [(d, c) for d, c, _ in got
+                           if d[:4] + d[5:7] == ym and _sane("TAIEX", c)]
+                if len(rows_ok) < len(got):
+                    print(f"[signals] TAIEX {ym} 回應含 {len(got) - len(rows_ok)} 筆"
+                          "非本月列(限流髒回應),已剔除", file=sys.stderr)
+                if not rows_ok and ym != cur_ym:
+                    raise RuntimeError("歷史月空結果(查無型限流)")
+                rows = rows_ok
                 break
-            except Exception as e:                 # noqa: BLE001 — 含 307 限流
+            except Exception as e:                 # noqa: BLE001 — 含 307/查無 限流
                 print(f"[signals] TAIEX {ym} 第{attempt + 1}次失敗:{str(e)[:50]}"
                       f"{',退避 45s' if attempt < 2 else ''}", file=sys.stderr)
                 if attempt < 2:
