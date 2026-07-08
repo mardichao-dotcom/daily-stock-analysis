@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T08:30:10+08:00",
+  "generated_at": "2026-07-08T08:30:04+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,159 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 25,
+  "count": 40,
   "items": [
+    {
+      "title": "AI產業前景不明拖累科技股　美股收盤盡墨",
+      "source": "中央社財經",
+      "published_at": "2026-07-08T05:33:42+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607080008.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "電電公會理事長暨鴻海集團董事長劉揚偉：AI 需求會愈來愈大",
+      "source": "經濟日報",
+      "published_at": "2026-07-08T01:56:19+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://money.udn.com/money/story/5612/9613556",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "緯創董事長林憲銘：AI 是一個新的時代 不是另外一個泡沫",
+      "source": "經濟日報",
+      "published_at": "2026-07-08T01:55:43+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://money.udn.com/money/story/5612/9613558",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "研究報告：三年後產業債務逾7兆美元 輝達扮 AI 央行解融資痛點",
+      "source": "經濟日報",
+      "published_at": "2026-07-08T01:35:29+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://money.udn.com/money/story/5612/9613659",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "財報季開跑之際AI類股降溫　歐洲股市漲跌互見",
+      "source": "中央社財經",
+      "published_at": "2026-07-08T00:53:27+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607080003.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "傳DeepSeek正自研AI晶片　美股那指開低",
+      "source": "中央社財經",
+      "published_at": "2026-07-07T22:14:40+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607070395.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "上緯智聯與空氣島文創聯手 打造全台首創「AI 機器狗互動遊樂園」",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T21:43:36+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://money.udn.com/money/story/5612/9613397",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電成功孕育森林蜂蜜？中科攜手台積電等大廠榮獲國際森林驗證證書",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T21:33:35+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://money.udn.com/money/story/5612/9613379",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "裕日車推 X-TRAIL 改款 降價加配備、超值17萬元 89.9萬元即可入手",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T21:30:40+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://money.udn.com/money/story/10871/9613370",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "昇達科看好太赫茲頻率3大應用　衛星、6G與AI伺服器",
+      "source": "經濟日報",
+      "published_at": "2026-07-07T21:13:07+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://money.udn.com/money/story/11162/9613353",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "昇達科看好太赫茲頻率3大應用　衛星、6G與AI伺服器",
+      "source": "中央社財經",
+      "published_at": "2026-07-07T21:07:44+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607070370.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈電子五哥營收〉廣達營收寫三高 單季營收首度破兆元 AI伺服器需求持續熱",
+      "source": "鉅亨網",
+      "published_at": "2026-07-07T18:59:21+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://news.cnyes.com/news/id/6525892",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "油價金價全漲 台灣6月CPI年增率衝上2.6% 創近1年半新高",
+      "source": "鉅亨網",
+      "published_at": "2026-07-07T17:50:22+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://news.cnyes.com/news/id/6525640",
+      "matched_keywords": [
+        "CPI"
+      ]
+    },
+    {
+      "title": "致伸6月營收62.9億元月年雙增 AIOT、聲學雙動能走強",
+      "source": "鉅亨網",
+      "published_at": "2026-07-07T16:50:40+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://news.cnyes.com/news/id/6525544",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "展碁國際Q2營收95.9億元年增49.6%續創新高 PC及記憶體需求強勁挹注",
+      "source": "鉅亨網",
+      "published_at": "2026-07-07T14:08:42+08:00",
+      "fetched_at": "2026-07-08T08:30:04+08:00",
+      "url": "https://news.cnyes.com/news/id/6525303",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
     {
       "title": "輝達新機櫃傳卡關 SemiAnalysis 點名 PCB 設計不佳 波及台鏈",
       "source": "經濟日報",
