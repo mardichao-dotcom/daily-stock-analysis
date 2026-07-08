@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宏觀數據 — 台股儀表板</title>
+<link rel="stylesheet" href="assets/tokens.css?v=63d7946b">
+<link rel="stylesheet" href="assets/style_v2.css?v=63d7946b">
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+<header class="page-header">
+  <div class="container">
+    <nav class="page-nav">
+      <a href="index.html">← 回首頁</a>
+      <a href="index_v2.html">📈 儀表板</a>
+      <a href="watchlist_v2.html">📋 Watchlist</a>
+      <a href="tags.html">🔥 主題熱度</a>
+      <a href="weekly.html">📅 週報</a>
+      <span class="page-nav-current">🌐 宏觀數據</span>
+    </nav>
+    <h1>🌐 宏觀數據</h1>
+    <div class="meta">八項宏觀訊號的歷史序列與當前值 ｜ 日頻項每日 08:30 更新、月頻項照各自公布節律 ｜ 頁面產出 2026-07-08 17:19</div>
+  </div>
+</header>
+<main class="container md-container">
+
+<section class="md-signal" id="sig-taiex">
+  <div class="md-head">
+    <h2>台股加權指數與均線</h2>
+    <span class="md-updated" data-updated="taiex">—</span>
+  </div>
+  <div class="md-current" data-current="taiex">載入中…</div>
+  <div class="md-chart" data-signal="taiex"></div>
+  <p class="md-desc">收盤價與 20/60/200 日移動平均。均線反映不同期間的平均持有成本,價格與均線的相對位置常被市場用來衡量趨勢方向與強度。</p>
+</section>
+<section class="md-signal" id="sig-spx">
+  <div class="md-head">
+    <h2>美股 S&P 500 與均線</h2>
+    <span class="md-updated" data-updated="spx">—</span>
+  </div>
+  <div class="md-current" data-current="spx">載入中…</div>
+  <div class="md-chart" data-signal="spx"></div>
+  <p class="md-desc">美股大盤與其 20/60/200 日均線。美股為全球風險資產的領頭市場,其趨勢對台股外資動向有顯著的傳導效果。</p>
+</section>
+<section class="md-signal" id="sig-vix">
+  <div class="md-head">
+    <h2>VIX 波動率(含 VIX3M)</h2>
+    <span class="md-updated" data-updated="vix">—</span>
+  </div>
+  <div class="md-current" data-current="vix">載入中…</div>
+  <div class="md-chart" data-signal="vix"></div>
+  <p class="md-desc">S&P 500 選擇權隱含的未來 30 天年化波動率(俗稱恐慌指數);VIX3M 為 3 個月期版本。數值升高通常伴隨避險情緒升溫,兩者的相對高低反映短期恐慌與中期預期的差異。</p>
+</section>
+<section class="md-signal" id="sig-umich">
+  <div class="md-head">
+    <h2>密大消費者信心(月頻)</h2>
+    <span class="md-updated" data-updated="umich">—</span>
+  </div>
+  <div class="md-current" data-current="umich">載入中…</div>
+  <div class="md-chart" data-signal="umich"></div>
+  <p class="md-desc">密西根大學消費者信心指數終值。反映美國家庭對自身財務與整體經濟的預期,是消費動能與衰退討論中最常被引用的軟數據之一。</p>
+</section>
+<section class="md-signal" id="sig-cpi">
+  <div class="md-head">
+    <h2>美國 CPI:實際 vs 克里夫蘭預測(月頻)</h2>
+    <span class="md-updated" data-updated="cpi">—</span>
+  </div>
+  <div class="md-current" data-current="cpi">載入中…</div>
+  <div class="md-chart" data-signal="cpi"></div>
+  <p class="md-desc">CPI 月增率實際值與克里夫蘭聯儲 Inflation Nowcasting 的會前預測。兩者的差距(通膨驚奇)反映公布當下對市場通膨預期的衝擊方向。</p>
+</section>
+<section class="md-signal" id="sig-light">
+  <div class="md-head">
+    <h2>台灣景氣對策信號(月頻)</h2>
+    <span class="md-updated" data-updated="light">—</span>
+  </div>
+  <div class="md-current" data-current="light">載入中…</div>
+  <div class="md-chart" data-signal="light"></div>
+  <p class="md-desc">國發會景氣對策信號綜合分數,由貨幣總計數、股價指數、出口等 9 項構成項目合成,以五色燈號呈現台灣總體景氣位置,於資料月的次月下旬發布。</p>
+</section>
+<section class="md-signal" id="sig-dgs10">
+  <div class="md-head">
+    <h2>美債 10 年期殖利率</h2>
+    <span class="md-updated" data-updated="dgs10">—</span>
+  </div>
+  <div class="md-current" data-current="dgs10">載入中…</div>
+  <div class="md-chart" data-signal="dgs10"></div>
+  <p class="md-desc">美國 10 年期公債殖利率(日頻)。全球資產定價之錨,同時反映市場對長期通膨與實質利率的綜合預期;其變動速度常比水準本身更受市場關注。</p>
+</section>
+<section class="md-signal" id="sig-usdtwd">
+  <div class="md-head">
+    <h2>美元兌新台幣</h2>
+    <span class="md-updated" data-updated="usdtwd">—</span>
+  </div>
+  <div class="md-current" data-current="usdtwd">載入中…</div>
+  <div class="md-chart" data-signal="usdtwd"></div>
+  <p class="md-desc">USD/TWD 匯率,上升代表台幣貶值。台幣匯率與外資對台股的資金進出高度相關,歷史序列採 Fed H.10 官方統計,最近數日以市場即時價暫代、官方值到後覆寫。</p>
+</section>
+<section class="md-signal" id="sig-fedwatch">
+  <div class="md-head">
+    <h2>FedWatch:下次 FOMC 會議市場預期</h2>
+    <span class="md-updated" data-updated="fedwatch">—</span>
+  </div>
+  <div class="md-current" data-current="fedwatch">載入中…</div>
+  <div class="md-chart" data-signal="fedwatch"></div>
+  <p class="md-desc">由聯邦基金期貨自算的下次會議利率變動隱含預期(基點)。正值代表市場偏向升息、負值偏向降息。歷史段僅會議月有可觀測的市場定價,非會議月無數據屬正常。</p>
+</section>
+</main>
+<script src="assets/theme.js?v=63d7946b" defer></script>
+<script src="assets/macro_dash.js?v=63d7946b" defer></script>
+</body>
+</html>

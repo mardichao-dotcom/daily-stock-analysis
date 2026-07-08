@@ -198,6 +198,7 @@ def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool,
       <a href="watchlist_v2.html">📋 Watchlist</a>
       <a href="tags.html">🔥 主題熱度</a>
       <span class="page-nav-current">📅 週報</span>
+      <a href="macro_dashboard.html">🌐 宏觀</a>
     </nav>
     <h1>📅 每週市場情緒週報</h1>
     <div class="meta">資料日期 <strong>{_h(date)}</strong> ｜ 情緒面 NAAIM + VIX（AAII 已停用）｜ 產出時間 {_h(gen)}</div>

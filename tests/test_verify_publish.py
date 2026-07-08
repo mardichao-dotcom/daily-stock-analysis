@@ -21,15 +21,29 @@ SITE_META = {"data_date": DATE, "rule_version": "v2.2", "tw_count": 98,
 # 資產版本 mock(Batch1 cache-busting):V = 資產內容 md5 前 8 碼
 import hashlib as _hashlib
 MOCK_ASSETS = {"tokens.css": ":root{--x:1}", "style_v2.css": "body{}",
-               "theme.js": "//t", "chart_v2.js": "//c", "events.js": "//e"}
+               "theme.js": "//t", "chart_v2.js": "//c", "events.js": "//e",
+               "macro_dash.js": "//m"}
 _h5 = _hashlib.md5()
-for _n in ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js"]:
+for _n in ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js",
+           "macro_dash.js"]:
     _h5.update(MOCK_ASSETS[_n].encode())
 MOCK_V = _h5.hexdigest()[:8]
 _VLINK = f'<link rel="stylesheet" href="assets/style_v2.css?v={MOCK_V}">'
 
 GOOD_PAGE = (_VLINK +
+             '<a href="macro_dashboard.html">🌐 宏觀</a>'
              '<div class="meta">資料日期 2026-06-11 ｜ 規則 v2.2 ｜ 台股 98 檔 ｜ 國際 33 檔</div>')
+MACRO_DASH_PAGE = _VLINK + '<a href="macro_dashboard.html">x</a>' + (
+    '<div class="md-chart" data-signal="x"></div>' * 9).replace('div class="md-chart"',
+    'div class="md-chart"')
+
+
+def _fresh_macro_signals():
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    return json.dumps({"generated_at": now, "signals": {
+        k: {} for k in ("taiex", "spx", "vix", "umich", "cpi", "light",
+                        "dgs10", "usdtwd", "fedwatch")}})
 GOOD_HISTORY = _VLINK + '<span class="history-summary">S 3 / A 2 / B 2</span>'
 US_JSON = json.dumps({"key_prices": {"lines": [1, 2, 3, 4, 5, 6, 7, 8, 9]}})
 OK_JSON = json.dumps({"key_prices": {"lines": []}})
@@ -110,6 +124,10 @@ def make_fetch(overrides=None):
             return (200, MOCK_ASSETS[name]) if name in MOCK_ASSETS else (404, "")
         if url.endswith("macro.json"):
             return 200, _fresh_macro_json()
+        if url.endswith("macro_signals.json"):
+            return 200, _fresh_macro_signals()
+        if url.endswith("macro_dashboard.html"):
+            return 200, MACRO_DASH_PAGE
         if url.endswith("news.json"):
             return 200, _fresh_news_json()
         if url.endswith("site_meta.json"):

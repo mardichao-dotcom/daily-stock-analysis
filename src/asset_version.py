@@ -16,7 +16,8 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 ASSETS_DIR = os.path.join(PROJECT_ROOT, "docs", "assets")
 
 # 參與 hash 的資產(引用時掛 ?v=;新增前端資產記得加進來)
-VERSIONED_ASSETS = ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js"]
+VERSIONED_ASSETS = ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js",
+                    "macro_dash.js"]
 
 
 def build_hash(assets_dir: str = ASSETS_DIR) -> str:

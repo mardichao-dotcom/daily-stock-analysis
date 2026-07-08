@@ -308,6 +308,7 @@ def render(data: dict) -> str:
       <a href="watchlist_v2.html">📋 Watchlist</a>
       <span class="page-nav-current">🔥 主題熱度</span>
       <a href="weekly.html">📅 週報</a>
+      <a href="macro_dashboard.html">🌐 宏觀</a>
     </nav>
     <h1>🔥 主題熱度排行</h1>
     <div class="meta">

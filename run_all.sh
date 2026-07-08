@@ -268,7 +268,9 @@ render_v2_all() {
     # 9-6 歷史索引(掃 docs/index_v2_*.html)
     python3 src/render_history.py && \
     # 9-7 入口頁(landing)
-    python3 src/render_landing.py --result filtered_result_v2.json
+    python3 src/render_landing.py --result filtered_result_v2.json && \
+    # 9-8 宏觀數據頁(stage12;與五頁同輪重產保 ?v= 一致,資料層 [8.7] 已更新)
+    python3 -m src.render_macro_dashboard
 }
 try_step render_v2 render_v2_all
 

@@ -1211,3 +1211,24 @@ details.wl-stock.rb-flash { border: 1px solid var(--accent); border-radius: var(
 .hd-taiex.flat { color: var(--text-muted); }
 /* 三柱堆疊(2026-07-07 調整):單張高度收斂,三張不擠版面 */
 .chips2-multi .chips2-bars, .chips2-multi .chips2-scale { height: 52px; }
+/* ── 宏觀數據頁(stage12 Day5-6 階段一;紅線:無任何模型分數/閾值元素)── */
+.md-container { max-width: 980px; padding-bottom: 48px; }
+.md-signal { background: var(--surface-panel); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: var(--space-6) var(--space-7);
+  margin-top: var(--space-6); }
+.md-head { display: flex; align-items: baseline; justify-content: space-between;
+  gap: var(--space-4); }
+.md-head h2 { font-size: 16px; margin: 0; }
+.md-updated { font: var(--type-caption); color: var(--text-faint); }
+.md-current { font-variant-numeric: tabular-nums; margin: var(--space-3) 0;
+  color: var(--text-base); display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: var(--space-4); }
+.md-current strong { font-size: 18px; }
+.md-note { font: var(--type-caption); color: var(--text-faint); }
+.md-legend { display: inline-flex; gap: 10px; font: var(--type-caption);
+  color: var(--text-muted); }
+.md-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 2px;
+  margin-right: 4px; }
+.md-chart { min-height: 260px; }
+.md-desc { font: var(--type-caption); color: var(--text-muted);
+  margin: var(--space-3) 0 0; line-height: 1.7; }

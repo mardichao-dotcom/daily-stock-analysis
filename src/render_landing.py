@@ -115,6 +115,9 @@ def render(*,
     <a class="li-row" href="weekly.html"><span class="li-name">🗂 週報</span>
       <span class="li-sum">NAAIM · VIX · XLY/XLP · 週融資(億元)· 每週六 09:00</span>
       <span class="li-go">→</span></a>
+    <a class="li-row" href="macro_dashboard.html"><span class="li-name">🌐 宏觀數據</span>
+      <span class="li-sum">台美股均線 · VIX · 密大 · CPI · 燈號 · 10Y · 台幣 · FedWatch</span>
+      <span class="li-go">→</span></a>
   </div>
 
   <details class="landing-settings">

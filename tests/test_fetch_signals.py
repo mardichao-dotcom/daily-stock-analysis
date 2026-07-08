@@ -297,3 +297,32 @@ class TestFedExpectations(unittest.TestCase):
         self.assertAlmostEqual(d1["+25"], 0.24, places=2)
         # 捲積機率總和 = 1
         self.assertAlmostEqual(sum(tree[1]["dist_bp_from_now"].values()), 1.0, places=2)
+
+
+# ── 宏觀數據頁(stage12 Day5-6 階段一)────────────────────────────────────────
+class TestMacroDashboard(unittest.TestCase):
+    def test_redline_blacklist_clean(self):
+        """紅線:頁殼/JS 不含模型字樣(本地版,線上由 verify_publish 把關)。"""
+        from src.render_macro_dashboard import render_html, SIGNALS
+        from src.verify_publish import _MD_BLACKLIST
+        html = render_html()
+        js = open(os.path.join(PROJECT_ROOT, "docs", "assets", "macro_dash.js"),
+                  encoding="utf-8").read()
+        for text, label in ((html, "html"), (js, "js")):
+            hits = [b for b in _MD_BLACKLIST if b in text]
+            self.assertEqual(hits, [], f"{label} 踩紅線:{hits}")
+        # 九訊號容器 + 中性描述不含任何 v1.2 分界數字組合
+        self.assertEqual(html.count('class="md-chart"'), 9)
+        self.assertEqual(len(SIGNALS), 9)
+
+    def test_build_data_structure(self):
+        from src.render_macro_dashboard import build_data
+        d = build_data()
+        self.assertEqual(
+            sorted(d["signals"]),
+            sorted(["taiex", "spx", "vix", "umich", "cpi", "light",
+                    "dgs10", "usdtwd", "fedwatch"]))
+        t = d["signals"]["taiex"]
+        self.assertEqual(len(t["dates"]), len(t["close"]))
+        self.assertGreater(len(t["dates"]), 3000)          # 12.9 年全序列
+        self.assertIsNotNone(d["signals"]["light"]["current"]["light"])

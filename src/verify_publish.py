@@ -127,14 +127,16 @@ def run_checks(base: str, data_date: str, *, fetch=_fetch) -> list[str]:
 
     # ── 11:資產版本一致性(stage10 Batch1 cache-busting)──
     errors.extend(_check_assets(base, fetch))
+    errors.extend(_check_macro_dashboard(base, fetch))
 
     return errors
 
 
 # 每晚重產的頁面(同一輪 render → 必須引用同一 ?v=);weekly.html 週六才重產,不在此列
 _VERSIONED_PAGES = ["index.html", "index_v2.html", "watchlist_v2.html",
-                    "tags.html", "history.html"]
-_VERSIONED_ASSETS = ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js"]
+                    "tags.html", "history.html", "macro_dashboard.html"]
+_VERSIONED_ASSETS = ["tokens.css", "style_v2.css", "theme.js", "chart_v2.js", "events.js",
+                     "macro_dash.js"]
 
 
 def _check_assets(base: str, fetch) -> list[str]:
@@ -173,6 +175,56 @@ def _check_assets(base: str, fetch) -> list[str]:
                     f"(Pages 部署滯後或資產未同步)")
     if not errs:
         print(f"[verify_publish] ✅ 資產版本一致(v={v},五頁 × 五資產)")
+    return errs
+
+
+# 🔴 stage12 紅線黑名單:宏觀頁/JS/JSON 不得出現水位模型分數/權重/檔位/閾值字樣。
+# 現行清單以 v1.2 分界值為基礎;參數凍結後同步更新(config/position_model.json 為源)。
+_MD_BLACKLIST = ["100~130", "70~100", "40~70", "0~40", "-30~0", "水位", "檔位",
+                 "遲滯", "權重", "加倍", "打分", "position_model", "hysteresis",
+                 "buffer_pct", "daily_dovish", "surprise_two_step"]
+
+
+def _check_macro_dashboard(base: str, fetch) -> list[str]:
+    """宏觀數據頁(stage12 Day5-6 階段一):
+    ① 頁 200 + 九個訊號容器 + nav 連結;② macro_signals.json 新鮮(<36h,08:30 更新)
+    + 九訊號齊;③ 紅線 grep:頁/JS/JSON 不含任何模型分數/權重/檔位字樣。"""
+    errs: list[str] = []
+    code, html = fetch(f"{base}/macro_dashboard.html")
+    if code != 200:
+        return [f"macro_dashboard.html HTTP {code}"]
+    n_sig = html.count('class="md-chart"')
+    if n_sig != 9:
+        errs.append(f"宏觀頁訊號容器 {n_sig} ≠ 9")
+    if 'href="macro_dashboard.html"' not in fetch(f"{base}/index_v2.html")[1]:
+        errs.append("儀表板 nav 無宏觀頁連結")
+    code_j, body = fetch(f"{base}/data/v2/macro_signals.json")
+    if code_j != 200:
+        errs.append(f"macro_signals.json HTTP {code_j}")
+        body = ""
+    else:
+        try:
+            d = json.loads(body)
+            from datetime import datetime, timezone, timedelta
+            gen = datetime.fromisoformat(d.get("generated_at", "1970-01-01T00:00:00+08:00"))
+            age_h = (datetime.now(timezone(timedelta(hours=8))) - gen).total_seconds() / 3600
+            if age_h > 36:
+                errs.append(f"macro_signals.json 過期 {age_h:.0f}h(>36h)")
+            missing = [k for k in ("taiex", "spx", "vix", "umich", "cpi", "light",
+                                   "dgs10", "usdtwd", "fedwatch")
+                       if k not in d.get("signals", {})]
+            if missing:
+                errs.append(f"macro_signals.json 缺訊號 {missing}")
+        except (ValueError, KeyError) as e:
+            errs.append(f"macro_signals.json 解析失敗:{e}")
+    code_js, js = fetch(f"{base}/assets/macro_dash.js")
+    for text, label in ((html, "頁面"), (js if code_js == 200 else "", "JS"),
+                        (body, "JSON")):
+        hits = [t for t in _MD_BLACKLIST if t in text]
+        if hits:
+            errs.append(f"🔴 紅線:宏觀{label}出現模型字樣 {hits}")
+    if not errs:
+        print("[verify_publish] ✅ 宏觀頁:9 訊號 + 資料新鮮 + 紅線 grep 乾淨")
     return errs
 
 

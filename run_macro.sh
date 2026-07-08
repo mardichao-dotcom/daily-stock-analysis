@@ -28,6 +28,17 @@ if [[ $FM_EC -ne 0 ]]; then
     exit 1
 fi
 
+# ── [1.2] 宏觀訊號層日更 + 宏觀數據頁(stage12 Day5-6 階段一,非致命)─────────
+# 混頻:日頻項(指數MA/VIX/10Y/台幣/FedWatch)08:30 更新(美股剛收盤最新鮮);
+# 月頻項(密大/CPI/燈號)函式內自判公布節律。19:00 主跑亦跑同組(冪等)。
+echo "[macro 1.2] 訊號層日更 → macro_dashboard..."
+python3 -m src.fetch_signals --daily 2>&1 | grep -vE 'NotOpenSSL|warnings.warn' || \
+    echo "[macro $(TS)] ⚠️ fetch_signals 部分失敗(頁面以既有資料重產)"
+python3 -m src.fed_expectations 2>&1 | grep -vE 'NotOpenSSL|warnings.warn' || \
+    echo "[macro $(TS)] ⚠️ fed_expectations 失敗(不擋)"
+python3 -m src.render_macro_dashboard 2>&1 | grep -vE 'NotOpenSSL|warnings.warn' || \
+    echo "[macro $(TS)] ⚠️ 宏觀頁重產失敗(沿用線上舊版)"
+
 # ── [1.5] fetch_news(新聞資料層,只做資料;過濾共用 news_keywords.json,非致命)──
 echo "[macro 1.5] 抓新聞 RSS → news.json(關鍵字過濾,只存標題+連結)..."
 python3 -m src.fetch_news 2>&1 | grep -vE 'NotOpenSSL|warnings.warn' || \
@@ -44,7 +55,8 @@ publish_macro() {
     fi
     # 先 commit 本輪 macro 檔(fetch_macro 剛改了 macro.json),再 rebase:
     git add -f docs/data/v2/macro.json docs/data/v2/news.json docs/assets/events.js \
-        docs/assets/style_v2.css config/news_keywords.json 2>/dev/null || true
+        docs/assets/style_v2.css config/news_keywords.json \
+        docs/macro_dashboard.html docs/data/v2/macro_signals.json 2>/dev/null || true
     if git diff --cached --quiet; then
         echo "      無變更,仍嘗試同步 origin"
     else
