@@ -479,6 +479,9 @@ def main() -> int:
     ap.add_argument("--delay", type=int,
                     default=int(os.environ.get("VERIFY_DELAY", "90")),
                     help="首次檢查前等 Pages 部署的秒數")
+    ap.add_argument("--retries", type=int,
+                    default=int(os.environ.get("VERIFY_RETRIES", "2")),
+                    help="失敗後重試次數,每次再等 90s(Pages 偶發部署 >180s)")
     args = ap.parse_args()
 
     data_date = args.data_date or (PROJECT_ROOT / ".data_date").read_text().strip()
@@ -488,8 +491,10 @@ def main() -> int:
         time.sleep(args.delay)
 
     errors = run_checks(args.base, data_date)
-    if errors:
-        print(f"[verify_publish] 首次 {len(errors)} 項失敗,retry 1 次(再等 90s)...")
+    for i in range(args.retries):
+        if not errors:
+            break
+        print(f"[verify_publish] {len(errors)} 項失敗,retry {i + 1}/{args.retries}(再等 90s)...")
         time.sleep(90)
         errors = run_checks(args.base, data_date)
 
