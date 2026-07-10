@@ -1225,6 +1225,18 @@ details.wl-stock.rb-flash { border: 1px solid var(--accent); border-radius: var(
   gap: var(--space-4); }
 .md-current strong { font-size: 18px; }
 .md-note { font: var(--type-caption); color: var(--text-faint); }
+/* 警戒標注(bands_v1):中性琥珀,不用紅綠——不表方向/好壞,只標「罕見狀態」 */
+.md-band { color: #b45309; background: rgba(217, 119, 6, .10);
+  border-radius: 4px; padding: 1px 6px; }
+@media (prefers-color-scheme: dark) { .md-band { color: #fbbf24; } }
+:root[data-theme="dark"] .md-band { color: #fbbf24; }
+:root[data-theme="light"] .md-band { color: #b45309; }
+.md-intro { margin: 0 0 var(--space-5); padding: var(--space-4);
+  border: 1px solid var(--border); border-radius: 8px; background: var(--surface-panel); }
+.md-genstamp { font: var(--type-caption); color: var(--text-muted);
+  font-variant-numeric: tabular-nums; }
+.md-bands-note { font: var(--type-caption); color: var(--text-muted);
+  margin: var(--space-2) 0 0; line-height: 1.7; }
 .md-legend { display: inline-flex; gap: 10px; font: var(--type-caption);
   color: var(--text-muted); }
 .md-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 2px;

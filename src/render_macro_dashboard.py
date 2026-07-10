@@ -237,6 +237,10 @@ def render_html() -> str:
   </div>
 </header>
 <main class="container md-container">
+  <div class="md-intro">
+    <span class="md-genstamp" data-genstamp>資料生成:—</span>
+    <p class="md-bands-note">警戒區為各訊號歷史分布之極端值標注(bands_v1),僅供辨識罕見狀態,不代表漲跌方向,與本站任何內部計分模型無關。門檻以現有樣本期(多數 2012 年起)計算,尚不含 2000、2008 兩次結構性熊市;VIX 上緣對「真正危機的高」偏低估,序列回補至 2000 年後需重算並升版 bands_v2。</p>
+  </div>
 {''.join(body)}
 </main>
 <script src="{asset_version.versioned('assets/theme.js')}" defer></script>
