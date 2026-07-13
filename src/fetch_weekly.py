@@ -183,6 +183,11 @@ def run(db_path: str = MACRO_DB) -> dict:
     if tw.get("status") == "N/A":
         errors.append(f"taiex: {tw.get('error','')}")
 
+    # 機構訊號區(stage12 §5.2,七訊號;單項失敗記名不拖累)
+    from src.weekly_signals import build_signals
+    signals, sig_errors = build_signals()
+    errors += sig_errors
+
     alerts = build_alerts(naaim_latest, vix, xx, cfg)
     return {
         "generated_at": now_iso,
@@ -194,6 +199,7 @@ def run(db_path: str = MACRO_DB) -> dict:
         "xly_xlp": xx,
         "margin": mg,
         "taiex": tw,
+        "signals": signals,
     }
 
 

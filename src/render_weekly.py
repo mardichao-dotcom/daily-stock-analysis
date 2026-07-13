@@ -123,6 +123,202 @@ def _plot_xly_xlp(xx: dict, path: str):
     return True
 
 
+# ── 機構訊號區七圖(stage12 §5.2)────────────────────────────────────────────
+def _sig_ax(figsize=(7, 2.4)):
+    fig, ax = plt.subplots(figsize=figsize, dpi=110)
+    ax.tick_params(labelsize=7)
+    ax.grid(alpha=0.15)
+    return fig, ax
+
+
+def _date_ticks(ax, dates, n=6, fmt=lambda d: d[5:]):
+    step = max(1, len(dates) // n)
+    ax.set_xticks(range(0, len(dates), step))
+    ax.set_xticklabels([fmt(dates[i]) for i in range(0, len(dates), step)], fontsize=7)
+
+
+def _plot_hy_oas(s: dict, path: str):
+    vals = s.get("values", [])
+    if len(vals) < 2:
+        return False
+    fig, ax = _sig_ax()
+    ax.plot(range(len(vals)), vals, color="#2962ff", lw=1.4, label="HY OAS")
+    ax.plot(range(len(vals)), s["ma1y"], color="#787b86", lw=1.0, ls="--", label="一年均線")
+    ax.axhline(s["alert_pct"], color="#e03430", ls=":", lw=1.0, alpha=0.8)
+    ax.set_ylim(top=max(max(vals), s["alert_pct"]) * 1.12)
+    ax.annotate(f"警戒 {s['alert_pct']:.1f}%(450bp)", (0, s["alert_pct"]),
+                fontsize=7, color="#e03430", va="bottom")
+    _date_ticks(ax, s["dates"])
+    ax.set_title(f"HY OAS 高收益債利差(%,最新 {s['latest']})", fontsize=9)
+    ax.legend(fontsize=7, loc="upper right")
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
+def _plot_t10y2y(s: dict, path: str):
+    vals = s.get("values", [])
+    if len(vals) < 2:
+        return False
+    fig, ax = _sig_ax()
+    ax.plot(range(len(vals)), vals, color="#2962ff", lw=1.4)
+    ax.axhline(0, color="#787b86", lw=0.9)
+    ax.fill_between(range(len(vals)), 0, vals,
+                    where=[v < 0 for v in vals], color="#e03430", alpha=0.10)
+    _date_ticks(ax, s["dates"])
+    ax.set_title(f"2s10s 利差(10Y−2Y,%,最新 {s['latest']:+.2f};零軸下=倒掛)", fontsize=9)
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
+def _plot_breadth(s: dict, path: str):
+    p20, p60 = s.get("pct20", []), s.get("pct60", [])
+    if len(p20) < 2:
+        return False
+    fig, ax = _sig_ax()
+    ax.plot(range(len(p20)), p20, color="#2962ff", lw=1.3, label="站上 MA20")
+    ax.plot(range(len(p60)), p60, color="#a855f7", lw=1.3, label="站上 MA60")
+    ax.axhline(50, color="#787b86", ls="--", lw=0.8, alpha=0.7)
+    ax.set_ylim(0, 100)
+    _date_ticks(ax, s["dates"])
+    ax.set_title(f"台股寬度:watchlist {s['n_symbols']} 檔站上均線比例"
+                 f"(%,最新 MA20 {s['latest20']} / MA60 {s['latest60']})", fontsize=9)
+    ax.legend(fontsize=7, loc="upper right")
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
+def _plot_foreign_oi(s: dict, path: str):
+    """外資台指期淨 OI vs 加權指數,雙軸(spec §5.2/5-2b 明訂)。"""
+    oi = s.get("net_oi", [])
+    if len(oi) < 2:
+        return False
+    fig, ax = _sig_ax()
+    ax.plot(range(len(oi)), oi, color="#2962ff", lw=1.2)
+    ax.fill_between(range(len(oi)), 0, oi,
+                    where=[v < 0 for v in oi], color="#e03430", alpha=0.10)
+    ax.fill_between(range(len(oi)), 0, oi,
+                    where=[v >= 0 for v in oi], color="#2962ff", alpha=0.10)
+    ax.axhline(0, color="#787b86", lw=0.8)
+    ax.set_ylabel("淨 OI(口)", fontsize=7, color="#2962ff")
+    ax.tick_params(axis="y", labelcolor="#2962ff", labelsize=7)
+    tvals = s.get("taiex", [])
+    xs = [i for i, v in enumerate(tvals) if v is not None]
+    if xs:
+        ax2 = ax.twinx()
+        ax2.plot(xs, [tvals[i] for i in xs], color="#787b86", lw=1.1, ls="--",
+                 label="加權指數")
+        ax2.set_ylabel("加權指數", fontsize=7, color="#787b86")
+        ax2.tick_params(axis="y", labelcolor="#787b86", labelsize=7)
+    _date_ticks(ax, s["dates"], n=5)
+    ax.set_title(f"外資台指期淨未平倉 vs 加權指數(最新 {s['latest']:+,} 口)", fontsize=9)
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
+def _plot_vix_ratio(s: dict, path: str):
+    vals = s.get("values", [])
+    if len(vals) < 2:
+        return False
+    fig, ax = _sig_ax()
+    ax.plot(range(len(vals)), vals, color="#2962ff", lw=1.4)
+    ax.axhline(s["alert_line"], color="#e03430", ls=":", lw=1.0, alpha=0.8)
+    ax.fill_between(range(len(vals)), s["alert_line"], vals,
+                    where=[v > s["alert_line"] for v in vals],
+                    color="#e03430", alpha=0.12)
+    _date_ticks(ax, s["dates"])
+    ax.set_title(f"VIX/VIX3M 期限結構比值(最新 {s['latest']};>1.0 倒掛=近月恐慌)",
+                 fontsize=9)
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
+def _plot_sahm(s: dict, path: str):
+    vals = s.get("values", [])
+    if len(vals) < 2:
+        return False
+    fig, ax = _sig_ax()
+    ax.step(range(len(vals)), vals, color="#2962ff", lw=1.4, where="mid")
+    ax.axhline(s["trigger"], color="#e03430", ls=":", lw=1.0, alpha=0.8)
+    ax.annotate(f"觸發 {s['trigger']}", (0, s["trigger"]),
+                fontsize=7, color="#e03430", va="bottom")
+    _date_ticks(ax, s["months"], n=6, fmt=lambda m: m[2:])
+    ax.set_title(f"Sahm Rule 衰退指標(月頻,最新 {s['latest']})", fontsize=9)
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
+# 燈號官方五色(領域語意,非漲跌;同 macro_dash.js LIGHT_C)
+_LIGHT_C = {"紅": "#e03430", "黃紅": "#f59e0b", "綠": "#22c55e",
+            "黃藍": "#38bdf8", "藍": "#2962ff"}
+
+
+def _plot_light(s: dict, path: str):
+    scores, lights = s.get("scores", []), s.get("lights", [])
+    if len(scores) < 2:
+        return False
+    fig, ax = _sig_ax()
+    ax.bar(range(len(scores)), scores,
+           color=[_LIGHT_C.get(l, "#787b86") for l in lights], width=0.85)
+    _date_ticks(ax, s["months"], n=6, fmt=lambda m: m[2:])
+    ax.set_title(f"景氣對策信號(柱高=分數,柱色=燈色;最新 {s['latest']}燈"
+                 f" {s['scores'][-1]:.0f} 分)", fontsize=9)
+    fig.tight_layout(); fig.savefig(path); plt.close(fig)
+    return True
+
+
+_SIG_PLOTS = {
+    "hy_oas": _plot_hy_oas, "t10y2y": _plot_t10y2y,
+    "breadth": _plot_breadth, "foreign_oi": _plot_foreign_oi,
+    "vix_ratio": _plot_vix_ratio,
+    "sahm": _plot_sahm, "light": _plot_light,
+}
+
+# 四小區(標題, [訊號 key])
+_SIG_GROUPS = [
+    ("💳 信用與流動性", ["hy_oas", "t10y2y"]),
+    ("🧭 市場內部", ["breadth", "foreign_oi"]),
+    ("😱 情緒", ["vix_ratio"]),
+    ("🏭 景氣", ["sahm", "light"]),
+]
+
+_SIG_ALT = {
+    "hy_oas": "HY OAS 高收益債利差", "t10y2y": "2s10s 利差",
+    "breadth": "台股寬度", "foreign_oi": "外資台指期淨 OI vs 加權指數",
+    "vix_ratio": "VIX/VIX3M 比值", "sahm": "Sahm Rule", "light": "景氣對策信號",
+}
+
+
+def plot_signals(signals: dict, img_dir: str) -> dict[str, bool]:
+    """七訊號各自出 PNG;單圖失敗不擋其餘。回傳 {key: 是否有圖}。"""
+    ok = {}
+    for key, fn in _SIG_PLOTS.items():
+        try:
+            ok[key] = fn(signals.get(key, {}), os.path.join(img_dir, f"sig_{key}.png"))
+        except Exception as e:                     # noqa: BLE001
+            print(f"[render_weekly] ⚠️ 訊號圖 {key} 失敗:{str(e)[:60]}", file=sys.stderr)
+            ok[key] = False
+    return ok
+
+
+def signals_section(signals: dict, has: dict[str, bool]) -> str:
+    if not any(has.values()):
+        return ""
+    groups = []
+    for title, keys in _SIG_GROUPS:
+        imgs = "".join(
+            f'<figure class="wk-sig"><img class="wk-chart" '
+            f'src="assets/weekly/sig_{k}.png" alt="{_h(_SIG_ALT[k])}">'
+            f'<figcaption class="wk-src">來源:{_h(signals[k]["source"])}</figcaption></figure>'
+            for k in keys if has.get(k))
+        if imgs:
+            groups.append(f'<h3>{title}</h3>{imgs}')
+    return f"""  <section class="section">
+    <h2>🏛 機構訊號區</h2>
+    {''.join(groups)}
+  </section>
+"""
+
+
 # ── HTML ──────────────────────────────────────────────────────────────────────
 def _sentiment_card(label, value, sub="", color=""):
     style = f"color:{color}" if color else ""
@@ -132,7 +328,7 @@ def _sentiment_card(label, value, sub="", color=""):
 
 
 def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool,
-           has_mg_png: bool = False) -> str:
+           has_mg_png: bool = False, sig_has: dict | None = None) -> str:
     gen = data.get("generated_at", "")[:16].replace("T", " ")
     date = data.get("data_through", "")
     naaim = data.get("naaim", {})
@@ -225,6 +421,7 @@ def render(data: dict, cfg: dict, has_naaim_png: bool, has_xx_png: bool,
     <div class="wk-cards">{mg_card}{tw_card}</div>
     {'<img class="wk-chart" src="assets/weekly/margin.png" alt="市場融資餘額趨勢(億元)">' if has_mg_png else ''}
   </section>
+{signals_section(data.get("signals", {}), sig_has or {})}
   <p class="wk-src">NAAIM 來源:官方 USE_Data since Inception({naaim.get('count','?')} 週全量);US 指數/VIX/ETF:yfinance;融資:證交所 OpenAPI。</p>
 </main>
 </body>
@@ -244,7 +441,8 @@ def main() -> int:
     has_naaim = _plot_naaim(data.get("naaim", {}), cfg, os.path.join(IMG_DIR, "naaim.png"))
     has_xx = _plot_xly_xlp(data.get("xly_xlp", {}), os.path.join(IMG_DIR, "xly_xlp.png"))
     has_mg = _plot_margin(data.get("margin", {}), os.path.join(IMG_DIR, "margin.png"))
-    html = render(data, cfg, has_naaim, has_xx, has_mg)
+    sig_has = plot_signals(data.get("signals", {}), IMG_DIR)
+    html = render(data, cfg, has_naaim, has_xx, has_mg, sig_has)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(html)
     # 日期化 snapshot

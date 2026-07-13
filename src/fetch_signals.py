@@ -63,6 +63,7 @@ SANE = {
     "VIX3M": (5, 150), "DGS10": (0, 20), "USDTWD": (20, 45),
     "ZQ": (90, 100.5), "CPI_MOM": (-3, 3), "UMICH": (20, 130),
     "LIGHT_SCORE": (9, 45),
+    "HY_OAS": (1, 30), "T10Y2Y": (-5, 5), "SAHM": (-1, 12),
 }
 
 
@@ -127,6 +128,12 @@ def ensure_tables(conn: sqlite3.Connection) -> None:
         pre_expected_bp REAL, source TEXT);
     CREATE TABLE IF NOT EXISTS brent_daily (
         date TEXT PRIMARY KEY, price REAL, source TEXT);
+    CREATE TABLE IF NOT EXISTS hy_oas_daily (
+        date TEXT PRIMARY KEY, value REAL, source TEXT);
+    CREATE TABLE IF NOT EXISTS t10y2y_daily (
+        date TEXT PRIMARY KEY, value REAL, source TEXT);
+    CREATE TABLE IF NOT EXISTS sahm_monthly (
+        month TEXT PRIMARY KEY, value REAL, source TEXT);
     """)
 
 
@@ -464,6 +471,37 @@ def upsert_brent(db_path: str, start: str, *, key: str | None = None) -> int:
     return len(rows)
 
 
+# ── 週報訊號三序列(stage12 §5.2 純顯示,不進計分)────────────────────────────
+def upsert_hy_oas(db_path: str, start: str, *, key: str | None = None) -> int:
+    rows = [(d, v, "FRED BAMLH0A0HYM2") for d, v in
+            fetch_fred("BAMLH0A0HYM2", start, key=key) if _sane("HY_OAS", v)]
+    conn = _conn(db_path)
+    conn.executemany("INSERT OR REPLACE INTO hy_oas_daily VALUES (?,?,?)", rows)
+    conn.commit()
+    conn.close()
+    return len(rows)
+
+
+def upsert_t10y2y(db_path: str, start: str, *, key: str | None = None) -> int:
+    rows = [(d, v, "FRED T10Y2Y") for d, v in
+            fetch_fred("T10Y2Y", start, key=key) if _sane("T10Y2Y", v)]
+    conn = _conn(db_path)
+    conn.executemany("INSERT OR REPLACE INTO t10y2y_daily VALUES (?,?,?)", rows)
+    conn.commit()
+    conn.close()
+    return len(rows)
+
+
+def upsert_sahm(db_path: str, start: str, *, key: str | None = None) -> int:
+    rows = [(d[:7], v, "FRED SAHMREALTIME") for d, v in
+            fetch_fred("SAHMREALTIME", start, key=key) if _sane("SAHM", v)]
+    conn = _conn(db_path)
+    conn.executemany("INSERT OR REPLACE INTO sahm_monthly VALUES (?,?,?)", rows)
+    conn.commit()
+    conn.close()
+    return len(rows)
+
+
 # ── cpi_events(克里夫蘭 nowcast)─────────────────────────────────────────────
 def _label_to_iso(label: str, target_year: int, target_month: int) -> str | None:
     """窗口內 'MM/DD' → ISO(年份由目標月推斷;窗口可跨 M-2..M+1)。"""
@@ -769,6 +807,11 @@ def run_daily(db_path: str = MACRO_DB) -> int:
         ("usdtwd 官方", lambda: upsert_usdtwd_official(db_path, recent_fred, key=key)),
         ("usdtwd 暫代", lambda: upsert_usdtwd_provisional(db_path, recent_yf)),
         ("brent 油價", lambda: upsert_brent(db_path, recent_fred, key=key)),
+        ("hy oas", lambda: upsert_hy_oas(db_path, recent_fred, key=key)),
+        ("t10y2y", lambda: upsert_t10y2y(db_path, recent_fred, key=key)),
+        ("sahm", lambda: upsert_sahm(
+            db_path, (datetime.now(TZ) - timedelta(days=120)).strftime("%Y-%m-%d"),
+            key=key)),
         ("ff 期貨", lambda: daily_zq_contracts(db_path)),
         ("umich", lambda: upsert_umich(
             db_path, fetch_umich_with_releases(recent_fred[:8] + "01", key=key))),
@@ -824,7 +867,15 @@ def main() -> int:
                     help="TAIEX 缺月補跑(跳過已完整月;限流補救)")
     ap.add_argument("--daily", action="store_true")
     ap.add_argument("--fomc-only", action="store_true")
+    ap.add_argument("--backfill-weekly", action="store_true",
+                    help="週報訊號三序列(HY OAS/T10Y2Y/Sahm)全深度回補")
     args = ap.parse_args()
+    if args.backfill_weekly:
+        key = _fred_key()
+        print(f"HY OAS:{upsert_hy_oas(args.db, BACKFILL_START, key=key)} 日")
+        print(f"T10Y2Y:{upsert_t10y2y(args.db, BACKFILL_START, key=key)} 日")
+        print(f"Sahm:{upsert_sahm(args.db, BACKFILL_START, key=key)} 月")
+        return 0
     if args.backfill_all:
         backfill_all(args.db)
         return 0
