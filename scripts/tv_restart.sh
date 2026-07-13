@@ -64,9 +64,9 @@ ensure_chart_and_render() {
     local i
     for i in $(seq 1 12); do has_chart_target && break; sleep 5; done
     if ! has_chart_target; then
-        echo "[tv-restart $(TS)] 無 chart target,CDP 導航到 $CHART_URL ..."
-        curl -s -m 5 -X PUT "$CDP/json/new?${CHART_URL}" >/dev/null 2>&1
-        for i in $(seq 1 12); do sleep 5; has_chart_target && break; done
+        # json/new(CDP HTTP PUT)在 Chrome 140(TV 3.3.0)已停用 → 改用 Page.navigate 主視窗復原
+        echo "[tv-restart $(TS)] 無 chart target → Page.navigate 主視窗復原 $CHART_URL ..."
+        TV_CHART_URL="$CHART_URL" node scripts/tv_open_chart.mjs 2>&1 || true
     fi
     if ! has_chart_target; then
         echo "[tv-restart $(TS)] ② 仍無 chart target(疑白屏/停在 new-tab)"; return 1

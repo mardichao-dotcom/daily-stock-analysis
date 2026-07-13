@@ -133,12 +133,14 @@ if ! bash scripts/git_worktree_check.sh; then
     exit 1
 fi
 
-# ── API-ready preflight(7/6 事故修補)──────────────────────────────────────────
-# 不只驗「chart 頁存在」,還驗 TradingViewApi 在 N 秒內可用。7/6 事故:chart 頁在
-# 但 API 永不 ready,tv_collect 卡在單檔迴圈之前燒滿 30 分。此處提前 fail-fast(≤120s)。
-echo "      驗 TradingViewApi ready(preflight)..."
-if ! node scripts/tv_collect.mjs --preflight-only 2>&1; then
-    echo "❌ TradingViewApi preflight 失敗（chart 頁在但 API 未 ready / 初始化卡死）"
+# ── API-ready preflight + 自癒(7/6 事故修補 + 7/13 wedge 自癒)──────────────────
+# 不只驗「chart 頁存在」,還驗 TradingViewApi 可用。7/6 事故:chart 頁在但 API 永不
+# ready,tv_collect 燒滿 30 分。7/13 事故:18:45 重啟成功但 15 分內又 wedge,19:00
+# preflight 搆不到。自癒把「檢查」綁到「使用」的當下:preflight 失敗就用既有 tv_restart.sh
+# 重啟一次、等三層驗證通過、再重試,最多 2 輪;兩輪皆敗才走下方既有告警流程。
+echo "      驗 TradingViewApi ready(preflight + 自癒)..."
+if ! bash scripts/tv_preflight_selfheal.sh 2>&1; then
+    echo "❌ TradingViewApi preflight 自癒後仍失敗（重啟 2 輪未就緒 / 白屏需人工）"
     python3 src/status_writer.py --tool "$TOOL" \
         --step tv_collect --status fail --duration 0 \
         --note "TradingViewApi preflight failed (chart present but API not ready)"
