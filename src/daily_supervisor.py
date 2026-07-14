@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sqlite3
 import sys
 import time
@@ -147,6 +148,68 @@ def _overall_icon(overall: str) -> str:
         overall, f"❓ {overall}"
     )
 
+
+# ── 手機一眼結論行(2026-07-14:入營後 DC 推播是唯一監控管道)──────────────────────
+# 一則主跑一個結論,結論(✅/⚠️/🚨)放最前面,手機推播預覽即可判斷「今天 OK 嗎」。
+# 自癒過程(第 1 輪/第 2 輪)不逐則發,合併成這行的「TV 自癒 N 次後成功 / N 輪耗盡」。
+def _selfheal_status(today_iso: str) -> dict | None:
+    """讀 state/tv_selfheal_status.json;僅當 date == 今天才採用(避免昨日殘留)。"""
+    path = os.path.join(PROJECT_ROOT, "state", "tv_selfheal_status.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            d = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return None
+    return d if d.get("date") == today_iso else None
+
+
+def _symbol_count(sd: dict) -> str | None:
+    """從 tv_collect step note 取「成功/總」→ 例 '131/131'。"""
+    for step in sd.get("steps", []):
+        if step.get("name") == "tv_collect":
+            note = step.get("note", "")
+            m_tot = re.search(r"symbols[：:]\s*(\d+)", note)
+            m_ok = re.search(r"成功\s*[：:]\s*(\d+)", note)
+            if m_ok and m_tot:
+                return f"{m_ok.group(1)}/{m_tot.group(1)}"
+    return None
+
+
+def _conclusion_line(status: dict) -> str:
+    now = datetime.now(TZ_TAIPEI)
+    today_iso = now.strftime("%Y-%m-%d")
+    md = f"{now.month}/{now.day}"
+    sd = status.get("stock_dashboard") or {}
+    overall = sd.get("overall", "")
+    heal = _selfheal_status(today_iso)
+    rounds = int(heal.get("rounds", 0)) if heal else 0
+    healed = bool(heal) and heal.get("outcome") == "ok" and rounds >= 1
+    failed_tv = bool(heal) and heal.get("outcome") == "fail"
+
+    kline_max = None
+    if os.path.exists(KLINE_DB):
+        try:
+            conn = sqlite3.connect(KLINE_DB)
+            row = conn.execute("SELECT MAX(date) FROM kline").fetchone()
+            conn.close()
+            kline_max = row[0] if row and row[0] else None
+        except sqlite3.Error:
+            kline_max = None
+    kpart = f"kline 更新至 {kline_max}" if kline_max else "kline 未知"
+    cnt = _symbol_count(sd)
+    cpart = f" | {cnt}" if cnt else ""
+
+    if failed_tv:
+        return f"🚨 {md} 主跑失敗 | TV 自癒 {rounds} 輪耗盡 | 今日未更新 | 需人工"
+    if overall == "ok":
+        if healed:
+            return f"⚠️ {md} 主跑完成 | TV 自癒 {rounds} 次後成功 | {kpart}{cpart}"
+        return f"✅ {md} 主跑完成 | TV 一次過 | {kpart}{cpart}"
+    # 非 TV 因素的部分/整體失敗
+    tvpart = f"TV 自癒 {rounds} 次後成功" if healed else "TV 正常"
+    return f"⚠️ {md} 主跑部分失敗 | {tvpart} | {kpart} | 詳見下方"
+
+
 # ── 訊息組裝 ──────────────────────────────────────────────────────────────────
 
 def _check_data_freshness() -> list[str]:
@@ -215,6 +278,10 @@ def _skipped_detail() -> list[str]:
 def _build_message(status: dict) -> str:
     today = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d")
     lines = []
+
+    # ── 手機一眼結論行(放最前面,DC 推播預覽即這行)──
+    lines.append(_conclusion_line(status))
+    lines.append("─" * 33)
 
     # ── 資料新鮮度告警(優先顯示,避免被 step ok 蓋過)──
     freshness_warnings = _check_data_freshness()

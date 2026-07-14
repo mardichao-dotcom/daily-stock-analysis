@@ -33,6 +33,12 @@ except Exception:
 
 alert_manual() {
     echo "[tv-restart $(TS)] ❌ $1"
+    # 由自癒(tv_preflight_selfheal.sh)呼叫時 TV_RESTART_QUIET=1:只記 log,不獨立發 Discord,
+    # 避免與收尾的「一則結論訊息」交錯轟炸手機。獨立跑(18:45 plist)時仍正常告警。
+    if [ "${TV_RESTART_QUIET:-0}" = "1" ]; then
+        echo "[tv-restart $(TS)] (QUIET:告警併入自癒收尾結論,不獨立發 Discord)"
+        return 0
+    fi
     python3 -m src.notify_discord --message "🚨 [TV 重啟] $1" 2>/dev/null || \
         echo "[tv-restart $(TS)] ⚠️ 連 Discord 告警都發不出去" >&2
 }
