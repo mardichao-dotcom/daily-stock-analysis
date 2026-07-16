@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T08:59:50+08:00",
+  "generated_at": "2026-07-16T08:30:29+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,270 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 39,
+  "count": 54,
   "items": [
+    {
+      "title": "台股盤前｜大戶投選股-外本比選股鎖定台虹、信昌電、希華，記憶體與載板報復性強彈，台股上漲893.64點",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T08:10:43+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535797",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "川崎重工傳攜手輝達　在日本打造配備機器人AI造船廠",
+      "source": "中央社財經",
+      "published_at": "2026-07-16T04:20:46+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607160008.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "AI 帶動需求爆發、中東衝突推升原料成本 台塑兩大電子化學品喊漲",
+      "source": "經濟日報",
+      "published_at": "2026-07-16T02:06:03+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9630421",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "英特爾傳大砍台積電2奈米訂單 業界解讀先進製程良率躍進",
+      "source": "經濟日報",
+      "published_at": "2026-07-16T01:59:14+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9630424",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "SEMI 按讚半導體設備 銷售額估連五年成長",
+      "source": "經濟日報",
+      "published_at": "2026-07-16T01:52:50+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9630436",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "北部資料中心供電可望解禁 桃、基可在電廠附近規劃 AI 專區",
+      "source": "經濟日報",
+      "published_at": "2026-07-16T01:31:47+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9630433",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "保瑞揪伴 強攻 AI 藥物研發",
+      "source": "經濟日報",
+      "published_at": "2026-07-16T01:23:14+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9630407",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "默克深耕台灣助攻科技業 新產能就近供應半導體大客戶",
+      "source": "經濟日報",
+      "published_at": "2026-07-16T01:19:27+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/11162/9630484",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "默克導入 AI 提高研發效率",
+      "source": "經濟日報",
+      "published_at": "2026-07-16T01:17:09+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/11162/9630483",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "傳蘋果尋求收購晶片公司 強化AI伺服器實力",
+      "source": "中央社財經",
+      "published_at": "2026-07-16T01:15:32+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607160003.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "氣立攻 AI、半導體有成 感測器出貨 靈巧手過首關",
+      "source": "經濟日報",
+      "published_at": "2026-07-15T23:31:20+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9630511",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "日電商95%營收消失靠 AI 逆轉勝 首邀 OpenAI 站台 AWS 論壇揭兩亮點",
+      "source": "經濟日報",
+      "published_at": "2026-07-15T22:46:40+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/11162/9630373",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "印度核准半導體2.0計畫　投入逾4千億元推國產晶片",
+      "source": "中央社財經",
+      "published_at": "2026-07-15T21:49:36+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607150357.aspx",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "公股銀挺半導體通路龍頭！合庫銀統籌至上120億聯貸 超募1.95倍",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T20:05:53+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535484",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "光罩子公司擬斥資10億日圓　併日半導體設備外包廠",
+      "source": "中央社財經",
+      "published_at": "2026-07-15T19:52:23+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607150324.aspx",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "SEMI：全球半導體設備市場連五增 2028年估達2295億美元新高",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T18:52:54+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6536029",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "AI驅動雙引擎商模 立視科技三大深化戰略導入",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T17:45:12+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535955",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "林伯豐：颱風放假標準不以政治立場為目的、應重啟部分核電協助AI產業發展",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T17:39:06+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535943",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈亞洲生技大展〉保瑞攜英矽智能共同推進AI藥物研發 合作潛在商機超過25億美元",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T15:18:50+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535623",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈AWS台灣高峰會〉威剛智聯搶實體AI商機 導入AWS部署時間大減三分之二",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T15:17:41+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535625",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈AWS台灣高峰會〉王定愷：AI Agent的企業四大AI策略 首先要「找到金礦再買鏟子」",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T14:34:04+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535603",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "雷科能見度達明年Q1 CoWoS設備代工+自製攀升助營運添柴火",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T12:15:09+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535413",
+      "matched_keywords": [
+        "CoWoS"
+      ]
+    },
+    {
+      "title": "巨頭撤退引爆記憶體荒！SLC/MLC NAND飆漲三倍 旺宏、華邦電、兆易創新等台陸廠接棒新戰局",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T12:01:35+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535393",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "〈焦點股〉一詮受惠AI與HPC需求高漲 早盤亮燈漲停",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T10:38:03+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535336",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉台驊除息5元穩步填息 看好AI發展支撐物流需求",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T10:20:43+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535274",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "雙代工策略生變！英特爾原定七成訂單給台積電 如今90%以上改自家生產",
+      "source": "鉅亨網",
+      "published_at": "2026-07-15T10:15:30+08:00",
+      "fetched_at": "2026-07-16T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6535254",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "雲端五巨頭加碼 AI 大摩上調資本支出預估 明後年各增一成",
       "source": "經濟日報",
@@ -287,118 +549,6 @@
       "published_at": "2026-07-13T12:30:49+08:00",
       "fetched_at": "2026-07-14T08:30:28+08:00",
       "url": "https://news.cnyes.com/news/id/6532182",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "AI 火熱需求蔓延至成熟製程 台積電掀新一波漲價潮",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T01:35:03+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/5612/9623394",
-      "matched_keywords": [
-        "台積電",
-        "AI"
-      ]
-    },
-    {
-      "title": "台積電2奈米 Google 搶先用新機8月亮相 打破蘋果拔頭籌慣例",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T01:32:50+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/5612/9623426",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "AI 手機再進化 刺激買氣",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T01:29:44+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/5612/9623434",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "嘉科二期動土 強化半導體鏈",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T01:26:40+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/5612/9623437",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "AI 模型升級秀加速算力需求 鴻海、廣達、緯創接單動能強勁",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T01:18:12+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/11162/9623341",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI 伺服器商機加速發酵 ODM 廠啟動全球大擴產",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T01:16:02+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/11162/9623342",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "大南方新矽谷計畫奏效 半導體聚落版圖逐步南移",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T01:15:14+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/5612/9623343",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "AI 新賽道 各大模型搶攻圖片生成市場 推動算力需求持續成長",
-      "source": "經濟日報",
-      "published_at": "2026-07-12T23:16:38+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://money.udn.com/money/story/11162/9623418",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "〈台股風向球〉周跌1426點三攻月線失利 多頭整軍待台積電法說神救援",
-      "source": "鉅亨網",
-      "published_at": "2026-07-12T12:54:09+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://news.cnyes.com/news/id/6531319",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "台積電CoWoS供不應求　封測台廠、英特爾受惠訂單外溢",
-      "source": "中央社財經",
-      "published_at": "2026-07-12T10:53:05+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202607120038.aspx",
-      "matched_keywords": [
-        "台積電",
-        "CoWoS"
-      ]
-    },
-    {
-      "title": "台積電7/16法說會　聚焦資本支出先進製程及美廠進度",
-      "source": "中央社財經",
-      "published_at": "2026-07-12T10:03:48+08:00",
-      "fetched_at": "2026-07-13T08:30:31+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202607120030.aspx",
       "matched_keywords": [
         "台積電"
       ]
