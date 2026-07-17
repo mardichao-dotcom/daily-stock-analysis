@@ -1,38 +1,15 @@
 {
-  "generated_at": "2026-07-16T19:12:22+08:00",
-  "data_through": "2026-07-16",
+  "generated_at": "2026-07-17T19:13:34+08:00",
+  "data_through": "2026-07-17",
   "conference_stale": false,
-  "conference_source_date": "2026-07-16",
+  "conference_source_date": "2026-07-17",
   "dividend_stale": false,
-  "dividend_source_date": "2026-07-16",
+  "dividend_source_date": "2026-07-17",
   "macro_count": 3,
-  "conference_count": 14,
-  "dividend_count": 19,
+  "conference_count": 16,
+  "dividend_count": 18,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-07-16",
-      "type": "conference",
-      "symbol": "TWSE:2330",
-      "name": "台積電",
-      "title": "台積電 法說會(台北文華東方酒店B2 文華廳（台北市松山)",
-      "importance": "(1)公布本公司2026年第2季財務報告及2026年第3季業績展望。(2)參加方式：請參見https://investo",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
-    },
-    {
-      "date": "2026-07-16",
-      "type": "dividend",
-      "symbol": "TWSE:2382",
-      "name": "廣達",
-      "title": "廣達 除息日",
-      "importance": "息",
-      "level": "medium",
-      "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
-    },
     {
       "date": "2026-07-17",
       "type": "dividend",
@@ -42,7 +19,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-17",
@@ -53,7 +30,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-20",
@@ -65,7 +42,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-21",
@@ -76,7 +53,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-22",
@@ -87,7 +64,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-23",
@@ -98,7 +75,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-23",
@@ -109,7 +86,7 @@
       "importance": "除息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-27",
@@ -120,7 +97,7 @@
       "importance": "除息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-28",
@@ -132,7 +109,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-28",
@@ -144,7 +121,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-28",
@@ -156,7 +133,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-28",
@@ -167,7 +144,7 @@
       "importance": "權息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-28",
@@ -178,7 +155,7 @@
       "importance": "除權息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-29",
@@ -190,7 +167,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "17:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-29",
@@ -202,7 +179,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-29",
@@ -213,7 +190,7 @@
       "importance": "除息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-29",
@@ -223,7 +200,7 @@
       "importance": "high",
       "level": "high",
       "source": "Fed FOMC 年度日程",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -235,7 +212,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -247,7 +224,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -258,7 +235,7 @@
       "importance": "權息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -269,7 +246,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -280,7 +257,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -291,7 +268,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -301,7 +278,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-07-30",
@@ -311,7 +288,19 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
+    },
+    {
+      "date": "2026-07-31",
+      "type": "conference",
+      "symbol": "TWSE:2454",
+      "name": "聯發科",
+      "title": "聯發科 法說會(線上法說會)",
+      "importance": "‎(1) 公布本公司2026年第2季財務報告及2026年第3季業績展望。 (2) 參加方式：請參見https://www",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:00",
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-03",
@@ -322,7 +311,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-03",
@@ -333,7 +322,7 @@
       "importance": "除息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-04",
@@ -345,7 +334,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-04",
@@ -357,7 +346,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
+    },
+    {
+      "date": "2026-08-04",
+      "type": "conference",
+      "symbol": "TPEX:5347",
+      "name": "世界",
+      "title": "世界 法說會(線上法人說明會)",
+      "importance": "公司將於法人說明會中，公布2026年第二季的財務結果以及對2026年第三季的營運展望。法人說明會當日請造訪下列網址：\nh",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "14:00",
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-04",
@@ -368,7 +369,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-05",
@@ -380,7 +381,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-05",
@@ -391,7 +392,7 @@
       "importance": "權息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-12",
@@ -403,7 +404,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
+    },
+    {
+      "date": "2026-08-13",
+      "type": "conference",
+      "symbol": "TPEX:8299",
+      "name": "群聯",
+      "title": "群聯 法說會(SinoPac Securities C)",
+      "importance": "本公司受邀參加SinoPac Securities CLST Branch舉辦之群聯2Q26財報公告線上法說會 (英文場",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "17:00",
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     },
     {
       "date": "2026-08-14",
@@ -415,7 +428,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-07-16T19:12:22+08:00"
+      "fetched_at": "2026-07-17T19:13:34+08:00"
     }
   ]
 }
