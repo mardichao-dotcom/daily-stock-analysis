@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T08:30:29+08:00",
+  "generated_at": "2026-07-17T08:30:28+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,421 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 54,
+  "count": 81,
   "items": [
+    {
+      "title": "台股盤前｜自行車族群迎春強攻，台積電法說亮眼加權量縮收平",
+      "source": "鉅亨網",
+      "published_at": "2026-07-17T08:10:04+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537075",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "美國俄州AI數據中心崛起　台灣AI伺服器合作潛力大",
+      "source": "中央社財經",
+      "published_at": "2026-07-17T07:41:14+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607170018.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電加碼投資美國　美商務部：創造數萬個就業機會",
+      "source": "中央社財經",
+      "published_at": "2026-07-17T07:27:12+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/aipl/202607170017.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "蔡司：先進封裝成半導體主戰場 未來攜手客戶打造下一代技術",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T06:11:01+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/11162/9633260",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "通膨率遲未達標　達拉斯聯準銀行總裁支持升息",
+      "source": "中央社財經",
+      "published_at": "2026-07-17T05:43:57+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607170012.aspx",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "受AI股走弱拖累　美股收黑",
+      "source": "中央社財經",
+      "published_at": "2026-07-17T04:37:52+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607170010.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "創浦強化台灣半導體合作",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T02:55:06+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9632954",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "台積二度上修全年展望 董座魏哲家喊AI需求極度強勁",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T01:48:06+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9633014",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電談競爭 客戶不是去超商買牛奶",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T01:15:09+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9632995",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電再次上調全年資本支出 強調配息會穩定增長",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T01:11:01+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9632978",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電重金擴產 協力廠看俏",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T01:08:40+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9632992",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電上季財報驚艷 寫五個新高 「雙率」同步飛越財測高標",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T01:04:21+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9632979",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電談漲價 不能讓客戶無法承受",
+      "source": "經濟日報",
+      "published_at": "2026-07-17T00:59:23+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9632993",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "鉅亨速報 - Factset 最新調查：台積電(2330-TW)目標價調升至3090元，幅度約3%",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T22:10:23+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537320",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "Jim Cramer：半導體淪為「情緒賭場」 SK 海力士上市拖累台積電",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T22:10:04+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537284",
+      "matched_keywords": [
+        "台積電",
+        "半導體"
+      ]
+    },
+    {
+      "title": "美國新關稅衝擊　巴西擬祭「經濟互等法」反制",
+      "source": "中央社財經",
+      "published_at": "2026-07-16T22:07:13+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607160407.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "AI浪潮助攻 多家機構看好台積電 目標價頻創新高",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T21:38:20+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537278",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳站台力挺　日本成立Noetra打造國產AI平台",
+      "source": "中央社財經",
+      "published_at": "2026-07-16T21:23:41+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607160394.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電擴大投資美國　經濟部：確保台灣3個優先",
+      "source": "中央社財經",
+      "published_at": "2026-07-16T21:03:28+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607160388.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "AI超級週期助攻！渣打點名台灣成全球經濟最大贏家 估GDP衝上9.5％",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T20:34:02+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537219",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "正崴德州廠正式啟用 首座美國AI示範工廠",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T19:56:05+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537195",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI爆發期Q3轉向擴張期？星展看好台灣經濟規模破兆美元 GDP 9.4%冠亞洲",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T19:39:49+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536062",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "晶片股震盪！這檔半導體ETF逆勢獨紅 上游設備商成資金避風港",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T19:34:50+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537179",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉利多卻票房失靈？ADR盤前挫逾4%、台指期夜盤崩逾千點",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T19:28:36+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537180",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "光聚晶電下半年3遊戲新作齊發 半導體、電力事業同步發動併購營運喊衝",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T19:14:22+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537169",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "微星AI旗艦RTX Spark Q4首發上市 售價不到3000美元 首批貨已銷售一空",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T19:07:39+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537167",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "微星結盟資策會打造AI架構師 軟硬共構搶攻地端AI升級商機",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T19:02:48+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537161",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉二度上調全年展望、加碼美國投資 九大重點一文看懂",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T18:59:51+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537162",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "華碩：中小企純硬體採購略微縮手 看好AI數位轉型潮可帶動需求",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T18:56:16+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537156",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉魏哲家：AI需求一直增加 可能一路強勁至2029、2030年",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T18:30:45+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6537157",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "訊聯基因AI中心打開第二條營收成長曲線 Q1智慧研發營收翻倍",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T18:11:25+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536829",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈亞洲生技大展〉從外泌體到AI茶香創新科技吸睛 工研院聯手明基透析強化精準醫療",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T17:15:58+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536958",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉宣布追加美國1000億美元投資 魏哲家：再建4座新廠",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T15:55:50+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536882",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈亞洲生技大展〉華安旗下源華智醫AI藥物研發接軌國際 開啟AI藥物開發新藍海",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T15:18:50+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6535542",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉魏哲家又爆金句：選擇製程夥伴不是到7-11買牛奶 這三點才是關鍵",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T15:14:49+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536851",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉Q3美元營收季增12%再攀峰 上調全年營收年增至逾4成",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T14:39:56+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536825",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉上調資本支出衝破600億美元 達600-640億美元",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T14:23:50+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536791",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈台股盤後〉觀望台積電法說 守住4萬5及5日線僅跌6點 量能急縮成隱憂",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T14:21:22+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536797",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈台積電法說〉Q2雙率再超標、EPS 27.25元同創高 上半年大賺近5個股本",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T13:53:19+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536780",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉台積電法說倒數股價弱 指數跌逾600點打4萬5保衛戰",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T09:59:29+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536519",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "The Information：ASML計劃調高曝光機價格 台積電反對",
+      "source": "鉅亨網",
+      "published_at": "2026-07-16T08:59:51+08:00",
+      "fetched_at": "2026-07-17T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6536302",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "台股盤前｜大戶投選股-外本比選股鎖定台虹、信昌電、希華，記憶體與載板報復性強彈，台股上漲893.64點",
       "source": "鉅亨網",
@@ -411,146 +824,6 @@
       "url": "https://news.cnyes.com/news/id/6533555",
       "matched_keywords": [
         "AI"
-      ]
-    },
-    {
-      "title": "蘋果自研晶片 挹注台積電先進製程後市新動能",
-      "source": "經濟日報",
-      "published_at": "2026-07-14T01:57:39+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9625631",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "黃仁勳：輝達還在加速成長 近期獲 CSP 大單 廣達、緯創振奮",
-      "source": "經濟日報",
-      "published_at": "2026-07-14T01:52:51+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9625629",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "輝達執行長黃仁勳打臉傳聞 喊新平台不遲到",
-      "source": "經濟日報",
-      "published_at": "2026-07-14T01:43:33+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9625635",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "光寶砸300億 美國大投資 搶攻 AI 基建及能源快速成長商機",
-      "source": "經濟日報",
-      "published_at": "2026-07-14T00:50:03+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/11162/9625561",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "零關稅美製車今年進不來了 為何有人這樣說？",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T23:01:29+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9625554",
-      "matched_keywords": [
-        "關稅"
-      ]
-    },
-    {
-      "title": "影／台灣虎航機隊升級　全新A320neo Airspace客機16日上線營運",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T20:11:31+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/10871/9625329",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "台積電協助改善「專科教室」照明 彰化縣政府成果發表兼感謝",
-      "source": "經濟日報",
-      "published_at": "2026-07-13T19:36:56+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9625109",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "AI旺促稅收增　韓國規劃明年預算支出創新高17兆餘元",
-      "source": "中央社財經",
-      "published_at": "2026-07-13T18:43:54+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202607130280.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI ETF怎麼選？00947、009805布局兩大核心商機，誰更有爆發力？",
-      "source": "鉅亨網",
-      "published_at": "2026-07-13T17:15:00+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6532698",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "費半/SOXQ、SOXX、SMH，半導體指標看哪一個?",
-      "source": "鉅亨網",
-      "published_at": "2026-07-13T15:01:56+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6532431",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "營收速報  - 台積電(2330)6月營收4,426.80億元年增率高達67.87％",
-      "source": "鉅亨網",
-      "published_at": "2026-07-13T14:50:17+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6532427",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "台積電6月營收4426億元創新高 Q2逼近財測高標",
-      "source": "鉅亨網",
-      "published_at": "2026-07-13T13:48:16+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6532244",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "〈焦點股〉SK海力士暴跌12% 記憶體賣壓蔓延至台股",
-      "source": "鉅亨網",
-      "published_at": "2026-07-13T13:47:30+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6532270",
-      "matched_keywords": [
-        "記憶體"
-      ]
-    },
-    {
-      "title": "外資普遍看好台積電法說 目標價最高喊到3800元",
-      "source": "鉅亨網",
-      "published_at": "2026-07-13T12:30:49+08:00",
-      "fetched_at": "2026-07-14T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6532182",
-      "matched_keywords": [
-        "台積電"
       ]
     }
   ]
