@@ -1,0 +1,5437 @@
+{
+  "version": "v3",
+  "updated_at": "2026-05-26",
+  "rule_version": "v2.1",
+  "source": "key_prices_clean_v3.md",
+  "_note": "由 tools/convert_key_prices.py 生成。重跑覆寫。手動編輯會被覆蓋。",
+  "stocks": {
+    "TWSE:2330": {
+      "name": "台積電",
+      "sector": "晶圓代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2025",
+          "color": "red",
+          "text": "2025",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1765",
+          "color": "black",
+          "text": "1765",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1520",
+          "color": "black",
+          "text": "1520",
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "2130",
+          "high": "2180",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "1865",
+          "high": "1935",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:2454": {
+      "name": "聯發科",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1945",
+          "color": "red",
+          "text": "1945",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1525",
+          "color": "black",
+          "text": "1525",
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "2865",
+          "high": "3155",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "1775",
+          "high": "1840",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "1150",
+          "high": "1200",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block",
+          "annotations": [
+            "邊界不確定"
+          ]
+        }
+      ]
+    },
+    "TWSE:6526": {
+      "name": "達發",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "633",
+          "color": "red",
+          "text": "633",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "422",
+          "color": "red",
+          "text": "422",
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "770",
+          "high": "788",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "579",
+          "high": "597",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:3034": {
+      "name": "聯詠",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "503",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "important",
+          "text": ""
+        },
+        {
+          "price": "405",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": "大戶成本"
+        }
+      ],
+      "areas": [
+        {
+          "low": "450.5",
+          "high": "465.5",
+          "category": "order_block",
+          "adjective": "",
+          "text": "短線買盤"
+        }
+      ]
+    },
+    "TWSE:2379": {
+      "name": "瑞昱",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "592",
+          "color": "black",
+          "text": "前高",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "531",
+          "color": "black",
+          "text": "中繼",
+          "adjective": null,
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "484.5",
+          "high": "497.5",
+          "text": "買盤訂單塊上層",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "432.5",
+          "high": "451",
+          "text": "買盤訂單塊下層",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:5269": {
+      "name": "祥碩",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1740",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": "大戶空單成本價"
+        },
+        {
+          "price": "1295",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "1920",
+          "high": "1965",
+          "category": "poc",
+          "adjective": "",
+          "text": "POC"
+        },
+        {
+          "low": "1545",
+          "high": "1600",
+          "category": "order_block",
+          "adjective": "",
+          "text": "賣盤訂單塊"
+        },
+        {
+          "low": "1065",
+          "high": "1115",
+          "category": "order_block",
+          "adjective": "",
+          "text": "買盤訂單塊"
+        }
+      ]
+    },
+    "TPEX:3529": {
+      "name": "力旺",
+      "sector": "IP與ASIC",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "4710",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "3242",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": [
+        {
+          "low": "4460",
+          "high": "4665",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "2090",
+          "high": "2160",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:3443": {
+      "name": "創意",
+      "sector": "IP與ASIC",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "5955",
+          "color": "black",
+          "text": "歷史高點 5955",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "2800",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "2155",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "4285",
+          "high": "4540",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "3715",
+          "high": "3905",
+          "text": "短線買盤訂單塊",
+          "adjective": "short_term",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:3661": {
+      "name": "世芯-KY",
+      "sector": "IP與ASIC",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "4350",
+          "color": "black",
+          "text": "阻力 / 起漲",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "3730",
+          "color": "black",
+          "text": "支撐",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "2605",
+          "color": "black",
+          "text": "深底",
+          "adjective": null,
+          "category": "support_transfer"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:6643": {
+      "name": "M31",
+      "sector": "IP與ASIC",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "607",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "521",
+          "color": "black",
+          "text": "內撐",
+          "adjective": null,
+          "category": "inner_support"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:3035": {
+      "name": "智原",
+      "sector": "IP與ASIC",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "211.0",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "187.4",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "167.5",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": [
+        {
+          "low": "231",
+          "high": "236",
+          "text": "小賣壓訂單塊",
+          "adjective": "small",
+          "category": "order_block"
+        },
+        {
+          "low": "173.0",
+          "high": "178.5",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2449": {
+      "name": "京元電子",
+      "sector": "封裝測試",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "365",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "353.5",
+          "color": "gray",
+          "text": "賣壓",
+          "adjective": "short_term",
+          "category": "support_transfer"
+        },
+        {
+          "price": "257",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "143",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "227.5",
+          "high": "234",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "188",
+          "high": "196",
+          "text": "起漲跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        }
+      ]
+    },
+    "TWSE:6239": {
+      "name": "力成",
+      "sector": "封裝測試",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "274.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "222",
+          "color": "gray",
+          "text": "內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "186",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "150",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "253.5",
+          "high": "261",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:3711": {
+      "name": "日月光投控",
+      "sector": "封裝測試",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "476",
+          "color": "black",
+          "text": "內撐",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "392.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "250",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "307.5",
+          "high": "320",
+          "text": "底部買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:3653": {
+      "name": "健策",
+      "sector": "散熱",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "4055",
+          "color": "black",
+          "text": "賣壓",
+          "adjective": "small",
+          "category": "support_transfer"
+        },
+        {
+          "price": "2810",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "2660",
+          "color": "gray",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "4575",
+          "high": "4755",
+          "text": "跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        },
+        {
+          "low": "2115",
+          "high": "2515",
+          "text": "籌碼集中區",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:3017": {
+      "name": "奇鋐",
+      "sector": "散熱",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2390",
+          "color": "black",
+          "text": "小內撐 2390",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "1545",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:2421": {
+      "name": "建準",
+      "sector": "散熱",
+      "market": "TW",
+      "lines": [],
+      "areas": [
+        {
+          "low": "155.5",
+          "high": "160.5",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "134.0",
+          "high": "136.5",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        },
+        {
+          "low": "119.5",
+          "high": "123.5",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TPEX:3324": {
+      "name": "雙鴻",
+      "sector": "散熱",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1095",
+          "color": "black",
+          "text": "小賣壓 1095",
+          "adjective": "small",
+          "category": "support_transfer"
+        },
+        {
+          "price": "879",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "757",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:8996": {
+      "name": "高力",
+      "sector": "散熱",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "980",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "674",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "567",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "1255",
+          "high": "1305",
+          "category": "order_block",
+          "adjective": "",
+          "text": "賣盤訂單塊"
+        },
+        {
+          "low": "432.5",
+          "high": "461.5",
+          "category": "order_block",
+          "adjective": "",
+          "text": "買盤訂單塊"
+        }
+      ]
+    },
+    "TWSE:2603": {
+      "name": "長榮",
+      "sector": "航運物流",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "232.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "220",
+          "color": "black",
+          "text": "小賣壓 220",
+          "adjective": "small",
+          "category": "support_transfer"
+        },
+        {
+          "price": "197.0",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "185.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:2609": {
+      "name": "陽明",
+      "sector": "航運物流",
+      "market": "TW",
+      "lines": [],
+      "areas": [
+        {
+          "low": "68.8",
+          "high": "69.9",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "54.3",
+          "high": "56.1",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "47.25",
+          "high": "50",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2308": {
+      "name": "台達電",
+      "sector": "電源供應以及能源基礎",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2280",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1350",
+          "color": "black",
+          "text": "內部撐轉 1350",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "1085",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "880",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "1905",
+          "high": "1950",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "1560",
+          "high": "1620",
+          "text": "跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        }
+      ]
+    },
+    "TWSE:2301": {
+      "name": "光寶科",
+      "sector": "電源供應以及能源基礎",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "197",
+          "color": "red",
+          "text": "197",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "142",
+          "color": "red",
+          "text": "142",
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "224",
+          "high": "230.5",
+          "text": "跳空 FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "172.5",
+          "high": "185",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:6412": {
+      "name": "群電",
+      "sector": "電源供應以及能源基礎",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "108.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "97.6",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "86.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "76.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:2327": {
+      "name": "國巨",
+      "sector": "被動元件",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "292",
+          "color": "black",
+          "text": "支撐",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "244",
+          "color": "black",
+          "text": "支撐",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "125.5",
+          "color": "black",
+          "text": "深底",
+          "adjective": null,
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "419",
+          "high": "447",
+          "text": "FVG 跳空",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "331.5",
+          "high": "345.5",
+          "text": "小買盤訂單塊",
+          "adjective": "small",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2492": {
+      "name": "華新科",
+      "sector": "被動元件",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "265",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "223",
+          "color": "black",
+          "text": "內撐 223",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "167.6",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "144.7",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "112.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "200",
+          "high": "210",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg",
+          "annotations": [
+            "邊界不確定"
+          ]
+        },
+        {
+          "low": "165",
+          "high": "172",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block",
+          "annotations": [
+            "邊界不確定"
+          ]
+        },
+        {
+          "low": "140",
+          "high": "150",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc",
+          "annotations": [
+            "邊界不確定"
+          ]
+        }
+      ]
+    },
+    "TWSE:6862": {
+      "name": "三集瑞-KY",
+      "sector": "被動元件",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "195.3",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "193",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "179",
+          "color": "black",
+          "text": "內撐 179",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "158.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "271",
+          "high": "280",
+          "text": "短線賣盤訂單塊",
+          "adjective": "short_term",
+          "category": "order_block"
+        },
+        {
+          "low": "226.0",
+          "high": "232.0",
+          "text": "跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        }
+      ]
+    },
+    "TWSE:2317": {
+      "name": "鴻海",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "262.5",
+          "color": "black",
+          "text": "262.5",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "205.5",
+          "color": "black",
+          "text": "205.5",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "190.0",
+          "color": "red",
+          "text": "190",
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "239.0",
+          "high": "245.0",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "213.5",
+          "high": "219.6",
+          "text": "小買盤訂單塊",
+          "adjective": "small",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2382": {
+      "name": "廣達",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "417",
+          "color": "gray",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "390.5",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "272.5",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "328",
+          "high": "335",
+          "category": "poc",
+          "adjective": "",
+          "text": "撐轉"
+        },
+        {
+          "low": "289.5",
+          "high": "295.5",
+          "category": "poc",
+          "adjective": "",
+          "text": ""
+        }
+      ]
+    },
+    "TWSE:3231": {
+      "name": "緯創",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "159",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "132.5",
+          "color": "gray",
+          "category": "inner_support",
+          "adjective": "",
+          "text": "內撐"
+        },
+        {
+          "price": "122.5",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "109",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "194",
+          "high": "201",
+          "category": "order_block",
+          "adjective": "",
+          "text": "賣盤訂單塊"
+        }
+      ]
+    },
+    "TWSE:2376": {
+      "name": "技嘉",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "398.5",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "370",
+          "color": "gray",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "260",
+          "color": "gray",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "209",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "323",
+          "high": "328.5",
+          "category": "poc",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "low": "292",
+          "high": "300",
+          "category": "fvg",
+          "adjective": "",
+          "text": "FVG"
+        },
+        {
+          "low": "276",
+          "high": "283",
+          "category": "poc",
+          "adjective": "",
+          "text": "POC"
+        }
+      ]
+    },
+    "TWSE:6669": {
+      "name": "緯穎",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "5800",
+          "color": "black",
+          "text": "5800",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "5435",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "4715",
+          "color": "red",
+          "text": "4715",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "4225",
+          "color": "black",
+          "text": "4225",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "3535",
+          "color": "black",
+          "text": "撐轉 3535",
+          "adjective": null,
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "4915",
+          "high": "5105",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:1519": {
+      "name": "華城",
+      "sector": "重電與電網",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1085",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "935",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "888",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "861",
+          "color": "black",
+          "text": "內撐 861",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "797",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "734",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "680",
+          "color": "red",
+          "text": "重要",
+          "adjective": "important",
+          "category": "key_price"
+        },
+        {
+          "price": "529",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "756",
+          "high": "787",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:1513": {
+      "name": "中興電",
+      "sector": "重電與電網",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "185.5",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "177.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "130.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "160.0",
+          "high": "164.0",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "141.0",
+          "high": "144.0",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:1503": {
+      "name": "士電",
+      "sector": "重電與電網",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "247",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "241.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "236.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "208.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "197.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "178.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "162.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "144.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "201.5",
+          "high": "211.5",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        },
+        {
+          "low": "177.0",
+          "high": "179.0",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "159.0",
+          "high": "161.5",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:1514": {
+      "name": "亞力",
+      "sector": "重電與電網",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "154.5",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "93.4",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "133.0",
+          "high": "139.5",
+          "category": "order_block",
+          "adjective": "",
+          "text": "賣盤訂單塊"
+        },
+        {
+          "low": "112.0",
+          "high": "115.0",
+          "category": "poc",
+          "adjective": "",
+          "text": "POC"
+        },
+        {
+          "low": "99.8",
+          "high": "103.5",
+          "category": "order_block",
+          "adjective": "",
+          "text": "買盤訂單塊"
+        }
+      ]
+    },
+    "TWSE:2345": {
+      "name": "智邦",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2675",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "2330",
+          "color": "black",
+          "text": "內撐",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "2010",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1510",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1265",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1100",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:3081": {
+      "name": "聯亞",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2470",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "2170",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "3055",
+          "high": "3220",
+          "category": "order_block",
+          "adjective": "",
+          "text": "賣盤訂單塊"
+        },
+        {
+          "low": "1375",
+          "high": "1510",
+          "category": "poc",
+          "adjective": "",
+          "text": "POC"
+        }
+      ]
+    },
+    "TPEX:4908": {
+      "name": "前鼎",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "267.5",
+          "color": "black",
+          "text": "內撐",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "220.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "120",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "140",
+          "high": "150",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TPEX:3363": {
+      "name": "上詮",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "735",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "547",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "390",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "936",
+          "high": "999",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "660",
+          "high": "705",
+          "text": "跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        }
+      ]
+    },
+    "TWSE:6515": {
+      "name": "穎崴",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "11170",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "9075",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "7720",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "6605",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "4500",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "2815",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:6223": {
+      "name": "旺矽",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "6285",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "4640",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "3580",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": [
+        {
+          "low": "5025",
+          "high": "5370",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "2995",
+          "high": "3120",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TPEX:3131": {
+      "name": "弘塑",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "3570",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "3195",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": [
+        {
+          "low": "2560",
+          "high": "2645",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:3583": {
+      "name": "辛耘",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "990",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "719",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "535",
+          "color": "gray",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "451",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:3680": {
+      "name": "家登",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "620",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "444.5",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "355",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "315.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "479.0",
+          "high": "501.0",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TPEX:6187": {
+      "name": "萬潤",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1465",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "1280",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "980",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "792",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "602",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:7734": {
+      "name": "印能",
+      "sector": "",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "4495",
+          "color": "red",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "3220",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "2275",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "1505",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:2367": {
+      "name": "京鼎",
+      "sector": "",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "338",
+          "color": "black",
+          "text": "小撐轉 338",
+          "adjective": "small",
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "377",
+          "high": "385",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "264",
+          "high": "281.5",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2383": {
+      "name": "台光電",
+      "sector": "CCL",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "5110",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "4070",
+          "high": "4235",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TPEX:6274": {
+      "name": "台燿",
+      "sector": "CCL",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1465",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "1251",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1080",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "920",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "450",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:6213": {
+      "name": "聯茂",
+      "sector": "CCL",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "310.5",
+          "color": "red",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "281.5",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "236.5",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "167.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "82.6",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:3715": {
+      "name": "定穎投控",
+      "sector": "PCB",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "204.5",
+          "color": "red",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "150.9",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "130",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "117",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "89",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": [
+        {
+          "low": "157.5",
+          "high": "167.0",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2313": {
+      "name": "華通",
+      "sector": "PCB",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "288.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "249.3",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "240.6",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "208.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "192",
+          "color": "black",
+          "text": "撐轉",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "83.9",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:2368": {
+      "name": "金像電",
+      "sector": "PCB",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1480",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1220",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1045",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "860",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "702",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:3037": {
+      "name": "欣興",
+      "sector": "ABF",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "908",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "730",
+          "high": "766",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "571",
+          "high": "599",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "427",
+          "high": "445.5",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:3189": {
+      "name": "景碩",
+      "sector": "ABF",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "537",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "513",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "290.2",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "432.0",
+          "high": "447.5",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        },
+        {
+          "low": "384.0",
+          "high": "398.0",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "254.5",
+          "high": "265.5",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:8046": {
+      "name": "南電",
+      "sector": "ABF",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1020",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "901",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "845",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "686",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "628",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "491.3",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "236",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": [
+        {
+          "low": "769",
+          "high": "796",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2059": {
+      "name": "川湖",
+      "sector": "伺服器關鍵零組件",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "5525",
+          "color": "black",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "4415",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "3655",
+          "high": "3900",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:3533": {
+      "name": "嘉澤",
+      "sector": "伺服器關鍵零組件",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2905",
+          "color": "red",
+          "text": "前高壓力位",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "2000",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "1790",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1400",
+          "color": "black",
+          "text": "小內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        }
+      ],
+      "areas": [
+        {
+          "low": "2215",
+          "high": "2285",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NYSE:TSM": {
+      "name": "台積電 ADR",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "420",
+          "color": "black",
+          "text": "前高",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "402.59",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "387.10",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "369.83",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "359.00",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "316.71",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "273.26",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "221.49",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "212.71",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "NASDAQ:QCOM": {
+      "name": "高通",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "237.8",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "187.9",
+          "color": "black",
+          "text": "重要 187.9",
+          "adjective": "important",
+          "category": "key_price"
+        },
+        {
+          "price": "133.6",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "124",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "158.89",
+          "high": "167.99",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "NASDAQ:ARM": {
+      "name": "ARM Holdings",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "179.76",
+          "color": "black",
+          "text": "180",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "157.2",
+          "color": "black",
+          "text": "預估大戶成本 157.2",
+          "adjective": "estimated",
+          "category": "whale_cost"
+        },
+        {
+          "price": "143.64",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "104.49",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "232.88",
+          "high": "239.41",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NASDAQ:SNPS": {
+      "name": "Synopsys",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "586.8",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "522.46",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "454.36",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "381.67",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "NASDAQ:MRVL": {
+      "name": "Marvell",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "158.2",
+          "color": "black",
+          "text": "短線買盤底部 158.2",
+          "adjective": "short_term",
+          "category": "support_transfer"
+        },
+        {
+          "price": "128.6",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "107.72",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "102.00",
+          "color": "black",
+          "text": "重要撐轉",
+          "adjective": "important",
+          "category": "support_transfer"
+        },
+        {
+          "price": "84.97",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "73.17",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "NASDAQ:AMKR": {
+      "name": "Amkor Technology",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "79.2",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "59.48",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "58.34",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "56.24",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "50.6",
+          "color": "black",
+          "text": "價格轉換",
+          "adjective": "important",
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "38.82",
+          "high": "41.91",
+          "text": "底部訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NYSE:VRT": {
+      "name": "Vertiv",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "232.87",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "198.53",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "151.51",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "267.75",
+          "high": "281.24",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TSE:6594": {
+      "name": "Nidec 日本電產",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "3300",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "3050",
+          "color": "black",
+          "text": "小賣壓 3050",
+          "adjective": "small",
+          "category": "support_transfer"
+        },
+        {
+          "price": "2817",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "2470",
+          "color": "black",
+          "text": "內撐 2470",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "1943",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "NYSE:ZIM": {
+      "name": "以星航運",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "29.96",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "29.18",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "23.38",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "17.51",
+          "high": "18.31",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "OMXCOP:MAERSK": {
+      "name": "馬士基",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "15470",
+          "color": "black",
+          "text": "撐轉",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "13830",
+          "color": "black",
+          "text": "撐轉",
+          "adjective": null,
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "17530",
+          "high": "17900",
+          "text": "跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        },
+        {
+          "low": "16550",
+          "high": "16840",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NYSE:ETN": {
+      "name": "Eaton Corp",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "435.18",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "400",
+          "color": "black",
+          "text": "內撐 400",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "343.12",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "315.16",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "357.56",
+          "high": "364.34",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
+    },
+    "TSE:6981": {
+      "name": "Murata 村田",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "5965",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "4795",
+          "color": "black",
+          "text": "內撐 4795",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "4377",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "4334",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "3473",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "5810",
+          "high": "5962",
+          "text": "訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "5263",
+          "high": "5401",
+          "text": "多頭跳空缺口",
+          "adjective": null,
+          "category": "gap"
+        }
+      ]
+    },
+    "TSE:6762": {
+      "name": "TDK",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "4108",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "3575",
+          "color": "black",
+          "category": "inner_support",
+          "adjective": "",
+          "text": "內撐"
+        },
+        {
+          "price": "2764.5",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "3111",
+          "high": "3185",
+          "category": "order_block",
+          "adjective": "",
+          "text": "賣盤訂單塊"
+        },
+        {
+          "low": "2451.5",
+          "high": "2532",
+          "category": "order_block",
+          "adjective": "",
+          "text": "買盤訂單塊"
+        },
+        {
+          "low": "2168.5",
+          "high": "2241.5",
+          "category": "poc",
+          "adjective": "",
+          "text": "POC"
+        }
+      ]
+    },
+    "NASDAQ:SMCI": {
+      "name": "Super Micro Computer",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "62.46",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "39.66",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "35.59",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "29.7",
+          "color": "black",
+          "text": "內撐 29.7",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "26",
+          "color": "black",
+          "text": "內撐 26",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "20.11",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "44.97",
+          "high": "47.18",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NYSE:DELL": {
+      "name": "Dell Technologies",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "260.70",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "220",
+          "color": "black",
+          "text": "內撐 220",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "177",
+          "color": "black",
+          "text": "內撐 177",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "110.77",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "137.63",
+          "high": "143.7",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NYSE:HPE": {
+      "name": "Hewlett Packard Enterprise",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "31.4",
+          "color": "black",
+          "text": "小內撐 31.4",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "28.9",
+          "color": "black",
+          "text": "內撐 28.9",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "26.32",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "19.83",
+          "color": "red",
+          "text": "重要",
+          "adjective": "important",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "22.29",
+          "high": "23.07",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NYSE:GEV": {
+      "name": "GE Vernova",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "988.3",
+          "color": "black",
+          "text": "內撐 988.3",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "782.63",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "545.42",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "1115.00",
+          "high": "1138.26",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "910.75",
+          "high": "933.37",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "NYSE:PWR": {
+      "name": "Quanta Services",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "781.86",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "699.63",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "636.89",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "531.07",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "451.88",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "559.96",
+          "high": "577.97",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        },
+        {
+          "low": "479.77",
+          "high": "491.22",
+          "text": "起漲買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NASDAQ:LITE": {
+      "name": "Lumentum Holdings",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "1111.20",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1053",
+          "color": "black",
+          "text": "前高",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "933.79",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "816.89",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "783.63",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "650.24",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "401.05",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "NYSE:COHR": {
+      "name": "Coherent Corp",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "404",
+          "color": "black",
+          "text": "前高",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "350.99",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "344",
+          "color": "black",
+          "text": "內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "301.68",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "299.28",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "217.66",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "168.94",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "261.93",
+          "high": "276.08",
+          "text": "買盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
+    },
+    "NYSE:ANET": {
+      "name": "Arista Networks",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "177.68",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "162.54",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "151.8",
+          "color": "black",
+          "text": "撐轉",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "136.25",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "116.02",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "NASDAQ:AMAT": {
+      "name": "Applied Materials",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "443",
+          "color": "black",
+          "text": "前高",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "416.22",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "401",
+          "color": "black",
+          "text": "內撐",
+          "adjective": null,
+          "category": "inner_support"
+        },
+        {
+          "price": "382.45",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "377.11",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "321.60",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "240.01",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "NASDAQ:ASML": {
+      "name": "ASML Holding ADR",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "1379.64",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1330.90",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1249.29",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "943.05",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "1089.10",
+          "high": "1133.08",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
+    },
+    "TSE:6146": {
+      "name": "Disco",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "77130",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "60670",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "50700",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "37310",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "69944",
+          "high": "70748",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "TSE:8035": {
+      "name": "Tokyo Electron",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "41040",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "36570",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "30080",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "22615",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TSE:6752": {
+      "name": "Panasonic 松下",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "2327.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1907.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "1578.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "2639.5",
+          "high": "2712.0",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
+    },
+    "NYSE:ROG": {
+      "name": "Rogers Corporation",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "120.82",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price",
+          "annotations": [
+            "顏色不確定"
+          ]
+        },
+        {
+          "price": "119.01",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "116.03",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "109.86",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "90.83",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "85.38",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TSE:4062": {
+      "name": "Ibiden 揖斐電",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "14855",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "5440",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "11325",
+          "high": "12125",
+          "text": "FVG",
+          "adjective": null,
+          "category": "fvg"
+        }
+      ]
+    },
+    "NASDAQ:NVDA": {
+      "name": "NVIDIA",
+      "sector": "",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "235.70",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "229.94",
+          "color": "black",
+          "text": "前高",
+          "adjective": null,
+          "category": "support_transfer"
+        },
+        {
+          "price": "195.84",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "165.04",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "153.07",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:3693": {
+      "name": "營邦",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "690",
+          "color": "black",
+          "text": "賣壓",
+          "adjective": "small",
+          "category": "support_transfer"
+        },
+        {
+          "price": "427.5",
+          "color": "black",
+          "text": "內撐",
+          "adjective": "small",
+          "category": "inner_support"
+        },
+        {
+          "price": "385",
+          "color": "red",
+          "text": "撐轉",
+          "adjective": "important",
+          "category": "support_transfer"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:5347": {
+      "name": "世界先進",
+      "sector": "晶圓代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "184",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "157.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "133.5",
+          "color": "gray",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "108",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:6531": {
+      "name": "愛普",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "874",
+          "color": "black",
+          "text": "內撐",
+          "adjective": "",
+          "category": "inner_support"
+        },
+        {
+          "price": "440.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "1240",
+          "high": "1305",
+          "text": "賣盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        },
+        {
+          "low": "711",
+          "high": "791",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:3545": {
+      "name": "敦泰",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "71.1",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "62.7",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "50.2",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "45.6",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:6805": {
+      "name": "富世達",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2270",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1640",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "1930",
+          "high": "2020",
+          "text": "FVG",
+          "adjective": "",
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:2465": {
+      "name": "麗臺",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "110",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "93.8",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "72.8",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "66.3",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:8210": {
+      "name": "勤誠",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1560",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1285",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1105",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "862",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:4958": {
+      "name": "臻鼎-KY",
+      "sector": "PCB",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "558",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "481",
+          "color": "black",
+          "text": "內撐",
+          "adjective": "",
+          "category": "inner_support"
+        },
+        {
+          "price": "333",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "250",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:6285": {
+      "name": "啟碁",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "281",
+          "color": "black",
+          "text": "內撐",
+          "adjective": "",
+          "category": "inner_support"
+        },
+        {
+          "price": "208",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "150",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "95.5",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:4979": {
+      "name": "華星光",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "763",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "505",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "342",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:3491": {
+      "name": "昇達科",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1868",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1540",
+          "color": "gray",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1280",
+          "color": "gray",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1080",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:2049": {
+      "name": "上銀",
+      "sector": "機器人",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "418.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "327",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "275",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "218",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:2395": {
+      "name": "研華",
+      "sector": "機器人",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "529",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "424.5",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "377.5",
+          "color": "red",
+          "text": "",
+          "adjective": "important",
+          "category": "key_price"
+        },
+        {
+          "price": "311.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "471",
+          "high": "486.5",
+          "text": "FVG",
+          "adjective": "",
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:2359": {
+      "name": "所羅門",
+      "sector": "機器人",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "152",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "119",
+          "color": "black",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        },
+        {
+          "price": "108",
+          "color": "red",
+          "category": "key_price",
+          "adjective": "",
+          "text": ""
+        }
+      ],
+      "areas": [
+        {
+          "low": "172",
+          "high": "175.5",
+          "category": "order_block",
+          "adjective": "",
+          "text": "賣盤訂單塊"
+        }
+      ]
+    },
+    "TPEX:3163": {
+      "name": "波若威",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1300",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "647",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "489.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "866",
+          "high": "920",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2344": {
+      "name": "華邦電",
+      "sector": "記憶體",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "133",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "107",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "84.1",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "184.5",
+          "high": "193",
+          "text": "賣盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2408": {
+      "name": "南亞科",
+      "sector": "記憶體",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "429.5",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "260",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "174",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "381.5",
+          "high": "395",
+          "text": "跳空缺口",
+          "adjective": "",
+          "category": "gap"
+        }
+      ]
+    },
+    "TWSE:2337": {
+      "name": "旺宏",
+      "sector": "記憶體",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "178",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "116.5",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "63.7",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "87.4",
+          "high": "92.8",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:6770": {
+      "name": "力積電",
+      "sector": "記憶體",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "93.3",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "77.2",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "65.4",
+          "color": "black",
+          "text": "內撐",
+          "adjective": "",
+          "category": "inner_support"
+        },
+        {
+          "price": "51.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "37.35",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TPEX:8299": {
+      "name": "群聯",
+      "sector": "記憶體",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2845",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "2270",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1475",
+          "color": "red",
+          "text": "",
+          "adjective": "important",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "997",
+          "high": "1175",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        }
+      ]
+    },
+    "TPEX:5289": {
+      "name": "宜鼎",
+      "sector": "記憶體",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "1980",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1675",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "844",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "716",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "1420",
+          "high": "1475",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2357": {
+      "name": "華碩",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "762",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "687",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "620",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "547",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "920",
+          "high": "931",
+          "text": "賣盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2356": {
+      "name": "英業達",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "86",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "54.4",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "70.3",
+          "high": "71.6",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        },
+        {
+          "low": "59.5",
+          "high": "62.4",
+          "text": "跳空缺口",
+          "adjective": "",
+          "category": "gap"
+        }
+      ]
+    },
+    "TWSE:6117": {
+      "name": "迎廣",
+      "sector": "伺服器關鍵零組件",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "101.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "78.6",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "69",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "109.5",
+          "high": "114.5",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        },
+        {
+          "low": "94",
+          "high": "96.1",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:3665": {
+      "name": "貿聯-KY",
+      "sector": "伺服器關鍵零組件",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "3005",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1705",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "2405",
+          "high": "2495",
+          "text": "賣盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:7769": {
+      "name": "鴻勁",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "8270",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "6450",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "4875",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "4070",
+          "high": "4415",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:2360": {
+      "name": "致茂",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2795",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "2055",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1750",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "853",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:3413": {
+      "name": "京鼎",
+      "sector": "半導體設備耗材",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "338",
+          "color": "black",
+          "text": "撐轉",
+          "adjective": "small",
+          "category": "support_transfer"
+        }
+      ],
+      "areas": [
+        {
+          "low": "377",
+          "high": "385",
+          "text": "賣盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        },
+        {
+          "low": "264",
+          "high": "281.5",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:3338": {
+      "name": "泰碩",
+      "sector": "散熱",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "93.2",
+          "color": "red",
+          "text": "",
+          "adjective": "important",
+          "category": "key_price"
+        },
+        {
+          "price": "68.7",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "50.8",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "75.7",
+          "high": "77.7",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:2455": {
+      "name": "全新",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "444",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "386.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "275.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "195",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "243.5",
+          "high": "260.5",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TWSE:6442": {
+      "name": "光聖",
+      "sector": "光通訊",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "2430",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1705",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1570",
+          "color": "black",
+          "text": "不明分點",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1450",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "766",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "TWSE:6282": {
+      "name": "康舒",
+      "sector": "電源供應以及能源基礎",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "57.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "37.35",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "33.15",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "49.55",
+          "high": "50.8",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:3015": {
+      "name": "全漢",
+      "sector": "電源供應以及能源基礎",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "72.2",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "48.95",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "62.8",
+          "high": "65.1",
+          "text": "跳空缺口",
+          "adjective": "",
+          "category": "gap"
+        }
+      ]
+    },
+    "TWSE:6269": {
+      "name": "台郡",
+      "sector": "PCB",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "94.9",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "86.7",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "77.9",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "49.15",
+          "high": "52.4",
+          "text": "FVG",
+          "adjective": "",
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:2474": {
+      "name": "可成",
+      "sector": "封裝測試",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "183.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "257",
+          "high": "266.5",
+          "text": "賣盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        },
+        {
+          "low": "203",
+          "high": "212.5",
+          "text": "破壞塊",
+          "adjective": "",
+          "category": "fvg"
+        }
+      ]
+    },
+    "TWSE:2303": {
+      "name": "聯電",
+      "sector": "晶圓代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "125",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "79.9",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "149",
+          "high": "155.5",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "TPEX:5274": {
+      "name": "信驊",
+      "sector": "IC設計",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "19320",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "15575",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "12150",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "13020",
+          "high": "13580",
+          "text": "跳空缺口",
+          "adjective": "",
+          "category": "gap"
+        },
+        {
+          "low": "8620",
+          "high": "9785",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        }
+      ]
+    },
+    "TWSE:7795": {
+      "name": "長廣",
+      "sector": "ABF",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "441.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "324.5",
+          "high": "337",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        }
+      ]
+    },
+    "NASDAQ:HIMX": {
+      "name": "Himax",
+      "sector": "網通_光通訊_傳輸龍頭",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "24.21",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "17.49",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "12.84",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "10.76",
+          "high": "11.61",
+          "text": "POC",
+          "adjective": "",
+          "category": "poc"
+        }
+      ]
+    },
+    "NASDAQ:MU": {
+      "name": "Micron",
+      "sector": "記憶體",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "1081.51",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "820.23",
+          "color": "red",
+          "text": "",
+          "adjective": "important",
+          "category": "key_price"
+        },
+        {
+          "price": "663.86",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "465.07",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": []
+    },
+    "KRX:005930": {
+      "name": "Samsung Electronics",
+      "sector": "記憶體",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "366000",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "291000",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "198100",
+          "color": "gray",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "168600",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "233000",
+          "high": "254000",
+          "text": "跳空缺口",
+          "adjective": "important",
+          "category": "gap"
+        }
+      ]
+    },
+    "KRX:000660": {
+      "name": "SK Hynix",
+      "sector": "記憶體",
+      "market": "INTL",
+      "lines": [
+        {
+          "price": "2387000",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "1059000",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "801000",
+          "color": "red",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "626000",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "1945000",
+          "high": "2007000",
+          "text": "買盤訂單塊",
+          "adjective": "",
+          "category": "order_block"
+        },
+        {
+          "low": "1446000",
+          "high": "1566000",
+          "text": "跳空缺口",
+          "adjective": "important",
+          "category": "gap"
+        }
+      ]
+    }
+  }
+}
