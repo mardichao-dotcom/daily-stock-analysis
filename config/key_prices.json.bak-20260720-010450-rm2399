@@ -3988,6 +3988,50 @@
         }
       ]
     },
+    "TWSE:2399": {
+      "name": "微星",
+      "sector": "AI伺服器代工",
+      "market": "TW",
+      "lines": [
+        {
+          "price": "167",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "153",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "123.5",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        },
+        {
+          "price": "101",
+          "color": "black",
+          "text": "",
+          "adjective": "",
+          "category": "key_price"
+        }
+      ],
+      "areas": [
+        {
+          "low": "131.5",
+          "high": "136",
+          "text": "破壞塊(暫當FVG處理)",
+          "adjective": "",
+          "category": "fvg"
+        }
+      ]
+    },
     "TWSE:3545": {
       "name": "敦泰",
       "sector": "IC設計",

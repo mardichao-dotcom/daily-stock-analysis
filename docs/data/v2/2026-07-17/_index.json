@@ -30,6 +30,7 @@
     "TWSE_3661",
     "TPEX_6643",
     "TWSE_3035",
+    "TWSE_6533",
     "TWSE_2330",
     "TPEX_5347",
     "TWSE_2303",
@@ -47,18 +48,19 @@
     "TWSE_7769",
     "TWSE_2360",
     "TWSE_3413",
+    "TPEX_4772",
     "TWSE_2382",
     "TWSE_3231",
     "TWSE_2376",
     "TWSE_6669",
     "TWSE_2317",
     "TPEX_3693",
-    "TWSE_2399",
     "TWSE_6805",
     "TWSE_2465",
     "TWSE_8210",
     "TWSE_2357",
     "TWSE_2356",
+    "TWSE_2377",
     "TWSE_2383",
     "TPEX_6274",
     "TWSE_6213",
@@ -75,6 +77,7 @@
     "TWSE_2327",
     "TWSE_2492",
     "TWSE_6862",
+    "TWSE_6449",
     "TWSE_2308",
     "TWSE_2301",
     "TWSE_6412",
@@ -93,12 +96,17 @@
     "TWSE_2049",
     "TWSE_2395",
     "TWSE_2359",
+    "TWSE_8033",
     "TWSE_2344",
     "TWSE_2408",
     "TWSE_2337",
     "TWSE_6770",
     "TPEX_8299",
     "TPEX_5289",
+    "TWSE_3406",
+    "TWSE_9958",
+    "TWSE_4763",
+    "TWSE_6944",
     "NASDAQ_NVDA",
     "NYSE_TSM",
     "NASDAQ_QCOM",
@@ -337,6 +345,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_6533": {
+      "symbol": "TWSE:6533",
+      "name": "晶心科",
+      "sector": "IP與ASIC",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2330": {
       "symbol": "TWSE:2330",
       "name": "台積電",
@@ -456,6 +471,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TPEX_4772": {
+      "symbol": "TPEX:4772",
+      "name": "台特化",
+      "sector": "半導體設備耗材",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2382": {
       "symbol": "TWSE:2382",
       "name": "廣達",
@@ -498,13 +520,6 @@
       "exchange": "TW",
       "status": "ready"
     },
-    "TWSE_2399": {
-      "symbol": "TWSE:2399",
-      "name": "微星",
-      "sector": "AI伺服器代工",
-      "exchange": "TW",
-      "status": "ready"
-    },
     "TWSE_6805": {
       "symbol": "TWSE:6805",
       "name": "富世達",
@@ -536,6 +551,13 @@
     "TWSE_2356": {
       "symbol": "TWSE:2356",
       "name": "英業達",
+      "sector": "AI伺服器代工",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_2377": {
+      "symbol": "TWSE:2377",
+      "name": "微星",
       "sector": "AI伺服器代工",
       "exchange": "TW",
       "status": "ready"
@@ -648,6 +670,13 @@
     "TWSE_6862": {
       "symbol": "TWSE:6862",
       "name": "三集瑞-KY",
+      "sector": "被動元件",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_6449": {
+      "symbol": "TWSE:6449",
+      "name": "鈺邦",
       "sector": "被動元件",
       "exchange": "TW",
       "status": "ready"
@@ -778,6 +807,13 @@
       "exchange": "TW",
       "status": "ready"
     },
+    "TWSE_8033": {
+      "symbol": "TWSE:8033",
+      "name": "雷虎",
+      "sector": "機器人",
+      "exchange": "TW",
+      "status": "ready"
+    },
     "TWSE_2344": {
       "symbol": "TWSE:2344",
       "name": "華邦電",
@@ -817,6 +853,34 @@
       "symbol": "TPEX:5289",
       "name": "宜鼎",
       "sector": "記憶體",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_3406": {
+      "symbol": "TWSE:3406",
+      "name": "玉晶光",
+      "sector": "其他",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_9958": {
+      "symbol": "TWSE:9958",
+      "name": "世紀鋼",
+      "sector": "其他",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_4763": {
+      "symbol": "TWSE:4763",
+      "name": "材料-KY",
+      "sector": "其他",
+      "exchange": "TW",
+      "status": "ready"
+    },
+    "TWSE_6944": {
+      "symbol": "TWSE:6944",
+      "name": "兆聯實業",
+      "sector": "其他",
       "exchange": "TW",
       "status": "ready"
     },
@@ -1053,5 +1117,5 @@
     }
   },
   "version": "2.2",
-  "generated_at": "2026-07-18T19:12:23+08:00"
+  "generated_at": "2026-07-20T01:21:29+08:00"
 }

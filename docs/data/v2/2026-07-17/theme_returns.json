@@ -1,13 +1,13 @@
 {
   "date": "2026-07-17",
-  "generated_at": "2026-07-18T19:13:19",
+  "generated_at": "2026-07-20T01:22:14",
   "rules": {
     "n_threshold": 3,
     "calculation": "equal_weight_average",
     "scope": "L2 + L3 + L4 標籤混排"
   },
   "stats": {
-    "total_tags": 242,
+    "total_tags": 239,
     "rankable_tags": 36,
     "tags_with_no_data": 0
   },
@@ -259,6 +259,94 @@
       ]
     },
     {
+      "tag": "AMD",
+      "n": 13,
+      "n_traded": 13,
+      "n_excluded": 0,
+      "return_pct": -6.16,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": -2.1,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": -3.51,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": -3.56,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": -3.62,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": -5.12,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:5269",
+          "name": "祥碩",
+          "return_pct": -5.28,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3653",
+          "name": "健策",
+          "return_pct": -5.45,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
+          "return_pct": -7.29,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": -7.53,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": -8.01,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": -9.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": -9.68,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -9.97,
+          "excluded": false
+        }
+      ]
+    },
+    {
       "tag": "老AI",
       "n": 10,
       "n_traded": 10,
@@ -415,100 +503,6 @@
       ]
     },
     {
-      "tag": "AMD",
-      "n": 14,
-      "n_traded": 14,
-      "n_excluded": 0,
-      "return_pct": -6.31,
-      "rankable": true,
-      "members": [
-        {
-          "code": "TWSE:2357",
-          "name": "華碩",
-          "return_pct": -2.1,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2317",
-          "name": "鴻海",
-          "return_pct": -3.51,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2376",
-          "name": "技嘉",
-          "return_pct": -3.56,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2356",
-          "name": "英業達",
-          "return_pct": -3.62,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3231",
-          "name": "緯創",
-          "return_pct": -5.12,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:5269",
-          "name": "祥碩",
-          "return_pct": -5.28,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3653",
-          "name": "健策",
-          "return_pct": -5.45,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2330",
-          "name": "台積電",
-          "return_pct": -7.29,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2382",
-          "name": "廣達",
-          "return_pct": -7.53,
-          "excluded": false
-        },
-        {
-          "code": "TPEX:3693",
-          "name": "營邦",
-          "return_pct": -8.01,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6239",
-          "name": "力成",
-          "return_pct": -9.0,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": -9.68,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3711",
-          "name": "日月光投控",
-          "return_pct": -9.97,
-          "excluded": false
-        }
-      ]
-    },
-    {
       "tag": "AI機櫃",
       "n": 7,
       "n_traded": 7,
@@ -654,10 +648,10 @@
     },
     {
       "tag": "NVIDIA",
-      "n": 19,
-      "n_traded": 19,
+      "n": 18,
+      "n_traded": 18,
       "n_excluded": 0,
-      "return_pct": -6.91,
+      "return_pct": -6.84,
       "rankable": true,
       "members": [
         {
@@ -721,12 +715,6 @@
           "excluded": false
         },
         {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
-          "excluded": false
-        },
-        {
           "code": "TWSE:3443",
           "name": "創意",
           "return_pct": -8.36,
@@ -778,10 +766,10 @@
     },
     {
       "tag": "AI伺服器",
-      "n": 25,
-      "n_traded": 25,
+      "n": 24,
+      "n_traded": 24,
       "n_excluded": 0,
-      "return_pct": -6.92,
+      "return_pct": -6.87,
       "rankable": true,
       "members": [
         {
@@ -872,12 +860,6 @@
           "code": "TPEX:3693",
           "name": "營邦",
           "return_pct": -8.01,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
           "excluded": false
         },
         {
@@ -2021,6 +2003,38 @@
       ]
     },
     {
+      "tag": "AI PC",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.1,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": -2.1,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI伺服器(品牌)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -2.1,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": -2.1,
+          "excluded": false
+        }
+      ]
+    },
+    {
       "tag": "電競(ROG)",
       "n": 1,
       "n_traded": 1,
@@ -2524,50 +2538,6 @@
           "code": "TWSE:3231",
           "name": "緯創",
           "return_pct": -5.12,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "AI PC",
-      "n": 2,
-      "n_traded": 2,
-      "n_excluded": 0,
-      "return_pct": -5.17,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:2357",
-          "name": "華碩",
-          "return_pct": -2.1,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "AI伺服器(品牌)",
-      "n": 2,
-      "n_traded": 2,
-      "n_excluded": 0,
-      "return_pct": -5.17,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:2357",
-          "name": "華碩",
-          "return_pct": -2.1,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
           "excluded": false
         }
       ]
@@ -3408,54 +3378,6 @@
           "code": "TWSE:6269",
           "name": "台郡",
           "return_pct": -8.02,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "板卡",
-      "n": 1,
-      "n_traded": 1,
-      "n_excluded": 0,
-      "return_pct": -8.24,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "主機板/顯示卡",
-      "n": 1,
-      "n_traded": 1,
-      "n_excluded": 0,
-      "return_pct": -8.24,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "電競筆電",
-      "n": 1,
-      "n_traded": 1,
-      "n_excluded": 0,
-      "return_pct": -8.24,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:2399",
-          "name": "微星",
-          "return_pct": -8.24,
           "excluded": false
         }
       ]
