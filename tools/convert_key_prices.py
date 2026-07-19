@@ -45,6 +45,8 @@ AREA_KEYWORDS = {
     "poc":         ["POC", "籌碼集中區"],
     "fvg":         ["FVG"],       # 涵蓋「FVG」「跳空 FVG」「FVG 跳空」
     "gap":         ["跳空缺口"],  # 「多頭跳空缺口」「起漲跳空缺口」都包含「跳空缺口」
+    # 2026-07-20 朋友決策:新詞彙區域 + 空文字色塊 一律歸此類,權重照 FVG/POC(=1)
+    "break_block": ["破壞塊", "賣壓", "重要撐轉", "短線買盤", "多頭最後防線"],
 }
 
 # 排除規則(per rule §5)。用精確子字串,避免誤殺「起漲跳空缺口」
@@ -115,9 +117,11 @@ def infer_line_category(text: str) -> str:
     return "key_price"
 
 def infer_area_category(text: str) -> str | None:
-    """無匹配時回 None,讓 caller 跳過並記入 skipped"""
-    if not text:
-        return None
+    """無匹配時回 None,讓 caller 跳過並記入 skipped。
+    2026-07-20 朋友決策:空文字色塊(無標籤)歸 break_block、文字留空;
+    非空但無對映的文字仍回 None(維持安全網,新詞不會被靜默吸收)。"""
+    if not text or text == "(無)":
+        return "break_block"
     for cat, keywords in AREA_KEYWORDS.items():
         for kw in keywords:
             if kw in text:
@@ -279,7 +283,7 @@ def parse_markdown(md_path: str) -> tuple[dict, dict]:
 def write_json(stocks: dict, out_path: str) -> None:
     data = {
         "version":      "v3",
-        "updated_at":   "2026-05-26",
+        "updated_at":   "2026-07-20",
         "rule_version": "v2.1",
         "source":       "key_prices_clean_v3.md",
         "_note":        "由 tools/convert_key_prices.py 生成。重跑覆寫。手動編輯會被覆蓋。",

@@ -43,7 +43,8 @@
     "order_block": 2,
     "poc": 1,
     "fvg": 1,
-    "gap": 1
+    "gap": 1,
+    "break_block": 1
   },
 
   "color_multiplier": {
