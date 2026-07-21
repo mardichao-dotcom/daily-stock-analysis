@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T08:30:39+08:00",
+  "generated_at": "2026-07-21T08:30:28+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,148 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 14,
+  "count": 28,
   "items": [
+    {
+      "title": "美國將對部分加拿大商品加徵50%關稅　30天後生效",
+      "source": "中央社財經",
+      "published_at": "2026-07-21T06:27:25+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607210012.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "美車關稅未解 Jeep 自行吸收",
+      "source": "經濟日報",
+      "published_at": "2026-07-21T02:10:45+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9640046",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "加碼美國千億美元 台積電：不把生意拱手讓人",
+      "source": "經濟日報",
+      "published_at": "2026-07-21T01:27:56+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9640138",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "SK 集團：記憶體搶貨混亂 明年價格漲勢不會趨緩 南亞科、華邦等利多",
+      "source": "經濟日報",
+      "published_at": "2026-07-21T01:23:38+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9640156",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "回應日商停產高純度六氟化鎢 台積電：特殊氣體供應多元不受影響",
+      "source": "經濟日報",
+      "published_at": "2026-07-21T00:51:48+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9640075",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電財務長稱2,650億美元美國投資計畫受客戶需求和競爭對手驅動",
+      "source": "經濟日報",
+      "published_at": "2026-07-20T23:08:01+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9638733",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "時碩法說會／AI 液冷散熱專案第3季放量 全年營收挑戰60億元以上新高",
+      "source": "經濟日報",
+      "published_at": "2026-07-20T21:14:29+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9639953",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI股爆跌台股該逃還是買？ 鉅亨買基金：基本面未變拉回更值得布局",
+      "source": "鉅亨網",
+      "published_at": "2026-07-20T17:53:36+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6540590",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "7家銀行攜手助攻記憶體供應鏈！彰銀、元大銀統籌凌航科技36億元聯貸案",
+      "source": "鉅亨網",
+      "published_at": "2026-07-20T17:48:37+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6540559",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "季辛格拋供應鏈疑慮 渣打力挺「MIT」：台灣掌握全球逾9成高階晶片 AI還有戲",
+      "source": "鉅亨網",
+      "published_at": "2026-07-20T17:05:57+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6540487",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "英特爾前執行長示警能源斷鏈 經部掛保證：台灣半導體產業韌性全球頂尖",
+      "source": "鉅亨網",
+      "published_at": "2026-07-20T13:21:10+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6540335",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "地緣及AI雙引擎 TPCA：泰越馬形塑東南亞高階PCB黃金生態系",
+      "source": "鉅亨網",
+      "published_at": "2026-07-20T13:16:12+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6540340",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉外資上調緯創、緯穎AI伺服器出貨展望 股價連袂走強",
+      "source": "鉅亨網",
+      "published_at": "2026-07-20T12:09:25+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6540305",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉反彈搶占4萬3陷千點震盪 台積電守紅盤、政策概念股軍工走強",
+      "source": "鉅亨網",
+      "published_at": "2026-07-20T10:27:21+08:00",
+      "fetched_at": "2026-07-21T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6539558",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "鴻海奪 SpaceX AI 伺服器大單 相關業務動能將比預期強",
       "source": "經濟日報",
