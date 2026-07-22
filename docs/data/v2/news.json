@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T08:30:28+08:00",
+  "generated_at": "2026-07-22T08:30:30+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,229 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 28,
+  "count": 46,
   "items": [
+    {
+      "title": "少子化衝擊...美髮業找不到助理？ 業者推AI洗頭機解缺工",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T08:21:14+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/10871/9642921",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電擬調漲晶片價格　美分析師：英特爾受惠有限",
+      "source": "中央社財經",
+      "published_at": "2026-07-22T07:11:09+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607220017.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "緯創德州 D1新廠啟用 黃仁勳：輝達後續還需要更多新工廠",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T07:08:05+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/11162/9642863",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "美晶片股回勇　記憶體大廠見2位數漲幅",
+      "source": "中央社財經",
+      "published_at": "2026-07-22T06:08:02+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607220015.aspx",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "台積電擬2027年初漲價5%至10%　蘋果iPhone 18系列新機售價恐跟漲",
+      "source": "鉅亨網",
+      "published_at": "2026-07-22T06:00:05+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541913",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "輝達衝光纖網路擬收購美國「暗光纖」 引爆元件需求 光聖、華星光等利多",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T00:52:07+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9642620",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達衝光纖網路 瞄準傳輸痛點",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T00:50:29+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9642624",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達衝光纖網路 ODM廠、資服業也搭上商機",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T00:49:58+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9642625",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "台積電傳明年又要漲價10% 部分先進製程可能上調更多 公司：不評論",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T00:48:57+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9642622",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "聯合再生搶攻美 AI 電力商機 攜手中美晶蓋太陽能廠",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T00:24:13+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9642595",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "Google 攻強力 AI 晶片 市場推測聯發科將受惠",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T00:10:30+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/11162/9642572",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "Ainos嗅覺AI累積收集逾6.13億筆工業氣味資料 加速布局實體AI",
+      "source": "經濟日報",
+      "published_at": "2026-07-22T00:07:30+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9642731",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "韓國記憶體擴產踩油門 對台廠有哪些衝擊？注意這三個關鍵變化",
+      "source": "經濟日報",
+      "published_at": "2026-07-21T22:08:45+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://money.udn.com/money/story/11162/9642450",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "金融時報：川普最快本週以強迫勞動為由祭301關稅",
+      "source": "中央社財經",
+      "published_at": "2026-07-21T21:05:10+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607210367.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "搶AI伺服器商機！兆豐、一銀及國泰世華統籌技嘉集團470億聯貸案超認2.11倍",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T19:14:39+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541736",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電傳明年起調漲晶圓代工價 漲幅最高10%",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T18:39:54+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541732",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "特化廠崇舜獲准上市最快年底掛牌 特殊胺類固化劑切入AI伺服器供應鏈",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T18:31:20+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541705",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美AI投資趨緩？物流端暫無感 中菲行看空運一路旺到明年",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T18:29:01+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541678",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台股暴力反彈量能不給力 法人：棄單押思維 靠半導體ETF掌握AI浪潮",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T18:25:52+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541681",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "出席台經院論壇 賴清德：AI建設不僅限於硬體製造 要能導入百工百業",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T16:21:34+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541513",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI浪潮牽動就業市場板塊位移！南部工作機會年成長近10% 超車中、北部",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T13:08:44+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6540715",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "百容Q2營收創同期新高半導體應用占比逾半 獲利也走強勝首季",
+      "source": "鉅亨網",
+      "published_at": "2026-07-21T09:23:55+08:00",
+      "fetched_at": "2026-07-22T08:30:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6541024",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
     {
       "title": "美國將對部分加拿大商品加徵50%關稅　30天後生效",
       "source": "中央社財經",
@@ -247,47 +468,6 @@
       "fetched_at": "2026-07-20T08:30:39+08:00",
       "url": "https://www.cna.com.tw/news/afe/202607190021.aspx",
       "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "鉅亨速報 - Factset 最新調查：台積電(2330-TW)EPS預估上修至107.74元，預估目標價為3160元",
-      "source": "鉅亨網",
-      "published_at": "2026-07-19T08:11:06+08:00",
-      "fetched_at": "2026-07-20T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6539415",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "從首爾到矽谷　晶片股慘跌再掀AI熱潮過度槓桿質疑",
-      "source": "中央社財經",
-      "published_at": "2026-07-18T16:22:03+08:00",
-      "fetched_at": "2026-07-20T08:30:39+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202607180133.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "日本iPhone漲1成　疑記憶體變貴加日圓貶值",
-      "source": "中央社財經",
-      "published_at": "2026-07-18T13:42:36+08:00",
-      "fetched_at": "2026-07-20T08:30:39+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202607180093.aspx",
-      "matched_keywords": [
-        "記憶體"
-      ]
-    },
-    {
-      "title": "AI投資風向轉變　蘋果超越輝達重登全球市值寶座",
-      "source": "中央社財經",
-      "published_at": "2026-07-18T12:21:36+08:00",
-      "fetched_at": "2026-07-20T08:30:39+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202607180066.aspx",
-      "matched_keywords": [
-        "輝達",
         "AI"
       ]
     }
