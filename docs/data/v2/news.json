@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T08:30:29+08:00",
+  "generated_at": "2026-07-24T08:30:37+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,209 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 56,
+  "count": 62,
   "items": [
+    {
+      "title": "超微蘇姿丰：2030年資料中心 AI 加速器市場將達1.4兆美元",
+      "source": "經濟日報",
+      "published_at": "2026-07-24T07:16:11+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/11162/9647754",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美強迫勞動301關稅出爐 台灣同日、韓、歐盟關稅10%或12.5%",
+      "source": "經濟日報",
+      "published_at": "2026-07-24T06:42:57+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/10871/9647739",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "地緣政治衝突升高　油價與美債殖利率雙漲",
+      "source": "中央社財經",
+      "published_at": "2026-07-24T04:13:48+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607240011.aspx",
+      "matched_keywords": [
+        "地緣政治"
+      ]
+    },
+    {
+      "title": "超微AI晶片進擊 最新GPU與CPU產品採2奈米製程 台積助攻",
+      "source": "經濟日報",
+      "published_at": "2026-07-24T02:30:00+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9647463",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "緯創唱旺AI 數年接單無虞 董座林憲銘強調需求只會愈來愈多",
+      "source": "經濟日報",
+      "published_at": "2026-07-24T00:30:57+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9647482",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "大型科技公司財報引發AI支出疑慮　美股開盤下挫",
+      "source": "中央社財經",
+      "published_at": "2026-07-23T21:55:47+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607230373.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台商出海信心大調查：74%看好前景 金融電子業帶頭衝 半導體業反墊底",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T20:25:50+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6544181",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "迎戰AI綠電荒！經部推離岸風電中長程計畫 力拚2039年達27.9GW容量",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T19:00:28+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6544113",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "【0723台股盤後】回測月線展現強防守！加權小漲 25 點收 44,850 點；AI 伺服器與散熱重啟攻勢",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T18:06:10+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6544070",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "JUJI攜手UBI Taiwan發起基本收入實驗 每月發1萬元",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T17:55:49+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6544036",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "全球PC Q2出貨因記憶體成本上漲年減4% 華碩受惠AI PC逆勢走揚4%",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T17:35:06+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6544030",
+      "matched_keywords": [
+        "AI",
+        "記憶體"
+      ]
+    },
+    {
+      "title": "〈工業生產指數〉迎AI超級浪潮！6月工業與製造業生產指數雙創新高 寫下連28紅",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T16:51:36+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6543960",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "零股排行榜出爐！0050、台積電、緯創人氣續飆，臻鼎-KY爆量背後藏什麼訊號？",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T15:58:41+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6543920",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "野村投信2026年第三季投資展望： 基本面強韌 股優於債 持續看好AI相關族群",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T15:36:33+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6521812",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "掌握AI時代新局，野村全台首檔主動式ETF連結基金7月20日開募，領航台股長線獲利動能",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T15:16:04+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6540489",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股盤後〉攻4萬5又失利 靠台積電尾盤神救援翻紅小漲25點收44850點",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T14:27:13+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6543819",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈焦點股〉輝達傳收購「暗光纖」 點火光通訊股 聯亞連2天漲停",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T13:34:45+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6543801",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI算力缺電催生「BYOL自帶電」商機 電力主題ETF績效發燙",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T11:06:10+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6543701",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉台積電無力指數開高走低 下跌逾100點失守45000點大關",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T10:43:42+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6543660",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台股大盤放量突破 44,800 點，夜盤上漲389點！外資轉買超173億、記憶體與IC載板狂飆",
+      "source": "鉅亨網",
+      "published_at": "2026-07-23T09:00:37+08:00",
+      "fetched_at": "2026-07-24T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6543388",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
     {
       "title": "Alphabet 財報／加碼 AI 不手軟 雲端成長超預期",
       "source": "經濟日報",
@@ -430,146 +631,6 @@
       "url": "https://news.cnyes.com/news/id/6541024",
       "matched_keywords": [
         "半導體"
-      ]
-    },
-    {
-      "title": "美國將對部分加拿大商品加徵50%關稅　30天後生效",
-      "source": "中央社財經",
-      "published_at": "2026-07-21T06:27:25+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202607210012.aspx",
-      "matched_keywords": [
-        "關稅"
-      ]
-    },
-    {
-      "title": "美車關稅未解 Jeep 自行吸收",
-      "source": "經濟日報",
-      "published_at": "2026-07-21T02:10:45+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9640046",
-      "matched_keywords": [
-        "關稅"
-      ]
-    },
-    {
-      "title": "加碼美國千億美元 台積電：不把生意拱手讓人",
-      "source": "經濟日報",
-      "published_at": "2026-07-21T01:27:56+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9640138",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "SK 集團：記憶體搶貨混亂 明年價格漲勢不會趨緩 南亞科、華邦等利多",
-      "source": "經濟日報",
-      "published_at": "2026-07-21T01:23:38+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9640156",
-      "matched_keywords": [
-        "記憶體"
-      ]
-    },
-    {
-      "title": "回應日商停產高純度六氟化鎢 台積電：特殊氣體供應多元不受影響",
-      "source": "經濟日報",
-      "published_at": "2026-07-21T00:51:48+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9640075",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "台積電財務長稱2,650億美元美國投資計畫受客戶需求和競爭對手驅動",
-      "source": "經濟日報",
-      "published_at": "2026-07-20T23:08:01+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9638733",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "時碩法說會／AI 液冷散熱專案第3季放量 全年營收挑戰60億元以上新高",
-      "source": "經濟日報",
-      "published_at": "2026-07-20T21:14:29+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9639953",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI股爆跌台股該逃還是買？ 鉅亨買基金：基本面未變拉回更值得布局",
-      "source": "鉅亨網",
-      "published_at": "2026-07-20T17:53:36+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6540590",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "7家銀行攜手助攻記憶體供應鏈！彰銀、元大銀統籌凌航科技36億元聯貸案",
-      "source": "鉅亨網",
-      "published_at": "2026-07-20T17:48:37+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6540559",
-      "matched_keywords": [
-        "記憶體"
-      ]
-    },
-    {
-      "title": "季辛格拋供應鏈疑慮 渣打力挺「MIT」：台灣掌握全球逾9成高階晶片 AI還有戲",
-      "source": "鉅亨網",
-      "published_at": "2026-07-20T17:05:57+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6540487",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "英特爾前執行長示警能源斷鏈 經部掛保證：台灣半導體產業韌性全球頂尖",
-      "source": "鉅亨網",
-      "published_at": "2026-07-20T13:21:10+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6540335",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "地緣及AI雙引擎 TPCA：泰越馬形塑東南亞高階PCB黃金生態系",
-      "source": "鉅亨網",
-      "published_at": "2026-07-20T13:16:12+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6540340",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "〈焦點股〉外資上調緯創、緯穎AI伺服器出貨展望 股價連袂走強",
-      "source": "鉅亨網",
-      "published_at": "2026-07-20T12:09:25+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6540305",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "〈台股開盤〉反彈搶占4萬3陷千點震盪 台積電守紅盤、政策概念股軍工走強",
-      "source": "鉅亨網",
-      "published_at": "2026-07-20T10:27:21+08:00",
-      "fetched_at": "2026-07-21T08:30:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6539558",
-      "matched_keywords": [
-        "台積電"
       ]
     }
   ]
