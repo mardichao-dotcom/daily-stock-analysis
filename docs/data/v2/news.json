@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T08:30:38+08:00",
+  "generated_at": "2026-07-28T08:30:33+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,130 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 19,
+  "count": 31,
   "items": [
+    {
+      "title": "中國市場疲弱與美關稅夾擊  保時捷再砍5000職位",
+      "source": "中央社財經",
+      "published_at": "2026-07-28T07:24:48+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607280011.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "輝達挺 OpenAI 打造超級資料中心 鴻海出貨有望爆發",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T01:41:14+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://money.udn.com/money/story/5612/9654525",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "五大產業迎美關稅紅利 受惠10%稅率不疊加 轉單需求可期",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T01:25:50+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://money.udn.com/money/story/5612/9654457",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "產業迎美關稅紅利 匯率走向…關鍵變數",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T01:24:01+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://money.udn.com/money/story/5612/9654458",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "輝達顯卡再漲價 售價最高調升三成 技嘉、麗臺等營運吃補丸",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T00:48:50+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://money.udn.com/money/story/5612/9654366",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "蘋果 AI 眼鏡遲到 可能延至明年6月亮相 玉晶光、揚明光等神經緊繃",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T00:46:07+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://money.udn.com/money/story/11162/9654374",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "車燈也是 AI 的一環？智慧駕駛時代來臨 「照明」不再是會發亮就好",
+      "source": "經濟日報",
+      "published_at": "2026-07-27T22:37:18+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://money.udn.com/money/story/5612/9654034",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "日台形象展集結150台企斬獲1.5億美元商機 由半導體延伸至AI數位轉型",
+      "source": "鉅亨網",
+      "published_at": "2026-07-27T19:40:37+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://news.cnyes.com/news/id/6547072",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "TrendForce：輝達、博通CPO開始量產 三關鍵成瓶頸",
+      "source": "鉅亨網",
+      "published_at": "2026-07-27T17:12:19+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://news.cnyes.com/news/id/6546859",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "〈台股盤後〉台積電穩盤 回測4萬3止穩 量縮小跌20點仍未收復季線",
+      "source": "鉅亨網",
+      "published_at": "2026-07-27T14:21:40+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://news.cnyes.com/news/id/6546643",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈焦點股〉輝達進軍暗光纖 光通訊加把勁持續反彈逆勢堅挺",
+      "source": "鉅亨網",
+      "published_at": "2026-07-27T12:18:14+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://news.cnyes.com/news/id/6546588",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉量能不濟 權值股難表現 台積電領跌逾600點回測4萬3",
+      "source": "鉅亨網",
+      "published_at": "2026-07-27T09:59:36+08:00",
+      "fetched_at": "2026-07-28T08:30:33+08:00",
+      "url": "https://news.cnyes.com/news/id/6546358",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "台積電衝2奈米 業績季季高 法人看好攜 AI 應用客戶群一同成長",
       "source": "經濟日報",
