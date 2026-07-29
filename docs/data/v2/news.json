@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T08:30:33+08:00",
+  "generated_at": "2026-07-29T08:30:44+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,219 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 31,
+  "count": 49,
   "items": [
+    {
+      "title": "市場對AI熱潮疑慮加深　美股收盤走勢不一",
+      "source": "中央社財經",
+      "published_at": "2026-07-29T05:43:36+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607290013.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "蘋果市值觸及5兆美元　繼輝達後史上第二家",
+      "source": "中央社財經",
+      "published_at": "2026-07-29T05:13:33+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607290012.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI 伺服器 ODM 廠砸錢擴產 廣達斥資197億元買友達廠房",
+      "source": "經濟日報",
+      "published_at": "2026-07-29T01:13:46+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://money.udn.com/money/story/5612/9656856",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "熊本強震 台積電影響有限 經濟部：投資的台廠暫無影響",
+      "source": "經濟日報",
+      "published_at": "2026-07-29T01:01:39+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://money.udn.com/money/story/5612/9656859",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "美國301關稅上路 台灣工具機業將超車日韓？反超的2.5%優勢比想像中更大",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T21:58:33+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://money.udn.com/money/story/5612/9656748",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "AI疑慮拖累晶片股　美股多開低那指下挫",
+      "source": "中央社財經",
+      "published_at": "2026-07-28T21:54:22+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607280355.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電更新JASM近況  人員安全無虞已逐步回產線",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T21:47:34+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6548891",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "熊本強震 台積電：廠區未受影響 餘震導致部分工廠仍停工",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T21:33:08+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://money.udn.com/money/story/11162/9656713",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "熊本強震　台積電：JASM人員建築確認安全、逐步回線",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T21:30:45+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://money.udn.com/money/story/11162/9656707",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "熊本強震　台積電：JASM人員建築確認安全、逐步回線",
+      "source": "中央社財經",
+      "published_at": "2026-07-28T21:20:58+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607280346.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "熊本大地震干擾台積電 JASM 營運 公司最新說法來了",
+      "source": "經濟日報",
+      "published_at": "2026-07-28T21:11:14+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://money.udn.com/money/story/5612/9656681",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "熊本強震對台廠影響 台積電緊急疏散 經部：研華台達電等廠區未受創",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T19:34:38+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6548777",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "熊本7.1強震劇烈搖晃 台積電JASM啟動疏散程序",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T18:44:29+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6548721",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "健生8/3登錄興櫃 看好台美關稅有優勢 攜手日商拓外銷",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T17:32:50+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6548534",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "憂AI泡沫化比例首度飆至45% 法人直指AI過熱與擁擠交易成市場罩門",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T17:29:56+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6548471",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "費半回檔僅是均值回歸！00411A經理人：AI基建轉向新應用 浮現布局時機",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T16:40:27+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6548386",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉AI有多熱被殺得就有多慘 前50大權值股竟有過半數跌停",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T13:24:27+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6548066",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉半導體慘淪提款機！台股摜破前低 矽晶圓、記憶體跌停全趴倒",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T11:40:25+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6547913",
+      "matched_keywords": [
+        "半導體",
+        "記憶體"
+      ]
+    },
+    {
+      "title": "不畏地緣政治！電力產業憑「剛性需求」 防禦力與彈力雙勝美股",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T10:53:27+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6547820",
+      "matched_keywords": [
+        "地緣政治"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉AI股爆殺機崩跌逾1800點 權值股法說行情滅頂失守4萬2",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T10:26:25+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6547680",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "中國掀新一波AI軍備競賽？台日韓股倒一片 有賺先跑下探41967點打第二隻腳",
+      "source": "鉅亨網",
+      "published_at": "2026-07-28T10:15:26+08:00",
+      "fetched_at": "2026-07-29T08:30:44+08:00",
+      "url": "https://news.cnyes.com/news/id/6547701",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "中國市場疲弱與美關稅夾擊  保時捷再砍5000職位",
       "source": "中央社財經",
@@ -293,36 +504,6 @@
       "matched_keywords": [
         "輝達",
         "AI"
-      ]
-    },
-    {
-      "title": "美加徵關稅　泰國學者：政府須積極談判補強監管缺口",
-      "source": "中央社財經",
-      "published_at": "2026-07-25T18:19:54+08:00",
-      "fetched_at": "2026-07-27T08:30:38+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202607250171.aspx",
-      "matched_keywords": [
-        "關稅"
-      ]
-    },
-    {
-      "title": "韓國卡位AI供應鏈  分析：牽動台灣中長期封測競爭",
-      "source": "中央社財經",
-      "published_at": "2026-07-25T12:59:52+08:00",
-      "fetched_at": "2026-07-27T08:30:38+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202607250093.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "美國301關稅課台灣10%不疊加　經部：較日韓優惠有利台廠",
-      "source": "中央社財經",
-      "published_at": "2026-07-25T12:55:50+08:00",
-      "fetched_at": "2026-07-27T08:30:38+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202607250092.aspx",
-      "matched_keywords": [
-        "關稅"
       ]
     }
   ]
