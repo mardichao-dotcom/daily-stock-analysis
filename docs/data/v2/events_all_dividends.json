@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T19:15:55+08:00",
+  "generated_at": "2026-07-31T19:15:54+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -65,20 +65,6 @@
       "market": "TWSE"
     },
     {
-      "code": "1216",
-      "name": "統一",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "1231",
-      "name": "聯華食",
-      "date": "2026-07-30",
-      "kind": "權息",
-      "market": "TWSE"
-    },
-    {
       "code": "1339",
       "name": "昭輝",
       "date": "2026-08-27",
@@ -118,13 +104,6 @@
       "name": "弘裕",
       "date": "2026-08-04",
       "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "1514",
-      "name": "亞力",
-      "date": "2026-07-30",
-      "kind": "權息",
       "market": "TWSE"
     },
     {
@@ -177,16 +156,9 @@
       "market": "TWSE"
     },
     {
-      "code": "2233",
-      "name": "宇隆",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "2345",
-      "name": "智邦",
-      "date": "2026-07-30",
+      "code": "2227",
+      "name": "裕日車",
+      "date": "2026-08-26",
       "kind": "息",
       "market": "TWSE"
     },
@@ -233,16 +205,16 @@
       "market": "TWSE"
     },
     {
-      "code": "2393",
-      "name": "億光",
-      "date": "2026-08-04",
+      "code": "2383",
+      "name": "台光電",
+      "date": "2026-08-28",
       "kind": "息",
       "market": "TWSE"
     },
     {
-      "code": "2409",
-      "name": "友達",
-      "date": "2026-07-30",
+      "code": "2393",
+      "name": "億光",
+      "date": "2026-08-04",
       "kind": "息",
       "market": "TWSE"
     },
@@ -254,9 +226,9 @@
       "market": "TWSE"
     },
     {
-      "code": "2511",
-      "name": "太子",
-      "date": "2026-07-30",
+      "code": "2476",
+      "name": "鉅祥",
+      "date": "2026-08-13",
       "kind": "息",
       "market": "TWSE"
     },
@@ -264,13 +236,6 @@
       "code": "2520",
       "name": "冠德",
       "date": "2026-08-10",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "2538",
-      "name": "基泰",
-      "date": "2026-07-30",
       "kind": "息",
       "market": "TWSE"
     },
@@ -299,13 +264,6 @@
       "code": "2616",
       "name": "山隆",
       "date": "2026-07-31",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "2748",
-      "name": "雲品",
-      "date": "2026-07-30",
       "kind": "息",
       "market": "TWSE"
     },
@@ -355,13 +313,6 @@
       "code": "2892",
       "name": "第一金",
       "date": "2026-08-11",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "2912",
-      "name": "統一超",
-      "date": "2026-07-30",
       "kind": "息",
       "market": "TWSE"
     },
@@ -443,13 +394,6 @@
       "market": "TWSE"
     },
     {
-      "code": "3583",
-      "name": "辛耘",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "3605",
       "name": "宏致",
       "date": "2026-08-12",
@@ -457,30 +401,9 @@
       "market": "TWSE"
     },
     {
-      "code": "4106",
-      "name": "雃博",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "4190",
       "name": "佐登-KY",
       "date": "2026-08-04",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "4526",
-      "name": "東台",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "4551",
-      "name": "智伸科",
-      "date": "2026-07-30",
       "kind": "息",
       "market": "TWSE"
     },
@@ -495,13 +418,6 @@
       "code": "4581",
       "name": "光隆精密-KY",
       "date": "2026-08-12",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "4916",
-      "name": "事欣科",
-      "date": "2026-07-30",
       "kind": "息",
       "market": "TWSE"
     },
@@ -527,13 +443,6 @@
       "market": "TWSE"
     },
     {
-      "code": "5607",
-      "name": "遠雄港",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "5880",
       "name": "合庫金",
       "date": "2026-08-11",
@@ -555,6 +464,13 @@
       "market": "TWSE"
     },
     {
+      "code": "6117",
+      "name": "迎廣",
+      "date": "2026-08-13",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
       "code": "6201",
       "name": "亞弘電",
       "date": "2026-08-05",
@@ -562,16 +478,16 @@
       "market": "TWSE"
     },
     {
-      "code": "6209",
-      "name": "今國光",
-      "date": "2026-08-04",
+      "code": "6202",
+      "name": "盛群",
+      "date": "2026-08-13",
       "kind": "息",
       "market": "TWSE"
     },
     {
-      "code": "6239",
-      "name": "力成",
-      "date": "2026-07-30",
+      "code": "6209",
+      "name": "今國光",
+      "date": "2026-08-04",
       "kind": "息",
       "market": "TWSE"
     },
@@ -618,20 +534,6 @@
       "market": "TWSE"
     },
     {
-      "code": "6962",
-      "name": "奕力-KY",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "7769",
-      "name": "鴻勁",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "8404",
       "name": "百和興業-KY",
       "date": "2026-08-04",
@@ -665,111 +567,6 @@
       "date": "2026-08-04",
       "kind": "息",
       "market": "TWSE"
-    },
-    {
-      "code": "9942",
-      "name": "茂順",
-      "date": "2026-07-30",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "9955",
-      "name": "佳龍",
-      "date": "2026-07-30",
-      "kind": "權",
-      "market": "TWSE"
-    },
-    {
-      "code": "2596",
-      "name": "綠意",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "2949",
-      "name": "欣新網",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "3485",
-      "name": "敘豐",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "4401",
-      "name": "東隆興",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "4584",
-      "name": "君帆",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "5410",
-      "name": "國眾",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "5457",
-      "name": "宣德",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "6180",
-      "name": "橘子",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "6509",
-      "name": "聚和",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "7708",
-      "name": "全家餐飲",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "7810",
-      "name": "捷創科技",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "8054",
-      "name": "安國",
-      "date": "2026-07-30",
-      "kind": "除權",
-      "market": "TPEX"
-    },
-    {
-      "code": "8931",
-      "name": "大汽電",
-      "date": "2026-07-30",
-      "kind": "除息",
-      "market": "TPEX"
     },
     {
       "code": "00950B",
