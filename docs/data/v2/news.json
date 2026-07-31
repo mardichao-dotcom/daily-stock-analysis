@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T08:30:41+08:00",
+  "generated_at": "2026-07-31T08:30:42+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,221 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 50,
+  "count": 59,
   "items": [
+    {
+      "title": "搶回AI封裝話語權！傳台積電研發「類EMIB」封裝技術 攜手欣興抗衡英特爾",
+      "source": "鉅亨網",
+      "published_at": "2026-07-31T05:00:05+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6553095",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "日月光吳田玉：AI革命性改變 才剛開始",
+      "source": "經濟日報",
+      "published_at": "2026-07-31T00:47:25+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/5612/9661792",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台達電：AI建置潮不會停 董座鄭平破除雜音 喊下半年營運更旺",
+      "source": "經濟日報",
+      "published_at": "2026-07-31T00:44:52+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/5612/9661773",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈央行理監事會記錄〉釋升息風向？通膨示警 罕見兩位理事直接放鷹",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T23:33:31+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6553335",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "微軟財報提振AI市場信心　美股開盤走高",
+      "source": "中央社財經",
+      "published_at": "2026-07-30T21:55:31+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607300381.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美媒：台積電與景碩合作開發先進封裝技術",
+      "source": "經濟日報",
+      "published_at": "2026-07-30T21:33:39+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/5612/9661607",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "輝達、軟銀奧援 力挺鴻海北美布局 史上最大 AI 資料中心計畫來了",
+      "source": "經濟日報",
+      "published_at": "2026-07-30T21:10:34+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/11162/9661573",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "中華電、遠傳秀AI應用　助企業數位轉型升級",
+      "source": "中央社財經",
+      "published_at": "2026-07-30T19:58:18+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202607300350.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "搶進半導體聚落！彰銀獲准美國鳳凰城設辦事處 打造美洲第3個金融據點",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T19:48:47+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552954",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "歐元區Q2經濟成長超預期　受惠AI投資和消費信心改善",
+      "source": "中央社財經",
+      "published_at": "2026-07-30T19:22:45+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202607300335.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "華安子公司與瑞士Medvisis簽署合作備忘錄 共同推動AI開發藥物",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T19:07:21+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552920",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "中華電信、遠傳參與2026 AI WAVE SHOW 透過AI助力企業轉型升級",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T19:05:20+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552875",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台達電法說〉董座：未見AI發展停下腳步 今年資本支出上看700億元",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T19:04:34+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552921",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "2027年記憶體市況分化 DRAM吃緊、NAND Flash恐反轉向下",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T18:45:50+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552821",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "永豐金證券搶年輕世代心占率 找「艦長」剖析AI泡沫議題",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T18:22:37+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552717",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI加值航空貨運 中菲行錢文君：AI的實現仰賴物流",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T17:42:27+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552711",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈日月光法說〉AI需求爆棚 二度上調資本支出、今年估達105億美元",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T17:01:00+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552552",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "東佑達8月6日以參考價150元登興櫃 AI與半導體雙引擎推升全年營收雙位數增",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T16:34:01+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552522",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "台股痛失40K 渣打解析AI資本支出與市場輪動 點評亞、台股配置關鍵",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T16:00:13+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6552414",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI高階基材需求旺 台燿上半年EPS 12.4元超越2025年全年",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T11:20:41+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6551996",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉愛德萬測試財報報喜 2檔日本半導體ETF大漲逾5%",
+      "source": "鉅亨網",
+      "published_at": "2026-07-30T11:18:36+08:00",
+      "fetched_at": "2026-07-31T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6551990",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
     {
       "title": "AI軍備競賽開銷驚人　Meta第二季現金流大減91%",
       "source": "中央社財經",
@@ -389,128 +602,6 @@
       "url": "https://news.cnyes.com/news/id/6547701",
       "matched_keywords": [
         "AI"
-      ]
-    },
-    {
-      "title": "中國市場疲弱與美關稅夾擊  保時捷再砍5000職位",
-      "source": "中央社財經",
-      "published_at": "2026-07-28T07:24:48+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202607280011.aspx",
-      "matched_keywords": [
-        "關稅"
-      ]
-    },
-    {
-      "title": "輝達挺 OpenAI 打造超級資料中心 鴻海出貨有望爆發",
-      "source": "經濟日報",
-      "published_at": "2026-07-28T01:41:14+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://money.udn.com/money/story/5612/9654525",
-      "matched_keywords": [
-        "輝達",
-        "AI"
-      ]
-    },
-    {
-      "title": "五大產業迎美關稅紅利 受惠10%稅率不疊加 轉單需求可期",
-      "source": "經濟日報",
-      "published_at": "2026-07-28T01:25:50+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://money.udn.com/money/story/5612/9654457",
-      "matched_keywords": [
-        "關稅"
-      ]
-    },
-    {
-      "title": "產業迎美關稅紅利 匯率走向…關鍵變數",
-      "source": "經濟日報",
-      "published_at": "2026-07-28T01:24:01+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://money.udn.com/money/story/5612/9654458",
-      "matched_keywords": [
-        "關稅"
-      ]
-    },
-    {
-      "title": "輝達顯卡再漲價 售價最高調升三成 技嘉、麗臺等營運吃補丸",
-      "source": "經濟日報",
-      "published_at": "2026-07-28T00:48:50+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://money.udn.com/money/story/5612/9654366",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "蘋果 AI 眼鏡遲到 可能延至明年6月亮相 玉晶光、揚明光等神經緊繃",
-      "source": "經濟日報",
-      "published_at": "2026-07-28T00:46:07+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://money.udn.com/money/story/11162/9654374",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "車燈也是 AI 的一環？智慧駕駛時代來臨 「照明」不再是會發亮就好",
-      "source": "經濟日報",
-      "published_at": "2026-07-27T22:37:18+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://money.udn.com/money/story/5612/9654034",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "日台形象展集結150台企斬獲1.5億美元商機 由半導體延伸至AI數位轉型",
-      "source": "鉅亨網",
-      "published_at": "2026-07-27T19:40:37+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://news.cnyes.com/news/id/6547072",
-      "matched_keywords": [
-        "AI",
-        "半導體"
-      ]
-    },
-    {
-      "title": "TrendForce：輝達、博通CPO開始量產 三關鍵成瓶頸",
-      "source": "鉅亨網",
-      "published_at": "2026-07-27T17:12:19+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://news.cnyes.com/news/id/6546859",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "〈台股盤後〉台積電穩盤 回測4萬3止穩 量縮小跌20點仍未收復季線",
-      "source": "鉅亨網",
-      "published_at": "2026-07-27T14:21:40+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://news.cnyes.com/news/id/6546643",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "〈焦點股〉輝達進軍暗光纖 光通訊加把勁持續反彈逆勢堅挺",
-      "source": "鉅亨網",
-      "published_at": "2026-07-27T12:18:14+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://news.cnyes.com/news/id/6546588",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "〈台股開盤〉量能不濟 權值股難表現 台積電領跌逾600點回測4萬3",
-      "source": "鉅亨網",
-      "published_at": "2026-07-27T09:59:36+08:00",
-      "fetched_at": "2026-07-28T08:30:33+08:00",
-      "url": "https://news.cnyes.com/news/id/6546358",
-      "matched_keywords": [
-        "台積電"
       ]
     }
   ]
