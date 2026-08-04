@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T08:30:39+08:00",
+  "generated_at": "2026-08-04T08:30:40+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,120 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 9,
+  "count": 20,
   "items": [
+    {
+      "title": "英特爾先進製程進化 成本比台積電 CoWoS 低50%",
+      "source": "經濟日報",
+      "published_at": "2026-08-04T01:43:41+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://money.udn.com/money/story/5612/9668641",
+      "matched_keywords": [
+        "台積電",
+        "CoWoS"
+      ]
+    },
+    {
+      "title": "記憶體荒擴大 MacBook Air 鬧缺貨 牽動台鏈出貨",
+      "source": "經濟日報",
+      "published_at": "2026-08-04T01:35:05+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://money.udn.com/money/story/5612/9668642",
+      "matched_keywords": [
+        "AI",
+        "記憶體"
+      ]
+    },
+    {
+      "title": "蘋果相機版 AirPods 下月亮相",
+      "source": "經濟日報",
+      "published_at": "2026-08-04T01:33:07+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://money.udn.com/money/story/5612/9668659",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "老牌電纜廠華榮 為何突然變成 AI 概念股？其實核心都圍繞同一件事",
+      "source": "經濟日報",
+      "published_at": "2026-08-03T23:31:47+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://money.udn.com/money/story/5612/9668675",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "SpaceX首份財報將出爐　馬斯克AI支出引華爾街關注",
+      "source": "中央社財經",
+      "published_at": "2026-08-03T22:05:25+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608030309.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "日本企業今年度資本支出將創新高　歸功AI與汽車業投資",
+      "source": "中央社財經",
+      "published_at": "2026-08-03T20:41:43+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202608030292.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "萬事達卡揭密「智慧商務支付」新趨勢 近6成民眾準備好讓AI當購物管家",
+      "source": "鉅亨網",
+      "published_at": "2026-08-03T17:14:47+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://news.cnyes.com/news/id/6557139",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "股災沒在怕！0050投資人數突破350萬創高 領先台積電近50萬",
+      "source": "鉅亨網",
+      "published_at": "2026-08-03T15:17:42+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://news.cnyes.com/news/id/6557038",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈焦點股〉輝達宣布CPO步入量產 激勵光通訊族群多檔亮燈漲停",
+      "source": "鉅亨網",
+      "published_at": "2026-08-03T13:21:26+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://news.cnyes.com/news/id/6556968",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "最壞情況已過？法人：AI疑慮緩解帶動「錯殺股」反彈 PCB族群重獲青睞",
+      "source": "鉅亨網",
+      "published_at": "2026-08-03T12:47:42+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://news.cnyes.com/news/id/6556925",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉光寶科AI電源與BBU雙引擎發威下半年樂觀 法說報喜一字鎖漲停",
+      "source": "鉅亨網",
+      "published_at": "2026-08-03T11:33:47+08:00",
+      "fetched_at": "2026-08-04T08:30:40+08:00",
+      "url": "https://news.cnyes.com/news/id/6556836",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "大客戶積極追單下 台積電先進製程「雙喜臨門」",
       "source": "經濟日報",

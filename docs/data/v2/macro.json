@@ -1,62 +1,62 @@
 {
-  "generated_at": "2026-08-03T08:30:04+08:00",
+  "generated_at": "2026-08-04T08:30:05+08:00",
   "sources_ok": 7,
   "sources_failed": 0,
   "errors": [],
   "data": {
     "taiex": {
       "label": "加權指數",
-      "value": 43119.75,
+      "value": 43386.41,
       "source": "TWSE OpenAPI MI_INDEX",
-      "change": 3186.45,
-      "change_pct": 7.98,
-      "date": "2026-07-31"
+      "change": 266.66,
+      "change_pct": 0.62,
+      "date": "2026-08-03"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7489.72,
+      "value": 7600.5,
       "source": "yfinance ^GSPC",
-      "change": 52.09,
-      "change_pct": 0.7
+      "change": 110.78,
+      "change_pct": 1.48
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 25373.85,
+      "value": 25913.9,
       "source": "yfinance ^IXIC",
-      "change": 251.67,
-      "change_pct": 1.0
+      "change": 540.05,
+      "change_pct": 2.13
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": 15.99,
+      "value": 15.86,
       "source": "yfinance ^VIX",
-      "change": -1.1,
-      "change_pct": -6.44
+      "change": -0.13,
+      "change_pct": -0.81
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 63377.52,
+      "value": 63842.43,
       "source": "yfinance ^N225",
-      "change": -984.5,
-      "change_pct": -1.53
+      "change": -519.59,
+      "change_pct": -0.81
     },
     "dxy": {
       "label": "美元指數",
-      "value": 99.76,
+      "value": 99.97,
       "source": "yfinance DX-Y.NYB",
-      "change": -0.04,
-      "change_pct": -0.04
+      "change": 0.17,
+      "change_pct": 0.17
     },
     "margin": {
       "label": "融資餘額",
-      "value": 6736.2,
+      "value": 6817.6,
       "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
-      "change": 167.4,
-      "change_pct": 2.55,
-      "date": "2026-07-31",
+      "change": 81.4,
+      "change_pct": 1.21,
+      "date": "2026-08-03",
       "unit": "億元",
-      "streak": 1,
-      "percentile": 77,
+      "streak": 2,
+      "percentile": 78,
       "history_days": 252
     }
   }
