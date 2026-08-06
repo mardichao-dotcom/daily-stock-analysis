@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T08:30:38+08:00",
+  "generated_at": "2026-08-06T08:30:39+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,149 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 44,
+  "count": 50,
   "items": [
+    {
+      "title": "【0806台股盤前】外本比排行策略鎖定【鈺創、宏致、中光電】，光通訊與利基型記憶體狂飆噴發！加權爆量大漲 1250 點放量突破 1.19 兆 外資大買 903 億創近期新高",
+      "source": "鉅亨網",
+      "published_at": "2026-08-06T08:20:05+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560753",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "川普「解放日」關稅已退還約1000億美元　占已收稅6成",
+      "source": "中央社財經",
+      "published_at": "2026-08-06T01:54:54+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202608060003.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "SpaceX 全面導入輝達晶片 馬斯克按讚產品效能 帶旺台積、鴻海、緯創",
+      "source": "經濟日報",
+      "published_at": "2026-08-06T00:42:57+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://money.udn.com/money/story/11162/9673415",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "2027科技預算1823億元史上最高 國科會：加碼AI算力、帶動中小微企業轉型AI化",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T21:18:04+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6561216",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI驅動需求　中華資安：非常有信心今年雙位數成長",
+      "source": "中央社財經",
+      "published_at": "2026-08-05T20:48:22+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608050331.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "東捷上半年每股賺0.52元動能強 嚴璐掌總座大旗衝刺AI、先進封裝",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T19:26:43+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6561053",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "營收速報  - 昇陽半導體(8028)7月營收5.15億元年增率高達36.53％",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T18:50:22+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6561035",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "群光上半年 EPS 5.06元 Edge AI與機器人新應用助攻長線展望",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T18:12:30+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560724",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "士電總經理郭約瑟看全球AIDC趨勢：五年內需求不成問題",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T16:57:04+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560583",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "費半階段性高點修正觸底 法人：半導體ETF打折潮後買點現",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T16:38:49+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560353",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "卓越上半年EPS2.48元 攜手Lens AI成立AI部門優化營運效率",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T14:16:06+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560290",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股盤後〉台積電收2405元 大漲1250點一舉收復月、季線及4萬4大關",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T13:52:25+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560270",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈焦點股〉百容處置出關見喜 半導體應用業務需求強早盤跳空漲停",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T11:48:34+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560141",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "AI帶旺ABF載板！輝達、超微等巨頭搶貨 鎖產能到2028年 還有客戶超前談2029合作擴產",
+      "source": "鉅亨網",
+      "published_at": "2026-08-05T11:00:04+08:00",
+      "fetched_at": "2026-08-06T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6560052",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
     {
       "title": "SpaceX首份財報營收優於預期　受惠星鏈AI事業成長",
       "source": "中央社財經",
@@ -371,86 +512,6 @@
       "published_at": "2026-08-03T11:33:47+08:00",
       "fetched_at": "2026-08-04T08:30:40+08:00",
       "url": "https://news.cnyes.com/news/id/6556836",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "大客戶積極追單下 台積電先進製程「雙喜臨門」",
-      "source": "經濟日報",
-      "published_at": "2026-08-03T02:18:55+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/5612/9666526",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "台積電先進製程持續衝鋒 英特爾、三星積極追趕",
-      "source": "經濟日報",
-      "published_at": "2026-08-03T02:15:03+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/5612/9666539",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "雲端大咖自研 AI 晶片明年放量生產 日月光、力成、京元電沾光",
-      "source": "經濟日報",
-      "published_at": "2026-08-03T02:06:45+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/5612/9666550",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "工業電腦族群股價狂飆！市場押注邊緣 AI 商機 研華、樺漢業績同步創高",
-      "source": "經濟日報",
-      "published_at": "2026-08-02T23:05:26+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/11162/9666485",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "提前偵測幫叫瓦斯、手機變身專業棒球教練！盤點改變你我生活的5大AI「黑科技」",
-      "source": "鉅亨網",
-      "published_at": "2026-08-02T15:15:24+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6555941",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "點亮半導體重鎮！高雄楠梓台電雄積三四線提前2年完工 供電量翻倍至千萬瓦",
-      "source": "鉅亨網",
-      "published_at": "2026-08-02T15:14:48+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6555929",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "研華接單續旺邊緣AI成長動能強 下半年營運展望樂觀",
-      "source": "鉅亨網",
-      "published_at": "2026-08-02T15:11:47+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6555925",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "迎戰AI用電狂潮！專家分析表後儲能如何助台灣企業「削峰填谷」",
-      "source": "鉅亨網",
-      "published_at": "2026-08-02T08:42:59+08:00",
-      "fetched_at": "2026-08-03T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6553577",
       "matched_keywords": [
         "AI"
       ]
