@@ -39,6 +39,10 @@
     "gap": {
       "top": "rgba(156,163,175,0.15)",
       "bottom": "rgba(156,163,175,0.05)"
+    },
+    "break_block": {
+      "top": "rgba(147,51,234,0.15)",
+      "bottom": "rgba(147,51,234,0.05)"
     }
   },
   "event_markers": {
