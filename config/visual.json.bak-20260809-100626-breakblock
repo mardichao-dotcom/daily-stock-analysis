@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-05-26",
+  "rule_version": "v2.1",
+  "_note": "圖表視覺渲染規則。chart.js 讀取此檔渲染,改視覺只動本檔不動程式碼。",
+
+  "line_colors": {
+    "red": "#ef4444",
+    "black": "#1f2937",
+    "gray": "#9ca3af"
+  },
+
+  "line_styles": {
+    "key_price": "solid",
+    "support_transfer": "solid",
+    "inner_support": "solid",
+    "whale_cost": "dashed",
+    "ma_20": "dotted",
+    "ma_60": "dotted",
+    "ma_90": "dotted"
+  },
+
+  "line_width": {
+    "_default": 1,
+    "ma_20": 1,
+    "ma_60": 1,
+    "ma_90": 1
+  },
+
+  "area_colors": {
+    "order_block": {"top": "rgba(239,68,68,0.15)",  "bottom": "rgba(239,68,68,0.05)"},
+    "fvg":         {"top": "rgba(59,130,246,0.15)", "bottom": "rgba(59,130,246,0.05)"},
+    "poc":         {"top": "rgba(234,179,8,0.15)",  "bottom": "rgba(234,179,8,0.05)"},
+    "gap":         {"top": "rgba(156,163,175,0.15)","bottom": "rgba(156,163,175,0.05)"}
+  },
+
+  "event_markers": {
+    "standing":  {"color": "#22c55e", "shape": "arrowUp",   "icon": "🟢", "position": "belowBar"},
+    "breakdown": {"color": "#ef4444", "shape": "arrowDown", "icon": "🔴", "position": "aboveBar"}
+  }
+}
