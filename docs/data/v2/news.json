@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T08:30:51+08:00",
+  "generated_at": "2026-08-11T08:30:39+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,153 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 7,
+  "count": 21,
   "items": [
+    {
+      "title": "攜手華爾街巨擘募資　輝達擴大AI基建與生態系統",
+      "source": "中央社財經",
+      "published_at": "2026-08-11T07:40:51+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608110013.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達攜手6大金融巨頭　籌逾5000億美元發展AI",
+      "source": "中央社財經",
+      "published_at": "2026-08-11T05:28:38+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202608110009.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電7月營收4,675億 連三月攻頂 法人：單月將挑戰突破5,000億",
+      "source": "經濟日報",
+      "published_at": "2026-08-11T01:32:54+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://money.udn.com/money/story/5612/9683187",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積迎微軟新 AI 晶片大單",
+      "source": "經濟日報",
+      "published_at": "2026-08-11T01:31:31+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://money.udn.com/money/story/5612/9683196",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美媒：微軟最快9月發表Maia 300　已與台積電洽談產能",
+      "source": "中央社財經",
+      "published_at": "2026-08-10T22:43:01+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202608100331.aspx",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "不想再看輝達臉色！微軟向台積電要產能 Maia 300大舉擴產",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T22:00:32+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6569190",
+      "matched_keywords": [
+        "台積電",
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "韓國將啟動5兆韓元半導體基金　扶植具潛力企業",
+      "source": "中央社財經",
+      "published_at": "2026-08-10T21:49:39+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202608100321.aspx",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "PSA華科事業群攜北科大產學合作 聚焦AI技術研發與人才培育兩大面向",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T20:26:14+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6569050",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI需求夯 松川精密擴產及購併效益顯現 7月營收近倍增再登頂",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T18:48:57+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6568557",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈聯強法說〉第二季獲利質變大幅成長 AI浪潮展望樂觀旺至明年",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T18:35:06+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6568560",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "可成上半年獲利年增逾5成 EPS 5.14元 AI產品放量帶動營收逐月增",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T18:28:41+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6568544",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "【0810台股盤後】台股大飆 702 點強勢攻克 45,000 點大關！記憶體、MLCC、光通訊 CPO 三強拱頂，鎖定「營收創高模範生」至上、力積電、盟立",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T18:14:55+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6568559",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "億光泰國新廠今動土 瞄準AI伺服器與車用市場2027年下半年完工",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T17:55:42+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6568408",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "華城上半年EPS 6.52元 下半年將優於上半年AIDC累計在手訂單達220億元",
+      "source": "鉅亨網",
+      "published_at": "2026-08-10T17:44:21+08:00",
+      "fetched_at": "2026-08-11T08:30:39+08:00",
+      "url": "https://news.cnyes.com/news/id/6568409",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "台積電傳要買友達中科兩座廠 比照「群創模式」 攜手發展先進封裝技術",
       "source": "經濟日報",
