@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T08:30:37+08:00",
+  "generated_at": "2026-08-18T08:30:35+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,282 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 16,
+  "count": 43,
   "items": [
+    {
+      "title": "輝達點火開啟 AI 矽光時代 台積、日月光、波若威等入列夥伴名單",
+      "source": "經濟日報",
+      "published_at": "2026-08-18T01:37:27+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697597",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "AI 矽光時代 鴻海光通訊出貨將爆發",
+      "source": "經濟日報",
+      "published_at": "2026-08-18T01:33:27+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697600",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI 矽光時代 上詮、訊芯躍幕後大贏家",
+      "source": "經濟日報",
+      "published_at": "2026-08-18T01:32:27+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697603",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "功率半導體漲價又一波 台半、強茂等非合約產品價格擬上調10%~15%",
+      "source": "經濟日報",
+      "published_at": "2026-08-18T01:25:04+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697598",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "去中化效應 功率半導體台廠得利",
+      "source": "經濟日報",
+      "published_at": "2026-08-18T01:23:12+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697605",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "中華電擴大 AI 生態保育",
+      "source": "經濟日報",
+      "published_at": "2026-08-18T00:57:24+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697505",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達高喊「矽光時代」來了 上詮、訊芯是幕後兩大贏家",
+      "source": "經濟日報",
+      "published_at": "2026-08-17T23:38:15+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697657",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達高喊「矽光時代」來了 台積電、鴻海、日月光投控、波若威扮要角",
+      "source": "經濟日報",
+      "published_at": "2026-08-17T23:36:53+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://money.udn.com/money/story/5612/9697653",
+      "matched_keywords": [
+        "台積電",
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI需求帶旺　新加坡7月石油以外出口成長率增至24.2%",
+      "source": "中央社財經",
+      "published_at": "2026-08-17T21:10:07+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202608170299.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "邑昇簡榮坤：LEO板已占PCB業務10%比重 還要跨半導體散熱材",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T21:04:14+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579574",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "賴清德：明年總預算共五項重要任務 AI為台灣經濟帶來歷史機會",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T20:22:24+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579509",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "半導體巨頭挺台灣！美光豪灌74.5億美元 帶動前7月僑外投資暴增近8成",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T19:52:10+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579425",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "邑昇接單能見度已提高到3個月 鎖定航太、AI等利基應用產品",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T18:46:18+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579415",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "高端公布腸病毒71型疫苗臨床試驗結果 獲ACPID口頭報告",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T18:39:31+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579409",
+      "matched_keywords": [
+        "CPI"
+      ]
+    },
+    {
+      "title": "華碩上半年AI電競筆電市占突破51% 電競高價值組合力挺毛利率",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T17:51:45+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579334",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "微星推出LuckyClaw 搶攻個人與企業AI代理市場",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T17:50:28+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579310",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "功率半導體第三波漲價來了 台廠10月起擬再漲15%",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T17:42:33+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579251",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "崇越電AI材料需求強 部分訂單甚至看到2028年",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T16:35:49+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579233",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "富邦投信推「富裕商機」多重資產基金 黃昭棠：AI動能強勁 Q4台股不預設高點",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T16:25:15+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579189",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "崇越：客戶開始搶矽晶圓 迎半導體材料漲價潮",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T16:23:45+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579202",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "〈億光法說〉原物料漲勢趨緩助下半年毛利率改善 泰國新廠2027年投產布局AI與機器人",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T15:46:57+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579181",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "賴清德：明年在歲入歲出平衡下每人普發現金1萬元 讓AI紅利全民共享",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T15:24:26+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579135",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "天能綠電拿下欣銓10年長約 搶AI半導體綠電商機",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T15:22:23+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579130",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "國科會吳誠文率團訪匹茲堡 深化台美AI與機器人科技合作",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T13:52:05+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6579067",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "曾遭興登堡做空、安永辭任審計　美超微走過爭議後AI需求再創新高",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T11:05:26+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6578928",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "群益：AI電力管理 聚焦二大第三代半導體材料",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T10:57:19+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6578881",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "東浦布局越泰等新生產基地效益將顯 H2對AI相關產品放量出貨",
+      "source": "鉅亨網",
+      "published_at": "2026-08-17T10:38:20+08:00",
+      "fetched_at": "2026-08-18T08:30:35+08:00",
+      "url": "https://news.cnyes.com/news/id/6578840",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "台積電美國廠今年獲利衝高 法人預期將大幅優於去年",
       "source": "經濟日報",
