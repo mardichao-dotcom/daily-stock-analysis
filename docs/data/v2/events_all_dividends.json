@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T19:15:54+08:00",
+  "generated_at": "2026-08-22T19:15:50+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -12,20 +12,6 @@
       "code": "00406A",
       "name": "主動中信台灣收益",
       "date": "2026-09-02",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00771",
-      "name": "元大US高息特別股",
-      "date": "2026-08-21",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00850",
-      "name": "元大臺灣ESG永續",
-      "date": "2026-08-21",
       "kind": "息",
       "market": "TWSE"
     },
@@ -117,6 +103,13 @@
       "code": "1454",
       "name": "台富",
       "date": "2026-08-24",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "1466",
+      "name": "聚隆",
+      "date": "2026-09-07",
       "kind": "息",
       "market": "TWSE"
     },
@@ -285,13 +278,6 @@
       "code": "2441",
       "name": "超豐",
       "date": "2026-08-27",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "2458",
-      "name": "義隆",
-      "date": "2026-08-21",
       "kind": "息",
       "market": "TWSE"
     },
@@ -520,6 +506,13 @@
       "market": "TWSE"
     },
     {
+      "code": "5906",
+      "name": "台南-KY",
+      "date": "2026-09-10",
+      "kind": "權息",
+      "market": "TWSE"
+    },
+    {
       "code": "6133",
       "name": "金橋",
       "date": "2026-09-09",
@@ -707,62 +700,6 @@
       "date": "2026-08-24",
       "kind": "權",
       "market": "TWSE"
-    },
-    {
-      "code": "00679B",
-      "name": "元大美債20年",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00786B",
-      "name": "元大10年IG銀行債",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00967B",
-      "name": "元大優息美債",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00968B",
-      "name": "元大優息投等債",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "2066",
-      "name": "世德",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "3147",
-      "name": "大綜",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "4430",
-      "name": "耀億",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "7547",
-      "name": "碩網",
-      "date": "2026-08-21",
-      "kind": "除息",
-      "market": "TPEX"
     },
     {
       "code": "2070",
