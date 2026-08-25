@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T08:30:38+08:00",
+  "generated_at": "2026-08-25T08:30:41+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,253 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 13,
+  "count": 37,
   "items": [
+    {
+      "title": "英特爾先進封裝再添大單 SK 海力士下一代 HBM 將導入 EMIB 技術",
+      "source": "經濟日報",
+      "published_at": "2026-08-25T01:15:31+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://money.udn.com/money/story/5612/9711644",
+      "matched_keywords": [
+        "HBM"
+      ]
+    },
+    {
+      "title": "台積電晶片去年省電1,800億度 減少近8,900萬公噸碳排放",
+      "source": "經濟日報",
+      "published_at": "2026-08-25T01:11:29+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://money.udn.com/money/story/5612/9711645",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電員工薪酬中位數295萬 創高",
+      "source": "經濟日報",
+      "published_at": "2026-08-25T01:10:15+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://money.udn.com/money/story/5612/9711654",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "輝達傳注資 AI 新創 Perplexity 帶動新一波建設 台鏈沾光",
+      "source": "經濟日報",
+      "published_at": "2026-08-25T00:15:15+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://money.udn.com/money/story/5612/9711673",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "1兆美元AI晶片大戰開打！輝達霸主地位遭挑戰 台積電成勝負關鍵",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T23:50:03+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585590",
+      "matched_keywords": [
+        "台積電",
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "台中能否從精密製造重鎮躍升 Physical AI 基地？智慧台中論壇8月26日揭密",
+      "source": "經濟日報",
+      "published_at": "2026-08-24T23:08:41+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://money.udn.com/money/story/5612/9711722",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電提升再生能源用電比重　先進製程研發雙軌並進",
+      "source": "中央社財經",
+      "published_at": "2026-08-24T22:26:31+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608240333.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電員工114年均薪福利433萬元　全球逾85%員工購股",
+      "source": "中央社財經",
+      "published_at": "2026-08-24T21:54:13+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608240325.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "AI、半導體產業融資需求旺　韓蔚廷估動能延續至2027年",
+      "source": "中央社財經",
+      "published_at": "2026-08-24T21:44:07+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608240322.aspx",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "連8年全球醫療照護指數奪第一 卓揆挺生醫：打造半導體之外「護國群體」",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T20:46:13+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585576",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "〈富邦金法說〉韓蔚廷：北富銀上半年AI、半導體放款增逾2成 榮景看至明年H1",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T20:38:29+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585538",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "魏哲家：台積電利潤分配　加大資源投入永續",
+      "source": "中央社財經",
+      "published_at": "2026-08-24T20:35:23+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608240304.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "AI行情進入基本面驗證階段！聯博：同一產業鏈表現可能進一步分化",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T20:16:15+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585359",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "欣技新品、AI及軟體服務三引擎啟動 迎新一波產品週期",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T18:54:07+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585409",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "工總：要發展AI力挺核二、三迅速復工 籲別讓缺電成為產業界絆腳石",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T18:01:10+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585360",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "RTX Spark與AI伺服器雙引擎發威 PC品牌下半年營運走揚",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T17:59:55+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585357",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電最新永續報告書出爐 魏哲家宣示利潤分配加大ESG資源投入",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T17:58:04+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585367",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "小米發表新一代自研晶片Xring O3 傳台積電3奈米代工、鎖定旗艦折疊手機",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T15:00:07+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585236",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "AI吃電大戶皮繃緊了！能管法三讀通過 新設AIDC要自備電力或儲能",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T14:56:36+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585224",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美股市值排行2026怎麼看？輝達、蘋果、Google領軍，全球資金為何仍盯緊美股？",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T13:46:06+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585207",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "〈焦點股〉SK海力士擬砸10兆韓元赴日設廠 2檔日本半導體ETF應聲強漲",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T13:38:15+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585186",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "明年基本工資3萬 工總：支持幫員工加薪、提建言籲政府不應獨厚半導體忽略傳產",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T12:46:48+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6585152",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "創櫃板累計「吸金」73億元 櫃買攜手昕奇雲端跨足AI生態系26日登場",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T11:45:26+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6528392",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉無量待變？台積電等權值股熄火 站穩4萬5小漲小跌整理",
+      "source": "鉅亨網",
+      "published_at": "2026-08-24T09:55:47+08:00",
+      "fetched_at": "2026-08-25T08:30:41+08:00",
+      "url": "https://news.cnyes.com/news/id/6584917",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "生技 BTC 盛會強打 AI +生醫 健保、人體生物資料庫開放也成熱門議題",
       "source": "經濟日報",
