@@ -1,15 +1,157 @@
 {
-  "generated_at": "2026-08-25T08:30:41+08:00",
+  "generated_at": "2026-08-26T08:30:20+08:00",
   "sources": [
     "中央社財經",
-    "經濟日報",
-    "鉅亨網"
+    "經濟日報"
   ],
-  "sources_failed": [],
+  "sources_failed": [
+    "鉅亨網: not well-formed (invalid token): line 1077, column 47"
+  ],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 37,
+  "count": 50,
   "items": [
+    {
+      "title": "加拿大對美國祭對等報復關稅　含鋼鋁家電海鮮等700品項",
+      "source": "中央社財經",
+      "published_at": "2026-08-26T03:08:47+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202608260003.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "Apple突襲發表Mac mini 最新M6、M5 Pro晶片加持 AI效能最高狂升4倍",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T02:39:40+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/11162/9714235",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達報捷 最強 AI 推論機櫃 Groq 3 LPX 量產 鴻海進補",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T01:29:13+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714088",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "SpaceX 太空 AI 明年 Q4 發射衛星 比預期早一年 台鏈提前接單",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T01:00:53+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714058",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "SpaceX 太空 AI 部署腳步可望提早 聯合再生、元晶跟著紅",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T00:57:31+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714061",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達 VR 效能驚艷 每詞元成本大減 鴻海、廣達、緯創接單看到2028年",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T00:54:02+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714065",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達推進機器人 夥伴大補",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T00:52:06+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714072",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "英特爾先進製程「Hot Chips 2026」大秀肌肉 企圖追趕台積電、三星",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T00:50:21+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714075",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "國喬攜日商攻半導體特氣 加速跨越高階材料門檻",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T00:40:46+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714113",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "半導體材料「國產量能」 本土業者實力嶄露頭角",
+      "source": "經濟日報",
+      "published_at": "2026-08-26T00:39:00+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714123",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "馬斯克太空 AI 布局比預期快一年 昇達科、華通、事欣科提前迎大單",
+      "source": "經濟日報",
+      "published_at": "2026-08-25T23:33:39+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9714150",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "蘋果發表M6及M5 Ultra晶片　強化桌機AI運算能力",
+      "source": "中央社財經",
+      "published_at": "2026-08-25T23:13:32+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/ait/202608250371.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達財報前科技股反彈　美股開高",
+      "source": "中央社財經",
+      "published_at": "2026-08-25T21:52:01+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608250358.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI商機熱　上市櫃公司上半年營收獲利創10年同期新高",
+      "source": "中央社財經",
+      "published_at": "2026-08-25T20:14:06+08:00",
+      "fetched_at": "2026-08-26T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608250335.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "英特爾先進封裝再添大單 SK 海力士下一代 HBM 將導入 EMIB 技術",
       "source": "經濟日報",
@@ -375,16 +517,6 @@
       "url": "https://www.cna.com.tw/news/afe/202608230041.aspx",
       "matched_keywords": [
         "半導體"
-      ]
-    },
-    {
-      "title": "SK海力士擬赴日設廠　專家：台記憶體業短期衝擊有限",
-      "source": "中央社財經",
-      "published_at": "2026-08-22T15:25:32+08:00",
-      "fetched_at": "2026-08-24T08:30:38+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202608220120.aspx",
-      "matched_keywords": [
-        "記憶體"
       ]
     }
   ]
