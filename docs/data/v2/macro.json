@@ -1,61 +1,61 @@
 {
-  "generated_at": "2026-08-27T08:30:04+08:00",
+  "generated_at": "2026-08-28T08:30:01+08:00",
   "sources_ok": 7,
   "sources_failed": 0,
   "errors": [],
   "data": {
     "taiex": {
       "label": "加權指數",
-      "value": 45832.62,
+      "value": 45975.22,
       "source": "TWSE OpenAPI MI_INDEX",
-      "change": 663.16,
-      "change_pct": 1.47,
-      "date": "2026-08-26"
+      "change": 142.6,
+      "change_pct": 0.31,
+      "date": "2026-08-27"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7675.7,
+      "value": 7730.99,
       "source": "yfinance ^GSPC",
-      "change": -1.58,
-      "change_pct": -0.02
+      "change": 55.29,
+      "change_pct": 0.72
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 26130.2,
+      "value": 26541.35,
       "source": "yfinance ^IXIC",
-      "change": -21.1,
-      "change_pct": -0.08
+      "change": 411.15,
+      "change_pct": 1.57
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": 15.21,
+      "value": 14.51,
       "source": "yfinance ^VIX",
-      "change": -0.24,
-      "change_pct": -1.55
+      "change": -0.7,
+      "change_pct": -4.6
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 66499.0,
+      "value": 66511.06,
       "source": "yfinance ^N225",
-      "change": 642.57,
-      "change_pct": 0.98
+      "change": 248.91,
+      "change_pct": 0.38
     },
     "dxy": {
       "label": "美元指數",
-      "value": 99.12,
+      "value": 99.13,
       "source": "yfinance DX-Y.NYB",
-      "change": 0.2,
-      "change_pct": 0.2
+      "change": -0.04,
+      "change_pct": -0.04
     },
     "margin": {
       "label": "融資餘額",
-      "value": 7424.6,
+      "value": 7509.3,
       "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
-      "change": 116.0,
-      "change_pct": 1.59,
-      "date": "2026-08-26",
+      "change": 84.7,
+      "change_pct": 1.14,
+      "date": "2026-08-27",
       "unit": "億元",
-      "streak": 2,
+      "streak": 3,
       "percentile": 85,
       "history_days": 252
     }
