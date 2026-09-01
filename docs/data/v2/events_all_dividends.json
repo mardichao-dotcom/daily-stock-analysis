@@ -1,10 +1,17 @@
 {
-  "generated_at": "2026-08-31T19:18:25+08:00",
+  "generated_at": "2026-09-01T19:18:41+08:00",
   "dividends": [
     {
       "code": "00400A",
       "name": "主動國泰動能高息",
       "date": "2026-09-07",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00401A",
+      "name": "主動摩根台灣鑫收",
+      "date": "2026-09-14",
       "kind": "息",
       "market": "TWSE"
     },
@@ -100,13 +107,6 @@
       "market": "TWSE"
     },
     {
-      "code": "1531",
-      "name": "高林股",
-      "date": "2026-08-31",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "1732",
       "name": "毛寶",
       "date": "2026-09-01",
@@ -118,13 +118,6 @@
       "name": "和康生",
       "date": "2026-09-01",
       "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "1795",
-      "name": "美時",
-      "date": "2026-08-31",
-      "kind": "權息",
       "market": "TWSE"
     },
     {
@@ -212,13 +205,6 @@
       "market": "TWSE"
     },
     {
-      "code": "2905",
-      "name": "三商",
-      "date": "2026-08-31",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "2923",
       "name": "鼎固-KY",
       "date": "2026-09-02",
@@ -250,13 +236,6 @@
       "code": "3135",
       "name": "凌航",
       "date": "2026-09-01",
-      "kind": "權息",
-      "market": "TWSE"
-    },
-    {
-      "code": "3209",
-      "name": "全科",
-      "date": "2026-08-31",
       "kind": "權息",
       "market": "TWSE"
     },
@@ -394,6 +373,13 @@
       "market": "TWSE"
     },
     {
+      "code": "6924",
+      "name": "榮惠-KY創",
+      "date": "2026-09-15",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
       "code": "7780",
       "name": "大研生醫*",
       "date": "2026-09-03",
@@ -415,13 +401,6 @@
       "market": "TWSE"
     },
     {
-      "code": "9105",
-      "name": "泰金寶-DR",
-      "date": "2026-08-31",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "9802",
       "name": "鈺齊-KY",
       "date": "2026-09-10",
@@ -436,10 +415,10 @@
       "market": "TWSE"
     },
     {
-      "code": "9917",
-      "name": "中保科",
-      "date": "2026-08-31",
-      "kind": "權",
+      "code": "9927",
+      "name": "泰銘",
+      "date": "2026-10-01",
+      "kind": "息",
       "market": "TWSE"
     },
     {
@@ -462,55 +441,6 @@
       "date": "2026-09-01",
       "kind": "息",
       "market": "TWSE"
-    },
-    {
-      "code": "2751",
-      "name": "王座",
-      "date": "2026-08-31",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "2937",
-      "name": "集雅社",
-      "date": "2026-08-31",
-      "kind": "除權",
-      "market": "TPEX"
-    },
-    {
-      "code": "4735",
-      "name": "豪展",
-      "date": "2026-08-31",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "4905",
-      "name": "台聯電",
-      "date": "2026-08-31",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "5013",
-      "name": "強新",
-      "date": "2026-08-31",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "5392",
-      "name": "能率",
-      "date": "2026-08-31",
-      "kind": "除權息",
-      "market": "TPEX"
-    },
-    {
-      "code": "7584",
-      "name": "樂意",
-      "date": "2026-08-31",
-      "kind": "除權息",
-      "market": "TPEX"
     },
     {
       "code": "00966B",
@@ -821,9 +751,23 @@
       "market": "TPEX"
     },
     {
+      "code": "6204",
+      "name": "艾華",
+      "date": "2026-09-14",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
       "code": "8423",
       "name": "保綠-KY",
       "date": "2026-09-14",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "3675",
+      "name": "德微",
+      "date": "2026-09-15",
       "kind": "除息",
       "market": "TPEX"
     },
@@ -838,6 +782,13 @@
       "code": "1599",
       "name": "宏佳騰",
       "date": "2026-09-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "4420",
+      "name": "光明",
+      "date": "2026-09-17",
       "kind": "除息",
       "market": "TPEX"
     }
