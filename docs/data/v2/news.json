@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T08:30:32+08:00",
+  "generated_at": "2026-09-01T08:30:37+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,255 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 16,
+  "count": 40,
   "items": [
+    {
+      "title": "〈台股盤前要聞〉9月開局捍衛4萬6、輝達砸35億美元認購聯發科ECB",
+      "source": "鉅亨網",
+      "published_at": "2026-09-01T05:10:04+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6589725",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達砸千億投資聯發科 Alphabet 也加入夥伴行列 台積電、日月光、矽格受惠",
+      "source": "經濟日報",
+      "published_at": "2026-09-01T01:27:12+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725909",
+      "matched_keywords": [
+        "台積電",
+        "輝達"
+      ]
+    },
+    {
+      "title": "台積電：AI 算力需求每年增五倍 將透過先進邏輯製程、3DFabric 等抓緊基建熱潮",
+      "source": "經濟日報",
+      "published_at": "2026-09-01T01:23:21+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725920",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "SEMI 上修半導體市場展望",
+      "source": "經濟日報",
+      "published_at": "2026-09-01T01:21:15+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725926",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "輝達牽緊聯發科 黃仁勳：絕佳投資",
+      "source": "經濟日報",
+      "published_at": "2026-09-01T01:20:41+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725928",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "台積電唱旺光通訊後市 光聖、波若威營運吃補",
+      "source": "經濟日報",
+      "published_at": "2026-09-01T01:11:56+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725931",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "日月光投控營運長吳田玉： AI 引爆創新效益",
+      "source": "經濟日報",
+      "published_at": "2026-09-01T01:09:46+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/11162/9725932",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI 資料中心大舉導入燃氣發電 定期檢修藏著更大商機",
+      "source": "經濟日報",
+      "published_at": "2026-09-01T00:51:54+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725866",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達千億投資聯發科！黃仁勳否認循環融資 強調十年期戰略合作",
+      "source": "經濟日報",
+      "published_at": "2026-08-31T23:38:10+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725952",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "誰能打進馬斯克 AI 發電心臟鏈？台灣航太五虎各顯神通 爭取進一步合作機會",
+      "source": "經濟日報",
+      "published_at": "2026-08-31T23:18:12+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725891",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "半導體展　友達秀玻璃核心基板技術",
+      "source": "經濟日報",
+      "published_at": "2026-08-31T22:13:05+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9725756",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "台韓受惠AI熱潮　高盛：韓國人口老化過快難享紅利",
+      "source": "中央社財經",
+      "published_at": "2026-08-31T22:05:54+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608310321.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "SEMICON半導體展　友達秀玻璃核心基板技術",
+      "source": "中央社財經",
+      "published_at": "2026-08-31T22:04:50+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608310319.aspx",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "聯發科搶XPU、輝達賣整套 黃仁勳首揭AI兩強結盟盤算",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T21:53:46+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6593156",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達投資聯發科35億美元ECB　打造AI運算平台",
+      "source": "中央社財經",
+      "published_at": "2026-08-31T21:31:28+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608310310.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達砸35億美元認購聯發科ECB 結盟進軍AI工廠、客製化XPU",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T21:17:00+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6593121",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達豪砸35億美元投資聯發科！黃仁勳押注台灣晶片大廠",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T20:59:41+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6593110",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "貿協率華碩、創見登史國參展 展現AI與綠色農業助攻非洲市場",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T20:11:32+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6593052",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "中華電攜手亞旭　整合5G專網助力AI營建機器人",
+      "source": "中央社財經",
+      "published_at": "2026-08-31T19:27:13+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202608310276.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈SEMICON〉台灣半導體別太驕傲 吳田玉：全世界沒有缺台灣不可",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T18:14:00+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6592867",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "台積電供應鏈志聖迎60周年慶  AI核心業務占上半年營收已占70%",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T16:27:36+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6592719",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "賴清德重申「AI新十大建設」四大基礎工程 感謝產業界攜手拚經濟",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T14:35:19+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6592612",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈SEMICON〉吳田玉：AI才剛開始 未來想像空間是現在百倍、千倍甚至萬倍",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T14:34:37+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6592636",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "捷流閥業大啖 AI 基建商機  半導體及高科技接單增至3-4成",
+      "source": "鉅亨網",
+      "published_at": "2026-08-31T12:59:18+08:00",
+      "fetched_at": "2026-09-01T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6592534",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
     {
       "title": "盟立半導體展秀 AI 機器人新動能 開創智慧製造新局",
       "source": "經濟日報",
