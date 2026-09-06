@@ -152,7 +152,7 @@
           "high": "1840",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -247,7 +247,7 @@
           "high": "465.5",
           "text": "短線買盤",
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -414,7 +414,7 @@
           "high": "1840",
           "text": "多頭最後防線",
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -495,7 +495,7 @@
           "high": "5310",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -561,14 +561,14 @@
           "high": "245.0",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         },
         {
           "low": "177.0",
           "high": "180.5",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -598,7 +598,7 @@
           "high": "365.0",
           "text": "賣壓",
           "adjective": "short_term",
-          "category": "break_block"
+          "category": "unclassified"
         },
         {
           "low": "227.5",
@@ -713,7 +713,7 @@
           "high": "320.0",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -974,7 +974,7 @@
           "high": "461.5",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -1068,7 +1068,7 @@
           "high": "65.1",
           "text": "賣壓",
           "adjective": "small",
-          "category": "break_block"
+          "category": "unclassified"
         },
         {
           "low": "54.3",
@@ -1313,7 +1313,7 @@
           "high": "447.0",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -1662,7 +1662,7 @@
           "high": "2960",
           "text": "重要撐轉",
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -2255,7 +2255,7 @@
           "high": "2560",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -3104,7 +3104,7 @@
           "high": "239.41",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -3206,7 +3206,7 @@
           "high": "107.72",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -3374,7 +3374,7 @@
           "high": "29.96",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         },
         {
           "low": "17.51",
@@ -3534,14 +3534,14 @@
           "high": "5962",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         },
         {
           "low": "5263",
           "high": "5400",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -3771,7 +3771,7 @@
           "high": "23.07",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -3908,7 +3908,7 @@
           "high": "491.22",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -6223,21 +6223,21 @@
           "high": "483.5",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         },
         {
           "low": "271.0",
           "high": "280.0",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         },
         {
           "low": "226.0",
           "high": "232.0",
           "text": null,
           "adjective": null,
-          "category": "break_block"
+          "category": "unclassified"
         }
       ]
     },

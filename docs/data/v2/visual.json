@@ -5,7 +5,7 @@
   "_note": "圖表視覺渲染規則。chart.js 讀取此檔渲染,改視覺只動本檔不動程式碼。",
   "line_colors": {
     "red": "#ef4444",
-    "black": "#1f2937",
+    "black": "#e5e7eb",
     "gray": "#9ca3af"
   },
   "line_styles": {
@@ -43,6 +43,10 @@
     "break_block": {
       "top": "rgba(147,51,234,0.15)",
       "bottom": "rgba(147,51,234,0.05)"
+    },
+    "unclassified": {
+      "top": "rgba(100,116,139,0.15)",
+      "bottom": "rgba(100,116,139,0.05)"
     }
   },
   "event_markers": {

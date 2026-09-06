@@ -45,8 +45,11 @@ AREA_KEYWORDS = {
     "poc":         ["POC", "籌碼集中區"],
     "fvg":         ["FVG"],       # 涵蓋「FVG」「跳空 FVG」「FVG 跳空」
     "gap":         ["跳空缺口", "跳空區口"],  # 「多頭跳空缺口」「起漲跳空缺口」都含「跳空缺口」;「跳空區口」為疑似筆誤變體,防呆比照 gap(2026-08-09)
-    # 2026-07-20 朋友決策:新詞彙區域 + 空文字色塊 一律歸此類,權重照 FVG/POC(=1)
-    "break_block": ["破壞塊", "賣壓", "重要撐轉", "短線買盤", "多頭最後防線"],
+    # break_block 只留「破壞塊」本名(2026-09-06 朋友糾正:不再讓其他詞冒名)
+    "break_block": ["破壞塊"],
+    # 有名字但非既有類別的區塊 → unclassified(text 各自保留、比照一般區域計分權重 1)
+    # 空文字色塊(無標籤)亦歸此(見 infer_area_category)。2026-09-06 取代 7-20 的 break_block 歸類
+    "unclassified": ["賣壓", "重要撐轉", "短線買盤", "多頭最後防線"],
 }
 
 # 排除規則(per rule §5)。用精確子字串,避免誤殺「起漲跳空缺口」
@@ -118,10 +121,11 @@ def infer_line_category(text: str) -> str:
 
 def infer_area_category(text: str) -> str | None:
     """無匹配時回 None,讓 caller 跳過並記入 skipped。
-    2026-07-20 朋友決策:空文字色塊(無標籤)歸 break_block、文字留空;
+    2026-09-06 朋友糾正:空文字色塊(無標籤)歸 unclassified(中性、保留無名),
+    不再冒名 break_block;break_block 只給原文「破壞塊」。
     非空但無對映的文字仍回 None(維持安全網,新詞不會被靜默吸收)。"""
     if not text or text == "(無)":
-        return "break_block"
+        return "unclassified"
     for cat, keywords in AREA_KEYWORDS.items():
         for kw in keywords:
             if kw in text:
@@ -370,6 +374,27 @@ def main() -> None:
         for p in problems:
             print(f"   • {p}", file=sys.stderr)
         sys.exit(1)
+
+    # ── 防重跑覆寫保護(2026-09-06)────────────────────────────────────────────
+    # md 中間層已名存實亡:缺 28 檔、32 檔手改股與 JSON 分岔(見技術債清單)。
+    # 現行 config/key_prices.json(140 檔)是唯一權威真值。若有人手滑重跑轉換器,
+    # 只從殘缺 md(112 檔)產出、覆蓋 JSON,會靜默掉 28 檔 + 手改股漂移。
+    # 防護:輸出目標已存在且其檔數 > 本次 md 產出 → 中止、不覆蓋、報錯。
+    # 繞過(確知要縮減時):設環境變數 KP_ALLOW_SHRINK=1。
+    if os.path.exists(args.out):
+        try:
+            with open(args.out, encoding="utf-8") as _f:
+                existing_n = len(json.load(_f).get("stocks", {}))
+        except (ValueError, OSError):
+            existing_n = 0
+        new_n = len(stocks)
+        if existing_n > new_n and os.environ.get("KP_ALLOW_SHRINK") != "1":
+            print(f"\n🚫 防重跑保護:md 產出 {new_n} 檔 < 現有 {args.out} 的 {existing_n} 檔。",
+                  file=sys.stderr)
+            print(f"   md 中間層已殘缺(缺檔/手改股分岔),重跑會覆蓋掉權威 JSON → 已中止,未覆寫。",
+                  file=sys.stderr)
+            print(f"   確知要縮減請設 KP_ALLOW_SHRINK=1 再跑。", file=sys.stderr)
+            sys.exit(2)
 
     write_json(stocks, args.out)
     print_stats(stocks, stats)
