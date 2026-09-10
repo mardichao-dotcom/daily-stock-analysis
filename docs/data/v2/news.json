@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T08:30:37+08:00",
+  "generated_at": "2026-09-10T08:30:52+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -10,6 +10,166 @@
   "retained_days": 3,
   "count": 39,
   "items": [
+    {
+      "title": "全球晶圓代工Q2產值創新高 台積電市占72.5%稱霸、三星跌破6%",
+      "source": "鉅亨網",
+      "published_at": "2026-09-10T08:14:21+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://news.cnyes.com/news/id/6602442",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "蘋果新品發表會／降噪功能下放 AirPods 5基本款 兩款智慧手表添 AI 摘要",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T02:43:06+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/11162/9745196",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "工研院：四面向攻 AI 無人載具",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T02:17:17+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9745007",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "鎧俠：記憶體價格漲夠了 業界預期相關紅利逐步降溫 牽動群聯、威剛等台廠",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T01:41:14+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9744998",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "鎧俠喊出為記憶體漲價潮踩煞車 科技通膨有解 品牌廠樂見",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T01:38:58+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9745006",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "手機晶片雙雄 AI 戰火升溫 高通拿下亞馬遜1.9兆元大單",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T01:37:01+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9745002",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電1.4奈米廠拚提前量產 中科二期四座新廠明年起接棒投產",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T01:10:47+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9745022",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電晶圓代工市占創高 上季達72.5% 甩開三星 本季整體市場規模再衝高",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T01:06:04+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9745003",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電先進製程能見度 看到2030年",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T01:03:57+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9745016",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電1.4奈米就位 供應鏈動起來",
+      "source": "經濟日報",
+      "published_at": "2026-09-10T01:00:41+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://money.udn.com/money/story/5612/9745020",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "數發部AI風險檢核系統　協助各部會盤點法規調適",
+      "source": "中央社財經",
+      "published_at": "2026-09-09T20:39:18+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202609090314.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "女力夯！上市公司女董事占逾20%創史高 6成女性治理上市公司啟動AI布局",
+      "source": "鉅亨網",
+      "published_at": "2026-09-09T19:41:09+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://news.cnyes.com/news/id/6601876",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "東研信超AI檢測訂單排至2027年 啟動龜山三廠擴增計畫",
+      "source": "鉅亨網",
+      "published_at": "2026-09-09T19:33:14+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://news.cnyes.com/news/id/6601875",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈中華信評展望〉AI浪潮助攻台灣科技業信用體質 擁強大財務緩衝與議價優勢",
+      "source": "鉅亨網",
+      "published_at": "2026-09-09T19:23:44+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://news.cnyes.com/news/id/6601817",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈康普法說〉攜手三菱化學深化廠中廠模式 擴大半導體布局搶攻廢酸回收商機",
+      "source": "鉅亨網",
+      "published_at": "2026-09-09T17:22:22+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://news.cnyes.com/news/id/6601692",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "蔡明忠給東海新生五個提醒：AI時代下學習「做自己」 成為科技無法取代的人",
+      "source": "鉅亨網",
+      "published_at": "2026-09-09T17:17:19+08:00",
+      "fetched_at": "2026-09-10T08:30:52+08:00",
+      "url": "https://news.cnyes.com/news/id/6601684",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "Pixel Watch 5實測亮點！Gemini助理反應更快 健康管理也有AI幫你把關",
       "source": "經濟日報",
@@ -244,168 +404,6 @@
       "fetched_at": "2026-09-08T08:30:20+08:00",
       "url": "https://news.cnyes.com/news/id/6599414",
       "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "台積電3奈米衝鋒 產值躍升Q3突破4,000億元創新高",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:48:23+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738249",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "CSP 龍頭亞馬遜搶 AI 機櫃 世芯、緯穎、鴻海等協力廠出貨動能強勁",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:45:41+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738201",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "亞馬遜搶 AI 機櫃 台達電、jpp同步沾光",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:43:51+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738205",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "台積電持續擴充產能 相關協力廠崇越、家登、華立動能大增",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:42:21+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738208",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "半導體業最強擴產潮來了 廠務工程五強訂單塞爆",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:38:43+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738204",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "AI 持續帶動半導體產業成長 兆聯實業、世禾、衛司特受惠",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:37:12+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738210",
-      "matched_keywords": [
-        "AI",
-        "半導體"
-      ]
-    },
-    {
-      "title": "AI 光通訊加持 工具機翻身…練兵數十年",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:27:13+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738220",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "記憶體吃緊 顯卡又要漲價 華碩、技嘉上調在陸售價",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:26:21+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/11162/9738226",
-      "matched_keywords": [
-        "記憶體"
-      ]
-    },
-    {
-      "title": "PC 廠保價 強打 AI 應用",
-      "source": "經濟日報",
-      "published_at": "2026-09-07T02:24:41+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/11162/9738227",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI 產業發展競速 雲端巨頭 Google、微軟、AWS 加速布局系統整合",
-      "source": "經濟日報",
-      "published_at": "2026-09-06T23:39:30+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/11162/9738209",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "半導體廠務工程五強訂單塞爆 在手訂單衝8,800億 後續有望叩關兆元",
-      "source": "經濟日報",
-      "published_at": "2026-09-06T23:13:05+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9738269",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "化解台積電3奈米廠出走危機　陳良基出書談4年入閣心路",
-      "source": "經濟日報",
-      "published_at": "2026-09-06T19:36:33+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://money.udn.com/money/story/5612/9737936",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "化解台積電3奈米廠出走危機　陳良基出書談4年入閣心路",
-      "source": "中央社財經",
-      "published_at": "2026-09-06T19:24:18+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202609060169.aspx",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "〈台股風向球〉聯準會升息壓抑難脫整理格局 先靠績優股輪流維繫多頭火種",
-      "source": "鉅亨網",
-      "published_at": "2026-09-06T12:20:03+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://news.cnyes.com/news/id/6598585",
-      "matched_keywords": [
-        "升息"
-      ]
-    },
-    {
-      "title": "台股市值重返152兆！法人看AI供應鏈多點開花 長多格局不變",
-      "source": "鉅亨網",
-      "published_at": "2026-09-06T10:32:15+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://news.cnyes.com/news/id/6598271",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "宏碁深化輝達微軟Google合作　陳俊聖：AI落地端是優勢主場",
-      "source": "中央社財經",
-      "published_at": "2026-09-06T10:18:54+08:00",
-      "fetched_at": "2026-09-07T08:30:21+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202609060022.aspx",
-      "matched_keywords": [
-        "輝達",
         "AI"
       ]
     }
