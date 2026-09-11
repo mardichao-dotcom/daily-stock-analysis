@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T19:15:54+08:00",
+  "generated_at": "2026-09-11T19:18:31+08:00",
   "dividends": [
     {
       "code": "00401A",
@@ -289,6 +289,13 @@
       "market": "TWSE"
     },
     {
+      "code": "1235",
+      "name": "興泰",
+      "date": "2026-09-24",
+      "kind": "權息",
+      "market": "TWSE"
+    },
+    {
       "code": "1442",
       "name": "名軒",
       "date": "2026-09-23",
@@ -306,13 +313,6 @@
       "code": "1808",
       "name": "潤隆",
       "date": "2026-09-23",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "2062",
-      "name": "橋椿",
-      "date": "2026-09-10",
       "kind": "息",
       "market": "TWSE"
     },
@@ -366,13 +366,6 @@
       "market": "TWSE"
     },
     {
-      "code": "4912",
-      "name": "聯德控股-KY",
-      "date": "2026-09-10",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "5243",
       "name": "乙盛-KY",
       "date": "2026-09-14",
@@ -394,23 +387,9 @@
       "market": "TWSE"
     },
     {
-      "code": "5906",
-      "name": "台南-KY",
-      "date": "2026-09-10",
-      "kind": "權息",
-      "market": "TWSE"
-    },
-    {
       "code": "6108",
       "name": "競國",
       "date": "2026-10-07",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "6504",
-      "name": "南六",
-      "date": "2026-09-10",
       "kind": "息",
       "market": "TWSE"
     },
@@ -443,46 +422,11 @@
       "market": "TWSE"
     },
     {
-      "code": "9802",
-      "name": "鈺齊-KY",
-      "date": "2026-09-10",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "9906",
-      "name": "欣巴巴",
-      "date": "2026-09-10",
-      "kind": "權",
-      "market": "TWSE"
-    },
-    {
       "code": "9927",
       "name": "泰銘",
       "date": "2026-10-01",
       "kind": "息",
       "market": "TWSE"
-    },
-    {
-      "code": "4541",
-      "name": "晟田",
-      "date": "2026-09-10",
-      "kind": "除權",
-      "market": "TPEX"
-    },
-    {
-      "code": "5328",
-      "name": "華容",
-      "date": "2026-09-10",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "8234",
-      "name": "新漢",
-      "date": "2026-09-10",
-      "kind": "除息",
-      "market": "TPEX"
     },
     {
       "code": "3141",
