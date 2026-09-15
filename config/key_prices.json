@@ -1,9 +1,9 @@
 {
   "version": "v3",
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-09-15",
   "rule_version": "v2.1",
   "source": "key_prices_clean_v3.md",
-  "_note": "由 tools/convert_key_prices.py 生成。重跑覆寫。手動編輯會被覆蓋。 | 2026-07-20:80 檔判讀拼接上架(更新70/新增10,其餘保留;新詞彙 break_block 已入白名單)。",
+  "_note": "由 tools/convert_key_prices.py 生成。重跑覆寫。手動編輯會被覆蓋。 | 2026-07-20:80 檔判讀拼接上架(更新70/新增10,其餘保留;新詞彙 break_block 已入白名單)。 | 2026-09-15:79 檔判讀拼接(更新79/新增0);起漲K/大戶空單成本價依規則排除。",
   "stocks": {
     "TWSE:2330": {
       "name": "台積電",
@@ -12,7 +12,7 @@
       "lines": [
         {
           "price": "2510",
-          "color": "black",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -20,20 +20,6 @@
         {
           "price": "2020",
           "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1935",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1865",
-          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -51,27 +37,6 @@
           "text": null,
           "adjective": "important",
           "category": "key_price"
-        },
-        {
-          "price": "1375",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1325",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1215",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
         }
       ],
       "areas": [
@@ -81,6 +46,13 @@
           "text": "買盤訂單塊",
           "adjective": null,
           "category": "order_block"
+        },
+        {
+          "low": "1865",
+          "high": "1935",
+          "text": null,
+          "adjective": null,
+          "category": "unclassified"
         }
       ]
     },
@@ -104,22 +76,8 @@
           "category": "key_price"
         },
         {
-          "price": "3160",
-          "color": "red",
-          "text": null,
-          "adjective": "important",
-          "category": "key_price"
-        },
-        {
-          "price": "2865",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "2430",
-          "color": "black",
+          "color": "gray",
           "text": "2430",
           "adjective": null,
           "category": "key_price"
@@ -162,35 +120,21 @@
       "market": "TW",
       "lines": [
         {
-          "price": "788",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "630",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "597",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "579",
+          "price": "601",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "422",
+          "price": "566",
+          "color": "gray",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "422.0",
           "color": "red",
           "text": "422",
           "adjective": null,
@@ -204,13 +148,6 @@
           "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
-        },
-        {
-          "low": "579",
-          "high": "597",
-          "text": "POC",
-          "adjective": null,
-          "category": "poc"
         }
       ]
     },
@@ -224,13 +161,6 @@
           "color": "red",
           "text": null,
           "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "503",
-          "color": "red",
-          "text": "503",
-          "adjective": "important",
           "category": "key_price"
         },
         {
@@ -256,6 +186,13 @@
       "sector": "IC設計",
       "market": "TW",
       "lines": [
+        {
+          "price": "776",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
         {
           "price": "684",
           "color": "black",
@@ -283,13 +220,6 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "451.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
         }
       ],
       "areas": [
@@ -308,30 +238,9 @@
       "market": "TW",
       "lines": [
         {
-          "price": "1920",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "1295",
           "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1115",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1065",
-          "color": "black",
-          "text": null,
+          "text": "1295(? 被K棒遮擋,僅見「?5」)",
           "adjective": null,
           "category": "key_price"
         }
@@ -359,28 +268,21 @@
       "market": "TW",
       "lines": [
         {
-          "price": "4665",
-          "color": "black",
+          "price": "3800",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "3680",
-          "color": "red",
-          "text": "3680",
+          "price": "3400",
+          "color": "black",
+          "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
           "price": "3000",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "2550",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -405,16 +307,19 @@
         {
           "low": "4460",
           "high": "4665",
-          "text": "賣盤訂單塊",
-          "adjective": "short_term",
+          "text": "短線賣盤訂單塊",
+          "adjective": null,
           "category": "order_block"
         },
         {
-          "low": "1635",
+          "low": "1640",
           "high": "1840",
           "text": "多頭最後防線",
           "adjective": null,
-          "category": "unclassified"
+          "category": "unclassified",
+          "annotations": [
+            "邊界不確定"
+          ]
         }
       ]
     },
@@ -424,11 +329,11 @@
       "market": "TW",
       "lines": [
         {
-          "price": "5955",
+          "price": "5250",
           "color": "black",
-          "text": "歷史高點",
+          "text": null,
           "adjective": null,
-          "category": "support_transfer"
+          "category": "key_price"
         },
         {
           "price": "4415",
@@ -452,15 +357,7 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "3715",
-          "high": "3905",
-          "text": "買盤訂單塊",
-          "adjective": "short_term",
-          "category": "order_block"
-        }
-      ]
+      "areas": []
     },
     "TWSE:3661": {
       "name": "世芯-KY",
@@ -487,6 +384,13 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
+        },
+        {
+          "price": "2135",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
@@ -505,21 +409,43 @@
       "market": "TW",
       "lines": [
         {
-          "price": "607",
+          "price": "631",
           "color": "black",
-          "text": "前高壓力位",
+          "text": null,
           "adjective": null,
-          "category": "support_transfer"
+          "category": "key_price"
         },
         {
-          "price": "521",
+          "price": "522",
+          "color": "red",
+          "text": "（無）",
+          "adjective": "important",
+          "category": "key_price"
+        },
+        {
+          "price": "459.0",
           "color": "black",
-          "text": "內撐",
+          "text": null,
           "adjective": null,
-          "category": "inner_support"
+          "category": "key_price"
+        },
+        {
+          "price": "373.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
-      "areas": []
+      "areas": [
+        {
+          "low": "726",
+          "high": "752",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        }
+      ]
     },
     "TWSE:3035": {
       "name": "智原",
@@ -527,23 +453,16 @@
       "market": "TW",
       "lines": [
         {
-          "price": "202.0",
+          "price": "260.0",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "177.0",
-          "color": "black",
+          "price": "186.5",
+          "color": "gray",
           "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "165",
-          "color": "black",
-          "text": "165",
           "adjective": null,
           "category": "key_price"
         },
@@ -559,16 +478,9 @@
         {
           "low": "237.0",
           "high": "245.0",
-          "text": null,
+          "text": "賣盤訂單塊",
           "adjective": null,
-          "category": "unclassified"
-        },
-        {
-          "low": "177.0",
-          "high": "180.5",
-          "text": null,
-          "adjective": null,
-          "category": "unclassified"
+          "category": "order_block"
         }
       ]
     },
@@ -578,14 +490,14 @@
       "market": "TW",
       "lines": [
         {
-          "price": "257.0",
-          "color": "red",
-          "text": "257",
+          "price": "302.0",
+          "color": "black",
+          "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "143.0",
+          "price": "136.0",
           "color": "red",
           "text": null,
           "adjective": null,
@@ -594,22 +506,15 @@
       ],
       "areas": [
         {
-          "low": "353.5",
-          "high": "365.0",
-          "text": "賣壓",
-          "adjective": "short_term",
+          "low": "336.5",
+          "high": "347.5",
+          "text": "短線賣壓",
+          "adjective": null,
           "category": "unclassified"
         },
         {
-          "low": "227.5",
-          "high": "234.0",
-          "text": "買盤訂單塊",
-          "adjective": null,
-          "category": "order_block"
-        },
-        {
-          "low": "188.0",
-          "high": "196.5",
+          "low": "179.0",
+          "high": "187.0",
           "text": "起漲跳空缺口",
           "adjective": null,
           "category": "gap"
@@ -630,34 +535,27 @@
         },
         {
           "price": "303.0",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "256.0",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "274.5",
-          "color": "black",
-          "text": "274.5",
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "253.5",
+          "price": "221.5",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "222",
-          "color": "black",
-          "text": "內撐 222",
-          "adjective": "small",
-          "category": "inner_support"
-        },
-        {
-          "price": "186",
+          "price": "186.0",
           "color": "red",
           "text": "186",
           "adjective": null,
@@ -679,13 +577,6 @@
       "market": "TW",
       "lines": [
         {
-          "price": "618",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "464.5",
           "color": "black",
           "text": null,
@@ -700,7 +591,7 @@
           "category": "key_price"
         },
         {
-          "price": "250",
+          "price": "250.0",
           "color": "red",
           "text": "250",
           "adjective": null,
@@ -724,6 +615,13 @@
       "lines": [
         {
           "price": "5555",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "4905",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -758,15 +656,7 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "4565",
-          "high": "4755",
-          "text": "跳空缺口",
-          "adjective": null,
-          "category": "gap"
-        }
-      ]
+      "areas": []
     },
     "TWSE:3017": {
       "name": "奇鋐",
@@ -774,7 +664,7 @@
       "market": "TW",
       "lines": [
         {
-          "price": "2965",
+          "price": "3250",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -782,9 +672,9 @@
         },
         {
           "price": "2390",
-          "color": "black",
-          "text": "內撐 2390",
-          "adjective": "small",
+          "color": "gray",
+          "text": "小內撐 2390",
+          "adjective": null,
           "category": "inner_support"
         },
         {
@@ -824,21 +714,7 @@
           "category": "key_price"
         },
         {
-          "price": "168.5",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "134.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "123.5",
+          "price": "161.0",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -856,9 +732,9 @@
         {
           "low": "134.0",
           "high": "136.5",
-          "text": "POC",
+          "text": null,
           "adjective": null,
-          "category": "poc"
+          "category": "unclassified"
         },
         {
           "low": "119.5",
@@ -877,20 +753,6 @@
         {
           "price": "1270",
           "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1020",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "970",
-          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -933,14 +795,7 @@
           "category": "key_price"
         },
         {
-          "price": "1255",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "980",
+          "price": "975",
           "color": "black",
           "text": "980",
           "adjective": null,
@@ -963,13 +818,6 @@
       ],
       "areas": [
         {
-          "low": "1255",
-          "high": "1310",
-          "text": "破壞塊",
-          "adjective": null,
-          "category": "break_block"
-        },
-        {
           "low": "432.5",
           "high": "461.5",
           "text": null,
@@ -984,24 +832,17 @@
       "market": "TW",
       "lines": [
         {
-          "price": "232.5",
+          "price": "220.0",
           "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "220",
-          "color": "black",
-          "text": "賣壓 220",
-          "adjective": "small",
-          "category": "support_transfer"
-        },
-        {
           "price": "197.0",
           "color": "red",
-          "text": "重要",
-          "adjective": "important",
+          "text": null,
+          "adjective": null,
           "category": "key_price"
         },
         {
@@ -1010,23 +851,31 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "177.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "173.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
         }
       ],
-      "areas": []
+      "areas": [
+        {
+          "low": "260.5",
+          "high": "265.0",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "243.0",
+          "high": "246.0",
+          "text": "破壞塊",
+          "adjective": null,
+          "category": "break_block"
+        },
+        {
+          "low": "173.0",
+          "high": "177.0",
+          "text": null,
+          "adjective": null,
+          "category": "unclassified"
+        }
+      ]
     },
     "TWSE:2609": {
       "name": "陽明",
@@ -1034,22 +883,15 @@
       "market": "TW",
       "lines": [
         {
-          "price": "54.3",
-          "color": "black",
+          "price": "45.55",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "50.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "47.25",
-          "color": "black",
+          "price": "43.60",
+          "color": "gray",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -1062,13 +904,6 @@
           "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
-        },
-        {
-          "low": "63.8",
-          "high": "65.1",
-          "text": "賣壓",
-          "adjective": "small",
-          "category": "unclassified"
         },
         {
           "low": "54.3",
@@ -1143,6 +978,13 @@
       "market": "TW",
       "lines": [
         {
+          "price": "322.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
           "price": "250.0",
           "color": "black",
           "text": null,
@@ -1154,20 +996,6 @@
           "color": "red",
           "text": null,
           "adjective": "important",
-          "category": "key_price"
-        },
-        {
-          "price": "172.5",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "164.5",
-          "color": "black",
-          "text": null,
-          "adjective": null,
           "category": "key_price"
         },
         {
@@ -1225,7 +1053,7 @@
       "areas": []
     },
     "TWSE:2327": {
-      "name": "國巨*",
+      "name": "國巨",
       "sector": "被動元件",
       "market": "TW",
       "lines": [
@@ -1237,21 +1065,7 @@
           "category": "key_price"
         },
         {
-          "price": "855",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "631",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "447.0",
+          "price": "738",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -1281,12 +1095,26 @@
         {
           "price": "165.5",
           "color": "red",
-          "text": null,
+          "text": "165?",
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "150.0",
+          "color": "black",
+          "text": "150?",
           "adjective": null,
           "category": "key_price"
         },
         {
           "price": "125.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "101.5",
           "color": "red",
           "text": null,
           "adjective": null,
@@ -1302,18 +1130,11 @@
           "category": "break_block"
         },
         {
-          "low": "631",
-          "high": "683",
-          "text": "買盤訂單塊",
-          "adjective": null,
-          "category": "order_block"
-        },
-        {
           "low": "419.5",
           "high": "447.0",
-          "text": null,
+          "text": "FVG",
           "adjective": null,
-          "category": "unclassified"
+          "category": "fvg"
         }
       ]
     },
@@ -1358,7 +1179,15 @@
           "category": "key_price"
         }
       ],
-      "areas": []
+      "areas": [
+        {
+          "low": "201.5",
+          "high": "206.0",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
     },
     "TWSE:6862": {
       "name": "三集瑞-KY",
@@ -1417,14 +1246,14 @@
       "market": "TW",
       "lines": [
         {
-          "price": "262.5",
+          "price": "277.5",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "245.0",
+          "price": "227.5",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -1452,13 +1281,6 @@
           "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
-        },
-        {
-          "low": "239.0",
-          "high": "245.0",
-          "text": "FVG",
-          "adjective": null,
-          "category": "fvg"
         },
         {
           "low": "213.5",
@@ -1621,46 +1443,53 @@
       "market": "TW",
       "lines": [
         {
-          "price": "5800",
+          "price": "2285",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "5435",
+          "price": "1945",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "4730",
+          "price": "1585",
           "color": "red",
           "text": null,
-          "adjective": "important",
+          "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "4225",
+          "price": "1415",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "3535",
+          "price": "1185",
           "color": "black",
-          "text": "撐轉",
+          "text": "撐轉 3535",
           "adjective": null,
           "category": "support_transfer"
         }
       ],
       "areas": [
         {
-          "low": "2860",
-          "high": "2960",
-          "text": "重要撐轉",
+          "low": "2790",
+          "high": "2875",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "1290",
+          "high": "1335",
+          "text": null,
           "adjective": null,
           "category": "unclassified"
         }
@@ -1744,22 +1573,22 @@
       "market": "TW",
       "lines": [
         {
-          "price": "185.5",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "160",
+          "price": "190.0",
           "color": "black",
-          "text": "分點",
+          "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
           "price": "144.0",
           "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "130.5",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -1953,7 +1782,7 @@
       "market": "TW",
       "lines": [
         {
-          "price": "2775",
+          "price": "2925",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -1974,20 +1803,6 @@
           "category": "key_price"
         },
         {
-          "price": "1575",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1250",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "479.5",
           "color": "red",
           "text": null,
@@ -1996,13 +1811,6 @@
         }
       ],
       "areas": [
-        {
-          "low": "2775",
-          "high": "2925",
-          "text": "賣盤訂單塊",
-          "adjective": null,
-          "category": "order_block"
-        },
         {
           "low": "1250",
           "high": "1375",
@@ -2018,6 +1826,13 @@
       "market": "TW",
       "lines": [
         {
+          "price": "310.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
           "price": "267.5",
           "color": "black",
           "text": "內撐 267.5",
@@ -2032,14 +1847,7 @@
           "category": "key_price"
         },
         {
-          "price": "163.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "147.5",
+          "price": "181.5",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -2053,35 +1861,13 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "136.5",
-          "high": "147.5",
-          "text": "賣盤訂單塊",
-          "adjective": null,
-          "category": "order_block"
-        }
-      ]
+      "areas": []
     },
     "TPEX:3363": {
       "name": "上詮",
       "sector": "光通訊",
       "market": "TW",
       "lines": [
-        {
-          "price": "999",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "735",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
         {
           "price": "682",
           "color": "black",
@@ -2090,7 +1876,7 @@
           "category": "key_price"
         },
         {
-          "price": "547",
+          "price": "565",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -2108,6 +1894,13 @@
         {
           "low": "936",
           "high": "999",
+          "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "803",
+          "high": "817",
           "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
@@ -2214,7 +2007,7 @@
       "market": "TW",
       "lines": [
         {
-          "price": "4040",
+          "price": "4035",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -2249,15 +2042,7 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "2385",
-          "high": "2560",
-          "text": null,
-          "adjective": null,
-          "category": "unclassified"
-        }
-      ]
+      "areas": []
     },
     "TWSE:3583": {
       "name": "辛耘",
@@ -2577,8 +2362,8 @@
           "category": "key_price"
         },
         {
-          "price": "130.5",
-          "color": "red",
+          "price": "138.0",
+          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -2586,6 +2371,13 @@
         {
           "price": "106.0",
           "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "89.5",
+          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -2607,20 +2399,6 @@
         },
         {
           "price": "206.5",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "92.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "89.8",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -2935,7 +2713,7 @@
         },
         {
           "price": "408.30",
-          "color": "black",
+          "color": "gray",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -2967,26 +2745,12 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "221.49",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "212.71",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
         }
       ],
       "areas": []
     },
     "NASDAQ:QCOM": {
-      "name": "QUALCOMM",
+      "name": "Qualcomm",
       "sector": "",
       "market": "INTL",
       "lines": [
@@ -2998,24 +2762,17 @@
           "category": "key_price"
         },
         {
+          "price": "201.81",
+          "color": "gray",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
           "price": "187.83",
           "color": "red",
           "text": "187.9",
           "adjective": "important",
-          "category": "key_price"
-        },
-        {
-          "price": "169.05",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "158.89",
-          "color": "black",
-          "text": null,
-          "adjective": null,
           "category": "key_price"
         },
         {
@@ -3028,20 +2785,12 @@
         {
           "price": "124.00",
           "color": "red",
-          "text": "124",
+          "text": null,
           "adjective": null,
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "158.89",
-          "high": "169.05",
-          "text": "FVG",
-          "adjective": null,
-          "category": "fvg"
-        }
-      ]
+      "areas": []
     },
     "NASDAQ:ARM": {
       "name": "ARM Holdings",
@@ -3063,13 +2812,6 @@
           "category": "key_price"
         },
         {
-          "price": "231.72",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "179.76",
           "color": "red",
           "text": null,
@@ -3079,9 +2821,16 @@
         {
           "price": "157.2",
           "color": "black",
-          "text": "大戶成本 157.2",
-          "adjective": "estimated",
+          "text": "預估大戶成本 157.2",
+          "adjective": null,
           "category": "whale_cost"
+        },
+        {
+          "price": "143.64",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
           "price": "104.49",
@@ -3128,7 +2877,7 @@
           "category": "key_price"
         },
         {
-          "price": "454.17",
+          "price": "454.36",
           "color": "red",
           "text": "454.3",
           "adjective": null,
@@ -3165,7 +2914,14 @@
           "category": "key_price"
         },
         {
-          "price": "219.63",
+          "price": "252.47",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "204.62",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -3181,14 +2937,14 @@
         {
           "price": "128.61",
           "color": "red",
-          "text": "128.6",
+          "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
           "price": "84.97",
           "color": "black",
-          "text": "85",
+          "text": null,
           "adjective": null,
           "category": "key_price"
         },
@@ -3211,7 +2967,7 @@
       ]
     },
     "NASDAQ:AMKR": {
-      "name": "Amkor Technology",
+      "name": "Amkor",
       "sector": "",
       "market": "INTL",
       "lines": [
@@ -3224,17 +2980,17 @@
         },
         {
           "price": "79.2",
-          "color": "black",
+          "color": "gray",
           "text": "內撐 79.2",
           "adjective": null,
           "category": "inner_support"
         },
         {
-          "price": "50.6",
+          "price": "59.48",
           "color": "black",
-          "text": "價格轉換 50.6",
-          "adjective": "important",
-          "category": "support_transfer"
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
@@ -3260,10 +3016,10 @@
           "category": "key_price"
         },
         {
-          "price": "281.24",
-          "color": "black",
+          "price": "232.87",
+          "color": "red",
           "text": null,
-          "adjective": null,
+          "adjective": "important",
           "category": "key_price"
         },
         {
@@ -3279,27 +3035,12 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "232.87",
-          "color": "red",
-          "text": "重要",
-          "adjective": "important",
-          "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "267.75",
-          "high": "281.24",
-          "text": "FVG",
-          "adjective": null,
-          "category": "fvg"
-        }
-      ]
+      "areas": []
     },
     "TSE:6594": {
-      "name": "Nidec 日本電產",
+      "name": "日本電產",
       "sector": "",
       "market": "INTL",
       "lines": [
@@ -3326,8 +3067,8 @@
         },
         {
           "price": "2470",
-          "color": "black",
-          "text": "內撐",
+          "color": "red",
+          "text": "內撐 2470",
           "adjective": null,
           "category": "inner_support"
         },
@@ -3342,26 +3083,26 @@
       "areas": []
     },
     "NYSE:ZIM": {
-      "name": "ZIM Integrated Shipping",
+      "name": "ZIM",
       "sector": "",
       "market": "INTL",
       "lines": [
         {
-          "price": "29.18",
-          "color": "black",
+          "price": "29.96",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "26.24",
+          "color": "gray",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
           "price": "23.38",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "17.51",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -3428,21 +3169,21 @@
       "market": "INTL",
       "lines": [
         {
-          "price": "435.18",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "378.68",
+          "price": "475.96",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "364.34",
+          "price": "444.66",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "387.16",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -3450,6 +3191,13 @@
         },
         {
           "price": "343.12",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "315.16",
           "color": "red",
           "text": null,
           "adjective": null,
@@ -3467,7 +3215,7 @@
       ]
     },
     "TSE:6981": {
-      "name": "Murata 村田製作所",
+      "name": "村田製造所",
       "sector": "",
       "market": "INTL",
       "lines": [
@@ -3486,25 +3234,25 @@
           "category": "key_price"
         },
         {
-          "price": "8220",
+          "price": "8816",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "5810",
+          "price": "6848",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "5263",
-          "color": "black",
-          "text": null,
+          "price": "4795",
+          "color": "gray",
+          "text": "內撐 4795",
           "adjective": null,
-          "category": "key_price"
+          "category": "inner_support"
         },
         {
           "price": "4334",
@@ -3519,13 +3267,6 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "4795",
-          "color": "black",
-          "text": "內撐",
-          "adjective": null,
-          "category": "inner_support"
         }
       ],
       "areas": [
@@ -3568,17 +3309,10 @@
       "areas": [
         {
           "low": "3371",
-          "high": "3406",
+          "high": "3450",
           "text": "跳空缺口",
           "adjective": null,
           "category": "gap"
-        },
-        {
-          "low": "3111",
-          "high": "3185",
-          "text": "賣盤訂單塊",
-          "adjective": "short_term",
-          "category": "order_block"
         },
         {
           "low": "2451.5",
@@ -3597,10 +3331,17 @@
       ]
     },
     "NASDAQ:SMCI": {
-      "name": "Super Micro",
+      "name": "SuperMicro",
       "sector": "",
       "market": "INTL",
       "lines": [
+        {
+          "price": "62.46",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
         {
           "price": "50.31",
           "color": "red",
@@ -3609,8 +3350,8 @@
           "category": "key_price"
         },
         {
-          "price": "39.66",
-          "color": "red",
+          "price": "40.56",
+          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -3623,18 +3364,14 @@
           "category": "key_price"
         },
         {
-          "price": "29.7",
-          "color": "black",
-          "text": "內撐 29.7",
-          "adjective": null,
-          "category": "inner_support"
-        },
-        {
           "price": "26",
-          "color": "black",
+          "color": "gray",
           "text": "內撐 26",
           "adjective": null,
-          "category": "inner_support"
+          "category": "inner_support",
+          "annotations": [
+            "邊界不確定"
+          ]
         },
         {
           "price": "20.11",
@@ -3652,15 +3389,15 @@
       "market": "INTL",
       "lines": [
         {
-          "price": "434.62",
-          "color": "red",
+          "price": "567",
+          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
           "price": "368.49",
-          "color": "black",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -3674,20 +3411,21 @@
         },
         {
           "price": "220",
-          "color": "black",
+          "color": "gray",
           "text": "內撐 220",
           "adjective": null,
           "category": "inner_support"
-        },
-        {
-          "price": "110.77",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
         }
       ],
-      "areas": []
+      "areas": [
+        {
+          "low": "495.77",
+          "high": "506.33",
+          "text": "破壞塊",
+          "adjective": null,
+          "category": "break_block"
+        }
+      ]
     },
     "NYSE:HPE": {
       "name": "Hewlett Packard Enterprise",
@@ -3781,27 +3519,6 @@
       "market": "INTL",
       "lines": [
         {
-          "price": "1179.64",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1146.51",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "988.3",
-          "color": "black",
-          "text": "內撐 988.3",
-          "adjective": null,
-          "category": "inner_support"
-        },
-        {
           "price": "867.21",
           "color": "red",
           "text": null,
@@ -3810,7 +3527,7 @@
         },
         {
           "price": "782.63",
-          "color": "black",
+          "color": "gray",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -3828,6 +3545,13 @@
           "low": "1146.51",
           "high": "1179.64",
           "text": "賣盤訂單塊",
+          "adjective": null,
+          "category": "order_block"
+        },
+        {
+          "low": "715.08",
+          "high": "747.17",
+          "text": "買盤訂單塊",
           "adjective": null,
           "category": "order_block"
         }
@@ -3853,36 +3577,8 @@
           "category": "key_price"
         },
         {
-          "price": "687.5",
-          "color": "black",
-          "text": "內撐 687.5",
-          "adjective": null,
-          "category": "inner_support"
-        },
-        {
-          "price": "636.89",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "559.96",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "531.07",
           "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "479.77",
-          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -3906,9 +3602,9 @@
         {
           "low": "479.77",
           "high": "491.22",
-          "text": null,
+          "text": "起漲買盤訂單塊",
           "adjective": null,
-          "category": "unclassified"
+          "category": "order_block"
         }
       ]
     },
@@ -3962,17 +3658,10 @@
         },
         {
           "price": "344",
-          "color": "black",
-          "text": "內撐 344",
+          "color": "gray",
+          "text": "內撐",
           "adjective": "small",
           "category": "inner_support"
-        },
-        {
-          "price": "299.28",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
         },
         {
           "price": "217.66",
@@ -3989,34 +3678,26 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "261.93",
-          "high": "276.08",
-          "text": "買盤訂單塊",
-          "adjective": null,
-          "category": "order_block"
-        }
-      ]
+      "areas": []
     },
     "NYSE:ANET": {
-      "name": "Arista Networks",
+      "name": "Arista",
       "sector": "",
       "market": "INTL",
       "lines": [
         {
-          "price": "177.68",
+          "price": "210.29",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "151.8",
+          "price": "183.60",
           "color": "black",
-          "text": "撐轉 151.8",
+          "text": null,
           "adjective": null,
-          "category": "support_transfer"
+          "category": "key_price"
         },
         {
           "price": "136.25",
@@ -4055,13 +3736,6 @@
           "category": "key_price"
         },
         {
-          "price": "443.53",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "377.11",
           "color": "red",
           "text": null,
@@ -4086,7 +3760,7 @@
       "areas": []
     },
     "NASDAQ:ASML": {
-      "name": "ASML ADR",
+      "name": "ASML",
       "sector": "",
       "market": "INTL",
       "lines": [
@@ -4098,15 +3772,8 @@
           "category": "key_price"
         },
         {
-          "price": "1747",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "1639.55",
-          "color": "black",
+          "price": "1546.79",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -4133,18 +3800,10 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "1086",
-          "high": "1131",
-          "text": "POC",
-          "adjective": null,
-          "category": "poc"
-        }
-      ]
+      "areas": []
     },
     "TSE:6146": {
-      "name": "Disco 迪思科",
+      "name": "DISCO",
       "sector": "",
       "market": "INTL",
       "lines": [
@@ -4170,29 +3829,21 @@
           "category": "key_price"
         },
         {
-          "price": "56290",
+          "price": "50700",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "50700",
-          "color": "black",
+          "price": "37310",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "71370",
-          "high": "73600",
-          "text": "FVG",
-          "adjective": null,
-          "category": "fvg"
-        }
-      ]
+      "areas": []
     },
     "TSE:8035": {
       "name": "Tokyo Electron 東京威力科創",
@@ -4413,25 +4064,18 @@
       "market": "TW",
       "lines": [
         {
-          "price": "692",
+          "price": "741",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "601",
+          "price": "600",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "427.5",
-          "color": "black",
-          "text": "內撐",
-          "adjective": null,
-          "category": "inner_support"
         },
         {
           "price": "385.0",
@@ -4444,7 +4088,7 @@
       "areas": []
     },
     "TPEX:5347": {
-      "name": "世界",
+      "name": "世界先進",
       "sector": "晶圓代工",
       "market": "TW",
       "lines": [
@@ -4463,15 +4107,8 @@
           "category": "key_price"
         },
         {
-          "price": "161.5",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "133.5",
-          "color": "black",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -4487,33 +4124,19 @@
       "areas": []
     },
     "TWSE:6531": {
-      "name": "愛普*",
+      "name": "愛普",
       "sector": "IC設計",
       "market": "TW",
       "lines": [
         {
-          "price": "1240",
+          "price": "829",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "874",
-          "color": "black",
-          "text": "內撐 874",
-          "adjective": null,
-          "category": "inner_support"
-        },
-        {
-          "price": "789",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "713",
+          "price": "573",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -4534,13 +4157,6 @@
           "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
-        },
-        {
-          "low": "713",
-          "high": "789",
-          "text": "買盤訂單塊",
-          "adjective": null,
-          "category": "order_block"
         }
       ]
     },
@@ -4558,27 +4174,20 @@
         },
         {
           "price": "63.2",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "56.3",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "50.2",
           "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "45.60",
+          "price": "52.8",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "44.45",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -4593,7 +4202,7 @@
       "market": "TW",
       "lines": [
         {
-          "price": "2270",
+          "price": "2435",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -4607,8 +4216,8 @@
           "category": "key_price"
         },
         {
-          "price": "1330",
-          "color": "black",
+          "price": "1225",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -4616,11 +4225,11 @@
       ],
       "areas": [
         {
-          "low": "1930",
-          "high": "2015",
-          "text": "FVG",
+          "low": "2025",
+          "high": "2090",
+          "text": "買盤訂單塊",
           "adjective": null,
-          "category": "fvg"
+          "category": "order_block"
         }
       ]
     },
@@ -4630,22 +4239,22 @@
       "market": "TW",
       "lines": [
         {
-          "price": "93.8",
+          "price": "110.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "84.6",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "67.5",
           "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "74.9",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "66.3",
-          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -4678,23 +4287,17 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "1105",
-          "color": "red",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "862",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
         }
       ],
-      "areas": []
+      "areas": [
+        {
+          "low": "862",
+          "high": "948",
+          "text": "POC",
+          "adjective": null,
+          "category": "poc"
+        }
+      ]
     },
     "TWSE:4958": {
       "name": "臻鼎-KY",
@@ -4703,7 +4306,7 @@
       "lines": [
         {
           "price": "646",
-          "color": "black",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -4716,11 +4319,11 @@
           "category": "key_price"
         },
         {
-          "price": "481",
+          "price": "372.5",
           "color": "black",
-          "text": "內撐 481",
+          "text": null,
           "adjective": null,
-          "category": "inner_support"
+          "category": "key_price"
         },
         {
           "price": "333.0",
@@ -4759,15 +4362,8 @@
           "category": "key_price"
         },
         {
-          "price": "235.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "208.0",
-          "color": "red",
+          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -4781,7 +4377,7 @@
         },
         {
           "price": "95.5",
-          "color": "red",
+          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -4838,9 +4434,9 @@
           "category": "key_price"
         },
         {
-          "price": "1080",
+          "price": "909",
           "color": "red",
-          "text": "1,080",
+          "text": null,
           "adjective": null,
           "category": "key_price"
         },
@@ -5035,13 +4631,6 @@
           "category": "key_price"
         },
         {
-          "price": "133.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "107.0",
           "color": "red",
           "text": null,
@@ -5056,15 +4645,7 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "151.0",
-          "high": "158.5",
-          "text": "POC",
-          "adjective": null,
-          "category": "poc"
-        }
-      ]
+      "areas": []
     },
     "TWSE:2408": {
       "name": "南亞科",
@@ -5363,6 +4944,13 @@
           "text": null,
           "adjective": null,
           "category": "key_price"
+        },
+        {
+          "price": "58.5",
+          "color": "red",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         }
       ],
       "areas": [
@@ -5494,7 +5082,7 @@
       "areas": [
         {
           "low": "377.0",
-          "high": "385.0",
+          "high": "383.0",
           "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
@@ -5502,9 +5090,9 @@
         {
           "low": "264.0",
           "high": "282.0",
-          "text": "買盤訂單塊",
+          "text": null,
           "adjective": null,
-          "category": "order_block"
+          "category": "unclassified"
         }
       ]
     },
@@ -5779,11 +5367,18 @@
           "category": "key_price"
         },
         {
-          "price": "132",
+          "price": "145.5",
           "color": "black",
-          "text": "內撐",
+          "text": null,
           "adjective": null,
-          "category": "inner_support"
+          "category": "key_price"
+        },
+        {
+          "price": "114.5",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
         },
         {
           "price": "79.9",
@@ -5793,15 +5388,7 @@
           "category": "key_price"
         }
       ],
-      "areas": [
-        {
-          "low": "149.0",
-          "high": "155.5",
-          "text": "破壞塊",
-          "adjective": null,
-          "category": "break_block"
-        }
-      ]
+      "areas": []
     },
     "TPEX:5274": {
       "name": "信驊",
@@ -6059,8 +5646,8 @@
         },
         {
           "price": "191",
-          "color": "black",
-          "text": "內撐",
+          "color": "gray",
+          "text": "內撐 191",
           "adjective": null,
           "category": "inner_support"
         },
@@ -6076,7 +5663,7 @@
         {
           "low": "265.5",
           "high": "277.5",
-          "text": "賣盤訂單塊(? 右緣被裁,僅見「賣盤訂」)",
+          "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
         }
@@ -6088,13 +5675,6 @@
       "market": "TW",
       "lines": [
         {
-          "price": "383.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "342.5",
           "color": "red",
           "text": null,
@@ -6102,14 +5682,14 @@
           "category": "key_price"
         },
         {
-          "price": "259.5",
+          "price": "234.0",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "234.0",
+          "price": "214.0",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -6132,7 +5712,14 @@
       "market": "TW",
       "lines": [
         {
-          "price": "153.0",
+          "price": "171.0",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "139.5",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -6161,8 +5748,8 @@
       "market": "TW",
       "lines": [
         {
-          "price": "483.5",
-          "color": "black",
+          "price": "455.5",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -6182,36 +5769,15 @@
           "category": "key_price"
         },
         {
-          "price": "280.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "226.0",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
           "price": "193.0",
-          "color": "black",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
-        },
-        {
-          "price": "179",
-          "color": "black",
-          "text": "內撐",
-          "adjective": null,
-          "category": "inner_support"
         },
         {
           "price": "158.5",
-          "color": "red",
+          "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -6220,24 +5786,17 @@
       "areas": [
         {
           "low": "455.5",
-          "high": "483.5",
-          "text": null,
+          "high": "484",
+          "text": "破壞塊",
           "adjective": null,
-          "category": "unclassified"
+          "category": "break_block"
         },
         {
           "low": "271.0",
           "high": "280.0",
-          "text": null,
+          "text": "賣盤訂單塊",
           "adjective": null,
-          "category": "unclassified"
-        },
-        {
-          "low": "226.0",
-          "high": "232.0",
-          "text": null,
-          "adjective": null,
-          "category": "unclassified"
+          "category": "order_block"
         }
       ]
     },
@@ -6270,11 +5829,11 @@
       ],
       "areas": [
         {
-          "low": "170.0",
-          "high": "177.0",
-          "text": "跳空缺口",
+          "low": "227.5",
+          "high": "235.0",
+          "text": "破壞塊",
           "adjective": null,
-          "category": "gap"
+          "category": "break_block"
         }
       ]
     },
@@ -6283,6 +5842,13 @@
       "sector": "其他",
       "market": "TW",
       "lines": [
+        {
+          "price": "971",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
         {
           "price": "796",
           "color": "black",
@@ -6322,7 +5888,7 @@
       "areas": []
     },
     "TWSE:4763": {
-      "name": "材料*-KY",
+      "name": "材料-KY",
       "sector": "其他",
       "market": "TW",
       "lines": [
@@ -6334,7 +5900,7 @@
           "category": "key_price"
         },
         {
-          "price": "48.45",
+          "price": "37.70",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -6349,21 +5915,21 @@
       "market": "TW",
       "lines": [
         {
-          "price": "859",
+          "price": "661",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "625",
+          "price": "480.5",
           "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "572",
+          "price": "440.0",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -6372,8 +5938,8 @@
       ],
       "areas": [
         {
-          "low": "743",
-          "high": "767",
+          "low": "572",
+          "high": "590",
           "text": "買盤訂單塊",
           "adjective": null,
           "category": "order_block"
@@ -6386,29 +5952,29 @@
       "market": "TW",
       "lines": [
         {
-          "price": "185.5",
+          "price": "148.0",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "149.5",
-          "color": "black",
-          "text": null,
-          "adjective": null,
-          "category": "key_price"
-        },
-        {
-          "price": "131.0",
+          "price": "129.5",
           "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "103.0",
+          "price": "102.0",
           "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
+        {
+          "price": "91.1",
+          "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
@@ -6416,8 +5982,8 @@
       ],
       "areas": [
         {
-          "low": "159.0",
-          "high": "166.5",
+          "low": "157.0",
+          "high": "164.5",
           "text": "賣盤訂單塊",
           "adjective": null,
           "category": "order_block"
@@ -6425,10 +5991,17 @@
       ]
     },
     "OMXCOP:MAERSK_B": {
-      "name": "A.P. Moller-Maersk B",
+      "name": "Maersk B",
       "sector": "",
       "market": "INTL",
       "lines": [
+        {
+          "price": "23280",
+          "color": "black",
+          "text": null,
+          "adjective": null,
+          "category": "key_price"
+        },
         {
           "price": "18625",
           "color": "red",
@@ -6459,8 +6032,8 @@
         },
         {
           "price": "13040",
-          "color": "black",
-          "text": "內撐",
+          "color": "gray",
+          "text": "內撐 13040",
           "adjective": null,
           "category": "inner_support"
         }
