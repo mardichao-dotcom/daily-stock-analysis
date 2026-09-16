@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T08:30:33+08:00",
+  "generated_at": "2026-09-16T08:30:42+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,249 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 38,
+  "count": 62,
   "items": [
+    {
+      "title": "〈台股盤前要聞〉台積電除息秀登場、外資4天賣超2272億元、聯發科2奈米天璣9600 Pro亮相",
+      "source": "鉅亨網",
+      "published_at": "2026-09-16T06:04:26+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606331",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "微軟畫紅線立下「AI 憲法」影響全球基礎建設投資 牽動廣達、鴻海",
+      "source": "經濟日報",
+      "published_at": "2026-09-16T01:24:11+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/5612/9756935",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "米玉傑：人類才能做決策 台積共同營運長妙喻 AI 像「三歲超人」",
+      "source": "經濟日報",
+      "published_at": "2026-09-16T01:21:42+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/5612/9756956",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "聯發科兩款旗艦晶片亮相 天璣9600 Pro、天璣9600M 主打 AI 與效能更進化",
+      "source": "經濟日報",
+      "published_at": "2026-09-16T01:15:18+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/5612/9756856",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "IFA 2026看什麼？實體 AI 、機器人與 AI PC 大秀新科技",
+      "source": "經濟日報",
+      "published_at": "2026-09-16T00:29:03+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/11162/9757026",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "鑫科雙喜臨門 高純度半導體靶材、面板級封裝載具傳捷報",
+      "source": "經濟日報",
+      "published_at": "2026-09-15T23:59:06+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://money.udn.com/money/story/5612/9757018",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "創博會9/17世貿登場 科技館展技術涵蓋AI應用從晶片散熱到癌症早篩偵測",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T20:44:19+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6607204",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳示警AIDC瓶頸 點名代理型AI引爆電力與應用新商機 「這類」ETF趁勢崛起",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T19:16:10+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6607117",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "禾伸堂砸8.12億元添購設備 加速擴充AI電源MLCC產能",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T19:06:46+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6607121",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電等3檔除息秀明登場 大盤估蒸發逾56點",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T17:58:42+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606991",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "塑橡膠工業展今起開幕 黃志芳：傳產若受結合AI技術將如虎添翼、預登買主已逾4千位",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T17:58:17+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606973",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "兩樣情！台積電赴美增資200億美元推升前8月僑外投資近「倍增」陸資來台縮水91%",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T17:56:10+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606970",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "SK海力士3D DRAM新架構曝光 台積電合作可能性備受矚目",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T17:11:45+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606849",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "台積電看重哪些人才特質？米玉傑親揭三大關鍵",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T17:06:08+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606923",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "MaiCoin攜手萊爾富 加密貨幣支付首度支援超商消費",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T16:53:47+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606894",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "米玉傑回應AI巨頭：AI像3歲超人 很強大但也可能帶來未知結果",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T16:51:56+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606891",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "數發部啟動「主權AI語料庫」民間徵集 打造台灣特色可信賴AI",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T16:40:17+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606889",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "華擎子公司東擎首推英特爾次世代架構工業電腦 加速邊緣AI市場部署",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T14:32:15+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606773",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "金融股值得投資嗎？FOMC升息預期狂飆，0055、00998A、00919…熱門含金ETF投資攻略",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T14:13:26+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606765",
+      "matched_keywords": [
+        "升息",
+        "FOMC"
+      ]
+    },
+    {
+      "title": "台股震盪難抓進場點？野村投信解密10年數據：定期定額創新科技ETF有望掌握AI長線趨勢",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T13:53:53+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6602725",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "搶救產業K型化！龔明鑫：明年起年投250億推升百萬中小企業AI轉型",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T12:25:56+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606661",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "群益證搭年輕族群理財趨勢 攜手訊連導入AI最快3分鐘完成開戶",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T11:32:18+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606622",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉日韓股市翻紅激勵拚回4萬6 台積電除息行情硬挺",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T09:42:50+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606553",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "00400A值得投資嗎？主動式ETF搶攻AI＋高股息，月配息背後還有什麼亮點？",
+      "source": "鉅亨網",
+      "published_at": "2026-09-15T08:35:58+08:00",
+      "fetched_at": "2026-09-16T08:30:42+08:00",
+      "url": "https://news.cnyes.com/news/id/6606486",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "費半挫近6%、台積電ADR跌3.52%　台股估震盪",
       "source": "中央社財經",
