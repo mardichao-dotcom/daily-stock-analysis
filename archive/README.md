@@ -35,6 +35,21 @@ v1 管線在 2026-06 已從 run_all.sh 移除(見 docs/上線後待辦.md §0),�
 
 ---
 
+## archive/md-layer/ — key_prices 中間層 md(1 主檔 + 5 備份,已名存實亡)
+
+- key_prices_clean_v3.md → 曾是關鍵價的「人可讀中間層」,轉換器從它產 JSON。
+  但已名存實亡:只 112 檔(config/key_prices.json 有 140+)、32 檔手改股與 JSON 分岔、
+  表達能力不足。2026-09-15 上架 79 檔走「直接對 JSON 逐檔替換」完全沒經過它,
+  證明不需要它也能更新。
+- key_prices_clean_v3.md.bak* (5 個)→ 歷次上架的 md 備份。
+
+配套改動(封存 md 時一併做,見 tools/convert_key_prices.py):
+- 移除 DEFAULT_MD,`--md` 改必填 → 無參數重跑不會再去讀(已封存的)那個 md。
+- 上架流程改為:判讀批 → 生成該批小 md → `convert --md 該批.md --out 片段.json`
+  → 拼接進 config/key_prices.json。config/key_prices.json 是唯一權威真值。
+- **防重跑保護保留**(--out 檔數 > 本次產出就中止):它保護的是 JSON 目標,
+  與 md 是否封存無關;任何時候用小批 md 跑都可能誤覆蓋 140 檔真值,這道防線仍需要。
+
 ## 還原方法
 
 還原單一檔:

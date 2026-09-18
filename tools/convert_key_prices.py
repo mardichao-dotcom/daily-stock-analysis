@@ -1,9 +1,17 @@
 """
-convert_key_prices.py — 從 key_prices_clean_v3.md 產出 config/key_prices.json
+convert_key_prices.py — 把「判讀批的 md 塊」轉成 JSON(供拼接進 config/key_prices.json)
 
-用法:
-  python3 tools/convert_key_prices.py
-  python3 tools/convert_key_prices.py --md path/to/v4.md --out path/to/out.json
+★ 2026-09-18:key_prices_clean_v3.md 中間層已封存(archive/md-layer/,名存實亡:
+  只 112 檔、與 140 檔 JSON 分岔)。--md 不再有預設值,**必須明確指定**要轉的 md 檔
+  (通常是某批判讀的臨時 md,如 kp79.md),避免有人無參數重跑而覆蓋權威 JSON。
+
+用法(--md 必填):
+  python3 tools/convert_key_prices.py --md path/to/batch.md --out path/to/out.json
+
+上架流程(逐檔拼接,不整份重生成):
+  1. 判讀批 → 生成該批 md 塊 → 本工具轉成該批 JSON 片段
+  2. 把片段拼接進現有 config/key_prices.json(更新/新增,其餘保留)
+  詳見 docs/上線後待辦.md §7 與 archive/README.md。
 
 輸入: markdown(### [CODE NAME] + 線/區域 表)
 輸出: JSON(stocks 內含每檔的 lines + areas + market + sector)
@@ -25,7 +33,7 @@ import sys
 from collections import Counter, defaultdict
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_MD   = os.path.join(PROJECT_ROOT, "key_prices_clean_v3.md")
+# DEFAULT_MD 已移除(2026-09-18 md 中間層封存);--md 改必填,見 main()
 DEFAULT_OUT  = os.path.join(PROJECT_ROOT, "config", "key_prices.json")
 WATCHLIST    = os.path.join(PROJECT_ROOT, "config", "watchlist.json")
 
@@ -289,8 +297,8 @@ def write_json(stocks: dict, out_path: str) -> None:
         "version":      "v3",
         "updated_at":   "2026-07-20",
         "rule_version": "v2.1",
-        "source":       "key_prices_clean_v3.md",
-        "_note":        "由 tools/convert_key_prices.py 生成。重跑覆寫。手動編輯會被覆蓋。",
+        "source":       "判讀批 md(逐批,非常駐中間層;中間層已封存 archive/md-layer/)",
+        "_note":        "由 tools/convert_key_prices.py 從指定 --md 生成。上架走『拼接進現有 JSON』,非整份重生成。",
         "stocks":       stocks,
     }
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
@@ -353,7 +361,8 @@ def print_stats(stocks: dict, stats: dict) -> None:
 # ── main ──────────────────────────────────────────────────────────────────────
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--md",  default=DEFAULT_MD)
+    parser.add_argument("--md",  required=True,
+                        help="要轉的判讀批 md 檔(必填;中間層 md 已封存,無預設值)")
     parser.add_argument("--out", default=DEFAULT_OUT)
     args = parser.parse_args()
 
