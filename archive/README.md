@@ -1,0 +1,56 @@
+# archive/ — 封存(非刪除)
+
+> 封存日期:2026-09-18
+> 方式:`git mv`(保留 git 歷史,可完整還原)
+> 原因:從 7 個 launchd 排程 + 主腳本往下追依賴,以下檔案追不到任何活的進入點引用,
+>       且經實跑驗證封存後 v2 主鏈/週報鏈/手動工具全部正常。
+
+---
+
+## archive/v1/ — v1 舊管線(13 檔,已停產)
+
+v1 管線在 2026-06 已從 run_all.sh 移除(見 docs/上線後待辦.md §0),由 v2 完全取代:
+- run_filters.py → 被 run_filters_v2.py 取代
+- score.py / filter_stage1.py / filter_stage2.py / filter_stage4.py → v1 分階段計分
+- render.py → 被 render_v2.py 取代
+- render_watchlist.py → 被 render_watchlist_v2.py 取代
+- prepare_charts.py → 被 prepare_charts_v2.py 取代
+- generate_index.py → v1 首頁
+- classify.py → v1 分類
+- load_data.py → v1 資料載入(etf_io.py 已獨立重實作,不依賴它)
+- key_price_state.py → v1 關鍵價狀態(v2 內建於 run_filters_v2)
+- load_key_prices.py → v1 讀 .txt 關鍵價(v2 讀 config/key_prices.json)
+
+這 13 檔互相 import、自成孤島,只被彼此和 stage*_spec.md 文件提及。
+封存前確認:無任何活的進入點 import(render_landing 的 render() 是自己 def 的,
+不是 v1 render;run_filters_v2/prepare_charts_v2/etf_io 對 v1 的引用都是「註解」不是 import)。
+
+## archive/tools/ — 一次性除錯工具(2 檔)
+
+- diagnose_tv_collect.mjs → TV 採集除錯,無任何引用
+- probe_new_api.mjs → TV API 探測,無任何引用
+
+---
+
+## 還原方法
+
+還原單一檔:
+```
+git mv archive/v1/run_filters.py src/run_filters.py
+```
+
+還原整個 v1:
+```
+git mv archive/v1/*.py src/
+git mv archive/tools/*.mjs scripts/
+```
+
+git 歷史完整保留,`git log --follow archive/v1/run_filters.py` 可看封存前的所有變更。
+
+---
+
+## 已知副作用(封存後)
+
+- `tools/compare_v1_v2.py`(v1↔v2 計分比對工具)會因 v1 封存而失效。
+  它不在任何排程、是一次性比對工具,v1 既已封存則此工具本無用武之地。
+  未封存它(留在 tools/),若要用需先還原 v1。
