@@ -164,6 +164,13 @@ echo "[2/10] ETF 日更新..."
 run_step daily_update python3 "$HOME/ETF追蹤/daily_update.py"
 DU_EC=$STEP_EC
 
+# ── [2b] ETF 持股快照(PCF,2026-09-19 自建取代斷更的 etfedge)───────────────
+# 抓各投信法定每日 PCF 存 etf_holdings.db(獨立庫,不碰 etf_operations.db)。
+# 失敗不擋下游(腳本永遠 exit 0);連續 3 天無新資料自己發 Discord 告警。
+# 第一階段:台新 00987A;群益/統一等待各摸 API 後加入 SOURCES。
+echo "[2b/10] ETF 持股快照(PCF)..."
+run_step etf_holdings python3 -m src.fetch_etf_holdings || true
+
 # ── [3] import_kline（依賴 tv_collect 成功）──────────────────────────────────
 echo "[3/10] 匯入 K 線資料..."
 if [[ $TV_EC -ne 0 ]]; then
