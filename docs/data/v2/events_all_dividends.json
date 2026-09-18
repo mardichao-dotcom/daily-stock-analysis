@@ -1,31 +1,10 @@
 {
-  "generated_at": "2026-09-17T19:18:24+08:00",
+  "generated_at": "2026-09-18T19:18:25+08:00",
   "dividends": [
     {
       "code": "00406A",
       "name": "主動中信台灣收益",
       "date": "2026-10-05",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00710B",
-      "name": "復華彭博非投等債",
-      "date": "2026-09-17",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00711B",
-      "name": "復華彭博新興債",
-      "date": "2026-09-17",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00712",
-      "name": "復華富時不動產",
-      "date": "2026-09-17",
       "kind": "息",
       "market": "TWSE"
     },
@@ -51,16 +30,30 @@
       "market": "TWSE"
     },
     {
-      "code": "00929",
-      "name": "復華台灣科技優息",
-      "date": "2026-09-17",
+      "code": "00930",
+      "name": "永豐ESG低碳高息",
+      "date": "2026-09-23",
       "kind": "息",
       "market": "TWSE"
     },
     {
-      "code": "00930",
-      "name": "永豐ESG低碳高息",
-      "date": "2026-09-23",
+      "code": "00939",
+      "name": "統一台灣高息動能",
+      "date": "2026-10-05",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00946",
+      "name": "群益科技高息成長",
+      "date": "2026-10-07",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00984D",
+      "name": "主動聯博全球非投",
+      "date": "2026-10-05",
       "kind": "息",
       "market": "TWSE"
     },
@@ -142,17 +135,17 @@
       "market": "TWSE"
     },
     {
-      "code": "5306",
-      "name": "桂盟",
-      "date": "2026-09-17",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "6108",
       "name": "競國",
       "date": "2026-10-07",
       "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "6834",
+      "name": "天二科技",
+      "date": "2026-10-02",
+      "kind": "權",
       "market": "TWSE"
     },
     {
@@ -170,60 +163,18 @@
       "market": "TWSE"
     },
     {
+      "code": "8021",
+      "name": "尖點",
+      "date": "2026-10-06",
+      "kind": "權",
+      "market": "TWSE"
+    },
+    {
       "code": "9927",
       "name": "泰銘",
       "date": "2026-10-01",
       "kind": "息",
       "market": "TWSE"
-    },
-    {
-      "code": "00853B",
-      "name": "統一美債10年Aa-A",
-      "date": "2026-09-17",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00985D",
-      "name": "主動貝萊德優投等",
-      "date": "2026-09-17",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00986D",
-      "name": "主動復華金融債息",
-      "date": "2026-09-17",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00998A",
-      "name": "主動復華金融股息",
-      "date": "2026-09-17",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "4420",
-      "name": "光明",
-      "date": "2026-09-17",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "4533",
-      "name": "協易機",
-      "date": "2026-09-17",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "5498",
-      "name": "凱崴",
-      "date": "2026-09-17",
-      "kind": "除息",
-      "market": "TPEX"
     },
     {
       "code": "00697B",
@@ -410,6 +361,13 @@
     {
       "code": "020035",
       "name": "元大上櫃ESG高息N",
+      "date": "2026-10-05",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "5512",
+      "name": "力麒",
       "date": "2026-10-05",
       "kind": "除息",
       "market": "TPEX"

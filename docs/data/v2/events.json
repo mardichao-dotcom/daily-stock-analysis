@@ -1,25 +1,15 @@
 {
-  "generated_at": "2026-09-17T19:18:24+08:00",
-  "data_through": "2026-09-17",
+  "generated_at": "2026-09-18T19:18:25+08:00",
+  "data_through": "2026-09-18",
   "conference_stale": false,
-  "conference_source_date": "2026-09-17",
+  "conference_source_date": "2026-09-18",
   "dividend_stale": false,
-  "dividend_source_date": "2026-09-17",
+  "dividend_source_date": "2026-09-18",
   "macro_count": 3,
-  "conference_count": 7,
+  "conference_count": 8,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-09-17",
-      "type": "macro_tw",
-      "name": "央行理監事會",
-      "title": "中央銀行理監事會(Q3)——利率決議 + 記者會",
-      "importance": "台灣利率政策",
-      "level": "medium_high",
-      "source": "央行官方年度日程",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
-    },
     {
       "date": "2026-09-21",
       "type": "conference",
@@ -30,7 +20,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-22",
@@ -42,7 +32,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-22",
@@ -54,7 +44,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-23",
@@ -66,7 +56,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-23",
@@ -78,7 +68,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-23",
@@ -90,7 +80,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:00",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-24",
@@ -102,7 +92,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-30",
@@ -112,7 +102,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     },
     {
       "date": "2026-09-30",
@@ -122,7 +112,29 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-09-17T19:18:24+08:00"
+      "fetched_at": "2026-09-18T19:18:25+08:00"
+    },
+    {
+      "date": "2026-10-02",
+      "type": "macro",
+      "name": "美國就業報告(非農/失業率)",
+      "title": "美國就業報告(非農/失業率) 發布",
+      "importance": "high",
+      "level": "high",
+      "source": "FRED release_id 50",
+      "fetched_at": "2026-09-18T19:18:25+08:00"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "conference",
+      "symbol": "TWSE:2408",
+      "name": "南亞科",
+      "title": "南亞科 法說會(線上法說會)",
+      "importance": "(1)2026年第3季營運狀況說明\n(2)參加方式：請參見 https://www.nanya.com/tw/IR/13",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:00",
+      "fetched_at": "2026-09-18T19:18:25+08:00"
     }
   ]
 }
