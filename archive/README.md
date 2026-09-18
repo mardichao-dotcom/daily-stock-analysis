@@ -25,10 +25,13 @@ v1 管線在 2026-06 已從 run_all.sh 移除(見 docs/上線後待辦.md §0),�
 封存前確認:無任何活的進入點 import(render_landing 的 render() 是自己 def 的,
 不是 v1 render;run_filters_v2/prepare_charts_v2/etf_io 對 v1 的引用都是「註解」不是 import)。
 
-## archive/tools/ — 一次性除錯工具(2 檔)
+## archive/tools/ — 一次性除錯工具 + v1 相依工具(3 檔)
 
 - diagnose_tv_collect.mjs → TV 採集除錯,無任何引用
 - probe_new_api.mjs → TV API 探測,無任何引用
+- compare_v1_v2.py → v1↔v2 計分比對工具。v1 已封存 = 它必然失敗;留在 tools/
+  會讓人誤以為可用,故一併封存。要用時需連同 v1 一起還原
+  (`git mv archive/v1/*.py src/` + `git mv archive/tools/compare_v1_v2.py tools/`)。
 
 ---
 
@@ -51,6 +54,5 @@ git 歷史完整保留,`git log --follow archive/v1/run_filters.py` 可看封存
 
 ## 已知副作用(封存後)
 
-- `tools/compare_v1_v2.py`(v1↔v2 計分比對工具)會因 v1 封存而失效。
-  它不在任何排程、是一次性比對工具,v1 既已封存則此工具本無用武之地。
-  未封存它(留在 tools/),若要用需先還原 v1。
+- 無殘留的失效工具:`compare_v1_v2.py` 已一併封存至 archive/tools/(2026-09-18),
+  tools/ 底下不再有依賴 v1 的檔案。
