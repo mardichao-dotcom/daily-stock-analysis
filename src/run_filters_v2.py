@@ -68,7 +68,7 @@ def _compute_etf_decrease_tag(
     純加分制下不扣分,但用 ⛔ 標籤提醒朋友籌碼面有風險。
     Tag 格式:「⛔ ETF 減碼(N 檔, -total 張)」
     """
-    if conn_etf is None:
+    if not etf_io.operations_ready(conn_etf):   # None 或 operations 表不存在 → 跳過
         return []
     code = symbol.split(":")[-1]
     cur = conn_etf.execute(

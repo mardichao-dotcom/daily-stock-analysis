@@ -68,17 +68,24 @@ def load_chart_kline(conn: sqlite3.Connection, symbol: str, date: str,
 
 def load_etf_events(conn: sqlite3.Connection, symbol: str,
                      start_date: str, end_date: str) -> list[dict]:
-    """載入該 symbol 在日期範圍內的 ETF 操作 events。"""
+    """載入該 symbol 在日期範圍內的 ETF 操作 events。
+
+    operations 表不存在(舊 etfedge 管線退役後 db 被動到)→ 回 [],不阻斷出圖
+    (比照同檔 load_chips 對缺表的處置)。"""
     code = symbol.split(":")[-1]   # strip exchange prefix
-    cur = conn.execute(
-        "SELECT etf, 日期, 動作, 張數 FROM operations "
-        "WHERE 代號 = ? AND 日期 >= ? AND 日期 <= ? "
-        "ORDER BY 日期 ASC",
-        (code, start_date, end_date),
-    )
+    try:
+        cur = conn.execute(
+            "SELECT etf, 日期, 動作, 張數 FROM operations "
+            "WHERE 代號 = ? AND 日期 >= ? AND 日期 <= ? "
+            "ORDER BY 日期 ASC",
+            (code, start_date, end_date),
+        )
+        rows = cur.fetchall()
+    except sqlite3.OperationalError:
+        return []
     return [
         {"time": r[1], "etf": r[0], "action": r[2], "shares": r[3]}
-        for r in cur.fetchall()
+        for r in rows
     ]
 
 

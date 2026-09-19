@@ -40,6 +40,22 @@ def _date_minus_natural_days(date_str: str, days: int) -> str:
     return d.strftime("%Y-%m-%d")
 
 
+def operations_ready(conn: sqlite3.Connection | None) -> bool:
+    """conn 為 None,或 operations 表不存在 → False。
+
+    舊 etfedge 管線 2026-09-20 退役後 etf_operations.db 凍結;若哪天該 db 被動到
+    (表被刪/換空檔),裸查 `FROM operations` 會 OperationalError 炸掉整個主跑。
+    所有讀 operations 的入口先過這道門,讓「表不存在」比照「檔案不存在」:
+    優雅跳過、0 分、不炸。"""
+    if conn is None:
+        return False
+    try:
+        conn.execute("SELECT 1 FROM operations LIMIT 1")
+        return True
+    except sqlite3.OperationalError:
+        return False
+
+
 # ── 主 API ──────────────────────────────────────────────────────────────────
 
 def compute_etf_features(
@@ -74,6 +90,18 @@ def compute_etf_features(
     """
     code = _strip_exchange_prefix(symbol)
     window_start = _date_minus_natural_days(date, ETF_WINDOW_DAYS - 1)
+
+    # operations 表不存在(舊管線退役後 db 被動到)→ 視同無 ETF 資料,回全 0 特徵
+    if not operations_ready(conn):
+        return {
+            "buy_count":            0,
+            "buy_etfs":             [],
+            "is_continuous_buy":    False,
+            "is_abnormal_ignition": False,
+            "ignition_etf":         None,
+            "ignition_shares":      None,
+            "today_volume":         today_volume,
+        }
 
     cur = conn.execute(
         "SELECT etf, 日期, 動作, 張數 FROM operations "
@@ -168,7 +196,8 @@ def fetch_etf_active_summary(
     }
     排序:etf_count 降冪 → |total_shares| 降冪
     """
-    if conn is None:
+    # conn 為 None 或 operations 表不存在 → 視同無 ETF 資料,回空
+    if not operations_ready(conn):
         return {"increase": [], "decrease": []}
 
     # 1. 一次 SQL 撈 7 日窗口內所有相關 actions
@@ -232,7 +261,10 @@ def compute_etf_max_date(conn: sqlite3.Connection) -> str | None:
     """回傳 operations 表的 MAX(日期),給 metadata.etf_delayed 判定用。
 
     None 代表 operations 表為空。
+    表不存在(舊管線退役後 db 被動到)也回 None,不炸(比照表空)。
     """
+    if not operations_ready(conn):
+        return None
     cur = conn.execute("SELECT MAX(日期) FROM operations")
     row = cur.fetchone()
     return row[0] if row and row[0] else None
