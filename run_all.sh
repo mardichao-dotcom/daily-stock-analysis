@@ -104,7 +104,7 @@ if ! curl -s -m 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
         python3 src/status_writer.py --tool "$TOOL" \
             --step tv_collect --status fail --duration 0 \
             --note "CDP port 9222 not responding (auto-recovery failed)"
-        for s in daily_update import_kline \
+        for s in import_kline \
                   run_filters_v2 fetch_chips prepare_charts_v2 site_meta render_v2 publish; do
             skip_step "$s" "CDP 不通"
         done
@@ -144,7 +144,7 @@ if ! bash scripts/tv_preflight_selfheal.sh 2>&1; then
     python3 src/status_writer.py --tool "$TOOL" \
         --step tv_collect --status fail --duration 0 \
         --note "TradingViewApi preflight failed (chart present but API not ready)"
-    for s in daily_update import_kline \
+    for s in import_kline \
               run_filters_v2 fetch_chips prepare_charts_v2 site_meta render_v2 publish; do
         skip_step "$s" "API preflight 失敗"
     done
@@ -159,10 +159,15 @@ echo "[1/10] 採集 K 線資料..."
 run_step tv_collect node scripts/tv_collect.mjs
 TV_EC=$STEP_EC
 
-# ── [2] daily_update（ETF，與 tv_collect 獨立，不受影響）────────────────────
-echo "[2/10] ETF 日更新..."
-run_step daily_update python3 "$HOME/ETF追蹤/daily_update.py"
-DU_EC=$STEP_EC
+# ── [2] daily_update（舊 etfedge 管線）── 2026-09-20 停用（註解不刪）──────────
+# 上游 etfedge.xyz 2026-07 商業化斷更（六檔永久 404），daily_update 每天跑 ~1m44s
+# 只打 404、產不出新資料，還讓 daily_supervisor 天天發「N 天沒新資料」告警。
+# 接手者:[2b] etf_holdings（自建 PCF 快照）。etf_operations.db 凍結保留（不刪）、
+# 標記已停更（見 ~/ETF追蹤/已停更.md）。舊 db 仍供 run_filters_v2 讀凍結共識
+# （計分邏輯本輪不動）。若要復活舊管線，取消下方註解即可。
+echo "[2/10] ETF 日更新...（已停用:舊 etfedge 斷更,改由 [2b] PCF 快照接手）"
+# run_step daily_update python3 "$HOME/ETF追蹤/daily_update.py"
+DU_EC=0   # 已停用,恆視為成功(不擋下游、不觸發失敗分支)
 
 # ── [2b] ETF 持股快照(PCF,2026-09-19 自建取代斷更的 etfedge)───────────────
 # 抓各投信法定每日 PCF 存 etf_holdings.db(獨立庫,不碰 etf_operations.db)。
@@ -204,6 +209,7 @@ if [[ $TV_EC -ne 0 || $IK_EC -ne 0 ]]; then
     echo "⚠️  K 線資料層失敗(tv_collect/import_kline)— 跳過後續資料處理與發佈步驟。"
     ABORT_AFTER="K 線資料層"
 fi
+# [2] daily_update 已停用(DU_EC 恆 0),此失敗分支為死碼、永不觸發,保留供復活時參考。
 if [[ $DU_EC -ne 0 ]]; then
     echo ""
     echo "⚠️  ETF daily_update 失敗 — 但 etf_operations.db 可能仍有新資料"

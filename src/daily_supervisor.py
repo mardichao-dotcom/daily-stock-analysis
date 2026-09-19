@@ -243,14 +243,12 @@ def _check_data_freshness() -> list[str]:
                 f"🚨 kline.db {gap} 天沒新資料(最新 {kline_max} / 今天 {today})"
             )
 
-    # ETF operations(5A daily_update 寫入)
-    etf_max = _max_date(ETF_DB, "SELECT MAX(日期) FROM operations")
-    if etf_max:
-        gap = (today - datetime.strptime(etf_max, "%Y-%m-%d").date()).days
-        if gap >= FRESHNESS_ALERT_DAYS:
-            warnings.append(
-                f"🚨 etf_operations.db {gap} 天沒新資料(最新 {etf_max} / 今天 {today})"
-            )
+    # ETF operations(舊 etfedge 管線)新鮮度告警 —— 2026-09-20 停用。
+    # 原因:上游 etfedge.xyz 2026-07 商業化斷更(六檔永久 404),此告警每天必觸發
+    # 「N 天沒新資料」造成告警疲勞。daily_update 已停用(見 run_all.sh [2]),
+    # etf_operations.db 凍結不再更新,故此新鮮度檢查一併關閉。
+    # ★接手者是 etf_holdings.db(自建 PCF 快照),其新鮮度告警在
+    #   src/fetch_etf_holdings.py(連續 3 天無新資料 → Discord),不在此。
 
     return warnings
 

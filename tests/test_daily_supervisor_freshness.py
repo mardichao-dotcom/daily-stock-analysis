@@ -110,17 +110,18 @@ class TestFreshnessWatchdog(unittest.TestCase):
             self.assertEqual(len(w), 1)
             self.assertIn("11 天", w[0])
 
-    # ── 兩 DB 都過期 → 兩條告警 ──
-    def test_both_stale_two_warnings(self):
+    # ── 舊 etf_operations 新鮮度告警已於 2026-09-20 停用(etfedge 斷更退役)──
+    #    兩 DB 都過期時,只剩 kline.db 一條告警;etf_operations 不再告警。
+    def test_etf_operations_freshness_retired(self):
         _make_kline_db(self.kline, _days_ago(5))
         _make_etf_db(self.etf, _days_ago(7))
         with self._patch_paths():
             w = ds._check_data_freshness()
-            self.assertEqual(len(w), 2)
-            kline_w = next(x for x in w if "kline.db" in x)
-            etf_w   = next(x for x in w if "etf_operations.db" in x)
-            self.assertIn("5 天", kline_w)
-            self.assertIn("7 天", etf_w)
+            self.assertEqual(len(w), 1)
+            self.assertIn("kline.db", w[0])
+            self.assertIn("5 天", w[0])
+            self.assertFalse(any("etf_operations" in x for x in w),
+                             "etf_operations 新鮮度告警已停用,不應再出現")
 
     # ── DB 不存在不會炸 ──
     def test_missing_db_no_crash(self):
