@@ -1,7 +1,8 @@
 """
 fetch_etf_holdings.py — 每日抓主動式 ETF 持股快照(PCF),存 etf_holdings.db。
 
-2026-09-19 第一階段:台新(00987A)。群益/統一/第一金/中信 待各摸 API 後加入 SOURCES。
+2026-09-19 上線:台新(00987A)、統一(00981A/00403A)、群益(00992A)。
+          第一金(00994A)/中信(00995A)待各摸 API 後加入 SOURCES。
 
 背景:原 etfedge.xyz 於 2026-07 商業化斷更,改自建——抓各投信法定每日 PCF、
 存快照,昨天今天股數/權重相減即得加減碼(比 etfedge 更本源,且 PCF 可回溯歷史)。
@@ -26,10 +27,16 @@ TZ = timezone(timedelta(hours=8))
 STALE_ALERT_DAYS = 3   # 連續 N 天無新資料 → 告警
 
 from src.etf_pcf_taishin import fetch_taishin
+from src.etf_pcf_tongyi import fetch_tongyi
+from src.etf_pcf_capital import fetch_capital
 
 # ETF → (抓取函式, 來源標記)。加新投信在此擴充。
+# 抓取函式簽名統一為 fn(etf, date_iso) → (holdings, fund)。
 SOURCES = {
-    "00987A": (fetch_taishin, "taishin"),
+    "00987A": (fetch_taishin, "taishin"),   # 台新:GET 靜態 HTML
+    "00981A": (fetch_tongyi, "tongyi"),     # 統一:XLSX(需 session cookie,模組內處理)
+    "00403A": (fetch_tongyi, "tongyi"),
+    "00992A": (fetch_capital, "capital"),   # 群益:JSON API(免 session)
 }
 
 
