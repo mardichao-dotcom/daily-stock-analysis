@@ -38,6 +38,56 @@ DEFAULT_DB   = os.path.join(PROJECT_ROOT, "kline.db")
 TZ_TAIPEI    = timezone(timedelta(hours=8))
 
 SANITY_JUMP_PCT = 0.30          # 跳變/覆寫差異閾值(審計 W1 指定 30%)
+STALE_LAG_DAYS = 2              # watchlist 檔落後市場 ≥N 交易日 → 落後清單告警
+
+from src.kline_adjust import (classify_adjustment, apply_corporate_action,
+                              ADJ_MIN_OVERLAP, ADJ_RATIO_TOL)
+
+
+def _official(code, date_iso):
+    """台股官方收盤(TWSE STOCK_DAY)——除權仲裁用;取不到回 None。"""
+    try:
+        from src.verify_kline import fetch_official_close
+        return fetch_official_close(code, date_iso)
+    except Exception:                                   # noqa: BLE001
+        return None
+
+
+def _market_dates(cur):
+    """回 (tw_dates, us_dates) 各市場已觀測交易日 sorted list(判落後/卡住用)。"""
+    tw = [r[0] for r in cur.execute(
+        "SELECT DISTINCT date FROM kline WHERE symbol LIKE 'TWSE:%' "
+        "OR symbol LIKE 'TPEX:%' ORDER BY date")]
+    us = [r[0] for r in cur.execute(
+        "SELECT DISTINCT date FROM kline WHERE symbol LIKE 'NASDAQ:%' "
+        "OR symbol LIKE 'NYSE:%' OR symbol LIKE 'AMEX:%' ORDER BY date")]
+    return tw, us
+
+
+def _market_of(symbol, tw_dates, us_dates):
+    return us_dates if symbol.split(":")[0] in ("NASDAQ", "NYSE", "AMEX") else tw_dates
+
+
+def report_stale_symbols(cur, lag_days=STALE_LAG_DAYS):
+    """watchlist 檔最新棒落後其市場 ≥lag_days 交易日 → [(symbol, max_date|None, lag)]。
+    落後清單(task 3):只在真有落後時才回非空,與每日隔離噪音分開。"""
+    from src.load_config import get_all_tw_symbols, get_all_global_symbols
+    watch = set(get_all_tw_symbols()) | set(get_all_global_symbols())
+    tw, us = _market_dates(cur)
+    laggards = []
+    for sym in sorted(watch):
+        md = _market_of(sym, tw, us)
+        if not md:
+            continue
+        row = cur.execute("SELECT MAX(date) FROM kline WHERE symbol=?", (sym,)).fetchone()
+        smax = row[0] if row and row[0] else None
+        if smax is None:
+            laggards.append((sym, None, len(md)))
+            continue
+        lag = sum(1 for d in md if d > smax)
+        if lag >= lag_days:
+            laggards.append((sym, smax, lag))
+    return laggards
 
 
 def _ensure_tables(cur):
@@ -153,6 +203,42 @@ def approve(db, target: str | None):
     conn.close()
 
 
+def approve_split(db, symbol):
+    """人工核可疑似除權(美股/官方源掛時用):以隔離區調整後值算 k、重調整段歷史、
+    匯入隔離 bar、清隔離。重疊 ratio 不一致則拒絕(防誤洗)。"""
+    import statistics
+    conn = sqlite3.connect(db)
+    cur = conn.cursor()
+    _ensure_tables(cur)
+    qrows = cur.execute(
+        "SELECT date,open,high,low,close,volume FROM kline_quarantine "
+        "WHERE symbol=? ORDER BY date", (symbol,)).fetchall()
+    if not qrows:
+        print(f"[approve-split] {symbol} 無隔離 bar")
+        conn.close()
+        return
+    existing = {d: c for d, c in
+                cur.execute("SELECT date,close FROM kline WHERE symbol=?", (symbol,)).fetchall()}
+    incoming = {r[0]: r[4] for r in qrows}
+    overlap = sorted(set(incoming) & set(existing))
+    ratios = [incoming[d] / existing[d] for d in overlap if existing[d] and existing[d] > 0]
+    if len(ratios) < ADJ_MIN_OVERLAP or (max(ratios) / min(ratios) > ADJ_RATIO_TOL):
+        print(f"[approve-split] ❌ {symbol} 重疊 ratio 不一致或不足"
+              f"(overlap={len(ratios)}),拒絕以免誤洗。請人工查核。")
+        conn.close()
+        return
+    k = statistics.median(ratios)
+    n = apply_corporate_action(cur, symbol, k)
+    for d, o, h, l, c, v in qrows:
+        cur.execute("INSERT OR REPLACE INTO kline VALUES (?,?,?,?,?,?,?)",
+                    (symbol, d, o, h, l, c, v))
+    cur.execute("DELETE FROM kline_quarantine WHERE symbol=?", (symbol,))
+    conn.commit()
+    conn.close()
+    print(f"[approve-split] ✅ {symbol} 重調 {n} 根歷史(k={k:.5f})"
+          f" + 匯入 {len(qrows)} 根隔離 bar")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", default=DEFAULT_JSON)
@@ -164,12 +250,16 @@ def main():
     parser.add_argument("--approve", default=None, metavar="SYMBOL:DATE",
                         help="核可隔離 bar 覆寫入 kline(如 TWSE:2330:2026-07-06)")
     parser.add_argument("--approve-all", action="store_true")
+    parser.add_argument("--approve-split", default=None, metavar="SYMBOL",
+                        help="人工核可疑似除權:重調整段歷史+匯入隔離 bar(如 TWSE:6669)")
     args = parser.parse_args()
 
     if args.list_quarantine:
         return list_quarantine(args.db)
     if args.approve or args.approve_all:
         return approve(args.db, args.approve)
+    if args.approve_split:
+        return approve_split(args.db, args.approve_split)
 
     with open(args.json, encoding="utf-8") as f:
         data = json.load(f)
@@ -200,11 +290,34 @@ def main():
     inserted = 0
     rejected_future = []          # [(symbol, date_str)] 被擋下的未來 bar
     quarantined = []              # [(symbol, date_str, reason)] W1 sanity 閘
+    adjusted = []                 # [(symbol, k, official)] 除權自動重調
+    suspected = []                # [(symbol, k, reason)] 疑似除權待人工(美股/官方掛)
+    tw_dates, us_dates = _market_dates(cur)
     last_date = ""
     for symbol, payload in results.items():
         existing, dates_sorted = _load_existing(cur, symbol)
-        last_batch_close = None                       # 無 DB 錨(新 symbol 首匯)時的批次連續性
         bars = sorted(payload["bars"], key=lambda b: b["time"])
+
+        # ── 除權/分割 偵測(在隔離前;三關全過才動)──────────────────
+        if existing:
+            incoming_close = {}
+            for b in bars:
+                ds = datetime.utcfromtimestamp(b["time"]).strftime("%Y-%m-%d")
+                if b.get("close") is not None:
+                    incoming_close[ds] = b["close"]
+            md = _market_of(symbol, tw_dates, us_dates)
+            verdict = classify_adjustment(symbol, incoming_close, existing, md,
+                                          official_fetch=_official)
+            if verdict["action"] == "auto":
+                apply_corporate_action(cur, symbol, verdict["k"])
+                cur.execute("DELETE FROM kline_quarantine WHERE symbol=?", (symbol,))
+                conn.commit()
+                existing, dates_sorted = _load_existing(cur, symbol)   # 重載已重調的錨
+                adjusted.append((symbol, verdict["k"], verdict.get("official")))
+            elif verdict["action"] == "manual":
+                suspected.append((symbol, verdict["k"], verdict.get("reason", "")))
+
+        last_batch_close = None                       # 無 DB 錨(新 symbol 首匯)時的批次連續性
         for bar in bars:
             dt       = datetime.utcfromtimestamp(bar["time"])
             date_str = dt.strftime("%Y-%m-%d")
@@ -238,6 +351,8 @@ def main():
     if not last_date:
         row = conn.execute("SELECT MAX(date) FROM kline").fetchone()
         last_date = row[0] if row and row[0] else ""
+    # 落後清單(task 3):匯入後的最終狀態(除權已重調的檔此時已 current)
+    laggards = report_stale_symbols(cur) if not args.no_data_date else []
     conn.close()
 
     print(f"[import_kline] {inserted} rows → {args.db}")
@@ -254,6 +369,37 @@ def main():
                  + "\n".join(f"• {s} {d}:{r}" for s, d, r in quarantined[:8])
                  + ("\n…" if len(quarantined) > 8 else "")
                  + "\n核可覆寫:python3 src/import_kline.py --list-quarantine / --approve SYMBOL:DATE")
+
+    # 除權自動重調(台股三關全過)——與「隔離」告警明確區分
+    if adjusted:
+        head = "; ".join(f"{s} k={k:.4f}" for s, k, _ in adjusted[:6])
+        print(f"[import_kline] 🔧 除權自動重調 {len(adjusted)} 檔:{head}")
+        _discord("🔧 [K線除權-自動重調] 偵測到除權/分割,已把整段歷史重調到調整後基準"
+                 "(價×k、量÷k),並補回被隔離的新棒:\n"
+                 + "\n".join(f"• {s}:k={k:.5f}"
+                             + (f"(TWSE 官方 {off} 背書)" if off else "")
+                             for s, k, off in adjusted[:8]))
+
+    # 疑似除權待人工(美股無官方仲裁 / 台股官方源掛)——不自動動資料
+    if suspected:
+        head = "; ".join(f"{s} k≈{k:.4f}" for s, k, _ in suspected[:6])
+        print(f"[import_kline] 🔶 疑似除權待人工 {len(suspected)} 檔:{head}")
+        _discord("🔶 [K線疑似除權-待人工確認] 以下檔卡住且呈等比重調,疑似除權,但無權威仲裁"
+                 "(美股/官方源取不到),未自動處理:\n"
+                 + "\n".join(f"• {s}:k≈{k:.5f}({r})" for s, k, r in suspected[:8])
+                 + "\n確認後放行:python3 src/import_kline.py --approve-split SYMBOL")
+
+    # 落後清單(task 3):只在真有檔落後 ≥2 交易日時才發,措辭「需要處理」
+    if laggards:
+        def _fmt(sym, mx, lag):
+            return f"• {sym}:落後 {lag} 交易日" + (f"(最新 {mx})" if mx else "(完全無資料)")
+        print(f"[import_kline] ⚠️ 落後清單 {len(laggards)} 檔需處理:"
+              + "; ".join(f"{s}({lag}d)" for s, _, lag in laggards[:8]))
+        _discord("⚠️ [K線落後-需要處理] 以下 watchlist 個股 K 線落後大盤 ≥2 交易日,"
+                 "請查明原因(除權未重調/採集失敗/已下市):\n"
+                 + "\n".join(_fmt(s, mx, lag) for s, mx, lag in laggards[:12])
+                 + ("\n…" if len(laggards) > 12 else ""))
+
     print(f"[import_kline] data_date={last_date}")
 
     if not args.no_data_date:
