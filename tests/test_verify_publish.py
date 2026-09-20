@@ -308,12 +308,14 @@ class TestVerifyPublish(unittest.TestCase):
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertTrue(any("macro.json HTTP 404" in e for e in errors))
 
-    def test_macro_stale_over_24h_caught(self):
+    def test_macro_stale_vs_market_caught(self):
+        """macro.json 遠落後市場最新交易日(kline 已觀測)→ 報「落後」
+        (2026-09-20:由絕對 24h 改資料驅動。2020 的 generated_at 必 < kline 任何日)"""
         stale = json.dumps({"generated_at": "2020-01-01T08:30:00+08:00",
                             "data": {"taiex": {"value": 1}}})
         f = make_fetch({f"{BASE}/data/v2/macro.json": (200, stale)})
         errors = vp.run_checks(BASE, DATE, fetch=f)
-        self.assertTrue(any("macro.json generated_at 超過 24h" in e for e in errors))
+        self.assertTrue(any("macro.json 落後" in e for e in errors))
 
     def test_macro_empty_data_caught(self):
         from datetime import datetime, timezone, timedelta
@@ -357,6 +359,68 @@ class TestVerifyPublish(unittest.TestCase):
         f = make_fetch({f"{BASE}/data/v2/{DATE}/TWSE_2345.json": (200, nochips)})
         errors = vp.run_checks(BASE, DATE, fetch=f)
         self.assertEqual([e for e in errors if "chips" in e], [])
+
+
+class TestCheckMacroFreshness(unittest.TestCase):
+    """_check_macro 資料驅動新鮮度(2026-09-20 由絕對 24h 改為 vs kline 最新交易日)。
+    落後 iff generated_at 的日期 < 市場最新交易日(注入 market_latest)。"""
+
+    @staticmethod
+    def _fetch(gen_iso):
+        """回一個 fetch:macro.json 用指定 generated_at,結構完整。"""
+        body = json.dumps({"generated_at": gen_iso,
+                           "data": {"taiex": {"label": "加權", "value": 1.0}}})
+
+        def fetch(url, timeout=15):
+            return (200, body) if url.endswith("macro.json") else (404, "")
+        return fetch
+
+    def test_weekend_not_stale(self):
+        """① 週末:macro_gen=週六 09-19、市場最新=週五 09-18 → 不報"""
+        errs = vp._check_macro(BASE, self._fetch("2026-09-19T08:30:00+08:00"),
+                               market_latest="2026-09-18")
+        self.assertEqual([e for e in errs if "落後" in e or "超過" in e], [])
+
+    def test_weekday_lagging_reports(self):
+        """② 平日 macro 掛掉:macro_gen=週一 09-14、市場已有週二 09-15 → 報"""
+        errs = vp._check_macro(BASE, self._fetch("2026-09-14T08:30:00+08:00"),
+                               market_latest="2026-09-15")
+        self.assertTrue(any("落後" in e for e in errs))
+
+    def test_holiday_not_stale(self):
+        """③ 國定假日:macro_gen=假日當天 10-10、市場最新=前一交易日 10-09 → 不報"""
+        errs = vp._check_macro(BASE, self._fetch("2026-10-10T08:30:00+08:00"),
+                               market_latest="2026-10-09")
+        self.assertEqual([e for e in errs if "落後" in e or "超過" in e], [])
+
+    def test_macro_json_missing_no_crash(self):
+        """④a macro.json 不存在(HTTP 404)→ 回報錯誤、不炸"""
+        def fetch404(url, timeout=15):
+            return (404, "")
+        errs = vp._check_macro(BASE, fetch404, market_latest="2026-09-18")
+        self.assertTrue(any("HTTP 404" in e for e in errs))   # 有報,且無例外
+
+    def test_kline_unreadable_fallback_72h(self):
+        """④b kline 讀不到(market_latest=None 且 _market_latest_date 回 None)→ 退 72h fallback。
+        90h 前 → 報;1h 前 → 不報。確認 fallback 正確、不炸。"""
+        from datetime import datetime, timezone, timedelta
+        tz = timezone(timedelta(hours=8))
+        orig = vp._market_latest_date
+        vp._market_latest_date = lambda: None      # 模擬 kline 不可讀
+        try:
+            old = (datetime.now(tz) - timedelta(hours=90)).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+            errs_old = vp._check_macro(BASE, self._fetch(old))
+            self.assertTrue(any("72h" in e for e in errs_old))
+            fresh = (datetime.now(tz) - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M:%S+08:00")
+            errs_fresh = vp._check_macro(BASE, self._fetch(fresh))
+            self.assertEqual([e for e in errs_fresh if "72h" in e], [])
+        finally:
+            vp._market_latest_date = orig
+
+    def test_real_kline_default_path(self):
+        """market_latest 不注入 → 走真實 kline.db 讀取,不炸(冒煙)。"""
+        errs = vp._check_macro(BASE, self._fetch("2026-09-18T08:30:00+08:00"))
+        self.assertIsInstance(errs, list)          # 不論結果,不得拋例外
 
 
 if __name__ == "__main__":

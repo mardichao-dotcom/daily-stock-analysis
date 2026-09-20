@@ -231,10 +231,30 @@ def _check_macro_dashboard(base: str, fetch) -> list[str]:
     return errs
 
 
-def _check_macro(base: str, fetch) -> list[str]:
-    """macro.json 斷言(stage9 spec §5 白紙黑字:generated_at 24h 內 + 結構)。
+def _market_latest_date() -> str | None:
+    """kline.db 已觀測的最新交易日(US + TW 取最大 date);讀不到回 None(caller 走 fallback)。
+    ★資料驅動(比照 W1 閘 _market_dates 精神):不查假日表——假日表只有 2026 台股、
+    無美股假日、颱風假無法預知,且無人維護。改問「市場實際有交易到哪天」。"""
+    import sqlite3
+    try:
+        conn = sqlite3.connect(f"file:{PROJECT_ROOT / 'kline.db'}?mode=ro", uri=True)
+        row = conn.execute("SELECT MAX(date) FROM kline").fetchone()
+        conn.close()
+        return row[0] if row and row[0] else None
+    except Exception:                       # noqa: BLE001 — 讀不到就走 72h fallback,不炸
+        return None
+
+
+def _check_macro(base: str, fetch, *, market_latest: str | None = None) -> list[str]:
+    """macro.json 斷言(結構 + ★資料驅動新鮮度)。
     macro 管線(08:30)與主驗證(19:00)解耦——「排程有跑、產物沒被驗」
-    正是 19 天停更的模式,此斷言補上這個盲區(審計 D2)。"""
+    正是 19 天停更的模式,此斷言補上這個盲區(審計 D2)。
+
+    新鮮度(2026-09-20 由絕對 24h 改資料驅動):macro.json 反映市場收盤資料
+    (yfinance 美股 + TWSE 台股),與 kline 同 cadence。落後 iff generated_at 的日期 <
+    kline 已觀測最新交易日(市場在 macro 上次跑之後又交易過)。這樣週末/國定假日/
+    颱風假(市場沒新交易日)不會誤報,平日真落後才報。kline 讀不到 → 退 72h 絕對值。
+    market_latest 可注入(測試用)。"""
     errs: list[str] = []
     code, body = fetch(f"{base}/data/v2/macro.json")
     if code != 200:
@@ -246,11 +266,19 @@ def _check_macro(base: str, fetch) -> list[str]:
     ga = mj.get("generated_at", "")
     try:
         gen = datetime.fromisoformat(ga)
-        now = datetime.now(gen.tzinfo)
-        if (now - gen).total_seconds() > 24 * 3600:
-            errs.append(f"macro.json generated_at 超過 24h({ga})")
     except (ValueError, TypeError):
         errs.append(f"macro.json generated_at 格式異常({ga!r})")
+        gen = None
+    if gen is not None:
+        latest = market_latest if market_latest is not None else _market_latest_date()
+        if latest:
+            if gen.date().isoformat() < latest:      # 市場已有更新交易日,macro 沒跟上
+                errs.append(f"macro.json 落後:generated_at {gen.date().isoformat()} "
+                            f"< 市場最新交易日 {latest}(kline 已觀測)")
+        else:                                        # fallback:kline 不可讀 → 寬鬆 72h
+            now = datetime.now(gen.tzinfo)
+            if (now - gen).total_seconds() > 72 * 3600:
+                errs.append(f"macro.json generated_at 超過 72h(fallback,kline 不可讀)({ga})")
     data = mj.get("data")
     if not isinstance(data, dict) or not data:
         errs.append("macro.json data 缺或為空")

@@ -22,7 +22,9 @@
         <string>/Users/mardichao</string>
     </dict>
 
-    <!-- 平日(週一~週五)台北 08:30 觸發:總經快覽 + Discord 早報 -->
+    <!-- 週一~週六 台北 08:30 觸發:總經快覽 + Discord 早報。
+         週六(Weekday 6)2026-09-20 加入:補週五美股收盤(台灣週五 08:30 只抓到週四美股;
+         美股週五收盤台灣週六約 05:00 才有)。週日(0/7)不排——週末美股/台股皆無新資料。 -->
     <key>StartCalendarInterval</key>
     <array>
         <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
@@ -30,6 +32,7 @@
         <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
         <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
         <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>6</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
     </array>
 
     <key>RunAtLoad</key>
