@@ -45,8 +45,10 @@ sys.path.insert(0, PROJECT_ROOT)
 from src.scoring import chip_etf, volume, sector_linkage, grader, macd
 from src.scoring.given_price import score_line, score_area
 from src.triggers import standing
-from src.persistence import state_io, etf_io, kline_io, score_history_io
-from src.persistence import etf_holdings_io   # 2026-09-20 chip_etf 改讀自建 PCF 快照
+from src.persistence import state_io, kline_io, score_history_io
+from src.persistence import etf_holdings_io   # 2026-09-20 chip_etf + 顯示層改讀自建 PCF 快照
+# 註:舊 etf_io(讀 etf_operations.operations)已於 2026-09-20 全數遷移至 etf_holdings_io、
+#     無 live caller,已加封存標頭(見 src/persistence/etf_io.py),import 一併移除。
 
 # ── 常數 ──────────────────────────────────────────────────────────────────────
 KLINE_LOOKBACK_DAYS = 100   # 涵蓋 MA90 + buffer(W2.2.4 MA 計分用)
@@ -920,11 +922,11 @@ def run_pipeline(
     score_history_io.write_batch(conn_kline, date, results, now_iso)
 
     # ── ETF 主動式雙向掃描(W3 區塊 6 資料源)─────────────────────────────
-    # 增量模式跳過(全市場 7 日累計,partial 沒意義)
+    # 2026-09-20:改讀 etf_holdings.db(自建 PCF 快照),判定複用 chip_etf 同一套
+    # (compute_etf_features 加碼/建倉 + _decrease_detail 對稱減碼,≥2 檔)。
+    # 增量模式跳過(全市場 7 日累計,partial 沒意義)。
     if restrict_symbols is None:
-        etf_active = (etf_io.fetch_etf_active_summary(conn_etf, date, watchlist)
-                      if conn_etf is not None
-                      else {"increase": [], "decrease": []})
+        etf_active = etf_holdings_io.fetch_etf_active_summary(conn_holdings, date, watchlist)
     else:
         etf_active = {"increase": [], "decrease": []}
 

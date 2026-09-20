@@ -115,6 +115,45 @@ def _load(conn, code, date):
     return etf_dates, hold
 
 
+def _state_asof(etf_dates, hold, etf, asof):
+    """該 ETF「≤ asof 最近交易日」對該股的狀態:
+      'NOLIST' = ETF 該時無任何快照(未上市/斷更);
+      None     = ETF 該日有揭露但未持有該股(absent);
+      (sh,w,u) = 有持有。
+    ★區分 NOLIST vs absent 是關鍵:absent 才能觸發建倉判定。"""
+    ds = etf_dates.get(etf)
+    if not ds:
+        return "NOLIST"
+    i = bisect.bisect_right(ds, asof) - 1
+    if i < 0:
+        return "NOLIST"
+    return hold.get((etf, ds[i]))                    # (sh,w,u) 或 None(absent)
+
+
+def _classify_one(end, start):
+    """★單一判定來源:features / summary(區塊)/ events(圖表標記)全走這裡,
+    保證顯示與 chip_etf 計分口徑完全一致(spu +3% 且權重 +0.2pp、建倉、對稱減碼)。
+    end / start = _state_asof 回傳值。回 'add' / 'new' / 'trim' / 'exit' / None。"""
+    if end == "NOLIST" or start == "NOLIST":
+        return None
+    end_tok, start_tok = _is_token(end), _is_token(start)
+    if not end_tok and start_tok:                    # 佔位/未持有 → 實倉
+        return "new" if end[1] >= THETA_NEW else None
+    if end_tok and not start_tok:                    # 實倉 → 佔位/未持有
+        return "exit"
+    if not end_tok and not start_tok:
+        spu_e, spu_s = _spu(end), _spu(start)
+        if spu_e is None or spu_s is None or spu_s <= 0:
+            return None
+        dspu = (spu_e - spu_s) / spu_s
+        dw = end[1] - start[1]
+        if dspu >= THETA_ADD and dw >= THETA_W:
+            return "add"
+        if dspu <= -THETA_ADD and dw <= -THETA_W:
+            return "trim"
+    return None
+
+
 def compute_etf_features(
     conn: sqlite3.Connection | None,
     symbol: str,
@@ -138,47 +177,18 @@ def compute_etf_features(
 
     etf_dates, hold = _load(conn, code, date)
 
-    def state_asof(etf: str, asof: str):
-        """該 ETF「≤ asof 最近交易日」對該股的狀態:
-          'NOLIST' = ETF 該時無任何快照(未上市/斷更);
-          None     = ETF 該日有揭露但未持有該股(absent);
-          (sh,w,u) = 有持有。
-        ★區分 NOLIST vs absent 是關鍵:absent 才能觸發建倉判定。"""
-        ds = etf_dates.get(etf)
-        if not ds:
-            return "NOLIST"
-        i = bisect.bisect_right(ds, asof) - 1
-        if i < 0:
-            return "NOLIST"
-        return hold.get((etf, ds[i]))                # (sh,w,u) 或 None(absent)
+    def state_asof(etf, asof):
+        return _state_asof(etf_dates, hold, etf, asof)
 
     buy_etfs: list[str] = []
     new_etfs: list[str] = []
-    trim_etfs: list[str] = []
 
     for etf in TRACKED_ETFS:
-        end = state_asof(etf, date)
-        start = state_asof(etf, baseline)
-        # ★ETF 未上市/斷更(NOLIST)→ 跳過,不判、不炸、不假訊號
-        if end == "NOLIST" or start == "NOLIST":
-            continue
-        end_tok, start_tok = _is_token(end), _is_token(start)
-        if not end_tok and start_tok:                # 佔位/未持有 → 實倉 = 建倉
-            if end[1] >= THETA_NEW:
-                buy_etfs.append(etf)
+        cls = _classify_one(state_asof(etf, date), state_asof(etf, baseline))
+        if cls in ("add", "new"):
+            buy_etfs.append(etf)
+            if cls == "new":
                 new_etfs.append(etf)
-        elif end_tok and not start_tok:              # 實倉 → 佔位/未持有 = 清倉
-            trim_etfs.append(etf)
-        elif not end_tok and not start_tok:
-            spu_e, spu_s = _spu(end), _spu(start)
-            if spu_e is None or spu_s is None or spu_s <= 0:
-                continue
-            dspu = (spu_e - spu_s) / spu_s
-            dw = end[1] - start[1]
-            if dspu >= THETA_ADD and dw >= THETA_W:
-                buy_etfs.append(etf)
-            elif dspu <= -THETA_ADD and dw <= -THETA_W:
-                trim_etfs.append(etf)
 
     buy_etfs = sorted(set(buy_etfs))
     buy_count = len(buy_etfs)
@@ -236,29 +246,96 @@ def compute_etf_decrease_tag(
 
 
 def _decrease_detail(conn, symbol, date) -> set[str]:
-    """回窗口內對該股「減碼 or 清倉」的 ETF 集合(★對稱門檻,同加碼)。"""
+    """回窗口內對該股「減碼 or 清倉」的 ETF 集合(★對稱門檻,同加碼;走共用 _classify_one)。"""
     code = symbol.split(":")[-1]
     baseline = _minus_days(date, ETF_WINDOW_DAYS)
     etf_dates, hold = _load(conn, code, date)
-
-    def state_asof(etf, asof):
-        ds = etf_dates.get(etf)
-        if not ds:
-            return "NOLIST"
-        i = bisect.bisect_right(ds, asof) - 1
-        return "NOLIST" if i < 0 else hold.get((etf, ds[i]))
-
     out: set[str] = set()
     for etf in TRACKED_ETFS:
-        end, start = state_asof(etf, date), state_asof(etf, baseline)
-        if end == "NOLIST" or start == "NOLIST":
-            continue
-        end_tok, start_tok = _is_token(end), _is_token(start)
-        if end_tok and not start_tok:
-            out.add(etf)                              # 清倉
-        elif not end_tok and not start_tok:
-            spu_e, spu_s = _spu(end), _spu(start)
-            if spu_s and spu_s > 0:
-                if (spu_e - spu_s) / spu_s <= -THETA_ADD and (end[1] - start[1]) <= -THETA_W:
-                    out.add(etf)                      # 減碼
+        cls = _classify_one(_state_asof(etf_dates, hold, etf, date),
+                            _state_asof(etf_dates, hold, etf, baseline))
+        if cls in ("trim", "exit"):
+            out.add(etf)
     return out
+
+
+# ── 顯示層(2026-09-20 由舊 etf_io/operations 遷移;複用上面同一套判定)────────
+
+def _tw_watchlist_symbols(watchlist: dict) -> list[str]:
+    """watchlist「台股板塊」成員的 symbol(TWSE:/TPEX:…),與舊 etf_io 同視角。"""
+    syms: list[str] = []
+    for sd in watchlist.get("台股板塊", {}).values():
+        for m in sd.get("成員", []):
+            s = m.get("code", "")
+            if s:
+                syms.append(s)
+    return syms
+
+
+def _shares_delta_lots(etf_dates, hold, etf, date, baseline) -> float:
+    """該 ETF 對該股 7 日內股數淨變化,轉「張」(股/1000)。建倉時 baseline 視為 0。"""
+    end = _state_asof(etf_dates, hold, etf, date)
+    start = _state_asof(etf_dates, hold, etf, baseline)
+    end_sh = end[0] if isinstance(end, tuple) else 0
+    start_sh = start[0] if (isinstance(start, tuple) and not _is_token(start)) else 0
+    return (end_sh - start_sh) / 1000.0
+
+
+def fetch_etf_active_summary(conn, date, watchlist, window_days=ETF_WINDOW_DAYS):
+    """ETF 主動式雙向掃描區塊(≥2 檔共識):加碼/減碼各列 watchlist 內 ≥2 檔的個股。
+    ★判定完全複用 compute_etf_features(加碼/建倉)與 _decrease_detail(對稱減碼),
+    與 chip_etf 計分口徑一致。回 {increase:[…], decrease:[…]},每筆
+    {symbol, etf_count, total_shares(張,7 日淨變化), etfs}。排序 etf_count↓ → |張|↓。"""
+    if not holdings_ready(conn):
+        return {"increase": [], "decrease": []}
+    baseline = _minus_days(date, window_days)
+    increase, decrease = [], []
+    for sym in _tw_watchlist_symbols(watchlist):
+        code = sym.split(":")[-1]
+        etf_dates, hold = _load(conn, code, date)
+        buy, dec = [], []
+        for etf in TRACKED_ETFS:
+            cls = _classify_one(_state_asof(etf_dates, hold, etf, date),
+                                _state_asof(etf_dates, hold, etf, baseline))
+            if cls in ("add", "new"):
+                buy.append(etf)
+            elif cls in ("trim", "exit"):
+                dec.append(etf)
+        if len(buy) >= 2:
+            lots = sum(_shares_delta_lots(etf_dates, hold, e, date, baseline) for e in buy)
+            increase.append({"symbol": sym, "etf_count": len(buy),
+                             "total_shares": round(lots), "etfs": sorted(buy)})
+        if len(dec) >= 2:
+            lots = sum(_shares_delta_lots(etf_dates, hold, e, date, baseline) for e in dec)
+            decrease.append({"symbol": sym, "etf_count": len(dec),
+                             "total_shares": round(lots), "etfs": sorted(dec)})
+    increase.sort(key=lambda x: (-x["etf_count"], -x["total_shares"]))
+    decrease.sort(key=lambda x: (-x["etf_count"], x["total_shares"]))
+    return {"increase": increase, "decrease": decrease}
+
+
+def etf_events(conn, symbol, start_date, end_date):
+    """個股 K 線圖上的 ETF 加減碼標記 ▲▼(2026-09-20 由 operations 遷移)。
+    每個快照日、每檔 ETF 用共用 _classify_one(vs 7 日前)判定;只在動作「起始日」
+    標一次(同動作連續日不重複標,避免刷屏)。回 [{time, etf, action, shares}]。
+    action ∈ 加碼/建倉/減碼/清倉(對齊 chart_v2.js 的 BUY/SELL_ACTIONS)。"""
+    if not holdings_ready(conn):
+        return []
+    code = symbol.split(":")[-1]
+    etf_dates, hold = _load(conn, code, end_date)
+    _MAP = {"add": "加碼", "new": "建倉", "trim": "減碼", "exit": "清倉"}
+    events = []
+    for etf in TRACKED_ETFS:
+        prev_action = None
+        for d in etf_dates.get(etf, []):
+            if d < start_date or d > end_date:
+                continue
+            cls = _classify_one(_state_asof(etf_dates, hold, etf, d),
+                                _state_asof(etf_dates, hold, etf, _minus_days(d, ETF_WINDOW_DAYS)))
+            if cls and cls != prev_action:               # 只標動作起始日
+                h = hold.get((etf, d))
+                events.append({"time": d, "etf": etf, "action": _MAP[cls],
+                               "shares": int(h[0]) if isinstance(h, tuple) else 0})
+            prev_action = cls
+    events.sort(key=lambda e: (e["time"], e["etf"]))
+    return events

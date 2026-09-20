@@ -1,4 +1,11 @@
 """
+⛔ 已封存(2026-09-20)——本模組讀舊 etfedge 的 etf_operations.operations,已全數
+   遷移至 src/persistence/etf_holdings_io.py(讀自建 PCF 快照 etf_holdings.db)。
+   目前 **無任何 live caller**:chip_etf 計分、ETF 主動式雙向掃描區塊、K 線圖 ETF 標記、
+   metadata 延遲判定,全部改走 etf_holdings_io。保留不刪僅供對照/萬一需復活舊源時參考
+   (比照 v1 封存做法)。test_etf_io.py 一併保留但屬封存測試。
+
+────────────────────────────────────────────────────────────────────────────
 etf_io.py — ETF 籌碼資料的讀取 + 7 日窗口特徵計算(W2.2.1)
 
 純 SQL 讀取 etf_operations.db,不寫入(5A 既有 schema,凍結)。

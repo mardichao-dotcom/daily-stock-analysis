@@ -37,6 +37,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.triggers import standing
+from src.persistence import etf_holdings_io   # 2026-09-20:ETF 標記改讀自建 PCF 快照
 
 
 CHART_LOOKBACK_DAYS = 180       # ≈ 6 個月,獨立於 scoring 的 KLINE_LOOKBACK=100
@@ -66,27 +67,9 @@ def load_chart_kline(conn: sqlite3.Connection, symbol: str, date: str,
     ]
 
 
-def load_etf_events(conn: sqlite3.Connection, symbol: str,
-                     start_date: str, end_date: str) -> list[dict]:
-    """載入該 symbol 在日期範圍內的 ETF 操作 events。
-
-    operations 表不存在(舊 etfedge 管線退役後 db 被動到)→ 回 [],不阻斷出圖
-    (比照同檔 load_chips 對缺表的處置)。"""
-    code = symbol.split(":")[-1]   # strip exchange prefix
-    try:
-        cur = conn.execute(
-            "SELECT etf, 日期, 動作, 張數 FROM operations "
-            "WHERE 代號 = ? AND 日期 >= ? AND 日期 <= ? "
-            "ORDER BY 日期 ASC",
-            (code, start_date, end_date),
-        )
-        rows = cur.fetchall()
-    except sqlite3.OperationalError:
-        return []
-    return [
-        {"time": r[1], "etf": r[0], "action": r[2], "shares": r[3]}
-        for r in rows
-    ]
+# 註:舊 load_etf_events(讀 etf_operations.operations)已於 2026-09-20 移除。
+# ETF K 線標記改由 etf_holdings_io.etf_events(讀 etf_holdings.db PCF 快照,
+# 判定與 chip_etf 計分同一套)提供,見 build_chart_for_stock。
 
 
 def load_chips(conn: sqlite3.Connection, symbol: str, date: str,
@@ -236,7 +219,7 @@ def build_chart_for_stock(
     symbol:     str,
     stock_entry: dict,           # filtered_result_v2 stocks[symbol] (含 name/sector)
     conn_kline: sqlite3.Connection,
-    conn_etf:   sqlite3.Connection | None,
+    conn_holdings: sqlite3.Connection | None,   # 2026-09-20:etf_holdings.db(舊為 operations)
     date:       str,
     config_key_prices: dict | None = None,   # P0-B: chart 層 key_prices fallback 來源
 ) -> dict | None:
@@ -262,10 +245,10 @@ def build_chart_for_stock(
 
     data_through = kline[-1]["time"]   # 最後一根 bar 日期(可能 < date,如美股晚一天)
 
-    # ETF events(若 conn_etf 存在)
+    # ETF 加減碼標記(2026-09-20 改讀 etf_holdings.db,判定複用 chip_etf 同一套)
     start_date = kline[0]["time"]
-    etf_events = (load_etf_events(conn_etf, symbol, start_date, date)
-                  if conn_etf is not None else [])
+    etf_events = (etf_holdings_io.etf_events(conn_holdings, symbol, start_date, date)
+                  if conn_holdings is not None else [])
 
     # MA arrays
     ma = compute_ma_arrays(kline)
@@ -410,7 +393,7 @@ def run(
     date:        str,
     filtered_result: dict,
     conn_kline:  sqlite3.Connection,
-    conn_etf:    sqlite3.Connection | None,
+    conn_holdings: sqlite3.Connection | None,   # 2026-09-20:etf_holdings.db(舊為 operations)
     outdir:      Path,
     all_watchlist: dict | None = None,    # 給 watchlist_v2 用:全 87 檔
     config_key_prices: dict | None = None,  # P0-B: 無 snapshot 時的 key_prices fallback 來源
@@ -448,7 +431,7 @@ def run(
 
     for symbol, entry in targets:
         chart = build_chart_for_stock(
-            symbol, entry, conn_kline, conn_etf, date,
+            symbol, entry, conn_kline, conn_holdings, date,
             config_key_prices=config_key_prices,
         )
         safe = _safe_filename(symbol)
@@ -495,7 +478,8 @@ def main():
     parser = argparse.ArgumentParser(description="Stage 8 chart producer(W2.4)")
     parser.add_argument("--date",   required=True)
     parser.add_argument("--kline",  default=str(PROJECT_ROOT / "kline.db"))
-    parser.add_argument("--etf",    default=os.path.expanduser("~/ETF追蹤/etf_operations.db"))
+    parser.add_argument("--holdings", default=str(PROJECT_ROOT / "etf_holdings.db"),
+                        help="自建 PCF 快照庫(ETF K 線標記來源,2026-09-20 起,取代舊 operations)")
     parser.add_argument("--result", default=str(PROJECT_ROOT / "filtered_result_v2.json"))
     parser.add_argument("--outdir", default=str(PROJECT_ROOT / "docs" / "data" / "v2"))
     parser.add_argument("--all-watchlist", action="store_true",
@@ -525,14 +509,15 @@ def main():
                       if args.only_exchanges else None)
 
     conn_kline = sqlite3.connect(args.kline)
-    conn_etf   = sqlite3.connect(args.etf) if os.path.exists(args.etf) else None
+    conn_holdings = (sqlite3.connect(args.holdings)
+                     if os.path.exists(args.holdings) else None)
 
     try:
         stats = run(
             date=args.date,
             filtered_result=filtered_result,
             conn_kline=conn_kline,
-            conn_etf=conn_etf,
+            conn_holdings=conn_holdings,
             outdir=Path(args.outdir),
             all_watchlist=all_watchlist,
             config_key_prices=config_key_prices,
@@ -540,8 +525,8 @@ def main():
         )
     finally:
         conn_kline.close()
-        if conn_etf is not None:
-            conn_etf.close()
+        if conn_holdings is not None:
+            conn_holdings.close()
 
     mode = "全 watchlist" if args.all_watchlist else "S/A/B 級"
     print(f"✅ {len(stats['written'])} charts written ({mode}) → {args.outdir}/{args.date}")

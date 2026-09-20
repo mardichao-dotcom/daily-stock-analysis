@@ -186,5 +186,65 @@ class TestFeatures(unittest.TestCase):
         self.assertFalse(f["is_continuous_buy"] or f["is_abnormal_ignition"])
 
 
+class TestActiveSummaryAndEvents(unittest.TestCase):
+    """顯示層(fetch_etf_active_summary / etf_events)與 chip_etf 同判定的一致性。"""
+
+    WL = {"台股板塊": {"半導體": {"成員": [
+        {"code": "TWSE:2330", "name": "台積電"},
+        {"code": "TWSE:3661", "name": "世芯"},
+    ]}}}
+
+    def test_summary_decrease_2_etfs(self):
+        """≥2 檔 ETF 減碼 → 進減碼區(3661 案例:00987A+00992A)"""
+        conn = hdb(
+            ("2026-09-07", "00987A", "3661", 1_000_000, 2.0),
+            ("2026-09-14", "00987A", "3661",   850_000, 1.6),   # 減碼
+            ("2026-09-07", "00992A", "3661", 2_000_000, 3.0),
+            ("2026-09-14", "00992A", "3661", 1_700_000, 2.5),   # 減碼
+        )
+        out = hio.fetch_etf_active_summary(conn, DATE, self.WL)
+        self.assertEqual(out["increase"], [])
+        self.assertEqual(len(out["decrease"]), 1)
+        d = out["decrease"][0]
+        self.assertEqual(d["symbol"], "TWSE:3661")
+        self.assertEqual(d["etf_count"], 2)
+        self.assertEqual(d["etfs"], ["00987A", "00992A"])
+        self.assertLess(d["total_shares"], 0)                   # 減碼張數為負
+
+    def test_summary_matches_features_threshold(self):
+        """summary 的加碼 ≥2 判定與 compute_etf_features(buy_count≥2)一致"""
+        conn = hdb(
+            ("2026-09-07", "00981A", "2330", 1_000_000, 1.0),
+            ("2026-09-14", "00981A", "2330", 1_100_000, 1.5),
+            ("2026-09-07", "00987A", "2330", 2_000_000, 2.0),
+            ("2026-09-14", "00987A", "2330", 2_200_000, 2.5),
+        )
+        feat = hio.compute_etf_features(conn, "TWSE:2330", DATE)
+        out = hio.fetch_etf_active_summary(conn, DATE, self.WL)
+        inc = [x for x in out["increase"] if x["symbol"] == "TWSE:2330"]
+        self.assertEqual(feat["buy_count"], 2)
+        self.assertEqual(len(inc), 1)                           # summary 也列出
+        self.assertEqual(inc[0]["etfs"], feat["buy_etfs"])      # ETF 清單一致
+
+    def test_events_mark_action_start(self):
+        """etf_events:動作起始日標一次,action 對齊前端(加碼/建倉/減碼)"""
+        conn = hdb(
+            ("2026-09-05", "00981A", "2330", 500_000, 0.5),
+            ("2026-09-12", "00981A", "2330", 800_000, 1.2),     # 5→12 加碼
+        )
+        evs = hio.etf_events(conn, "TWSE:2330", "2026-09-01", "2026-09-14")
+        self.assertTrue(any(e["action"] in ("加碼", "建倉") and e["etf"] == "00981A"
+                            for e in evs))
+        for e in evs:                                          # 欄位齊全
+            self.assertEqual(set(e), {"time", "etf", "action", "shares"})
+
+    def test_summary_missing_table_safe(self):
+        conn = sqlite3.connect(":memory:")
+        conn.execute("CREATE TABLE dummy(x)")
+        self.assertEqual(hio.fetch_etf_active_summary(conn, DATE, self.WL),
+                         {"increase": [], "decrease": []})
+        self.assertEqual(hio.etf_events(conn, "TWSE:2330", "2026-09-01", DATE), [])
+
+
 if __name__ == "__main__":
     unittest.main()

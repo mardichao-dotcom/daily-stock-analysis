@@ -153,27 +153,8 @@ class TestComputeMaArrays(unittest.TestCase):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-class TestLoadEtfEvents(unittest.TestCase):
-
-    def test_filters_to_date_range(self):
-        conn = setup_etf_db([
-            ("00981A", "6223", "2026-04-01", "加碼", 100),   # 範圍前
-            ("00987A", "6223", "2026-05-10", "加碼",  50),   # 範圍內
-            ("00992A", "6223", "2026-05-15", "減碼",  30),   # 範圍內
-            ("00994A", "6223", "2026-06-01", "加碼",  20),   # 範圍後
-        ])
-        result = pc.load_etf_events(conn, "TPEX:6223", "2026-05-01", "2026-05-20")
-        self.assertEqual(len(result), 2)
-        self.assertEqual(result[0]["etf"], "00987A")
-        self.assertEqual(result[1]["etf"], "00992A")
-        conn.close()
-
-    def test_strips_exchange_prefix(self):
-        """operations 表 stock 用無 prefix 代號"""
-        conn = setup_etf_db([("00981A", "6223", "2026-05-10", "加碼", 100)])
-        result = pc.load_etf_events(conn, "TPEX:6223", "2026-05-01", "2026-05-31")
-        self.assertEqual(len(result), 1)
-        conn.close()
+# TestLoadEtfEvents 已於 2026-09-20 移除(舊 load_etf_events 讀 operations 已移除;
+# ETF 標記改 etf_holdings_io.etf_events,測試見 test_etf_holdings_io)。
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -494,7 +475,7 @@ class TestRunIntegration(unittest.TestCase):
             outdir = Path(tmpdir)
             stats = pc.run(
                 date=last_day, filtered_result=filtered_result,
-                conn_kline=conn_kline, conn_etf=None, outdir=outdir,
+                conn_kline=conn_kline, conn_holdings=None, outdir=outdir,
             )
             self.assertEqual(stats["sab_total"], 2)
             self.assertEqual(set(stats["written"]), {"TPEX:6223", "TWSE:2330"})
