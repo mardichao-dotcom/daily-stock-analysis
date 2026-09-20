@@ -46,6 +46,7 @@ from src.scoring import chip_etf, volume, sector_linkage, grader, macd
 from src.scoring.given_price import score_line, score_area
 from src.triggers import standing
 from src.persistence import state_io, etf_io, kline_io, score_history_io
+from src.persistence import etf_holdings_io   # 2026-09-20 chip_etf 改讀自建 PCF 快照
 
 # ── 常數 ──────────────────────────────────────────────────────────────────────
 KLINE_LOOKBACK_DAYS = 100   # 涵蓋 MA90 + buffer(W2.2.4 MA 計分用)
@@ -54,36 +55,8 @@ TZ_TAIPEI           = timezone(timedelta(hours=8))
 
 # ── ETF 減碼純標籤(2026-05-29 朋友 review 後新增,不計分)──────────────────
 
-def _compute_etf_decrease_tag(
-    symbol:   str,
-    date:     str,
-    conn_etf: sqlite3.Connection | None,
-) -> list[str]:
-    """⛔ ETF 減碼純標籤:當天 ≥2 檔 ETF 減碼/清倉 → 發標籤。
-
-    跟 chip_etf 共識加碼是「同一概念的反向」:
-      - chip_etf 共識加碼(7 日窗口)→ 計分加分
-      - ETF 減碼純標籤(當天)→ 純風險提醒(不計分)
-
-    純加分制下不扣分,但用 ⛔ 標籤提醒朋友籌碼面有風險。
-    Tag 格式:「⛔ ETF 減碼(N 檔, -total 張)」
-    """
-    if not etf_io.operations_ready(conn_etf):   # None 或 operations 表不存在 → 跳過
-        return []
-    code = symbol.split(":")[-1]
-    cur = conn_etf.execute(
-        "SELECT etf, 張數 FROM operations "
-        "WHERE 代號 = ? AND 日期 = ? AND 動作 IN ('減碼', '清倉')",
-        (code, date),
-    )
-    rows = cur.fetchall()
-    if not rows:
-        return []
-    etfs = set(r[0] for r in rows)
-    if len(etfs) < 2:
-        return []
-    total = sum(r[1] for r in rows)
-    return [f"⛔ ETF 減碼({len(etfs)} 檔, -{total} 張)"]
+# 註:舊 _compute_etf_decrease_tag(讀 etf_operations,當日口徑)已於 2026-09-20 移除。
+# 減碼標籤改由 etf_holdings_io.compute_etf_decrease_tag(對稱 7 日窗口)提供,見 score_one_symbol。
 
 
 # ── MACD 動能轉換(W2.2.7,2026-05-28 規格修訂 — 動能轉多 +1)─────────────
@@ -732,6 +705,7 @@ def score_one_symbol(
     now_iso:          str,
     intl_activations: dict[str, list[str]] | None = None,
     input_errors:     list | None = None,
+    conn_holdings:    sqlite3.Connection | None = None,
 ) -> dict | None:
     """對單一個股算當日結果。回傳 filtered_result_v2 stocks dict 一個 entry,
     或 None(該檔當日無 K 線資料)。
@@ -753,10 +727,12 @@ def score_one_symbol(
     all_tags:    list[str]  = []
     all_events:  list[dict] = []
 
-    # ── chip_etf(W2.2.1 已接入)──────────────────────────────────────────
-    if conn_etf is not None:
+    # ── chip_etf(2026-09-20 改讀 etf_holdings.db 自建 PCF 快照,取代舊 etfedge)──
+    #    特徵改「每單位股數 Δ + 權重雙確認」;窗口綁 data_date;斷更→歸零(見 io 防炸)。
+    if conn_holdings is not None:
         today_volume = kline_history[-1].get("volume")
-        etf_data = etf_io.compute_etf_features(conn_etf, symbol, date, today_volume)
+        etf_data = etf_holdings_io.compute_etf_features(
+            conn_holdings, symbol, date, today_volume)
         s, d = chip_etf.score(symbol, date, etf_data, weights)
         for det in d:
             det["module"] = "chip_etf"
@@ -801,8 +777,8 @@ def score_one_symbol(
     all_details.extend(macd_details)
     all_tags.extend(macd_tags)
 
-    # ── ETF 減碼純標籤(2026-05-29 朋友 review 後新增,不計分)──────────
-    decrease_tags = _compute_etf_decrease_tag(symbol, date, conn_etf)
+    # ── ETF 減碼純標籤(2026-09-20 改讀 etf_holdings.db,★對稱 7 日窗口 ≥2 檔)──
+    decrease_tags = etf_holdings_io.compute_etf_decrease_tag(conn_holdings, symbol, date)
     all_tags.extend(decrease_tags)
 
     # ── W2.1 主軸:給定價格 ────────────────────────────────────────────────
@@ -872,6 +848,7 @@ def run_pipeline(
     watchlist:  dict,
     now_iso:    str,
     restrict_symbols: set[str] | None = None,
+    conn_holdings: sqlite3.Connection | None = None,
 ) -> dict:
     """純流程:接 connections + config dicts,回傳輸出 dict。
 
@@ -925,6 +902,7 @@ def run_pipeline(
             weights, sectors, key_prices, watchlist, now_iso,
             intl_activations=intl_activations,
             input_errors=input_errors,
+            conn_holdings=conn_holdings,
         )
         if entry is None:
             skipped.append(symbol)
@@ -1007,6 +985,9 @@ def main(args) -> None:
 
     conn_kline = sqlite3.connect(args.kline)
     conn_etf   = sqlite3.connect(args.etf) if os.path.exists(args.etf) else None
+    # 2026-09-20:chip_etf 計分改讀自建 PCF 快照 etf_holdings.db(display/metadata 暫留 operations)
+    conn_holdings = (sqlite3.connect(args.holdings)
+                     if os.path.exists(args.holdings) else None)
     now_iso    = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%dT%H:%M:%S+08:00")
 
     try:
@@ -1020,12 +1001,15 @@ def main(args) -> None:
             watchlist  = watchlist,
             now_iso    = now_iso,
             restrict_symbols = restrict_symbols,
+            conn_holdings = conn_holdings,
         )
         conn_kline.commit()
     finally:
         conn_kline.close()
         if conn_etf is not None:
             conn_etf.close()
+        if conn_holdings is not None:
+            conn_holdings.close()
 
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
@@ -1071,6 +1055,8 @@ if __name__ == "__main__":
     parser.add_argument("--date",       required=True)
     parser.add_argument("--kline",      default="kline.db")
     parser.add_argument("--etf",        default=os.path.expanduser("~/ETF追蹤/etf_operations.db"))
+    parser.add_argument("--holdings",   default="etf_holdings.db",
+                        help="自建 PCF 快照庫(chip_etf 計分源,2026-09-20 起)")
     parser.add_argument("--output",     default="filtered_result_v2.json")
     parser.add_argument("--weights",    default="config/weights.json")
     parser.add_argument("--sectors",    default="config/sectors.json")

@@ -12,12 +12,15 @@ chip_etf.py — ETF 籌碼面計分(規則 §1-A)
   異常點火  +1 (額外加)
   最高 +4   (共識 +3 + 連續 +1;此時 ETF 數 ≥ 4,點火依定義不會觸發)
 
-v1 定義(本檔遵循):
-  連續加碼 = 今天有任何 ETF 買 AND 7 日內其他天也有任何 ETF 買
-            (個股維度,不要求同檔 ETF 重複出現)
-  異常點火 = 恰好 1 檔 ETF 買 AND 該 ETF 買超 > 當日股票量 10%
-            (跟共識加碼互斥:共識需 ≥ 2 檔,點火需恰好 1 檔)
-  7 日窗口 = 自然日(v1 用 timedelta(days=6),非交易日)
+特徵語意(2026-09-20 起改由 etf_holdings_io 依 etf_holdings.db PCF 快照計算;
+本計分函式維持資料源無關,只吃 etf_data dict):
+  加碼      = 每單位股數 Δ ≥ +3% 且 權重 Δ ≥ +0.2pp(spu 中和淨流入 + 權重雙確認)
+  建倉      = 7 天前佔位/未持有 → 今日實倉(權重 ≥ 0.2pp)
+  連續加碼  = 7 日窗口內聚合權重 ≥2 個交易日續增(且有買訊)
+  異常點火  = 恰好 1 檔 ETF 有買訊 且 該檔為「建倉」(單一經理人新建倉)
+  共識加碼  = 窗口內「加碼 or 建倉」的 unique ETF 數(≥4→+3、≥2→+2,取高不疊加)
+  7 日窗口  = 自然日,右邊界綁 data_date(斷更 >7 日 → 歸零,不冒充)
+(舊 etfedge/etf_operations 口徑見 git 史;evidence 舊欄位仍相容。)
 """
 from __future__ import annotations
 
@@ -85,28 +88,30 @@ def score(
         s = w["continuous"]
         total += s
         details.append({
-            "reason":   "ETF 連續加碼(7 日內多日有買進)",
+            "reason":   "ETF 連續加碼(7 日窗口內多日權重續增)",
             "score":    s,
             "evidence": buy_etfs,
         })
 
     # ── 異常點火(額外加,定義上跟共識互斥但跟連續可共存)─────────────────
+    # 2026-09-20 新資料源:點火 = 恰好 1 檔 ETF「建倉」(佔位→實倉,單一經理人新建倉)。
+    # (舊 etfedge 口徑為「單一 ETF 買超 > 當日量 10%」,張數口徑,已不適用。)
+    # 舊欄位 ignition_shares/today_volume 若仍提供則相容顯示;新源改帶 ignition_weight。
     if etf_data.get("is_abnormal_ignition"):
         s = w["abnormal"]
         total += s
         ev: dict = {}
         if etf_data.get("ignition_etf"):
             ev["etf"] = etf_data["ignition_etf"]
-        if etf_data.get("ignition_shares") is not None:
+        if etf_data.get("ignition_weight") is not None:
+            ev["weight_pct"] = etf_data["ignition_weight"]
+        if etf_data.get("ignition_shares") is not None:            # 舊源相容
             ev["shares"] = etf_data["ignition_shares"]
-        if etf_data.get("today_volume") is not None:
-            ev["today_volume"] = etf_data["today_volume"]
-            if etf_data.get("ignition_shares") is not None and etf_data["today_volume"] > 0:
-                ev["ratio"] = round(
-                    etf_data["ignition_shares"] / etf_data["today_volume"], 4
-                )
+        if etf_data.get("today_volume") is not None and etf_data.get("ignition_shares") is not None \
+                and etf_data["today_volume"] > 0:
+            ev["ratio"] = round(etf_data["ignition_shares"] / etf_data["today_volume"], 4)
         details.append({
-            "reason":   "ETF 異常點火(單一 ETF 買超 > 10%)",
+            "reason":   "ETF 建倉點火(單一 ETF 新建倉)",
             "score":    s,
             "evidence": ev if ev else None,
         })

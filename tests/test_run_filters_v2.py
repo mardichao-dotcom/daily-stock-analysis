@@ -503,60 +503,7 @@ class TestComputeVolumeFeatures(unittest.TestCase):
         self.assertIsNone(feats["vol_ratio"])
 
 
-class TestV1VolumeParity(unittest.TestCase):
-    """W2.2.2 v1 vol_ratio 計算公式對齊驗證(用同 window=5,證明算式一致)。
-    v2.1 的 window=20 是規則改動,parity 用 v1 window 確認 (sum/len、除法) 沒漂。"""
-
-    @classmethod
-    def setUpClass(cls):
-        from src import load_data as v1_load_data
-        cls.v1_module = v1_load_data
-
-    def _v1_vol_ratio(self, bars):
-        """重現 v1 src/load_data:91-95 的算式"""
-        today_volume = bars[-1][5]   # bars 是 tuples 形式
-        vol_bars = bars[:-1]
-        vol_5_bars = vol_bars[-5:] if len(vol_bars) >= 5 else vol_bars
-        if not vol_5_bars:
-            return 1.0
-        vol_5 = sum(b[5] for b in vol_5_bars) / len(vol_5_bars)
-        return today_volume / vol_5 if vol_5 > 0 else 1.0
-
-    def _v2_vol_ratio(self, history, window=5):
-        feats = run_filters_v2._compute_volume_features(history, window=window)
-        return feats["vol_ratio"]
-
-    def test_parity_typical_6_day_history(self):
-        v1_bars = [
-            # (date, open, high, low, close, volume)
-            ("2026-05-13", 0, 0, 0, 0, 800),
-            ("2026-05-14", 0, 0, 0, 0, 900),
-            ("2026-05-15", 0, 0, 0, 0, 1000),
-            ("2026-05-16", 0, 0, 0, 0, 1100),
-            ("2026-05-19", 0, 0, 0, 0, 1200),
-            ("2026-05-20", 0, 0, 0, 0, 2000),   # today
-        ]
-        v2_history = [{"volume": b[5]} for b in v1_bars]
-        v1_r = self._v1_vol_ratio(v1_bars)
-        v2_r = self._v2_vol_ratio(v2_history, window=5)
-        self.assertAlmostEqual(v1_r, v2_r)
-
-    def test_parity_short_history(self):
-        """history 不足 5 天的 fallback 都該一致"""
-        v1_bars = [("X", 0, 0, 0, 0, v) for v in [1000, 1500, 2000]]
-        v2_history = [{"volume": b[5]} for b in v1_bars]
-        v1_r = self._v1_vol_ratio(v1_bars)
-        v2_r = self._v2_vol_ratio(v2_history, window=5)
-        self.assertAlmostEqual(v1_r, v2_r)
-
-    def test_parity_volume_spike(self):
-        v1_bars = [("X", 0, 0, 0, 0, v) for v in
-                   [500, 500, 500, 500, 500, 1500]]
-        v2_history = [{"volume": b[5]} for b in v1_bars]
-        v1_r = self._v1_vol_ratio(v1_bars)
-        v2_r = self._v2_vol_ratio(v2_history, window=5)
-        self.assertAlmostEqual(v1_r, v2_r)
-        self.assertAlmostEqual(v1_r, 3.0)
+# TestV1VolumeParity 已於 2026-09-20 移除(v1 src/load_data 已封存,無可對比基準)。
 
 
 class TestVolumeIntegration(unittest.TestCase):
@@ -669,9 +616,32 @@ class TestDataDateInDb(unittest.TestCase):
 
 
 class TestChipEtfIntegration(unittest.TestCase):
-    """W2.2.1 chip_etf 整合 — 旺矽 5/14 + ETF 加碼 fixture → 預期分數"""
+    """chip_etf 整合(2026-09-20 改讀 etf_holdings.db PCF 快照)。
+    旺矽 TPEX:6223,跑 5/13+5/14,窗口 5/14→baseline 5/07。
+    計分改「每單位股數 Δ + 權重雙確認」,fixture units 固定 → spu ∝ 股數。"""
+
+    U = 100_000_000   # units_issued 固定,spu = shares / U
+
+    def _setup_holdings_db(self, *rows):
+        """rows = (data_date, etf_code, stock_code, shares, weight_pct)。units 固定。"""
+        conn = sqlite3.connect(":memory:")
+        conn.execute(
+            "CREATE TABLE etf_holdings ("
+            "  data_date TEXT, etf_code TEXT, stock_code TEXT, stock_name TEXT,"
+            "  shares INTEGER, weight_pct REAL, fund_nav REAL, units_issued INTEGER,"
+            "  source TEXT, fetched_at TEXT,"
+            "  PRIMARY KEY (data_date, etf_code, stock_code))"
+        )
+        for d, e, code, sh, w in rows:
+            conn.execute(
+                "INSERT INTO etf_holdings VALUES (?,?,?,?,?,?,?,?,?,?)",
+                (d, e, code, "旺矽", sh, w, 0, self.U, "test", "x"),
+            )
+        conn.commit()
+        return conn
 
     def _setup_etf_db(self, *ops):
+        """舊 operations 表(僅 metadata etf_delayed 測試仍用)。"""
         conn = sqlite3.connect(":memory:")
         conn.execute(
             "CREATE TABLE operations ("
@@ -682,8 +652,8 @@ class TestChipEtfIntegration(unittest.TestCase):
         conn.commit()
         return conn
 
-    def _run_two_days_with_etf(self, conn_etf):
-        """跑 5/13 + 5/14 兩天,回傳 5/14 result"""
+    def _run_two_days(self, conn_etf=None, conn_holdings=None):
+        """跑 5/13 + 5/14 兩天,回傳 5/14 result。"""
         conn_kline = setup_fixture_kline_db()
         W = load_real_weights()
         for d in ("2026-05-13", "2026-05-14"):
@@ -696,52 +666,67 @@ class TestChipEtfIntegration(unittest.TestCase):
                 key_prices = FIXTURE_KEY_PRICES,
                 watchlist  = FIXTURE_WATCHLIST,
                 now_iso    = f"{d}T19:00:00+08:00",
+                conn_holdings = conn_holdings,
             )
         conn_kline.close()
         return result
 
     def test_no_etf_data_score_only_given_price(self):
-        """沒 ETF 加碼 → 分數只有 given_price 0.7"""
-        conn_etf = self._setup_etf_db()   # 空表
-        result = self._run_two_days_with_etf(conn_etf)
-        stock = result["stocks"]["TPEX:6223"]
-        self.assertAlmostEqual(stock["score"], 0.7)
-        conn_etf.close()
+        """沒 holdings → chip 0 分,只有 given_price 0.7"""
+        result = self._run_two_days(conn_holdings=None)
+        self.assertAlmostEqual(result["stocks"]["TPEX:6223"]["score"], 0.7)
 
     def test_two_etfs_consensus_adds_2(self):
-        """2 檔 ETF 加碼 → 共識 +2,加上 given_price 0.7 = 2.7"""
-        conn_etf = self._setup_etf_db(
-            ("00981A", "6223", "2026-05-14", "加碼", 100),
-            ("00987A", "6223", "2026-05-14", "加碼",  50),
+        """2 檔 ETF 加碼(spu+權重雙確認)→ 共識 +2,加 given_price 0.7 = 2.7"""
+        conn = self._setup_holdings_db(
+            # baseline 5/07 → end 5/14:spu +10%、權重 +0.5pp(達標),窗口內無中間日→非連續
+            ("2026-05-07", "00981A", "6223", 1_000_000, 1.0),
+            ("2026-05-14", "00981A", "6223", 1_100_000, 1.5),
+            ("2026-05-07", "00987A", "6223", 2_000_000, 2.0),
+            ("2026-05-14", "00987A", "6223", 2_200_000, 2.5),
         )
-        result = self._run_two_days_with_etf(conn_etf)
+        result = self._run_two_days(conn_holdings=conn)
         stock = result["stocks"]["TPEX:6223"]
-        # 0.7 (given_price) + 2 (共識) = 2.7
-        self.assertAlmostEqual(stock["score"], 2.7)
-        # details 應該含 chip_etf module
-        modules = [d.get("module") for d in stock["details"]]
-        self.assertIn("chip_etf", modules)
-        conn_etf.close()
+        self.assertAlmostEqual(stock["score"], 2.7)           # 0.7 + 2(共識)
+        self.assertIn("chip_etf", [d.get("module") for d in stock["details"]])
+        conn.close()
 
     def test_continuous_plus_consensus(self):
-        """連續 + 共識 → +2 + +1 = +3,加 0.7 = 3.7"""
-        conn_etf = self._setup_etf_db(
-            ("00981A", "6223", "2026-05-12", "加碼", 100),   # 7 天前
-            ("00987A", "6223", "2026-05-14", "加碼",  50),   # 今天
-            ("00992A", "6223", "2026-05-14", "加碼",  30),   # 今天
+        """連續(窗口內 spu 多日續增 ≥2%)+ 共識 → +2 +1 = +3,加 0.7 = 3.7"""
+        conn = self._setup_holdings_db(
+            # 00981A:窗口內 5/12→5/13→5/14 每日 spu +≥2%(連續),且 vs 5/07 達加碼
+            ("2026-05-07", "00981A", "6223", 1_000_000, 1.0),
+            ("2026-05-12", "00981A", "6223", 1_050_000, 1.3),
+            ("2026-05-13", "00981A", "6223", 1_100_000, 1.5),
+            ("2026-05-14", "00981A", "6223", 1_160_000, 1.7),
+            # 00987A:第 2 檔加碼(湊共識 2)
+            ("2026-05-07", "00987A", "6223", 2_000_000, 2.0),
+            ("2026-05-14", "00987A", "6223", 2_200_000, 2.5),
         )
-        result = self._run_two_days_with_etf(conn_etf)
+        result = self._run_two_days(conn_holdings=conn)
+        self.assertAlmostEqual(result["stocks"]["TPEX:6223"]["score"], 3.7)
+        conn.close()
+
+    def test_decrease_tag_no_score(self):
+        """≥2 檔 ETF 減碼(對稱窗口)→ 發 ⛔ 標籤但不影響分數(純加分制)"""
+        conn = self._setup_holdings_db(
+            ("2026-05-07", "00981A", "6223", 1_000_000, 1.5),
+            ("2026-05-14", "00981A", "6223",   900_000, 1.2),   # spu -10%、權重 -0.3pp
+            ("2026-05-07", "00987A", "6223", 2_000_000, 2.5),
+            ("2026-05-14", "00987A", "6223", 1_800_000, 2.2),
+        )
+        result = self._run_two_days(conn_holdings=conn)
         stock = result["stocks"]["TPEX:6223"]
-        # 0.7 (given_price) + 2 (共識) + 1 (連續) = 3.7
-        self.assertAlmostEqual(stock["score"], 3.7)
-        conn_etf.close()
+        self.assertAlmostEqual(stock["score"], 0.7)           # 減碼不計分
+        self.assertTrue(any("ETF 減碼" in t for t in stock.get("tags", [])))
+        conn.close()
 
     def test_etf_delayed_metadata_when_max_date_lags(self):
-        """etf 最新 date != 跑的 date → etf_delayed=True"""
+        """etf 最新 date != 跑的 date → etf_delayed=True(metadata 仍讀 operations)"""
         conn_etf = self._setup_etf_db(
             ("00981A", "6223", "2026-05-13", "加碼", 100),   # 最新只到 5/13
         )
-        result = self._run_two_days_with_etf(conn_etf)   # 跑到 5/14
+        result = self._run_two_days(conn_etf=conn_etf)   # 跑到 5/14
         self.assertTrue(result["metadata"]["etf_delayed"])
         self.assertEqual(result["metadata"]["etf_max_date_in_db"], "2026-05-13")
         conn_etf.close()
@@ -751,7 +736,7 @@ class TestChipEtfIntegration(unittest.TestCase):
         conn_etf = self._setup_etf_db(
             ("00981A", "6223", "2026-05-14", "加碼", 100),
         )
-        result = self._run_two_days_with_etf(conn_etf)
+        result = self._run_two_days(conn_etf=conn_etf)
         self.assertFalse(result["metadata"]["etf_delayed"])
         conn_etf.close()
 
@@ -1450,89 +1435,8 @@ class TestLookupStockMeta(unittest.TestCase):
         self.assertEqual(sector, "")
 
 
-class TestEtfDecreaseTag(unittest.TestCase):
-    """⛔ ETF 減碼純標籤(2026-05-29 朋友 review 後新增)
-    純標籤不計分,符合「ETF 減碼純標籤,不影響純加分制」決定。"""
-
-    def _setup_etf(self, *ops) -> sqlite3.Connection:
-        conn = sqlite3.connect(":memory:")
-        conn.execute(
-            "CREATE TABLE operations ("
-            "  etf TEXT, 代號 TEXT, 日期 TEXT, 動作 TEXT, 張數 INTEGER)"
-        )
-        for o in ops:
-            conn.execute("INSERT INTO operations VALUES (?, ?, ?, ?, ?)", o)
-        conn.commit()
-        return conn
-
-    def test_etf_decrease_2_or_more_triggers_tag(self):
-        """≥2 檔 ETF 減碼 → 發 ⛔ 標籤"""
-        conn = self._setup_etf(
-            ("00981A", "6223", "2026-05-20", "減碼", 200),
-            ("00987A", "6223", "2026-05-20", "減碼", 250),
-        )
-        tags = run_filters_v2._compute_etf_decrease_tag(
-            "TPEX:6223", "2026-05-20", conn,
-        )
-        self.assertEqual(len(tags), 1)
-        self.assertIn("⛔ ETF 減碼", tags[0])
-        conn.close()
-
-    def test_etf_decrease_only_1_no_tag(self):
-        """只 1 檔 ETF 減碼 → 不發標籤"""
-        conn = self._setup_etf(
-            ("00981A", "6223", "2026-05-20", "減碼", 200),
-        )
-        tags = run_filters_v2._compute_etf_decrease_tag(
-            "TPEX:6223", "2026-05-20", conn,
-        )
-        self.assertEqual(tags, [])
-        conn.close()
-
-    def test_etf_decrease_format_correct(self):
-        """標籤格式:⛔ ETF 減碼(2 檔, -450 張)。
-        含 清倉 算入(跟 v1 chip_etf SELL_ACTIONS 一致)。"""
-        conn = self._setup_etf(
-            ("00981A", "6223", "2026-05-20", "減碼", 200),
-            ("00987A", "6223", "2026-05-20", "清倉", 250),
-        )
-        tags = run_filters_v2._compute_etf_decrease_tag(
-            "TPEX:6223", "2026-05-20", conn,
-        )
-        self.assertEqual(tags, ["⛔ ETF 減碼(2 檔, -450 張)"])
-        conn.close()
-
-    def test_etf_decrease_does_not_affect_score(self):
-        """⛔ 是純標籤,total score 不變。
-        旺矽 fixture 5/14 給定價 +0.7,加 2 檔 ETF 減碼 → 仍 0.7(不扣)。"""
-        kline_conn = setup_fixture_kline_db()
-        etf_conn = self._setup_etf(
-            ("00981A", "6223", "2026-05-14", "減碼", 200),
-            ("00987A", "6223", "2026-05-14", "減碼", 250),
-            # 5/13 也加一筆,讓 5/13 不受干擾
-        )
-        # 先跑 5/13 累積 TRIGGERED state
-        run_filters_v2.run_pipeline(
-            date="2026-05-13", conn_kline=kline_conn, conn_etf=etf_conn,
-            weights=load_real_weights(), sectors=FIXTURE_SECTORS,
-            key_prices=FIXTURE_KEY_PRICES, watchlist=FIXTURE_WATCHLIST,
-            now_iso="X",
-        )
-        # 5/14:STANDING +0.7,同時 2 檔 ETF 減碼觸發 ⛔
-        result = run_filters_v2.run_pipeline(
-            date="2026-05-14", conn_kline=kline_conn, conn_etf=etf_conn,
-            weights=load_real_weights(), sectors=FIXTURE_SECTORS,
-            key_prices=FIXTURE_KEY_PRICES, watchlist=FIXTURE_WATCHLIST,
-            now_iso="X",
-        )
-        stock = result["stocks"]["TPEX:6223"]
-        # 分數仍 0.7(ETF 減碼不扣)
-        self.assertAlmostEqual(stock["score"], 0.7)
-        # 但 ⛔ 標籤要在
-        self.assertTrue(any("⛔ ETF 減碼" in t for t in stock["tags"]),
-                        f"⛔ tag missing in {stock['tags']}")
-        kline_conn.close()
-        etf_conn.close()
+# TestEtfDecreaseTag 已於 2026-09-20 移除(舊 operations 當日口徑;減碼改由
+# etf_holdings_io 對稱窗口提供,測試見 test_etf_holdings_io + TestChipEtfIntegration)。
 
 
 class TestMissingData(unittest.TestCase):
