@@ -868,16 +868,10 @@ def run_pipeline(
     state_io.init_schema(conn_kline)
     score_history_io.init_schema(conn_kline)
 
-    # ── ETF metadata(W2.2.1 接入)───────────────────────────────────────────
-    if conn_etf is not None:
-        etf_max_date = etf_io.compute_etf_max_date(conn_etf)
-        if etf_max_date is None:
-            etf_delayed = None   # operations 表空
-        else:
-            etf_delayed = (etf_max_date != date)
-    else:
-        etf_max_date = None
-        etf_delayed  = None      # 沒接 ETF DB(test 路徑)
+    # ── ETF metadata(2026-09-20 改讀 etf_holdings.db;舊 operations 已退役凍結 7/21,
+    #    否則「延遲」警告會永遠顯示 7/21)。延遲 = holdings 最新日 != 本次 data_date。
+    etf_max_date = etf_holdings_io.latest_data_date(conn_holdings)
+    etf_delayed = None if etf_max_date is None else (etf_max_date != date)
 
     # ── kline metadata(W2.2.2 接入)─────────────────────────────────────────
     data_date_in_db = kline_io.compute_kline_max_date(conn_kline)

@@ -722,23 +722,23 @@ class TestChipEtfIntegration(unittest.TestCase):
         conn.close()
 
     def test_etf_delayed_metadata_when_max_date_lags(self):
-        """etf 最新 date != 跑的 date → etf_delayed=True(metadata 仍讀 operations)"""
-        conn_etf = self._setup_etf_db(
-            ("00981A", "6223", "2026-05-13", "加碼", 100),   # 最新只到 5/13
+        """holdings 最新 date != 跑的 date → etf_delayed=True(2026-09-20 改讀 etf_holdings)"""
+        conn = self._setup_holdings_db(
+            ("2026-05-13", "00981A", "6223", 1_000_000, 1.0),   # holdings 最新只到 5/13
         )
-        result = self._run_two_days(conn_etf=conn_etf)   # 跑到 5/14
+        result = self._run_two_days(conn_holdings=conn)   # 跑到 5/14
         self.assertTrue(result["metadata"]["etf_delayed"])
         self.assertEqual(result["metadata"]["etf_max_date_in_db"], "2026-05-13")
-        conn_etf.close()
+        conn.close()
 
     def test_etf_delayed_false_when_up_to_date(self):
-        """etf max date 等於 today → 不延遲"""
-        conn_etf = self._setup_etf_db(
-            ("00981A", "6223", "2026-05-14", "加碼", 100),
+        """holdings max date 等於 today → 不延遲"""
+        conn = self._setup_holdings_db(
+            ("2026-05-14", "00981A", "6223", 1_000_000, 1.0),
         )
-        result = self._run_two_days(conn_etf=conn_etf)
+        result = self._run_two_days(conn_holdings=conn)
         self.assertFalse(result["metadata"]["etf_delayed"])
-        conn_etf.close()
+        conn.close()
 
     def test_etf_delayed_none_when_no_etf_conn(self):
         """conn_etf=None → etf_delayed=None(本來就 W2.1 行為)"""

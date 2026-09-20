@@ -66,6 +66,19 @@ def _minus_days(date_str: str, days: int) -> str:
     return (datetime.strptime(date_str, "%Y-%m-%d") - timedelta(days=days)).strftime("%Y-%m-%d")
 
 
+def latest_data_date(conn: sqlite3.Connection | None) -> str | None:
+    """etf_holdings 最新資料日(跨追蹤 ETF);檔/表不存在或空 → None。
+    給 metadata「ETF 資料延遲」判定用(取代舊 operations 的 compute_etf_max_date)。"""
+    if not holdings_ready(conn):
+        return None
+    qmarks = ",".join("?" * len(TRACKED_ETFS))
+    row = conn.execute(
+        f"SELECT MAX(data_date) FROM etf_holdings WHERE etf_code IN ({qmarks})",
+        TRACKED_ETFS,
+    ).fetchone()
+    return row[0] if row and row[0] else None
+
+
 def _is_token(row) -> bool:
     """row = (shares, weight, units) 或 None。未持有 / 佔位 → True。"""
     if row is None:
