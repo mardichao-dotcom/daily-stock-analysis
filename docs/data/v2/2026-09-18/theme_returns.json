@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generated_at": "2026-09-19T19:16:11",
+  "generated_at": "2026-09-20T10:39:35",
   "rules": {
     "n_threshold": 3,
     "calculation": "equal_weight_average",
@@ -9,7 +9,7 @@
   "stats": {
     "total_tags": 239,
     "rankable_tags": 36,
-    "tags_with_no_data": 2
+    "tags_with_no_data": 0
   },
   "tags": [
     {
@@ -965,9 +965,9 @@
     {
       "tag": "AI伺服器",
       "n": 24,
-      "n_traded": 23,
-      "n_excluded": 1,
-      "return_pct": 2.68,
+      "n_traded": 24,
+      "n_excluded": 0,
+      "return_pct": 2.58,
       "rankable": true,
       "members": [
         {
@@ -1079,6 +1079,12 @@
           "excluded": false
         },
         {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        },
+        {
           "code": "TWSE:2317",
           "name": "鴻海",
           "return_pct": 0.0,
@@ -1107,21 +1113,15 @@
           "name": "臻鼎-KY",
           "return_pct": -0.63,
           "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
         }
       ]
     },
     {
       "tag": "EFB",
       "n": 8,
-      "n_traded": 7,
-      "n_excluded": 1,
-      "return_pct": 2.67,
+      "n_traded": 8,
+      "n_excluded": 0,
+      "return_pct": 2.37,
       "rankable": true,
       "members": [
         {
@@ -1161,16 +1161,16 @@
           "excluded": false
         },
         {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        },
+        {
           "code": "TWSE:3231",
           "name": "緯創",
           "return_pct": 0.0,
           "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
         }
       ]
     },
@@ -1251,9 +1251,9 @@
     {
       "tag": "NVIDIA",
       "n": 18,
-      "n_traded": 17,
-      "n_excluded": 1,
-      "return_pct": 2.23,
+      "n_traded": 18,
+      "n_excluded": 0,
+      "return_pct": 2.12,
       "rankable": true,
       "members": [
         {
@@ -1335,6 +1335,12 @@
           "excluded": false
         },
         {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        },
+        {
           "code": "TWSE:2317",
           "name": "鴻海",
           "return_pct": 0.0,
@@ -1357,12 +1363,6 @@
           "name": "所羅門",
           "return_pct": -0.76,
           "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
         }
       ]
     },
@@ -1397,94 +1397,6 @@
           "name": "長廣",
           "return_pct": 0.83,
           "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "AMD",
-      "n": 13,
-      "n_traded": 12,
-      "n_excluded": 1,
-      "return_pct": 1.3,
-      "rankable": true,
-      "members": [
-        {
-          "code": "TWSE:3711",
-          "name": "日月光投控",
-          "return_pct": 3.91,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6239",
-          "name": "力成",
-          "return_pct": 3.46,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3653",
-          "name": "健策",
-          "return_pct": 3.17,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2330",
-          "name": "台積電",
-          "return_pct": 1.44,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2357",
-          "name": "華碩",
-          "return_pct": 1.27,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:5269",
-          "name": "祥碩",
-          "return_pct": 1.01,
-          "excluded": false
-        },
-        {
-          "code": "TPEX:3693",
-          "name": "營邦",
-          "return_pct": 1.0,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2356",
-          "name": "英業達",
-          "return_pct": 0.33,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2376",
-          "name": "技嘉",
-          "return_pct": 0.28,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2317",
-          "name": "鴻海",
-          "return_pct": 0.0,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3231",
-          "name": "緯創",
-          "return_pct": 0.0,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2382",
-          "name": "廣達",
-          "return_pct": -0.29,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
         }
       ]
     },
@@ -1591,22 +1503,34 @@
       ]
     },
     {
-      "tag": "老AI",
-      "n": 10,
-      "n_traded": 9,
-      "n_excluded": 1,
-      "return_pct": 0.78,
+      "tag": "AMD",
+      "n": 13,
+      "n_traded": 13,
+      "n_excluded": 0,
+      "return_pct": 1.22,
       "rankable": true,
       "members": [
         {
-          "code": "TWSE:2308",
-          "name": "台達電",
-          "return_pct": 2.97,
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": 3.91,
           "excluded": false
         },
         {
-          "code": "TWSE:2301",
-          "name": "光寶科",
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": 3.46,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3653",
+          "name": "健策",
+          "return_pct": 3.17,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2330",
+          "name": "台積電",
           "return_pct": 1.44,
           "excluded": false
         },
@@ -1614,6 +1538,12 @@
           "code": "TWSE:2357",
           "name": "華碩",
           "return_pct": 1.27,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:5269",
+          "name": "祥碩",
+          "return_pct": 1.01,
           "excluded": false
         },
         {
@@ -1635,6 +1565,12 @@
           "excluded": false
         },
         {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        },
+        {
           "code": "TWSE:2317",
           "name": "鴻海",
           "return_pct": 0.0,
@@ -1651,12 +1587,6 @@
           "name": "廣達",
           "return_pct": -0.29,
           "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
         }
       ]
     },
@@ -1719,11 +1649,81 @@
       ]
     },
     {
+      "tag": "老AI",
+      "n": 10,
+      "n_traded": 10,
+      "n_excluded": 0,
+      "return_pct": 0.72,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2308",
+          "name": "台達電",
+          "return_pct": 2.97,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2301",
+          "name": "光寶科",
+          "return_pct": 1.44,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": 1.27,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": 1.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": 0.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": 0.28,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": -0.29,
+          "excluded": false
+        }
+      ]
+    },
+    {
       "tag": "AI機櫃",
       "n": 7,
-      "n_traded": 6,
-      "n_excluded": 1,
-      "return_pct": 0.48,
+      "n_traded": 7,
+      "n_excluded": 0,
+      "return_pct": 0.45,
       "rankable": true,
       "members": [
         {
@@ -1745,6 +1745,12 @@
           "excluded": false
         },
         {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        },
+        {
           "code": "TWSE:2317",
           "name": "鴻海",
           "return_pct": 0.0,
@@ -1761,12 +1767,6 @@
           "name": "廣達",
           "return_pct": -0.29,
           "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
         }
       ]
     },
@@ -4747,6 +4747,38 @@
       ]
     },
     {
+      "tag": "ASIC伺服器/整機(Helios)",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.23,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "超大型CSP",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": 0.23,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": 0.23,
+          "excluded": false
+        }
+      ]
+    },
+    {
       "tag": "車用PCB",
       "n": 2,
       "n_traded": 2,
@@ -5127,38 +5159,6 @@
           "name": "陽明",
           "return_pct": -1.61,
           "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "ASIC伺服器/整機(Helios)",
-      "n": 1,
-      "n_traded": 0,
-      "n_excluded": 1,
-      "return_pct": null,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
-        }
-      ]
-    },
-    {
-      "tag": "超大型CSP",
-      "n": 1,
-      "n_traded": 0,
-      "n_excluded": 1,
-      "return_pct": null,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": null,
-          "excluded": true
         }
       ]
     }
