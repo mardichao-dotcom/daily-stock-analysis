@@ -1,27 +1,15 @@
 {
-  "generated_at": "2026-09-21T19:16:43+08:00",
-  "data_through": "2026-09-21",
+  "generated_at": "2026-09-22T19:16:48+08:00",
+  "data_through": "2026-09-22",
   "conference_stale": false,
-  "conference_source_date": "2026-09-21",
+  "conference_source_date": "2026-09-22",
   "dividend_stale": false,
-  "dividend_source_date": "2026-09-21",
+  "dividend_source_date": "2026-09-22",
   "macro_count": 4,
   "conference_count": 10,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-09-21",
-      "type": "conference",
-      "symbol": "TWSE:2327",
-      "name": "國巨*",
-      "title": "國巨* 法說會(香港港島香格里拉酒店)",
-      "importance": "本公司於115/09/21受邀參加由Bank of America舉辦之\n\"2026 Asia Pacific Conf",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
-    },
     {
       "date": "2026-09-22",
       "type": "conference",
@@ -32,7 +20,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-22",
@@ -44,7 +32,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-22",
@@ -56,7 +44,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-22",
@@ -68,7 +56,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-23",
@@ -80,7 +68,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-23",
@@ -92,7 +80,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-23",
@@ -104,7 +92,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-24",
@@ -116,7 +104,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-30",
@@ -126,7 +114,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-09-30",
@@ -136,7 +124,19 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
+    },
+    {
+      "date": "2026-10-01",
+      "type": "conference",
+      "symbol": "TWSE:2317",
+      "name": "鴻海",
+      "title": "鴻海 法說會(台北市內湖區基湖路32號)",
+      "importance": "115年10月1日受BofA邀請參加投資人會議，說明本公司營運概況。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "16:00",
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-10-02",
@@ -146,7 +146,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-10-05",
@@ -156,7 +156,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     },
     {
       "date": "2026-10-12",
@@ -168,7 +168,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-09-21T19:16:43+08:00"
+      "fetched_at": "2026-09-22T19:16:48+08:00"
     }
   ]
 }
