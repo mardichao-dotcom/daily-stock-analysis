@@ -1,37 +1,37 @@
 {
-  "generated_at": "2026-09-21T08:30:03+08:00",
+  "generated_at": "2026-09-22T08:30:04+08:00",
   "sources_ok": 7,
   "sources_failed": 0,
   "errors": [],
   "data": {
     "taiex": {
       "label": "加權指數",
-      "value": 47180.75,
+      "value": 47718.84,
       "source": "TWSE OpenAPI MI_INDEX",
-      "change": 892.75,
-      "change_pct": 1.93,
-      "date": "2026-09-18"
+      "change": 538.09,
+      "change_pct": 1.14,
+      "date": "2026-09-21"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7650.5,
+      "value": 7764.7,
       "source": "yfinance ^GSPC",
-      "change": 12.74,
-      "change_pct": 0.17
+      "change": 114.2,
+      "change_pct": 1.49
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 26522.54,
+      "value": 27122.09,
       "source": "yfinance ^IXIC",
-      "change": 104.24,
-      "change_pct": 0.39
+      "change": 599.55,
+      "change_pct": 2.26
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": 14.81,
+      "value": 14.87,
       "source": "yfinance ^VIX",
-      "change": -0.63,
-      "change_pct": -4.08
+      "change": 0.06,
+      "change_pct": 0.41
     },
     "nikkei": {
       "label": "日經 225",
@@ -42,20 +42,20 @@
     },
     "dxy": {
       "label": "美元指數",
-      "value": 100.27,
+      "value": 100.4,
       "source": "yfinance DX-Y.NYB",
-      "change": 0.05,
-      "change_pct": 0.05
+      "change": 0.18,
+      "change_pct": 0.18
     },
     "margin": {
       "label": "融資餘額",
-      "value": 7986.6,
+      "value": 8097.7,
       "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
-      "change": 73.3,
-      "change_pct": 0.93,
-      "date": "2026-09-18",
+      "change": 111.1,
+      "change_pct": 1.39,
+      "date": "2026-09-21",
       "unit": "億元",
-      "streak": 3,
+      "streak": 4,
       "percentile": 94,
       "history_days": 252
     }
