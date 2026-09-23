@@ -1,63 +1,15 @@
 {
-  "generated_at": "2026-09-22T19:16:48+08:00",
-  "data_through": "2026-09-22",
+  "generated_at": "2026-09-23T19:16:48+08:00",
+  "data_through": "2026-09-23",
   "conference_stale": false,
-  "conference_source_date": "2026-09-22",
+  "conference_source_date": "2026-09-23",
   "dividend_stale": false,
-  "dividend_source_date": "2026-09-22",
+  "dividend_source_date": "2026-09-23",
   "macro_count": 4,
-  "conference_count": 10,
+  "conference_count": 6,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-09-22",
-      "type": "conference",
-      "symbol": "TWSE:2474",
-      "name": "可成",
-      "title": "可成 法說會(線上法說會)",
-      "importance": "本公司受邀參加富邦證券舉辦之法人說明會",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
-    },
-    {
-      "date": "2026-09-22",
-      "type": "conference",
-      "symbol": "TWSE:2609",
-      "name": "陽明",
-      "title": "陽明 法說會(線上法說會)",
-      "importance": "本公司受邀參加由群益金鼎證券股份有限公司舉辦之線上法人說明會，說明本公司之營運概況、財務及業務相關資訊。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
-    },
-    {
-      "date": "2026-09-22",
-      "type": "conference",
-      "symbol": "TWSE:7769",
-      "name": "鴻勁",
-      "title": "鴻勁 法說會(香港 港島香格里拉酒店)",
-      "importance": "本公司受邀參加BofA舉辦之2026 Asia Pacific Conference，說明本公司營運概況。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
-    },
-    {
-      "date": "2026-09-22",
-      "type": "conference",
-      "symbol": "TPEX:6223",
-      "name": "旺矽",
-      "title": "旺矽 法說會(香港港島香格里拉大酒店)",
-      "importance": "本公司受邀參加美銀證券舉辦之2026 Asia Pacific Conference，說明本公司簡介與營運概況。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
-    },
     {
       "date": "2026-09-23",
       "type": "conference",
@@ -68,7 +20,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-09-23",
@@ -80,7 +32,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-09-23",
@@ -92,7 +44,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-09-24",
@@ -104,7 +56,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-09-30",
@@ -114,7 +66,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-09-30",
@@ -124,7 +76,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-10-01",
@@ -136,7 +88,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-10-02",
@@ -146,7 +98,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-10-05",
@@ -156,7 +108,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     },
     {
       "date": "2026-10-12",
@@ -168,7 +120,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-09-22T19:16:48+08:00"
+      "fetched_at": "2026-09-23T19:16:48+08:00"
     }
   ]
 }
