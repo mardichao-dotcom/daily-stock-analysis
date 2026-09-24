@@ -1,51 +1,15 @@
 {
-  "generated_at": "2026-09-23T19:16:48+08:00",
-  "data_through": "2026-09-23",
+  "generated_at": "2026-09-24T19:16:45+08:00",
+  "data_through": "2026-09-24",
   "conference_stale": false,
-  "conference_source_date": "2026-09-23",
+  "conference_source_date": "2026-09-24",
   "dividend_stale": false,
-  "dividend_source_date": "2026-09-23",
-  "macro_count": 4,
-  "conference_count": 6,
+  "dividend_source_date": "2026-09-24",
+  "macro_count": 5,
+  "conference_count": 3,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-09-23",
-      "type": "conference",
-      "symbol": "TWSE:3443",
-      "name": "創意",
-      "title": "創意 法說會(線上法說會)",
-      "importance": "本公司受邀參加2026 BofA Asia Pacific Conference，說明本公司營運概況。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
-    },
-    {
-      "date": "2026-09-23",
-      "type": "conference",
-      "symbol": "TPEX:3324",
-      "name": "雙鴻",
-      "title": "雙鴻 法說會(Island Shangri-La Ho)",
-      "importance": "本公司受邀參加 2026 BofA Asia Pacific Conference",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
-    },
-    {
-      "date": "2026-09-23",
-      "type": "conference",
-      "symbol": "TPEX:3529",
-      "name": "力旺",
-      "title": "力旺 法說會(線上法說會)",
-      "importance": "本公司受邀參加BofA舉辦之BofA 2026 Asia Pacific Conference說明本公司財務及業務相關資",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "10:00",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
-    },
     {
       "date": "2026-09-24",
       "type": "conference",
@@ -56,7 +20,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
+      "fetched_at": "2026-09-24T19:16:45+08:00"
     },
     {
       "date": "2026-09-30",
@@ -66,7 +30,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
+      "fetched_at": "2026-09-24T19:16:45+08:00"
     },
     {
       "date": "2026-09-30",
@@ -76,7 +40,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
+      "fetched_at": "2026-09-24T19:16:45+08:00"
     },
     {
       "date": "2026-10-01",
@@ -88,7 +52,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
+      "fetched_at": "2026-09-24T19:16:45+08:00"
     },
     {
       "date": "2026-10-02",
@@ -98,7 +62,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
+      "fetched_at": "2026-09-24T19:16:45+08:00"
     },
     {
       "date": "2026-10-05",
@@ -108,7 +72,17 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
+      "fetched_at": "2026-09-24T19:16:45+08:00"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "macro_tw",
+      "name": "台灣出口統計",
+      "title": "財政部 進出口貿易統計發布",
+      "importance": "台灣總經",
+      "level": "medium_high",
+      "source": "官方月度時程(config,標準日推估待校正)",
+      "fetched_at": "2026-09-24T19:16:45+08:00"
     },
     {
       "date": "2026-10-12",
@@ -120,7 +94,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-09-23T19:16:48+08:00"
+      "fetched_at": "2026-09-24T19:16:45+08:00"
     }
   ]
 }

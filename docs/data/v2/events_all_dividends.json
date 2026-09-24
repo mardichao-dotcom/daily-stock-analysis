@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T19:16:48+08:00",
+  "generated_at": "2026-09-24T19:16:45+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -12,13 +12,6 @@
       "code": "00406A",
       "name": "主動中信台灣收益",
       "date": "2026-10-05",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00930",
-      "name": "永豐ESG低碳高息",
-      "date": "2026-09-23",
       "kind": "息",
       "market": "TWSE"
     },
@@ -79,24 +72,10 @@
       "market": "TWSE"
     },
     {
-      "code": "1442",
-      "name": "名軒",
-      "date": "2026-09-23",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "1449",
       "name": "佳和",
       "date": "2026-10-12",
       "kind": "權",
-      "market": "TWSE"
-    },
-    {
-      "code": "1808",
-      "name": "潤隆",
-      "date": "2026-09-23",
-      "kind": "息",
       "market": "TWSE"
     },
     {
@@ -114,13 +93,6 @@
       "market": "TWSE"
     },
     {
-      "code": "2542",
-      "name": "興富發",
-      "date": "2026-09-23",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "2614",
       "name": "東森",
       "date": "2026-10-06",
@@ -132,13 +104,6 @@
       "name": "永豐金",
       "date": "2026-10-07",
       "kind": "權",
-      "market": "TWSE"
-    },
-    {
-      "code": "5258",
-      "name": "虹堡",
-      "date": "2026-09-23",
-      "kind": "息",
       "market": "TWSE"
     },
     {
@@ -182,55 +147,6 @@
       "date": "2026-10-01",
       "kind": "息",
       "market": "TWSE"
-    },
-    {
-      "code": "00836B",
-      "name": "永豐10年A公司債",
-      "date": "2026-09-23",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00856B",
-      "name": "永豐1-3年美公債",
-      "date": "2026-09-23",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00857B",
-      "name": "永豐20年美公債",
-      "date": "2026-09-23",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00958B",
-      "name": "永豐ESG銀行債15+",
-      "date": "2026-09-23",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00990B",
-      "name": "國泰收益非投等債",
-      "date": "2026-09-23",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "1595",
-      "name": "川寶",
-      "date": "2026-09-23",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "4109",
-      "name": "加捷生醫",
-      "date": "2026-09-23",
-      "kind": "除息",
-      "market": "TPEX"
     },
     {
       "code": "8440",
