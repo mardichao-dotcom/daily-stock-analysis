@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T19:16:45+08:00",
+  "generated_at": "2026-09-29T19:16:46+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -65,16 +65,16 @@
       "market": "TWSE"
     },
     {
-      "code": "1235",
-      "name": "興泰",
-      "date": "2026-09-24",
-      "kind": "權息",
-      "market": "TWSE"
-    },
-    {
       "code": "1449",
       "name": "佳和",
       "date": "2026-10-12",
+      "kind": "權",
+      "market": "TWSE"
+    },
+    {
+      "code": "1727",
+      "name": "中華化",
+      "date": "2026-10-13",
       "kind": "權",
       "market": "TWSE"
     },
@@ -104,6 +104,13 @@
       "name": "永豐金",
       "date": "2026-10-07",
       "kind": "權",
+      "market": "TWSE"
+    },
+    {
+      "code": "4552",
+      "name": "力達-KY",
+      "date": "2026-10-28",
+      "kind": "息",
       "market": "TWSE"
     },
     {
@@ -250,6 +257,20 @@
       "code": "1565",
       "name": "精華",
       "date": "2026-10-12",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "2938",
+      "name": "床的世界",
+      "date": "2026-10-13",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "4903",
+      "name": "聯光通",
+      "date": "2026-10-14",
       "kind": "除息",
       "market": "TPEX"
     },

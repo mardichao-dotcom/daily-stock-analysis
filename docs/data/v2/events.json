@@ -1,26 +1,38 @@
 {
-  "generated_at": "2026-09-24T19:16:45+08:00",
-  "data_through": "2026-09-24",
+  "generated_at": "2026-09-29T19:16:46+08:00",
+  "data_through": "2026-09-29",
   "conference_stale": false,
-  "conference_source_date": "2026-09-24",
+  "conference_source_date": "2026-09-29",
   "dividend_stale": false,
-  "dividend_source_date": "2026-09-24",
-  "macro_count": 5,
-  "conference_count": 3,
+  "dividend_source_date": "2026-09-29",
+  "macro_count": 6,
+  "conference_count": 5,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
     {
-      "date": "2026-09-24",
+      "date": "2026-09-30",
       "type": "conference",
-      "symbol": "TWSE:2356",
-      "name": "英業達",
-      "title": "英業達 法說會(香港)",
-      "importance": "本公司受邀參加BofA Securities 2026 Asia Pacific Conference，說明本公司營運概",
+      "symbol": "TWSE:3015",
+      "name": "全漢",
+      "title": "全漢 法說會(線上法說會)",
+      "importance": "公司受邀參加國泰證券所舉辦之法說會，會中介紹公司之營運與展望",
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "time": "14:00",
+      "fetched_at": "2026-09-29T19:16:46+08:00"
+    },
+    {
+      "date": "2026-09-30",
+      "type": "conference",
+      "symbol": "TWSE:4763",
+      "name": "材料*-KY",
+      "title": "材料*-KY 法說會(KGI凱基證券總部大樓  台北市明水路7)",
+      "importance": "本公司受邀參加凱基證券股份有限公司舉辦之法說會，說明本公司之營運概況、財務及業務相關資訊。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:00",
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     },
     {
       "date": "2026-09-30",
@@ -30,7 +42,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     },
     {
       "date": "2026-09-30",
@@ -40,7 +52,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     },
     {
       "date": "2026-10-01",
@@ -52,7 +64,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     },
     {
       "date": "2026-10-02",
@@ -62,7 +74,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     },
     {
       "date": "2026-10-05",
@@ -72,7 +84,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     },
     {
       "date": "2026-10-08",
@@ -82,7 +94,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     },
     {
       "date": "2026-10-12",
@@ -94,7 +106,29 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-09-24T19:16:45+08:00"
+      "fetched_at": "2026-09-29T19:16:46+08:00"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "macro_tw",
+      "name": "台股月營收公布截止",
+      "title": "上市櫃全體月營收公布截止(每月 10 日前,遇假順延)",
+      "importance": "當月營收動能揭曉",
+      "level": "medium_high",
+      "source": "證交法/公司法 每月 10 日前",
+      "fetched_at": "2026-09-29T19:16:46+08:00"
+    },
+    {
+      "date": "2026-10-15",
+      "type": "conference",
+      "symbol": "TWSE:2330",
+      "name": "台積電",
+      "title": "台積電 法說會(線上法說會)",
+      "importance": "(1)公布本公司2026年第3季財務報告及2026年第4季業績展望。(2)參加方式：請參見https://investo",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "14:00",
+      "fetched_at": "2026-09-29T19:16:46+08:00"
     }
   ]
 }
