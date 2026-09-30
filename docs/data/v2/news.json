@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T08:30:49+08:00",
+  "generated_at": "2026-09-30T08:30:37+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,148 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 33,
+  "count": 45,
   "items": [
+    {
+      "title": "OpenAI推出新中階AI模型　價格僅旗艦產品1/5",
+      "source": "中央社財經",
+      "published_at": "2026-09-30T04:50:30+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202609300005.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "超微進擊實體AI 收購實驗室World Labs 台鏈歡呼",
+      "source": "經濟日報",
+      "published_at": "2026-09-30T03:02:16+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9784506",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "超微併購標的大揭祕 World Labs創辦人李飛飛 改寫AI發展史",
+      "source": "經濟日報",
+      "published_at": "2026-09-30T03:00:50+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9784515",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台塑集團半導體布局 大升級 卡位晶圓大廠擴產商機",
+      "source": "經濟日報",
+      "published_at": "2026-09-30T02:35:25+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/10871/9784420",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "新聞眼／最強AI材料庫 逐步成型",
+      "source": "經濟日報",
+      "published_at": "2026-09-30T02:33:57+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/10871/9784441",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "AI 熱潮燒向鋼鐵股 鋼管族群有哪些率先吃到 AI 紅利？",
+      "source": "經濟日報",
+      "published_at": "2026-09-29T21:51:34+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://money.udn.com/money/story/5612/9784312",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "H1科學園區營收年增29.27%創同期新高 國科會：受惠AI、雲端需求爆發性成長",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T20:56:57+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6618094",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "北市府率12家台企訪「新加坡科技周」 展AI整合實力拓展東南亞商機",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T20:17:03+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6618071",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "9家銀行相挺記憶體龍頭！合庫銀統籌旺宏等值新台幣220億元聯貸案順利簽約",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T19:39:55+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6618004",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "東元攜安達康參與新加坡Data Center World亮相MDC整合方案 攻東南亞AI基建商機",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T17:32:21+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6617926",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "聯嘉切入VCSEL 拚成AI光通訊供應鏈一環",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T16:00:17+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6617789",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "擷發科AI無人機報捷 獲美歐青睞擴大全球版圖",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T13:07:23+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6617694",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉油價上揚、地緣政治持續干擾 台塑化狂飆大漲9％領三寶齊揚",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T12:18:34+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6617669",
+      "matched_keywords": [
+        "地緣政治"
+      ]
+    },
+    {
+      "title": "對台積電下戰書！三星電子：2029年晶圓代工客戶將增至2017年的4倍左右",
+      "source": "鉅亨網",
+      "published_at": "2026-09-29T10:55:32+08:00",
+      "fetched_at": "2026-09-30T08:30:37+08:00",
+      "url": "https://news.cnyes.com/news/id/6617586",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "超微將砸82億美元　收購AI企業World Labs",
       "source": "中央社財經",
@@ -321,26 +461,6 @@
       "published_at": "2026-09-27T08:53:19+08:00",
       "fetched_at": "2026-09-28T08:30:43+08:00",
       "url": "https://news.cnyes.com/news/id/6615424",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "受惠 GPU、ASIC 等高階測試強勁需求 封測雙雄大啖 AI 成長商機",
-      "source": "經濟日報",
-      "published_at": "2026-09-27T03:27:32+08:00",
-      "fetched_at": "2026-09-28T08:30:43+08:00",
-      "url": "https://money.udn.com/money/story/5612/9779318",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI時代台灣經濟戰略轉型　許添財：分散式小聯盟拓全球",
-      "source": "中央社財經",
-      "published_at": "2026-09-26T19:13:36+08:00",
-      "fetched_at": "2026-09-28T08:30:43+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202609260179.aspx",
       "matched_keywords": [
         "AI"
       ]
