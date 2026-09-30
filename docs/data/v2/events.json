@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-29T19:16:46+08:00",
-  "data_through": "2026-09-29",
+  "generated_at": "2026-09-30T19:16:44+08:00",
+  "data_through": "2026-09-30",
   "conference_stale": false,
-  "conference_source_date": "2026-09-29",
+  "conference_source_date": "2026-09-30",
   "dividend_stale": false,
-  "dividend_source_date": "2026-09-29",
-  "macro_count": 6,
+  "dividend_source_date": "2026-09-30",
+  "macro_count": 7,
   "conference_count": 5,
   "dividend_count": 0,
   "config_warnings": [],
@@ -20,7 +20,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-09-30",
@@ -32,7 +32,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-09-30",
@@ -42,7 +42,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-09-30",
@@ -52,7 +52,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-10-01",
@@ -64,7 +64,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-10-02",
@@ -74,7 +74,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-10-05",
@@ -84,7 +84,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-10-08",
@@ -94,7 +94,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-10-12",
@@ -106,7 +106,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-10-12",
@@ -116,7 +116,17 @@
       "importance": "當月營收動能揭曉",
       "level": "medium_high",
       "source": "證交法/公司法 每月 10 日前",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
+    },
+    {
+      "date": "2026-10-14",
+      "type": "macro",
+      "name": "美國 CPI",
+      "title": "美國 CPI 發布",
+      "importance": "high",
+      "level": "high",
+      "source": "FRED release_id 10",
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     },
     {
       "date": "2026-10-15",
@@ -128,7 +138,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-09-29T19:16:46+08:00"
+      "fetched_at": "2026-09-30T19:16:44+08:00"
     }
   ]
 }
