@@ -1,27 +1,15 @@
 {
-  "generated_at": "2026-10-01T19:16:45+08:00",
-  "data_through": "2026-10-01",
+  "generated_at": "2026-10-02T19:16:49+08:00",
+  "data_through": "2026-10-02",
   "conference_stale": false,
-  "conference_source_date": "2026-10-01",
+  "conference_source_date": "2026-10-02",
   "dividend_stale": false,
-  "dividend_source_date": "2026-10-01",
+  "dividend_source_date": "2026-10-02",
   "macro_count": 6,
-  "conference_count": 3,
+  "conference_count": 2,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-10-01",
-      "type": "conference",
-      "symbol": "TWSE:2317",
-      "name": "鴻海",
-      "title": "鴻海 法說會(台北市內湖區基湖路32號)",
-      "importance": "115年10月1日受BofA邀請參加投資人會議，說明本公司營運概況。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "16:00",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
-    },
     {
       "date": "2026-10-02",
       "type": "macro",
@@ -30,7 +18,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     },
     {
       "date": "2026-10-05",
@@ -40,7 +28,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     },
     {
       "date": "2026-10-08",
@@ -50,7 +38,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     },
     {
       "date": "2026-10-12",
@@ -62,7 +50,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     },
     {
       "date": "2026-10-12",
@@ -72,7 +60,7 @@
       "importance": "當月營收動能揭曉",
       "level": "medium_high",
       "source": "證交法/公司法 每月 10 日前",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     },
     {
       "date": "2026-10-14",
@@ -82,7 +70,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 10",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     },
     {
       "date": "2026-10-15",
@@ -94,7 +82,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     },
     {
       "date": "2026-10-15",
@@ -104,7 +92,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 46",
-      "fetched_at": "2026-10-01T19:16:45+08:00"
+      "fetched_at": "2026-10-02T19:16:49+08:00"
     }
   ]
 }
