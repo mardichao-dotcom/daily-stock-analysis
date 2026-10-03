@@ -1,63 +1,59 @@
 {
-  "generated_at": "2026-10-02T08:30:04+08:00",
-  "sources_ok": 7,
-  "sources_failed": 0,
-  "errors": [],
+  "generated_at": "2026-10-03T08:30:05+08:00",
+  "sources_ok": 6,
+  "sources_failed": 1,
+  "errors": [
+    "margin: [Errno 54] Connection reset by peer"
+  ],
   "data": {
     "taiex": {
       "label": "加權指數",
-      "value": 48353.49,
+      "value": 48475.74,
       "source": "TWSE OpenAPI MI_INDEX",
-      "change": 413.36,
-      "change_pct": 0.86,
-      "date": "2026-10-01"
+      "change": 122.25,
+      "change_pct": 0.25,
+      "date": "2026-10-02"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7666.45,
+      "value": 7722.72,
       "source": "yfinance ^GSPC",
-      "change": 14.91,
-      "change_pct": 0.19
+      "change": 56.27,
+      "change_pct": 0.73
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 26871.6,
+      "value": 27190.86,
       "source": "yfinance ^IXIC",
-      "change": 10.54,
-      "change_pct": 0.04
+      "change": 319.26,
+      "change_pct": 1.19
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": 16.39,
+      "value": 15.31,
       "source": "yfinance ^VIX",
-      "change": 0.05,
-      "change_pct": 0.31
+      "change": -1.08,
+      "change_pct": -6.59
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 68376.25,
+      "value": 68956.72,
       "source": "yfinance ^N225",
-      "change": 1622.53,
-      "change_pct": 2.43
+      "change": 2203.0,
+      "change_pct": 3.3
     },
     "dxy": {
       "label": "美元指數",
-      "value": 102.04,
+      "value": 101.92,
       "source": "yfinance DX-Y.NYB",
-      "change": 0.59,
-      "change_pct": 0.58
+      "change": -0.18,
+      "change_pct": -0.17
     },
     "margin": {
       "label": "融資餘額",
-      "value": 8487.4,
-      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
-      "change": 106.1,
-      "change_pct": 1.27,
-      "date": "2026-10-01",
-      "unit": "億元",
-      "streak": 10,
-      "percentile": 100,
-      "history_days": 252
+      "value": "N/A",
+      "error": "[Errno 54] Connection reset by peer",
+      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)"
     }
   }
 }
