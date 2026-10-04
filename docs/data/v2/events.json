@@ -1,25 +1,15 @@
 {
-  "generated_at": "2026-10-02T19:16:49+08:00",
-  "data_through": "2026-10-02",
+  "generated_at": "2026-10-04T19:14:28+08:00",
+  "data_through": "2026-10-04",
   "conference_stale": false,
-  "conference_source_date": "2026-10-02",
+  "conference_source_date": "2026-10-04",
   "dividend_stale": false,
-  "dividend_source_date": "2026-10-02",
-  "macro_count": 6,
+  "dividend_source_date": "2026-10-04",
+  "macro_count": 5,
   "conference_count": 2,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-10-02",
-      "type": "macro",
-      "name": "美國就業報告(非農/失業率)",
-      "title": "美國就業報告(非農/失業率) 發布",
-      "importance": "high",
-      "level": "high",
-      "source": "FRED release_id 50",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
-    },
     {
       "date": "2026-10-05",
       "type": "macro_tw",
@@ -28,7 +18,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
+      "fetched_at": "2026-10-04T19:14:28+08:00"
     },
     {
       "date": "2026-10-08",
@@ -38,7 +28,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
+      "fetched_at": "2026-10-04T19:14:28+08:00"
     },
     {
       "date": "2026-10-12",
@@ -50,7 +40,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
+      "fetched_at": "2026-10-04T19:14:28+08:00"
     },
     {
       "date": "2026-10-12",
@@ -60,7 +50,7 @@
       "importance": "當月營收動能揭曉",
       "level": "medium_high",
       "source": "證交法/公司法 每月 10 日前",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
+      "fetched_at": "2026-10-04T19:14:28+08:00"
     },
     {
       "date": "2026-10-14",
@@ -70,7 +60,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 10",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
+      "fetched_at": "2026-10-04T19:14:28+08:00"
     },
     {
       "date": "2026-10-15",
@@ -82,7 +72,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
+      "fetched_at": "2026-10-04T19:14:28+08:00"
     },
     {
       "date": "2026-10-15",
@@ -92,7 +82,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 46",
-      "fetched_at": "2026-10-02T19:16:49+08:00"
+      "fetched_at": "2026-10-04T19:14:28+08:00"
     }
   ]
 }

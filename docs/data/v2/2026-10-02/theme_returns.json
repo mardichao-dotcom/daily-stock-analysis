@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "generated_at": "2026-10-02T19:17:55",
+  "generated_at": "2026-10-04T19:15:26",
   "rules": {
     "n_threshold": 3,
     "calculation": "equal_weight_average",
