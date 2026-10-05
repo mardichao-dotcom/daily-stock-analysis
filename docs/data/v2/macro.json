@@ -1,10 +1,8 @@
 {
-  "generated_at": "2026-10-03T08:30:05+08:00",
-  "sources_ok": 6,
-  "sources_failed": 1,
-  "errors": [
-    "margin: [Errno 54] Connection reset by peer"
-  ],
+  "generated_at": "2026-10-05T08:30:04+08:00",
+  "sources_ok": 7,
+  "sources_failed": 0,
+  "errors": [],
   "data": {
     "taiex": {
       "label": "加權指數",
@@ -37,23 +35,29 @@
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 68956.72,
+      "value": 69767.47,
       "source": "yfinance ^N225",
-      "change": 2203.0,
-      "change_pct": 3.3
+      "change": 1458.01,
+      "change_pct": 2.13
     },
     "dxy": {
       "label": "美元指數",
-      "value": 101.92,
+      "value": 101.94,
       "source": "yfinance DX-Y.NYB",
-      "change": -0.18,
-      "change_pct": -0.17
+      "change": 0.01,
+      "change_pct": 0.01
     },
     "margin": {
       "label": "融資餘額",
-      "value": "N/A",
-      "error": "[Errno 54] Connection reset by peer",
-      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)"
+      "value": 8566.4,
+      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
+      "change": 79.0,
+      "change_pct": 0.93,
+      "date": "2026-10-02",
+      "unit": "億元",
+      "streak": 11,
+      "percentile": 100,
+      "history_days": 252
     }
   }
 }
