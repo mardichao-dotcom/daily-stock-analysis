@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-04T19:14:28+08:00",
-  "data_through": "2026-10-04",
+  "generated_at": "2026-10-05T19:16:45+08:00",
+  "data_through": "2026-10-05",
   "conference_stale": false,
-  "conference_source_date": "2026-10-04",
+  "conference_source_date": "2026-10-05",
   "dividend_stale": false,
-  "dividend_source_date": "2026-10-04",
+  "dividend_source_date": "2026-10-05",
   "macro_count": 5,
-  "conference_count": 2,
+  "conference_count": 4,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
@@ -18,7 +18,19 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-10-04T19:14:28+08:00"
+      "fetched_at": "2026-10-05T19:16:45+08:00"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "conference",
+      "symbol": "TWSE:2603",
+      "name": "長榮",
+      "title": "長榮 法說會(張榮發基金會國際會議中心11樓(台北市中)",
+      "importance": "受邀參加永豐金證券舉辦之法說會，說明本公司之營運概況。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:00",
+      "fetched_at": "2026-10-05T19:16:45+08:00"
     },
     {
       "date": "2026-10-08",
@@ -28,7 +40,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-10-04T19:14:28+08:00"
+      "fetched_at": "2026-10-05T19:16:45+08:00"
     },
     {
       "date": "2026-10-12",
@@ -40,7 +52,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-04T19:14:28+08:00"
+      "fetched_at": "2026-10-05T19:16:45+08:00"
     },
     {
       "date": "2026-10-12",
@@ -50,7 +62,7 @@
       "importance": "當月營收動能揭曉",
       "level": "medium_high",
       "source": "證交法/公司法 每月 10 日前",
-      "fetched_at": "2026-10-04T19:14:28+08:00"
+      "fetched_at": "2026-10-05T19:16:45+08:00"
     },
     {
       "date": "2026-10-14",
@@ -60,7 +72,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 10",
-      "fetched_at": "2026-10-04T19:14:28+08:00"
+      "fetched_at": "2026-10-05T19:16:45+08:00"
     },
     {
       "date": "2026-10-15",
@@ -72,7 +84,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-10-04T19:14:28+08:00"
+      "fetched_at": "2026-10-05T19:16:45+08:00"
     },
     {
       "date": "2026-10-15",
@@ -82,7 +94,19 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 46",
-      "fetched_at": "2026-10-04T19:14:28+08:00"
+      "fetched_at": "2026-10-05T19:16:45+08:00"
+    },
+    {
+      "date": "2026-11-04",
+      "type": "conference",
+      "symbol": "TWSE:2395",
+      "name": "研華",
+      "title": "研華 法說會(線上會議)",
+      "importance": "本公司受邀參加大和國泰證券主辦之線上會議，就本公司115年第三季之財務數字、經營績效等資訊做相關說明。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:30",
+      "fetched_at": "2026-10-05T19:16:45+08:00"
     }
   ]
 }
