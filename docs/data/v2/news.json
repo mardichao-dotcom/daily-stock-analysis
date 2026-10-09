@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T08:30:25+08:00",
+  "generated_at": "2026-10-09T08:30:34+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,132 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 65,
+  "count": 57,
   "items": [
+    {
+      "title": "美股多收黑　OpenAI年化營收低於投資人預期拖累AI股",
+      "source": "中央社財經",
+      "published_at": "2026-10-09T05:18:24+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202610090009.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積Q3營收1.4兆創新高 受惠輝達新平台、蘋果新機挹注",
+      "source": "經濟日報",
+      "published_at": "2026-10-09T02:33:37+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://money.udn.com/money/story/5612/9804043",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達最強AI PC 叫陣蘋果 華碩、微星搶商機",
+      "source": "經濟日報",
+      "published_at": "2026-10-09T02:23:27+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://money.udn.com/money/story/5612/9804093",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "AI液冷組件需求訂單激增 榮惠9月、Q3營收雙創新高本季展望樂觀",
+      "source": "鉅亨網",
+      "published_at": "2026-10-09T00:11:35+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://news.cnyes.com/news/id/6625997",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "Google Cloud推出Gemini代理 首款跨平台、具自主執行力的企業通用 AI",
+      "source": "經濟日報",
+      "published_at": "2026-10-08T23:37:24+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://money.udn.com/money/story/5612/9804141",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "微軟、輝達聯手把資料中心塞進筆電 RTX Spark售價11.9萬起 一般人先別急著買",
+      "source": "經濟日報",
+      "published_at": "2026-10-08T22:50:28+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://money.udn.com/money/story/11162/9804004",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "格羅方德宣布與台積電簽20億美元 CoWoS 矽中介層協議5年",
+      "source": "經濟日報",
+      "published_at": "2026-10-08T21:57:39+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://money.udn.com/money/story/5612/9803930",
+      "matched_keywords": [
+        "台積電",
+        "CoWoS"
+      ]
+    },
+    {
+      "title": "格芯將生產關鍵AI晶片零組件　供台積電使用",
+      "source": "中央社財經",
+      "published_at": "2026-10-08T21:53:10+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202610080370.aspx",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電CoWoS找來新幫手！格芯簽20億美元協議 在美擴產關鍵元件",
+      "source": "鉅亨網",
+      "published_at": "2026-10-08T21:00:20+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://news.cnyes.com/news/id/6625992",
+      "matched_keywords": [
+        "台積電",
+        "CoWoS"
+      ]
+    },
+    {
+      "title": "迎國慶煙火人潮　電信三雄導入AI擴充網路",
+      "source": "中央社財經",
+      "published_at": "2026-10-08T20:54:33+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202610080354.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "水資源挑戰升溫 貿協10/15邀專家探解方、聚焦AI水處理到產業實務",
+      "source": "鉅亨網",
+      "published_at": "2026-10-08T20:01:30+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://news.cnyes.com/news/id/6625911",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈電子五哥營收〉和碩AI伺服器、新機上市齊發力 9月營收2147億元創單月高",
+      "source": "鉅亨網",
+      "published_at": "2026-10-08T19:48:09+08:00",
+      "fetched_at": "2026-10-09T08:30:34+08:00",
+      "url": "https://news.cnyes.com/news/id/6625086",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "台塑新智能 麥寮建置AIDC",
       "source": "經濟日報",
@@ -458,210 +582,6 @@
       "published_at": "2026-10-06T12:49:59+08:00",
       "fetched_at": "2026-10-07T08:30:25+08:00",
       "url": "https://news.cnyes.com/news/id/6620189",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "台灣首家！鴻海9月營收上兆元 AI 與 iPhone 雙主軸熱轉 Q4將續強",
-      "source": "經濟日報",
-      "published_at": "2026-10-06T02:41:00+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/5612/9796590",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "台積電Q3業績有望達財測高標",
-      "source": "經濟日報",
-      "published_at": "2026-10-06T02:33:21+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/5612/9796681",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "日本半導體國家隊強碰台積電 Rapidus 攜手全球17大咖搶食訂單",
-      "source": "經濟日報",
-      "published_at": "2026-10-06T02:31:57+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/5612/9796679",
-      "matched_keywords": [
-        "台積電",
-        "半導體"
-      ]
-    },
-    {
-      "title": "輝達也搶著加入 開源 AI 模型市場商機如何？關鍵在這件事",
-      "source": "經濟日報",
-      "published_at": "2026-10-05T22:58:14+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://money.udn.com/money/story/11162/9796591",
-      "matched_keywords": [
-        "輝達",
-        "AI"
-      ]
-    },
-    {
-      "title": "馬斯克晶片計畫找上台積電！英特爾股價承壓",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T22:30:07+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6622063",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "網傳AI合成大樹光電災情照　經濟部：誤導大眾製造恐慌",
-      "source": "中央社財經",
-      "published_at": "2026-10-05T21:46:07+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202610050303.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "從半導體到無人機！龔明鑫看好下一座「護國神山」上調產值目標至500億",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T21:20:08+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6622042",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "Reflection首款開放權重模型　恐對美中AI對手構威脅",
-      "source": "中央社財經",
-      "published_at": "2026-10-05T20:58:47+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202610050295.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI浪潮　去年電子及半導體生產用機械設備業產值創高",
-      "source": "中央社財經",
-      "published_at": "2026-10-05T20:20:21+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202610050283.aspx",
-      "matched_keywords": [
-        "AI",
-        "半導體"
-      ]
-    },
-    {
-      "title": "聯亞受惠AI產品出貨量增 9月營收年增達190.2%再創單月新高",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T19:28:58+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621936",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "從1周變半小時！台灣獨研AI 3D重構技術 醫療「元宇宙」助攻精準手術",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T19:10:02+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621639",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "營收速報  - 昇陽半導體(8028)9月營收5.12億元年增率高達33.19％",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T18:50:38+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621916",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "數發部旗下資安院強化AI資安防禦量能 建構「快、廣、深」國家資安防護",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T18:07:26+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621843",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "〈台幣〉聯準會10月不見得會再升息 股匯齊揚升值4.2分收31.788元",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T17:50:23+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621800",
-      "matched_keywords": [
-        "升息"
-      ]
-    },
-    {
-      "title": "搶啖AI建廠商機！大易橙10/6登興櫃 參考價252元",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T17:38:53+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621811",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI榮景才走到半路！蔡明興看好台股站上5萬點 「台積電一跳就過了」",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T16:59:36+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621760",
-      "matched_keywords": [
-        "台積電",
-        "AI"
-      ]
-    },
-    {
-      "title": "聯發科攜手達發 加速AI時代全球網路基礎建設升級",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T15:15:03+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621709",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "〈台股盤後〉台積電攜低軌衛星、PCB狂歡 收漲1236點續創新高叩關5萬點",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T14:08:36+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621672",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "00830近一年翻倍？國泰費城半導體ETF成分股、配息與定期定額一次看",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T13:55:42+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621668",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "00416A是什麼？首檔小股本主動式ETF登場，AI供應鏈下一批飆股藏在這裡？",
-      "source": "鉅亨網",
-      "published_at": "2026-10-05T13:51:39+08:00",
-      "fetched_at": "2026-10-06T08:30:39+08:00",
-      "url": "https://news.cnyes.com/news/id/6621665",
       "matched_keywords": [
         "AI"
       ]
