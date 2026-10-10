@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T08:30:05+08:00",
+  "generated_at": "2026-10-10T08:30:05+08:00",
   "sources_ok": 7,
   "sources_failed": 0,
   "errors": [],
@@ -14,38 +14,38 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7765.36,
+      "value": 7811.54,
       "source": "yfinance ^GSPC",
-      "change": -36.41,
-      "change_pct": -0.47
+      "change": 46.18,
+      "change_pct": 0.59
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 27193.34,
+      "value": 27366.17,
       "source": "yfinance ^IXIC",
-      "change": -345.35,
-      "change_pct": -1.25
+      "change": 172.83,
+      "change_pct": 0.64
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": 15.41,
+      "value": 14.84,
       "source": "yfinance ^VIX",
-      "change": 0.33,
-      "change_pct": 2.19
+      "change": -0.57,
+      "change_pct": -3.7
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 68229.65,
+      "value": 69042.11,
       "source": "yfinance ^N225",
-      "change": -1806.06,
-      "change_pct": -2.58
+      "change": -993.6,
+      "change_pct": -1.42
     },
     "dxy": {
       "label": "美元指數",
-      "value": 102.11,
+      "value": 102.23,
       "source": "yfinance DX-Y.NYB",
-      "change": -0.13,
-      "change_pct": -0.13
+      "change": 0.09,
+      "change_pct": 0.09
     },
     "margin": {
       "label": "融資餘額",
