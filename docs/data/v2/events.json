@@ -1,37 +1,15 @@
 {
-  "generated_at": "2026-10-12T19:16:47+08:00",
-  "data_through": "2026-10-12",
+  "generated_at": "2026-10-13T19:16:47+08:00",
+  "data_through": "2026-10-13",
   "conference_stale": false,
-  "conference_source_date": "2026-10-12",
+  "conference_source_date": "2026-10-13",
   "dividend_stale": false,
-  "dividend_source_date": "2026-10-12",
-  "macro_count": 4,
-  "conference_count": 7,
+  "dividend_source_date": "2026-10-13",
+  "macro_count": 3,
+  "conference_count": 9,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-10-12",
-      "type": "conference",
-      "symbol": "TWSE:2408",
-      "name": "南亞科",
-      "title": "南亞科 法說會(線上法說會)",
-      "importance": "(1)2026年第3季營運狀況說明\n(2)參加方式：請參見 https://www.nanya.com/tw/IR/13",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "15:00",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
-    },
-    {
-      "date": "2026-10-12",
-      "type": "macro_tw",
-      "name": "台股月營收公布截止",
-      "title": "上市櫃全體月營收公布截止(每月 10 日前,遇假順延)",
-      "importance": "當月營收動能揭曉",
-      "level": "medium_high",
-      "source": "證交法/公司法 每月 10 日前",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
-    },
     {
       "date": "2026-10-14",
       "type": "macro",
@@ -40,7 +18,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 10",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-10-15",
@@ -52,7 +30,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-10-15",
@@ -62,7 +40,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 46",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-10-21",
@@ -72,7 +50,7 @@
       "importance": "期貨/選擇權結算,留意尾盤波動",
       "level": "medium",
       "source": "程式推算(每月第三個週三)",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-10-27",
@@ -84,7 +62,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-10-27",
@@ -96,7 +74,31 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
+    },
+    {
+      "date": "2026-10-27",
+      "type": "conference",
+      "symbol": "TWSE:6239",
+      "name": "力成",
+      "title": "力成 法說會(線上法說會)",
+      "importance": "報告115年第三季營運成果及未來之營運展望",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "14:30",
+      "fetched_at": "2026-10-13T19:16:47+08:00"
+    },
+    {
+      "date": "2026-10-28",
+      "type": "conference",
+      "symbol": "TWSE:2303",
+      "name": "聯電",
+      "title": "聯電 法說會(線上法說會)",
+      "importance": "本公司2026年第三季財務暨營運報告。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "17:00",
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-11-03",
@@ -108,7 +110,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-11-04",
@@ -120,7 +122,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:30",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     },
     {
       "date": "2026-11-04",
@@ -132,7 +134,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-12T19:16:47+08:00"
+      "fetched_at": "2026-10-13T19:16:47+08:00"
+    },
+    {
+      "date": "2026-11-06",
+      "type": "conference",
+      "symbol": "TPEX:6643",
+      "name": "M31",
+      "title": "M31 法說會(線上會議)",
+      "importance": "本公司受邀參加永豐金證券線上法說會，會中說明本公司概況。 報名連結：https://www.surveycake.com",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "14:00",
+      "fetched_at": "2026-10-13T19:16:47+08:00"
     }
   ]
 }
