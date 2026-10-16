@@ -1,36 +1,26 @@
 {
-  "generated_at": "2026-10-15T19:16:46+08:00",
-  "data_through": "2026-10-15",
+  "generated_at": "2026-10-16T19:16:48+08:00",
+  "data_through": "2026-10-16",
   "conference_stale": false,
-  "conference_source_date": "2026-10-15",
+  "conference_source_date": "2026-10-16",
   "dividend_stale": false,
-  "dividend_source_date": "2026-10-15",
-  "macro_count": 5,
-  "conference_count": 13,
+  "dividend_source_date": "2026-10-16",
+  "macro_count": 4,
+  "conference_count": 16,
   "dividend_count": 0,
   "config_warnings": [],
   "events": [
     {
-      "date": "2026-10-15",
+      "date": "2026-10-19",
       "type": "conference",
-      "symbol": "TWSE:2330",
-      "name": "台積電",
-      "title": "台積電 法說會(線上法說會)",
-      "importance": "(1)公布本公司2026年第3季財務報告及2026年第4季業績展望。(2)參加方式：請參見https://investo",
+      "symbol": "TWSE:2474",
+      "name": "可成",
+      "title": "可成 法說會(國票證券會議室)",
+      "importance": "本公司受邀參加國票證券舉辦之法人座談會",
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
-    },
-    {
-      "date": "2026-10-15",
-      "type": "macro",
-      "name": "美國 PPI",
-      "title": "美國 PPI 發布",
-      "importance": "medium",
-      "level": "medium",
-      "source": "FRED release_id 46",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "time": "12:00",
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-20",
@@ -42,7 +32,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-21",
@@ -52,7 +42,7 @@
       "importance": "期貨/選擇權結算,留意尾盤波動",
       "level": "medium",
       "source": "程式推算(每月第三個週三)",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-27",
@@ -64,7 +54,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-27",
@@ -76,7 +66,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-27",
@@ -88,7 +78,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-28",
@@ -100,7 +90,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "17:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-28",
@@ -110,7 +100,7 @@
       "importance": "high",
       "level": "high",
       "source": "Fed FOMC 年度日程",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-29",
@@ -122,7 +112,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-29",
@@ -134,7 +124,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
+    },
+    {
+      "date": "2026-10-29",
+      "type": "conference",
+      "symbol": "TPEX:3529",
+      "name": "力旺",
+      "title": "力旺 法說會(Raffles City Convent)",
+      "importance": "本公司受邀參加櫃買中心與台新證券舉辦之新加坡企業日，說明本公司財務及業務相關資訊。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "09:00",
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-29",
@@ -144,7 +146,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-10-29",
@@ -154,7 +156,19 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
+    },
+    {
+      "date": "2026-10-30",
+      "type": "conference",
+      "symbol": "TWSE:2454",
+      "name": "聯發科",
+      "title": "聯發科 法說會(線上法說會)",
+      "importance": "‎(1) 公布本公司2026年第3季財務報告及2026年第4季業績展望。 (2) 參加方式：請參見https://www",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:00",
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-11-03",
@@ -166,7 +180,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-11-04",
@@ -178,7 +192,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:30",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-11-04",
@@ -190,7 +204,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-11-06",
@@ -202,7 +216,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
+    },
+    {
+      "date": "2026-11-06",
+      "type": "conference",
+      "symbol": "TPEX:8299",
+      "name": "群聯",
+      "title": "群聯 法說會(麥格理證券安排之線上會議)",
+      "importance": "本公司受邀參加麥格理證券舉辦之3Q26財報公告線上法說會，說明營運績效等。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "17:00",
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     },
     {
       "date": "2026-11-13",
@@ -214,7 +240,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-10-15T19:16:46+08:00"
+      "fetched_at": "2026-10-16T19:16:48+08:00"
     }
   ]
 }
