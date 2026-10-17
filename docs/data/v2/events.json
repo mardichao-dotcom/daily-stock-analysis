@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-16T19:16:48+08:00",
-  "data_through": "2026-10-16",
+  "generated_at": "2026-10-17T19:13:24+08:00",
+  "data_through": "2026-10-17",
   "conference_stale": false,
-  "conference_source_date": "2026-10-16",
+  "conference_source_date": "2026-10-17",
   "dividend_stale": false,
-  "dividend_source_date": "2026-10-16",
+  "dividend_source_date": "2026-10-17",
   "macro_count": 4,
   "conference_count": 16,
   "dividend_count": 0,
@@ -20,7 +20,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "12:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-20",
@@ -32,7 +32,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-21",
@@ -42,7 +42,7 @@
       "importance": "期貨/選擇權結算,留意尾盤波動",
       "level": "medium",
       "source": "程式推算(每月第三個週三)",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-27",
@@ -54,7 +54,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-27",
@@ -66,7 +66,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-27",
@@ -78,7 +78,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-28",
@@ -90,7 +90,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "17:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-28",
@@ -100,7 +100,7 @@
       "importance": "high",
       "level": "high",
       "source": "Fed FOMC 年度日程",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-29",
@@ -112,7 +112,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-29",
@@ -124,7 +124,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-29",
@@ -136,7 +136,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-29",
@@ -146,7 +146,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-29",
@@ -156,7 +156,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-10-30",
@@ -168,7 +168,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-11-03",
@@ -180,7 +180,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-11-04",
@@ -192,7 +192,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:30",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-11-04",
@@ -204,7 +204,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-11-06",
@@ -216,7 +216,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-11-06",
@@ -228,7 +228,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "17:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     },
     {
       "date": "2026-11-13",
@@ -240,7 +240,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-10-16T19:16:48+08:00"
+      "fetched_at": "2026-10-17T19:13:24+08:00"
     }
   ]
 }
