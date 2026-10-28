@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T08:32:21+08:00",
+  "generated_at": "2026-10-28T08:34:30+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,169 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 22,
+  "count": 37,
   "items": [
+    {
+      "title": "投資人對AI類股重燃熱情　美股收紅",
+      "source": "中央社財經",
+      "published_at": "2026-10-28T05:20:16+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202610280012.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "基辛格：台灣扮 AI 硬體要角",
+      "source": "經濟日報",
+      "published_at": "2026-10-28T02:55:30+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9840891",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達 VR 平台 鴻海訂單躍增 業界傳出占比挑戰五成",
+      "source": "經濟日報",
+      "published_at": "2026-10-28T02:54:39+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9840898",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "工具機業界：往半導體方向轉型",
+      "source": "經濟日報",
+      "published_at": "2026-10-28T02:30:36+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://money.udn.com/money/story/5612/9840834",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "華碩： PC 明年再漲價 5% 預期記憶體、固態硬碟等零組件成本續揚",
+      "source": "經濟日報",
+      "published_at": "2026-10-28T01:43:16+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://money.udn.com/money/story/11162/9840801",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "和泰車樂觀高價車款銷售 總座蘇純興看好 AI 經濟動能支撐車市需求",
+      "source": "經濟日報",
+      "published_at": "2026-10-28T01:39:56+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://money.udn.com/money/story/10871/9840806",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "鴻海科技日30日登場　鎖定AI智造機器人電動車",
+      "source": "中央社財經",
+      "published_at": "2026-10-27T21:04:50+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202610270300.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "【旺宏法說會 AI 摘要】2026/10/27",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T20:17:39+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6638451",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "【力成 (6239-TW) 法說會 AI 摘要】2026/10/27",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T18:15:26+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6638482",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台幣〉爆量轉升5.6分收32.452元 央行估聯準會年底再升息1碼",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T16:44:36+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6638395",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "〈台股盤後〉機器人、記憶體題材熱夯 開高走低小漲54點守住4萬6",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T15:25:54+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6638269",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "OpenAI深化三星合作、日本AI基建升溫　野村亞洲雙ETF 00420A 、009833 11/3起限時募集",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T15:11:04+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6623504",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈焦點股〉AI需求旺盛磷化銦缺口短期難解 聯亞飆漲半根停板",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T12:26:35+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6638238",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉四日連假開門紅 台積電、鴻海領軍漲逾500點 記憶體、機器人走揚",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T10:17:11+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6638159",
+      "matched_keywords": [
+        "台積電",
+        "記憶體"
+      ]
+    },
+    {
+      "title": "藍新資訊68元掛牌上櫃 搶啖代理式AI加速落地大商機",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T09:50:04+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6638146",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "地緣政治引爆戰略備貨！大宗商品怎麼選？專家三情境教戰配置術",
+      "source": "鉅亨網",
+      "published_at": "2026-10-27T09:10:14+08:00",
+      "fetched_at": "2026-10-28T08:34:30+08:00",
+      "url": "https://news.cnyes.com/news/id/6635746",
+      "matched_keywords": [
+        "地緣政治"
+      ]
+    },
     {
       "title": "AI交易回暖提振大盤　美國股市收高",
       "source": "中央社財經",
@@ -219,16 +380,6 @@
       "url": "https://www.cna.com.tw/news/afe/202610250018.aspx",
       "matched_keywords": [
         "AI"
-      ]
-    },
-    {
-      "title": "菲律賓力拚發展半導體產業　周民淦：台灣可助攻",
-      "source": "中央社財經",
-      "published_at": "2026-10-24T20:10:11+08:00",
-      "fetched_at": "2026-10-26T08:33:41+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202610240193.aspx",
-      "matched_keywords": [
-        "半導體"
       ]
     }
   ]
