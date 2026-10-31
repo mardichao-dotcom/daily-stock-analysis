@@ -120,6 +120,6 @@ def classify_adjustment(symbol, incoming, existing, market_dates,
         return {"action": "none",
                 "reason": f"官方 {off} 與調整後 {incoming[sample]:.2f} 差 {err:.2f}% "
                           f">{OFFICIAL_TOL_PCT}% → 疑 glitch,續擋"}
-    # 美股:無 TWSE 官方仲裁,首階段一律待人工確認
+    # 非台股(美/日/韓/歐):無 TWSE 官方仲裁,首階段一律待人工確認
     return {"action": "manual", "k": k, "overlap": len(overlap),
-            "reason": "美股無官方仲裁,待人工 --approve-split"}
+            "reason": "非台股無官方仲裁,待人工 --approve-split"}

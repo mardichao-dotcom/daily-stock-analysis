@@ -23,14 +23,16 @@
         <string>/Users/mardichao</string>
     </dict>
 
-    <!-- 平日(週一~週五)台北 05:30 觸發,只補美股 -->
+    <!-- 週二~週六 台北 05:30 觸發,只補美股(美股週一~週五收盤 = 台北隔日約 05:00)。
+         2026-10-31 由週一~週五改:週一 05:30 無新美股資料(週日休市),
+         週五收盤要到週六才有(同 macro plist 加週六的邏輯)。 -->
     <key>StartCalendarInterval</key>
     <array>
-        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>5</integer><key>Minute</key><integer>30</integer></dict>
         <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>5</integer><key>Minute</key><integer>30</integer></dict>
         <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>5</integer><key>Minute</key><integer>30</integer></dict>
         <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>5</integer><key>Minute</key><integer>30</integer></dict>
         <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>5</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>6</integer><key>Hour</key><integer>5</integer><key>Minute</key><integer>30</integer></dict>
     </array>
 
     <key>RunAtLoad</key>

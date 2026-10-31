@@ -39,6 +39,7 @@ TZ_TAIPEI    = timezone(timedelta(hours=8))
 
 SANITY_JUMP_PCT = 0.30          # 跳變/覆寫差異閾值(審計 W1 指定 30%)
 STALE_LAG_DAYS = 2              # watchlist 檔落後市場 ≥N 交易日 → 落後清單告警
+KEY_PRICES_PATH = os.path.join(PROJECT_ROOT, "config", "key_prices.json")
 
 from src.kline_adjust import (classify_adjustment, apply_corporate_action,
                               ADJ_MIN_OVERLAP, ADJ_RATIO_TOL)
@@ -203,8 +204,38 @@ def approve(db, target: str | None):
     conn.close()
 
 
+def key_price_impact(symbol, k, kp_path=KEY_PRICES_PATH) -> list[str]:
+    """分割/除權重調後,列出該檔關鍵價「現值 → ×k 換算值」供人工處理(不自動改)。
+
+    2026-10-31(4062 1:2 分割):「價位 >2x 外」判斷抓不到 1:2 分割,
+    K 線重調後若不提示,過期關鍵價會在圖上靜默錯位。無關鍵價 → []。"""
+    try:
+        with open(kp_path, encoding="utf-8") as f:
+            entry = (json.load(f).get("stocks") or {}).get(symbol)
+    except (OSError, ValueError):
+        return []
+    if not entry:
+        return []
+    fmt = lambda v: f"{float(v) * k:g}"
+    out = [f"線 {l.get('price')} → {fmt(l.get('price'))}({l.get('color') or ''})"
+           for l in entry.get("lines") or []]
+    out += [f"區域 {a.get('low')}~{a.get('high')} → {fmt(a.get('low'))}~{fmt(a.get('high'))}"
+            f"({a.get('text') or ''})" for a in entry.get("areas") or []]
+    return out
+
+
+def _print_key_price_impact(symbol, k):
+    items = key_price_impact(symbol, k)
+    if not items:
+        return
+    print(f"[approve-split] ⚠️ {symbol} 在 key_prices.json 有 {len(items)} 個關鍵價仍是重調前基準,"
+          f"需人工處理(×{k:.5f} 換算或請朋友重畫):")
+    for s in items:
+        print(f"      • {s}")
+
+
 def approve_split(db, symbol):
-    """人工核可疑似除權(美股/官方源掛時用):以隔離區調整後值算 k、重調整段歷史、
+    """人工核可疑似除權(非台股/官方源掛時用):以隔離區調整後值算 k、重調整段歷史、
     匯入隔離 bar、清隔離。重疊 ratio 不一致則拒絕(防誤洗)。"""
     import statistics
     conn = sqlite3.connect(db)
@@ -237,6 +268,7 @@ def approve_split(db, symbol):
     conn.close()
     print(f"[approve-split] ✅ {symbol} 重調 {n} 根歷史(k={k:.5f})"
           f" + 匯入 {len(qrows)} 根隔離 bar")
+    _print_key_price_impact(symbol, k)
 
 
 def main():
@@ -291,7 +323,7 @@ def main():
     rejected_future = []          # [(symbol, date_str)] 被擋下的未來 bar
     quarantined = []              # [(symbol, date_str, reason)] W1 sanity 閘
     adjusted = []                 # [(symbol, k, official)] 除權自動重調
-    suspected = []                # [(symbol, k, reason)] 疑似除權待人工(美股/官方掛)
+    suspected = []                # [(symbol, k, reason)] 疑似除權待人工(非台股/官方掛)
     tw_dates, us_dates = _market_dates(cur)
     last_date = ""
     for symbol, payload in results.items():
@@ -379,13 +411,20 @@ def main():
                  + "\n".join(f"• {s}:k={k:.5f}"
                              + (f"(TWSE 官方 {off} 背書)" if off else "")
                              for s, k, off in adjusted[:8]))
+        # 關鍵價不會跟著重調 → 逐檔列出換算值,提示人工處理
+        for s, k, _ in adjusted:
+            items = key_price_impact(s, k)
+            if items:
+                _discord(f"⚠️ [關鍵價待處理] {s} 已重調 k={k:.5f},但 key_prices.json 仍是舊基準"
+                         f"(需人工 ×k 換算或請朋友重畫):\n"
+                         + "\n".join(f"• {x}" for x in items[:12]))
 
-    # 疑似除權待人工(美股無官方仲裁 / 台股官方源掛)——不自動動資料
+    # 疑似除權待人工(非台股無官方仲裁 / 台股官方源掛)——不自動動資料
     if suspected:
         head = "; ".join(f"{s} k≈{k:.4f}" for s, k, _ in suspected[:6])
         print(f"[import_kline] 🔶 疑似除權待人工 {len(suspected)} 檔:{head}")
         _discord("🔶 [K線疑似除權-待人工確認] 以下檔卡住且呈等比重調,疑似除權,但無權威仲裁"
-                 "(美股/官方源取不到),未自動處理:\n"
+                 "(非台股/官方源取不到),未自動處理:\n"
                  + "\n".join(f"• {s}:k≈{k:.5f}({r})" for s, k, r in suspected[:8])
                  + "\n確認後放行:python3 src/import_kline.py --approve-split SYMBOL")
 

@@ -3,7 +3,7 @@
   "updated_at": "2026-09-15",
   "rule_version": "v2.1",
   "source": "key_prices_clean_v3.md",
-  "_note": "由 tools/convert_key_prices.py 生成。重跑覆寫。手動編輯會被覆蓋。 | 2026-07-20:80 檔判讀拼接上架(更新70/新增10,其餘保留;新詞彙 break_block 已入白名單)。 | 2026-09-15:79 檔判讀拼接(更新79/新增0);起漲K/大戶空單成本價依規則排除。",
+  "_note": "由 tools/convert_key_prices.py 生成。重跑覆寫。手動編輯會被覆蓋。 | 2026-07-20:80 檔判讀拼接上架(更新70/新增10,其餘保留;新詞彙 break_block 已入白名單)。 | 2026-09-15:79 檔判讀拼接(更新79/新增0);起漲K/大戶空單成本價依規則排除。 | 2026-10-31:TSE:8035 分割換算 ÷5(數值換算,文字/顏色/形容詞不動,待朋友確認)。 | 2026-10-31:TSE:4062 分割換算 ÷2(數值換算,文字/顏色/形容詞不動,待朋友確認)。",
   "stocks": {
     "TWSE:2330": {
       "name": "台積電",
@@ -3851,49 +3851,50 @@
       "market": "INTL",
       "lines": [
         {
-          "price": "81310",
+          "price": "16262",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "63740",
+          "price": "12748",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "53690",
+          "price": "10738",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "41040",
+          "price": "8208",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "36570",
+          "price": "7314",
           "color": "red",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "30080",
+          "price": "6016",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         }
       ],
-      "areas": []
+      "areas": [],
+      "note": "2026-10 分割換算 ÷5(1:5,基準日 2026-09-30),待朋友確認。原價:81310/63740/53690/41040/36570/30080"
     },
     "TSE:6752": {
       "name": "Panasonic 松下",
@@ -3991,14 +3992,14 @@
       "market": "INTL",
       "lines": [
         {
-          "price": "14855",
+          "price": "7427.5",
           "color": "black",
           "text": null,
           "adjective": null,
           "category": "key_price"
         },
         {
-          "price": "5440",
+          "price": "2720",
           "color": "black",
           "text": null,
           "adjective": null,
@@ -4007,13 +4008,14 @@
       ],
       "areas": [
         {
-          "low": "11325",
-          "high": "12125",
+          "low": "5662.5",
+          "high": "6062.5",
           "text": "FVG",
           "adjective": null,
           "category": "fvg"
         }
-      ]
+      ],
+      "note": "2026-10 分割換算 ÷2(1:2,基準日 2026-09-30),待朋友確認。原價:14855/5440/11325~12125"
     },
     "NASDAQ:NVDA": {
       "name": "NVIDIA",
