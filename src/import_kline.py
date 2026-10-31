@@ -374,6 +374,12 @@ def main():
                 "INSERT OR REPLACE INTO kline VALUES (?,?,?,?,?,?,?)",
                 (symbol, date_str, o, h, l, c, v))
             last_batch_close = c
+            # W1 錨點:本批已入庫的 bar 併入錨表——多日回補時下一根比「真正的前一日」,
+            # 而非匯入前 DB 的最後一根(2026-10-31:停更兩週回補,TWSE:2465 真漲 9.7%
+            # 被拿去比 10/16 收盤算成 31.4% 誤隔離)。被隔離的 bar 不入錨表(真除權仍連續撞閘)。
+            if date_str not in existing:
+                bisect.insort(dates_sorted, date_str)
+            existing[date_str] = c
             if date_str > last_date:
                 last_date = date_str
             inserted += 1

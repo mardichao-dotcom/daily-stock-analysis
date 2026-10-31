@@ -86,6 +86,23 @@ try_step() {
 # ────────────────────────────────────────────────────────────────────────────
 python3 src/status_writer.py --init --tool "$TOOL"
 
+# ── [pre] 不依賴 TV 的採集(2026-10-31 停更事故後移到健康檢查之前)────────────────
+# 10/19–10/30 TV 白屏停更期間,[0] 健康檢查失敗即 exit 0 → ETF/籌碼/總經訊號也一起
+# 沒跑(且連 skip 都沒記)。這些只打官方/投信 HTTP,與 TV 無關:先跑、各自非阻斷。
+# TV 掛掉時一樣「只採集、不發布」;TV 恢復後下一次 render/publish 自然帶上。
+#   - fetch_chips 自動模式:入庫日 = 來源自報日、自動補洞(不吃 DATA_DATE)
+#   - etf_holdings 在 chips 之後:用 chips 表日期當交易日曆(補洞 + 交易日告警)
+echo ""
+echo "[pre] 不依賴 TV 的採集(籌碼/ETF/事件/總經訊號)..."
+run_step fetch_chips python3 -m src.fetch_chips
+run_step etf_holdings python3 -m src.fetch_etf_holdings || true
+# fetch_events:非阻斷,第四道護欄保證 events.json 一定產出(失敗保留前一日 + stale)
+run_step fetch_events python3 -m src.fetch_events
+# stage12 水位模型訊號層:只寫 macro.db;日頻項在此,月頻項函式內自判是否需抓
+run_step fetch_signals python3 -m src.fetch_signals --daily
+run_step fetch_taifex python3 -m src.fetch_taifex
+run_step fed_expectations python3 -m src.fed_expectations
+
 # ── [0] 健康檢查 ─────────────────────────────────────────────────────────────
 echo ""
 echo "[0/10] 健康檢查..."
@@ -105,7 +122,7 @@ if ! curl -s -m 2 http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
             --step tv_collect --status fail --duration 0 \
             --note "CDP port 9222 not responding (auto-recovery failed)"
         for s in import_kline \
-                  run_filters_v2 fetch_chips prepare_charts_v2 site_meta render_v2 publish; do
+                  run_filters_v2 prepare_charts_v2 site_meta render_v2 publish; do
             skip_step "$s" "CDP 不通"
         done
         python3 src/status_writer.py --finish --tool "$TOOL"
@@ -145,7 +162,7 @@ if ! bash scripts/tv_preflight_selfheal.sh 2>&1; then
         --step tv_collect --status fail --duration 0 \
         --note "TradingViewApi preflight failed (chart present but API not ready)"
     for s in import_kline \
-              run_filters_v2 fetch_chips prepare_charts_v2 site_meta render_v2 publish; do
+              run_filters_v2 prepare_charts_v2 site_meta render_v2 publish; do
         skip_step "$s" "API preflight 失敗"
     done
     python3 src/status_writer.py --finish --tool "$TOOL"
@@ -169,12 +186,7 @@ echo "[2/10] ETF 日更新...（已停用:舊 etfedge 斷更,改由 [2b] PCF 快
 # run_step daily_update python3 "$HOME/ETF追蹤/daily_update.py"
 DU_EC=0   # 已停用,恆視為成功(不擋下游、不觸發失敗分支)
 
-# ── [2b] ETF 持股快照(PCF,2026-09-19 自建取代斷更的 etfedge)───────────────
-# 抓各投信法定每日 PCF 存 etf_holdings.db(獨立庫,不碰 etf_operations.db)。
-# 失敗不擋下游(腳本永遠 exit 0);連續 3 天無新資料自己發 Discord 告警。
-# 第一階段:台新 00987A;群益/統一等待各摸 API 後加入 SOURCES。
-echo "[2b/10] ETF 持股快照(PCF)..."
-run_step etf_holdings python3 -m src.fetch_etf_holdings || true
+# ── [2b] ETF 持股快照(PCF)── 2026-10-31 移至 [pre](不依賴 TV,健康檢查前先跑)──
 
 # ── [3] import_kline（依賴 tv_collect 成功）──────────────────────────────────
 echo "[3/10] 匯入 K 線資料..."
@@ -232,11 +244,7 @@ try_step run_filters_v2 python3 src/run_filters_v2.py \
     --date "$DATA_DATE" --kline "$KLINE_DB" --etf "$ETF_DB" \
     --output filtered_result_v2.json
 
-# ── [7.5] fetch_chips (stage9 §3.5 籌碼:三大法人+融資券+千張大戶 → kline.db chips 表)─
-# 非阻斷:籌碼是個股卡純顯示功能,任一來源失敗標 N/A 不冒充,不擋主儀表板發布。
-# 須在 prepare_charts_v2 之前(圖表 JSON 會嵌入 chips)。TDCC 每週五自動抓。
-echo "[7.5/10] 抓籌碼面(三大法人/融資/千張大戶,全市場過濾 watchlist)..."
-run_step fetch_chips python3 -m src.fetch_chips --date "$DATA_DATE"
+# ── [7.5] fetch_chips ── 2026-10-31 移至 [pre](須早於 prepare_charts_v2,圖表 JSON 嵌入 chips)─
 
 # ── [8] prepare_charts_v2 (V2 全 watchlist chart JSON + _index.json status) ──
 echo "[8/10] 準備 V2 圖表資料(全 watchlist + waiting_us_close 標記)..."
@@ -248,20 +256,8 @@ try_step prepare_charts_v2 python3 src/prepare_charts_v2.py \
 echo "[8.5/10] 產 site_meta.json(渲染單一資料源)..."
 try_step site_meta python3 -m src.site_meta --date "$DATA_DATE"
 
-# ── [8.6] fetch_events (stage9 §3.1 事件中樞:FRED 總經 + FOMC + Playwright 法說會)─
-# 非阻斷:events 是 client-fetch 側功能,第四道護欄保證 events.json 一定產出
-# (抓取失敗保留前一日 + stale),故用 run_step 不設 ABORT_AFTER,失敗不擋主儀表板發布。
-echo "[8.6/10] 抓事件中樞(events.json:總經日曆 + 法說會)..."
-run_step fetch_events python3 -m src.fetch_events
-
-# ── [8.7] fetch_signals + fetch_taifex (stage12 持股水位模型訊號資料層)──────
-# 非阻斷:訊號層只寫 macro.db(水位模型/週報訊號區的資料源),失敗不擋主儀表板;
-# run_step 記 fail → daily_supervisor Discord 告警。日頻項在此(19:00);
-# 月頻項(密大/燈號/CPI nowcast)冪等,函式內自判是否需抓。
-echo "[8.7/10] 抓水位模型訊號層(指數MA/VIX/10Y/台幣/FF期貨/月頻)..."
-run_step fetch_signals python3 -m src.fetch_signals --daily
-run_step fetch_taifex python3 -m src.fetch_taifex
-run_step fed_expectations python3 -m src.fed_expectations
+# ── [8.6] fetch_events / [8.7] 訊號層 ── 2026-10-31 移至 [pre](不依賴 TV)────────
+# render_v2 的宏觀頁(9-8)讀 macro.db,資料層已在 [pre] 更新。
 
 # ── [9] render_v2 (live + 日期 snapshot + watchlist + history + landing) ────
 echo "[9/10] 渲染 V2 儀表板(7 區塊 + 入口頁 + 歷史索引)..."

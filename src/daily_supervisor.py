@@ -248,7 +248,7 @@ def _check_data_freshness() -> list[str]:
     # 「N 天沒新資料」造成告警疲勞。daily_update 已停用(見 run_all.sh [2]),
     # etf_operations.db 凍結不再更新,故此新鮮度檢查一併關閉。
     # ★接手者是 etf_holdings.db(自建 PCF 快照),其新鮮度告警在
-    #   src/fetch_etf_holdings.py(連續 3 天無新資料 → Discord),不在此。
+    #   src/fetch_etf_holdings.py(連續 3 個交易日無新資料 → Discord),不在此。
 
     return warnings
 
