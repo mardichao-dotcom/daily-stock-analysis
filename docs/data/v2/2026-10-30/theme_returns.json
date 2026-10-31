@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "generated_at": "2026-10-31T17:01:51",
+  "generated_at": "2026-10-31T19:14:14",
   "rules": {
     "n_threshold": 3,
     "calculation": "equal_weight_average",
@@ -12,40 +12,6 @@
     "tags_with_no_data": 0
   },
   "tags": [
-    {
-      "tag": "邊緣AI",
-      "n": 4,
-      "n_traded": 4,
-      "n_excluded": 0,
-      "return_pct": -2.06,
-      "rankable": true,
-      "members": [
-        {
-          "code": "TWSE:2395",
-          "name": "研華",
-          "return_pct": 1.04,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2465",
-          "name": "麗臺",
-          "return_pct": -0.97,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2454",
-          "name": "聯發科",
-          "return_pct": -3.21,
-          "excluded": false
-        },
-        {
-          "code": "TPEX:5289",
-          "name": "宜鼎",
-          "return_pct": -5.08,
-          "excluded": false
-        }
-      ]
-    },
     {
       "tag": "網通",
       "n": 4,
@@ -385,11 +351,69 @@
       ]
     },
     {
+      "tag": "EFB",
+      "n": 8,
+      "n_traded": 8,
+      "n_excluded": 0,
+      "return_pct": -3.73,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:3711",
+          "name": "日月光投控",
+          "return_pct": -2.2,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": -2.65,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3189",
+          "name": "景碩",
+          "return_pct": -2.82,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": -3.09,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": -3.98,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8046",
+          "name": "南電",
+          "return_pct": -4.8,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3037",
+          "name": "欣興",
+          "return_pct": -4.9,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6239",
+          "name": "力成",
+          "return_pct": -5.36,
+          "excluded": false
+        }
+      ]
+    },
+    {
       "tag": "NVIDIA",
       "n": 18,
       "n_traded": 18,
       "n_excluded": 0,
-      "return_pct": -3.27,
+      "return_pct": -3.75,
       "rankable": true,
       "members": [
         {
@@ -402,12 +426,6 @@
           "code": "TWSE:3443",
           "name": "創意",
           "return_pct": -0.07,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2465",
-          "name": "麗臺",
-          "return_pct": -0.97,
           "excluded": false
         },
         {
@@ -495,67 +513,15 @@
           "excluded": false
         },
         {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": -9.73,
+          "excluded": false
+        },
+        {
           "code": "TWSE:2308",
           "name": "台達電",
           "return_pct": -9.8,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "EFB",
-      "n": 8,
-      "n_traded": 8,
-      "n_excluded": 0,
-      "return_pct": -3.73,
-      "rankable": true,
-      "members": [
-        {
-          "code": "TWSE:3711",
-          "name": "日月光投控",
-          "return_pct": -2.2,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3231",
-          "name": "緯創",
-          "return_pct": -2.65,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3189",
-          "name": "景碩",
-          "return_pct": -2.82,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2356",
-          "name": "英業達",
-          "return_pct": -3.09,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": -3.98,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:8046",
-          "name": "南電",
-          "return_pct": -4.8,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3037",
-          "name": "欣興",
-          "return_pct": -4.9,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6239",
-          "name": "力成",
-          "return_pct": -5.36,
           "excluded": false
         }
       ]
@@ -793,6 +759,40 @@
       ]
     },
     {
+      "tag": "邊緣AI",
+      "n": 4,
+      "n_traded": 4,
+      "n_excluded": 0,
+      "return_pct": -4.25,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2395",
+          "name": "研華",
+          "return_pct": 1.04,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2454",
+          "name": "聯發科",
+          "return_pct": -3.21,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:5289",
+          "name": "宜鼎",
+          "return_pct": -5.08,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": -9.73,
+          "excluded": false
+        }
+      ]
+    },
+    {
       "tag": "AI晶片測試",
       "n": 4,
       "n_traded": 4,
@@ -822,160 +822,6 @@
           "code": "TWSE:2449",
           "name": "京元電子",
           "return_pct": -5.94,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "AI伺服器",
-      "n": 24,
-      "n_traded": 24,
-      "n_excluded": 0,
-      "return_pct": -4.45,
-      "rankable": true,
-      "members": [
-        {
-          "code": "TWSE:2382",
-          "name": "廣達",
-          "return_pct": 0.0,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2465",
-          "name": "麗臺",
-          "return_pct": -0.97,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2317",
-          "name": "鴻海",
-          "return_pct": -1.01,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6805",
-          "name": "富世達",
-          "return_pct": -1.65,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2376",
-          "name": "技嘉",
-          "return_pct": -2.04,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3533",
-          "name": "嘉澤",
-          "return_pct": -2.11,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2059",
-          "name": "川湖",
-          "return_pct": -2.33,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:3231",
-          "name": "緯創",
-          "return_pct": -2.65,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6117",
-          "name": "迎廣",
-          "return_pct": -2.85,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2356",
-          "name": "英業達",
-          "return_pct": -3.09,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6669",
-          "name": "緯穎",
-          "return_pct": -3.98,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2357",
-          "name": "華碩",
-          "return_pct": -4.63,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:8046",
-          "name": "南電",
-          "return_pct": -4.8,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:8210",
-          "name": "勤誠",
-          "return_pct": -5.29,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2313",
-          "name": "華通",
-          "return_pct": -5.39,
-          "excluded": false
-        },
-        {
-          "code": "TPEX:3693",
-          "name": "營邦",
-          "return_pct": -5.8,
-          "excluded": false
-        },
-        {
-          "code": "TPEX:8299",
-          "name": "群聯",
-          "return_pct": -5.85,
-          "excluded": false
-        },
-        {
-          "code": "TPEX:5274",
-          "name": "信驊",
-          "return_pct": -5.95,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:4958",
-          "name": "臻鼎-KY",
-          "return_pct": -6.54,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2383",
-          "name": "台光電",
-          "return_pct": -6.69,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:6213",
-          "name": "聯茂",
-          "return_pct": -7.79,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2345",
-          "name": "智邦",
-          "return_pct": -7.98,
-          "excluded": false
-        },
-        {
-          "code": "TWSE:2368",
-          "name": "金像電",
-          "return_pct": -8.52,
-          "excluded": false
-        },
-        {
-          "code": "TPEX:6274",
-          "name": "台燿",
-          "return_pct": -8.99,
           "excluded": false
         }
       ]
@@ -1176,6 +1022,160 @@
           "code": "TPEX:8299",
           "name": "群聯",
           "return_pct": -5.85,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI伺服器",
+      "n": 24,
+      "n_traded": 24,
+      "n_excluded": 0,
+      "return_pct": -4.82,
+      "rankable": true,
+      "members": [
+        {
+          "code": "TWSE:2382",
+          "name": "廣達",
+          "return_pct": 0.0,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2317",
+          "name": "鴻海",
+          "return_pct": -1.01,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6805",
+          "name": "富世達",
+          "return_pct": -1.65,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2376",
+          "name": "技嘉",
+          "return_pct": -2.04,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3533",
+          "name": "嘉澤",
+          "return_pct": -2.11,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2059",
+          "name": "川湖",
+          "return_pct": -2.33,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:3231",
+          "name": "緯創",
+          "return_pct": -2.65,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6117",
+          "name": "迎廣",
+          "return_pct": -2.85,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2356",
+          "name": "英業達",
+          "return_pct": -3.09,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6669",
+          "name": "緯穎",
+          "return_pct": -3.98,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2357",
+          "name": "華碩",
+          "return_pct": -4.63,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8046",
+          "name": "南電",
+          "return_pct": -4.8,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:8210",
+          "name": "勤誠",
+          "return_pct": -5.29,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2313",
+          "name": "華通",
+          "return_pct": -5.39,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:3693",
+          "name": "營邦",
+          "return_pct": -5.8,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:8299",
+          "name": "群聯",
+          "return_pct": -5.85,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:5274",
+          "name": "信驊",
+          "return_pct": -5.95,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:4958",
+          "name": "臻鼎-KY",
+          "return_pct": -6.54,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2383",
+          "name": "台光電",
+          "return_pct": -6.69,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:6213",
+          "name": "聯茂",
+          "return_pct": -7.79,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2345",
+          "name": "智邦",
+          "return_pct": -7.98,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2368",
+          "name": "金像電",
+          "return_pct": -8.52,
+          "excluded": false
+        },
+        {
+          "code": "TPEX:6274",
+          "name": "台燿",
+          "return_pct": -8.99,
+          "excluded": false
+        },
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": -9.73,
           "excluded": false
         }
       ]
@@ -2030,38 +2030,6 @@
           "code": "TWSE:2317",
           "name": "鴻海",
           "return_pct": -1.01,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "AI工作站",
-      "n": 1,
-      "n_traded": 1,
-      "n_excluded": 0,
-      "return_pct": -0.97,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:2465",
-          "name": "麗臺",
-          "return_pct": -0.97,
-          "excluded": false
-        }
-      ]
-    },
-    {
-      "tag": "NVIDIA AIC顯卡",
-      "n": 1,
-      "n_traded": 1,
-      "n_excluded": 0,
-      "return_pct": -0.97,
-      "rankable": false,
-      "members": [
-        {
-          "code": "TWSE:2465",
-          "name": "麗臺",
-          "return_pct": -0.97,
           "excluded": false
         }
       ]
@@ -5078,6 +5046,38 @@
           "code": "TWSE:2421",
           "name": "建準",
           "return_pct": -9.72,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "AI工作站",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -9.73,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": -9.73,
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "tag": "NVIDIA AIC顯卡",
+      "n": 1,
+      "n_traded": 1,
+      "n_excluded": 0,
+      "return_pct": -9.73,
+      "rankable": false,
+      "members": [
+        {
+          "code": "TWSE:2465",
+          "name": "麗臺",
+          "return_pct": -9.73,
           "excluded": false
         }
       ]
