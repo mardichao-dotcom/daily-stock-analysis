@@ -20,6 +20,7 @@ import json
 import os
 import re
 import sqlite3
+import subprocess
 import sys
 import time
 import urllib.request
@@ -40,6 +41,11 @@ FRESHNESS_ALERT_DAYS = 3
 # 只有一行小字混在回報裡沒被注意。連續 ≥N 天失敗 → 發一則獨立醒目的 🚨 升級告警。
 US_STREAK_FILE = os.path.join(PROJECT_ROOT, "state", "us_refresh_streak.json")
 US_ESCALATE_THRESHOLD = 3
+# 2026-10-31:publish.sh 只提交 docs/,程式/設定改手動 → 改了忘了交的提醒
+UNCOMMITTED_ALERT_DAYS = 3
+UNCOMMITTED_PATHS = ["src", "config", "templates", "scripts", "tools", "tests",
+                     "run_all.sh", "publish.sh", "run_us_refresh.sh", "run_macro.sh",
+                     "run_weekly.sh", "README.md", ".gitignore"]
 
 # ── Discord 工具 ──────────────────────────────────────────────────────────────
 
@@ -253,6 +259,38 @@ def _check_data_freshness() -> list[str]:
     return warnings
 
 
+def _uncommitted_reminder(now: float | None = None, _run=subprocess.run) -> str | None:
+    """程式/設定有未提交變更且已 ≥ UNCOMMITTED_ALERT_DAYS 天 → 回一行提醒(檔名 + 天數);否則 None。
+
+    publish.sh 自 2026-10-31 只提交 docs/(避免主跑把半成品推上線),程式/設定改手動提交、
+    資料型設定由工具自行提交。這行防「改了忘了交」:平常不出現,只在擱置過久時提醒。
+    天數以檔案 mtime 計;刪除的檔(無 mtime)與 .bak 備份檔不列。"""
+    try:
+        out = _run(["git", "-c", "core.quotepath=false", "status", "--porcelain",
+                    "--untracked-files=all", "--", *UNCOMMITTED_PATHS],
+                   cwd=PROJECT_ROOT, capture_output=True, text=True, timeout=20).stdout
+    except (OSError, subprocess.SubprocessError):
+        return None
+    now = now or time.time()
+    stale = []
+    for line in out.splitlines():
+        path = line[3:].split(" -> ")[-1].strip().strip('"')
+        if ".bak" in os.path.basename(path):
+            continue
+        try:
+            days = int((now - os.path.getmtime(os.path.join(PROJECT_ROOT, path))) // 86400)
+        except OSError:
+            continue
+        if days >= UNCOMMITTED_ALERT_DAYS:
+            stale.append((days, path))
+    if not stale:
+        return None
+    stale.sort(reverse=True)
+    items = "、".join(f"{p}({d} 天)" for d, p in stale[:6])
+    more = f" 等 {len(stale)} 檔" if len(stale) > 6 else ""
+    return f"📝 未提交變更超過 {UNCOMMITTED_ALERT_DAYS} 天:{items}{more}"
+
+
 def _skipped_detail() -> list[str]:
     """§6.2:讀 filtered_result_v2 metadata.skipped_symbols,回 Discord 明細行(無略過回 [])。"""
     path = os.path.join(PROJECT_ROOT, "filtered_result_v2.json")
@@ -345,6 +383,11 @@ def _build_message(status: dict) -> str:
     ev_line = _tomorrow_events_line()
     if ev_line:
         lines.append(ev_line)
+
+    # 2026-10-31:程式/設定未提交 ≥3 天 → 一行提醒(平常不出現)
+    uc_line = _uncommitted_reminder()
+    if uc_line:
+        lines.append(uc_line)
 
     if publish_step and publish_step["status"] == "ok":
         lines.append(f"🔗 {DASHBOARD_URL}")

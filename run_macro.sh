@@ -54,13 +54,17 @@ publish_macro() {
         return 1
     fi
     # 先 commit 本輪 macro 檔(fetch_macro 剛改了 macro.json),再 rebase:
-    git add -f docs/data/v2/macro.json docs/data/v2/news.json docs/assets/events.js \
-        docs/assets/style_v2.css config/news_keywords.json \
-        docs/macro_dashboard.html docs/data/v2/macro_signals.json 2>/dev/null || true
-    if git diff --cached --quiet; then
+    # 2026-10-31:commit/diff 都限定本輪檔案(pathspec),不帶入別人手動 staged 的東西
+    shopt -s nullglob   # 萬用字元無匹配時不傳字面 * 給 git(pathspec 會報錯)
+    local files=(docs/data/v2/macro.json docs/data/v2/news.json docs/assets/events.js
+                 docs/assets/style_v2.css config/news_keywords.json
+                 docs/macro_dashboard.html docs/data/v2/macro_signals.json)
+    shopt -u nullglob
+    git add -f "${files[@]}" 2>/dev/null || true
+    if git diff --cached --quiet -- "${files[@]}"; then
         echo "      無變更,仍嘗試同步 origin"
     else
-        git commit -m "macro $(date +%Y-%m-%d) 總經快覽更新"
+        git commit -m "macro $(date +%Y-%m-%d) 總經快覽更新" -- "${files[@]}"
     fi
     # ★ pull --rebase --autostash:並行期防衝突;--autostash 處理無關的未暫存檔(如 state/)
     git pull --rebase --autostash origin main || { echo "git pull --rebase 失敗"; return 1; }

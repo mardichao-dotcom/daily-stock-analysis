@@ -7,6 +7,9 @@ convert_key_prices.py — 把「判讀批的 md 塊」轉成 JSON(供拼接進 c
 
 用法(--md 必填):
   python3 tools/convert_key_prices.py --md path/to/batch.md --out path/to/out.json
+  python3 tools/convert_key_prices.py --md path/to/batch.md --splice --label "9/12 批"
+    ↑ 2026-10-31:直接拼接進 config/key_prices.json(本批更新/新增,其餘保留)並自動 git 提交
+      (「關鍵價上架:9/12 批 4 檔 3034/2379/ARM/5269」);publish.sh 已不再提交 config/。
 
 上架流程(逐檔拼接,不整份重生成):
   1. 判讀批 → 生成該批 md 塊 → 本工具轉成該批 JSON 片段
@@ -305,6 +308,25 @@ def write_json(stocks: dict, out_path: str) -> None:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+def splice_json(stocks: dict, out_path: str, label: str) -> tuple[list, list]:
+    """把本批 stocks 拼接進既有 JSON(更新/新增,其餘保留),_note 追記一筆。回 (updated, added)。"""
+    from datetime import date
+    with open(out_path, encoding="utf-8") as f:
+        raw = f.read()
+    data = json.loads(raw)
+    cur = data.setdefault("stocks", {})
+    updated = [c for c in stocks if c in cur]
+    added = [c for c in stocks if c not in cur]
+    cur.update(stocks)
+    data["_note"] = (data.get("_note", "") + f" | {date.today().isoformat()}:{label} 判讀拼接"
+                     f"(更新{len(updated)}/新增{len(added)})。")
+    tmp = out_path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(json.dumps(data, ensure_ascii=False, indent=2) + ("\n" if raw.endswith("\n") else ""))
+    os.replace(tmp, out_path)
+    return updated, added
+
+
 def print_stats(stocks: dict, stats: dict) -> None:
     print("═" * 60)
     print("  convert_key_prices.py 執行摘要")
@@ -364,6 +386,10 @@ def main() -> None:
     parser.add_argument("--md",  required=True,
                         help="要轉的判讀批 md 檔(必填;中間層 md 已封存,無預設值)")
     parser.add_argument("--out", default=DEFAULT_OUT)
+    parser.add_argument("--splice", action="store_true",
+                        help="拼接進 --out(本批更新/新增,其餘保留)並自動 git 提交")
+    parser.add_argument("--label", default=None,
+                        help="commit 訊息的批次名,如「9/12 批」(預設取 md 檔名)")
     args = parser.parse_args()
 
     if not os.path.exists(args.md):
@@ -383,6 +409,19 @@ def main() -> None:
         for p in problems:
             print(f"   • {p}", file=sys.stderr)
         sys.exit(1)
+
+    if args.splice:
+        if not os.path.exists(args.out):
+            print(f"❌ --splice 目標不存在: {args.out}", file=sys.stderr)
+            sys.exit(1)
+        label = args.label or os.path.splitext(os.path.basename(args.md))[0]
+        updated, added = splice_json(stocks, args.out, label)
+        print_stats(stocks, stats)
+        print(f"\n✅ 拼接進 {args.out}:更新 {len(updated)} / 新增 {len(added)}(schema 驗證通過)")
+        from src.git_autocommit import commit_files, short_codes
+        commit_files([args.out], f"關鍵價上架:{label} {len(stocks)} 檔 {short_codes(list(stocks))}"
+                     f"(更新{len(updated)}/新增{len(added)})")
+        return
 
     # ── 防重跑覆寫保護(2026-09-06)────────────────────────────────────────────
     # md 中間層已名存實亡:缺 28 檔、32 檔手改股與 JSON 分岔(見技術債清單)。

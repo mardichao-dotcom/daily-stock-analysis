@@ -92,11 +92,15 @@ run_step prepare_charts_v2 python3 src/prepare_charts_v2.py \
 echo "[us-refresh 4/4] publish(us-refresh)..."
 US_COUNT=$(ls docs/data/v2/"$DATA_DATE"/NASDAQ_*.json docs/data/v2/"$DATA_DATE"/NYSE_*.json 2>/dev/null | wc -l | tr -d ' ')
 publish_us() {
-    git add -f docs/data/v2/"$DATA_DATE"/NASDAQ_*.json docs/data/v2/"$DATA_DATE"/NYSE_*.json 2>/dev/null || true
-    if git diff --cached --quiet; then
+    # 2026-10-31:commit/diff 都限定本輪檔案(pathspec),不帶入別人手動 staged 的東西
+    shopt -s nullglob   # 萬用字元無匹配時不傳字面 * 給 git(pathspec 會報錯)
+    local files=(docs/data/v2/"$DATA_DATE"/NASDAQ_*.json docs/data/v2/"$DATA_DATE"/NYSE_*.json)
+    shopt -u nullglob
+    git add -f "${files[@]}" 2>/dev/null || true
+    if [[ ${#files[@]} -eq 0 ]] || git diff --cached --quiet -- "${files[@]}"; then
         echo "      無 chart JSON 變更(可能美股休市,0 新增)— 跳過 commit"
     else
-        git commit -m "us-refresh ${DATA_DATE} (${US_COUNT} 檔美股)"
+        git commit -m "us-refresh ${DATA_DATE} (${US_COUNT} 檔美股)" -- "${files[@]}"
     fi
     git push origin main
 }

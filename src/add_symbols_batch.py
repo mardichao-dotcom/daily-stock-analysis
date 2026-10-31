@@ -334,6 +334,13 @@ def run_pipeline(
         _print(f"[rollback] 已從 backup 還原:{ex}")
         return result
 
+    # ── step 4.5: 自動提交兩個設定檔(repo 外路徑如測試 tmp → 略過)──────────
+    from src.git_autocommit import commit_files, short_codes
+    codes = [e["code"] for e in normalized]
+    if commit_files([watchlist_path, key_prices_path],
+                    f"新增個股:{len(codes)} 檔 {short_codes(codes)}(watchlist + key_prices)"):
+        result["ran_steps"].append("committed")
+
     # ── step 5: tv_collect 新 symbols(慢,預設 off)─────────────────────
     if do_tv_collect:
         for entry in normalized:

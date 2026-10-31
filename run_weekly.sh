@@ -47,12 +47,16 @@ publish_weekly() {
             "🚨 [git 工作樹] weekly publish 偵測到 rebase/merge 殘留,本輪跳過 push。請人工處理。" || true
         return 1
     fi
-    git add -f docs/weekly.html docs/weekly_*.html docs/data/v2/weekly.json \
-        docs/assets/weekly/*.png docs/assets/style_v2.css 2>/dev/null || true
-    if git diff --cached --quiet; then
+    # 2026-10-31:commit/diff 都限定本輪檔案(pathspec),不帶入別人手動 staged 的東西
+    shopt -s nullglob   # 萬用字元無匹配時不傳字面 * 給 git(pathspec 會報錯)
+    local files=(docs/weekly.html docs/weekly_*.html docs/data/v2/weekly.json
+                 docs/assets/weekly/*.png docs/assets/style_v2.css)
+    shopt -u nullglob
+    git add -f "${files[@]}" 2>/dev/null || true
+    if git diff --cached --quiet -- "${files[@]}"; then
         echo "      無變更,仍嘗試同步 origin"
     else
-        git commit -m "weekly $(date +%Y-%m-%d) 情緒週報更新"
+        git commit -m "weekly $(date +%Y-%m-%d) 情緒週報更新" -- "${files[@]}"
     fi
     git pull --rebase --autostash origin main || { echo "git pull --rebase 失敗"; return 1; }
     git push origin main

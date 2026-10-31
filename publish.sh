@@ -1,5 +1,5 @@
 #!/bin/bash
-# publish.sh — 部署到 GitHub Pages（手動觸發版）
+# publish.sh — 部署到 GitHub Pages（只提交 docs/ 發佈產物;git push 會一併推出本機已提交的程式 commit）
 # 執行前請先跑 run_all.sh 確保 docs/ 是最新版本
 set -e
 
@@ -41,11 +41,16 @@ fi
 
 echo "[2/3] git add + commit..."
 TODAY=$(date +%Y-%m-%d)
-git add docs/ src/ config/ templates/ run_all.sh publish.sh README.md .gitignore
+# 2026-10-31:只提交發佈產物 docs/。原本連 src/ config/ templates/ run_all.sh … 一起 add,
+# 主跑當下工作樹裡的未完成改動會被自動提交推上線(10/31 實際發生)。
+# 程式改手動提交;資料型設定由改它的工具自行提交(convert_key_prices --splice、
+# add_symbols_batch --apply,見 src/git_autocommit.py)。未提交超過 3 天 → 每日 Discord 回報提醒。
+git add docs/
 # V2 chart JSONs (docs/data/v2/{date}/*.json) 受 .gitignore 規則保護,
 # 需用 -f 強制加進來;Pages 才有 K 線 JSON 可服務(2026-06-02 加)
 git add -f docs/data/v2/ 2>/dev/null || true
-git commit -m "儀表板更新 ${TODAY}" || echo "      無新變更，跳過 commit。"
+# `-- docs/`:只提交 docs/,即使有人手動 git add 了別的東西也不會被帶進這個自動 commit
+git commit -m "儀表板更新 ${TODAY}" -- docs/ || echo "      無新變更，跳過 commit。"
 
 echo "[3/4] git push..."
 git push origin main
