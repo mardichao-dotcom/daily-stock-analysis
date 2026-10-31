@@ -247,6 +247,27 @@ class TestSanityGate(unittest.TestCase):
         self.assertFalse(fs._sane("ZQ", 105))
         self.assertFalse(fs._sane("USDTWD", None))
 
+    def test_weekly_signal_ranges(self):
+        self.assertTrue(fs._sane("HY_OAS", 4.5))       # 常態 2.5~9
+        self.assertFalse(fs._sane("HY_OAS", 0.3))      # 低於史低=髒資料
+        self.assertTrue(fs._sane("T10Y2Y", -1.08))     # 2023 倒掛谷底
+        self.assertFalse(fs._sane("T10Y2Y", 8))
+        self.assertTrue(fs._sane("SAHM", 9.5))         # COVID 峰值
+        self.assertFalse(fs._sane("SAHM", -2))
+
+    def test_weekly_upserts_month_key(self):
+        import sqlite3, tempfile, os
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as td:
+            db = os.path.join(td, "m.db")
+            with patch.object(fs, "fetch_fred",
+                              return_value=[("2026-05-01", 0.13), ("2026-06-01", 0.17)]):
+                n = fs.upsert_sahm(db, "2012-06-01", key="k")
+            self.assertEqual(n, 2)
+            rows = sqlite3.connect(db).execute(
+                "SELECT month, value FROM sahm_monthly ORDER BY month").fetchall()
+            self.assertEqual(rows, [("2026-05", 0.13), ("2026-06", 0.17)])
+
 
 if __name__ == "__main__":
     unittest.main()
