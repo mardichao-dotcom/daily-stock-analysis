@@ -201,6 +201,26 @@ class TestSanityGate(unittest.TestCase):
             ])
             self.assertEqual(self._counts(db), (2, 0))  # +9% 正常,全過
 
+    def test_multiday_backfill_anchors_on_true_prev_day(self):
+        """停更回補(2026-10-31,TWSE:2465):DB 停在 86,本批 93.9→103→113 逐日 <10%,
+        舊錨點拿 113 比 86(+31.4%)誤隔離;應逐日比本批前一根,全數入庫。"""
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            self._run(db, [{"time": _ts("2026-10-16"), "open": 86, "high": 87,
+                            "low": 85, "close": 86, "volume": 1}])
+            bar = lambda d, c: {"time": _ts(d), "open": c, "high": c, "low": c, "close": c, "volume": 1}
+            self._run(db, [bar("2026-10-27", 93.9), bar("2026-10-28", 103), bar("2026-10-29", 113)])
+            self.assertEqual(self._counts(db), (4, 0))
+
+    def test_multiday_backfill_real_split_still_quarantined(self):
+        """真除權(1:5):第一根撞閘被隔離,不入錨表 → 後續各根仍比舊基準、照樣隔離。"""
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "k.db")
+            bar = lambda d, c: {"time": _ts(d), "open": c, "high": c, "low": c, "close": c, "volume": 1}
+            self._run(db, [bar("2026-09-29", 56000)])
+            self._run(db, [bar("2026-10-01", 11200), bar("2026-10-02", 11300), bar("2026-10-05", 11250)])
+            self.assertEqual(self._counts(db), (1, 3))
+
     def test_approve_moves_to_kline(self):
         with tempfile.TemporaryDirectory() as tmp:
             db = os.path.join(tmp, "k.db")
@@ -228,6 +248,29 @@ class TestSanityGate(unittest.TestCase):
             out = self._run(db, [{"time": _ts("2026-06-11"), "open": 100, "high": 150,
                                   "low": 99, "close": 150, "volume": 1}])   # 全隔離
             self.assertIn("data_date=2026-06-10", out)
+
+
+
+class TestKeyPriceImpact(unittest.TestCase):
+    """分割放行後列出關鍵價換算值(4062 1:2 分割:>2x 規則抓不到,須主動提示)。"""
+
+    def test_lists_lines_and_areas_scaled_by_k(self):
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.import_kline import key_price_impact
+        kp = {"stocks": {"TSE:4062": {
+            "lines": [{"price": "14855", "color": "black"}],
+            "areas": [{"low": "11325", "high": "12125", "text": "FVG"}]}}}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump(kp, f)
+            path = f.name
+        try:
+            out = key_price_impact("TSE:4062", 0.5, path)
+            self.assertEqual(len(out), 2)
+            self.assertIn("14855 → 7427.5", out[0])
+            self.assertIn("11325~12125 → 5662.5~6062.5", out[1])
+            self.assertEqual(key_price_impact("TWSE:2330", 0.5, path), [])
+        finally:
+            os.unlink(path)
 
 
 if __name__ == "__main__":
