@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-01T19:00:33+08:00",
-  "data_through": "2026-11-01",
+  "generated_at": "2026-11-02T19:00:38+08:00",
+  "data_through": "2026-11-02",
   "conference_stale": false,
-  "conference_source_date": "2026-11-01",
+  "conference_source_date": "2026-11-02",
   "dividend_stale": false,
-  "dividend_source_date": "2026-11-01",
+  "dividend_source_date": "2026-11-02",
   "macro_count": 6,
-  "conference_count": 22,
+  "conference_count": 15,
   "dividend_count": 1,
   "config_warnings": [],
   "events": [
@@ -20,31 +20,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-03",
       "type": "conference",
-      "symbol": "TWSE:6526",
-      "name": "達發",
-      "title": "達發 法說會(線上法說會)",
-      "importance": "公告本公司受邀參加凱基證券舉辦之「線上法人說明會」，\n向投資人說明本公司115年第三季營運狀況及發展趨勢。",
+      "symbol": "TWSE:2383",
+      "name": "台光電",
+      "title": "台光電 法說會(線上會議)",
+      "importance": "本公司受邀參加摩根大通舉辦之線上法人座談會，說明本公司之營運概況。",
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
-      "time": "15:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-03",
-      "type": "conference",
-      "symbol": "TWSE:6805",
-      "name": "富世達",
-      "title": "富世達 法說會(台北市敦化南路一段108號B2(富邦國際)",
-      "importance": "本公司受邀參加富邦證券舉辦之法人說明會,說明本公司之營運概況",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "15:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "time": "10:00",
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-04",
@@ -56,31 +44,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:30",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-04",
-      "type": "conference",
-      "symbol": "TWSE:6269",
-      "name": "台郡",
-      "title": "台郡 法說會(張榮發基金會國際會議中心8樓(台北市中正)",
-      "importance": "1)本公司受邀參加凱基證券舉辦之法人說明會，說明本公司115年第3季營運成果。 \n2)活動諮詢：凱基證券 鄭小姐 電話：",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "15:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-04",
-      "type": "conference",
-      "symbol": "TWSE:6412",
-      "name": "群電",
-      "title": "群電 法說會(台北市信義區基隆路一段176號B2)",
-      "importance": "本公司受邀參加康和證券舉辦之法說會，說明本公司2026年第3季營運成果。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "15:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-05",
@@ -90,7 +54,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-06",
@@ -102,31 +66,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:30",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-06",
-      "type": "conference",
-      "symbol": "TWSE:3545",
-      "name": "敦泰",
-      "title": "敦泰 法說會(線上法說會)",
-      "importance": "受邀參加富邦證券舉辦之線上法人說明會",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:30",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-06",
-      "type": "conference",
-      "symbol": "TWSE:8210",
-      "name": "勤誠",
-      "title": "勤誠 法說會(https://www.zucast.c)",
-      "importance": "本公司受邀參加元大證券主辦之2026年第三季線上法人說明會",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-06",
@@ -138,7 +78,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-06",
@@ -150,7 +90,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-06",
@@ -162,7 +102,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "17:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-06",
@@ -172,19 +112,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-09",
-      "type": "conference",
-      "symbol": "TWSE:3715",
-      "name": "定穎投控",
-      "title": "定穎投控 法說會(Webex線上會議)",
-      "importance": "本公司受邀參加永豐金證券舉辦之線上法人說明會。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:30",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-09",
@@ -194,7 +122,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-10",
@@ -206,31 +134,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-10",
-      "type": "conference",
-      "symbol": "TWSE:3017",
-      "name": "奇鋐",
-      "title": "奇鋐 法說會(線上法說會)",
-      "importance": "本公司受邀參加富邦證券法人說明會(英文場)，說明115年第三季營運結果與未來展望。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "16:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-10",
-      "type": "conference",
-      "symbol": "TWSE:3017",
-      "name": "奇鋐",
-      "title": "奇鋐 法說會(富邦國際會議中心\n台北市敦化南路一段10)",
-      "importance": "本公司受邀參加富邦證券法人說明會(中文場)，說明115年第三季營運結果與未來展望。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-10",
@@ -240,7 +144,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 10",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-10",
@@ -250,19 +154,7 @@
       "importance": "當月營收動能揭曉",
       "level": "medium_high",
       "source": "證交法/公司法 每月 10 日前",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:8210",
-      "name": "勤誠",
-      "title": "勤誠 法說會(新加坡文華東方酒店)",
-      "importance": "本公司受邀參加大和證券於新加坡舉辦之「Daiwa Investment Conference Singapore 202",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-12",
@@ -274,7 +166,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-12",
@@ -285,7 +177,7 @@
       "importance": "除息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-13",
@@ -297,7 +189,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-13",
@@ -309,7 +201,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-11-13",
@@ -319,7 +211,31 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 46",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
+    },
+    {
+      "date": "2026-11-24",
+      "type": "conference",
+      "symbol": "TWSE:2301",
+      "name": "光寶科",
+      "title": "光寶科 法說會(W Hotel Taipei)",
+      "importance": "2026 Taiwan Corporate Day",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "09:00",
+      "fetched_at": "2026-11-02T19:00:38+08:00"
+    },
+    {
+      "date": "2026-12-01",
+      "type": "conference",
+      "symbol": "TWSE:2301",
+      "name": "光寶科",
+      "title": "光寶科 法說會(台北遠東香格里拉)",
+      "importance": "Fubon/Jefferies 4Q26 Tech Trip",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "10:15",
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-12-01",
@@ -331,7 +247,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:30",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     },
     {
       "date": "2026-12-01",
@@ -343,7 +259,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:30",
-      "fetched_at": "2026-11-01T19:00:33+08:00"
+      "fetched_at": "2026-11-02T19:00:38+08:00"
     }
   ]
 }
