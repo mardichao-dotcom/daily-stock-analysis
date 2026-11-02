@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T08:30:43+08:00",
+  "generated_at": "2026-11-02T08:30:05+08:00",
   "sources_ok": 7,
   "sources_failed": 0,
   "errors": [],
@@ -35,17 +35,17 @@
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 64659.47,
+      "value": 62941.89,
       "source": "yfinance ^N225",
-      "change": 705.28,
-      "change_pct": 1.1
+      "change": -348.22,
+      "change_pct": -0.55
     },
     "dxy": {
       "label": "美元指數",
-      "value": 101.96,
+      "value": 101.94,
       "source": "yfinance DX-Y.NYB",
-      "change": -0.08,
-      "change_pct": -0.07
+      "change": 0.06,
+      "change_pct": 0.06
     },
     "margin": {
       "label": "融資餘額",
