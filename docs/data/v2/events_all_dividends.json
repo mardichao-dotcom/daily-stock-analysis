@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T19:00:38+08:00",
+  "generated_at": "2026-11-03T19:00:58+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -23,6 +23,146 @@
       "market": "TWSE"
     },
     {
+      "code": "0051",
+      "name": "元大中型100",
+      "date": "2026-11-20",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "0055",
+      "name": "元大MSCI金融",
+      "date": "2026-11-20",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "006208",
+      "name": "富邦台50",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00690",
+      "name": "兆豐藍籌30",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00692",
+      "name": "富邦公司治理",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00730",
+      "name": "富邦臺灣優質高息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00771",
+      "name": "元大US高息特別股",
+      "date": "2026-11-20",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00775B",
+      "name": "台新投等債15+",
+      "date": "2026-11-16",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00850",
+      "name": "元大臺灣ESG永續",
+      "date": "2026-11-20",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00878",
+      "name": "國泰永續高股息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00891",
+      "name": "中信關鍵半導體",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00892",
+      "name": "富邦台灣半導體",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00894",
+      "name": "中信小資高價30",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00900",
+      "name": "富邦特選高股息30",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00901",
+      "name": "永豐智能車供應鏈",
+      "date": "2026-11-24",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00930",
+      "name": "永豐ESG低碳高息",
+      "date": "2026-11-24",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00932",
+      "name": "兆豐永續高息等權",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00934",
+      "name": "中信成長高股息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00936",
+      "name": "台新永續高息中小",
+      "date": "2026-11-16",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00938",
+      "name": "凱基優選30",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
       "code": "00939",
       "name": "統一台灣高息動能",
       "date": "2026-11-03",
@@ -37,6 +177,27 @@
       "market": "TWSE"
     },
     {
+      "code": "00943",
+      "name": "兆豐電子高息等權",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00944",
+      "name": "野村趨勢動能高息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00945B",
+      "name": "凱基美國非投等債",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
       "code": "00946",
       "name": "群益科技高息成長",
       "date": "2026-11-04",
@@ -44,9 +205,86 @@
       "market": "TWSE"
     },
     {
+      "code": "00951",
+      "name": "台新日本半導體",
+      "date": "2026-11-16",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00952",
+      "name": "凱基台灣AI50",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
       "code": "00953B",
       "name": "群益優選非投等債",
       "date": "2026-11-04",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00961",
+      "name": "FT臺灣永續高息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00962",
+      "name": "台新AI優息動能",
+      "date": "2026-11-16",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00963",
+      "name": "中信全球高股息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00964",
+      "name": "中信亞太高股息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00980A",
+      "name": "主動野村臺灣優選",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00981T",
+      "name": "平衡凱基雙核收息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00982A",
+      "name": "主動群益台灣強棒",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00982D",
+      "name": "主動富邦動態入息",
+      "date": "2026-11-17",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00983D",
+      "name": "主動富邦複合收益",
+      "date": "2026-11-17",
       "kind": "息",
       "market": "TWSE"
     },
@@ -61,6 +299,13 @@
       "code": "00985B",
       "name": "群益ESG投等債0-5",
       "date": "2026-11-04",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00991B",
+      "name": "貝萊德A級公司債",
+      "date": "2026-11-18",
       "kind": "息",
       "market": "TWSE"
     },
@@ -83,13 +328,6 @@
       "name": "精技",
       "date": "2026-11-06",
       "kind": "權",
-      "market": "TWSE"
-    },
-    {
-      "code": "6165",
-      "name": "浪凡",
-      "date": "2026-11-02",
-      "kind": "息",
       "market": "TWSE"
     },
     {
@@ -173,6 +411,328 @@
       "code": "3680",
       "name": "家登",
       "date": "2026-11-12",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00844B",
+      "name": "台新15年IG金融債",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00867B",
+      "name": "台新A-BBB電信債",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00942B",
+      "name": "台新美A公司債20+",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00970B",
+      "name": "台新BBB投等債20+",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "009806",
+      "name": "台新標普500",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "009807",
+      "name": "台新標普科技精選",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00980B",
+      "name": "台新特選IG債10+",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00988B",
+      "name": "玉山嚴選非投債",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00989B",
+      "name": "台新美國非投等債",
+      "date": "2026-11-16",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00740B",
+      "name": "富邦全球投等債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00741B",
+      "name": "富邦全球非投等債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00754B",
+      "name": "群益AAA-AA公司債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00755B",
+      "name": "群益投資級公用債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00756B",
+      "name": "群益投等新興公債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00761B",
+      "name": "國泰A級公司債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00772B",
+      "name": "中信高評級公司債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00773B",
+      "name": "中信優先金融債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00777B",
+      "name": "凱基AAA至A公司債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00778B",
+      "name": "凱基金融債20+",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00780B",
+      "name": "國泰A級金融債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00795B",
+      "name": "中信美國公債20年",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00799B",
+      "name": "國泰A級醫療債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00840B",
+      "name": "凱基IG精選15+",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00841B",
+      "name": "凱基AAA-AA公司債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00845B",
+      "name": "富邦新興投等債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00846B",
+      "name": "富邦歐洲銀行債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00860B",
+      "name": "群益1-5Y投資級債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00864B",
+      "name": "中信美國公債0-1",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00890B",
+      "name": "凱基ESG BBB債15+",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00933B",
+      "name": "國泰10Y+金融債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00937B",
+      "name": "群益ESG投等債20+",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00948B",
+      "name": "中信優息投資級債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00957B",
+      "name": "兆豐US優選投等債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00980D",
+      "name": "主動聯博投等入息",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00981D",
+      "name": "主動中信非投等債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00982B",
+      "name": "FT投資級債20+",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00987B",
+      "name": "野村10+澳洲公債",
+      "date": "2026-11-17",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00985D",
+      "name": "主動貝萊德優投等",
+      "date": "2026-11-18",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "006201",
+      "name": "元大富櫃50",
+      "date": "2026-11-20",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00679B",
+      "name": "元大美債20年",
+      "date": "2026-11-20",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00786B",
+      "name": "元大10年IG銀行債",
+      "date": "2026-11-20",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00967B",
+      "name": "元大優息美債",
+      "date": "2026-11-20",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00968B",
+      "name": "元大優息投等債",
+      "date": "2026-11-20",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00981B",
+      "name": "第一金優選非投債",
+      "date": "2026-11-20",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00958B",
+      "name": "永豐ESG銀行債15+",
+      "date": "2026-11-24",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "00990B",
+      "name": "國泰收益非投等債",
+      "date": "2026-11-24",
       "kind": "除息",
       "market": "TPEX"
     }
