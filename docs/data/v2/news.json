@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T08:30:21+08:00",
+  "generated_at": "2026-11-04T08:30:28+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,148 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 31,
+  "count": 43,
   "items": [
+    {
+      "title": "記憶體漲價怎麼賣？宏碁增彈性規格、華碩攻高階 雙11拚雙位數成長",
+      "source": "經濟日報",
+      "published_at": "2026-11-04T08:18:27+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9855832",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "中部半導體黃金廊帶 成形",
+      "source": "經濟日報",
+      "published_at": "2026-11-04T02:37:48+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9855480",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "蘋果財測有壓 CEO 示警記憶體明年還會漲 牽動本季營收與毛利率",
+      "source": "經濟日報",
+      "published_at": "2026-11-04T01:36:12+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9855441",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "華邦：本季記憶體價量俱揚 斥資 731 億擴建高雄園區 12 吋晶圓廠",
+      "source": "經濟日報",
+      "published_at": "2026-11-04T01:33:02+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9855475",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "三星跟進台積電淡出8吋晶圓代工 重塑全球成熟製程的競爭版圖",
+      "source": "經濟日報",
+      "published_at": "2026-11-03T22:56:45+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://money.udn.com/money/story/5612/9855412",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "韓媒：三星德州二廠將為超微、輝達生產晶片零件",
+      "source": "中央社財經",
+      "published_at": "2026-11-03T21:01:53+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611030328.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "〈華邦電法說〉明年記憶體供給恐比今年更吃緊 斥731億元擴建高雄廠",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T18:50:31+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645310",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "外資狠砍1073億元創史上第八大賣超 瞄準主動式ETF減碼、這2檔記憶體同遭砍",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T18:16:16+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645326",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "精誠取得微軟一專長認證 助攻企業AI應用落地",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T18:00:27+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645211",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈達方法說〉AI摘要2026/11/3",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T17:55:35+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645209",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈達方法說〉MLCC事業旺至明年 積極切入AI資料中心散熱與電源市場",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T17:52:31+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645201",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈合勤控法說〉AI摘要2026/11/3",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T17:14:17+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645207",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "義隆攜手雷虎、新馳獲經部IC攻頂計畫補助 打造國產AI智慧無人機完整解決方案",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T16:21:24+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645061",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈合勤控法說〉Q3賺4.7億元季年雙減EPS 1.15元 記憶體飆漲致大客戶拉貨放緩",
+      "source": "鉅亨網",
+      "published_at": "2026-11-03T16:06:30+08:00",
+      "fetched_at": "2026-11-04T08:30:28+08:00",
+      "url": "https://news.cnyes.com/news/id/6645037",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
     {
       "title": "投資人憂AI前景、觀望期中選舉　美國股市多收跌",
       "source": "中央社財經",
@@ -297,26 +437,6 @@
       "published_at": "2026-11-01T09:40:41+08:00",
       "fetched_at": "2026-11-02T08:30:21+08:00",
       "url": "https://www.cna.com.tw/news/afe/202611010020.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI基建拉貨動能強勁 華碩技嘉同步大手筆籌資衝刺出貨",
-      "source": "鉅亨網",
-      "published_at": "2026-11-01T08:10:02+08:00",
-      "fetched_at": "2026-11-02T08:30:21+08:00",
-      "url": "https://news.cnyes.com/news/id/6642705",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "標普全球調降Meta信評展望至負向　AI支出與現金流引發疑慮",
-      "source": "中央社財經",
-      "published_at": "2026-10-31T15:57:27+08:00",
-      "fetched_at": "2026-11-02T08:30:21+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202610310125.aspx",
       "matched_keywords": [
         "AI"
       ]
