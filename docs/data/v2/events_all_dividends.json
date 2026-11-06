@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T19:00:36+08:00",
+  "generated_at": "2026-11-06T19:00:45+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -324,18 +324,11 @@
       "market": "TWSE"
     },
     {
-      "code": "3289",
-      "name": "宜特",
-      "date": "2026-11-05",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "5523",
-      "name": "豐謙",
-      "date": "2026-11-05",
-      "kind": "除息",
-      "market": "TPEX"
+      "code": "6924",
+      "name": "榮惠-KY創",
+      "date": "2026-11-19",
+      "kind": "權",
+      "market": "TWSE"
     },
     {
       "code": "8390",
