@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T08:30:06+08:00",
+  "generated_at": "2026-11-09T08:30:05+08:00",
   "sources_ok": 7,
   "sources_failed": 0,
   "errors": [],
@@ -21,9 +21,9 @@
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 24579.42,
+      "value": 24579.43,
       "source": "yfinance ^IXIC",
-      "change": 264.42,
+      "change": 264.43,
       "change_pct": 1.09
     },
     "vix": {
@@ -35,17 +35,17 @@
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 61077.9,
+      "value": 58544.36,
       "source": "yfinance ^N225",
-      "change": -1110.73,
-      "change_pct": -1.79
+      "change": 1109.59,
+      "change_pct": 1.93
     },
     "dxy": {
       "label": "美元指數",
-      "value": 102.28,
+      "value": 102.18,
       "source": "yfinance DX-Y.NYB",
-      "change": 0.73,
-      "change_pct": 0.72
+      "change": -0.12,
+      "change_pct": -0.12
     },
     "margin": {
       "label": "融資餘額",
