@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T09:03:04+08:00",
+  "generated_at": "2026-11-11T08:30:21+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,222 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 34,
+  "count": 53,
   "items": [
+    {
+      "title": "美通膨火熱強化Fed升息預期　華爾街股市收低",
+      "source": "中央社財經",
+      "published_at": "2026-11-11T06:15:51+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611110012.aspx",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "〈台股盤前要聞〉台積電Q3配息9元同步入股Anthropic與OpenAI、台股連兩日飆漲千點外資卻持續倒貨",
+      "source": "鉅亨網",
+      "published_at": "2026-11-11T05:10:03+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://news.cnyes.com/news/id/6657728",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電加入 AI 閉環投資 認購 Anthropic、OpenAI 股票",
+      "source": "經濟日報",
+      "published_at": "2026-11-11T02:38:07+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/5612/9870483",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳出軌拖累輝達重挫逾6%　市值急縮落後蘋果與微軟",
+      "source": "中央社財經",
+      "published_at": "2026-11-11T02:36:32+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611110005.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI 續旺 華航、長榮航單月業績高飛 星宇、虎航也有好表現",
+      "source": "經濟日報",
+      "published_at": "2026-11-11T02:32:34+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/10871/9870489",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "記憶體教父養出小金雞 下一步要建立本土特殊氣體供應鏈",
+      "source": "經濟日報",
+      "published_at": "2026-11-11T02:28:59+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/5612/9870493",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "記憶體教父直言 台積不可能跨足 DRAM",
+      "source": "經濟日報",
+      "published_at": "2026-11-11T02:27:43+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/5612/9870495",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "通膨高於預期　美債殖利率全面跳升、12月恐升息2碼",
+      "source": "中央社財經",
+      "published_at": "2026-11-11T02:05:30+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611110004.aspx",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "超微 Venice 進入量產出貨 台積電2奈米助陣 鴻海、仁寶等迎商機",
+      "source": "經濟日報",
+      "published_at": "2026-11-11T01:46:00+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/11162/9870452",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "超微找緩解記憶體瓶頸解方 收購新創 MEXT",
+      "source": "經濟日報",
+      "published_at": "2026-11-11T01:43:50+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/11162/9870459",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "幸福來得太突然 台積電季配息升到9元 法人：未來可望再上調",
+      "source": "經濟日報",
+      "published_at": "2026-11-11T01:34:14+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/5612/9870471",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "市場關注AI領域前景　歐股收盤走勢不一",
+      "source": "中央社財經",
+      "published_at": "2026-11-11T01:20:27+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611110003.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "市場評估黃仁勳婚外情衝擊　輝達早盤股價再跌4%",
+      "source": "中央社財經",
+      "published_at": "2026-11-10T22:59:07+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611100371.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "美國10月CPI高於市場預期　聯準會升息壓力增",
+      "source": "中央社財經",
+      "published_at": "2026-11-10T22:30:53+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
+      "matched_keywords": [
+        "升息",
+        "CPI"
+      ]
+    },
+    {
+      "title": "台灣 AI 導入不輸南韓 投資回報卻落後？揭台廠 AI 競爭力三大隱憂",
+      "source": "經濟日報",
+      "published_at": "2026-11-10T22:14:44+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://money.udn.com/money/story/5612/9870345",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "外資連9賣台股續砍341億元　連23賣台積電",
+      "source": "中央社財經",
+      "published_at": "2026-11-10T21:49:25+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611100353.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "CNN探討輝達失去黃仁勳能否生存　專家評估仍具優勢",
+      "source": "中央社財經",
+      "published_at": "2026-11-10T21:35:14+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611100350.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "台積電Q3配息9元 核准資本預算409億美元 擬各砸5億美元入股Anthropic與OpenAI",
+      "source": "鉅亨網",
+      "published_at": "2026-11-10T21:28:59+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://news.cnyes.com/news/id/6656911",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "台股連2日飆漲千點、外資仍大賣341億元 連23賣倒貨台積電",
+      "source": "鉅亨網",
+      "published_at": "2026-11-10T20:03:05+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://news.cnyes.com/news/id/6656700",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈禾伸堂法說〉AI營收比重續攀高明年MLCC擴產4成 未來兩年展望樂觀",
+      "source": "鉅亨網",
+      "published_at": "2026-11-10T19:48:25+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://news.cnyes.com/news/id/6656693",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈上銀法說〉美系人形機器人接單報捷 AI物流機器人最快年底出貨",
+      "source": "鉅亨網",
+      "published_at": "2026-11-10T18:54:15+08:00",
+      "fetched_at": "2026-11-11T08:30:21+08:00",
+      "url": "https://news.cnyes.com/news/id/6656020",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "婚外情風波延燒　輝達、黃仁勳遭股東提集體訴訟",
       "source": "中央社財經",
@@ -329,26 +543,6 @@
       "published_at": "2026-11-08T09:36:30+08:00",
       "fetched_at": "2026-11-09T08:30:19+08:00",
       "url": "https://www.cna.com.tw/news/afe/202611080016.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "幣安財務長將離職　支付平台Airwallex高層接任",
-      "source": "中央社財經",
-      "published_at": "2026-11-08T03:19:55+08:00",
-      "fetched_at": "2026-11-09T08:30:19+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202611080004.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "義大利台灣青商會邀企業家座談  促台義AI與經貿合作",
-      "source": "中央社財經",
-      "published_at": "2026-11-07T20:45:43+08:00",
-      "fetched_at": "2026-11-09T08:30:19+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611070190.aspx",
       "matched_keywords": [
         "AI"
       ]
