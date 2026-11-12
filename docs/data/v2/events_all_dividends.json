@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T19:00:54+08:00",
+  "generated_at": "2026-11-12T19:00:45+08:00",
   "dividends": [
     {
       "code": "00401A",
@@ -289,10 +289,24 @@
       "market": "TWSE"
     },
     {
+      "code": "1437",
+      "name": "勤益控",
+      "date": "2026-12-03",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
       "code": "2344",
       "name": "華邦電",
       "date": "2026-11-18",
       "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "2646",
+      "name": "星宇航空",
+      "date": "2026-12-07",
+      "kind": "權",
       "market": "TWSE"
     },
     {
@@ -324,11 +338,11 @@
       "market": "TWSE"
     },
     {
-      "code": "8390",
-      "name": "金益鼎",
-      "date": "2026-11-11",
-      "kind": "除權",
-      "market": "TPEX"
+      "code": "7780",
+      "name": "大研生醫*",
+      "date": "2026-12-04",
+      "kind": "息",
+      "market": "TWSE"
     },
     {
       "code": "3680",
@@ -698,6 +712,13 @@
       "code": "00990B",
       "name": "國泰收益非投等債",
       "date": "2026-11-24",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "8942",
+      "name": "森鉅",
+      "date": "2026-12-10",
       "kind": "除息",
       "market": "TPEX"
     }
