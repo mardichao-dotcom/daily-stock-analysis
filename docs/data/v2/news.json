@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T08:30:17+08:00",
+  "generated_at": "2026-11-13T08:30:29+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,404 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 60,
+  "count": 83,
   "items": [
+    {
+      "title": "黃仁勳如推銷員全球經營政商人脈　美媒：離任後輝達面臨考驗",
+      "source": "中央社財經",
+      "published_at": "2026-11-13T07:16:26+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611130020.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳去職輝達跌4.34%　美超微受波及大跌11.30%",
+      "source": "中央社財經",
+      "published_at": "2026-11-13T07:09:23+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611130019.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳請辭後　輝達新任領導層致員工備忘錄全文",
+      "source": "中央社財經",
+      "published_at": "2026-11-13T05:57:13+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611130016.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達下挫抵銷能源股漲勢　美股收低",
+      "source": "中央社財經",
+      "published_at": "2026-11-13T05:42:11+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611130015.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "〈台股盤前要聞〉MSCI調整PCB獲青睞、鴻海上修全年展望、黃仁勳辭輝達執行長",
+      "source": "鉅亨網",
+      "published_at": "2026-11-13T05:10:04+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660917",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳下台效應 業界憂全球 AI 業產值大縮水",
+      "source": "經濟日報",
+      "published_at": "2026-11-13T03:46:21+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875591",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達陷風波 Google、超微搶市虎視眈眈",
+      "source": "經濟日報",
+      "published_at": "2026-11-13T03:43:07+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875601",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳辭去所有職務 輝達恐遭對手搶單 台鏈考驗大",
+      "source": "經濟日報",
+      "published_at": "2026-11-13T03:29:03+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875593",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "中保科 AI 治理 建完善機制",
+      "source": "經濟日報",
+      "published_at": "2026-11-13T01:29:11+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875523",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳辭輝達執行長　川普喊話：庫克應接任",
+      "source": "中央社財經",
+      "published_at": "2026-11-13T00:44:40+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611130003.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達財務長克瑞斯任臨時執行長　矢言推進AI領導者工作",
+      "source": "中央社財經",
+      "published_at": "2026-11-13T00:39:38+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611130002.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳辭輝達執行長　法人：牽動2028年後AI版圖",
+      "source": "經濟日報",
+      "published_at": "2026-11-12T23:21:25+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875579",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳辭輝達執行長　法人：牽動2028年後AI版圖",
+      "source": "中央社財經",
+      "published_at": "2026-11-12T23:13:30+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611120384.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "AI資安需求續旺　中華資安：明年營運審慎樂觀",
+      "source": "經濟日報",
+      "published_at": "2026-11-12T23:12:29+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875555",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳辭執行長並退出董事會　AI巨擘輝達前景添變數",
+      "source": "中央社財經",
+      "published_at": "2026-11-12T23:01:28+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611120383.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "AI資安需求續旺　中華資安：明年營運審慎樂觀",
+      "source": "中央社財經",
+      "published_at": "2026-11-12T23:00:26+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611120382.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達：啟動永久執行長遴選程序　同時考慮內外部人選",
+      "source": "經濟日報",
+      "published_at": "2026-11-12T22:54:54+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875490",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳辭輝達執行長　美股開盤下跌、輝達一度跌逾10%",
+      "source": "中央社財經",
+      "published_at": "2026-11-12T22:54:23+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611120381.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達：啟動永久執行長遴選程序　同時考慮內外部人選",
+      "source": "中央社財經",
+      "published_at": "2026-11-12T22:46:13+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611120377.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳辭去執行長　輝達盤前股價下殺逾10%",
+      "source": "中央社財經",
+      "published_at": "2026-11-12T22:28:02+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611120372.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳辭輝達執行長　財務長克瑞斯任臨時CEO",
+      "source": "中央社財經",
+      "published_at": "2026-11-12T22:01:53+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611120368.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "全家被蝦皮逼出新戰略！統一超押寶AI管家 超商雙雄為何搶進你家社區？",
+      "source": "經濟日報",
+      "published_at": "2026-11-12T21:54:30+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://money.udn.com/money/story/5612/9875408",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "打造亞洲資產管理中心 投信投顧公會尤昭文：借鏡國際經驗加速AI轉型與私募布局",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T20:29:17+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660754",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台股狂殺1165點 外資狂買台玻14萬張 反手倒貨群創、台積電",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T19:53:07+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660753",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "〈鴻海法說〉雲端網路產品比重未來3-5年上看6成 AI業務規模擴大帶動EBITDA同步成長",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T19:40:29+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660742",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈鴻海法說〉劉揚偉：美期中選舉短期不影響AI投資 明年ASIC伺服器成長可望優於GPU",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T18:49:24+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660710",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈東元法說〉前三季獲利55.82億元EPS 2.38元 今年AIDC接單超過百億元",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T18:33:53+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660698",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "施振榮任APEC代表 賴清德期許達成三大主張打造可靠AI供應鏈",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T18:26:03+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660695",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈華碩法說〉AI重點筆記2026/11/12",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T18:20:04+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660660",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "黃仁勳動向引關注！龔明鑫霸氣喊話：高階AI伺服器幾乎都靠台廠 訂單穩如泰山",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T18:07:31+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660663",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈華碩法說〉記憶體大漲難100%轉嫁 靠高階RTX Spark搶攻3成市占",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T17:40:05+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660648",
+      "matched_keywords": [
+        "記憶體"
+      ]
+    },
+    {
+      "title": "〈鴻海法說〉劉揚偉：明年AI機櫃出貨高雙位數成長、市占率提升 將新增更多NeoCloud客戶",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T17:33:01+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660642",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈華碩法說〉第三季賺近賺近三個股本創新高 伺服器與AI PC營收皆翻倍成長",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T17:30:08+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660467",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "吳昕陽示警零售競爭規則遭AI改寫 代理交易時代來臨",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T15:56:48+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660461",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "外資狂買台灣破紀錄！國際大廠對台採購首越3000億美元 輝達蘋果全上榜",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T15:18:45+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660389",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "宏碁發表未來教室AI+解決方案 AI助教率先導入苗栗157校",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T15:00:06+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660382",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "上櫃10月營收狂飆47%！AI液冷散熱與記憶體發威 半導體暴增96%領衝",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T13:02:52+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660298",
+      "matched_keywords": [
+        "AI",
+        "半導體",
+        "記憶體"
+      ]
+    },
+    {
+      "title": "駭客用AI自動化攻擊 東捷資訊提這些解決方案",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T09:59:43+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660110",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "〈台股開盤〉台積電跌逾1%大盤平盤震盪 聯發科領軍ASIC、光通訊股走強",
+      "source": "鉅亨網",
+      "published_at": "2026-11-12T09:34:32+08:00",
+      "fetched_at": "2026-11-13T08:30:29+08:00",
+      "url": "https://news.cnyes.com/news/id/6660068",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "華爾街日報：黃仁勳涉兩起婚外情　輝達董事會擬撤換",
       "source": "中央社財經",
@@ -455,169 +851,6 @@
       "published_at": "2026-11-10T18:54:15+08:00",
       "fetched_at": "2026-11-11T08:30:21+08:00",
       "url": "https://news.cnyes.com/news/id/6656020",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "婚外情風波延燒　輝達、黃仁勳遭股東提集體訴訟",
-      "source": "中央社財經",
-      "published_at": "2026-11-10T08:09:10+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202611100017.aspx",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "輝達逆勢收跌4.27%　市場關注黃仁勳相關調查",
-      "source": "中央社財經",
-      "published_at": "2026-11-10T07:42:03+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202611100014.aspx",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "輝達執行長黃仁勳驚爆婚外情 牽動晶片鏈 恐動搖 AI 投資熱潮",
-      "source": "經濟日報",
-      "published_at": "2026-11-10T02:41:32+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://money.udn.com/money/story/5612/9867888",
-      "matched_keywords": [
-        "輝達",
-        "AI"
-      ]
-    },
-    {
-      "title": "Google 推兩款新 TPU 擴大搶食 AI 商機 台積電跟著吃補",
-      "source": "經濟日報",
-      "published_at": "2026-11-10T02:35:35+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://money.udn.com/money/story/5612/9867806",
-      "matched_keywords": [
-        "台積電",
-        "AI"
-      ]
-    },
-    {
-      "title": "AI 伺服器、高階應用需求暢旺 被動元件雙雄10月營收大躍進",
-      "source": "經濟日報",
-      "published_at": "2026-11-10T02:03:11+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://money.udn.com/money/story/11162/9867775",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "輝達執行長黃仁勳緋聞案四情境推演 最慘可能面臨刑事調查？",
-      "source": "經濟日報",
-      "published_at": "2026-11-10T01:38:23+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://money.udn.com/money/story/5612/9867847",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "輝達執行長黃仁勳身陷婚外情風暴 業者：下單出貨暫無異狀",
-      "source": "經濟日報",
-      "published_at": "2026-11-10T01:28:15+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://money.udn.com/money/story/5612/9867857",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "輝達執行長黃仁勳外遇對象黃樂 可能走私晶片到大陸",
-      "source": "經濟日報",
-      "published_at": "2026-11-10T01:27:11+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://money.udn.com/money/story/5612/9867852",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "Google 攜手 Meta、AMD 推機密 TPU、打通 PyTorch 挑戰輝達 AI 地位",
-      "source": "經濟日報",
-      "published_at": "2026-11-09T22:47:36+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://money.udn.com/money/story/5612/9867754",
-      "matched_keywords": [
-        "輝達",
-        "AI"
-      ]
-    },
-    {
-      "title": "黃仁勳認婚外情　輝達開盤股價大跌逾8%",
-      "source": "中央社財經",
-      "published_at": "2026-11-09T22:46:10+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611090291.aspx",
-      "matched_keywords": [
-        "輝達"
-      ]
-    },
-    {
-      "title": "Google擴展第8代TPU陣容　迎AI代理算力爆發期",
-      "source": "中央社財經",
-      "published_at": "2026-11-09T21:56:50+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611090282.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "澳洲網路法案擴大監管　谷歌：恐迫使未滿18歲者停用Gmail",
-      "source": "中央社財經",
-      "published_at": "2026-11-09T20:52:21+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://www.cna.com.tw/news/aopl/202611090270.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "〈佳世達法說〉Q4營運估與上季相當 AI伺服器明年Q2起放量逐季擴大",
-      "source": "鉅亨網",
-      "published_at": "2026-11-09T20:42:07+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://news.cnyes.com/news/id/6654440",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "〈進出口統計〉AI商機助攻36紅！10月進出口、出超皆創單月新高",
-      "source": "鉅亨網",
-      "published_at": "2026-11-09T19:37:28+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://news.cnyes.com/news/id/6653823",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "半導體設備廠鈦昇攜手合庫銀 啟動員工持股信託留才",
-      "source": "鉅亨網",
-      "published_at": "2026-11-09T19:13:53+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://news.cnyes.com/news/id/6653690",
-      "matched_keywords": [
-        "半導體"
-      ]
-    },
-    {
-      "title": "AI基建掀資源爭奪戰！法人：銅、銀供需缺口擴大 美中搶礦戰升溫",
-      "source": "鉅亨網",
-      "published_at": "2026-11-09T18:31:00+08:00",
-      "fetched_at": "2026-11-10T09:03:04+08:00",
-      "url": "https://news.cnyes.com/news/id/6653639",
       "matched_keywords": [
         "AI"
       ]
