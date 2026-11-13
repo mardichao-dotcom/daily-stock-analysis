@@ -1,146 +1,15 @@
 {
-  "generated_at": "2026-11-12T19:00:45+08:00",
-  "data_through": "2026-11-12",
+  "generated_at": "2026-11-13T20:22:51+08:00",
+  "data_through": "2026-11-13",
   "conference_stale": false,
-  "conference_source_date": "2026-11-12",
+  "conference_source_date": "2026-11-13",
   "dividend_stale": false,
-  "dividend_source_date": "2026-11-12",
+  "dividend_source_date": "2026-11-13",
   "macro_count": 4,
-  "conference_count": 47,
-  "dividend_count": 2,
+  "conference_count": 45,
+  "dividend_count": 1,
   "config_warnings": [],
   "events": [
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:2317",
-      "name": "鴻海",
-      "title": "鴻海 法說會(台北文華東方酒店)",
-      "importance": "本公司下午3點00分召開中文法人說明會。\n線上加入：https://fxn-event.webex.com/fxn-ev",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "15:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:2357",
-      "name": "華碩",
-      "title": "華碩 法說會(本次為線上會議)",
-      "importance": "1.說明115年第3季營運結果。 \n2.報告品牌業務近況及公司願景。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "16:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:2368",
-      "name": "金像電",
-      "title": "金像電 法說會(泰國)",
-      "importance": "本公司受邀參加元大證券舉辦之法人說明會",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "15:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:2383",
-      "name": "台光電",
-      "title": "台光電 法說會(線上會議)",
-      "importance": "本公司受邀參加玉山證券舉辦之線上法人座談會，說明本公司之營運概況。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "14:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:3037",
-      "name": "欣興",
-      "title": "欣興 法說會(台北遠東香格里拉)",
-      "importance": "本公司受邀參加永豐金證券匯立分公司舉辦之Taiwan Market Mover Access Day\n，會中就本公司已公",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "10:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:3231",
-      "name": "緯創",
-      "title": "緯創 法說會(台北遠東香格里拉飯店)",
-      "importance": "本公司受邀參加永豐金證券匯立分公司舉辦之法人說明會，說明本公司業務簡介及現況說明",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:3715",
-      "name": "定穎投控",
-      "title": "定穎投控 法說會(泰國\nDynamic Technolog)",
-      "importance": "本公司受邀參加元大投顧舉辦之海外法人座談會，說明本公司營運狀況，參訪本公司泰國工廠。",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "11:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TWSE:8210",
-      "name": "勤誠",
-      "title": "勤誠 法說會(新加坡文華東方酒店)",
-      "importance": "本公司受邀參加大和證券於新加坡舉辦之「Daiwa Investment Conference Singapore 202",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TPEX:5289",
-      "name": "宜鼎",
-      "title": "宜鼎 法說會(Island Shangri-La, H)",
-      "importance": "本公司受邀參加大和證券舉辦之「Daiwa Investment Conference Hong Kong 2026」，說",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "conference",
-      "symbol": "TPEX:6187",
-      "name": "萬潤",
-      "title": "萬潤 法說會(UBS Hong Kong Office)",
-      "importance": "本公司受邀參加由UBS舉辦之\"UBS Future Now 2026: Asia Technology and Inno",
-      "level": "medium",
-      "source": "MOPS 法人說明會一覽表",
-      "time": "15:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
-    {
-      "date": "2026-11-12",
-      "type": "dividend",
-      "symbol": "TPEX:3680",
-      "name": "家登",
-      "title": "家登 除息日",
-      "importance": "除息",
-      "level": "medium",
-      "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
-    },
     {
       "date": "2026-11-13",
       "type": "conference",
@@ -151,7 +20,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -163,7 +32,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -175,7 +44,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -187,7 +56,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -199,7 +68,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -211,7 +80,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -223,7 +92,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:10",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -235,7 +104,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -247,7 +116,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -259,7 +128,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "16:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -271,7 +140,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -283,7 +152,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -295,7 +164,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-13",
@@ -305,7 +174,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 46",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-16",
@@ -317,7 +186,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-11-16",
+      "type": "conference",
+      "symbol": "TWSE:6770",
+      "name": "力積電",
+      "title": "力積電 法說會(Grand Hyatt Hong Kon)",
+      "importance": "本公司受邀參加J.P. Morgan舉辦之「APAC Technology, Innovation and Growth",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "10:00",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-16",
@@ -329,7 +210,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-16",
@@ -341,7 +222,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-16",
@@ -353,7 +234,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-16",
@@ -365,7 +246,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-16",
@@ -377,7 +258,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-11-17",
+      "type": "conference",
+      "symbol": "TWSE:2382",
+      "name": "廣達",
+      "title": "廣達 法說會(台北W飯店)",
+      "importance": "本公司受邀參加麥格理證券所舉辦之\"Macquarie Taiwan Conference 2026\"投資論壇就本公司目前",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "09:00",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-17",
@@ -389,7 +282,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-17",
@@ -401,7 +294,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-17",
@@ -413,7 +306,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-18",
@@ -425,7 +318,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-18",
@@ -437,7 +330,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-18",
@@ -448,7 +341,7 @@
       "importance": "息",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-18",
@@ -458,7 +351,19 @@
       "importance": "期貨/選擇權結算,留意尾盤波動",
       "level": "medium",
       "source": "程式推算(每月第三個週三)",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-11-19",
+      "type": "conference",
+      "symbol": "TWSE:2327",
+      "name": "國巨*",
+      "title": "國巨* 法說會(台北晶華酒店)",
+      "importance": "本公司於115/11/19受邀參加由康和證券舉辦之\"2026年第四季投資論壇\"投資人說明會，\n就公司營運及產業概況向投資",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "15:00",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-19",
@@ -470,7 +375,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-11-23",
+      "type": "conference",
+      "symbol": "TPEX:3529",
+      "name": "力旺",
+      "title": "力旺 法說會(A Cut 新竹國賓)",
+      "importance": "本公司受邀參加Morgan Stanley舉辦之Post-AP Summit Taiwan Tech Trip 2026",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "12:30",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-24",
@@ -482,7 +399,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-11-24",
+      "type": "conference",
+      "symbol": "TWSE:2382",
+      "name": "廣達",
+      "title": "廣達 法說會(台北W飯店)",
+      "importance": "本公司受邀參加花旗證券所舉辦之 Citi’s 2026 Taiwan Corporate Day就本公司目前之營運概況，",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "09:00",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-24",
@@ -494,7 +423,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-24",
@@ -506,7 +435,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-11-24",
+      "type": "conference",
+      "symbol": "TPEX:3529",
+      "name": "力旺",
+      "title": "力旺 法說會(W Hotel Taipei)",
+      "importance": "本公司受邀參加花旗證券舉辦之Citi Nov Taiwan Corporate Day，說明本公司財務及業務相關資訊。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "10:00",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-24",
@@ -518,7 +459,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-25",
@@ -528,7 +469,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-25",
@@ -538,7 +479,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-26",
@@ -550,7 +491,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:00",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-27",
@@ -562,7 +503,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-11-27",
@@ -574,7 +515,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "13:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-12-01",
@@ -586,7 +527,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "10:15",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-12-02",
+      "type": "conference",
+      "symbol": "TWSE:2382",
+      "name": "廣達",
+      "title": "廣達 法說會(晶華酒店)",
+      "importance": "本公司受邀參加2026年元大證券第四季投資論壇，就本公司目前之營運概況作回顧及展望說明。",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "09:00",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-12-02",
@@ -598,7 +551,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-12-03",
@@ -610,7 +563,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "15:40",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-12-07",
@@ -622,7 +575,19 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
+    },
+    {
+      "date": "2026-12-09",
+      "type": "conference",
+      "symbol": "TWSE:2382",
+      "name": "廣達",
+      "title": "廣達 法說會(晶華酒店)",
+      "importance": "本公司受邀參加凱基證券所舉辦之2026年第四季投資論壇就本公司目前之營運概況，作回顧及展望說明",
+      "level": "medium",
+      "source": "MOPS 法人說明會一覽表",
+      "time": "09:00",
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     },
     {
       "date": "2026-12-09",
@@ -634,7 +599,7 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "09:40",
-      "fetched_at": "2026-11-12T19:00:45+08:00"
+      "fetched_at": "2026-11-13T20:22:51+08:00"
     }
   ]
 }
