@@ -1,59 +1,63 @@
 {
-  "generated_at": "2026-11-13T08:30:04+08:00",
-  "sources_ok": 6,
-  "sources_failed": 1,
-  "errors": [
-    "margin: <urlopen error [Errno 54] Connection reset by peer>"
-  ],
+  "generated_at": "2026-11-14T08:30:04+08:00",
+  "sources_ok": 7,
+  "sources_failed": 0,
+  "errors": [],
   "data": {
     "taiex": {
       "label": "加權指數",
-      "value": 43091.87,
+      "value": 43675.12,
       "source": "TWSE OpenAPI MI_INDEX",
-      "change": -1165.28,
-      "change_pct": 2.63,
-      "date": "2026-11-12"
+      "change": 583.25,
+      "change_pct": 1.35,
+      "date": "2026-11-13"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7592.4,
+      "value": 7561.67,
       "source": "yfinance ^GSPC",
-      "change": -26.98,
-      "change_pct": -0.35
+      "change": -30.73,
+      "change_pct": -0.4
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 25366.09,
+      "value": 25136.27,
       "source": "yfinance ^IXIC",
-      "change": -100.1,
-      "change_pct": -0.39
+      "change": -229.82,
+      "change_pct": -0.91
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": 18.7,
+      "value": 19.3,
       "source": "yfinance ^VIX",
-      "change": 1.21,
-      "change_pct": 6.92
+      "change": 0.6,
+      "change_pct": 3.21
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 61679.66,
+      "value": 60819.36,
       "source": "yfinance ^N225",
-      "change": 431.07,
-      "change_pct": 0.7
+      "change": -429.23,
+      "change_pct": -0.7
     },
     "dxy": {
       "label": "美元指數",
-      "value": 103.17,
+      "value": 103.41,
       "source": "yfinance DX-Y.NYB",
-      "change": 0.26,
-      "change_pct": 0.25
+      "change": 0.24,
+      "change_pct": 0.23
     },
     "margin": {
       "label": "融資餘額",
-      "value": "N/A",
-      "error": "<urlopen error [Errno 54] Connection reset by peer>",
-      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)"
+      "value": 7086.2,
+      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
+      "change": -43.4,
+      "change_pct": -0.61,
+      "date": "2026-11-13",
+      "unit": "億元",
+      "streak": -1,
+      "percentile": 57,
+      "history_days": 252
     }
   }
 }
