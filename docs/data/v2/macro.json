@@ -1,58 +1,63 @@
 {
-  "generated_at": "2026-11-17T08:41:49+08:00",
-  "sources_ok": 0,
-  "sources_failed": 7,
-  "errors": [
-    "taiex: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
-    "sp500: yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-    "nasdaq: yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-    "vix: yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-    "nikkei: yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-    "dxy: yfinance:'NoneType' object is not subscriptable",
-    "margin: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
-  ],
+  "generated_at": "2026-11-18T08:30:00+08:00",
+  "sources_ok": 7,
+  "sources_failed": 0,
+  "errors": [],
   "data": {
     "taiex": {
       "label": "加權指數",
-      "value": "N/A",
-      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
-      "source": "TWSE OpenAPI MI_INDEX"
+      "value": 40092.11,
+      "source": "TWSE OpenAPI MI_INDEX",
+      "change": -947.97,
+      "change_pct": 2.31,
+      "date": "2026-11-17"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": "N/A",
-      "error": "yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-      "source": "yfinance+stooq"
+      "value": 7340.53,
+      "source": "yfinance ^GSPC",
+      "change": -76.06,
+      "change_pct": -1.03
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": "N/A",
-      "error": "yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-      "source": "yfinance+stooq"
+      "value": 24328.38,
+      "source": "yfinance ^IXIC",
+      "change": -181.38,
+      "change_pct": -0.74
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": "N/A",
-      "error": "yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-      "source": "yfinance+stooq"
+      "value": 25.46,
+      "source": "yfinance ^VIX",
+      "change": 2.55,
+      "change_pct": 11.13
     },
     "nikkei": {
       "label": "日經 225",
-      "value": "N/A",
-      "error": "yfinance:'NoneType' object is not subscriptable / stooq:<urlopen error [Errno 8] nodename nor se",
-      "source": "yfinance+stooq"
+      "value": 59281.49,
+      "source": "yfinance ^N225",
+      "change": -380.53,
+      "change_pct": -0.64
     },
     "dxy": {
       "label": "美元指數",
-      "value": "N/A",
-      "error": "yfinance:'NoneType' object is not subscriptable",
-      "source": "yfinance DX-Y.NYB"
+      "value": 103.6,
+      "source": "yfinance DX-Y.NYB",
+      "change": 0.05,
+      "change_pct": 0.05
     },
     "margin": {
       "label": "融資餘額",
-      "value": "N/A",
-      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
-      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)"
+      "value": 6691.6,
+      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
+      "change": -394.6,
+      "change_pct": -5.57,
+      "date": "2026-11-17",
+      "unit": "億元",
+      "streak": -2,
+      "percentile": 49,
+      "history_days": 252
     }
   }
 }
