@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-18T19:00:50+08:00",
-  "data_through": "2026-11-18",
-  "conference_stale": false,
+  "generated_at": "2026-11-19T19:00:35+08:00",
+  "data_through": "2026-11-19",
+  "conference_stale": true,
   "conference_source_date": "2026-11-18",
   "dividend_stale": false,
-  "dividend_source_date": "2026-11-18",
-  "macro_count": 3,
+  "dividend_source_date": "2026-11-19",
+  "macro_count": 2,
   "conference_count": 34,
-  "dividend_count": 1,
+  "dividend_count": 0,
   "config_warnings": [],
   "events": [
     {
@@ -44,27 +44,6 @@
       "level": "medium",
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
-      "fetched_at": "2026-11-18T19:00:50+08:00"
-    },
-    {
-      "date": "2026-11-18",
-      "type": "dividend",
-      "symbol": "TWSE:2344",
-      "name": "華邦電",
-      "title": "華邦電 除息日",
-      "importance": "息",
-      "level": "medium",
-      "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-11-18T19:00:50+08:00"
-    },
-    {
-      "date": "2026-11-18",
-      "type": "settlement",
-      "name": "台指期結算",
-      "title": "台指期(TX)月結算日",
-      "importance": "期貨/選擇權結算,留意尾盤波動",
-      "level": "medium",
-      "source": "程式推算(每月第三個週三)",
       "fetched_at": "2026-11-18T19:00:50+08:00"
     },
     {
@@ -291,7 +270,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-11-18T19:00:50+08:00"
+      "fetched_at": "2026-11-19T19:00:35+08:00"
     },
     {
       "date": "2026-11-25",
@@ -301,7 +280,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-11-18T19:00:50+08:00"
+      "fetched_at": "2026-11-19T19:00:35+08:00"
     },
     {
       "date": "2026-11-26",
