@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T08:30:14+08:00",
+  "generated_at": "2026-11-19T08:30:20+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,261 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 32,
+  "count": 57,
   "items": [
+    {
+      "title": "輝達財測亮眼仍難消市場疑慮　股價收跌近3%",
+      "source": "中央社財經",
+      "published_at": "2026-11-19T06:29:29+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611190016.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "王永慶外孫簡民智出手了！大眾控老店新開 搶攻 AI 光通訊大商機",
+      "source": "經濟日報",
+      "published_at": "2026-11-19T06:05:01+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9887891",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "市場評估輝達財報及聯準會紀要　美股收盤互有漲跌",
+      "source": "中央社財經",
+      "published_at": "2026-11-19T05:32:19+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611190012.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "黃仁勳去職風暴 晶圓一哥關切 輝達透露台積高層本周到訪",
+      "source": "經濟日報",
+      "published_at": "2026-11-19T04:34:14+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9887599",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達代理 CEO 喊話擴大與台廠合作 鴻海多路進擊 準備好了",
+      "source": "經濟日報",
+      "published_at": "2026-11-19T04:32:10+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9887608",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "輝達代理 CEO 喊話擴大與台廠合作 矽品、景碩全力擴增產能",
+      "source": "經濟日報",
+      "published_at": "2026-11-19T04:31:36+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9887611",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "APEC 企業諮詢委員會代表 廣達技術長張嘉淵：台具 AI 基建優勢",
+      "source": "經濟日報",
+      "published_at": "2026-11-19T04:09:56+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9887621",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電米玉傑喊話共建 AI 生態系 半導體創新不能單打獨鬥",
+      "source": "經濟日報",
+      "published_at": "2026-11-19T02:30:06+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://money.udn.com/money/story/5612/9887602",
+      "matched_keywords": [
+        "台積電",
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "AI產業不確定性籠罩　歐股收跌",
+      "source": "中央社財經",
+      "published_at": "2026-11-19T01:41:58+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611190004.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達財測緩解黃仁勳去職疑慮　帶動AI股反彈",
+      "source": "中央社財經",
+      "published_at": "2026-11-18T23:08:42+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611180364.aspx",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "罕見連環爆！AI鏈驚見鉅額違約交割 創意、華通等9檔合計4.27億元",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T21:05:01+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666606",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "央行12月升息在即？ 三三會預期難避免、再籲政府助企業度過難關",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T19:51:42+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666548",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "美媒：輝達2022年牽線阿里巴巴與黃樂　涉助規避美晶片管制",
+      "source": "中央社財經",
+      "published_at": "2026-11-18T19:30:06+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611180324.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI「金流」大洗牌！Q3全球創投飆1709億美元 3大關鍵產業帶動台鏈發光",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T19:26:48+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666531",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "施振榮出發參加APEC  力拼將AI產業餅做大、使合作夥伴能享受AI紅利",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T18:34:16+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666460",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "友輝：投入光波導與半導體封裝領域　拚2027、2028年放量",
+      "source": "中央社財經",
+      "published_at": "2026-11-18T18:32:26+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611180306.aspx",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "外資賣超台股逾765億元　調節台積電逾1.5萬張",
+      "source": "中央社財經",
+      "published_at": "2026-11-18T18:30:22+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611180304.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "仁寶衝刺伺服器業務 SC26發表採用NVIDIA技術AI基礎架構解決方案",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T18:30:16+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666459",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "輝達財報佳但中國間諜疑雲仍在　亞股走勢分歧",
+      "source": "中央社財經",
+      "published_at": "2026-11-18T17:57:51+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611180290.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "〈偉訓法說〉AI機櫃出貨放量能見度達明年Q2 2027年營運看成長",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T17:45:51+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666370",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "國安糖漿失靈？台股回檔逾萬點、AI股腰斬 財長認了「主因」是它",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T17:18:03+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666351",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "碩正離型膜打入先進封裝供應鏈 桃園二廠12月量產擴增3倍產能搶AI商機",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T17:01:10+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666341",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "預期升息逼出發債潮！櫃買：永續債年底衝44檔 募資額度縮水達標1300億「有點拼」",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T16:27:49+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666299",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "〈焦點股〉輝達財報優於預期 散熱三雄高掛三顆紅燈",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T12:46:08+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6666097",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI股急跌後怎麼看？野村投信：後市緊盯「三大指標」　布局具競爭優勢供應鏈",
+      "source": "鉅亨網",
+      "published_at": "2026-11-18T10:44:20+08:00",
+      "fetched_at": "2026-11-19T08:30:20+08:00",
+      "url": "https://news.cnyes.com/news/id/6653244",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
     {
       "title": "黃仁勳表達願意回鍋  輝達董事會：無意恢復其執行長職務",
       "source": "中央社財經",
