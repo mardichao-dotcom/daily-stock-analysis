@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T08:30:20+08:00",
+  "generated_at": "2026-11-20T08:30:18+08:00",
   "sources": [
     "中央社財經",
     "經濟日報",
@@ -8,8 +8,241 @@
   "sources_failed": [],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 57,
+  "count": 80,
   "items": [
+    {
+      "title": "英特爾 18A 先進製程拿下長單 業界解讀分食台積電訂單",
+      "source": "經濟日報",
+      "published_at": "2026-11-20T03:41:31+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://money.udn.com/money/story/5612/9890120",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "CSP 龍頭信心喊話 亞馬遜 AI 算力 幾乎被訂光",
+      "source": "經濟日報",
+      "published_at": "2026-11-20T03:39:33+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://money.udn.com/money/story/5612/9890129",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "Anthropic掛牌掀AI熱潮　歐股仍收低",
+      "source": "中央社財經",
+      "published_at": "2026-11-20T02:08:38+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611200005.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "Anthropic掛牌上市提振AI交易　美股開盤走高",
+      "source": "中央社財經",
+      "published_at": "2026-11-19T22:53:17+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611190391.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美國加強出口管制 金融時報：台積電、三星暫停部分對中晶片出貨",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T21:41:58+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667911",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "海外下單也要查！台積電傳收緊對中代工 中國AI晶片再卡關",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T21:24:50+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667925",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "華新迎60週年　焦佑倫看好AI液冷、SMR核能等9大商機",
+      "source": "中央社財經",
+      "published_at": "2026-11-19T21:11:35+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611190375.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "長榮鋼在手訂單逾20.8萬噸 AI、半導體廠房需求支撐鋼構景氣",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T20:54:03+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667913",
+      "matched_keywords": [
+        "AI",
+        "半導體"
+      ]
+    },
+    {
+      "title": "傳美出口管制新規衝擊　台積電、三星暫停部分對中晶片出貨",
+      "source": "中央社財經",
+      "published_at": "2026-11-19T20:09:47+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611190353.aspx",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "廣宇明年營運向上光通產品Q1出貨 AI伺服器代工業務貢獻估破百億元",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T19:51:49+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667836",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台灣參與2026 APEC圓滿落幕 施振榮：應引導AI從「智能」邁向「智慧」",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T19:26:12+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667824",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "Anthropic今拚1.4兆美元估值IPO！AI步入「變現」期 投信點名資金流向這關鍵",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T19:11:37+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667802",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "華新越南廠目標一年內完成建廠與設備進駐 以因應AI需求",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T18:47:04+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667796",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "凱基：大跌不代表一定落底 AI投資邏輯正改變 關注ASIC",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T17:43:01+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667708",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台積電斥資近5億美元入股Anthropic 取得602萬股持股約0.03%",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T17:10:04+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667671",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
+    {
+      "title": "輝達RTX Spark重塑AI PC生態 明年出貨重返成長軌道華碩微星受惠大",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T17:10:03+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667665",
+      "matched_keywords": [
+        "輝達",
+        "AI"
+      ]
+    },
+    {
+      "title": "新漢旗下創博強化RoboWIZ AI機器人開放平台布局 全面擴大啟動夥伴招募",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T16:56:07+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667542",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "台股重挫1,768失守4萬點，Fed升息壓力引爆恐慌怎麼辦?",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T14:25:27+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667532",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "美升息預期升溫壓垮金價 元大00674R逆勢飆漲創新高",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T14:08:07+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667497",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "銳澤攜手德國MESSER成立合資公司 搶攻半導體特氣整合服務",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T13:52:09+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667478",
+      "matched_keywords": [
+        "半導體"
+      ]
+    },
+    {
+      "title": "Visa Agentic Ready第二階段啟動 逾50家夥伴推動AI代理商務交易",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T11:02:03+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6667231",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "央行Q4不排除升息 和潤：有效控管資金成本 影響有限",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T09:24:22+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6666911",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "3088！台積電再獲大摩喊進 隱藏42%暴漲空間",
+      "source": "鉅亨網",
+      "published_at": "2026-11-19T08:46:15+08:00",
+      "fetched_at": "2026-11-20T08:30:18+08:00",
+      "url": "https://news.cnyes.com/news/id/6666883",
+      "matched_keywords": [
+        "台積電"
+      ]
+    },
     {
       "title": "輝達財測亮眼仍難消市場疑慮　股價收跌近3%",
       "source": "中央社財經",
