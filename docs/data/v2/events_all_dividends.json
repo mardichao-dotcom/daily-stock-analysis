@@ -1,38 +1,10 @@
 {
-  "generated_at": "2026-11-19T19:00:35+08:00",
+  "generated_at": "2026-11-23T19:01:00+08:00",
   "dividends": [
     {
       "code": "00406A",
       "name": "主動中信台灣收益",
       "date": "2026-12-02",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "0051",
-      "name": "元大中型100",
-      "date": "2026-11-20",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "0055",
-      "name": "元大MSCI金融",
-      "date": "2026-11-20",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00771",
-      "name": "元大US高息特別股",
-      "date": "2026-11-20",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00850",
-      "name": "元大臺灣ESG永續",
-      "date": "2026-11-20",
       "kind": "息",
       "market": "TWSE"
     },
@@ -93,13 +65,6 @@
       "market": "TWSE"
     },
     {
-      "code": "01007T",
-      "name": "兆豐國泰R2",
-      "date": "2026-11-19",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "020038",
       "name": "元大ESG配息N",
       "date": "2026-12-03",
@@ -111,6 +76,20 @@
       "name": "勤益控",
       "date": "2026-12-03",
       "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "1817",
+      "name": "凱撒衛",
+      "date": "2026-12-21",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "2345",
+      "name": "智邦",
+      "date": "2026-12-04",
+      "kind": "權",
       "market": "TWSE"
     },
     {
@@ -142,24 +121,10 @@
       "market": "TWSE"
     },
     {
-      "code": "4562",
-      "name": "穎漢",
-      "date": "2026-11-20",
-      "kind": "權",
-      "market": "TWSE"
-    },
-    {
       "code": "6655",
       "name": "科定",
       "date": "2026-11-24",
       "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "6924",
-      "name": "榮惠-KY創",
-      "date": "2026-11-19",
-      "kind": "權",
       "market": "TWSE"
     },
     {
@@ -168,48 +133,6 @@
       "date": "2026-12-04",
       "kind": "息",
       "market": "TWSE"
-    },
-    {
-      "code": "006201",
-      "name": "元大富櫃50",
-      "date": "2026-11-20",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00679B",
-      "name": "元大美債20年",
-      "date": "2026-11-20",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00786B",
-      "name": "元大10年IG銀行債",
-      "date": "2026-11-20",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00967B",
-      "name": "元大優息美債",
-      "date": "2026-11-20",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00968B",
-      "name": "元大優息投等債",
-      "date": "2026-11-20",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00981B",
-      "name": "第一金優選非投債",
-      "date": "2026-11-20",
-      "kind": "除息",
-      "market": "TPEX"
     },
     {
       "code": "00958B",
@@ -254,6 +177,13 @@
       "market": "TPEX"
     },
     {
+      "code": "00966B",
+      "name": "統一ESG投等債15+",
+      "date": "2026-12-02",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
       "code": "00959B",
       "name": "大華投等美債15Y+",
       "date": "2026-12-03",
@@ -271,6 +201,20 @@
       "code": "00984B",
       "name": "大華優利美A債15",
       "date": "2026-12-03",
+      "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "6160",
+      "name": "欣技",
+      "date": "2026-12-03",
+      "kind": "除權",
+      "market": "TPEX"
+    },
+    {
+      "code": "4749",
+      "name": "新應材",
+      "date": "2026-12-04",
       "kind": "除息",
       "market": "TPEX"
     },
