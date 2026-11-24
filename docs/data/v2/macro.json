@@ -1,59 +1,63 @@
 {
-  "generated_at": "2026-11-23T08:30:34+08:00",
-  "sources_ok": 6,
-  "sources_failed": 1,
-  "errors": [
-    "margin: [Errno 54] Connection reset by peer"
-  ],
+  "generated_at": "2026-11-24T08:30:05+08:00",
+  "sources_ok": 7,
+  "sources_failed": 0,
+  "errors": [],
   "data": {
     "taiex": {
       "label": "加權指數",
-      "value": 36033.29,
+      "value": 36811.89,
       "source": "TWSE OpenAPI MI_INDEX",
-      "change": -2393.6,
-      "change_pct": 6.23,
-      "date": "2026-11-20"
+      "change": 778.6,
+      "change_pct": 2.16,
+      "date": "2026-11-23"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 6910.39,
+      "value": 7237.17,
       "source": "yfinance ^GSPC",
-      "change": -265.44,
-      "change_pct": -3.7
+      "change": 326.78,
+      "change_pct": 4.73
     },
     "nasdaq": {
       "label": "Nasdaq",
-      "value": 22617.73,
+      "value": 24089.56,
       "source": "yfinance ^IXIC",
-      "change": -1261.47,
-      "change_pct": -5.28
+      "change": 1471.83,
+      "change_pct": 6.51
     },
     "vix": {
       "label": "VIX 恐慌",
-      "value": 35.89,
+      "value": 26.62,
       "source": "yfinance ^VIX",
-      "change": 7.45,
-      "change_pct": 26.2
+      "change": -9.27,
+      "change_pct": -25.83
     },
     "nikkei": {
       "label": "日經 225",
-      "value": 56436.65,
+      "value": 57883.64,
       "source": "yfinance ^N225",
-      "change": -3007.56,
-      "change_pct": -5.06
+      "change": 1446.99,
+      "change_pct": 2.56
     },
     "dxy": {
       "label": "美元指數",
-      "value": 103.84,
+      "value": 104.32,
       "source": "yfinance DX-Y.NYB",
-      "change": 0.03,
-      "change_pct": 0.03
+      "change": 0.51,
+      "change_pct": 0.49
     },
     "margin": {
       "label": "融資餘額",
-      "value": "N/A",
-      "error": "[Errno 54] Connection reset by peer",
-      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)"
+      "value": 5616.2,
+      "source": "TWSE MI_MARGN(MS)+ TPEx margin/balance(金額彙總)",
+      "change": -64.6,
+      "change_pct": -1.14,
+      "date": "2026-11-23",
+      "unit": "億元",
+      "streak": -6,
+      "percentile": 40,
+      "history_days": 252
     }
   }
 }
