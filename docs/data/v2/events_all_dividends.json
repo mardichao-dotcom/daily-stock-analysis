@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T19:00:41+08:00",
+  "generated_at": "2026-11-25T19:00:47+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -12,20 +12,6 @@
       "code": "00406A",
       "name": "主動中信台灣收益",
       "date": "2026-12-02",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00901",
-      "name": "永豐智能車供應鏈",
-      "date": "2026-11-24",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
-      "code": "00930",
-      "name": "永豐ESG低碳高息",
-      "date": "2026-11-24",
       "kind": "息",
       "market": "TWSE"
     },
@@ -142,32 +128,11 @@
       "market": "TWSE"
     },
     {
-      "code": "6655",
-      "name": "科定",
-      "date": "2026-11-24",
-      "kind": "息",
-      "market": "TWSE"
-    },
-    {
       "code": "7780",
       "name": "大研生醫*",
       "date": "2026-12-04",
       "kind": "息",
       "market": "TWSE"
-    },
-    {
-      "code": "00958B",
-      "name": "永豐ESG銀行債15+",
-      "date": "2026-11-24",
-      "kind": "除息",
-      "market": "TPEX"
-    },
-    {
-      "code": "00990B",
-      "name": "國泰收益非投等債",
-      "date": "2026-11-24",
-      "kind": "除息",
-      "market": "TPEX"
     },
     {
       "code": "6523",

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-24T19:00:41+08:00",
-  "data_through": "2026-11-24",
-  "conference_stale": false,
+  "generated_at": "2026-11-25T19:00:47+08:00",
+  "data_through": "2026-11-25",
+  "conference_stale": true,
   "conference_source_date": "2026-11-24",
   "dividend_stale": false,
-  "dividend_source_date": "2026-11-24",
-  "macro_count": 5,
+  "dividend_source_date": "2026-11-25",
+  "macro_count": 6,
   "conference_count": 48,
   "dividend_count": 1,
   "config_warnings": [],
@@ -282,7 +282,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 53",
-      "fetched_at": "2026-11-24T19:00:41+08:00"
+      "fetched_at": "2026-11-25T19:00:47+08:00"
     },
     {
       "date": "2026-11-25",
@@ -292,7 +292,7 @@
       "importance": "medium",
       "level": "medium",
       "source": "FRED release_id 54",
-      "fetched_at": "2026-11-24T19:00:41+08:00"
+      "fetched_at": "2026-11-25T19:00:47+08:00"
     },
     {
       "date": "2026-11-26",
@@ -531,7 +531,7 @@
       "importance": "權",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-11-24T19:00:41+08:00"
+      "fetched_at": "2026-11-25T19:00:47+08:00"
     },
     {
       "date": "2026-12-04",
@@ -541,7 +541,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-11-24T19:00:41+08:00"
+      "fetched_at": "2026-11-25T19:00:47+08:00"
     },
     {
       "date": "2026-12-07",
@@ -563,7 +563,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-11-24T19:00:41+08:00"
+      "fetched_at": "2026-11-25T19:00:47+08:00"
     },
     {
       "date": "2026-12-08",
@@ -573,7 +573,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-11-24T19:00:41+08:00"
+      "fetched_at": "2026-11-25T19:00:47+08:00"
     },
     {
       "date": "2026-12-09",
@@ -622,6 +622,16 @@
       "source": "MOPS 法人說明會一覽表",
       "time": "09:40",
       "fetched_at": "2026-11-24T19:00:41+08:00"
+    },
+    {
+      "date": "2026-12-09",
+      "type": "macro",
+      "name": "FOMC 利率決議",
+      "title": "Fed FOMC 利率決議 + 經濟預測(SEP)",
+      "importance": "high",
+      "level": "high",
+      "source": "Fed FOMC 年度日程",
+      "fetched_at": "2026-11-25T19:00:47+08:00"
     },
     {
       "date": "2026-12-10",
