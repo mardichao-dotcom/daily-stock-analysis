@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-25T19:00:47+08:00",
-  "data_through": "2026-11-25",
+  "generated_at": "2026-11-26T19:00:41+08:00",
+  "data_through": "2026-11-26",
   "conference_stale": true,
   "conference_source_date": "2026-11-24",
   "dividend_stale": false,
-  "dividend_source_date": "2026-11-25",
+  "dividend_source_date": "2026-11-26",
   "macro_count": 6,
   "conference_count": 48,
   "dividend_count": 1,
@@ -275,26 +275,6 @@
       "fetched_at": "2026-11-24T19:00:41+08:00"
     },
     {
-      "date": "2026-11-25",
-      "type": "macro",
-      "name": "美國 GDP",
-      "title": "美國 GDP 發布",
-      "importance": "medium",
-      "level": "medium",
-      "source": "FRED release_id 53",
-      "fetched_at": "2026-11-25T19:00:47+08:00"
-    },
-    {
-      "date": "2026-11-25",
-      "type": "macro",
-      "name": "美國 PCE / 個人收支",
-      "title": "美國 PCE / 個人收支 發布",
-      "importance": "medium",
-      "level": "medium",
-      "source": "FRED release_id 54",
-      "fetched_at": "2026-11-25T19:00:47+08:00"
-    },
-    {
       "date": "2026-11-26",
       "type": "conference",
       "symbol": "TWSE:2327",
@@ -531,7 +511,7 @@
       "importance": "權",
       "level": "medium",
       "source": "TWSE/TPEx 除權除息預告表",
-      "fetched_at": "2026-11-25T19:00:47+08:00"
+      "fetched_at": "2026-11-26T19:00:41+08:00"
     },
     {
       "date": "2026-12-04",
@@ -541,7 +521,7 @@
       "importance": "high",
       "level": "high",
       "source": "FRED release_id 50",
-      "fetched_at": "2026-11-25T19:00:47+08:00"
+      "fetched_at": "2026-11-26T19:00:41+08:00"
     },
     {
       "date": "2026-12-07",
@@ -563,7 +543,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-11-25T19:00:47+08:00"
+      "fetched_at": "2026-11-26T19:00:41+08:00"
     },
     {
       "date": "2026-12-08",
@@ -573,7 +553,7 @@
       "importance": "台灣總經",
       "level": "medium_high",
       "source": "官方月度時程(config,標準日推估待校正)",
-      "fetched_at": "2026-11-25T19:00:47+08:00"
+      "fetched_at": "2026-11-26T19:00:41+08:00"
     },
     {
       "date": "2026-12-09",
@@ -631,7 +611,7 @@
       "importance": "high",
       "level": "high",
       "source": "Fed FOMC 年度日程",
-      "fetched_at": "2026-11-25T19:00:47+08:00"
+      "fetched_at": "2026-11-26T19:00:41+08:00"
     },
     {
       "date": "2026-12-10",
@@ -644,6 +624,26 @@
       "source": "MOPS 法人說明會一覽表",
       "time": "14:30",
       "fetched_at": "2026-11-24T19:00:41+08:00"
+    },
+    {
+      "date": "2026-12-10",
+      "type": "macro",
+      "name": "美國 CPI",
+      "title": "美國 CPI 發布",
+      "importance": "high",
+      "level": "high",
+      "source": "FRED release_id 10",
+      "fetched_at": "2026-11-26T19:00:41+08:00"
+    },
+    {
+      "date": "2026-12-10",
+      "type": "macro_tw",
+      "name": "台股月營收公布截止",
+      "title": "上市櫃全體月營收公布截止(每月 10 日前,遇假順延)",
+      "importance": "當月營收動能揭曉",
+      "level": "medium_high",
+      "source": "證交法/公司法 每月 10 日前",
+      "fetched_at": "2026-11-26T19:00:41+08:00"
     },
     {
       "date": "2026-12-22",

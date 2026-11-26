@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T19:00:47+08:00",
+  "generated_at": "2026-11-26T19:00:41+08:00",
   "dividends": [
     {
       "code": "00400A",
@@ -19,6 +19,13 @@
       "code": "00939",
       "name": "統一台灣高息動能",
       "date": "2026-12-01",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "00940",
+      "name": "元大台灣價值高息",
+      "date": "2026-12-10",
       "kind": "息",
       "market": "TWSE"
     },
@@ -121,9 +128,23 @@
       "market": "TWSE"
     },
     {
+      "code": "4912",
+      "name": "聯德控股-KY",
+      "date": "2026-12-08",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
       "code": "6277",
       "name": "宏正",
       "date": "2026-12-08",
+      "kind": "息",
+      "market": "TWSE"
+    },
+    {
+      "code": "6438",
+      "name": "迅得",
+      "date": "2026-12-10",
       "kind": "息",
       "market": "TWSE"
     },
@@ -202,6 +223,13 @@
       "name": "新應材",
       "date": "2026-12-04",
       "kind": "除息",
+      "market": "TPEX"
+    },
+    {
+      "code": "7715",
+      "name": "裕山",
+      "date": "2026-12-10",
+      "kind": "除權",
       "market": "TPEX"
     },
     {
