@@ -1,15 +1,97 @@
 {
-  "generated_at": "2026-11-25T08:30:24+08:00",
+  "generated_at": "2026-11-26T08:30:24+08:00",
   "sources": [
     "中央社財經",
-    "經濟日報",
-    "鉅亨網"
+    "經濟日報"
   ],
-  "sources_failed": [],
+  "sources_failed": [
+    "鉅亨網: not well-formed (invalid token): line 193, column 73"
+  ],
   "keyword_alert": null,
   "retained_days": 3,
-  "count": 74,
+  "count": 71,
   "items": [
+    {
+      "title": "台積電美國擴廠典禮 川普要來 凸顯 AI 鏈關鍵戰略地位",
+      "source": "經濟日報",
+      "published_at": "2026-11-26T03:33:14+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://money.udn.com/money/story/5612/9902330",
+      "matched_keywords": [
+        "台積電",
+        "AI"
+      ]
+    },
+    {
+      "title": "就是比較賺！ 亞洲鋼材銷美 50%高額關稅擋不住",
+      "source": "經濟日報",
+      "published_at": "2026-11-26T03:08:27+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://money.udn.com/money/story/10871/9902281",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "黃仁勳強勢回歸輝達總部　馬斯克攜子現身合體慶賀",
+      "source": "中央社財經",
+      "published_at": "2026-11-26T02:36:55+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611260007.aspx",
+      "matched_keywords": [
+        "輝達"
+      ]
+    },
+    {
+      "title": "AI疑慮再起　歐股收跌",
+      "source": "中央社財經",
+      "published_at": "2026-11-26T01:34:52+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611260006.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美國第3季GDP大幅上修　10月PCE續揚強化升息預期",
+      "source": "中央社財經",
+      "published_at": "2026-11-25T23:51:35+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611250343.aspx",
+      "matched_keywords": [
+        "升息"
+      ]
+    },
+    {
+      "title": "美擬對14經濟體加徵關稅　中國20%最高、台韓日歐盟15%",
+      "source": "中央社財經",
+      "published_at": "2026-11-25T23:21:32+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611250342.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
+    {
+      "title": "AI股賣壓加劇　美股開盤盡墨、那指挫逾3%",
+      "source": "中央社財經",
+      "published_at": "2026-11-25T22:48:21+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://www.cna.com.tw/news/afe/202611250337.aspx",
+      "matched_keywords": [
+        "AI"
+      ]
+    },
+    {
+      "title": "美301調查出爐擬對14經濟體加關稅　台灣協議稅率至少15%",
+      "source": "中央社財經",
+      "published_at": "2026-11-25T21:36:48+08:00",
+      "fetched_at": "2026-11-26T08:30:24+08:00",
+      "url": "https://www.cna.com.tw/news/aopl/202611250324.aspx",
+      "matched_keywords": [
+        "關稅"
+      ]
+    },
     {
       "title": "黃仁勳向輝達員工致歉  坦承違反行為準則、接受心理治療",
       "source": "中央社財經",
@@ -650,119 +732,6 @@
       "url": "https://news.cnyes.com/news/id/6669993",
       "matched_keywords": [
         "輝達"
-      ]
-    },
-    {
-      "title": "台電將砸千億投資輸變電計畫 台積電1奈米用電穩了",
-      "source": "經濟日報",
-      "published_at": "2026-11-23T02:55:25+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9895276",
-      "matched_keywords": [
-        "台積電"
-      ]
-    },
-    {
-      "title": "美擴大 AI 管制 日本新雲端龍頭踩雷 台鏈恐受波及",
-      "source": "經濟日報",
-      "published_at": "2026-11-23T02:47:46+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9895242",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "中華資安總座洪進福專訪／建構「影子 AI 」 防線",
-      "source": "經濟日報",
-      "published_at": "2026-11-23T02:33:21+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9895118",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "誰來接棒？輝達新掌舵手未明 AI 產業與供應鏈變數仍多",
-      "source": "經濟日報",
-      "published_at": "2026-11-22T23:03:44+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://money.udn.com/money/story/11162/9895200",
-      "matched_keywords": [
-        "輝達",
-        "AI"
-      ]
-    },
-    {
-      "title": "2027年亞洲股市 AI、製造業及內需成三大支撐 景順偏好台灣市場",
-      "source": "經濟日報",
-      "published_at": "2026-11-22T16:15:25+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://money.udn.com/money/story/5612/9894677",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "駭客猛攻金融業　國銀今年探測攻擊逾2000萬次、AI上陣協防",
-      "source": "中央社財經",
-      "published_at": "2026-11-22T10:13:41+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611220031.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "AI攻擊新時代推升資安需求　業者案量多到婉拒客戶、教戰防駭自保",
-      "source": "中央社財經",
-      "published_at": "2026-11-22T10:10:37+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611220029.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "黃仁勳去職美嚴控AI產業　重大事件和供應鏈看法一次看",
-      "source": "中央社財經",
-      "published_at": "2026-11-22T09:54:30+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611220026.aspx",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "後黃仁勳時代輝達結盟供應鏈　AI訂單無虞主導地位穩固",
-      "source": "中央社財經",
-      "published_at": "2026-11-22T09:54:28+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611220025.aspx",
-      "matched_keywords": [
-        "輝達",
-        "AI"
-      ]
-    },
-    {
-      "title": "AI進入重新定價 法人：聚焦四大止穩訊號 靜待籌碼沉澱後分批布局",
-      "source": "鉅亨網",
-      "published_at": "2026-11-22T09:40:02+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://news.cnyes.com/news/id/6669803",
-      "matched_keywords": [
-        "AI"
-      ]
-    },
-    {
-      "title": "亞馬遜抗衡輝達　傳砸2470億收購AI新銳Decart",
-      "source": "中央社財經",
-      "published_at": "2026-11-22T08:44:05+08:00",
-      "fetched_at": "2026-11-23T09:01:28+08:00",
-      "url": "https://www.cna.com.tw/news/afe/202611220015.aspx",
-      "matched_keywords": [
-        "輝達",
-        "AI"
       ]
     }
   ]
